@@ -1,0 +1,636 @@
+{
+  ["colors"]	= {
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["进度条"]	= "#00000000" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["顶栏"]	= "#ff2c2e43" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      } ;
+  ["web"]	= {
+      ["启用长按菜单"]	= false ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["支持打开外部应用"]	= true ;
+      ["启用进度条"]	= false ;
+      ["启动网页"]	= "" ;
+      ["网页沉浸"]	= false ;
+      } ;
+  ["toolbar"]	= {
+      ["搜索框提示"]	= "" ;
+      ["搜索URL"]	= "" ;
+      ["icon_btns"]	= {
+          } ;
+      ["输入栏模式"]	= true ;
+      ["menus"]	= {
+          [1]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          } ;
+      ["启用搜索功能"]	= false ;
+      } ;
+  ["events"]	= {
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["程序启动"]	= "--程序启动时会执行的事件\
+function onKeyDown(key,event)\
+  if(key==4)then\
+    if(webView.canGoBack())then \
+      webView.goBack()\
+    else\
+      退出页面()\
+    end\
+    return true\
+  end\
+end\
+\
+--顶栏\
+toolbar.parent.setVisibility(View.GONE);\
+\
+点击监听={\
+  onTouch=function (v,e)\
+    if e.action==0 then\
+      缩放动画(v,1,0.95,250)\
+    else--[[if e.action==1 or e.action==2 then]]\
+      缩放动画(v,0.95,1,250)\
+    end\
+  end}\
+\
+function 缩放动画(view,startscale,endscale,time)\
+  local animatorSetsuofang = AnimatorSet()\
+  local scaleX=ObjectAnimator.ofFloat(view,\"scaleX\",{startscale,endscale})\
+  local scaleY=ObjectAnimator.ofFloat(view,\"scaleY\",{startscale,endscale})\
+  animatorSetsuofang.setDuration(time)\
+  animatorSetsuofang.setInterpolator(DecelerateInterpolator())\
+  animatorSetsuofang.play(scaleX).with(scaleY);\
+  animatorSetsuofang.start()\
+end\
+\
+短toast=Toast.LENGTH_SHORT\
+长toast=Toast.LENGTH_LONG\
+顶部=Gravity.TOP\
+中部=Gravity.CENTER\
+底部=Gravity.BOTTOM\
+\
+\
+xfy=--浏览器布局\
+{\
+  LinearLayout,\
+  orientation='vertical';--横向或者纵向布局\
+  layout_width='fill';--布局宽度\
+  layout_height='fill';--布局高度\
+  background='zy/bg.png';--\
+  --创建布局在这里\
+  --第三个页面\
+  {\
+    LinearLayout;\
+    orientation='vertical';--重力属性\
+    layout_width='fill';--布局宽度\
+    layout_height='fill';--布局高度\
+    {\
+      ScrollView,--纵向滚动\
+      layout_width='fill';--宽\
+      layout_height='fill';--高\
+      verticalScrollBarEnabled=false;--隐藏纵向滚动条\
+      {\
+        LinearLayout;\
+        gravity='center';--重力属性\
+        orientation='vertical';--重力属性\
+        layout_width='fill';--布局宽度\
+        layout_height='20dp';--布局高度\
+        --第一个卡片\
+        {\
+          CardView;--卡片控件\
+          layout_margin='450dp';--卡片边距\
+\
+          elevation='2dp';--阴影属性\
+          layout_width='90%w';--卡片宽度          \
+          radius='12dp';--卡片圆角               \
+          layout_height='145dp';--卡片高度              \
+          {\
+            LinearLayout;\
+            gravity='center';--重力属性\
+            orientation='horizontal';--重力属性\
+            layout_width='fill';--布局宽度\
+            layout_height='fill';--布局高度\
+            background='#FFE3BBC3';--布局背景颜色    \
+            {\
+              LinearLayout;\
+              --gravity='center';--重力属性\
+              orientation='horizontal';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度 \
+              {\
+                CircleImageView; --圆型控件\
+                layout_width=\"110dp\";\
+                layout_margin=\"18dp\";\
+                layout_height=\"110dp\";\
+                src=\"zy/qq.png\"; \
+                id=\"qq\";\
+\
+\
+\
+              };\
+              {\
+                Button;\
+                style=\"?android:attr/borderlessButtonStyle\";\
+                layout_marginTop=\"0dp\",\
+                layout_width=\"1px\";\
+                layout_height=\"60%w\";\
+                layout_marginLeft=\"-5dp\",--文字边距\
+                layout_gravity=\"center\";\
+                BackgroundColor=\"#FFE3BBC3\";\
+              };\
+              {\
+                LinearLayout;\
+                layout_width=\"fill\";\
+                orientation=\"vertical\";\
+                layout_marginTop=\"20dp\",\
+                layout_marginLeft=\"8dp\",--文字边距\
+                {\
+                  TextView;--文本控件\
+                  textColor='#333333';--文字颜色\
+                  text='LYM';--显示的文字\
+                  textSize='15dp';--文字大小\
+                };\
+                {\
+                  Button;\
+                  style=\"?android:attr/borderlessButtonStyle\";\
+                  layout_marginTop=\"1dp\",\
+                  layout_width=\"75px\";\
+                  layout_height=\"5px\";\
+                  --layout_gravity=\"center\";\
+                  --id=\"jindu\";\
+                  BackgroundColor=\"#FF8D0602\";\
+                };\
+                {\
+                  TextView;--文本控件\
+                  layout_marginTop=\"4dp\",\
+                  singleLine=true;--单行显示\
+                  ellipsize=\"marquee\",--显示\
+                  --textColor='#333333';--文字颜色\
+                  text='                                                           Hey my friend， 感谢你来到LY|Blog, 欢迎来我的网站:https://lianyiming.com看看吖~';--显示的文字\
+                  textSize='13dp';--文字大小\
+                  Selected=true;--显示\
+\
+                };\
+                {\
+                  Button;\
+                  style=\"?android:attr/borderlessButtonStyle\";\
+                  layout_marginTop=\"4dp\",\
+                  layout_width=\"46%w\";\
+                  layout_height=\"1px\";\
+                  --layout_gravity=\"center\";\
+                  --id=\"jindu\";\
+                  BackgroundColor=\"#FF282828\";\
+                };\
+                {\
+                  TextView;--文本控件\
+                  layout_marginTop=\"4dp\",\
+                  --textColor='#333333';--文字颜色\
+                  text='Online： 8:00 - 23:00';--显示的文字\
+                  textSize='14dp';--文字大小\
+                };\
+\
+                {\
+                  Button;\
+                  style=\"?android:attr/borderlessButtonStyle\";\
+                  layout_marginTop=\"10dp\",\
+                  layout_width=\"46%w\";\
+                  layout_height=\"3px\";\
+                  --layout_gravity=\"center\";\
+                  id=\"xt\";\
+                  --BackgroundColor=\"#FFCD9470\";\
+                };\
+                {\
+                  LinearLayout;\
+                  layout_height=\"100%h\";\
+                  orientation=\"vertical\";\
+                  layout_width=\"100%w\"; \
+                  id=\"Drawer\";\
+                  {\
+                    LinearLayout;\
+                    --layout_height=\"7%h\";\
+                    --layout_width=\"100%w\";\
+                    layout_marginTop=\"3dp\";\
+                    {\
+                      ImageView;--图片控件\
+                      layout_width=\"17dp\";\
+                      layout_height=\"17dp\";\
+                      src=\"zy/11.png\";\
+                      layout_marginLeft=\"1%w\";\
+                      id=\"\";\
+                    };\
+                    {\
+                      ImageView;--图片控件\
+                      layout_width=\"17dp\";\
+                      layout_height=\"17dp\";\
+                      src=\"zy/12.png\";\
+                      layout_marginLeft=\"2%w\";\
+                      id=\"\";\
+                    };\
+                    {\
+                      ImageView;--图片控件\
+                      layout_width=\"17dp\";\
+                      layout_height=\"17dp\";\
+                      src=\"zy/13.png\";\
+                      layout_marginLeft=\"2%w\";\
+                      id=\"\";\
+                    };\
+                    {\
+                      ImageView;--图片控件\
+                      layout_width=\"17dp\";\
+                      layout_height=\"17dp\";\
+                      src=\"zy/14.png\";\
+                      layout_marginLeft=\"2%w\";\
+                      id=\"\";\
+\
+                    };\
+                  };\
+                };\
+              };\
+            };\
+          };\
+        };\
+        --第四个卡片\
+        {\
+          LinearLayout;\
+          orientation='vertical';--重力属性\
+          layout_margin='10dp';--布局边距\
+          gravity='left';--重力属性\
+          layout_width='100%w';--布局宽度\
+          {\
+            TextView;--文本控件\
+            gravity='left';--重力属性\
+            textColor='#FF000000';--文字颜色\
+            text='Something More';--显示的文字\
+            textSize='20sp';--文字大小\
+            layout_marginLeft='20dp';--布局左距\
+          };\
+        };\
+        {\
+          LinearLayout;\
+          orientation='horizontal';--重力属性\
+          layout_margin='10dp';--布局边距\
+          {\
+            CardView;--卡片控件\
+            layout_margin='10dp';--卡片边距\
+            elevation='2dp';--阴影属性\
+            layout_width='25%w';--卡片宽度\
+            CardBackgroundColor='#FF234AC0';--卡片背景颜色\
+            layout_height='25%w';--卡片高度\
+            radius='10dp';--卡片圆角\
+            {\
+              LinearLayout;\
+              id=\"gy\",\
+              gravity='center';--重力属性\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+              onClick=function()\
+                弹出消息(\"我是按钮\")\
+              end,\
+              {\
+                ImageView;--图片控件\
+                src='zy/1.png';--图片路径\
+                layout_width='50dp';--图片宽度\
+                layout_height='50dp';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                ColorFilter=\"#00FFAB91\";--图片着色\
+              };\
+              {\
+                TextView;--文本控件\
+                layout_marginTop='3dp';--布局顶距\
+                textColor='#FF6A6A6A';--文字颜色\
+                text='关于我们';--显示的文字\
+                textSize='15sp';--文字大小\
+              };\
+            };\
+          };\
+          {\
+            CardView;--卡片控件\
+            layout_margin='10dp';--卡片边距\
+            elevation='2dp';--阴影属性\
+            layout_width='25%w';--卡片宽度\
+            CardBackgroundColor='#FF31B563';--卡片背景颜色\
+            layout_height='25%w';--卡片高度\
+            radius='10dp';--卡片圆角\
+            {\
+              LinearLayout;\
+              id=\"zz\",\
+              gravity='center';--重力属性\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+              onClick=function()\
+                弹出消息(\"我是按钮\")\
+              end,\
+              {\
+                ImageView;--图片控件\
+                src='zy/2.png';--图片路径\
+                layout_width='50dp';--图片宽度\
+                layout_height='50dp';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                ColorFilter=\"#00FFAB91\";--图片着色\
+              };\
+              {\
+                TextView;--文本控件\
+                layout_marginTop='3dp';--布局顶距\
+                textColor='#FF6A6A6A';--文字颜色\
+                text='贡献者名册';--显示的文字\
+                textSize='15sp';--文字大小\
+              };\
+            };\
+          };\
+          {\
+            CardView;--卡片控件\
+            layout_margin='10dp';--卡片边距\
+            elevation='2dp';--阴影属性\
+            layout_width='25%w';--卡片宽度\
+            CardBackgroundColor='#FFFFCB2E';--卡片背景颜色\
+            layout_height='25%w';--卡片高度\
+            radius='10dp';--卡片圆角\
+            {\
+              LinearLayout;\
+              id=\"lx\",\
+              gravity='center';--重力属性\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+              onClick=function()\
+                弹出消息(\"我是按钮\")\
+              end,\
+              {\
+                ImageView;--图片控件\
+                src='zy/3.png';--图片路径\
+                layout_width='50dp';--图片宽度\
+                layout_height='50dp';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                ColorFilter=\"#00FFAB91\";--图片着色\
+              };\
+              {\
+                TextView;--文本控件\
+                layout_marginTop='3dp';--布局顶距\
+                textColor='#FF6A6A6A';--文字颜色\
+                text='公众号';--显示的文字\
+                textSize='15sp';--文字大小\
+                onClick=function()\
+                  import \"android.content.Intent\"\
+                  import \"android.net.Uri\"\
+                  url=\"https://mp.weixin.qq.com/s/7oEX4dRnvKM1HdKwvrMr2g\"\
+                  viewIntent = Intent(\"android.intent.action.VIEW\",Uri.parse(url))\
+                  activity.startActivity(viewIntent)\
+                end,\
+              };\
+            };\
+          };\
+        };\
+\
+        {\
+          LinearLayout;\
+          orientation='horizontal';--重力属性\
+          layout_margin='10dp';--布局边距\
+          {\
+            CardView;--卡片控件\
+            layout_margin='10dp';--卡片边距\
+            elevation='2dp';--阴影属性\
+            layout_width='25%w';--卡片宽度\
+            CardBackgroundColor='#FF8CA6C0';--卡片背景颜色\
+            layout_height='25%w';--卡片高度\
+            radius='10dp';--卡片圆角\
+            {\
+              LinearLayout;\
+              id=\"ql\",\
+              gravity='center';--重力属性\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+              onClick=function()\
+                发送邮件(\"AGZX_lym@163.com\")\
+              end,\
+              {\
+                ImageView;--图片控件\
+                src='zy/4.png';--图片路径\
+                layout_width='50dp';--图片宽度\
+                layout_height='50dp';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                ColorFilter=\"#00FFAB91\";--图片着色\
+              };\
+              {\
+                TextView;--文本控件\
+                layout_marginTop='3dp';--布局顶距\
+                textColor='#FF6A6A6A';--文字颜色\
+                text='Email me';--显示的文字\
+                textSize='15sp';--文字大小\
+              };\
+            };\
+          };\
+          {\
+            CardView;--卡片控件\
+            layout_margin='10dp';--卡片边距\
+            elevation='2dp';--阴影属性\
+            layout_width='25%w';--卡片宽度\
+            CardBackgroundColor='#FFC05799';--卡片背景颜色\
+            layout_height='25%w';--卡片高度\
+            radius='10dp';--卡片圆角\
+            {\
+              LinearLayout;\
+              id=\"gx\",\
+              gravity='center';--重力属性\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+              onClick=function()\
+                弹出消息(\"我是按钮\")\
+              end,\
+\
+              {\
+                ImageView;--图片控件\
+                src='zy/5.png';--图片路径\
+                layout_width='50dp';--图片宽度\
+                layout_height='50dp';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                ColorFilter=\"#00FFAB91\";--图片着色\
+              };\
+              {\
+                TextView;--文本控件\
+                layout_marginTop='3dp';--布局顶距\
+                textColor='#FF6A6A6A';--文字颜色\
+                text='检查更新';--显示的文字\
+                textSize='15sp';--文字大小\
+              };\
+            };\
+          };\
+          {\
+            CardView;--卡片控件\
+            layout_margin='10dp';--卡片边距\
+            elevation='2dp';--阴影属性\
+            layout_width='25%w';--卡片宽度\
+            CardBackgroundColor='#FFC07123';--卡片背景颜色\
+            layout_height='25%w';--卡片高度\
+            radius='10dp';--卡片圆角\
+            {\
+              LinearLayout;\
+              id=\"bb\",\
+              gravity='center';--重力属性\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+              onClick=function()\
+                device_model = Build.MODEL\
+\
+\
+                version_xtbb = Build.VERSION.RELEASE\
+                version_cpxh = Build.PRODUCT\
+                version_bbxx = Build.DISPLAY\
+                version_cpmc = Build.PRODUCT\
+                version_xtdz = Build.BRAND\
+                version_sbcs = Build.DEVICE\
+                version_kfdh = Build.VERSION.CODENAME\
+                version_sdk = Build.VERSION.SDK\
+                version_cpu = Build.CPU_ABI\
+                version_yjlx = Build.HARDWARE\
+                version_zjdz = Build.HOST\
+                version_id = Build.ID\
+                version_rom = Build.MANUFACTURER\
+\
+                version_release = Build.VERSION.RELEASE \
+                import \"android.provider.Settings$Secure\"\
+                android_id = Secure.getString(activity.getContentResolver(), Secure.ANDROID_ID)\
+\
+                对话框()\
+                .设置标题(\"全部参数\")\
+                .设置消息(\"手机型号：\"..device_model..\"\\n\\n安卓版本：\"..version_xtbb..\"\\n\\n产品型号：\"..version_cpxh..\"\\n\\n版本显示：\" ..version_bbxx..\"\\n\\n系统定制商：\"..version_xtdz..\"\\n\\n设备参数：\" ..version_sbcs..\"\\n\\n开发代号：\"..version_kfdh..\"\\n\\nSDK版本号:\"..version_sdk..\"\\n\\nCPU类型：\"..version_cpu..\"\\n\\n硬件类型：\" ..version_yjlx..\"\\n\\n主机地址:\"..version_zjdz..\"\\n\\n生产ID：\"..version_id..\"\\n\\nROM制造商：\"..version_rom..\"\\n\\n安卓ID：\"..android_id)\
+                .设置消极按钮(\"关闭\").设置积极按钮(\"复制设备ID\",function()\
+                  复制文本(android_id)\
+                  弹出消息(\"已复制设备ID\")\
+                end)\
+                .设置消极按钮(\"取消\")\
+                .显示()\
+\
+              end,\
+              {\
+                ImageView;--图片控件\
+                src='zy/6.png';--图片路径\
+                layout_width='50dp';--图片宽度\
+                layout_height='50dp';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                ColorFilter=\"#00FFAB91\";--图片着色\
+              };\
+              {\
+                TextView;--文本控件\
+                layout_marginTop='3dp';--布局顶距\
+                textColor='#FF6A6A6A';--文字颜色\
+                text='设备信息';--显示的文字\
+                textSize='15sp';--文字大小\
+              };\
+            };\
+          };\
+        };\
+      };\
+    };\
+  };--第三个页面\
+};\
+webView.addView(loadlayout(xfy))\
+qq.onClick=function()\
+  弹出消息(\"我是按钮\")\
+end\
+--音乐封面旋转\
+import \"android.view.animation.LinearInterpolator\"\
+c = ObjectAnimator()\
+c.setTarget(qq);\
+c.setDuration(100000);\
+c.setRepeatCount(ValueAnimator.INFINITE)\
+c.setPropertyName(\"rotation\");\
+c.setFloatValues({720,0});\
+c.setRepeatMode(ValueAnimator.INFINITE)\
+c.setInterpolator(LinearInterpolator() )\
+c.start();\
+\
+--两次返回退出美化\
+参数=0\
+\
+\
+\
+\
+--检查联网状态\
+local wl=activity.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE).getActiveNetworkInfo(); \
+if wl== nil then\
+  lay=\
+  {\
+    LinearLayout;\
+    orientation='vertical';--重力属性\
+    layout_width='fill';--布局宽度\
+    layout_height='fill';--布局高度\
+    background='#FFFFFFFF';--布局背景颜色(或者图片路径)\
+    {\
+      LinearLayout;\
+      orientation='vertical';--重力属性\
+      layout_marginBottom='400dp';--布局底距\
+      layout_width='fill';--布局宽度\
+      layout_height='fill';--布局高度\
+      {\
+        TextView;--文本控件\
+        layout_width='fill';--文本宽度\
+        layout_height='fill';--文本高度\
+        gravity='center';--重力属性\
+        textColor='#FF000000';--文字颜色\
+        text='没有连接到网络网络 - 2秒后退出页面\\n请检查网络连接！';--显示的文字\
+        textSize='20';--文字大小\
+      };\
+    };\
+  };\
+  activity.setContentView(loadlayout(lay))\
+\
+  task(2000,function() --延迟任务\
+    退出页面()\
+  end)\
+\
+end" ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["switch"]	= {
+      ["横屏"]	= false ;
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= true ;
+      ["支持滑动页面"]	= false ;
+      } ;
+  ["fltBtn"]	= {
+      ["显示"]	= false ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["图标"]	= "" ;
+      } ;
+  ["sidebar"]	= {
+      ["items"]	= {
+          } ;
+      ["启用顶部图片"]	= false ;
+      ["启用"]	= true ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏标题"]	= "Title" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      } ;
+  } ;

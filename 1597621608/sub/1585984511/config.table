@@ -1,0 +1,274 @@
+{
+  ["events"]	= {
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["程序启动"]	= "--程序启动时会执行的事件\
+import \"tool\"\
+sidebar2=(loadlayout(\
+{\
+  LinearLayout;\
+  orientation=\"vertical\";\
+  layout_height=\"fill\";\
+  layout_width=\"fill\";\
+  gravity=\"center\";\
+  {\
+    CardView;\
+    layout_height=\"56dp\";\
+    layout_width=\"56dp\";\
+    radius=\"\";\
+    layout_gravity=\"center\";\
+    {\
+      CardView;\
+      layout_height=\"fill\";\
+      layout_width=\"fill\";\
+      radius=\"\";\
+      id=\"zhacai\";\
+      {\
+        ImageView;\
+        src=\"icon.png\";--选择图标\
+        layout_height=\"0dp\";\
+        layout_gravity=\"center\";\
+        layout_width=\"0dp\";\
+        id=\"img\";\
+      };\
+    };\
+  };\
+}\
+))--by偶尔想吃榨菜\
+fltBtn.addView(sidebar2)\
+\
+img.onClick=function()\
+  弹出消息(\"悬浮球\")\
+end\
+--渐变\
+import \"android.graphics.drawable.GradientDrawable\"\
+function 渐变(left_jb,right_jb,id)\
+  drawable = GradientDrawable(GradientDrawable.Orientation.TR_BL,{\
+    right_jb,--右色\
+    left_jb,--左色\
+  });\
+  id.setBackgroundDrawable(drawable)\
+end\
+--调用渐变函数\
+渐变(0xff0040ff,0xFF38BAFE,toolbarParent)\
+--程序启动时会执行的事件\
+\
+--程序启动时会执行的事件\
+function CircleButton(view,InsideColor,radiu)\
+  import \"android.graphics.drawable.GradientDrawable\"\
+  drawable = GradientDrawable() \
+  drawable.setShape(GradientDrawable.RECTANGLE) \
+  drawable.setColor(InsideColor)\
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  view.setBackgroundDrawable(drawable)\
+end\
+角度=30--圆角弧度\
+控件id=sidebar\
+控件颜色=0xFFFFFFFF\
+CircleButton(控件id,控件颜色,角度)\
+\
+linearParams = sidebar.getLayoutParams()\
+linearParams.width =630--侧滑栏宽度\
+linearParams.height =1500--侧滑栏高度\
+sidebar.setLayoutParams(linearParams)\
+--退出\
+参数=0\
+function onKeyDown(code,event)\
+  if string.find(tostring(event),\"KEYCODE_BACK\") ~= nil then\
+    if 参数+2 > tonumber(os.time()) then\
+      退出程序()\
+     else\
+      to={\
+        CardView;\
+        CardBackgroundColor=\"#FFffffff\";\
+        elevation=\"8dp\";\
+        layout_width=\"95%w\";\
+        layout_height=\"42dp\";\
+        radius=\"15\";\
+        id=\"to\";\
+        {\
+          TextView;\
+          textSize=\"15sp\";\
+          TextColor=\"#FFa0a0a0\";\
+          layout_width=\"95%w\";\
+          layout_height=\"42dp\";\
+          gravity=\"center\";\
+          text=\"出错\";\
+          id=\"texttc\";\
+        };\
+      }\
+      local to=Toast.makeText(activity,\"内容\",Toast.LENGTH_SHORT).setView(loadlayout(to))\
+      --LENGTH_SHORT     2s\
+      --LENGTH_LONG      3.5s\
+      to.setGravity(Gravity.BOTTOM,0,60)\
+      --Gravity.BOTTOM   底部\
+      --Gravity.CENTER   中部\
+      --Gravity.TOP      顶部\
+      texttc.Text=tostring(\"再按一次退出程序！\")\
+      to.show()\
+      参数=tonumber(os.time())\
+    end\
+    return true\
+  end\
+end\
+--程序启动时会执行的事件\
+\
+-- https://github.com/gelitenight/WaveView\
+import\"com.gelitenight.waveview.library.WaveView\"\
+drawerLayout.addView(loadlayout{\
+  WaveView,\
+  id=\"wave\",\
+  layout_width=\"fill\",\
+  layout_height=\"fill\",\
+  showWave=true,\
+  shapeType=WaveView.ShapeType.SQUARE,\
+  waterLevelRatio=0.025,--水面高度\
+})\
+wave.setWaveColor(tointeger(config.colors.顶栏:gsub(\"#%x%x\",\"#A0\"):gsub(\"#\",\"0x\")),tointeger(config.colors.顶栏:gsub(\"#%x%x\",\"#50\"):gsub(\"#\",\"0x\")))--波浪颜色\
+import\"android.animation.ObjectAnimator\"\
+import\"android.view.animation.LinearInterpolator\"\
+local animSet=AnimatorSet().setInterpolator(LinearInterpolator())\
+.setDuration(5000)--动画速度\
+animSet.play(ObjectAnimator.ofFloat(wave,\"waveShiftRatio\",{0,1}).setRepeatCount(-1)).with(ObjectAnimator.ofFloat(wave,\"amplitudeRatio\",{0.005,0.015}).setRepeatCount(-1).setRepeatMode(2))\
+animSet.start()\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+" ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象,新标题=..." ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      } ;
+  ["sidebar"]	= {
+      ["items"]	= {
+          } ;
+      ["启用"]	= true ;
+      ["启用顶部图片"]	= false ;
+      } ;
+  ["view_attribute"]	= {
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["标签栏滑动条高度"]	= "3dp" ;
+      ["标签栏高度"]	= "48dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏高度"]	= "0dp" ;
+      } ;
+  ["tab_bar"]	= {
+      ["items"]	= {
+          [4]	= {
+              ["url"]	= "https://tools.miku.ac/translate" ;
+              ["name"]	= "简易" ;
+              } ;
+          [1]	= {
+              ["url"]	= "https://translate.google.cn/m/translate" ;
+              ["name"]	= "谷歌" ;
+              } ;
+          [2]	= {
+              ["url"]	= "http://fanyi.sogou.com/" ;
+              ["name"]	= "搜狗" ;
+              } ;
+          [3]	= {
+              ["url"]	= "https://quark.sm.cn/api/rest?method=quark_fanyi.dlpage&uc_param_str=dnntnwvepffrgibijbprsvdsdichei&from=kkframenew&schema=v2&format=html&entry=fanyi_jinshan" ;
+              ["name"]	= "夸克" ;
+              } ;
+          } ;
+      } ;
+  ["switch"]	= {
+      ["启用启动图"]	= false ;
+      ["支持滑动页面"]	= true ;
+      ["横屏"]	= false ;
+      ["显示状态栏"]	= false ;
+      } ;
+  ["toolbar"]	= {
+      ["menus"]	= {
+          } ;
+      ["搜索框提示"]	= "输入关键词搜索.." ;
+      ["搜索URL"]	= "" ;
+      ["启用搜索功能"]	= false ;
+      ["icon_btns"]	= {
+          } ;
+      ["输入栏模式"]	= false ;
+      } ;
+  ["fltBtn"]	= {
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件\
+退出页面()" ;
+      ["图标"]	= "" ;
+      ["显示"]	= false ;
+      } ;
+  ["web"]	= {
+      ["customUa"]	= "Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Quark/3.8.4.128 UCBrowser/12.0.4.985 baiduboxapp/3.2.5.10 MQQBrowser/7.2.1.2965 XiaoMi/MiuiBrowser/11.9.2 SearchCraft/2.0.0 ALiSearchApp/2.4 AliApp(TB/9.5.6) BingWeb/6.9.6 3gpp-gba" ;
+      ["启用进度条"]	= true ;
+      ["浏览器用户标识"]	= "自定义" ;
+      ["网页沉浸"]	= false ;
+      ["惰性加载"]	= true ;
+      ["启用长按菜单"]	= false ;
+      ["支持打开外部应用"]	= false ;
+      } ;
+  ["colors"]	= {
+      ["标签栏文本"]	= "#ffffffff" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["顶栏"]	= "#ff6badeb" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["标签栏滑动条"]	= "#ff4db6ac" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["状态栏"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#d663b3da" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["顶栏部件触摸"]	= "#33ffffff" ;
+      ["标签栏项目触摸"]	= "#33000000" ;
+      ["悬浮按钮图标"]	= "#ff74a5ff" ;
+      ["进度条"]	= "#ff4db6ac" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      } ;
+  ["web_control"]	= {
+      [1]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "c-container dl-container c-container--v1_0_0 js-everyday-read,sentence-container js-sentence-container" ;
+          ["url"]	= "quark.sm.cn" ;
+          } ;
+      [2]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "go-to-download,article-title,article-thumb,intro-title,go-to-attention,app-bar,bottom-intro,article hairlines android-style,intro-link intro-conversation,intro-link intro-camera,intro-link intro-offline,bottom-intro,article-thumb,app-bar,header,title-zh,title-en,pas-tag,title-tag,article-container,extra,gotop hide,article-thumb-img,st-net-tips,app-bar,app-bar-text" ;
+          ["url"]	= "m.baidu.com" ;
+          } ;
+      [3]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "ft-icon-row,ft-icon-ctr,footer-icon-container ft-icon-img-hst,ft-icon-img-ctr,ft-icon-oval,ft-icon-img-hst,ft-icon-notification,ft-icon-txt,feedback-link,gb_sc" ;
+          ["url"]	= "translate.google.cn" ;
+          } ;
+      [4]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "download-text,btn-download,title,box-logo,logo,setting,setting-icon" ;
+          ["url"]	= "fanyi.sogou.com" ;
+          } ;
+      [5]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "navbar,el-tooltip btn item focusing,eva eva-menu-outline,el-tooltip type-icon vipDate focusing,theme-btn,nya-title,main" ;
+          ["url"]	= "tools.miku.ac" ;
+          } ;
+      } ;
+  } ;

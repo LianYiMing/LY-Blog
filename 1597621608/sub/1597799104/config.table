@@ -1,0 +1,721 @@
+{
+  ["events"]	= {
+      ["程序启动"]	= "\
+--半生素依制作\
+--欢迎参考\
+--禁止盗用\
+--分享源码请保留\
+--QQ1379305984\
+\
+\
+\
+\
+\
+\
+bssy=\
+{\
+  LinearLayout;--线性布局\
+  orientation='vertical';--重力属性\
+  layout_width='fill';--布局宽度\
+  layout_height='fill';--布局高度\
+  --background='';--布局背景颜色(或者图片路径)\
+  {\
+    CardView;--卡片控件\
+    layout_width='fill';--卡片宽度\
+    CardBackgroundColor='#00000000';--卡片背景颜色\
+    layout_height='fill';--卡片高度\
+    {\
+      ImageView;--图片控件\
+      src='https://hbimg.huabanimg.com/6e07c51757e04d18f68227557771d8de4dd7f4055b68-GmZFF9_fw658';--图片路径\
+      -- src='lb5.png';\
+      layout_width='fill';--图片宽度\
+      layout_height='fill';--图片高度\
+      scaleType='fitXY';--图片显示类型\
+    };\
+    --\
+    --\
+    --\
+    --\
+    --1\
+    --2\
+    {\
+      TextView;--文本控件\
+      gravity='center';--重力\
+      --左:left 右:right 中:center 顶:top 底:bottom\
+      layout_width='fill';--宽度\
+      layout_height='fill';--高度\
+      singleLine=true;--单行显示\
+      ellipsize=\"marquee\",--显示     \
+      Selected=true;--显示\
+      textColor='#cf000000';--文字颜色        \
+      text='';--显示文字\
+      textSize='15dp';--文字大小\
+\
+    };\
+\
+    {\
+      ImageView;--图片控件\
+      id='z1';\
+      layout_marginTop='65dp';--布局顶距\
+      layout_marginLeft='50dp';--布局左距\
+      src='https://hbimg.huabanimg.com/ec2c0a6c3896e302202766915390ef0c50cfa190e65-iqfkZd_fw658';--图片路径\
+      layout_width='40dp';--图片宽度\
+      layout_height='35dp';--图片高度\
+      scaleType='fitXY';--图片显示类型\
+      style='?android:attr/buttonBarButtonStyle';\
+      \
+          };\
+    {\
+      ImageView;--图片控件\
+      id='z2';\
+      layout_marginTop='65dp';--布局顶距\
+      layout_marginLeft='400dp';--布局左距\
+      src='https://hbimg.huabanimg.com/2672ca8a0237dc3cf9a9c6f1ed756bf30cf111f21799-91TiQS_fw658';--图片路径\
+      layout_width='40dp';--图片宽度\
+      layout_height='35dp';--图片高度\
+      scaleType='fitXY';--图片显示类型\
+      style='?android:attr/buttonBarButtonStyle';\
+      onClick=function()\
+        进入子页面(\"搜索\")\
+      end\
+      \
+    };\
+    --\
+    --\
+    --\
+    --\
+    --\
+    --\
+    --\
+    {\
+      TextView;--文本控件\
+      layout_marginTop='140dp';--布局顶距\
+      layout_marginLeft='90dp';--布局左距\
+      layout_width='300dp';--文本宽度\
+      layout_height='60dp';--文本高度\
+      gravity='center';--重力属性\
+      textColor='#FF787679';--文字颜色\
+      text='Hello, enjoy your time';--显示的文字\
+      textSize='35sp';--文字大小\
+      --Typeface=Typeface.DEFAULT_BOLD;\
+   };\
+    --\
+    --\
+    --以下为四个图标\
+    --\
+    --\
+    --\
+    {\
+      CardView;--卡片控件\
+      layout_marginTop='220dp';--布局顶距\
+      layout_marginLeft='285dp';--布局左距\
+      layout_margin='10dp';--卡片边距\
+      layout_gravity='';--重力属性\
+      elevation='10dp';--阴影属性\
+      layout_width='140dp';--卡片宽度\
+      CardBackgroundColor='#ffffffff';--卡片背景颜色\
+      layout_height='80dp';--卡片高度\
+      radius='15dp';--卡片圆\
+      {\
+        LinearLayout;\
+        id='z3',\
+        gravity='center';--重力属性\
+        orientation='vertical';--重力属性\
+        layout_width='fill';--布局宽度\
+        layout_height='fill';--布局高度\
+        style='?android:attr/buttonBarButtonStyle';\
+        onClick=function()\
+        end,\
+      };\
+             {\
+        ImageView;--图片控件\
+        layout_margin='-2dp';--卡片边距\
+        src='https://hbimg.huabanimg.com/b750b3e47a629ecdeabbc0647105205f443d2839172f-CsUH84_fw658';--图片路径\
+        layout_width='fill';--图片宽度\
+        layout_height='fill';--图片高度\
+        scaleType='fitXY';--图片显示类型\
+\
+      };\
+   \
+      {\
+        ImageView;--图片控件\
+        layout_marginTop='10dp';--布局顶距\
+        layout_marginLeft='105dp';--布局左距\
+        src='https://hbimg.huabanimg.com/065a2792a429b1b3d78000438d3acdd1deea4ab723bc-lo1IDt_fw658';--图片路径\
+        layout_width='20dp';--图片宽度\
+        layout_height='20dp';--图片高度\
+        scaleType='fitXY';--图片显示类型\
+      };\
+      {\
+        TextView;--文本控件\
+        layout_marginTop='40dp';--布局顶距\
+        layout_marginLeft='20dp';--布局左距\
+        layout_width='150dp';--文本宽度\
+        layout_height='60dp';--文本高度\
+        gravity='';--重力属性\
+        textColor='#FFffffff';--文字颜色\
+        text='Movie';--显示的文字\
+        textSize='20sp';--文字大小\
+        Typeface=Typeface.DEFAULT_BOLD;\
+        onClick=function()\
+          进入子页面(\"movie\")\
+        end\
+      \
+      };\
+    };\
+    --\
+    --\
+    --\
+    --\
+    --\
+    --\
+    --\
+\
+    {\
+      CardView;--卡片控件\
+      layout_marginTop='220dp';--布局顶距\
+      layout_marginLeft='50dp';--布局左距\
+      layout_margin='20dp';--卡片边距\
+      layout_gravity='';--重力属性\
+      elevation='10dp';--阴影属性\
+      layout_width='140dp';--卡片宽度\
+      CardBackgroundColor='#ffffffff';--卡片背景颜色\
+      layout_height='80dp';--卡片高度\
+      radius='15dp';--卡片圆角\
+      {\
+        LinearLayout;\
+        id='z4',\
+        gravity='center';--重力属性\
+        orientation='vertical';--重力属性\
+        layout_width='fill';--布局宽度\
+        layout_height='fill';--布局高度\
+        style='?android:attr/buttonBarButtonStyle';\
+        onClick=function()\
+        end,\
+      };\
+      {\
+        ImageView;--图片控件\
+        layout_margin='-2dp';--卡片边距\
+        src='https://hbimg.huabanimg.com/6f9507f6915724df4e3a370077fd0d676665d86c1ba4-NhUIEI_fw658';--图片路径\
+        layout_width='fill';--图片宽度\
+        layout_height='fill';--图片高度\
+        scaleType='fitXY';--图片显示类型\
+      };\
+      {\
+        ImageView;--图片控件\
+        layout_marginTop='10dp';--布局顶距\
+        layout_marginLeft='105dp';--布局左距\
+        src='https://hbimg.huabanimg.com/484cb52c2bd220fb63b7b2141b36bd03ed6097652983-gnpzwh_fw658';--图片路径\
+        layout_width='20dp';--图片宽度\
+        layout_height='20dp';--图片高度\
+        scaleType='fitXY';--图片显示类型\
+      };\
+      {\
+        TextView;--文本控件\
+        layout_marginTop='40dp';--布局顶距\
+        layout_marginLeft='20dp';--布局左距\
+        layout_width='150dp';--文本宽度\
+        layout_height='60dp';--文本高度\
+        gravity='';--重力属性\
+        textColor='#FFffffff';--文字颜色\
+        text='PC';--显示的文字\
+        textSize='20sp';--文字大小\
+        Typeface=Typeface.DEFAULT_BOLD;\
+        onClick=function()\
+        进入子页面(\"PC\")\
+      end\
+      };\
+    };\
+    --\
+    --\
+    --\
+    --\
+    --\
+    --\
+    --\
+    {\
+      CardView;--卡片控件\
+      layout_marginTop='480dp';--布局顶距\
+      layout_marginLeft='50dp';--布局左距\
+      layout_margin='20dp';--卡片边距\
+      layout_gravity='';--重力属性\
+      elevation='10dp';--阴影属性\
+      layout_width='140dp';--卡片宽度\
+      CardBackgroundColor='#FF71A0F8';--卡片背景颜色\
+      layout_height='80dp';--卡片高度\
+      radius='15dp';--卡片圆角\
+      {\
+        ImageView;--图片控件\
+        layout_margin='-2dp';--卡片边距\
+        src='';--图片路径\
+        layout_width='fill';--图片宽度\
+        layout_height='fill';--图片高度\
+        scaleType='fitXY';--图片显示类型\
+      };\
+      {\
+        ImageView;--图片控件\
+        layout_marginTop='10dp';--布局顶距\
+        layout_marginLeft='105dp';--布局左距\
+        src='https://hbimg.huabanimg.com/484cb52c2bd220fb63b7b2141b36bd03ed6097652983-gnpzwh_fw658';--图片路径\
+        layout_width='20dp';--图片宽度\
+        layout_height='20dp';--图片高度\
+        scaleType='fitXY';--图片显示类型\
+      };\
+      {\
+        TextView;--文本控件\
+        layout_marginTop='40dp';--布局顶距\
+        layout_marginLeft='20dp';--布局左距\
+        layout_width='150dp';--文本宽度\
+        layout_height='60dp';--文本高度\
+        gravity='';--重力属性\
+        textColor='#FFffffff';--文字颜色\
+        text='Read';--显示的文字\
+        textSize='20sp';--文字大小\
+        Typeface=Typeface.DEFAULT_BOLD;\
+        onClick=function()\
+          进入子页面(\"阅读\")\
+        end\
+      };\
+    };\
+    --\
+    --\
+    --\
+    --\
+    --\
+    --\
+    --\
+    {\
+      CardView;--卡片控件\
+      layout_marginTop='350dp';--布局顶距\
+      layout_marginLeft='285dp';--布局左距\
+      layout_margin='20dp';--卡片边距\
+      layout_gravity='';--重力属性\
+      elevation='10dp';--阴影属性\
+      layout_width='140dp';--卡片宽度\
+      CardBackgroundColor='#FF83CCC1';--卡片背景颜色\
+      layout_height='80dp';--卡片高度\
+      radius='15dp';--卡片圆角\
+      {\
+        ImageView;--图片控件\
+        layout_margin='-2dp';--卡片边距\
+        src='';--图片路径\
+        layout_width='fill';--图片宽度\
+        layout_height='fill';--图片高度\
+        scaleType='fitXY';--图片显示类型\
+      };\
+      {\
+        ImageView;--图片控件\
+        layout_marginTop='10dp';--布局顶距\
+        layout_marginLeft='105dp';--布局左距\
+        src='https://hbimg.huabanimg.com/0ad4cc07844af0d81b4b992626eb608f90ca5ec91fad-DP6ITd_fw658';--图片路径\
+        layout_width='20dp';--图片宽度\
+        layout_height='20dp';--图片高度\
+        scaleType='fitXY';--图片显示类型\
+      };\
+      {\
+        TextView;--文本控件\
+        layout_marginTop='40dp';--布局顶距\
+        layout_marginLeft='20dp';--布局左距\
+        layout_width='150dp';--文本宽度\
+        layout_height='60dp';--文本高度\
+        gravity='';--重力属性\
+        textColor='#FFffffff';--文字颜色\
+        text='News';--显示的文字\
+        textSize='20sp';--文字大小\
+        Typeface=Typeface.DEFAULT_BOLD;\
+        onClick=function()\
+          进入子页面(\"新闻\")\
+        end\
+      };\
+    };\
+    --\
+    --\
+    --\
+    --\
+    --\
+    --\
+    {\
+      CardView;--卡片控件\
+      layout_marginTop='350dp';--布局顶距\
+      layout_marginLeft='50dp';--布局左距\
+      layout_margin='20dp';--卡片边距\
+      layout_gravity='';--重力属性\
+      elevation='10dp';--阴影属性\
+      layout_width='140dp';--卡片宽度\
+      CardBackgroundColor='#ffffffff';--卡片背景颜色\
+      layout_height='80dp';--卡片高度\
+      radius='15dp';--卡片圆角\
+      {\
+        ImageView;--图片控件\
+        layout_margin='-2dp';--卡片边距\
+        src='https://hbimg.huabanimg.com/09bdfc296817dcb827267ee56cb15a88dcba70b817a4-1B5X9a_fw658';--图片路径\
+        layout_width='fill';--图片宽度\
+        layout_height='fill';--图片高度\
+        scaleType='fitXY';--图片显示类型\
+      };\
+      {\
+        ImageView;--图片控件\
+        layout_marginTop='10dp';--布局顶距\
+        layout_marginLeft='105dp';--布局左距\
+        src='https://hbimg.huabanimg.com/548549c1d1e7aaa52b239eb415575791dcd732262195-mxvRBY_fw658';--图片路径\
+        layout_width='20dp';--图片宽度\
+        layout_height='20dp';--图片高度\
+        scaleType='fitXY';--图片显示类型\
+      };\
+      {\
+        TextView;--文本控件\
+        layout_marginTop='40dp';--布局顶距\
+        layout_marginLeft='20dp';--布局左距\
+        layout_width='150dp';--文本宽度\
+        layout_height='60dp';--文本高度\
+        gravity='';--重力属性\
+        textColor='#FFffffff';--文字颜色\
+        text='Live';--显示的文字\
+        textSize='20sp';--文字大小\
+        Typeface=Typeface.DEFAULT_BOLD;\
+        onClick=function()\
+          进入子页面(\"直播\")\
+        end\
+      };\
+    };\
+    --\
+    --\
+    --\
+    --\
+    --\
+    --\
+    {\
+      CardView;--卡片控件\
+      layout_marginTop='480dp';--布局顶距\
+      layout_marginLeft='285dp';--布局左距\
+      layout_margin='20dp';--卡片边距\
+      layout_gravity='';--重力属性\
+      elevation='10dp';--阴影属性\
+      layout_width='140dp';--卡片宽度\
+      CardBackgroundColor='#ffffffff';--卡片背景颜色\
+      layout_height='80dp';--卡片高度\
+      radius='15dp';--卡片圆角\
+      {\
+        ImageView;--图片控件\
+        layout_margin='-2dp';--卡片边距\
+        src='https://hbimg.huabanimg.com/45dc04473f7e031ee65cdd11cb3cf636aa8dad6d1649-gyyNeU_fw658';--图片路径\
+        layout_width='fill';--图片宽度\
+        layout_height='fill';--图片高度\
+        scaleType='fitXY';--图片显示类型\
+      };\
+      {\
+        ImageView;--图片控件\
+        layout_marginTop='10dp';--布局顶距\
+        layout_marginLeft='105dp';--布局左距\
+        src='https://hbimg.huabanimg.com/0ad4cc07844af0d81b4b992626eb608f90ca5ec91fad-DP6ITd_fw658';--图片路径\
+        layout_width='20dp';--图片宽度\
+        layout_height='20dp';--图片高度\
+        scaleType='fitXY';--图片显示类型\
+      };\
+      {\
+        TextView;--文本控件\
+        layout_marginTop='40dp';--布局顶距\
+        layout_marginLeft='20dp';--布局左距\
+        layout_width='150dp';--文本宽度\
+        layout_height='60dp';--文本高度\
+        gravity='';--重力属性\
+        textColor='#FFffffff';--文字颜色\
+        text='Shopping';--显示的文字\
+        textSize='20sp';--文字大小\
+        Typeface=Typeface.DEFAULT_BOLD;\
+        onClick=function()\
+          进入子页面(\"京东\")\
+        end\
+      };\
+    };\
+    --\
+    --\
+    --\
+    --\
+    --\
+\
+    {\
+      CardView;--卡片控件\
+      layout_marginTop='800dp';--布局顶距\
+      --layout_marginLeft='20dp';--布局左距\
+      --layout_margin='20dp';--卡片边距\
+      layout_gravity='';--重力属性\
+      --elevation='10dp';--阴影属性\
+      layout_width='fill';--卡片宽度\
+      CardBackgroundColor='#FFFFFEFF';--卡片背景颜色\
+      layout_height='fill';--卡片高度\
+      radius='';--卡片圆角\
+      {\
+        HorizontalScrollView,--横向滚动\
+        layout_width='fill';--宽\
+        layout_height='fill';--高\
+        {\
+          LinearLayout;--线性布局\
+          orientation='horizontal';--重力属性\
+          layout_width='fill';--布局宽度\
+          layout_height='fill';--布局高度\
+          --background='';--布局背景颜色(或者图片路径)\
+          {\
+            CardView;--卡片控件\
+            --layout_marginTop='500dp';--布局顶距\
+            --layout_marginLeft='20dp';--布局左距\
+            --layout_margin='20dp';--卡片边距\
+            --layout_gravity='';--重力属性\
+            --elevation='10dp';--阴影属性\
+            layout_width='1250dp';--卡片宽度\
+            CardBackgroundColor='#FFFFFEFF';--卡片背景颜色\
+            layout_height='fill';--卡片高度\
+            --radius='';--卡片圆角\
+            --\
+            --\
+            --\
+            --\
+            --\
+            --\
+            {\
+              CardView;--卡片控件\
+              --layout_marginLeft='20dp';--布局左距\
+              layout_margin='20dp';--卡片边距\
+              layout_gravity='';--重力属性\
+              elevation='10dp';--阴影属性\
+              layout_width='280dp';--卡片宽度\
+              CardBackgroundColor='#ffffffff';--卡片背景颜色\
+              layout_height='fill';--卡片高度\
+              radius='15dp';--卡片圆角\
+              {\
+                TextView;--文本控件\
+                layout_marginTop='1dp';--布局顶距\
+                layout_marginLeft='1dp';--布局左距\
+                layout_width='150dp';--文本宽度\
+                layout_height='60dp';--文本高度\
+                gravity='';--重力属性\
+                textColor='#FFffffff';--文字颜色\
+                text='2hat';--显示的文字\
+                textSize='20sp';--文字大小\
+                Typeface=Typeface.DEFAULT_BOLD;};\
+              {\
+                ImageView;--图片控件\
+                src='lb1.jpg';--图片路径\
+                layout_width='fill';--图片宽度\
+                layout_height='fill';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                onClick=function()\
+                  进入子页面(\"应用\")\
+                end\
+              };\
+            };\
+            --\
+            --\
+            --\
+            --\
+            --\
+            --\
+            {\
+              CardView;--卡片控件\
+              layout_marginLeft='330dp';--布局左距\
+              layout_margin='20dp';--卡片边距\
+              layout_gravity='';--重力属性\
+              elevation='10dp';--阴影属性\
+              layout_width='280dp';--卡片宽度\
+              CardBackgroundColor='#ffffffff';--卡片背景颜色\
+              layout_height='fill';--卡片高度\
+              radius='15dp';--卡片圆角\
+              {\
+                ImageView;--图片控件\
+                src=\"lb4.jpg\";--图片路径\
+                layout_width='fill';--图片宽度\
+                layout_height='fill';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                onClick=function()\
+                  进入子页面(\"音乐\")\
+                end\
+              };\
+            };\
+            --\
+            --\
+            --\
+            --\
+            --\
+            --\
+            {\
+              CardView;--卡片控件\
+              layout_marginLeft='640dp';--布局左距\
+              layout_margin='20dp';--卡片边距\
+              layout_gravity='';--重力属性\
+              elevation='10dp';--阴影属性\
+              layout_width='280dp';--卡片宽度\
+              CardBackgroundColor='#ffffffff';--卡片背景颜色\
+              layout_height='fill';--卡片高度\
+              radius='15dp';--卡片圆角\
+              {\
+                ImageView;--图片控件\
+                src='lb2.jpg';--图片路径\
+                layout_width='fill';--图片宽度\
+                layout_height='fill';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                onClick=function()\
+                  进入子页面(\"翻译\")\
+                end\
+              };\
+            };\
+            --\
+            --\
+            --\
+            --\
+            --\
+            --\
+            {\
+              CardView;--卡片控件\
+              layout_marginLeft='950dp';--布局左距\
+              layout_margin='20dp';--卡片边距\
+              layout_gravity='';--重力属性\
+              elevation='10dp';--阴影属性\
+              layout_width='280dp';--卡片宽度\
+              CardBackgroundColor='#ffffffff';--卡片背景颜色\
+              layout_height='fill';--卡片高度\
+              radius='15dp';--卡片圆角\
+              {\
+                ImageView;--图片控件\
+                src=\"lb3.jpg\";--图片路径\
+                layout_width='fill';--图片宽度\
+                layout_height='fill';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                onClick=function()\
+                  进入子页面(\"记事\")\
+                end\
+              };\
+            };\
+          };\
+        };\
+      };\
+    };\
+  };\
+};\
+activity.setContentView(loadlayout(bssy))\
+--退出\
+function 波纹(id,颜色)\
+  import \"android.content.res.ColorStateList\"\
+  local attrsArray = {android.R.attr.selectableItemBackgroundBorderless} \
+  local typedArray =activity.obtainStyledAttributes(attrsArray) \
+  ripple=typedArray.getResourceId(0,0) \
+  Pretend=activity.Resources.getDrawable(ripple) \
+  Pretend.setColor(ColorStateList(int[0].class{int{}},int{颜色}))\
+  id.setBackground(Pretend.setColor(ColorStateList(int[0].class{int{}},int{颜色})))\
+end\
+z2.onClick=function()\
+  进入子页面(\"搜索\")\
+  --在这里填写控件单击事件  \
+end\
+z3.onClick=function()\
+  进入子页面(\"PC\")\
+  --在这里填写控件单击事件  \
+end\
+--按钮波纹颜色\
+波纹(z1,0xFF342DF5)\
+波纹(z2,0xFF342DF5)\
+波纹(z3,0xFF342DF5)\
+波纹(z4,0xFF342DF5)\
+--波纹(z5,0xFF342DF5)\
+--波纹(z6,0xFF342DF5)\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+" ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      } ;
+  ["fltBtn"]	= {
+      ["显示"]	= true ;
+      ["图标"]	= "" ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["switch"]	= {
+      ["支持滑动页面"]	= true ;
+      ["显示状态栏"]	= true ;
+      ["启用启动图"]	= false ;
+      ["横屏"]	= false ;
+      } ;
+  ["sidebar"]	= {
+      ["启用顶部图片"]	= false ;
+      ["items"]	= {
+          } ;
+      ["启用"]	= true ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏标题"]	= "Title" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      } ;
+  ["toolbar"]	= {
+      ["搜索框提示"]	= "" ;
+      ["输入栏模式"]	= true ;
+      ["menus"]	= {
+          [1]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          } ;
+      ["icon_btns"]	= {
+          } ;
+      ["启用搜索功能"]	= false ;
+      ["搜索URL"]	= "" ;
+      } ;
+  ["web"]	= {
+      ["支持打开外部应用"]	= true ;
+      ["启用进度条"]	= true ;
+      ["启用长按菜单"]	= true ;
+      ["网页沉浸"]	= false ;
+      ["启动网页"]	= "" ;
+      ["浏览器用户标识"]	= "默认" ;
+      } ;
+  ["colors"]	= {
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["顶栏"]	= "#ff2c2e43" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["进度条"]	= "#00000000" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      } ;
+  } ;

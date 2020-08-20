@@ -1,0 +1,686 @@
+{
+  ["switch"]	= {
+      ["启用启动图"]	= false ;
+      ["支持滑动页面"]	= false ;
+      ["显示状态栏"]	= true ;
+      ["横屏"]	= false ;
+      } ;
+  ["fltBtn"]	= {
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["显示"]	= false ;
+      ["图标"]	= "" ;
+      } ;
+  ["toolbar"]	= {
+      ["搜索URL"]	= "" ;
+      ["icon_btns"]	= {
+          } ;
+      ["启用搜索功能"]	= false ;
+      ["menus"]	= {
+          [1]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          } ;
+      ["搜索框提示"]	= "" ;
+      ["输入栏模式"]	= false ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["view_attribute"]	= {
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏标题"]	= "Title" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      } ;
+  ["colors"]	= {
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["顶栏"]	= "#ff2b2e43" ;
+      ["进度条"]	= "#00000000" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      } ;
+  ["sidebar"]	= {
+      ["items"]	= {
+          } ;
+      ["启用顶部图片"]	= false ;
+      ["启用"]	= false ;
+      } ;
+  ["web"]	= {
+      ["浏览器用户标识"]	= "默认" ;
+      ["启用进度条"]	= true ;
+      ["网页沉浸"]	= false ;
+      ["启动网页"]	= "" ;
+      ["启用长按菜单"]	= true ;
+      ["支持打开外部应用"]	= true ;
+      } ;
+  ["events"]	= {
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["程序启动"]	= "--程序启动时会执行的事件--程序启动时会执行的事件\
+\
+--隐藏悬浮按钮\
+toolbar.parent.setVisibility(View.GONE)\
+--布局开始\
+子朝布局={--幽灵点睛\
+  LinearLayout;\
+  orientation='vertical';--重力属性\
+  layout_width='fill';--布局宽度\
+  layout_height='fill';--布局高度\
+  {\
+    ScrollView,--纵向滚动\
+    layout_width='fill';--宽\
+    layout_height='fill';--高\
+    background='drawable/bz1.jpg';\
+    verticalScrollBarEnabled=false;--隐藏纵向滚动条\
+    {\
+      LinearLayout;\
+      gravity='center';--重力属性\
+      orientation='vertical';--重力属性\
+      layout_width='fill';--布局宽度\
+      layout_height='fill';--布局高度\
+      {\
+        ImageView;--图片控件\
+        src='by.png';--图片路径\
+        layout_width='fill';--图片宽度\
+        layout_height='70dp';--图片高度\
+        scaleType='fitXY';--图片显示类型\
+      };\
+      {\
+        CardView;\
+        elevation=\"2dp\";\
+        radius=\"10dp\";\
+        layout_width=\"fill\";\
+        layout_height=\"220dp\";\
+        layout_marginLeft='18dp';--布局左距\
+        layout_marginRight='18dp';--布局右距\
+        layout_marginTop=\"50dp\";\
+        {\
+          ImageView;\
+          scaleType=\"fitXY\";\
+          id=\"logo\";\
+          src=\"lb.jpg\";\
+          layout_height=\"fill\";\
+          layout_width=\"fill\";\
+        };\
+      };\
+      {\
+        LinearLayout;\
+        orientation=\"horizontal\";\
+        layout_marginRight=\"10dp\";\
+        gravity=\"center\";\
+        layout_marginTop=\"60dp\";\
+        layout_height=\"50dp\";\
+        layout_width=\"fill\";\
+        {\
+          TextView;\
+          text=\"●\";\
+          textColor=\"#FF000000\";\
+          gravity=\"center\";\
+          id=\"fh1\";\
+          textSize=\"15sp\";\
+          layout_height=\"40dp\";\
+          layout_width=\"wrap\";\
+        };\
+        {\
+          TextView;\
+          text=\"○\";\
+          textColor=\"#FF000000\";\
+          gravity=\"center\";\
+          id=\"fh2\";\
+          textSize=\"15sp\";\
+          layout_height=\"40dp\";\
+          layout_width=\"wrap\";\
+        };\
+        {\
+          TextView;\
+          text=\"○\";\
+          textColor=\"#FF000000\";\
+          gravity=\"center\";\
+          id=\"fh3\";\
+          textSize=\"15sp\";\
+          layout_height=\"40dp\";\
+          layout_width=\"wrap\";\
+        };\
+        {\
+          TextView;\
+          text=\"○\";\
+          textColor=\"#FF000000\";\
+          gravity=\"center\";\
+          id=\"fh4\";\
+          textSize=\"15sp\";\
+          layout_height=\"40dp\";\
+          layout_width=\"wrap\";\
+        };\
+        {\
+          TextView;\
+          text=\"○\";\
+          textColor=\"#FF000000\";\
+          gravity=\"center\";\
+          id=\"fh5\";\
+          textSize=\"15sp\";\
+          layout_height=\"40dp\";\
+          layout_width=\"wrap\";\
+        };\
+      };\
+\
+      {\
+        LinearLayout;\
+        orientation='vertical';--重力属性\
+        layout_margin='10dp';--布局边距\
+        gravity='left';--重力属性\
+        layout_width='100%w';--布局宽度\
+        {\
+          TextView;--文本控件\
+          gravity='left';--重力属性\
+          textColor='#FF000000';--文字颜色\
+          text='影视解析';--显示的文字\
+          textSize='20sp';--文字大小\
+          layout_marginLeft='20dp';--布局左距\
+        };\
+      };\
+      {--下划线布局\
+        Button;\
+        layout_margin='10dp';--卡片边距\
+        layout_marginTop=\"-0.6%h\";\
+        style=\"?android:attr/borderlessButtonStyle\";\
+        layout_width=\"86%w\";\
+        layout_height=\"1px\";\
+        layout_gravity=\"center\";\
+        backgroundColor=\"#FFBEBEBE\";\
+      };--下划线布局结束\
+      {\
+        LinearLayout;\
+        orientation='horizontal';--重力属性\
+        {\
+          CardView;--卡片控件\
+          layout_margin='10dp';--卡片边距\
+          elevation='2dp';--阴影属性\
+          layout_width='25%w';--卡片宽度\
+          CardBackgroundColor='#FFFFFFFF';--卡片背景颜色\
+          layout_height='25%w';--卡片高度\
+          radius='10dp';--卡片圆角\
+          {\
+            LinearLayout;\
+            id=\"z1\",\
+            gravity='center';--重力属性\
+            orientation='vertical';--重力属性\
+            layout_width='fill';--布局宽度\
+            layout_height='fill';--布局高度\
+            onClick=function()\
+            end,\
+            {\
+              ImageView;--图片控件\
+              src='drawable/1.png';--图片路径\
+              layout_width='50dp';--图片宽度\
+              layout_height='50dp';--图片高度\
+              scaleType='fitXY';--图片显示类型\
+            };\
+            {\
+              TextView;--文本控件\
+              layout_marginTop='3dp';--布局顶距\
+              textColor='#FF6A6A6A';--文字颜色\
+              text='优酷';--显示的文字\
+              textSize='15sp';--文字大小\
+\
+            };\
+          };\
+        };\
+        {\
+          CardView;--卡片控件\
+          layout_margin='10dp';--卡片边距\
+          elevation='2dp';--阴影属性\
+          layout_width='25%w';--卡片宽度\
+          CardBackgroundColor='#FFFFFFFF';--卡片背景颜色\
+          layout_height='25%w';--卡片高度\
+          radius='10dp';--卡片圆角\
+          {\
+            LinearLayout;\
+            id=\"z2\",\
+            gravity='center';--重力属性\
+            orientation='vertical';--重力属性\
+            layout_width='fill';--布局宽度\
+            layout_height='fill';--布局高度\
+            onClick=function()\
+            end,\
+            {\
+              ImageView;--图片控件\
+              src='drawable/2.png';--图片路径\
+              layout_width='50dp';--图片宽度\
+              layout_height='50dp';--图片高度\
+              scaleType='fitXY';--图片显示类型\
+            };\
+            {\
+              TextView;--文本控件\
+              layout_marginTop='3dp';--布局顶距\
+              textColor='#FF6A6A6A';--文字颜色\
+              text='腾讯视频';--显示的文字\
+              textSize='15sp';--文字大小\
+            };\
+          };\
+        };\
+        {\
+          CardView;--卡片控件\
+          layout_margin='10dp';--卡片边距\
+          elevation='2dp';--阴影属性\
+          layout_width='25%w';--卡片宽度\
+          CardBackgroundColor='#FFFFFFFF';--卡片背景颜色\
+          layout_height='25%w';--卡片高度\
+          radius='10dp';--卡片圆角\
+          {\
+            LinearLayout;\
+            id=\"z3\",\
+            gravity='center';--重力属性\
+            orientation='vertical';--重力属性\
+            layout_width='fill';--布局宽度\
+            layout_height='fill';--布局高度\
+            onClick=function()\
+            end,\
+            {\
+              ImageView;--图片控件\
+              src='drawable/3.png';--图片路径\
+              layout_width='50dp';--图片宽度\
+              layout_height='50dp';--图片高度\
+              scaleType='fitXY';--图片显示类型\
+            };\
+            {\
+              TextView;--文本控件\
+              layout_marginTop='3dp';--布局顶距\
+              textColor='#FF6A6A6A';--文字颜色\
+              text='搜狐视频';--显示的文字\
+              textSize='15sp';--文字大小\
+            };\
+          };\
+        };\
+      };\
+      {\
+        LinearLayout;\
+        orientation='horizontal';--重力属性\
+        {\
+          CardView;--卡片控件\
+          layout_margin='10dp';--卡片边距\
+          elevation='2dp';--阴影属性\
+          layout_width='25%w';--卡片宽度\
+          CardBackgroundColor='#FFFFFFFF';--卡片背景颜色\
+          layout_height='25%w';--卡片高度\
+          radius='10dp';--卡片圆角\
+          {\
+            LinearLayout;\
+            id=\"z4\",\
+            gravity='center';--重力属性\
+            orientation='vertical';--重力属性\
+            layout_width='fill';--布局宽度\
+            layout_height='fill';--布局高度\
+            onClick=function()\
+            end,\
+            {\
+              ImageView;--图片控件\
+              src='drawable/4.png';--图片路径\
+              layout_width='50dp';--图片宽度\
+              layout_height='50dp';--图片高度\
+              scaleType='fitXY';--图片显示类型\
+            };\
+            {\
+              TextView;--文本控件\
+              layout_marginTop='3dp';--布局顶距\
+              textColor='#FF6A6A6A';--文字颜色\
+              text='爱奇艺';--显示的文字\
+              textSize='15sp';--文字大小\
+            };\
+          };\
+        };\
+        {\
+          CardView;--卡片控件\
+          layout_margin='10dp';--卡片边距\
+          elevation='2dp';--阴影属性\
+          layout_width='25%w';--卡片宽度\
+          CardBackgroundColor='#FFFFFFFF';--卡片背景颜色\
+          layout_height='25%w';--卡片高度\
+          radius='10dp';--卡片圆角\
+          {\
+            LinearLayout;\
+            id=\"z5\",\
+            gravity='center';--重力属性\
+            orientation='vertical';--重力属性\
+            layout_width='fill';--布局宽度\
+            layout_height='fill';--布局高度\
+            onClick=function()\
+            end,\
+            {\
+              ImageView;--图片控件\
+              src='drawable/5.png';--图片路径\
+              layout_width='50dp';--图片宽度\
+              layout_height='50dp';--图片高度\
+              scaleType='fitXY';--图片显示类型\
+            };\
+            {\
+              TextView;--文本控件\
+              layout_marginTop='3dp';--布局顶距\
+              textColor='#FF6A6A6A';--文字颜色\
+              text='芒果TV';--显示的文字\
+              textSize='15sp';--文字大小\
+            };\
+          };\
+        };\
+        {\
+          CardView;--卡片控件\
+          layout_margin='10dp';--卡片边距\
+          elevation='2dp';--阴影属性\
+          layout_width='25%w';--卡片宽度\
+          CardBackgroundColor='#FFFFFFFF';--卡片背景颜色\
+          layout_height='25%w';--卡片高度\
+          radius='10dp';--卡片圆角\
+          {\
+            LinearLayout;\
+            id=\"z6\",\
+            gravity='center';--重力属性\
+            orientation='vertical';--重力属性\
+            layout_width='fill';--布局宽度\
+            layout_height='fill';--布局高度\
+            onClick=function()\
+            end,\
+            {\
+              ImageView;--图片控件\
+              src='drawable/6.png';--图片路径\
+              layout_width='50dp';--图片宽度\
+              layout_height='50dp';--图片高度\
+              scaleType='fitXY';--图片显示类型\
+            };\
+            {\
+              TextView;--文本控件\
+              layout_marginTop='3dp';--布局顶距\
+              textColor='#FF6A6A6A';--文字颜色\
+              text='哔哩哔哩';--显示的文字\
+              textSize='15sp';--文字大小\
+            };\
+          };\
+        };\
+      };\
+      {\
+        LinearLayout;\
+        orientation='vertical';--重力属性\
+        layout_margin='10dp';--布局边距\
+        gravity='left';--重力属性\
+        layout_width='100%w';--布局宽度\
+        {\
+          TextView;--文本控件\
+          gravity='left';--重力属性\
+          textColor='#FF000000';--文字颜色\
+          text='VIP For Free !';--显示的文字\
+          textSize='20sp';--文字大小\
+          layout_marginLeft='20dp';--布局左距\
+        };\
+      };\
+      {--下划线布局\
+        Button;\
+        layout_margin='10dp';--卡片边距\
+        layout_marginTop=\"-0.6%h\";\
+        style=\"?android:attr/borderlessButtonStyle\";\
+        layout_width=\"86%w\";\
+        layout_height=\"1px\";\
+        layout_gravity=\"center\";\
+        backgroundColor=\"#FFBEBEBE\";\
+      };--下划线布局结束\
+      {\
+        HorizontalScrollView,--横向滚动\
+        layout_width='fill';--宽\
+        layout_height='fill';--高\
+        {\
+          LinearLayout;\
+          orientation='vertical';--重力属性\
+          layout_width='fill';--布局宽度\
+          layout_height='fill';--布局高度\
+          {\
+            LinearLayout;\
+            gravity='center';--重力属性\
+            orientation='horizontal';--重力属性\
+            layout_width='fill';--布局宽度\
+            layout_marginTop='-2%w';--布局顶距\
+            {\
+              CardView;--卡片控件\
+              layout_margin='10dp';--卡片边距\
+              elevation='5dp';--阴影属性\
+              layout_width='150dp';--卡片宽度\
+              CardBackgroundColor='#fff6f6f6';--卡片背景颜色\
+              layout_height='80dp';--卡片高度\
+              radius='15dp';--卡片圆角\
+         \
+              {\
+                LinearLayout;\
+                gravity='center';--重力属性\
+                orientation='horizontal';--重力属性\
+                layout_width='fill';--布局宽度\
+                layout_height='fill';--布局高度\
+                background='shouye1.png';--布局背景颜色(或者图片路径)\
+                \
+                {\
+                  TextView;--文本控件\
+                  gravity='center';--重力属性\
+                  textColor='#FFFFFFFF';--文字颜色\
+                  text='看视频';--显示的文字\
+                  textSize='16sp';--文字大小\
+                  onClick=function()\
+                    进入子页面(\"爱奇艺\")\
+                    end\
+                };\
+              };\
+            };\
+            {\
+              CardView;--卡片控件\
+              layout_margin='10dp';--卡片边距\
+              elevation='5dp';--阴影属性\
+              layout_width='150dp';--卡片宽度\
+              CardBackgroundColor='#fff6f6f6';--卡片背景颜色\
+              layout_height='80dp';--卡片高度\
+              radius='15dp';--卡片圆角\
+              {\
+                LinearLayout;\
+                gravity='center';--重力属性\
+                orientation='horizontal';--重力属性\
+                layout_width='fill';--布局宽度\
+                layout_height='fill';--布局高度\
+                background='shouye2.png';--布局背景颜色(或者图片路径)\
+                {\
+                  TextView;--文本控件\
+                  gravity='center';--重力属性\
+                  textColor='#FFFFFFFF';--文字颜色\
+                  text='看动漫';--显示的文字\
+                  textSize='16sp';--文字大小\
+                  onClick=function()\
+                    进入子页面(\"哔哩哔哩\")\
+                    end\
+                };\
+              };\
+            };\
+            {\
+              CardView;--卡片控件\
+              layout_margin='10dp';--卡片边距\
+              elevation='5dp';--阴影属性\
+              layout_width='150dp';--卡片宽度\
+              CardBackgroundColor='#fff6f6f6';--卡片背景颜色\
+              layout_height='80dp';--卡片高度\
+              radius='15dp';--卡片圆角\
+              {\
+                LinearLayout;\
+                gravity='center';--重力属性\
+                orientation='horizontal';--重力属性\
+                layout_width='fill';--布局宽度\
+                layout_height='fill';--布局高度\
+                background='shouye3.png';--布局背景颜色(或者图片路径)\
+                {\
+                  TextView;--文本控件\
+                  gravity='center';--重力属性\
+                  textColor='#FFFFFFFF';--文字颜色\
+                  text='看电视';--显示的文字\
+                  textSize='16sp';--文字大小\
+          onClick=function()\
+                    进入子页面(\"影视调用\",{链接=\"http://www.cietv.com/\"})\
+ \
+                    end\
+                };\
+              };\
+            };\
+           {\
+              CardView;--卡片控件\
+              layout_margin='10dp';--卡片边距\
+              elevation='5dp';--阴影属性\
+              layout_width='150dp';--卡片宽度\
+              CardBackgroundColor='#fff6f6f6';--卡片背景颜色\
+              layout_height='80dp';--卡片高度\
+              radius='15dp';--卡片圆角\
+              {\
+                LinearLayout;\
+                gravity='center';--重力属性\
+                orientation='horizontal';--重力属性\
+                layout_width='fill';--布局宽度\
+                layout_height='fill';--布局高度\
+                background='shouye1.png';--布局背景颜色(或者图片路径)\
+                {\
+                  TextView;--文本控件\
+                  gravity='center';--重力属性\
+                  textColor='#FFFFFFFF';--文字颜色\
+                  text='看腾讯';--显示的文字\
+                  textSize='16sp';--文字大小\
+          onClick=function()\
+                    进入子页面(\"VIP影视（2）\")\
+ \
+                    end\
+                };\
+              };\
+            };\
+          };\
+        };\
+      };\
+    };\
+  };\
+};\
+webView.addView(loadlayout(子朝布局))\
+--设置按钮波纹函数\
+function 波纹(id,颜色)\
+  import \"android.content.res.ColorStateList\"\
+  local attrsArray = {android.R.attr.selectableItemBackgroundBorderless} \
+  local typedArray =activity.obtainStyledAttributes(attrsArray) \
+  ripple=typedArray.getResourceId(0,0) \
+  Pretend=activity.Resources.getDrawable(ripple) \
+  Pretend.setColor(ColorStateList(int[0].class{int{}},int{颜色}))\
+  id.setBackground(Pretend.setColor(ColorStateList(int[0].class{int{}},int{颜色})))\
+end\
+\
+--按钮波纹颜色\
+波纹(z1,0xFF342DF5)\
+波纹(z2,0xFF342DF5)\
+波纹(z3,0xFF342DF5)\
+波纹(z4,0xFF342DF5)\
+波纹(z5,0xFF342DF5)\
+波纹(z6,0xFF342DF5)\
+--lunb\
+轮播=1\
+ti=Ticker()\
+ti.Period=2500\
+ti.onTick=function()\
+  轮播=轮播+1\
+  if 轮播==1 then\
+    logo.setImageBitmap(loadbitmap(\"lb.jpg\"))\
+    fh1.setText(\"●\")\
+    fh2.setText(\"○\")\
+    fh3.setText(\"○\")\
+    fh4.setText(\"○\")\
+    fh5.setText(\"○\")\
+  elseif 轮播==2 then\
+    logo.setImageBitmap(loadbitmap(\"lb1.jpg\"))\
+    fh1.setText(\"○\")\
+    fh2.setText(\"●\")\
+    fh3.setText(\"○\")\
+    fh4.setText(\"○\")\
+    fh5.setText(\"○\")\
+  elseif 轮播==3 then\
+    logo.setImageBitmap(loadbitmap(\"lb2.jpg\"))\
+    fh1.setText(\"○\")\
+    fh2.setText(\"○\")\
+    fh3.setText(\"●\")\
+    fh4.setText(\"○\")\
+    fh5.setText(\"○\")\
+  elseif 轮播==4 then\
+    logo.setImageBitmap(loadbitmap(\"lb3.jpg\"))\
+    fh1.setText(\"○\")\
+    fh2.setText(\"○\")\
+    fh3.setText(\"○\")\
+    fh4.setText(\"●\")\
+    fh5.setText(\"○\")\
+  elseif 轮播==5 then\
+    logo.setImageBitmap(loadbitmap(\"lb4.jpg\"))\
+    fh1.setText(\"○\")\
+    fh2.setText(\"○\")\
+    fh3.setText(\"○\")\
+    fh4.setText(\"○\")\
+    fh5.setText(\"●\")\
+    轮播=0\
+  end\
+end\
+--启动Ticker定时器\
+ti.start()\
+z1.onClick=function()\
+  进入子页面(\"影视调用\",{链接=\"https://www.youku.com/\"})\
+  end\
+z2.onClick=function()\
+  进入子页面(\"影视调用\",{链接=\"https://m.v.qq.com/index.html\"})\
+  end\
+z3.onClick=function()\
+  进入子页面(\"影视调用\",{链接=\"https://m.tv.sohu.com/\"})\
+  end\
+z4.onClick=function()\
+  进入子页面(\"影视调用\",{链接=\"https://m.iqiyi.com/dianying/\"})\
+  end\
+z5.onClick=function()\
+  进入子页面(\"影视调用\",{链接=\"https://m.mgtv.com/channel/home\"})\
+  end\
+z6.onClick=function()\
+  进入子页面(\"影视调用\",{链接=\"https://m.bilibili.com/\"})\
+  end\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+" ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      } ;
+  } ;

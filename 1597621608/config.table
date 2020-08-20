@@ -1,0 +1,1121 @@
+{
+  ["events"]	= {
+      ["网页加载完毕"]	= "local wl=activity.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE).getActiveNetworkInfo(); \
+\
+if wl== nil then    \
+require \"import\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+\
+lay=\
+\
+{\
+  LinearLayout;\
+  backgroundColor=\"#ffffffff\",\
+  orientation=\"vertical\";\
+  layout_width=\"fill\";\
+  layout_height=\"fill\";\
+    {\
+    TextView;\
+    text=\"网络异常！请检查你的网络！\";\
+    layout_marginTop=\"100\";\
+    id=\"db\";\
+    textSize=\"20\"; \
+    textColor=wlc; \
+    layout_gravity=\"center\";\
+    layout_marginBottom=\"50\";\
+  };\
+\
+{\
+  LinearLayout;\
+  backgroundColor=\"#fffffff\",\
+  orientation=\"vertical\";\
+  layout_width=\"fill\";\
+  layout_height=\"fill\";\
+    {\
+    TextView;\
+    text=\"\";\
+    layout_marginTop=\"50\";\
+    id=\"db\";\
+    textSize=\"13\"; \
+    textColor=wlc; \
+    layout_gravity=\"left\";\
+    layout_marginBottom=\"50\";\
+};\
+};\
+};\
+\
+webView.addView(loadlayout(lay))\
+\
+\
+\
+this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE )\
+\
+end" ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["程序启动"]	= "\
+\
+\
+\
+\
+\
+\
+\
+if(animationSet~=0)and(animationSet~=1)and(animationSet~=2)then--这里的判断用于方式用户在动画没有完成之前再次点击\
+  animationSet=0\
+  function 对话框()\
+    Dialog_dhbj=--这里是布局\
+    {\
+      LinearLayout,\
+      background=\"#66463085\";\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      Gravity=\"center\",\
+      id=\"DialogExternal\",\
+      \
+      {\
+        CardView,\
+        layout_width=\"300dp\",\
+        layout_height=\"325dp\",\
+        background=\"#FF3F2A79\",\
+        elevation=\"30\",\
+        --radius=\"26\",\
+        id=\"DialogInternal\",\
+        {\
+          LinearLayout,\
+          layout_width=\"300dp\",\
+          layout_height=\"328dp\",\
+          orientation=\"vertical\",\
+         \
+          {\
+            FrameLayout,\
+            layout_width=\"300dp\",\
+            layout_height=\"210dp\",\
+            background=\"#FF3F2A79\",\
+            --orientation=\"vertical\",\
+            -- Gravity=\"center\",\
+            elevation='8dp';--阴影\
+            {\
+              TextView,\
+              layout_width=\"250dp\",\
+              layout_height=\"50dp\",\
+              layout_gravity=\"center|bottom\",\
+              layout_marginTop=\"10dp\",\
+              textColor=\"#ffffffff\",\
+              textSize=\"20sp\",\
+              Gravity=\"center\",\
+              text=\"你好吖～欢迎来到 LY ｜ Blog \",\
+              id=\"nr\",\
+            },\
+            {\
+              ImageView,\
+             \
+              elevation='8dp';--阴影\
+\
+              layout_width=\"fill\",\
+              layout_height=\"fill\",\
+              --layout_gravity=\"center\",\
+              -- background=\"#ffffbc8d\",\
+              id=\"imgtp\",\
+              -- adjustViewBounds=\"true\",\
+              scaleType=\"fitXY\",\
+              src=\"https://bk.yyge.net/content/templates/Dream/images/timg.jpg\",\
+            },\
+            \
+          },\
+          {\
+            LinearLayout,\
+            layout_width=\"300dp\",\
+            layout_height=\"120dp\",\
+            orientation=\"vertical\",\
+            Gravity=\"center\",\
+            style='?android:attr/buttonBarButtonStyle';\
+                onClick=function()\
+                end,\
+              id='yes',\
+            {\
+              TextView,\
+              layout_width=\"150dp\",\
+              layout_height=\"35dp\",\
+              layout_marginTop=\"0dp\",\
+              textColor=\"#ffffff\",\
+              textSize=\"15sp\",\
+              Gravity=\"center\",\
+              text=\"Enter\",\
+              id=\"qd\",\
+            },\
+            {\
+              TextView,\
+              layout_width=\"150dp\",\
+              layout_height=\"35dp\",\
+              layout_marginTop=\"10dp\",\
+              textColor=\"#ffaeaeae\",\
+              textSize=\"15sp\",\
+              Gravity=\"center\",\
+              text=\"Exist\",\
+              id=\"qx\",\
+            },\
+          {\
+                LinearLayout;\
+                id='yes',\
+                gravity='center';--重力属性\
+                orientation='vertical';--重力属性\
+                layout_width='fill';--布局宽度\
+                layout_height='fill';--布局高度\
+                style='?android:attr/buttonBarButtonStyle';\
+                onClick=function()\
+                end,\
+              };\
+          },\
+        },\
+      },\
+    }\
+\
+    pop=PopupWindow(activity)\
+    pop.setContentView(loadlayout(Dialog_dhbj))--设置布局\
+    pop.setWidth(-1) --设置显示宽度\
+    pop.setHeight(-1) --设置显示高度\
+    pop.setOutsideTouchable(false)--点击PopupWindow外面区域  true为消失\
+\
+    import \"android.graphics.drawable.BitmapDrawable\"\
+    pop.setBackgroundDrawable(BitmapDrawable(loadbitmap(\"1.jpg\")))--设置空白图层背景\
+    pop.showAtLocation(view,Gravity.CENTER,0,500)--设置位置\
+    qd.getPaint().setFakeBoldText(true)--点击外部，取消对话框\
+\
+    function DialogExternal.onClick()--控件ID点击事件\
+      --print(\"\")\
+      --退出动画()\
+    end\
+\
+    function qd.onClick()--控件ID点击事件\
+      -- print(\"\")\
+      退出动画()\
+    end\
+    function qx.onClick()--控件ID点击事件\
+      退出程序()\
+      退出动画()\
+    end\
+\
+    --穿透\
+    function DialogInternal.onClick()--控件ID点击事件\
+      --pop.dismiss()\
+    end\
+\
+\
+    --导入类\
+    if(animationSet~=1)then\
+      import \"android.view.animation.LayoutAnimationController\"\
+      import \"android.view.animation.Animation\"\
+      import \"android.view.animation.ScaleAnimation\"--伸缩动画包\
+      import \"android.view.animation.AlphaAnimation\"--透明\
+      import \"android.view.animation.TranslateAnimation\"--移动\
+      import \"android.view.animation.AnimationSet\"\
+\
+      animationSet = AnimationSet(true)--定义动画变量,使用AnimationSet类，使该动画可加载多种动画\
+      layoutAnimationController=LayoutAnimationController(animationSet,0.2);--设置布局动画，布局动画的意思是布局里面的控件执行动画，而非单个控件动画，参数:动画名，延迟\
+      layoutAnimationController.setOrder(LayoutAnimationController.ORDER_NORMAL); -- ORDER_   NORMAL  REVERSE  RANDOM\
+\
+\
+      start_dh1= AlphaAnimation(0,1);--渐变动画 从透明到不透明 0表示透明 1表示不透明\
+      start_dh1.setDuration(200);--动画时长\
+      animationSet.addAnimation(start_dh1);--添加动画 将动画添加到animationSet\
+\
+\
+      start_dh2=ScaleAnimation(1.1,1,1.1,1,Animation.RELATIVE_TO_SELF,0.5,Animation.RELATIVE_TO_PARENT,1)--伸缩动画\
+      start_dh2.setDuration(400);--动画时长\
+      animationSet.addAnimation(start_dh2);--添加动画  将动画添加到animationSet\
+\
+\
+\
+      DialogExternal.setLayoutAnimation(layoutAnimationController);--id控件加载动画 DialogExternal为控件ID\
+\
+      import \"android.view.animation.Animation$AnimationListener\"\
+      animationSet.setAnimationListener(AnimationListener{--动画监听\
+        onAnimationStart=function()--animationSet动画开始时执行\
+          animationSet=1\
+        end,\
+        onAnimationEnd=function()--animationSet动画结束时执行\
+          animationSet=nil\
+        end\
+      })\
+    end\
+\
+    function CircleButton(view,InsideColor,radiu)--圆角函数\
+      import \"android.graphics.drawable.GradientDrawable\"\
+      drawable = GradientDrawable()\
+      drawable.setShape(GradientDrawable.RECTANGLE)\
+      drawable.setColor(InsideColor)\
+      drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+      view.setBackgroundDrawable(drawable)\
+    end\
+    角度=360\
+    控件id=qd\
+    控件颜色=0xFF5845FF\
+    CircleButton(控件id,控件颜色,角度)\
+  end\
+\
+  function 退出动画()\
+    if(animationSet~=1)then\
+      import \"android.view.animation.LayoutAnimationController\"--导入类\
+      import \"android.view.animation.Animation\"--Animation动画相关类\
+      import \"android.view.animation.ScaleAnimation\"--Animation伸缩动画类\
+      import \"android.view.animation.AlphaAnimation\"--Animation透明动画类\
+      import \"android.view.animation.TranslateAnimation\"--Animation移动动画类\
+      import \"android.view.animation.AnimationSet\"--Animation设置相关类\
+\
+      animationSet = AnimationSet(true)--定义动画变量,使用AnimationSet类，使该动画可加载多种动画\
+\
+      leave_dh1= AlphaAnimation(1,0);--渐变动画\
+      leave_dh1.setDuration(400);--动画时长\
+      leave_dh1.setFillAfter(true);--动画终止时停留在最后一帧\
+      animationSet.addAnimation(leave_dh1);--添加动画\
+\
+\
+      leave_dh2=ScaleAnimation(1,1.2,1,1.2,Animation.RELATIVE_TO_SELF,0.5,Animation.RELATIVE_TO_PARENT,1)--缩放动画\
+      leave_dh2.setDuration(400);--动画时长\
+      leave_dh2.setFillAfter(true);--动画终止时停留在最后一帧\
+      animationSet.addAnimation(leave_dh2);--添加动画\
+\
+\
+      DialogInternal.clearAnimation();--这个不可以删 用于整合两个动画二次播放动画\
+      DialogInternal.setAnimation(animationSet);--id控件加载动画\
+\
+\
+      import \"android.view.animation.Animation$AnimationListener\"\
+      animationSet.setAnimationListener(AnimationListener{--动画监听\
+        onAnimationStart=function()--animationSet动画开始时执行\
+          animationSet=1\
+        end,\
+        onAnimationEnd=function()--animationSet动画结束时执行\
+          animationSet=nil\
+          pop.dismiss();\
+        end\
+      })\
+\
+    end\
+  end\
+\
+\
+  task(200,function()\
+    对话框()\
+  end)\
+end\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+function onKeyDown(key,event)\
+  if(key==4)then\
+    if(webView.canGoBack())then \
+      webView.goBack()\
+    else\
+      退出程序()\
+    end\
+    return true\
+  end\
+end\
+--接收参数\
+浏览器对象,网页链接=...\
+if pcall(function() activity.getPackageManager().getPackageInfo(\"app.greyshirts.sslcapture\",0) end) then\
+  弹出消息(\"注意！\\n\\n请卸载抓包软件后使用\")\
+  import \"android.net.Uri\"\
+  import \"android.content.Intent\"\
+  包名=\"app.greyshirts.sslcapture\"\
+  uri = Uri.parse(\"package:\"..包名)\
+  intent = Intent(Intent.ACTION_DELETE,uri)\
+  activity.startActivity(intent)\
+  退出程序()\
+end\
+\
+if pcall(function() activity.getPackageManager().getPackageInfo(\"com.example.logcat\",0) end) then\
+  弹出消息(\"注意！\\n\\n请卸载抓包软件后使用\")\
+  import \"android.net.Uri\"\
+  import \"android.content.Intent\"\
+  包名=\"com.example.logcat\"\
+  uri = Uri.parse(\"package:\"..包名)\
+  intent = Intent(Intent.ACTION_DELETE,uri)\
+  activity.startActivity(intent)\
+  退出程序()\
+end\
+\
+if pcall(function() activity.getPackageManager().getPackageInfo(\"com.lml.flywindow\",0) end) then\
+  弹出消息(\"注意！\\n\\n请卸载抓包软件后使用\")\
+  退出程序()\
+  import \"android.net.Uri\"\
+  import \"android.content.Intent\"\
+  包名=\"com.lml.flywindow\"\
+  uri = Uri.parse(\"package:\"..包名)\
+  intent = Intent(Intent.ACTION_DELETE,uri)\
+  activity.startActivity(intent)\
+end\
+\
+if pcall(function() activity.getPackageManager().getPackageInfo(\"blake.hamilton.bitshark\",0) end) then\
+  弹出消息(\"注意！\\n\\n请卸载抓包软件后使用\")\
+  import \"android.net.Uri\"\
+  import \"android.content.Intent\"\
+  包名=\"blake.hamilton.bitshark\"\
+  uri = Uri.parse(\"package:\"..包名)\
+  intent = Intent(Intent.ACTION_DELETE,uri)\
+  activity.startActivity(intent)\
+  退出程序()\
+end\
+\
+if pcall(function() activity.getPackageManager().getPackageInfo(\"su.sniff.cepter\",0) end) then\
+  弹出消息(\"注意！\\n\\n请卸载抓包软件后使用\")\
+  import \"android.net.Uri\"\
+  import \"android.content.Intent\"\
+  包名=\"su.sniff.cepter\"\
+  uri = Uri.parse(\"package:\"..包名)\
+  intent = Intent(Intent.ACTION_DELETE,uri)\
+  activity.startActivity(intent)\
+  退出程序()\
+end\
+\
+if pcall(function() activity.getPackageManager().getPackageInfo(\"com.evbadroid.wicap\",0) end) then\
+  弹出消息(\"注意！\\n\\n请卸载抓包软件后使用\")\
+  import \"android.net.Uri\"\
+  import \"android.content.Intent\"\
+  包名=\"com.evbadroid.wicap\"\
+  uri = Uri.parse(\"package:\"..包名)\
+  intent = Intent(Intent.ACTION_DELETE,uri)\
+  activity.startActivity(intent)\
+  退出程序()\
+end\
+\
+if pcall(function() activity.getPackageManager().getPackageInfo(\"com.guoshi.httpcanary\",0) end) then\
+  弹出消息(\"注意！\\n\\n请卸载抓包软件后使用\")\
+  import \"android.net.Uri\"\
+  import \"android.content.Intent\"\
+  包名=\"com.evbadroid.wicap\"\
+  uri = Uri.parse(\"package:\"..包名)\
+  intent = Intent(Intent.ACTION_DELETE,uri)\
+  activity.startActivity(intent)\
+  退出程序()\
+end\
+\
+if pcall(function() activity.getPackageManager().getPackageInfo(\"com.minhui.networkcapture\",0) end) then\
+  弹出消息(\"注意！\\n\\n请卸载抓包软件后使用\")\
+  import \"android.net.Uri\"\
+  import \"android.content.Intent\"\
+  包名=\"com.minhui.networkcapture\"\
+  uri = Uri.parse(\"package:\"..包名)\
+  intent = Intent(Intent.ACTION_DELETE,uri)\
+  activity.startActivity(intent)\
+  退出程序()\
+end--以下是布局\
+buleng={\
+  LinearLayout,--线性布局\
+  orientation='vertical',--方向\
+  layout_width='fill',--宽度\
+  layout_height='fill',--高度\
+  background='#ff3f2a79',--背景颜色或图片路径\
+  {\
+    LinearLayout,--线性布局\
+    orientation='vertical',--方向\
+    layout_width='fill',--宽度\
+    layout_height='500',--高\"\
+    background=\"#ff442d85\";\
+    {\
+      CardView;--卡片控件\
+      layout_gravity='center';--重力\
+      --左:left 右:right 中:center 顶:top 底:bottom\
+      elevation='8dp';--阴影\
+      layout_width='fill';--宽度\
+      layout_height='200dp';--高\
+      -- CardBackgroundColor='0xff442d85';--颜色\
+      background='picture/indexbj.png';\
+      --radius='15dp';--圆角\
+      {\
+        LinearLayout,--线性布局\
+        --orientation='vertical',--方向\
+        layout_width='fill',--宽度\
+        layout_marginTop='40dp';--顶距\
+        layout_height='50dp',--高度\
+        Gravity='center';--重力属性\
+        --左:left 右:right 中:center 顶:top 底:bottom\
+        --background='#FfFFFFFF',--背景颜色或图片路径\
+        {\
+          TextView;--文本控件\
+          layout_gravity='left|center';\
+          layout_width='50%w';--宽度\
+          --layout_height='30dp';--高度\
+          textColor='#ffffffff';--文字颜色\
+          text='Good Evening';--显示文字\
+          textSize='18sp';--文字大小\
+        };\
+        {\
+          ImageView;--图片控件\
+          src='picture/Home.png';--图片路径\
+          layout_gravity='right|center';--卡片重力\
+          layout_width='25dp';--宽度\
+          layout_marginLeft='50dp';--左距\
+          layout_marginRight='10dp';--右距\
+          layout_height='25dp';--高度\
+          scaleType='fitXY';--图片显示类型\
+        };\
+        {\
+          TextView;--文本控件\
+          gravity='right';\
+          layout_width='wrap';--宽度\
+          textColor='#ffffffff';--文字颜色\
+          text='Function';--显示文字\
+          textSize='18sp';--文字大小\
+        };\
+      }; \
+      {\
+        LinearLayout,--线性布局\
+        layout_gravity='bottom';\
+        layout_width='fill',--宽度\
+        layout_height='120dp',--高度\
+        -- background='#FFFFFFFF',--背景颜色或图片路径\
+        {\
+          LinearLayout,--线性布局\
+          orientation='vertical',--方向\
+          layout_gravity='left';--卡片重力\
+          Gravity='center';--重力属性\
+          layout_width='30%w',--宽度\
+          layout_height='fill',--高度\
+          {\
+            ImageView;--图片控件\
+            id='z7';\
+            src='picture/account_remove_96x96.png';--图片路径\
+            layout_width='50dp';--宽度\
+            layout_height='45dp';--高度\
+            scaleType='fitXY';--图片显示类型\
+            onClick=function()\
+              进入子页面(\"\")\
+              --在这里填写控件单击事件\
+            end;\
+\
+\
+\
+            style='?android:attr/buttonBarButtonStyle';--安卓5.0以上控件点击水波纹效\
+          };\
+        };\
+        {\
+          CardView;--卡片控件\
+          layout_gravity='center';--重力\
+          --左:left 右:right 中:center 顶:top 底:bottom\
+          elevation='0';--阴影\
+          layout_width='40%w';--宽度\
+          layout_height='fill';--高度\
+          CardBackgroundColor='0';--颜色\
+          radius='0';--圆角\
+\
+\
+          {\
+            CircleImageView;--圆形图片\
+            layout_gravity='center';--卡片重力\
+            --左:left 右:right 中:center 顶:top 底:bottom\
+            layout_width='60dp';--宽度\
+            layout_height='60dp';--高度\
+            src='picture/tx.jpeg';--图片路径\
+            style=\"?android:attr/borderlessButtonStyle\";\
+            id='z8';\
+          };\
+        };\
+        {\
+          LinearLayout,--线性布局\
+          orientation='vertical',--方向\
+          layout_width='30%w',--宽度\
+          layout_gravity='right';--卡片重力\
+          Gravity='center';--重力属性\
+          layout_height='fill',--高度\
+          {\
+            ImageView;--图片控件\
+            src='picture/dots_vertical_96x96.png';--图片路径\
+            layout_width='50dp';--宽度\
+            layout_height='45dp';--高度\
+            scaleType='fitXY';--图片显示类型\
+            style='?android:attr/buttonBarButtonStyle';--安卓5.0以上控件点击水波纹效果\
+            id=\"ab\"\
+          };\
+        };\
+      };\
+    };\
+  };\
+  {\
+    ScrollView,--纵向滑动\
+    layout_width='fill';--宽度\
+    layout_height='fill';--高度\
+    VerticalScrollBarEnabled=false;--隐藏纵向滑条\
+    {\
+      LinearLayout,--线性布局\
+      orientation='vertical',--方向\
+      layout_width='fill',--宽度\
+      layout_height='fill',--高度\
+      background='#00FFFFFF',--背景颜色或图片路径\
+      {\
+        LinearLayout,--线性布局\
+        orientation='vertical',--方向\
+        layout_width='fill',--宽度\
+        layout_height='110dp',--高度\
+        background='#ff3f2a79',--背景颜色或图片路径\
+        {\
+          CardView;--卡片控件\
+          layout_gravity='top';--重力\
+          --左:left 右:right 中:center 顶:top 底:bottom\
+          elevation='0';--阴影\
+          layout_width='fill';--宽度\
+          layout_height='110dp';--高度\
+          CardBackgroundColor='0';--颜色\
+          radius='0';--圆角\
+          {\
+            TextView;--文本控件\
+            layout_gravity='left|top';--重力\
+            layout_marginLeft='5%w';--左距\
+            layout_marginTop='20dp';--顶距\
+            textColor='#ffffffff';--文字颜色\
+            text='New Annoucement';--显示文字\
+            textSize='20sp';--文字大小\
+          };\
+          {\
+            CardView;--卡片控件\
+            layout_gravity='bottom';--重力\
+            --左:left 右:right 中:center 顶:top 底:bottom\
+            elevation='0';--阴影\
+            layout_marginBottom='20dp';--底距\
+            layout_marginLeft='5%w';--左距\
+            layout_width='320dp';--宽度\
+            layout_height='30dp';--高度\
+            CardBackgroundColor='0xfff5f5f5';--颜色\
+            radius='15dp';--圆角\
+               {\
+                LinearLayout;\
+                id='gonggao',\
+                gravity='center';--重力属性\
+                orientation='vertical';--重力属性\
+                layout_width='fill';--布局宽度\
+                layout_height='fill';--布局高度\
+                style='?android:attr/buttonBarButtonStyle';\
+                onClick=function()\
+                end,\
+              };\
+            {\
+              ImageView;--图片控件\
+              src='picture/gg.png';--图片路径\
+              layout_gravity='left|center';--卡片重力\
+              --左:left 右:right 中:center 顶:top 底:bottom\
+              layout_marginLeft='2dp';--左距\
+              layout_width='45dp';--宽度\
+              layout_height='40dp';--高度\
+              scaleType='fitXY';--图片显示类型\
+              style='?android:attr/buttonBarButtonStyle';--安卓5.0以上控件点击水波纹效果\
+            id='laba';\
+            };\
+            {\
+              TextView;--文本控件\
+              layout_gravity='left|center';--重力\
+              --左:left 右:right 中:center 顶:top 底:bottom\
+              layout_marginLeft='35dp';--左距\
+              layout_width='fill';--宽度\
+              textColor='#ff404040';--文字颜色\
+              text='正在获取最新公告中…';--显示文字\
+              textSize='13sp';--文字大小\
+            };\
+          };\
+        };\
+      };\
+      {\
+        LinearLayout,--线性布局\
+        orientation='vertical',--方向\
+        layout_width='fill',--宽度\
+        layout_height='260dp',--高度\
+        background='#ff3f2a79',--背景颜色或图片路径\
+        {\
+          CardView;--卡片控件\
+          layout_gravity='top';--重力\
+          --左:left 右:right 中:center 顶:top 底:bottom\
+          elevation='0';--阴影\
+          layout_width='fill';--宽度\
+          layout_height='40dp';--高度\
+          CardBackgroundColor='0';--颜色\
+          radius='0';--圆角\
+          {\
+            TextView;--文本控件\
+            layout_gravity='left|top';--重力\
+            layout_marginLeft='5%w';--左距\
+            layout_marginTop='10dp';--顶距\
+            textColor='#ffffffff';--文字颜色\
+            text='Function';--显示文字\
+            textSize='20sp';--文字大小\
+          };\
+        };\
+        {\
+          LinearLayout,--线性布局\
+          layout_width='fill',--宽度\
+          layout_height='fill',--高度\
+          {\
+            LinearLayout,--线性布局\
+            orientation='vertical',--方向\
+            layout_gravity='left';--卡片重力\
+            --左:left 右:right 中:center 顶:top 底:bottom\
+            layout_width='50%w',--宽度\
+            layout_height='fill',--高度\
+            background='#ff3f2a79',--背景颜色或图片路径\
+            {\
+              CardView;--卡片控\
+              layout_gravity='center';--重力\
+              --左:left 右:right 中:center 顶:top 底:bottom\
+              elevation='0';--阴影\
+              layout_width='fill';--宽度\
+              layout_margin='10dp';--边距\
+              layout_marginTop='20dp';--顶距\
+              layout_height='80dp';--高度\
+              CardBackgroundColor='0xffec407a';--颜色\
+              radius='5dp';--圆\
+              {\
+                ImageView;--图片控件\
+                src='picture/gxe.png';--图片路径\
+                layout_width='50dp';--宽度\
+                layout_height='45dp';--高度\
+                layout_gravity='right|top';--卡片重力\
+                layout_margin='5dp';--边距\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                scaleType='fitXY';--图片显示类型\
+                style='?android:attr/buttonBarButtonStyle';--安卓5.0以上控件点击水波纹效果\
+              };\
+              {\
+                LinearLayout;\
+                id='z1',\
+                gravity='center';--重力属性\
+                orientation='vertical';--重力属性\
+                layout_width='fill';--布局宽度\
+                layout_height='fill';--布局高度\
+                style='?android:attr/buttonBarButtonStyle';\
+                onClick=function()\
+                end,\
+              };\
+              {\
+                TextView;--文本控件\
+                layout_gravity='left|bottom';--重力\
+                layout_margin='10dp';--边距\
+                textColor='#ffffffff';--文字颜色\
+                text='Small Tools';--显示文字\
+                textSize='14sp';--文字\
+                id=\"tool\";\
+\
+              };\
+            };\
+            {\
+              CardView;--卡片控件\
+              layout_gravity='center';--重力\
+              --左:left 右:right 中:center 顶:top 底:bottom\
+              elevation='0';--阴影\
+              layout_width='fill';--宽度\
+              layout_margin='10dp';--边距\
+              layout_height='80dp';--高度\
+              CardBackgroundColor='0xff00796a';--颜色\
+              radius='5dp';--圆角\
+              {\
+                ImageView;--图片控件\
+                src='picture/gzg.png';--图片路径\
+                layout_width='50dp';--宽度\
+                layout_height='45dp';--高度\
+                layout_gravity='right|top';--卡片重力\
+                layout_margin='5dp';--边距\
+                style=\"?android:attr/borderlessButtonStyle\";\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                scaleType='fitXY';--图片显示类型\
+              };\
+              {\
+                LinearLayout;\
+                id='z2',\
+                gravity='center';--重力属性\
+                orientation='vertical';--重力属性\
+                layout_width='fill';--布局宽度\
+                layout_height='fill';--布局高度\
+                style='?android:attr/buttonBarButtonStyle';\
+                onClick=function()\
+                end,\
+              };\
+              {\
+                TextView;--文本控件\
+                layout_gravity='left|bottom';--重力\
+                layout_margin='10dp';--边距\
+                textColor='#ffffffff';--文字颜色\
+                text='敬请期待...';--显示文字\
+                textSize='14sp';--文字\
+              };\
+            };\
+          };\
+          {\
+            LinearLayout,--线性布局\
+            orientation='vertical',--方向\
+            layout_gravity='right';--卡片重力\
+            --左:left 右:right 中:center 顶:top 底:bottom\
+            layout_width='50%w',--宽度\
+            layout_height='fill',--高度\
+            background='#ff3f2a79',--背景颜色或图片路径\
+            {\
+              CardView;--卡片控件\
+              layout_gravity='center';--重力\
+              --左:left 右:right 中:center 顶:top 底:bottom\
+              elevation='0';--阴影\
+              layout_width='fill';--宽度\
+              layout_margin='10dp';--边距\
+              layout_marginTop='20dp';--顶距\
+              layout_height='80dp';--高度\
+              CardBackgroundColor='0xff7c4dff';--颜色\
+              radius='5dp';--圆角\
+              {\
+                ImageView;--图片控件\
+                src='picture/hdv.png';--图片路径\
+                layout_width='50dp';--宽度\
+                layout_height='45dp';--高度\
+                layout_gravity='right|top';--卡片重力\
+                layout_margin='5dp';--边距\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                scaleType='fitXY';--图片显示类型\
+                style='?android:attr/buttonBarButtonStyle';--安卓5.0以上控件点击水波纹效果\
+              };\
+              {\
+                LinearLayout;\
+                id='z3',\
+                gravity='center';--重力属性\
+                orientation='vertical';--重力属性\
+                layout_width='fill';--布局宽度\
+                layout_height='fill';--布局高度\
+                style='?android:attr/buttonBarButtonStyle';\
+                onClick=function()\
+                end,\
+              };\
+\
+              {\
+                TextView;--文本控件\
+                layout_gravity='left|bottom';--重力\
+                layout_margin='10dp';--边距\
+                textColor='#ffffffff';--文字颜色\
+                text='My Site';--显示文字\
+                textSize='14sp';--文字\
+              };\
+            };\
+            {\
+              CardView;--卡片控件\
+              layout_gravity='center';--重力\
+              --左:left 右:right 中:center 顶:top 底:bottom\
+              elevation='0';--阴影\
+              layout_width='fill';--宽度\
+              layout_margin='10dp';--边距\
+              layout_height='80dp';--高度\
+              CardBackgroundColor='0xffd32f2e';--颜色\
+              radius='5dp';--圆角\
+              {\
+                ImageView;--图片控件\
+                src='picture/hkv.png';--图片路径\
+                layout_width='50dp';--宽度\
+                layout_height='45dp';--高度\
+                layout_gravity='right|top';--卡片重力\
+                layout_margin='5dp';--边距\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                scaleType='fitXY';--图片显示类型\
+                style='?android:attr/buttonBarButtonStyle';--安卓5.0以上控件点击水波纹效果\
+              };\
+              {\
+                LinearLayout;\
+                id='z4',\
+                gravity='center';--重力属性\
+                orientation='vertical';--重力属性\
+                layout_width='fill';--布局宽度\
+                layout_height='fill';--布局高度\
+                style='?android:attr/buttonBarButtonStyle';\
+                onClick=function()\
+                end,\
+              };\
+\
+              {\
+                TextView;--文本控件\
+                layout_gravity='left|bottom';--重力\
+                layout_margin='10dp';--边距\
+                textColor='#ffffffff';--文字颜色\
+                text='敬请期待...';--显示文字\
+                textSize='14sp';--文字\
+              };\
+            };\
+          };\
+        };\
+      };\
+      {\
+        LinearLayout,--线性布局\
+        orientation='vertical',--方向\
+        layout_width='fill',--宽度\
+        layout_height='200dp',--高度\
+        background='#ff3f2a79',--背景颜色或图片路径\
+\
+        {\
+          CardView;--卡片控件\
+          layout_gravity='top';--重力\
+          --左:left 右:right 中:center 顶:top 底:bottom\
+          elevation='0';--阴影\
+          layout_width='fill';--宽度\
+          layout_height='60dp';--高度\
+          CardBackgroundColor='0';--颜色\
+          radius='0';--圆角\
+          {\
+            TextView;--文本控件\
+            layout_gravity='left|top';--重力\
+            layout_marginLeft='5%w';--左距\
+            layout_marginTop='10dp';--顶距\
+            textColor='#ffffffff';--文字颜色\
+            text='Music';--显示文字\
+            textSize='20sp';--文字大小\
+          };\
+\
+        };\
+        {\
+          LinearLayout,--线性布局\
+          orientation='vertical',--方向\
+          layout_width='fill',--宽度\
+          layout_height='130dp',--高度\
+          --background='#ffFFFFFF',--背景颜色或图片路径\
+          Gravity='center';--重力属性\
+\
+          --左:left 右:right 中:center 顶:top 底:bottom\
+          {\
+            CardView;--卡片控件\
+            layout_gravity='center';--重力\
+            --左:left 右:right 中:center 顶:top 底:bottom\
+            elevation='5dp';--阴影\
+            layout_width='80%w';--宽度\
+            layout_height='60dp';--高度\
+            CardBackgroundColor='0xddffffff';--颜色\
+            radius='10dp';--圆角\
+            {\
+              LinearLayout;\
+              id='music',\
+              gravity='center';--重力属性\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+              style='?android:attr/buttonBarButtonStyle';\
+              onClick=function()\
+              end,\
+            };\
+            {\
+              TextView;--文本控件\
+              layout_gravity='left|center';--重力\
+              --左:left 右:right 中:center 顶:top 底:bottom\
+              layout_marginLeft='15dp';--右距\
+              textColor='#ff000000';--文字颜色\
+              text='Touch';--显示文字\
+              textSize='14sp';\
+            };\
+            {\
+              ImageView;--圆形图片\
+              layout_gravity='right|center';--卡片重力\
+              layout_marginRight='15dp';--右距\
+              --左:left 右:right 中:center 顶:top 底:bottom\
+              layout_width='55dp';--宽度\
+              layout_height='55dp';--高度\
+              src='picture/abg.png';--图片路径\
+              id='video';\
+              style='?android:attr/buttonBarButtonStyle';\
+              onClick=function()\
+\
+                --在这里填写控件单击事件\
+              end;\
+            };\
+          };\
+        };\
+      };\
+    };\
+  };\
+};\
+activity.setContentView(loadlayout(buleng))\
+onClick=function()\
+  --在这里填写控件单击事件\
+end;\
+\
+--布局外填写:(去掉注释)\
+ab.onClick=function()\
+  进入子页面(\"about\")\
+  --在这里填写控件单击事件  \
+end\
+z1.onClick=function()\
+  进入子页面(\"air\")\
+  --在这里填写控件单击事件  \
+end\
+z3.onClick=function()\
+  进入子页面(\"lym\")\
+  --在这里填写控件单击事件  \
+end\
+music.onClick=function()\
+  进入子页面(\"music\")\
+  --在这里填写控件单击事件  \
+end\
+video.onClick=function()\
+  --在这里填写控件单击事件  \
+end\
+function 波纹(id,颜色)\
+  import \"android.content.res.ColorStateList\"\
+  local attrsArray = {android.R.attr.selectableItemBackgroundBorderless} \
+  local typedArray =activity.obtainStyledAttributes(attrsArray) \
+  ripple=typedArray.getResourceId(0,0) \
+  Pretend=activity.Resources.getDrawable(ripple) \
+  Pretend.setColor(ColorStateList(int[0].class{int{}},int{颜色}))\
+  id.setBackground(Pretend.setColor(ColorStateList(int[0].class{int{}},int{颜色})))\
+end\
+\
+--按钮波纹颜色\
+波纹(z1,0xFF342DF5)\
+波纹(z2,0xFF342DF5)\
+波纹(z3,0xFF342DF5)\
+波纹(z4,0xFF342DF5)\
+波纹(z7,0xFFFA3F00)\
+波纹(z8,0xFFFABC00)\
+波纹(ab, 0xFF00C261)\
+波纹(music, 0xFF008E23)\
+波纹(video, 0x66FF5D85)\
+波纹(gonggao, 0x8420B2B2)\
+波纹(laba, 0xFF000000)\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+" ;
+      } ;
+  ["colors"]	= {
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["顶栏"]	= "#ffffffff" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["进度条"]	= "#00000000" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      } ;
+  ["sidebar"]	= {
+      ["items"]	= {
+          [1]	= {
+              ["onClick"]	= "进入子页面(\"about\")" ;
+              ["name"]	= "About" ;
+              ["icon"]	= "drawable/aij.png" ;
+              } ;
+          } ;
+      ["启用顶部图片"]	= false ;
+      ["启用"]	= true ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["toolbar"]	= {
+      ["输入栏模式"]	= false ;
+      ["menus"]	= {
+          } ;
+      ["icon_btns"]	= {
+          } ;
+      ["搜索框提示"]	= "" ;
+      ["搜索URL"]	= "" ;
+      ["启用搜索功能"]	= false ;
+      } ;
+  ["view_attribute"]	= {
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "Title" ;
+      ["顶栏高度"]	= "56dp" ;
+      } ;
+  ["fltBtn"]	= {
+      ["显示"]	= false ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["图标"]	= "" ;
+      } ;
+  ["switch"]	= {
+      ["显示状态栏"]	= true ;
+      ["启用启动图"]	= true ;
+      ["支持滑动页面"]	= false ;
+      ["横屏"]	= false ;
+      } ;
+  ["global_js"]	= "/*\
+ * @name: 强制缩放\
+ * @Author: 谷花泰\
+ * @version: 1.0\
+ * @description: 让所有网页都可以缩放\
+ * @include: *\
+ * @createTime: 2019-10-04 01:47:08\
+ * @updateTime: 2019-10-09 14:46:02\
+ */\
+(function () {\
+  /* 判断是否该执行 */\
+  const key = encodeURIComponent('谷花泰:强制缩放:执行判断');\
+\
+  if (window[key]) {\
+    return;\
+  };\
+\
+  window[key] = true;\
+\
+  /* 开始执行代码 */\
+  const meta = document.createElement('meta');\
+  meta.setAttribute('name', 'viewport');\
+  meta.setAttribute('content', 'width=device-width, initial-scale=1, user-scalable=yes');\
+  document.head.appendChild(meta);\
+})();" ;
+  ["web"]	= {
+      ["浏览器用户标识"]	= "默认" ;
+      ["网页沉浸"]	= true ;
+      ["启动网页"]	= "" ;
+      ["启用长按菜单"]	= false ;
+      ["支持打开外部应用"]	= true ;
+      ["启用进度条"]	= false ;
+      } ;
+  } ;

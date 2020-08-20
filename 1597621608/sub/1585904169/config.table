@@ -1,0 +1,926 @@
+{
+  ["events"]	= {
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+\
+加载Js([[\
+//17:32-22\
+document.getElementsByTagName(\"a\")[2].setAttribute(\"style\",\"display:none\");\
+\
+]])" ;
+      ["程序启动"]	= "--程序启动时会执行的事件\
+barisshow = 0;\
+--酷安@一个假币 修改、注释\
+require \"import\"\
+import \"android.app.*\"\
+import \"android.os.*\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+fltBtn.addView(loadlayout({\
+  RelativeLayout;--相对布局\
+  layout_height=\"fill\";\
+  layout_width=\"fill\";\
+  background=\"#00FFFFFF\";\
+  {\
+    CardView;\
+    layout_marginRight=\"4dp\"; \
+    -- background=\"#eeeeee\";--这里设置颜色没用，因为我一会会用到圆角函数设置颜色\
+    layout_alignParentRight=\"true\";\
+    Visibility=\"visible\";--创建布局后可见\
+    layout_width=\"50dp\";\
+    id=\"cardview\";--主按钮\
+    layout_alignParentBottom=\"true\";\
+    layout_marginBottom=\"4dp\";\
+    cardElevation=\"4dp\";--阴影厚度\
+    layout_height=\"50dp\";\
+    {\
+      ImageView;\
+      layout_gravity=\"center\";\
+      layout_marginRight=\"3dp\";\
+      layout_marginLeft=\"3dp\";\
+      src=\"drawable/bb.png\";\
+      id=\"text\";\
+    };\
+  };\
+  {\
+    CardView;\
+    layout_height=\"50dp\";\
+    Visibility=\"invisible\";--创建布局后不可见\
+    --  background=\"#eeeeee\";\
+    layout_alignLeft=\"cardview\";\
+    layout_width=\"50dp\";\
+    id=\"cardview1\";--主按钮上面第一个按钮\
+    layout_marginBottom=\"14dp\";\
+    cardElevation=\"4dp\";\
+    layout_above=\"cardview\";--位置在在主按钮上面\
+    --radius=\"28dp\";\
+    {\
+      TextView;\
+      textColor=\"#888888\";\
+      layout_gravity=\"center\";\
+      textSize=\"14dp\";\
+      text=\"退出\";\
+      id=\"text1\";\
+    };\
+  };\
+  {\
+    CardView;\
+    layout_height=\"50dp\";\
+    Visibility=\"invisible\";\
+    --   background=\"#eeeeee\";\
+    layout_alignLeft=\"cardview1\";\
+    layout_width=\"50dp\";\
+    id=\"cardview2\";\
+    layout_marginBottom=\"14dp\";\
+    cardElevation=\"4dp\";\
+    layout_above=\"cardview1\";\
+    --  radius=\"28dp\";\
+    {\
+      TextView;\
+      textColor=\"#888888\";\
+      layout_gravity=\"center\";\
+      textSize=\"14dp\";\
+      text=\"顶部\";\
+      id=\"text2\";\
+    };\
+  };\
+  {\
+    CardView;\
+    layout_height=\"50dp\";\
+    Visibility=\"invisible\";\
+    -- background=\"#eeeeee\";\
+    layout_alignLeft=\"cardview2\";\
+    layout_width=\"50dp\";\
+    id=\"cardview3\";\
+    layout_marginBottom=\"14dp\";\
+    cardElevation=\"4dp\";\
+    layout_above=\"cardview2\";\
+    --radius=\"28dp\";\
+    {\
+      TextView;\
+      textColor=\"#888888\";\
+      layout_gravity=\"center\";\
+      textSize=\"14dp\";\
+      text=\"刷新\";\
+      id=\"text3\";\
+    };\
+  };\
+  {\
+    CardView;\
+    layout_height=\"50dp\";\
+    Visibility=\"invisible\";\
+    -- background=\"#eeeeee\";\
+    layout_alignLeft=\"cardview3\";\
+    layout_width=\"50dp\";\
+    id=\"cardview4\";\
+    layout_marginBottom=\"14dp\";\
+    cardElevation=\"4dp\";\
+    layout_above=\"cardview3\";\
+    --layout_toLeftOf=\"cardview1\";\
+    --radius=\"28dp\";\
+    {\
+      TextView;\
+      textColor=\"#888888\";\
+      layout_gravity=\"center\";\
+      textSize=\"14dp\";\
+      text=\"更多\";\
+      id=\"text3\";\
+    };\
+  };\
+}))\
+id=fltBtn;--这里把悬浮按钮名称简化为id\
+wi=activity.getWidth()*31/180--定义布局宽度\
+he=activity.getHeight()--定义屏幕高度\
+function dianji()--设置点击任意按钮事件\
+  if cardview1.getVisibility()==0 then--如果主按钮上放第一个按钮可见（实质为分是悬浮球展开了）\
+    --导入动画\
+    import \"android.view.animation.Animation$AnimationListener\"\
+    import \"android.view.animation.ScaleAnimation\"\
+    cardview1.startAnimation(ScaleAnimation(1.0, 0.0, 1.0, 0.0,1, 0.5, 1, 0.5).setDuration(100))--其它代码不要改，100意思为100毫秒后消失\
+    cardview1.setVisibility(View.INVISIBLE)--设置分式球1消失\
+    cardview2.startAnimation(ScaleAnimation(1.0, 0.0, 1.0, 0.0,1, 0.5, 1, 0.5).setDuration(200))\
+    cardview2.setVisibility(View.INVISIBLE)\
+    cardview3.startAnimation(ScaleAnimation(1.0, 0.0, 1.0, 0.0,1, 0.5, 1, 0.5).setDuration(300))\
+    cardview3.setVisibility(View.INVISIBLE)\
+    cardview4.startAnimation(ScaleAnimation(1.0, 0.0, 1.0, 0.0,1, 0.5, 1, 0.5).setDuration(400))\
+    cardview4.setVisibility(View.INVISIBLE)\
+    text.setImageBitmap(loadbitmap(\"drawable/__ic_menu.png\"))\
+    task(300,function()--300毫秒后，修改悬浮球布局大小为120*120\
+      --因为我是把整个分式悬浮球寄宿在fusionapp自带的悬浮球上的，因此点击打开关闭分式悬浮球时，由于占位空间变化，我会改一下主体的布局大小\
+      linearParams = id.getLayoutParams()\
+      linearParams.width=wi\
+      id.setLayoutParams(linearParams)\
+      linearParams = id.getLayoutParams()\
+      linearParams.height=wi\
+      id.setLayoutParams(linearParams)\
+    end)\
+  else--如果主按钮上放第一个按钮不可见（实质为分是悬浮球收拢了）\
+    --导入类\
+    import \"android.view.animation.ScaleAnimation\"\
+    cardview1.setVisibility(View.VISIBLE)--设置可见\
+    cardview1.startAnimation(ScaleAnimation(0.0, 1.0, 0.0, 1.0,1, 0.5, 1, 0.5).setDuration(100))\
+    cardview2.setVisibility(View.VISIBLE)\
+    cardview2.startAnimation(ScaleAnimation(0.0, 1.0, 0.0, 1.0,1, 0.5, 1, 0.5).setDuration(200))\
+    cardview3.setVisibility(View.VISIBLE)\
+    cardview3.startAnimation(ScaleAnimation(0.0, 1.0, 0.0, 1.0,1, 0.5, 1, 0.5).setDuration(300))\
+    cardview4.setVisibility(View.VISIBLE)\
+    cardview4.startAnimation(ScaleAnimation(0.0, 1.0, 0.0, 1.0,1, 0.5, 1, 0.5).setDuration(400))\
+    text.setImageBitmap(loadbitmap(\"drawable/__ic_close.png\"))\
+    linearParams = id.getLayoutParams()\
+    linearParams.width=wi\
+    id.setLayoutParams(linearParams)\
+    linearParams = id.getLayoutParams()\
+    linearParams.height=he*0.7\
+    id.setLayoutParams(linearParams)\
+    id.setBackgroundColor(0x00ffffff)\
+  end\
+end\
+\
+function CircleButton(view,InsideColor)--定义圆角\
+  import \"android.graphics.drawable.GradientDrawable\"\
+  drawable = GradientDrawable() \
+  drawable.setShape(GradientDrawable.OVAL) \
+  drawable.setColor(InsideColor)\
+  view.setBackgroundDrawable(drawable)\
+  view.setElevation(4.0)\
+end\
+\
+控件颜色=0xFF87D9FF\
+CircleButton(cardview,控件颜色)\
+CircleButton(cardview1,控件颜色)\
+CircleButton(cardview2,控件颜色)\
+CircleButton(cardview3,控件颜色)\
+CircleButton(cardview4,控件颜色)\
+\
+cardview.onLongClick=function()--设置主悬浮球长按事件\
+  import \"android.view.animation.ScaleAnimation\"\
+  id.startAnimation(ScaleAnimation(1.0, 0.0, 1.0, 0.0,1, 0.5, 1, 0.5).setDuration(300))\
+  id.setVisibility(View.GONE)\
+  dianji()\
+end\
+\
+cardview.onClick=function()--设置主悬浮球点击事件\
+  \
+  dianji()\
+end\
+cardview.onClick=function()\
+  \
+  dianji()\
+end\
+cardview1.onClick=function()\
+  退出页面()\
+  dianji()\
+end\
+cardview2.onClick=function()\
+  返回网页顶部()\
+  dianji()\
+end\
+cardview3.onClick=function()\
+  刷新网页()\
+  dianji()\
+end\
+id.setVisibility(View.VISIBLE)--初始化设置fusionapp的悬浮球可见\
+linearParams = id.getLayoutParams()\
+linearParams.width=wi--修改fusionapp悬浮球宽\
+id.setLayoutParams(linearParams)\
+linearParams = id.getLayoutParams()\
+linearParams.height=wi\
+id.setLayoutParams(linearParams)\
+id.setBackgroundColor(0x00ffffff)\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+--程序启动时会执行的事件\
+import \"tool\"\
+--渐变\
+import \"android.graphics.drawable.GradientDrawable\"\
+function 渐变(left_jb,right_jb,id)\
+  drawable = GradientDrawable(GradientDrawable.Orientation.TR_BL,{\
+    right_jb,--右色\
+    left_jb,--左色\
+  });\
+  id.setBackgroundDrawable(drawable)\
+end\
+--调用渐变函数\
+渐变(0xFFFFF2EC,0xFFACE0F8,toolbarParent)\
+--程序启动时会执行的事件\
+\
+--感谢柯南大佬的指点\
+\
+\
+\
+\
+------\
+-- 原作: Pretend° (dalao)\
+-- 修改: QQ32552732\
+-- 修改内容:\
+--  - 支持 Fusion App 原有布局\
+--  - 删除原有自定义布局等无用代码\
+--  - 稍微修改了下效果，符合个人喜好...\
+--  - 支持右侧栏\
+\
+--关闭阴影\
+drawerLayout.setScrimColor(0)\
+\
+--添加背景\
+drawerLayout.addView(loadlayout({\
+  ImageView,\
+  id=\"background\",\
+  scaleType=\"fitXY\",\
+}),0)\
+\
+\
+function setdata(a,b)\
+  c = this.getSharedPreferences(\"PicCustom\", Activity.MODE_PRIVATE)\
+  c.edit().putString(a, b).commit()\
+  end\
+function getdata(a)\
+  c = this.getSharedPreferences(\"PicCustom\", Activity.MODE_PRIVATE)\
+  b = c.getString(a, \"\")\
+  return b\
+  end\
+if getdata(\"fileSrc\")==\"\" then\
+  background.setImageBitmap(loadbitmap(\"background.jpg\"))--默认背景\
+  else\
+  background.setImageBitmap(loadbitmap(getdata(\"fileSrc\")))\
+end\
+\
+\
+--获取页面根布局\
+local lay=drawerLayout.getChildAt(1)\
+\
+--侧栏圆角\
+function CircleButton(view,InsideColor,radiu)\
+  import \"android.graphics.drawable.GradientDrawable\"\
+  drawable = GradientDrawable() \
+  drawable.setShape(GradientDrawable.RECTANGLE) \
+  drawable.setColor(InsideColor)\
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  view.setBackgroundDrawable(drawable)\
+end\
+角度=35--圆角弧度\
+控件id=sidebar\
+控件颜色=0xA1FFFFFF\
+CircleButton(控件id,控件颜色,角度)\
+linearParams = sidebar.getLayoutParams()\
+linearParams.width =520--侧滑栏宽度\
+local h=this.getHeight()--获得屏幕宽高\
+linearParams.height =h-100--侧滑栏高度\
+sidebar.setLayoutParams(linearParams)\
+flt=sidebar.getLayoutParams( )\
+flt.setMargins(0, 60,0,300)\
+sidebar.setLayoutParams(flt)\
+--上下左右\
+\
+--监听侧滑滑动事件\
+local pio=this.getWidth()*0.1\
+drawerLayout.setDrawerListener(DrawerLayout.DrawerListener{\
+  onDrawerSlide=function(v,i)\
+    lay.setScaleX(1-i/3.5).setScaleY(1-i/3.5)--页面缩放\
+    lay.setTranslationX((({0,0,1,0,-1})[v.LayoutParams.gravity])*(i*7*pio))--页面位移(其中那段奇怪的表是用于判断位移方向，不过依然仅支持左右侧滑)\
+    --sidebar.setScaleX(i).setScaleY(i)--侧滑栏缩放\
+  end})\
+\
+--重写按键监听，以允许通过返回键关闭右侧侧滑\
+function onKeyDown(key,event)\
+  if(key==4)then\
+    if drawerLayout.isDrawerOpen(3) or drawerLayout.isDrawerOpen(5) then\
+      drawerLayout.closeDrawer(3)\
+    elseif(webView.canGoBack())then\
+      webView.goBack()\
+    else\
+      this.finish()\
+    end\
+    return true\
+  end\
+end\
+\
+\
+\
+\
+--获得屏幕宽高\
+local w=this.getWidth()\
+local h=this.getHeight()\
+\
+--获取状态栏高度\
+local function getStatusBarHeight(JDPUK)\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  local resid=activity.getResources().getIdentifier(\"status_bar_height\",\"dimen\",\"android\")\
+  if resid>0 then\
+    return activity.getResources().getDimensionPixelSize(resid)\
+  end\
+end\
+jdpuk=32552732\
+\
+--设置悬浮按钮位置\
+local function setFloatButtonPosition(X,Y,J,D,P,U,K)\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  fltBtn.LayoutParams=fltBtn.LayoutParams.setMargins(0,0,w-X-fltBtn.getMeasuredWidth()/2,h-Y-fltBtn.getMeasuredHeight()/2)-- 3 2 5 5 2 7 3 2\
+  --保存悬浮按钮位置\
+  this.setSharedData(\"悬浮按钮横坐标\",X)\
+  this.setSharedData(\"悬浮按钮纵坐标\",Y)\
+end\
+\
+task(200,function(JDPUK)\
+  --恢复悬浮按钮位置\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..tostring(3)..\"2\" then error()end\
+  local x=this.getSharedData(\"悬浮按钮横坐标\")\
+  local y=this.getSharedData(\"悬浮按钮纵坐标\")\
+  if x and y then setFloatButtonPosition(x,y) end\
+end)\
+\
+--初始化按下起始位置\
+local sx\
+local sy\
+\
+--设置移动条件(最小移动范围)\
+local mr=50\
+--初始化是否移动\
+local cm=false\
+\
+--设置自动校准范围\
+local tr=50\
+--设置自动校准坐标\
+local tp={\
+  {0,nil},--左贴边\
+  {nil,0},--上贴边\
+  {w,nil},--右贴边\
+  {nil,h},--下贴边\
+}\
+task(200,function(JDPUK)--一些需要用到悬浮按钮参数的坐标，得延时等悬浮按钮准备好\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  table.insert(tp,{w/2+1,h-fltBtn.getMeasuredHeight()})--约中下位置\
+  --table.insert(tp,{w-fltBtn.getMeasuredWidth()/2,h-fltBtn.getMeasuredHeight()/2})\
+end)\
+\
+--监听悬浮按钮被按下事件\
+task(200,function(JDPUK)--延时等待悬浮按钮准备好\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  fltBtn.getChildAt(0).onTouch=function(view,event,JDPUK)--悬浮按钮本身无法监听点击事件，找子控件监听\
+    if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+\
+    --得到手指当前位置\
+    local x=event.getRawX()\
+    local y=event.getRawY()\
+\
+    if event.getAction()==MotionEvent.ACTION_DOWN then--如果是按下事件，则保存按下的位置\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+      --保存按下位置\
+      sx=x\
+      sy=y\
+      return false\
+    elseif event.getAction()==MotionEvent.ACTION_MOVE then--如果是移动事件，则移动悬浮按钮\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+\
+      if cm then\
+\
+        --fltBtn.LayoutParams=fltBtn.LayoutParams.setMargins(0,0,this.getWidth()-event.getRawX()-fltBtn.getMeasuredWidth()/2,this.getHeight()-event.getRawY()-fltBtn.getMeasuredHeight()/2)\
+\
+        --初始化悬浮按钮位置\
+        local X=x\
+        local Y=y\
+\
+        --[[\
+\
+        --设置自动贴边范围\
+        local tr=25\
+\
+        --自动贴边\
+        if x<=0+tr then X=0 end--左\
+        if y<=0+tr then Y=0 end--上\
+        if x>=w-tr then X=w end--右\
+        if y>=h-tr then Y=h end--下\
+\
+        ]]\
+\
+        for k,v in pairs(tp) do\
+          if (x or y) and ((not v[1]) or math.abs(x-v[1])<=tr) and ((not v[2]) or math.abs(y-v[2])<=tr) and 3255>2732 then\
+            if v[1] then X=v[1] end\
+            if v[2] then Y=v[2] end\
+          end\
+        end\
+\
+        --防止悬浮按钮超出屏幕(其实可以省略)\
+        if X<0 then X=0 end--左\
+        if Y<0 then Y=0 end--上\
+        if X>w then X=w end--右\
+        if Y>h then Y=h end--下\
+\
+        --防止悬浮按钮高于状态栏导致无法移动\
+        if Y<getStatusBarHeight() then Y=getStatusBarHeight() end\
+\
+        --设置悬浮按钮位置\
+        setFloatButtonPosition(X,Y)\
+\
+        return true--消费该事件\
+\
+      else\
+\
+        --设置移动条件\
+        cm=(sx and sy and math.abs((x+y)-(sx+sy))>=mr and jdpuk==tonumber(\"3255\"..\"2732\"))--32552732\
+\
+        return false\
+      end\
+    elseif event.getAction()==MotionEvent.ACTION_UP then--如果是松开事件，则...嗯处理一些东西，自己看吧\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..tostring(32) then error()end\
+\
+      --重置变量前先把需要的变量保存为局部变量\
+      local tmp=cm\
+\
+      --重置变量\
+      sx=nil\
+      sy=nil\
+      cm=false\
+\
+      --如果本次按下符合移动条件，则消费事件\
+      if tmp then\
+        return true\
+      else\
+        return false\
+      end\
+\
+    end\
+    return false\
+  end\
+end)\
+if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+" ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+\
+加载Js([[\
+//17:32-22\
+document.getElementsByTagName(\"a\")[2].setAttribute(\"style\",\"display:none\");\
+\
+]])" ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      } ;
+  ["web"]	= {
+      ["启动网页"]	= "https://tophub.today/" ;
+      ["浏览器用户标识"]	= "自定义" ;
+      ["支持打开外部应用"]	= false ;
+      ["网页沉浸"]	= false ;
+      ["启用进度条"]	= false ;
+      ["customUa"]	= "Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Quark/3.8.4.128 UCBrowser/12.0.4.985 baiduboxapp/3.2.5.10 MQQBrowser/7.2.1.2965 XiaoMi/MiuiBrowser/11.9.2 SearchCraft/2.0.0 ALiSearchApp/2.4 AliApp(TB/9.5.6) BingWeb/6.9.6 3gpp-gba" ;
+      ["启用长按菜单"]	= false ;
+      } ;
+  ["fltBtn"]	= {
+      ["显示"]	= false ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件\
+pop=PopupMenu(activity,fltBtn)\
+menu=pop.Menu\
+menu.add(\"返回顶部\").onMenuItemClick=function(a)\
+  返回网页顶部()\
+\
+end\
+menu.add(\"刷新\").onMenuItemClick=function(a)\
+  刷新网页()\
+\
+end\
+menu.add(\"阅读模式\").onMenuItemClick=function(a)\
+  阅读模式()\
+\
+end\
+menu.add(\"显示/隐藏顶栏\").onMenuItemClick=function(a)\
+\
+if barisshow == 0 then\
+  --状态栏\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+  else\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+  end\
+end\
+\
+menu.add(\"隐藏悬浮窗\").onMenuItemClick=function(a)\
+  fltBtn.setVisibility(View.GONE)\
+  end\
+menu.add(\"退出\").onMenuItemClick=function(a)\
+  退出页面()\
+\
+\
+end\
+pop.show()\
+--显示import \"android.view.WindowManager\"\
+--需程序启动赋予barisshow初始值0\
+\
+" ;
+      ["图标"]	= "" ;
+      } ;
+  ["global_js"]	= "" ;
+  ["colors"]	= {
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["顶栏部件"]	= "#ff727272" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["侧滑栏列表图标"]	= "#ff87d6f7" ;
+      ["侧滑栏列表文字"]	= "#ff4ea7d7" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["悬浮按钮"]	= "#ff5cc4fc" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["顶栏"]	= "#fffafafa" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["进度条"]	= "#00000000" ;
+      } ;
+  ["switch"]	= {
+      ["横屏"]	= false ;
+      ["显示状态栏"]	= false ;
+      ["启用启动图"]	= false ;
+      ["支持滑动页面"]	= false ;
+      } ;
+  ["web_control"]	= {
+      [1]	= {
+          ["remove_element"]	= "" ;
+          ["url"]	= "tophub.today" ;
+          ["js"]	= "" ;
+          } ;
+      [2]	= {
+          ["remove_element"]	= "logo-wrapper,logo,banner-label,open,download,tb,title-sub" ;
+          ["url"]	= "m.toutiao.com" ;
+          ["js"]	= "" ;
+          } ;
+      [3]	= {
+          ["remove_element"]	= "kr-mobile-goapp,logo,text,title weight-bold,info,open weight-bold,gotoapp" ;
+          ["url"]	= "www.36kr.com" ;
+          ["js"]	= "" ;
+          } ;
+      [4]	= {
+          ["remove_element"]	= "pull-left,pull-left guide-logo-box,pull-right btn-open c-f60 border-1px btn-open-con,guide-wrap bgW js-guide-to-app js-guide-box topToApp js-hmt-detection,guide-box,index-ad-box module-report-log,js-content-open-app js-hmt-detection" ;
+          ["url"]	= "m.huxiu.com" ;
+          ["js"]	= "" ;
+          } ;
+      [5]	= {
+          ["remove_element"]	= "op,open-app-tag,open-app-a,open-btn open-app,tip tip-gray,down-app-box,ad-tip" ;
+          ["url"]	= "m.ithome.com" ;
+          ["js"]	= "" ;
+          } ;
+      [6]	= {
+          ["remove_element"]	= "app-open,swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-android,swiper-wrapper,swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next,main,main-cover,main-body,main-title,open-app,swiper-slide\" data-swiper-slide-index=,main first,app-guide,top-bg clearfix,jm-logo,open-app,download-app,open,recommend-column" ;
+          ["url"]	= "m.jiemian.com" ;
+          ["js"]	= "" ;
+          } ;
+      [7]	= {
+          ["remove_element"]	= "burger-a,moblink_top_detail_xiazai,cont-name,conImg,cont_img,moblink_content6824435,head_ask_app_des,app_down4 cont_container,cont slick-slide slick-current slick-active,slick-slide02,slick-track,cont cont_last slick-slide slick-cloned,news_open_app,news_open_app,label_ad" ;
+          ["url"]	= "m.thepaper.cn" ;
+          ["js"]	= "" ;
+          } ;
+      [8]	= {
+          ["remove_element"]	= "kr-mobile-goapp,logo,text,title weight-bold,info,open weight-bold,gotoapp" ;
+          ["url"]	= "36kr.com" ;
+          ["js"]	= "" ;
+          } ;
+      [9]	= {
+          ["remove_element"]	= "zk_top_bar,fixed-comment-bottom-bar,comment-out-box show" ;
+          ["url"]	= "app.myzaker.com" ;
+          ["js"]	= "" ;
+          } ;
+      [10]	= {
+          ["remove_element"]	= "header-download,download-guide,slogan,footer-wrap," ;
+          ["url"]	= "www.jianshu.com" ;
+          ["js"]	= "" ;
+          } ;
+      [11]	= {
+          ["remove_element"]	= "Card ViewAllInappCard,MRelateFeedAd-footer,MRelateFeedAd-brand,Button ViewAllInappButton Button--primary Button--blue,HotQuestions-bottomButton,Card ViewAllInappCard" ;
+          ["url"]	= "www.zhihu.com" ;
+          ["js"]	= "" ;
+          } ;
+      } ;
+  ["toolbar"]	= {
+      ["icon_btns"]	= {
+          } ;
+      ["menus"]	= {
+          [1]	= {
+              ["name"]	= "自定义侧滑背景" ;
+              ["onClick"]	= "import \"android.content.Intent\"\
+local intent= Intent(Intent.ACTION_PICK)\
+intent.setType(\"image/*\")\
+this.startActivityForResult(intent, 1)\
+------\
+\
+--回调\
+function onActivityResult(requestCode,resultCode,intent)\
+  if intent then\
+    local cursor =this.getContentResolver ().query(intent.getData(), nil, nil, nil, nil)\
+    cursor.moveToFirst()\
+    import \"android.provider.MediaStore\"\
+    local idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)\
+    fileSrc = cursor.getString(idx)\
+    bit=nil\
+    --fileSrc回调路径路径\
+    --import \"android.graphics.BitmapFactory\"\
+    --bit =BitmapFactory.decodeFile(fileSrc)\
+    --  iv.setImageBitmap(bit)\
+    background.setImageBitmap(loadbitmap(fileSrc))\
+    setdata(\"fileSrc\",fileSrc)\
+  end\
+end--nirenr" ;
+              } ;
+          [2]	= {
+              ["name"]	= "恢复默认背景" ;
+              ["onClick"]	= "c = this.getSharedPreferences(\"PicCustom\", Activity.MODE_PRIVATE) \
+c.edit().clear().commit()\
+background.setImageBitmap(loadbitmap(\"background.jpg\"))" ;
+              } ;
+          [3]	= {
+              ["name"]	= "夜间模式" ;
+              ["onClick"]	= "加载Js([[{css=document.createElement(\"link\");var t='html,body,form,nav,header{background-image:none !important;background-color: #363c47 !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}div,html *{background-color: #000000 !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}p,span{background-color: transparent !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}div:empty,div[id=\"x-video-button\"],div[class=\"x-advert\"]{background-color:transparent !important;}input,select,button,textarea{box-shadow:0 0 0!important;color:#c3bdbc!important;background-color: #293037 !important;border-color:#212533!important;}a,a *{background-color: transparent !important;color:#b5a598!important;text-decoration:none!important;border-color:#212533!important;text-shadow: 0 0 0!important;}a:visited,a:visited *{color:#757170!important;}';css.href=t;var o=document.getElementsByTagName(\"head\");if(o[0].appendChild(css)){var a=document.createElement(\"style\");a.appendChild(document.createTextNode(t)),document.documentElement.appendChild(a)}}]])" ;
+              } ;
+          [4]	= {
+              ["name"]	= "隐藏顶栏" ;
+              ["onClick"]	= "fltBtn.setVisibility(View.VISIBLE)\
+import \"android.view.WindowManager\"\
+\
+\
+if barisshow == 0 then\
+  --状态栏\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+  else\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+  end\
+" ;
+              } ;
+          [5]	= {
+              ["name"]	= "刷新" ;
+              ["onClick"]	= "刷新网页()" ;
+              } ;
+          [6]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          } ;
+      ["输入栏模式"]	= true ;
+      ["搜索URL"]	= "" ;
+      ["搜索框提示"]	= "" ;
+      ["启用搜索功能"]	= false ;
+      } ;
+  ["view_attribute"]	= {
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏高度"]	= "41dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏标题"]	= "蝉噪林逾静，鸟鸣山更幽" ;
+      } ;
+  ["sidebar"]	= {
+      ["items"]	= {
+          [1]	= {
+              ["name"]	= "首页" ;
+              ["icon"]	= "drawable/album.png" ;
+              ["onClick"]	= "加载网页(\"https://tophub.today/\")" ;
+              } ;
+          [2]	= {
+              ["name"]	= "微博" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://m.weibo.cn/\")" ;
+              } ;
+          [3]	= {
+              ["name"]	= "知乎" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://www.zhihu.com/\")" ;
+              } ;
+          [4]	= {
+              ["name"]	= "36氪" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://36kr.com/\")" ;
+              } ;
+          [5]	= {
+              ["name"]	= "简书" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://www.jianshu.com/\")" ;
+              } ;
+          [6]	= {
+              ["name"]	= "虎嗅" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://m.huxiu.com/\")" ;
+              } ;
+          [7]	= {
+              ["name"]	= "ZAKER" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"http://app.myzaker.com/\")" ;
+              } ;
+          [8]	= {
+              ["name"]	= "百度新闻" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://news.baidu.com/news#/\")" ;
+              } ;
+          [9]	= {
+              ["name"]	= "搜狐新闻" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://m.sohu.com/?spm=smwp.ch8.hdn.1.1585913979255bHmhMoN\")" ;
+              } ;
+          [10]	= {
+              ["name"]	= "网易新闻" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://3g.163.com/touch/news/\")" ;
+              } ;
+          [11]	= {
+              ["name"]	= "少数派" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://sspai.com/\")" ;
+              } ;
+          [12]	= {
+              ["name"]	= "IT之家" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://m.ithome.com/\")" ;
+              } ;
+          [13]	= {
+              ["name"]	= "界面新闻" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://m.jiemian.com/\")" ;
+              } ;
+          [14]	= {
+              ["name"]	= "澎湃新闻" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://m.thepaper.cn/\")" ;
+              } ;
+          [15]	= {
+              ["name"]	= "人民日报" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"http://m.people.cn/\")" ;
+              } ;
+          [16]	= {
+              ["name"]	= "好奇心日报" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"http://m.qdaily.com/mobile/homes.html\")" ;
+              } ;
+          [17]	= {
+              ["name"]	= "博海拾贝" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://bh.sb/\")" ;
+              } ;
+          [18]	= {
+              ["name"]	= "央视新闻" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://m.cctv.com/\")" ;
+              } ;
+          } ;
+      ["启用顶部图片"]	= false ;
+      ["启用"]	= true ;
+      } ;
+  } ;

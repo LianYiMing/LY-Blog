@@ -1,0 +1,4258 @@
+{
+  ["web"]	= {
+      ["网页沉浸"]	= true ;
+      ["浏览器用户标识"]	= "自定义" ;
+      ["启动网页"]	= "https://xiaobaizzz.gitee.io/liulanqizhuye/viaBrowser/" ;
+      ["启用长按菜单"]	= true ;
+      ["支持打开外部应用"]	= false ;
+      ["customUa"]	= "Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Quark/3.8.4.128 UCBrowser/12.0.4.985 baiduboxapp/3.2.5.10 MQQBrowser/7.2.1.2965 XiaoMi/MiuiBrowser/11.9.2 SearchCraft/2.0.0 ALiSearchApp/2.4 AliApp(TB/9.5.6) BingWeb/6.9.6 3gpp-gba" ;
+      ["启用进度条"]	= true ;
+      } ;
+  ["web_control"]	= {
+      [1]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "envelope" ;
+          ["url"]	= "m.baidu.com" ;
+          } ;
+      [2]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "navbar-header,sr-only,icon-bar,navbar-brand,text-center text-muted credit" ;
+          ["url"]	= "tool.uixsj.cn" ;
+          } ;
+      [3]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "navbar,el-tooltip btn item focusing,eva eva-menu-outline,navbar,el-tooltip btn item focusing,eva eva-menu-outline,el-tooltip type-icon vipDate focusing,theme-btn,nya-title,main" ;
+          ["url"]	= "tools.miku.ac" ;
+          } ;
+      } ;
+  ["global_js"]	= "" ;
+  ["toolbar"]	= {
+      ["输入栏模式"]	= true ;
+      ["启用搜索功能"]	= true ;
+      ["menus"]	= {
+          [8]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          [1]	= {
+              ["name"]	= "其他浏览器打开" ;
+              ["onClick"]	= "import \"android.content.Intent\"\
+import \"android.net.Uri\"\
+url=webView.getUrl()\
+viewIntent = Intent(\"android.intent.action.VIEW\",Uri.parse(url))\
+activity.startActivity(viewIntent)" ;
+              } ;
+          [2]	= {
+              ["name"]	= "自定义侧滑背景" ;
+              ["onClick"]	= "import \"android.content.Intent\"\
+local intent= Intent(Intent.ACTION_PICK)\
+intent.setType(\"image/*\")\
+this.startActivityForResult(intent, 1)\
+------\
+\
+--回调\
+function onActivityResult(requestCode,resultCode,intent)\
+  if intent then\
+    local cursor =this.getContentResolver ().query(intent.getData(), nil, nil, nil, nil)\
+    cursor.moveToFirst()\
+    import \"android.provider.MediaStore\"\
+    local idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)\
+    fileSrc = cursor.getString(idx)\
+    bit=nil\
+    --fileSrc回调路径路径\
+    --import \"android.graphics.BitmapFactory\"\
+    --bit =BitmapFactory.decodeFile(fileSrc)\
+    --  iv.setImageBitmap(bit)\
+    background.setImageBitmap(loadbitmap(fileSrc))\
+    setdata(\"fileSrc\",fileSrc)\
+  end\
+end--nirenr" ;
+              } ;
+          [3]	= {
+              ["name"]	= "恢复默认背景" ;
+              ["onClick"]	= "c = this.getSharedPreferences(\"PicCustom\", Activity.MODE_PRIVATE) \
+c.edit().clear().commit()\
+background.setImageBitmap(loadbitmap(\"background.jpg\"))" ;
+              } ;
+          [4]	= {
+              ["name"]	= "广告拦截" ;
+              ["onClick"]	= "\
+sound={\
+  LinearLayout,\
+  orientation=\"vertical\",\
+  layout_height=\"fill\",\
+  layout_width=\"fill\",\
+  {\
+    LinearLayout,\
+    orientation=\"horizontal\",--横排列\
+    layout_height=\"fill\",\
+    layout_width=\"fill\",\
+    layout_gravity=\"center\",\
+    {TextView,\
+      layout_height=\"wrap_content\",\
+      text=\"音量:\",\
+      id=\"seekText\",\
+      layout_width=\"wrap_content\"},\
+    {SeekBar,\
+      layout_height=\"wrap_content\",\
+      layout_width=\"wrap_content\",\
+      id=\"mainProgressBar1\",\
+      id=\"seekbar\",\
+      layout_weight=\"1.0\"\
+    },\
+  },\
+  {\
+    LinearLayout,\
+    orientation=\"horizontal\",--横排列\
+    layout_height=\"fill\",\
+    layout_width=\"fill\",\
+    layout_gravity=\"center\", \
+    {Button,\
+      text=\"低\",\
+      gravity=\"center\",\
+      onClick=function()\
+        window = activity.getWindow();\
+        lp = window.getAttributes();\
+        lp.screenBrightness = 25 / 255.0;\
+        window.setAttributes(lp)\
+\
+      end\
+    },\
+    {Button,\
+      text=\"中\",\
+      gravity=\"center\",\
+      onClick=function()\
+        window = activity.getWindow();\
+        lp = window.getAttributes();\
+        lp.screenBrightness = 127 / 255.0;\
+        window.setAttributes(lp)\
+\
+      end\
+    },\
+    {Button,\
+      text=\"高\",\
+      gravity=\"center\",\
+      onClick=function()\
+        window = activity.getWindow();\
+        lp = window.getAttributes();\
+        lp.screenBrightness = 150 / 255.0;\
+        window.setAttributes(lp)\
+\
+      end\
+    },\
+    {Button,\
+      text=\"常亮\",\
+      gravity=\"center\",\
+      onClick=function()\
+        activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)\
+      end\
+    },\
+  },\
+};\
+AlertDialog.Builder(this)\
+.setView(loadlayout(sound))\
+.setMessage(\"Air浏览器专用广告拦截\")\
+.setPositiveButton(\"屏蔽广告\",function()\
+  items={}\
+  table.insert(items,\"方案①(通用)\")\
+  table.insert(items,\"方案②(专杀浮动)\")\
+  table.insert(items,\"方案③(暴力拦截)\")\
+  table.insert(items,\"方案④(动态专杀)\")\
+  table.insert(items,\"注：当可能导致您无法正常浏览网页，如有异常重启应用即可\")\
+  table.insert(items,\"\")\
+  AlertDialog.Builder(this)\
+  .setTitle(\"去广告选项\")\
+  .setItems(items,{onClick=function(l,v) \
+      if items[v+1]==\"方案①(通用)\" then\
+        加载Js([[(function(){var host=location.href;if(host.indexOf('baidu.com')>0||host.indexOf('360doc.cn')>0||host.indexOf('sm.cn')>0||host.indexOf('uc.cn')>0||host.indexOf('info.3g.qq.com')>0||host.indexOf('melogin.cn')>0||host.indexOf('192.168.')>0||host.indexOf('m.weibo.cn')>0||host.indexOf('taobao.com')>0){return}var myArray=new Array('div','img','span','p','a','li');for(var i=0;i<6;i++){var ifr=document.getElementsByTagName(myArray[i]);if(ifr&&ifr.length>0){for(var j=0;j<ifr.length;j++){var obj=ifr[j];var ids=obj.getAttribute('id');var cls=obj.getAttribute('class');if(cls){if(obj.tagName=='A'&&cls.indexOf(' ')!=-1&&obj.getAttribute('onclick')&&obj.getAttribute('target')&&obj.href){obj.style.display='none'}}if(ids&&cls){if(ids==cls&&cls.length>10&&obj.tagName=='LI')obj.style.display='none'}if(ids){if(ids.length>30&&ids.indexOf('-')==-1){obj.style.display='none'}if((/^[0-9]*$/.test(ids))&&ids.length>1){obj.style.display='none'}if(ids.length>7&&/[0-9]/.test(ids)&&/[a-z]/i.test(ids)&&obj.getAttribute('style')){obj.style.display='none'}}if(ids&&cls){if(cls.indexOf(' ')!=-1&&cls.indexOf(ids)!=-1&&obj.getAttribute('style')){obj.style.display='none'}if(ids==cls){if(/[0-9]/.test(ids)&&/[a-z]/i.test(ids)){obj.style.display='none'}}}}}}})();]])\
+        对话框()\
+        .设置标题(\"温馨提示\")\
+        .设置消息([[您已经启用广告拦截模式①，本功能主要用于DNS被挟持或者host被挟持所带来的广告，如有浏览问题请重启应用！技术由孤灯广告屏蔽助手提供]])\
+        .设置积极按钮(\"我知道了\")\
+        .显示()\
+      elseif items[v+1]==\"方案②(专杀浮动)\" then\
+        加载Js([[var d=document;var s=d.createElement('script');s.setAttribute('src', 'https://greasyfork.org/scripts/7410-jskillad/code/jsKillAD.user.js');d.head.appendChild(s);]])\
+        对话框()\
+        .设置标题(\"温馨提示\")\
+        .设置消息([[您已经启用广告拦截模式②，本功能主要用于DNS被挟持或者host被挟持所带来的广告，如有浏览问题请重启应用！技术由孤灯广告屏蔽助手提供]])\
+        .设置积极按钮(\"我知道了\")\
+        .显示()\
+      elseif items[v+1]==\"方案③(强制拦截)\" then\
+        加载Js([[var d=document;var s=d.createElement('script');s.setAttribute('src', 'https://greasyfork.org/scripts/368754-%E9%80%9A%E7%94%A8%E5%8E%BB%E5%B9%BF%E5%91%8A-%E6%AF%94%E8%BE%83%E6%9A%B4%E5%8A%9B-%E6%85%8E%E7%94%A8-v0-1/code/%E9%80%9A%E7%94%A8%E5%8E%BB%E5%B9%BF%E5%91%8A(%E6%AF%94%E8%BE%83%E6%9A%B4%E5%8A%9B%EF%BC%8C%E6%85%8E%E7%94%A8)V01.user.js');d.head.appendChild(s);]])\
+        对话框()\
+        .设置标题(\"温馨提示\")\
+        .设置消息(\"您已经启用广告拦截模式③，本功能主要用于DNS被挟持或者host被挟持所带来的广告，如有浏览问题请重启应用！技术由孤灯广告屏蔽助手提供\")\
+        .设置积极按钮(\"我知道了\")\
+        .显示()\
+      elseif items[v+1]==\"广告屏蔽由孤灯广告屏蔽助手提供支持\" then\
+        弹出消息(\"喜欢二次元的小朋友可以到QQ群159155783来玩哦\")\
+        加QQ群(159155783)--作者辛苦整合，请勿删除小小无商业性质的广\
+      elseif items[v+1]==\"方案④(动态专杀)\" then\
+        加载Js([[(function(valid, rule) {    if(typeof Element === 'undefined') console.log('IE8以下浏览器无效');    var origin = new RegExp('^' + location.origin),Ele = Element;    each(['appendChild', 'insertBefore', 'insertAfter'], proxy);    function proxy(prop) {        var proxy_obj = Ele.prototype[prop];        Ele.prototype[prop] = function(elem) {            if (!elem.children.length) {                var tag = elem.tagName.toLowerCase();                if (tag == 'script' && isBanScript(elem)) {                    console.log('禁用脚本：' + elem.src);                    var substitute = document.createElement('script');                    substitute.innerHTML = '// 禁用脚本：' + elem.src;                    elem = substitute;                }            }            return proxy_obj.apply(this, arguments);        };    }    function isBanScript(script) {        if (origin.test(script.src)) return false;        return valid === each(rule, match);        function match(val) {            var type = typeof val;            if (type === 'string') {                if (script.src == val) return true;            } else if (type === 'function') {                if (val(script)) return true;            } else {                if (val.test(script.src)) return true;            }            return false;        }    }    function each(arr, fn) {        if (arr) {            for (var i = 0, n = arr.length; i < n; i++) {                if (fn.call(arr[i], arr[i], i) === true) return false;            }        }        return true;    }})(true, []);]])\
+        对话框()\
+        .设置标题(\"温馨提示\")\
+        .设置消息(\"您已经启动广告拦截④模式，本模式主要用于动态广告拦截，技术由孤灯广告屏蔽助手提供\")\
+        .设置积极按钮(\"我知道了\")\
+        .显示()\
+      elseif items[v+1]==\"方案⑤(专杀浮动)\" then\
+        加载JS([[(function () {\9var bc = Array.prototype.forEach;//Callback\9function getStyle(o, s) {\9\9if(o.style[s])//内联样式\9\9\9return o.style[s];\9\9else if(document.defaultView && document.defaultView.getComputedStyle){//DOM\9\9\9//s = s.replace(/([A-Z])/g,'-$1').toLowerCase();\9\9\9var x = document.defaultView.getComputedStyle(o,'');\9\9\9return x.getPropertyValue(s);\9\9}\9}\9function testStyle(o) {\9\9var s = getStyle(o, \"position\");\9\9return s === \"fixed\" || s === \"absolute\";\9}/*\9function sameDomain(o) {\9\9try {\9\9\9return o.document.body;\9\9} catch (e) {\9\9\9return  0;\9\9}\9}*/\9function isFloatLay(o) {\9\9var x = o.offsetParent;\9\9return !x || x.tagName === \"BODY\" || x.tagName === \"HTML\";\9}\9function delNode(x) {\9\9x.parentNode.removeChild(x);\9}\9function scan(el) {\9\9[\"iframe\", \"img\", \"object\", \"embed\", \"video\"].forEach(function(s) {\9\9\9bc.call(el.getElementsByTagName(s), function(x) {\9\9\9\9while (x) {\9\9\9\9\9if (isFloatLay(x)) {\9\9\9\9\9\9//要删除的层得同时满足二个条件\9\9\9\9\9\9if (testStyle(x)) delNode(x);\9\9\9\9\9\9break;\9\9\9\9\9}\9\9\9\9\9x = x.offsetParent;\9\9\9\9}\9\9\9});\9\9});\9}\9/*\9//扫描广告脚本\9bc.call(document.getElementsByTagName(\"script\"), function(o) {\9\9if (o.src && o.readyState !== \"complete\") delNode(o);\9});\9//没用哦,因为DIV中可能已经生成了元素\9bc.call(document.querySelectorAll ? document.querySelectorAll(\"div>script\") : document.getElementsByTagName(\"script\"), function(x) {\9\9x = x.parentNode;\9\9if (x.childNodes.length === 1) delNode(x);\9});\9*/\9document.addEventListener(\"DOMContentLoaded\", function(){scan(document);}, false);\9bc.call(frames, function(x) {\9\9try {\9\9\9scan(x.contentDocument);\9\9} catch (e) {}\9});})();]])\
+        对话框()\
+        .设置标题(\"温馨提示\")\
+        .设置消息([[您已经启用广告拦截模式⑤，本功能主要用于DNS被挟持或者host被挟持所带来的广告，如有浏览问题请重启应用！技术由孤灯广告屏蔽助手提供]])\
+        .设置积极按钮(\"我知道了\")\
+        .显示()\
+      end\
+    end})\
+  .show()\
+end)\
+.setNeutralButton(\"物理浏览\",function()\
+  function 物理效果(id,灵敏度)\
+    if not (__IIll00oo==nil)then\
+      弹出消息(\"此代码仅允许运行一次！\")\
+    end\
+    if not (type(id)==\"table\")then\
+      __IIll00oo={}\
+      table.insert(__IIll00oo,id)\
+    else\
+      __IIll00oo=id\
+    end\
+    local l = 灵敏度 or 1\
+    require \"import\"\
+    import \"android.content.Context\"\
+    import \"android.hardware.Sensor\"\
+    import \"android.hardware.SensorEvent\"\
+    import \"android.hardware.SensorEventListener\"\
+    import \"android.hardware.SensorManager\"\
+    local x轴,y轴,z轴\
+    传感器 = activity.getSystemService(Context.SENSOR_SERVICE)\
+    local 加速度传感器 = 传感器.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)\
+    传感器.registerListener(SensorEventListener({\
+      onSensorChanged=function(event)\
+        local x轴 = event.values[0]\
+        local y轴 = event.values[1]\
+        local z轴 = event.values[2]\
+        for v,k in pairs(__IIll00oo) do\
+          k.setRotationX(y轴*l)\
+          k.setRotationY(x轴*l)\
+        end\
+      end,nil}), 加速度传感器, SensorManager.SENSOR_DELAY_NORMAL)\
+  end\
+  物理效果({webView,titleTvw},3)\
+  弹出消息(\"由孤灯广告屏蔽助手整合源码\")\
+end)\
+.setNegativeButton(\"退出\",nil)--退出按钮\
+.show()\
+import \"android.graphics.Paint\"\
+\
+--导入AudioManager类\
+import \"android.media.AudioManager\"\
+\
+--注意是改变媒体音量\
+\
+--得到音频管理对象\
+mAudioManager = activity.getSystemService(Context.AUDIO_SERVICE);\
+\
+--获取当前音乐音量\
+mVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC); \
+\
+--设置为seekbar音量的最大阶数\
+seekbar.setMax(mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));\
+\
+--设置seekbar为当前音量进度 \
+seekbar.setProgress(mVolume);\
+\
+--绑定监听\
+seekbar.setOnSeekBarChangeListener{\
+  onProgressChanged=function(a,i)\
+    --拖动seekbar时改变音量\
+    mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, i, 1);--设置1显示音量调节窗口0为隐藏\
+    px=math.floor(i/mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC)*100)\
+    seekText.Text=\"音量：\"..px..\"%\"\
+  end}\
+包名=this.getPackageManager().getPackageInfo(this.getPackageName(),((32552732/2/2-8183)/10000-6-231)/9)\
+版本=tostring(包名.versionName)\
+版本号=tonumber(包名.versionCode)\
+更新链接=\"https://sharechain.qq.com/1e264b2cdda0279f0dffe13133c99b35\"--用了@小狼狗QQ收藏检查更新代码\
+Http.get(更新链接,nil,\"UTF-8\",nil,function(code,content,cookie,header)\
+  if(code==200 and content)then\
+    content=content:match(\"\\\"html_content\\\":(.-),\"):gsub(\"\\\\u003C/?.-%>\",\"\"):gsub(\"\\\\n\",\"\\n\"):gsub(\"&nbsp;\",\" \"):gsub(\"&lt;\",\"<\"):gsub(\"&gt;\",\">\"):gsub(\"&amp;\",\"&\"):gsub(\"&quot;\",\"\\\"\"):gsub(\"&apos;\",\"'\")\
+    新版本=content:match(\"【版本】(.-)【版本】\")\
+    新版本号=content:match(\"【版本号】(.-)【版本号】\")\
+    更新日志=content:match(\"【更新日志】(.-)【更新日志】\")\
+    gxurl=content:match(\"【下载链接】(.-)【下载链接】\")\
+\
+  else\
+    print(\"连接服务器失败(\"..code..\")\")\
+  end\
+  if 新版本号>tostring(this.getPackageManager().getPackageInfo(this.getPackageName(),((32552732/2/2-8183)/10000-6-231)/9).versionCode) then\
+    弹出消息(\"有更新，请联系开发者更新\")\
+else\
+  弹出消息(\"已连接云广告拦截服务\")\
+end\
+end)" ;
+              } ;
+          [5]	= {
+              ["name"]	= "夜间模式" ;
+              ["onClick"]	= "夜间模式.切换()" ;
+              } ;
+          [6]	= {
+              ["name"]	= "设置" ;
+              ["onClick"]	= "items={\"⬛   渐变色\",\"🔨   选择对话框主题\",\"↩️   屏幕方向手动切换\",\"↪️   屏幕方向跟随系统\",\"🔨   清理缓存\"}\
+AlertDialog.Builder(this)\
+.setTitle(\"🛠   程序设置\")\
+.setItems(items,{onClick=function(l,v)\
+  if v==0 then\
+     if 渐变色==nil then\
+  渐变色=\"关\"\
+  弹出消息(\"已打开\")\
+  view=toolbarParent\
+color1 = 0xffFF8080;\
+color2 = 0xff8080FF;\
+color3 = 0xff80ffff;\
+color4 = 0xff80ff80;\
+import \"android.animation.ObjectAnimator\"\
+import \"android.animation.ArgbEvaluator\"\
+import \"android.animation.ValueAnimator\"\
+import \"android.graphics.Color\"colorAnim = ObjectAnimator.ofInt(view,\"backgroundColor\",{color1, color2, color3,color4})\
+colorAnim.setDuration(3000)\
+colorAnim.setEvaluator(ArgbEvaluator())\
+colorAnim.setRepeatCount(ValueAnimator.INFINITE)\
+colorAnim.setRepeatMode(ValueAnimator.REVERSE)\
+colorAnim.start()\
+  elseif 渐变色==\"关\" then\
+  渐变色=nil\
+  弹出消息(\"已关闭\")\
+  activity.recreate()\
+end\
+    end\
+  if v==1 then\
+    items={\"主题1\",\"主题2\",\"主题3\",\"主题4\",\"主题5\",\"主题6\",\"主题7\",\"主题8\",\"主题9\",\"主题10\",\"主题11\",\"主题12\",\"主题13\",\"主题14\",\"主题15\",\"主题16\",\"主题17\",\"主题18\",\"主题19\",\"主题20\",\"主题21\",\"主题22\",\"主题23\",\"恢复到默认主题\"}AlertDialog.Builder(this)\
+.setTitle(\"选择主题\")\
+.setItems(items,{onClick=function(l,v)\
+    if v==0 then\
+activity.setTheme(android.R.style.Theme_Holo)\
+    end\
+    if v==1 then\
+      activity.setTheme(android.R.style.Theme_Holo_Dialog)\
+    end\
+  if v==2 then\
+   activity.setTheme(android.R.style.Theme_Holo_Dialog_MinWidth)\
+    end\
+      if v==3 then\
+activity.setTheme(android.R.style.Theme_Holo_DialogWhenLarge)\
+    end\
+    if v==4 then\
+               activity.setTheme(android.R.style.Theme_Holo_DialogWhenLarge_NoActionBar)\
+    end\
+    if v==5 then\
+      activity.setTheme(android.R.style.Theme_Holo_Dialog_NoActionBar)\
+    end\
+    if v==6 then\
+activity.setTheme(android.R.style.Theme_Holo_Dialog_NoActionBar_MinWidth)\
+    end\
+    if v==7 then\
+activity.setTheme(android.R.style.Theme_Holo_InputMethod)\
+    end  \
+    if v==8 then\
+activity.setTheme(android.R.style.Theme_Holo_InputMethod)\
+    end\
+  if v==9 then\
+     activity.setTheme(android.R.style.Theme_Holo_NoActionBar)\
+    end\
+   if v==10 then\
+     activity.setTheme(android.R.style.Theme_Holo_NoActionBar_Fullscreen)\
+    end\
+   if v==11 then\
+     activity.setTheme(android.R.style.Theme_Holo_Wallpaper)\
+    end\
+   if v==12 then\
+    activity.setTheme(android.R.style.Theme_Holo_Wallpaper_NoActionBar)\
+    end\
+   if v==13 then\
+activity.setTheme(android.R.style.Theme_Holo_Panel)\
+    end\
+   if v==14 then\
+               activity.setTheme(android.R.style.Theme_Holo_Light)\
+    end\
+   if v==15 then\
+     activity.setTheme(android.R.style.Theme_Holo_Light_Dialog)\
+    end\
+   if v==16 then\
+    activity.setTheme(android.R.style.Theme_Holo_Light_Dialog_MinWidth)\
+    end if v==17 then\
+     activity.setTheme(android.R.style.Theme_Holo_Light_DialogWhenLarge)\
+    end\
+   if v==18 then\
+    activity.setTheme(android.R.style.Theme_Holo_Light_Dialog_NoActionBar)\
+    end\
+   if v==19 then\
+   activity.setTheme(android.R.style.Theme_Holo_Light_Dialog_NoActionBar_MinWidth)\
+    end\
+   if v==20 then\
+     activity.setTheme(android.R.style.Theme_Holo_Light_Panel)\
+    end\
+   if v==21 then\
+     activity.setTheme(android.R.style.Theme_NoTitleBar_OverlayActionModes)\
+    end\
+   if v==22 then\
+     activity.setTheme(android.R.style.Theme_WithActionBar)\
+    end\
+   if v==23 then\
+    activity.recreate()\
+    end\
+  end})\
+.show()\
+    end\
+   if v==2 then\
+     if SetHSP==nil then\13\
+  --横屏\13\
+  activity.setRequestedOrientation(0); \13\
+  SetHSP=\"H\"\13\
+else\13\
+  --竖屏\13\
+  activity.setRequestedOrientation(1); \13\
+  SetHSP=nil\13\
+end\13\
+--复制粘贴到各种点击事件里\13\
+    end\
+   if v==3 then\
+     --自动，由物理感应器决定\
+import \"android.content.pm.ActivityInfo\"\
+activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);\
+barisshow = 0;\
+    end\
+  if v==4 then\
+     --清除缓存(浏览历史,缓存文件)\
+clr()\
+end\
+ if v==5 then\
+\
+items={\"查看历史记录\",\"导出历史记录\",\"清除历史记录\"}\
+AlertDialog.Builder(this)\
+.setTitle(\"历史记录操作\")\
+.setNegativeButton(\"取消\",nil)\
+.setItems(items,{onClick=function(l,v)\
+    if v==0 then\
+查看(历史记录)\
+    end\
+    if v==1 then\
+导出历史记录()\
+    end\
+  if v==2 then\
+     清除(历史记录)\
+    end\
+  end})\
+.show()\
+ \
+    end\
+   if v==6 then\
+     --输入对话框（自定义布局对话框，带输入框的）\
+InputLayout={\
+  LinearLayout;\
+  orientation=\"vertical\";--重力属性\
+  Focusable=true,--可聚焦\
+  FocusableInTouchMode=true,--可聚焦在触摸模式下，可变色\
+  {\
+    TextView;--文本控件\
+    id=\"Text\",\
+    layout_width='80%w';--文本宽度\
+    layout_marginTop='10dp';--布局顶距\
+    layout_marginLeft='3dp';--布局左距\
+    layout_gravity='center';--重力属性\
+    text='输入页面代号：(页面代号就是页面名称除去页面两个字之后的数字，0代表快捷记事。)';--显示的文字\
+    textSize='15sp';--文字大小\
+  };\
+  {\
+    EditText;--编辑框控件\
+    id=\"edit\";\
+    layout_width='80%w';--编辑框宽度\
+    layout_marginTop='5dp';--布局顶距\
+    layout_gravity=\"center\",--重力属性\
+    Hint='请输入页面代号...';--设置编辑框为空时的提示文字\
+  }; \
+};\
+\
+AlertDialog.Builder(this)\
+.setTitle(\"记事本导出\")--设置标题\
+.setView(loadlayout(InputLayout))--设置布局\
+.setPositiveButton(\"确定\",function(v)--设置积极按钮\
+  if(edit.Text==\"0\")then\
+      model_time=tostring(os.date(\"%Y-%m-%d-%H:%M\"))\
+LuaUtil.copyDir(\"/data/data/\"..activity.getPackageName()..\"/Notepad.xml\",\"/storage/emulated/0/\"..model_time..\"快捷记事导出.xml\")\
+弹出消息(\"已导出至:/sdcard/\"..model_time..\"快捷记事导出.xml\")\
+      else\
+      model_time=tostring(os.date(\"%Y-%m-%d-%H:%M\"))\
+LuaUtil.copyDir(\"/data/data/\"..activity.getPackageName()..\"/savenote\"..edit.Text..\".xml\",\"/storage/emulated/0/\"..model_time..\"记事本页面\"..edit.Text..\"导出.xml\")\
+弹出消息(\"已导出至:/sdcard/\"..model_time..\"记事本页面\"..edit.Text..\"导出.xml\")\
+      end\
+    end)\
+.setNegativeButton(\"取消\",nil)--设置消极按钮\
+.show()--显示弹窗\
+import \"android.view.View$OnFocusChangeListener\"\
+edit.setOnFocusChangeListener(OnFocusChangeListener{ \
+  onFocusChange=function(v,hasFocus)\
+    if hasFocus then\
+      Text.setTextColor(0xFD009688)--当编辑框被点击时修改标题下的文本颜色\
+    end\
+  end})\
+    end\
+   if v==7 then\
+items={\"导出\",\"导入\"}\
+AlertDialog.Builder(this)\
+.setTitle(\"\")\
+.setItems(items,{onClick=function(l,v)\
+    if v==0 then\
+model_time=tostring(os.date(\"%Y-%m-%d-%H:%M\"))\
+LuaUtil.copyDir(\"/mnt/sdcard/android/obb/linghun.sc.notes/notes\",\"/sdcard/\"..model_time..\"笔记导出.xml\")\
+弹出消息(\"已导出至:/sdcard/\"..model_time..\"笔记导出.xml\")\
+    end\
+    if v==1 then\
+      --输入对话框（自定义布局对话框，带输入框的）\
+InputLayout={\
+  LinearLayout;\
+  orientation=\"vertical\";--重力属性\
+  Focusable=true,--可聚焦\
+  FocusableInTouchMode=true,--可聚焦在触摸模式下，可变色\
+  {\
+    TextView;--文本控件\
+    id=\"Text\",\
+    layout_width='80%w';--文本宽度\
+    layout_marginTop='10dp';--布局顶距\
+    layout_marginLeft='3dp';--布局左距\
+    layout_gravity='center';--重力属性\
+    text='输入目录：';--显示的文字\
+    textSize='15sp';--文字大小\
+  };\
+  {\
+    EditText;--编辑框控件\
+    id=\"edit\";\
+    layout_width='80%w';--编辑框宽度\
+    layout_marginTop='5dp';--布局顶距\
+    layout_gravity=\"center\",--重力属性\
+    Hint='/storage/emulated/0/XXXX-XX-XX-XX:XX笔记导出.xml';--设置编辑框为空时的提示文字\
+  }; \
+};\
+\
+AlertDialog.Builder(this)\
+.setTitle(\"导入笔记文件\")--设置标题\
+.setView(loadlayout(InputLayout))--设置布局\
+  .setNeutralButton(\"默认导出目录\",function(v)--设置中立按钮\
+    复制文本(\"/storage/emulated/0/XXXX-XX-XX-XX:XX笔记导出.xml\")\
+    弹出消息(\"已复制，X记得改成导出日期。\")\
+    end)\
+.setPositiveButton(\"确定\",function(v)--设置积极按钮\
+LuaUtil.copyDir(edit.Text,\"/mnt/sdcard/android/obb/linghun.sc.notes/notes\")\
+弹出消息(\"导入成功\")\
+end)\
+.setNegativeButton(\"取消\",nil)--设置消极按钮\
+.show()--显示弹窗\
+import \"android.view.View$OnFocusChangeListener\"\
+edit.setOnFocusChangeListener(OnFocusChangeListener{ \
+  onFocusChange=function(v,hasFocus)\
+    if hasFocus then\
+      Text.setTextColor(0xFD009688)--当编辑框被点击时修改标题下的文本颜色\
+    end\
+  end})\
+    end\
+  end})\
+.show()\
+    end\
+    if v==8 then\
+      items={\"🔸   网页收藏\",\"🔹   应用收藏\",\"🔹   视频收藏\",\"🔹   漫画收藏\"}\
+AlertDialog.Builder(this)\
+.setTitle(\"🌎   选择收藏夹导出\")\
+.setNegativeButton(\"取消\",nil)\
+.setItems(items,{onClick=function(l,v)\
+    if v==0 then\
+      导出收藏(\"网页收藏\")\
+--showDataDialog(\"Collection\",\"网页收藏\")\
+\
+--\"Collection\"是收藏标识，可以每个网站单独设置一个标识\
+    end\
+    if v==1 then\
+      导出收藏(\"应用收藏\")\
+  --showDataDialog(\"yingyong\",\"应用收藏\")\
+\
+--\"Collection\"是收藏标识，可以每个网站单独设置一个标识\
+    end\
+  if v==2 then\
+    导出收藏(\"视频收藏\")\
+   showDataDialog(\"sp\",\"视频收藏\")\
+\
+--\"Collection\"是收藏标识，可以每个网站单独设置一个标识\
+end\
+   if v==3 then\
+     导出收藏(\"漫画收藏\")\
+  --showDataDialog(\"ma\",\"漫画收藏\")\
+\
+--\"Collection\"是收藏标识，可以每个网站单独设置一个标识\
+end\
+\
+  end})\
+.show()\
+    end\
+   if v==9 then\
+function 标题()--WUX手写，为了群友所做，请不要删除版权，QQ724930341\
+titleTvw.text=设置--WUX手写，为了群友所做，请不要删除版权，--WUX手写，为了群友所做，请不要删除版权，QQ724930341\
+end--WUX手写，为了群友所做，请不要删除版权，QQ724930341\
+InputLayout={--WUX手写，为了群友所做，请不要删除版权，QQ724930341--WUX手写，为了群友所做，请不要删除版权，QQ724930341\
+  LinearLayout;\
+  orientation=\"vertical\";\
+  Focusable=true,--WUX手写，为了群友所做，请不要删除版权，QQ724930341\
+  FocusableInTouchMode=true,--WUX手写，为了群友所做，请不要删除版权，QQ724930341\
+  {\
+    TextView;--WUX手写，为了群友所做，请不要删除版权，QQ724930341\
+    id=\"Prompt\",\
+    textSize=\"15sp\",--WUX手写，为了群友所做，请不要删除版权，QQ724930341\
+    layout_marginTop=\"10dp\";\
+    layout_marginLeft=\"3dp\",--WUX手写，为了群友所做，请不要删除版权，QQ724930341\
+    layout_width=\"80%w\";\
+    layout_gravity=\"center\",--WUX手写，为了群友所做，请不要删除版权，QQ724930341\
+    text=\"设置顶栏标题\";\
+  };\
+  {--WUX手写，为了群友所做，请不要删除版权，QQ724930341\
+    EditText;\
+    hint=\"输入标题\";--WUX手写，为了群友所做，请不要删除版权，QQ724930341--WUX手写，为了群友所做，请不要删除版权，QQ724930341\
+    layout_marginTop=\"5dp\";\
+    layout_width=\"80%w\";\
+    layout_gravity=\"center\",\
+    id=\"bt\";\
+  };--WUX手写，为了群友所做，请不要删除版权，QQ724930341\
+};\
+AlertDialog.Builder(this)--WUX手写，为了群友所做，请不要删除版权，QQ724930341\
+.setTitle(\"标题设置\")\
+.setView(loadlayout(InputLayout))\
+.setPositiveButton(\"确定\",{onClick=function(v) --WUX手写，为了群友所做，请不要删除版权，QQ724930341\
+    设置=bt.Text\
+    标题()\
+  end})\
+.setNegativeButton(\"取消\",nil)--WUX手写，为了群友所做，请不要删除版权，QQ724930341\
+.show()\
+    end\
+   if v==10 then\
+items={\"应用信息\",\"历史版本下载\",\"源码下载\",\"作者信息\",\"测试版下载\",\"分享应用\",\"更新日志\"}\
+AlertDialog.Builder(this)\
+.setTitle(\"关于\")\
+.setNegativeButton(\"\",nil)\
+.setItems(items,{onClick=function(l,v)\
+    if v==0 then\
+packinfo=this.getPackageManager().getPackageInfo(this.getPackageName(),((32552732/2/2-8183)/10000-6-231)/9)\
+version=tostring(packinfo.versionName)\
+对话框()\
+.设置标题(\"应用信息\")\
+.设置消息(\"版本:V\"..version..\"正式版(16)\\n包名:com.guodongdou\\n本软件使用Fusion App制作，保证没有彩蛋。\")\
+.设置积极按钮(\"检查更新\",function()\
+  import \"android.content.Intent\"\
+import \"android.net.Uri\"\
+import \"android.provider.Settings\"\
+\
+import \"android.app.ProgressDialog\"\
+import \"android.app.AlertDialog\"\
+\
+local appid = 10660\
+--将 10001 改成你在 https://aus.nowtime.cc/console/app_list 获取的 APPID\
+--获取方法[教程可能有点旧(其实我太懒)，就先将就下吧] https://nowtime.cc/lua/331.html\
+\
+local packinfo = this.getPackageManager().getPackageInfo(this.getPackageName(),((32552732/2/2-8183)/10000-6-231)/9)\
+local appinfo = this.getPackageManager().getApplicationInfo(this.getPackageName(),0)\
+local versionName = tostring(packinfo.versionName)-- 版本名（cc.nowtime）\
+local versionCode = tonumber(packinfo.versionCode)-- 版本号（10010）\
+\
+local check_update_url = \"https://aus.nowtime.cc/api/query/update?appid=\"..appid..\"&version_code=\"..versionCode\
+\
+if(activity.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE).getActiveNetworkInfo() == nil) then\
+  AlertDialog.Builder(this)\
+  .setTitle(\"提示\")\
+  .setMessage(\"你未连接至互联网 或 当前连接的网络不可用，请检查你的网络设置\")\
+  .setNeutralButton(\"确定\",nil)\
+  .setNegativeButton(\"打开 数据连接\",{onClick=function()\
+      intent = Intent(Settings.ACTION_DATA_ROAMING_SETTINGS)\
+      this.startActivity(intent)\
+    end})\
+  .setPositiveButton(\"连接 Wi-Fi\",{onClick=function()\
+      intent = Intent(Settings.ACTION_WIFI_SETTINGS)\
+      this.startActivity(intent)\
+    end})\
+  .show();\
+  return false\
+  -- 就此中断，不再继续执行下面代码\
+end\
+\
+--圆形旋转样式\
+check_update_dialog = ProgressDialog(this)\
+check_update_dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER)\
+check_update_dialog.setTitle(\"提示\")\
+--设置进度条的形式为圆形转动的进度条\
+check_update_dialog.setMessage(\"正在检查更新中，请稍等片刻……\\n\\n小提示，如果检查更新长时间无反应，按手机「返回键」可以取消检查更新\")\
+check_update_dialog.setCancelable(true)--设置是否可以通过点击Back键取消\
+check_update_dialog.setCanceledOnTouchOutside(false)--设置在点击Dialog外是否取消Dialog进度条\
+check_update_dialog.setOnCancelListener{\
+  onCancel=function(l)\
+    print(\"您取消了「检查更新」操作\")\
+    return false\
+    end}\
+--取消对话框监听事件\
+check_update_dialog.show()\
+\
+Http.get(check_update_url,nil,\"UTF-8\",nil,function(http_code,content,cookie,header)\
+  check_update_dialog.hide()\
+\
+  if (http_code == -1) then\
+    AlertDialog.Builder(this)\
+    .setTitle(\"提示\")\
+    .setMessage(\"检查更新时出现了些小问题。可能的原因有：\\n1.API 服务器可能暂时出现故障，请稍后再试！\\n2.请检查你的网络设置？\")\
+    .setPositiveButton(\"确定\",nil)\
+    .setNeutralButton(\"检查 Wi-Fi\",{onClick=function()\
+        intent = Intent(Settings.ACTION_WIFI_SETTINGS)\
+        this.startActivity(intent)\
+      end})\
+     .setNegativeButton(\"检查 移动数据连接\",{onClick=function()\
+        intent = Intent(Settings.ACTION_DATA_ROAMING_SETTINGS)\
+        this.startActivity(intent)\
+      end})\
+    .show()\
+    else\
+    code = tonumber(string.match(content,'\"code\":(.-),'))-- 状态码\
+    msg = string.match(content,'\"msg\":\"(.-)\"')-- 消息\
+\
+\
+    if(code == 200) then\
+      new_versionCode = tonumber(string.match(content,'\"version_code\":(.-),'))--版本号\
+      new_versionName = string.match(content,'\"version_name\":\"(.-)\"')--版本名\
+      apk_url = string.gsub(string.match(content,'\"apk_url\":\"(.-)\"'),'\\\\','')--下载地址\
+      update_log = string.gsub(string.match(content,'\"update_log\":\"(.-)\"'),'\\\\n',\"\\n\")--更新日志\
+      update_date = string.match(content,'\"update_time\":\"(.-)\"')--发布更新时间\
+      \
+      if (new_versionCode > versionCode) then\
+        AlertDialog.Builder(this)\
+        .setTitle(\"发现新版本\")\
+        .setMessage(\"当前版本：V\"..versionName..\"(\"..versionCode..\")\\n最新版本：V\"..new_versionName..\"(\"..new_versionCode..\")\\n版本发布时间：\"..update_date..\"\\n\\n更新日志：\\n\"..update_log)\
+        .setPositiveButton(\"立即更新\",{onClick=function()\
+            print(\"请选择一个应用或浏览器打开\")\
+            intent = Intent(\"android.intent.action.VIEW\")\
+            intent .setData(Uri.parse(apk_url))\
+            this.startActivity(Intent.createChooser(intent, \"请选择一个应用或浏览器用以下载最新版 APP\"))\
+          end})\
+         .setNeutralButton(\"复制链接\",{onClick=function()\
+            activity.getSystemService(Context.CLIPBOARD_SERVICE).setText(apk_url)--将下载链接复制到剪切板\
+            print(\"新版 APP 下载链接，复制成功！请粘贴到浏览器下载。\")\
+          end})\
+        .setNegativeButton(\"以后再说\",nill)\
+        .show()\
+      else\
+        AlertDialog.Builder(this)\
+        .setTitle(\"无可用更新\")\
+        .setMessage(\"您使用的是最新版本！\\n当前版本：\"..versionName..\"（\"..versionCode..\"）\\n最新版本：\"..new_versionName..\"（\"..new_versionCode..\"）\")\
+        .setPositiveButton(\"知道啦\",nil)\
+        .show()\
+      end\
+\
+    else\
+      AlertDialog.Builder(this)\
+         .setTitle(\"检查更新失败\")\
+      .setMessage(\"检查更新失败！以下是错误信息：\\n\\nERROR_CODE：\"..code..\"\\nERROR_MSG：\"..msg)\
+      .setPositiveButton(\"确定\",nil)\
+      .show()\
+    end\
+\
+  end\
+\
+end)\
+end)\
+.设置消极按钮(\"取消\")\
+.显示()\
+    end\
+    if v==1 then \
+        items={\"网址集V1.0\",\"QWE网址集V1.1\",\"QWE网页集-黑版V1.2-n\",\"QWE网页集-黑版V1.3-n\",\"QWE网页集-黑版V1.4-n\",\"QWE网页集-黑版V1.5-n\",\"果冻豆工具箱V1.6-n\",\"果冻豆工具箱V2.0\",\"果冻豆工具箱V2.1\",\"果冻豆工具箱V2.1.3\"}\
+        AlertDialog.Builder(this)\
+.setTitle(\"历史版本下载\")\
+.setItems(items,{onClick=function(l,v)\
+    if v==0 then\
+进入子页面(\"调用界面\",{链接=\"http://t.cn/EbXiowS\"})\
+    end\
+    if v==1 then\
+进入子页面(\"调用界面\",{链接=\"http://t.cn/EbXE2uE\"})\
+    end\
+      if v==2 then\
+进入子页面(\"调用界面\",{链接=\"http://t.cn/EbXRWkC\"})\
+    end\
+    if v==3 then\
+进入子页面(\"调用界面\",{链接=\"http://t.cn/EbXnNmy\"})\
+    end\
+    if v==4 then\
+进入子页面(\"调用界面\",{链接=\"http://t.cn/EbXmxRG\"})\
+    end\
+    if v==5 then\
+      进入子页面(\"调用界面\",{链接=\"https://pan.baidu.com/s/1opIwRB48WVIclwDOwIuOdg\"})\
+      复制文本(\"5a8l\")\
+      弹出消息(\"提取码已复制\")\
+    end\
+    if v==6 then\
+进入子页面(\"调用界面\",{链接=\"http://t.cn/EbXuJOx\"})\
+    end  \
+    if v==7 then\
+      进入子页面(\"调用界面\",{链接=\"https://pan.baidu.com/s/1Q_rLU7KA2b9QD1JpnvvL1g\"})\
+      复制文本(\"69w4\")\
+      弹出消息(\"提取码已复制\")\
+    end\
+   if v==8 then\
+     进入子页面(\"调用界面\",{链接=\"https://pan.baidu.com/s/1pPfJEucbpWFNliOVg6MslQ\"})\
+      复制文本(\"fqa6\")\
+      弹出消息(\"提取码已复制\")\
+    end\
+   if v==9 then\
+    进入子页面(\"调用界面\",{链接=\"https://pan.baidu.com/s/1woveq0xumPy0F_OiEMcUXA\"})\
+      复制文本(\"0452\")\
+      弹出消息(\"提取码已复制\")\
+    end\
+  end})\
+.show()\
+    end\
+    if v==2 then\
+进入子页面(\"调用界面\",{链接=\"http://www.iyuji.cn/iyuji/s/dG9nZFh0YzZuWkltWCtKZ2hIckNQQT09/1548161156714506\"})\
+    end\
+    if v==3 then\
+对话框()\
+.设置标题(\"作者信息\")\
+.设置消息(\"作者的酷安:QWE12345678\\n作者的QQ:302538547\")\
+.设置积极按钮(\"作者制作的其他软件\",function()\
+  items={\"coolapk_1.0\"}\
+AlertDialog.Builder(this)\
+.setTitle(\"作者的其它软件\")\
+.setItems(items,{onClick=function(l,v)\
+    if v==0 then\
+进入子页面(\"调用界面\",{链接=\"https://pan.baidu.com/s/1MFOk12XP_o19BUn8UEQ04g\"})\
+复制文本(\"9fl4\")\
+弹出消息(\"提取码已复制\")\
+\
+    end\
+    if v==1 then\
+    end\
+    if v==2 then\
+    end if v==3 then\
+    end\
+    if v==4 then\
+    end\
+    if v==5 then\
+    end\
+    if v==6 then\
+    end  \
+    if v==6 then\
+    end\
+  end})\
+.show()\
+end)\
+.设置消极按钮(\"取消\")\
+.显示()\
+    end\
+        if v==4 then\
+      进入子页面(\"调用界面\",{链接=\"http://www.iyuji.cn/iyuji/s/dG9nZFh0YzZuWkltWCtKZ2hIckNQQT09/1547214013488581\"})\
+    end\
+  if v==5 then\
+ 分享文本(\"分享一个APP给你，果冻豆工具箱，下载地址：http://www.iyuji.cn/iyuji/s/dG9nZFh0YzZuWkltWCtKZ2hIckNQQT09/1546069103260449\")\
+    \
+    end\
+   if v==6 then\
+ 对话框()\
+.设置标题(\"更新日志\")\
+.设置消息(\"2.2.4更新日志:\\n1.应用中心侧栏样式修改；增加小程序；顶栏颜色修改。\\n2.更多板块中的网址导航增加洽初导航。\\n3.影视中心增加更多网站。\\n4.音乐中心顶栏颜色改为黑色，取消阴影。\\n5.在线工具里面的在线工具合集增加大量功能，在线工具删除标题，在线工具网站增加随便吧。\\n6.增加历史记录功能。\\n2.2.3更新日志:\\n1.轻浏览器和调用界面增加切换UA。\\n2.视频解析接口数量增加。\\n3.工具箱板块增加轻函Notes，更多板块增加XP框架，网页集板块里影视中心增加悬浮按钮:视频选项，在线工具的更多在线工具增加编程源码，工具箱板块删除一些功能。\\n4.百度改版，百度云盘搜索引擎移至更多在线工具。\\n5.讯飞语记网页修改。\\n6.更多板块中的破解软件增加绿软分享。\\n7.工具箱的标题换成了本地工具。\\n8.工具箱板块中访问网址升级。\\n9.百度、微信网页版、检查更新、调用界面增加返回的功能。\\n10.在线工具的底栏颜色修改。\\n11.更多板块增加FusionApp教程。\\n12.轻浏览器百度搜索功能升级。\\n13.顶栏的搜索功能升级，标题修改。\\n14.工具箱版块增加获取当前壁纸、电脑模式。\\n15.关于改版。\\n16.检查更新功能升级，并搬至设置里面的关于。\\n17.顶栏布局修改。\\n18.音乐中心更多功能增加自由的音乐。\\n19.工具箱板块中执行Shell功能增加常用命令列表。\\n20.小画板增加更多笔刷大小。\\n21.应用中心增加阴影、修改配色。\\n22.网页收藏功能升级。\\n23.主页切换增加自定义主页颜色和取消按钮。\\n24.主页切换增加星空主页。\\n25.在线工具修改。\\n2.2.2更新日志:\\n1.网页集板块音乐全新改版，改名为音乐中心。网页集板块增加标题。视频配色修改，改名为影视中心。列表中的应用改为应用中心。\\n2.更多版块增加标题。\\n3.工具箱板块增加当前时间。\\n4.应用中心增加酷安和翻应用。\\n5.微信网页版功能完善。\\n6.全局复制功能改变。\\n7.浏览器删除，功能被整合到其他地方。\\n8.主页样式修改，设置中主页切换功能修改。\\n9.大部分界面顶栏增加阴影并取消渐变色。\\n10.更多在线工具里面的资源改成第一PPT了，绿色资源网搬到了应用中心里。\\n11.主页、轻浏览器、在线工具的列表对话框优化。\\n12.轻浏览器和调用界面增加电脑模式。\\n2.2.1更新日志:\\n1.更多版块中新增加密兔。\\n2.调用界面和我的收藏以及轻浏览器增加查看网页源码的功能。\\n3.设置增加屏幕方向跟随系统、屏幕方向手动切换功能。\\n4.顶栏菜单里面的我的收藏被移至顶栏，原来的分享功能现在只有关于里面有了。\\n5.顶栏菜单去除，设置直接被放到了顶栏上，关于被放到了设置里面，执行Shell被放到了工具箱版块里面，退出软件的功能已被删除。\\n6.视频里面的部分功能已被收纳到更多功能里面了。\\n7.启动图标修改。\\n8.更多在线工具增加PDCICONS。\\n9.选择主题改为选择对话框主题。\\n10.更多版块中增加蔷薇花园。\\n11.工具箱版块中增加腾讯刺激战场辅助工具、网络工具箱、QQ头像获取、小画板，查看设备信息中增加更多功能。\\n12.应用中心的打开酷安、下载酷安、告诉你一个秘密已被删除，本地应用商店在侧滑栏创建了另一个入口。\\n13.联系QQ和加QQ群（原联系QQ）功能增加加QQ群的功能。\\n14.在线工具底栏排列顺序改变，增加少数派，Toolfk在线工具被移至顶栏菜单，在线工具已删除。\\n15.源码下载、渐变色关闭、恢复到默认主题优化。\\n16.增加悬浮按钮:日应美图。\\n2.2.0更新日志:\\n1.主页网址导航板块已改为应用中心板块，以前的网址导航板块已经移到了“更多(包含ROM中心)”板块的里面。\\n2.原酷安标题已改为应用中心。\\n3.旧、新主页切换、渐变色、主题已经被收纳到设置里面。\\n4.主题增加恢复到默认主题的功能\\n5.渐变色关闭功能的对话框文本被修改。\\n6.主页样式大改。\\n7.选择主题增加自定义功能，旧主页功能弹出信息“只能恢复到这种程度了”。\")\
+.设置积极按钮(\"确定\",function()\
+                                                                                                                                                                                                                 \
+end)\
+.设置消极按钮(\"\")\
+.显示()\
+    end\
+  end})\
+.show()  \
+end\
+  end})\
+.show()" ;
+              } ;
+          [7]	= {
+              ["name"]	= "关于" ;
+              ["onClick"]	= "--程序启动时会执行的事件\
+--程序启动时会执行的事件\
+toolbarParent.setBackgroundColor(Color.parseColor(\"#ff4c9afa\"));--顶栏颜色\
+yl=\
+{\
+LinearLayout,\
+  orientation=\"vertical\",\
+  layout_width=\"fill\";\
+  layout_height=\"fill\";\
+  background=\"#ff4c9afa\",\
+  id=\"bj\";\
+    {ScrollView,\
+    layout_width=\"100%w\";\
+    layout_height=\"fill\";\
+    {\
+LinearLayout,\
+  orientation=\"vertical\",\
+  layout_width=\"fill\";\
+  layout_height=\"wrap\";\
+          {\
+          CardView;\
+          layout_margin=\"20dp\";\
+          elevation=\"1dp\";\
+          id=\"ka2\";\
+          layout_width=\"fill\";\
+          layout_height=\"150dp\";\
+          radius=\"20dp\";\
+          elevation=\"10dp\";\
+              {\
+LinearLayout,\
+  orientation=\"vertical\",\
+  layout_width=\"fill\";\
+  layout_height=\"wrap\";\
+  gravity=\"center\",\
+  {\
+    ImageView;\
+    id=\"img\";\
+    src=\"drawable/gy.png\";\
+    layout_width=\"60dp\";\
+    layout_height=\"60dp\";\
+    layout_marginTop=\"30dp\";\
+    scaleType=\"fitXY\";\
+    id=\"logo\";\
+  };\
+         {\
+          TextView;\
+          layout_width=\"fill\";\
+          layout_height=\"40dp\";\
+          layout_marginTop=\"10dp\";\
+          gravity=\"center\",\
+          textColor=\"#FF000000\";\
+          text=\"Air浏览器-关于我们\";\
+          textSize=\"20sp\",\
+              id=\"gy\";\
+          };\
+};\
+        };\
+             {\
+          CardView;\
+          layout_margin=\"20dp\";\
+          elevation=\"1dp\";\
+          id=\"ka2\";\
+          layout_width=\"fill\";\
+          layout_height=\"wrap\";\
+          radius=\"15dp\";\
+          elevation=\"10dp\";\
+                           {\
+          TextView;\
+          layout_width=\"fill\";\
+          layout_height=\"40dp\";\
+          gravity=\"center\",\
+          textColor=\"#FF000000\";\
+          text=\"其他功能:\";\
+          textSize=\"20sp\",\
+              id=\"qt\";\
+          };\
+          };\
+              {\
+          CardView;\
+          layout_margin=\"20dp\";\
+          elevation=\"1dp\";\
+          id=\"ka2\";\
+          layout_width=\"fill\";\
+          layout_height=\"wrap\";\
+          radius=\"20dp\";\
+          elevation=\"10dp\";\
+                    {\
+                      LinearLayout,\
+  orientation=\"vertical\",\
+  layout_width=\"fill\";\
+  layout_height=\"fill\";\
+                        {\
+          TextView;\
+          layout_width=\"fill\";\
+          layout_height=\"wrap\";\
+          gravity=\"center\",\
+          textColor=\"#ff000000\";\
+          text=\"已是最新\";\
+          style=\"?android:attr/buttonBarButtonStyle\";\
+          textSize=\"20sp\",\
+          id=\"jcgx\";\
+          onClick=function()\
+if  File(\"sdcard/Android/data/com.android.YLliulanqi/jcgx.txt\").exists() then\
+  else\
+  进入子页面(\"浏览器\",{链接=\"https://www.lanzous.com/b354571\"})\
+  end\
+end\
+          };\
+                          {\
+          TextView;\
+          layout_width=\"fill\";\
+          layout_height=\"wrap\";\
+          gravity=\"center\",\
+          textColor=\"#ff000000\";\
+          text=\"清除缓存\";\
+          style=\"?android:attr/buttonBarButtonStyle\";\
+          textSize=\"20sp\",\
+          onClick=function()\
+            print(\"正在清理中,应用即将退出\")\
+            task(3000,function()\
+ os.execute(\"pm clear \"..activity.getPackageName())\
+ end)\
+end\
+          };\
+                             {\
+          TextView;\
+          layout_width=\"fill\";\
+          layout_height=\"wrap\";\
+          gravity=\"center\",\
+          textColor=\"#ff000000\";\
+          text=\"前往官网\";\
+          style=\"?android:attr/buttonBarButtonStyle\";\
+          textSize=\"20sp\",\
+          onClick=function()\
+ 进入子页面(\"浏览器\",{链接=\"https://www.lanzous.com/b354571\"})\
+end\
+          };\
+                             {\
+          TextView;\
+          layout_width=\"fill\";\
+          layout_height=\"wrap\";\
+          gravity=\"center\",\
+          textColor=\"#ff000000\";\
+          text=\"反馈建议\";\
+          style=\"?android:attr/buttonBarButtonStyle\";\
+          textSize=\"20sp\",\
+          onClick=function()\
+ 联系QQ(1046312124)\
+end\
+          };\
+                             {\
+          TextView;\
+          layout_width=\"fill\";\
+          layout_height=\"wrap\";\
+          gravity=\"center\",\
+          textColor=\"#ff000000\";\
+          text=\"打赏一下\";\
+          style=\"?android:attr/buttonBarButtonStyle\";\
+          textSize=\"20sp\",\
+          onClick=function()\
+ 弹出消息(\"正在为您跳转\")\
+ 联系QQ(1046312124)\
+end\
+          };\
+          };\
+       };\
+                 {\
+          CardView;\
+          layout_margin=\"20dp\";\
+          elevation=\"1dp\";\
+          id=\"ka2\";\
+          layout_width=\"fill\";\
+          layout_height=\"wrap\";\
+          radius=\"15dp\";\
+          elevation=\"10dp\";\
+                       {\
+          TextView;\
+          layout_width=\"fill\";\
+          layout_height=\"40dp\";\
+          gravity=\"center\",\
+          textColor=\"#FF000000\";\
+          text=\"用户协议:\";\
+          textSize=\"20sp\",\
+              id=\"sm\";\
+          };\
+          };\
+            {\
+          CardView;\
+          layout_margin=\"20dp\";\
+          elevation=\"1dp\";\
+          id=\"ka2\";\
+          layout_width=\"fill\";\
+          layout_height=\"wrap\";\
+          radius=\"20dp\";\
+          elevation=\"10dp\";\
+                             {\
+LinearLayout,\
+  orientation=\"vertical\",\
+  layout_width=\"fill\";\
+  layout_height=\"fill\";\
+                    {\
+          TextView;\
+          layout_width=\"fill\";\
+          layout_height=\"wrap\";\
+          textColor=\"#FF000000\";\
+          gravity=\"center\",\
+          text=\"1.当您在启动本软件的同时已当您同意此项用户使用协议\\n2.在使用本软件的同时开发者有义务帮助你解决软件自身的问题\\n3.软件并无广告网页中存在的广告和开发者无任何关系\\n4.软件免费使用,禁止贩卖,违者必追究法律责任\\n5.个人在浏览器下载或安装违规应用，破坏了您的设备,请自行承担\\n6.软件并非盈利性软件,如果有人诚心打赏的可以联系开发者本人,多少都是心意\\n7.您需要理解并同意：为了向您提供有效的服务，本软件会利用您移动通讯终端的处理器和带宽等资源。本软件使用过程中可能产生数据流量的费用，用户需自行向运营商了解相关资费信息，并自行承担相关费用\\n8.对于部分网页会复制一些支付宝吱口令作者不做任何解释,但是作者将做最大的努力禁止复制吱口令\";\
+          textSize=\"20sp\",\
+              id=\"wd\";\
+          };\
+          };\
+        };\
+  };\
+  };\
+  };\
+ webView.addView(loadlayout(yl))\
+ view=logo\
+  import \"android.view.animation.Animation\"\
+  import \"android.view.animation.RotateAnimation\"\
+  rotate=RotateAnimation(0, 360,\
+  --旋转动画的水平旋转点\
+  Animation.RELATIVE_TO_SELF, 0.5, \
+  --旋转动画的垂直旋转点\
+  Animation.RELATIVE_TO_SELF, 0.5)\
+  --动画时长，决定了动画的旋转的快慢\
+  rotate.setDuration(500);\
+  --重复次数，设置为0.5则表示旋转一周，设置为1则表示旋转两周，同理可得0.2，0.3\
+  rotate.setRepeatCount(0.5); \
+  --是否反向动画，可以自己试一试\
+  --rotate.setRepeatMode(Animation.REVERSE); \
+  view.startAnimation(rotate);\
+  view=gy\
+  import \"android.view.animation.Animation\"\
+  import \"android.view.animation.RotateAnimation\"\
+  rotate=RotateAnimation(0, 360,\
+  --旋转动画的水平旋转点\
+  Animation.RELATIVE_TO_SELF, 0.5, \
+  --旋转动画的垂直旋转点\
+  Animation.RELATIVE_TO_SELF, 0.5)\
+  --动画时长，决定了动画的旋转的快慢\
+  rotate.setDuration(500);\
+  --重复次数，设置为0.5则表示旋转一周，设置为1则表示旋转两周，同理可得0.2，0.3\
+  rotate.setRepeatCount(0.5); \
+  --是否反向动画，可以自己试一试\
+  --rotate.setRepeatMode(Animation.REVERSE); \
+  view.startAnimation(rotate);\
+  view=sm\
+  import \"android.view.animation.Animation\"\
+  import \"android.view.animation.RotateAnimation\"\
+  rotate=RotateAnimation(0, 360,\
+  --旋转动画的水平旋转点\
+  Animation.RELATIVE_TO_SELF, 0.5, \
+  --旋转动画的垂直旋转点\
+  Animation.RELATIVE_TO_SELF, 0.5)\
+  --动画时长，决定了动画的旋转的快慢\
+  rotate.setDuration(500);\
+  --重复次数，设置为0.5则表示旋转一周，设置为1则表示旋转两周，同理可得0.2，0.3\
+  rotate.setRepeatCount(0.5); \
+  --是否反向动画，可以自己试一试\
+  --rotate.setRepeatMode(Animation.REVERSE); \
+  view.startAnimation(rotate);\
+  view=logo\
+  import \"android.view.animation.Animation\"\
+  import \"android.view.animation.RotateAnimation\"\
+  rotate=RotateAnimation(0, 360,\
+  --旋转动画的水平旋转点\
+  Animation.RELATIVE_TO_SELF, 0.5, \
+  --旋转动画的垂直旋转点\
+  Animation.RELATIVE_TO_SELF, 0.5)\
+  --动画时长，决定了动画的旋转的快慢\
+  rotate.setDuration(500);\
+  --重复次数，设置为0.5则表示旋转一周，设置为1则表示旋转两周，同理可得0.2，0.3\
+  rotate.setRepeatCount(0.5); \
+  --是否反向动画，可以自己试一试\
+  --rotate.setRepeatMode(Animation.REVERSE); \
+  view.startAnimation(rotate);\
+  view=qt\
+  import \"android.view.animation.Animation\"\
+  import \"android.view.animation.RotateAnimation\"\
+  rotate=RotateAnimation(0, 360,\
+  --旋转动画的水平旋转点\
+  Animation.RELATIVE_TO_SELF, 0.5, \
+  --旋转动画的垂直旋转点\
+  Animation.RELATIVE_TO_SELF, 0.5)\
+  --动画时长，决定了动画的旋转的快慢\
+  rotate.setDuration(500);\
+  --重复次数，设置为0.5则表示旋转一周，设置为1则表示旋转两周，同理可得0.2，0.3\
+  rotate.setRepeatCount(0.5); \
+  --是否反向动画，可以自己试一试\
+  --rotate.setRepeatMode(Animation.REVERSE); \
+  view.startAnimation(rotate);\
+  view=gy\
+  import \"android.view.animation.Animation\"\
+  import \"android.view.animation.RotateAnimation\"\
+  rotate=RotateAnimation(0, 360,\
+  --旋转动画的水平旋转点\
+  Animation.RELATIVE_TO_SELF, 0.5, \
+  --旋转动画的垂直旋转点\
+  Animation.RELATIVE_TO_SELF, 0.5)\
+  --动画时长，决定了动画的旋转的快慢\
+  rotate.setDuration(500);\
+  --重复次数，设置为0.5则表示旋转一周，设置为1则表示旋转两周，同理可得0.2，0.3\
+  rotate.setRepeatCount(0.5); \
+  --是否反向动画，可以自己试一试\
+  --rotate.setRepeatMode(Animation.REVERSE); \
+  view.startAnimation(rotate);\
+--作者音六网络科技\
+--QQ1785333334\
+--请勿删除版权以表示对作者的尊敬" ;
+              } ;
+          } ;
+      ["搜索框提示"]	= "愿世间烦恼与你无缘，愿一切美好常伴人间" ;
+      ["搜索URL"]	= "http://www.baidu.com/s?wd=%s" ;
+      ["icon_btns"]	= {
+          } ;
+      } ;
+  ["fltBtn"]	= {
+      ["显示"]	= false ;
+      ["点击事件"]	= "\
+items={\"🔍   百度搜索\",\"🌎   访问网址\",\"👨   网页分享\",\"⬆️   返回顶部\",\"🔃   刷新网页\",\"➕   加入收藏\",\"🗂    打开收藏\",\"💿   复制链接\",\"🔨   切换ua\",\"🏃   退出程序\"}\
+AlertDialog.Builder(this)\
+.setTitle(\"🌎   菜单\")\
+.setNegativeButton(\"显示/隐藏顶栏\",function(v)\
+if barisshow == 0 then\
+  --状态栏\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+  else\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+  end\
+end)\
+.setNeutralButton(\"显示/隐藏悬浮球\",function(v)--设置中立按钮\
+if barisshow == 0 then\
+      fltBtn.setVisibility(View.GONE)\
+      barisshow = 1;\
+  else\
+      fltBtn.setVisibility(View.VISIBLE)\
+   barisshow = 0;\
+   end\
+    end)\
+.setItems(items,{onClick=function(l,v)\
+    if v==0 then\
+ InputLayout={\
+        LinearLayout;\
+        orientation=\"vertical\";\
+        Focusable=true,\
+        FocusableInTouchMode=true,\
+        {\
+          TextView;\
+          id=\"Prompt\",\
+          textSize=\"15sp\",\
+          layout_marginTop=\"10dp\";\
+          layout_marginLeft=\"3dp\",\
+          layout_width=\"80%w\";\
+          layout_gravity=\"center\",\
+          text=\"百度搜索\"\
+        };\
+        {\
+\
+          EditText;\
+          hint=\"关键字\";\
+          layout_marginTop=\"5dp\";\
+          layout_width=\"80%w\";\
+          layout_gravity=\"center\",\
+          id=\"edit\";\
+              };\
+      };\
+\
+      AlertDialog.Builder(this)\
+      .setTitle(\"百度搜索\")\
+      .setView(loadlayout(InputLayout))\
+      .setPositiveButton(\"确定\",{onClick=function(v)\
+          \
+  加载网页(\"http://m.baidu.com/s?word=\"..edit.text)\
+        end})\
+      .setNegativeButton(\"取消\",nil)\
+      .show()\
+      function 输入框动画(id,位置Z,位置Y,起始点,动画时间)\
+        import \"android.view.animation.*\"--导入\
+        import \"java.lang.Math\"--导入\
+        import \"com.androlua.Ticker\"--导入\
+        --当有参数反馈时，则自动进行下列动画\
+        t=Ticker()\
+         t.Period=0\
+        t.start()\
+        t.onTick=function()\
+          t.stop()--停止\
+          --扩散原理和我发的揭露动画原理相同，利用圆形扩散\
+          animator = ViewAnimationUtils.createCircularReveal(edit,位置Z,位置Y,起始点,edit.getWidth()); \
+          animator.setInterpolator(AccelerateInterpolator());\
+          animator.setDuration(2000); \
+          animator.start(); \
+        end\
+      end\
+\
+\
+\
+\
+      --输入框监听事件\
+      edit.setOnFocusChangeListener{\
+        --当焦点发生时\
+        onFocusChange=function( v, hasFocus)\
+          --如果有焦点，然后\
+          if hasFocus==true then\
+              --返回输入框动画参数\
+            --输入框动画(text,text.width/2,0,0,0)--效果1\
+            输入框动画(text,0,0,0,700)--效果2\
+\
+            --有焦点时，设置控件text的高度为5，线条变粗，手册有相关代码\
+            gd=Prompt.getLayoutParams()\
+            gd.height=2\
+            Prompt.setLayoutParams(gd)--edit线条变粗\
+                      else\
+\
+            --没有焦点时，设置控件text的原来的高度为3，线条变细，手册有相关代码\
+            gd=text.getLayoutParams()\
+            gd.height=1\
+            Prompt.setLayoutParams(gd)\
+          end\
+        end}\
+    end\
+    if v==1 then\
+   InputLayout={\
+  LinearLayout;\
+  orientation=\"vertical\";\
+  Focusable=true,\
+  FocusableInTouchMode=true,\
+  {\
+    TextView;id=\"Prompt\",\
+    textSize=\"15sp\",\
+    layout_marginTop=\"10dp\";\
+    layout_marginLeft=\"3dp\",\
+    layout_width=\"80%w\";\
+    layout_gravity=\"center\",\
+    text=\"请输入网址：\";\
+  };\
+  {\
+    EditText;\
+    hint=\"记得带上http://\";\
+    layout_marginTop=\"5dp\";\
+    layout_width=\"80%w\";\
+    layout_gravity=\"center\",\
+    id=\"edit\";\
+  };\
+};\
+\
+AlertDialog.Builder(this)\
+.setTitle(\"粘贴访问\")\
+.setView(loadlayout(InputLayout))\
+.setPositiveButton(\"访问\",{onClick=function(v)\
+   加载网页(edit.Text)\
+    --弹出消息(edit.Text);\
+   end}).setNegativeButton(\"取消\",nil)\
+.show()\
+import \"android.view.View$OnFocusChangeListener\"\
+edit.setOnFocusChangeListener(OnFocusChangeListener{ \
+  onFocusChange=function(v,hasFocus)\
+    if hasFocus then\
+      Prompt.setTextColor(0xFD009688)\
+    end\
+  end})\
+    end\
+    if v==2 then\
+分享文本(webView.getUrl())\
+\
+\
+    end\
+    if v==3 then\
+返回网页顶部()\
+    end\
+      if v==4 then\
+刷新网页()\
+    end\
+\
+\
+    if v==5 then\
+--加入收藏\13\
+add_fav()\13\
+\
+    end\
+    if v==6 then\
+--打开收藏\13\
+show_fav()\13\
+\
+    end\
+    if v==7 then\
+--复制当前页面链接\
+弹出消息(\"已复制当前页面链接\")\
+复制文本(webView.getUrl())\
+    end\
+  if v==8 then\
+items={}\
+table.insert(items,\"自定义UA\")\
+table.insert(items,\"手机模式\")\
+table.insert(items,\"电脑模式\")\
+table.insert(items,\"塞班模式\")\
+table.insert(items,\"通用模式\")\
+table.insert(items,\"默认模式\")\
+AlertDialog.Builder(this)\
+.setTitle(\"请选择需要切换的UA\")\
+.setItems(items,{onClick=function(l,v) \
+if items[v+1]==\"手机模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 (Linux; Android 7.1.1; OD105 Build/NMF26F; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043409 Safari/537.36 MicroMessenger/6.5.13.1100 NetType/WIFI Language/zh_CN\");\
+刷新网页();\
+elseif items[v+1]==\"电脑模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36\");\
+刷新网页();\
+elseif items[v+1]==\"自定义UA\" then\
+InputLayout=\
+{\
+  LinearLayout;\
+  orientation=\"vertical\";\
+  Focusable=true,\
+  FocusableInTouchMode=true,\
+  {\
+    TextView;\
+    id=\"Prompt\",\
+    textSize=\"18sp\",\
+    layout_marginTop=\"10dp\";\
+    --layout_marginLeft=\"3dp\",\
+    layout_width=\"80%w\";\
+    layout_gravity=\"center\",\
+    text=\"请输入UA代码：\";\
+    };\
+  {\
+    EditText;\
+    hint=\"这里输入UA代码\";\
+    text=a;\
+    layout_marginTop=\"5dp\";\
+    layout_width=\"80%w\";\
+    layout_gravity=\"center\",\
+    textSize=\"15sp\",\
+    id=\"UA\";\
+    };\
+  };\
+AlertDialog.Builder(this)\
+.setTitle(\"自定义UA\")\
+.setView(loadlayout(InputLayout))\
+.setPositiveButton(\"确定\",{onClick=function(v)\
+    webView.getSettings().setUserAgentString(UA.Text);\
+    a=UA.Text\
+    end})\
+.setNegativeButton(\"取消\",nil)\
+.show()\
+import \"android.view.View$OnFocusChangeListener\"\
+UA.setOnFocusChangeListener(OnFocusChangeListener{\
+  onFocusChange=function(v,hasFocus)\
+    if hasFocus then\
+      Prompt.setTextColor(0xFD009688)\
+      end\
+    end})\
+elseif items[v+1]==\"超级模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 Dalvik/2 ( Linux; U; NEM-AL10 Build/HONORNEM-AL10;Youku;7.1.4;) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Safari/537.36 (Baidu; P1 6.0) iPhone/7.1 Android/8.0 baiduboxapp/2.7.0.10\");\
+刷新网页();\
+elseif items[v+1]==\"备用模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 (Linux; U; Android 8.0.0; zh-CN; ONEPLUS A5000 Build/OPR6.170623.013) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/40.0.2214.89 UCBrowser/11.6.4.950 UWS/2.11.0.44 Mobile Safari/537.36 AlipayChannelId/5136 UCBS/2.11.0.44_180123134534 NebulaSDK/1.8.100112 Nebula AlipayDefined(nt:WIFI,ws:431|0|2.5062501,ac:sp) AliApp(AP/10.1.15.463) AlipayClient/10.1.15.463 Language/zh-Hans useStatusBar/true\");\
+刷新网页();\
+elseif items[v+1]==\"塞班模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 (Symbian/3; Series60/5.2 NokiaN8-00/012.002; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/533.4 (KHTML, like Gecko) NokiaBrowser/7.3.0 Mobile Safari/533.4 3gpp-gba\");\
+刷新网页();\
+elseif items[v+1]==\"默认模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Quark/3.8.4.128 UCBrowser/12.0.4.985 baiduboxapp/3.2.5.10 MQQBrowser/7.2.1.2965 XiaoMi/MiuiBrowser/11.9.2 SearchCraft/2.0.0 ALiSearchApp/2.4 AliApp(TB/9.5.6) BingWeb/6.9.6 3gpp-gba\");\
+刷新网页();\
+elseif items[v+1]==\"通用模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 (Linux; U; Android 6.0; zh-CN; vivo X21 Build/HEXCNFN6003006081S) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 Quark/2.4.3.987 Mobile Safari/537.36\");\
+刷新网页();\
+end\
+end})\
+.show()\
+    end\
+  if v==9 then\
+退出页面()\
+    end\
+  end})\
+.show()\
+  \
+  \
+\
+\
+" ;
+      ["图标"]	= "" ;
+      } ;
+  ["view_attribute"]	= {
+      ["侧滑栏宽度"]	= "100dp" ;
+      ["搜索栏圆角弧度"]	= "30dp" ;
+      ["顶栏标题"]	= "愿世间烦恼与你无缘，愿一切美好常伴人间" ;
+      ["顶栏高度"]	= "40dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      } ;
+  ["switch"]	= {
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= false ;
+      ["横屏"]	= false ;
+      ["支持滑动页面"]	= false ;
+      } ;
+  ["sidebar"]	= {
+      ["启用"]	= true ;
+      ["items"]	= {
+          [1]	= {
+              ["onClick"]	= "import \"applist\" \
+--设置底部导航栏(虚拟按键)透明(沉浸)\
+activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)\
+--设置底部导航栏颜色\
+activity.getWindow().setNavigationBarColor(Color.parseColor(\"#1bb5d7\"))" ;
+              ["icon"]	= "drawable/apple.png" ;
+              ["name"]	= "应用管理" ;
+              } ;
+          [2]	= {
+              ["onClick"]	= "加载网页(\"https://m.sq688.com/search.php?key=%E5%91%A8%E6%\")" ;
+              ["icon"]	= "drawable/music_circle.png" ;
+              ["name"]	= "无损音乐下载" ;
+              } ;
+          [3]	= {
+              ["onClick"]	= "加载网页(\"http://music.junyuewl.com/\")" ;
+              ["icon"]	= "drawable/music_note.png" ;
+              ["name"]	= "音乐播放" ;
+              } ;
+          [4]	= {
+              ["onClick"]	= "加载网页(\"https://cloud.ccswust.org/\")" ;
+              ["icon"]	= "drawable/music_circle.png" ;
+              ["name"]	= "音乐下载" ;
+              } ;
+          [5]	= {
+              ["onClick"]	= "加载网页(\"http://www.html22.com/zh/\")\
+" ;
+              ["icon"]	= "drawable/arrow_down_bold_circle.png" ;
+              ["name"]	= "文库下载" ;
+              } ;
+          [6]	= {
+              ["onClick"]	= "加载网页(\"https://suulnnka.github.io/BullshitGenerator/index.html\")" ;
+              ["icon"]	= "drawable/school.png" ;
+              ["name"]	= "文章生成" ;
+              } ;
+          [7]	= {
+              ["onClick"]	= "--来自快乐程序\
+layout={\
+  LinearLayout,\
+  orientation=\"vertical\",\
+  layout_width=\"fill\",\
+\
+  {\
+    LinearLayout,\
+    layout_width=\"fill\",\
+    padding=\"16dp\",\
+    paddingTop=\"8dp\",\
+    paddingBottom=\"8dp\",\
+    gravity=\"center\",\
+    {\
+      EditText,\
+      gravity=\"center\",\
+      ems=6,\
+      singleLine=true,\
+      backgroundColor=0,\
+\
+      hint=\"最小值\",\
+      inputType=\"number\",\
+      id=\"min\",\
+      text=\"0\",\
+      layout_weight=1,\
+    },\
+    {\
+      TextView,\
+      layout_gravity=\"center\",\
+      text=\"<\",\
+    },\
+    {\
+      EditText,\
+      ems=6,\
+      gravity=\"center\",\
+      backgroundColor=0,\
+      hint=\"最大值\",\
+      text=\"100\",\
+      inputType=\"number\",\
+      layout_weight=1,\
+      id=\"max\",\
+\
+      singleLine=true,\
+    },\
+  },\
+  {\
+    ScrollView,\
+    layout_width=\"fill\",\
+\
+    layout_weight=1,\
+    {\
+      TextView,\
+      id=\"tex\",\
+\
+      textSize=\"56dp\",\
+      layout_gravity=\"center\",\
+      layout_height=\"fill\",\
+      padding=\"16dp\",\
+      textIsSelectable=true,\
+    },\
+  },\
+  {\
+    Button,\
+    text=\"生成\",\
+    layout_width=\"fill\",\
+    layout_margin=\"16dp\",\
+\
+    textColor=0xfffafafa,\
+    id=\"bt\",\
+    textSize=\"16dp\",\
+\
+  },\
+};\
+\
+require \"import\"\
+import \"android.app.*\"\
+import \"android.os.*\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+\
+\
+activity.setTheme(android.R.style.Theme_DeviceDefault_Light)--设置md主题\
+--activity.setTheme(R.AndLua1)\
+activity.setTitle(\"随机数生成\")--标题\
+activity.setContentView(loadlayout(layout))\
+\
+--控件圆角函数\
+function 控件圆角(id,InsideColor,radiu)\
+  import \"android.graphics.drawable.GradientDrawable\"\
+  drawable = GradientDrawable()\
+  drawable.setShape(GradientDrawable.RECTANGLE)\
+  drawable.setColor(InsideColor) drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  id.setBackgroundDrawable(drawable)\
+end\
+\
+控件圆角(bt,0xFF2196F3,360)--设置按钮圆角\
+--来着快乐程序，代码手册首次整理https://www.lanzous.com/i82ncaf\
+tex.setText(tostring(math.random(0,100)))--设置默认数值为1-100的随机数值\
+\
+bt.onClick=function()--按钮点击时间\
+  tex.setText(tostring(math.random(tonumber(min.text),tonumber(max.text))))--获取输入框的数值并转换为number，取随机数后转换为string型数值并设置给tex\
+end\
+" ;
+              ["icon"]	= "drawable/numeric_9_plus_box.png" ;
+              ["name"]	= "随机数生成" ;
+              } ;
+          [8]	= {
+              ["onClick"]	= "加载网页(\"https://tools.miku.ac/ocr\")" ;
+              ["icon"]	= "drawable/pencil_box.png" ;
+              ["name"]	= "图片转文字" ;
+              } ;
+          [9]	= {
+              ["onClick"]	= "加载网页(\"https://tools.miku.ac/pomodoro_technique\")" ;
+              ["icon"]	= "drawable/flower.png" ;
+              ["name"]	= "白噪音专注" ;
+              } ;
+          [10]	= {
+              ["onClick"]	= "加载网页(\"https://tools.miku.ac/screen_clock\")" ;
+              ["icon"]	= "drawable/timer.png" ;
+              ["name"]	= "时钟屏保" ;
+              } ;
+          [11]	= {
+              ["onClick"]	= "加载网页(\"https://tools.miku.ac/lifecount\")" ;
+              ["icon"]	= "drawable/account_check.png" ;
+              ["name"]	= "人生小格" ;
+              } ;
+          [12]	= {
+              ["onClick"]	= "--程序启动时会执行的事件\
+require \"import\"\
+import \"android.app.*\"\
+import \"android.os.*\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+activity.setTitle('音乐')\
+layout=--布局奠定\
+{\
+  LinearLayout;--线性布局\
+  orientation='vertical';--重力属性\
+  layout_width='fill';--布局宽度\
+  layout_height='fill';--布局高度\
+  background='Icon/bj.png';--布局背景颜色(或者图片路径)\
+  gravity='center';--默认居中\
+  {\
+    TextView;--文本控件\
+    layout_width='fill';--文本宽度\
+    layout_height='50dp';--文本高度\
+    gravity='center';--重力属性\
+    textColor='#FF2885DE';--文字颜色\
+    text='未播放任何音乐';--显示的文字\
+    textSize='20sp';--文字大小\
+    id=\"tv_title\",\
+  };\
+  {\
+    LinearLayout;--线性布局\
+    orientation='vertical';--重力属性\
+    layout_width='fill';--布局宽度\
+    layout_height='50%h';--布局高度\
+    gravity='center';--默认居中\
+    {\
+      CircleImageView;--圆形图片\
+      src='Icon/z.png';--图片路径\
+      layout_width='180dp';--图片宽度\
+      layout_height='180dp';--图片高度\
+      ColorFilter=\"#FF2885DE\";\
+      id=\"旋转\";\
+    };\
+  };\
+  {\
+    LinearLayout;--线性布局\
+    orientation='horizontal';--重力属性\
+    layout_width='fill';--布局宽度\
+    layout_height='100dp';--布局高度\
+    gravity='right|center';--默认居中\
+    {\
+      CircleImageView;--圆形图片\
+      src='Icon/cp.png';--图片路径\
+      layout_width='25dp';--布局宽度\
+      layout_height='25dp';--布局高度\
+      onClick=\"on_playlist\",\
+      layout_marginRight='10dp';--布局右距\
+      ColorFilter=\"#1296db\";\
+    },\
+    {\
+      CircleImageView;--圆形图片\
+      src='Icon/lb.png';--图片路径\
+      layout_width='25dp';--布局宽度\
+      layout_height='50dp';--布局高度\
+      onClick=\"on_Menu\",\
+      layout_marginRight='20dp';--布局右距\
+    },\
+  };\
+  {\
+    LinearLayout;--线性布局\
+    orientation='horizontal';--重力属性\
+    layout_width='fill';--布局宽度\
+    layout_height='50dp';--布局高度\
+    gravity='center';--默认居中\
+    {\
+      TextView,\
+      layout_height=\"wrap_content\",\
+      text=\"00:00\",\
+      textColor='#FF2885DE';\
+      --布局内文字着色,默认黑色\
+      id=\"tv_startTime\",\
+      layout_width=\"wrap_content\";\
+      layout_marginRight='10dp';--布局右距\
+    },\
+    {\
+      SeekBar,\
+      layout_height=\"wrap_content\",\
+      layout_width='70%w';--布局宽度\
+      id=\"mainProgressBar1\",\
+      id=\"pb_time\",\
+    },\
+    {\
+      TextView,\
+      layout_height=\"wrap_content\",\
+      text=\"00:00\",\
+      id=\"tv_endTime\",\
+      textColor='#FF2885DE';\
+      layout_marginLeft='10dp';--布局左距\
+      layout_width=\"wrap_content\"\
+    },\
+  };\
+  {\
+    LinearLayout;--线性布局\
+    orientation='horizontal';--重力属性\
+    layout_width='fill';--布局宽度\
+    layout_height='170dp';--布局高度\
+    gravity='center';--默认居中\
+    {\
+      CircleImageView;--圆形图片\
+      src='Icon/s.png';--图片路径\
+      layout_width='50dp';--布局宽度\
+      layout_height='50dp';--布局高度\
+      onClick=\"on_pre\",\
+      layout_marginRight='20dp';--布局右距\
+    },\
+    {\
+      CircleImageView;--圆形图片\
+      src='Icon/bf.png';--图片路径\
+      layout_width='50dp';--布局宽度\
+      layout_height='50dp';--布局高度\
+      id=\"bn_pause\",\
+      onClick=\"on_pause\",\
+    },\
+    {\
+      CircleImageView;--圆形图片\
+      src='Icon/x.png';--图片路径\
+      layout_width='50dp';--布局宽度\
+      layout_height='50dp';--布局高度\
+      onClick=\"on_next\",\
+      layout_marginLeft='20dp';--布局左距\
+    },\
+  };\
+};\
+activity.setContentView(loadlayout(layout))\
+import \"android.media.*\"\
+import \"android.view.*\"\
+import \"android.content.*\"\
+import \"java.io.*\"\
+import \"java.util.*\"\
+import \"android.content.Context\"\
+import \"android.provider.*\"\
+--require \"layout\"\
+--activity.setTitle(\"美美播放器\")\
+--activity.setTheme(android.R.style.Theme_Holo_Light)\
+local arr=nil\
+local pd--扫描进度条变量,定义在这容易操作\
+local mp=MediaPlayer()\
+local t=nil\
+local isPlay=false\
+local curPlay=nil --当前正在播放的mp3的路径\
+local listpath=\"/sdcard/pl.txt\"\
+local tf=File(listpath)\
+local dur--歌曲长度\
+local cur--播放当前位置\
+local min,sec=0,0--分和秒\
+local curIdx=0--当前播放的mp3在列表中的索引\
+\
+--播放音乐，不异步可控\
+--@mp MediaPlayer对象\
+--@path 歌曲完整路径\
+function play(mp,path)\
+  mp.reset()\
+  mp.setDataSource(path)\
+  mp.prepare()\
+  mp.start()\
+end\
+\
+--异步调用代码块，获取文件夹下的所有mp3文件。并存在arr中\
+local _getList= [[\
+require \"import\"\
+import \"java.io.*\"\
+local path,arr=...\
+local name,t\
+\
+function _get(path)\
+    local f=File(path)\
+    local  l=f.listFiles()\
+    \
+    for i=0,#l-1 do\
+        t=l[i]\
+        name= t.getName()\
+        if  t.isFile() and string.find(string.lower(name),\"%.mp3$\") and t.length()>1024*1024*2 then --歌曲大于2m才添加\
+            arr.add(t)\
+            end\
+        if t.isDirectory() then\
+            _get(t.toString())\
+            end\
+        end --for\
+    end --_get\
+_get(path)--重要......\
+]]\
+--获取某文件夹下所有mp3文件。并存在arr中\
+function getList(path)\
+  arr=ArrayList()\
+  task( _getList,path,arr,getListFinish)\
+end\
+--回调函数，获取某文件夹下所有mp3文件完成时被调用\
+function getListFinish()\
+  writeFile(\"/sdcard/pl.txt\",arr)\
+  pd.cancel()\
+end\
+--写入文件\
+--@path  文件完整路径\
+--@list    ArrayList\
+function writeFile(path,list)\
+  local fw=FileWriter(path)\
+  local bw=BufferedWriter(fw)\
+  for i=0,list.size()-1 do\
+    str=list.get(i).toString()\
+    bw.write(str,0,utf8.len(str))\
+    bw.newLine()\
+  end\
+  bw.flush()\
+  bw.close()\
+end\
+--读文件\
+--path 完整路径\
+--return ArrayList\
+function readFile(path)\
+  local al=ArrayList()\
+  local fr=FileReader(path)\
+  local br=BufferedReader(fr)\
+  local ch=0\
+  while(br.read()~=-1 )\
+    do\
+    al.add(br.readLine())\
+  end\
+  br.close()\
+  return al\
+end\
+\
+--显示歌曲列表\
+--@path 列表文件路径\
+--@mediaplayer\
+function showList(path,mp)\
+  local al= readFile(path)\
+  arr=al\
+  local names={}\
+  local paths={}\
+  for i=0,al.size()-1 do\
+    table.insert(paths,al.get(i))\
+    table.insert(names,File(al.get(i)).getName())\
+\
+  end\
+  local ad= AlertDialog.Builder(activity)\
+  ad.setTitle(\"歌曲列表\")\
+  ad.setItems(String(names)\
+  ,DialogInterface.OnClickListener{\
+    onClick=function(dialog,which)\
+      curPlay=paths[which+1]\
+      curIdx=which\
+      play(mp,curPlay)\
+      local tt=string.gsub(names[which+1],\".mp3$\",\"\")--偷懒一下\
+      tv_title.setText(\"正在播放:\"..tt)\
+      bn_pause.setImageBitmap(loadbitmap(\"Icon/zt.png\"))\
+    end\
+  })\
+  ad.setNegativeButton( \"取消\", nil)\
+  ad= ad.create()\
+  local window = ad.getWindow()\
+  local lp = window.getAttributes()\
+  --设置透明度\
+  lp.alpha = 0.8\
+  window.setAttributes(lp)\
+  ad.show()\
+end\
+--弹出进度条\
+--@text 进度条的文本\
+function showProcessBar(text)\
+  pd = ProgressDialog\
+  .show(activity, nil, text)\
+  pd.setCancelable(false)\
+end\
+\
+\
+--弹出文本框对话框\
+--@pa 进度条对象\
+function showEditDialog(msg)\
+  local edit=EditText(activity)\
+  edit.setText(\"/sdcard/\")\
+  local dl =AlertDialog.Builder(activity)\
+  dl.setTitle(msg)\
+  dl.setView(edit)\
+  dl.setPositiveButton(\"确定\",\
+  DialogInterface.OnClickListener{\
+    onClick=function(dialog,which)\
+      showProcessBar(\"扫描音乐中，请稍候……\")\
+      getList(edit.getText().toString())\
+    end\
+  })\
+  dl.show()\
+end\
+--全局代码###################\
+if tf.exists()==false then--文件列表不存在\
+  showEditDialog(\"初次使用软件，设置扫描音乐的路径\")\
+ else\
+  arr= readFile(listpath)\
+end\
+--###################\
+\
+--实时更新进度条和时间显示\
+function updateTime(m,s)\
+  if m<10 then m=\"0\"..m end\
+  if s<10 then s=\"0\"..s end\
+  tv_startTime.setText(m..\":\"..s)\
+  pb_time.setProgress(mp.getCurrentPosition())\
+end\
+\
+--计时器代码\
+function _run(m,s)\
+  function run()\
+\
+    s=s+1\
+    if(s==60) then\
+      m=m+1\
+      s=0\
+    end\
+    call(\"updateTime\",m,s)\
+  end\
+end\
+\
+--上一曲\
+function on_pre(v)\
+  if(curIdx>0) then\
+    curIdx=curIdx-1\
+    play(mp,arr.get(curIdx))\
+    local tt=string.gsub(File(arr.get(curIdx)).getName(),\".mp3$\",\"\")--偷懒一下\
+    tv_title.setText(\"正在播放:\"..tt)\
+    bn_pause.setImageBitmap(loadbitmap(\"Icon/zt.png\"))\
+  end\
+end\
+\
+--下一曲\
+function on_next(v)\
+  if(curIdx<arr.size()-1) then\
+    if curIdx==0 and not mp.isPlaying() then\
+      play(mp,arr.get(0))\
+      local tt=string.gsub(File(arr.get(0)).getName(),\".mp3$\",\"\")--偷懒一下\
+      tv_title.setText(\"正在播放:\"..tt)\
+      bn_pause.setImageBitmap(loadbitmap(\"Icon/zt.png\"))\
+     else\
+      curIdx=curIdx+1\
+      play(mp,arr.get(curIdx))\
+      local tt=string.gsub(File(arr.get(curIdx)).getName(),\".mp3$\",\"\")--偷懒一下\
+      tv_title.setText(\"正在播放:\"..tt)\
+      bn_pause.setImageBitmap(loadbitmap(\"Icon/zt.png\"))\
+    end\
+  end\
+end\
+\
+--设置mediaPlayer播放结束时的回调函数\
+mp.setOnCompletionListener(MediaPlayer.OnCompletionListener{\
+  onCompletion=function(mper)\
+    --     print(\"歌曲播放结束\")\
+    pb_time.setProgress(mp.getCurrentPosition())\
+    t.Enabled=false\
+    t.stop()\
+    t=nil\
+    on_next(v)\
+  end})\
+\
+--时间转换函数\
+function formatTime(time)\
+  local min,sec=0,0\
+  sec=math.floor(time/1000)\
+  if(sec>60) then\
+    min=math.floor(sec/60)\
+    sec=math.floor(sec%60)\
+  end\
+  if min<10 then min=\"0\"..min end\
+  if sec<10 then sec=\"0\"..sec end\
+  return min..\":\"..sec\
+end\
+--时间设置\
+function setTime(time)\
+  local min,sec=0,0\
+  sec=math.floor(time/1000)\
+  if(sec>60) then\
+    min=math.floor(sec/60)\
+    sec=math.floor(sec%60)\
+  end\
+\
+  return min,sec\
+end\
+--歌曲开始播放\
+mp.setOnPreparedListener(MediaPlayer.OnPreparedListener{\
+  onPrepared=function(mper)\
+    dur=mper.getDuration()--获取歌曲的时常\
+    pb_time.setMax(dur)\
+    local tt=formatTime(dur)\
+    tv_startTime.setText(\"00:00\")\
+    tv_endTime.setText(tt)\
+\
+    min,sec=0,0\
+    if t~=nil then --计时器不为空就停止\
+      t.Enabled=false\
+      t.stop()\
+      t=nil\
+    end\
+    --歌曲开始播放又计时\
+    t=timer(_run,0,1000,min,sec)\
+    t.Enabled=true\
+  end})\
+\
+--按下暂停时发生\
+function on_pause(v)\
+  if(mp.isPlaying()) then\
+    mp.pause()\
+    bn_pause.setImageBitmap(loadbitmap(\"Icon/bf.png\"))\
+    if(t~=nil) then\
+      t.Enabled=false\
+    end\
+   else\
+    if(t~=nil) then--如果为空那就是播放完了的情况\
+      mp.start()\
+      bn_pause.setImageBitmap(loadbitmap(\"Icon/zt.png\"))\
+      t.Enabled=true\
+    end\
+  end\
+end\
+\
+--按下\"列表\"按钮\
+function on_playlist(v)\
+  showList(listpath,mp)\
+end\
+\
+\
+\
+function on_Menu(v)\
+  local items={\"更新列表\",\"关于\",\"退出\"}\
+  local ad= AlertDialog.Builder(activity)\
+  ad.setTitle(\"更多\")\
+  ad.setItems(String(items)\
+  ,DialogInterface.OnClickListener{\
+    onClick=function(dialog,which)\
+      if which==0 then\
+        showEditDialog(\"输入路径以重新扫描\")\
+       elseif which==1 then\
+        print(\"子清修改\")\
+       elseif which==2 then\
+        if t~=nil then\
+          t.stop()\
+        end\
+        mp.stop()\
+        mp.release()--释放资源\
+        activity.finish()\
+      end--判断选了哪项的if\
+    end--onClick\
+  })\
+  ad.setNegativeButton( \"取消\", nil)\
+  ad= ad.create()\
+  ad.show()\
+end\
+\
+function onKeyDown(code,event)\
+  if (code== KeyEvent.KEYCODE_BACK)then\
+    --并不会发生什么...\
+    if t~=nil then\
+      t.stop()\
+    end\
+    mp.stop()\
+    mp.release()--释放资源\
+  end\
+end\
+\
+\
+\
+\
+\
+--进度跳转\
+pb_time.setOnSeekBarChangeListener(\
+SeekBar.OnSeekBarChangeListener{\
+  onStopTrackingTouch=function(bar)\
+    if mp.isPlaying() then\
+      local cur=bar.getProgress()\
+      local tt=formatTime(cur)\
+      min,sec=setTime(cur)\
+      tv_startTime.setText(tt)\
+      mp.seekTo(cur)\
+      if t~=nil then --计时器不为空就停止\
+        t.Enabled=false\
+        t.stop()\
+        t=nil\
+      end\
+      --重新计时\
+      t=timer(_run,0,1000,min,sec)\
+      t.Enabled=true\
+    end\
+\
+  end})\
+import \"android.view.animation.LinearInterpolator\"\
+import \"android.animation.ValueAnimator\"\
+c =ObjectAnimator()\
+c.setTarget(旋转);\
+c.setDuration(20000);\
+c.setRepeatCount(ValueAnimator.INFINITE)\
+c.setPropertyName(\"rotation\");\
+c.setFloatValues({0,720});\
+c.setRepeatMode(ValueAnimator.INFINITE)\
+c.setInterpolator(LinearInterpolator() )\
+c.start();\
+esc=0\
+function onKeyDown(key,event)\
+  if(key==4)then\
+    esc=esc+1\
+    activity.moveTaskToBack(true)\
+    task(1000,function()\
+      esc=0\
+    end)\
+    return true\
+  end\
+end\
+--[[\
+\
+    小六美化©QQ1785333334\
+\
+   美化不易,且用且珍惜\
+   \
+]]\
+import \"android.view.WindowManager\"\
+activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+" ;
+              ["icon"]	= "drawable/music_note.png" ;
+              ["name"]	= "本地音乐" ;
+              } ;
+          [13]	= {
+              ["onClick"]	= "require \"import\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+import \"android.text.method.*\"\
+import 'android.webkit.WebView'\
+import \"android.app.AlertDialog\"\
+local hh={}\
+\
+layout={\
+  LinearLayout,\
+  layout_width=\"fill\",\
+  layout_height=\"fill\",\
+  orientation=\"vertical\",\
+  background='#ffe9e9e9',\
+  {\
+    HorizontalScrollView,\
+    FillViewport=true,\
+    layout_gravity=\"left\",\
+    layout_width=\"fill\",\
+    {\
+      TextView,\
+      text=\"\",\
+      textSize=30,\
+      textColor='0xff000000',\
+\
+      lines=1,\
+      Gravity=\"left\",\
+      layout_width=\"wrap\",\
+    },\
+  },\
+  {\
+    HorizontalScrollView,\
+    FillViewport=true,\
+    layout_gravity=\"left\",\
+    layout_width=\"fill\",\
+    {\
+      TextView,\
+      text=\"\",\
+      id=\"input\",\
+      textSize=60,\
+      textColor='0xff000000',\
+      lines=1,\
+      Gravity=\"left\",\
+      layout_width=\"wrap\",\
+    },\
+  },\
+  {\
+    HorizontalScrollView,\
+    FillViewport=true,\
+    layout_gravity=\"right\",\
+    layout_width=\"fill\",\
+    {\
+      TextView,\
+      text=\"\",\
+      id=\"output\",\
+      Gravity=\"right\",\
+      textSize=80,\
+      textColor='0xff000000',\
+      onClick=\"up\",\
+      lines=1,\
+      layout_width=\"wrap\",\
+    },\
+  },\
+  {\
+    LinearLayout,\
+    layout_width=\"fill\",\
+    layout_height=\"fill\",\
+    layout_weight=\"1.0\",\
+    {\
+      Button,\
+      textSize=40,\
+      textSize=40,\
+      text=\"(\",\
+      onClick=\"click\",\
+      background='#fffafafa',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\")\",\
+      onClick=\"click\",\
+      layout_width=\"fill\",\
+      background='#fffafafa',\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=30,\
+      text=\"菜单\",\
+      id=\"endg\",\
+      onClick=\"菜单\",\
+      background='#fffafafa',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=30,\
+      text=\"清空\",\
+      onClick=\"clear\",\
+      background='#fffafafa',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+  },\
+  {\
+    LinearLayout,\
+    layout_width=\"fill\",\
+    layout_height=\"fill\",\
+    layout_weight=\"1.0\",\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"1\",\
+      onClick=\"click\",\
+      backgroundColor='#ffffffff',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"2\",\
+      onClick=\"click\",\
+      backgroundColor='#ffffffff',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"3\",\
+      onClick=\"click\",\
+      backgroundColor='#ffffffff',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"+\",\
+      onClick=\"click\",\
+      layout_width=\"fill\",\
+      background='#fffafafa',\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+  },\
+  {\
+    LinearLayout,\
+    layout_width=\"fill\",\
+    layout_height=\"fill\",\
+    layout_weight=\"1.0\",\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"4\",\
+      onClick=\"click\",\
+      backgroundColor='#ffffffff',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"5\",\
+      onClick=\"click\",\
+      backgroundColor='#ffffffff',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"6\",\
+      backgroundColor='#ffffffff',\
+      onClick=\"click\",\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"-\",\
+      onClick=\"click\",\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      background='#fffafafa',\
+      layout_weight=\"1.0\",\
+    },\
+  },\
+  {\
+    LinearLayout,\
+    layout_width=\"fill\",\
+    layout_height=\"fill\",\
+    layout_weight=\"1.0\",\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"7\",\
+      onClick=\"click\",\
+      backgroundColor='#ffffffff',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"8\",\
+      onClick=\"click\",\
+      backgroundColor='#ffffffff',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"9\",\
+      onClick=\"click\",\
+      backgroundColor='#ffffffff',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"*\",\
+      onClick=\"click\",\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      background='#fffafafa',\
+      layout_weight=\"1.0\",\
+    },\
+  },\
+  {\
+    LinearLayout,\
+    layout_width=\"fill\",\
+    layout_height=\"fill\",\
+    layout_weight=\"1.0\",\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"0\",\
+      onClick=\"click\",\
+      backgroundColor='#ffffffff',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\".\",\
+      onClick=\"click\",\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      background='#fffafafa',\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"=\",\
+      textColor=\"#FFffffff\",\
+      onClick=\"enter\",\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      background='#FF006BFF',\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"/\",\
+      onClick=\"click\",\
+      layout_width=\"fill\",\
+      background='#fffafafa',\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+  },\
+}\
+\
+activity.setContentView(loadlayout(layout))\
+\
+function click(v) local t=v.getText() if t==\"¡û\" then local i=input.getText().toString() input.setText(string.sub(i,1,-2)) else input.append(t) end\
+  local s,r=pcall(dostring,\"return \"..input.getText().toString())\
+  if s then\
+    if r then\
+      output.setText(tostring(r))\
+     else\
+      output.setText(\"\")\
+    end\
+  end\
+end\
+\
+function clear()\
+  input.setText(\"\")\
+  output.setText(\"\")\
+end\
+function up()\
+  input.setText(output.getText())\
+end\
+\
+function dostring(s)\
+  return assert(loadstring(s))()\
+end\
+\
+\
+function enter()\
+  local s,r=pcall(loadstring(\"return \"..input.getText().toString()))\
+  if s then\
+    if r then\
+      output.setText(tostring(r))\
+     else\
+      output.setText(\"\")\
+    end\
+   else\
+    output.setText(\"输入错误\")\
+  end\
+end\
+function 菜单()\
+  pop=PopupMenu(activity,endg)\
+  menu=pop.Menu\
+  menu.add(\"⌨     用输入法输入\").onMenuItemClick=function(a)\
+    --输入对话框（自定义布局对话框，带输入框的）\
+    InputLayout={\
+      LinearLayout;\
+      orientation=\"vertical\";--重力属性\
+      Focusable=true,--可聚焦\
+      FocusableInTouchMode=true,--可聚焦在触摸模式下，可变色\
+      {\
+        TextView;--文本控件\
+        id=\"Text\",\
+        layout_width='80%w';--文本宽度\
+        layout_marginTop='10dp';--布局顶距\
+        layout_marginLeft='3dp';--布局左距\
+        layout_gravity='center';--重力属性\
+        text='输入想要输入的内容：';--显示的文字\
+        textSize='15sp';--文字大小\
+      };\
+      {\
+        EditText;--编辑框控件\
+        id=\"edit\";\
+        layout_width='80%w';--编辑框宽度\
+        layout_marginTop='5dp';--布局顶距\
+        layout_gravity=\"center\",--重力属性\
+        Hint='请输入...';--设置编辑框为空时的提示文字\
+      };\
+    };\
+\
+    AlertDialog.Builder(this)\
+    .setTitle(\"用输入法输入\")--设置标题\
+    .setView(loadlayout(InputLayout))--设置布局\
+    .setPositiveButton(\"确定\",function(v)--设置积极按钮\
+      input.setText(edit.Text)\
+    end)\
+    .setNegativeButton(\"取消\",nil)--设置消极按钮\
+    .show()--显示弹窗\
+    import \"android.view.View$OnFocusChangeListener\"\
+    edit.setOnFocusChangeListener(OnFocusChangeListener{\
+      onFocusChange=function(v,hasFocus)\
+        if hasFocus then\
+          Text.setTextColor(0xFD009688)--当编辑框被点击时修改标题下的文本颜色\
+        end\
+      end})\
+  end\
+  pop.show()--显示@小米～\
+end\
+--activity.setTheme(android.R.style.Theme_Material_NoActionBar)\
+\
+\
+" ;
+              ["icon"]	= "drawable/contrast_circle.png" ;
+              ["name"]	= "计算器" ;
+              } ;
+          [14]	= {
+              ["onClick"]	= "--&收集自快乐小程序\
+layout={\
+  LinearLayout;\
+  orientation=\"vertical\";\
+  layout_width=\"fill\";\
+  layout_height=\"fill\";\
+  id=\"coe\",\
+  gravity=\"center\";\
+  {\
+    TextView;\
+    id=\"dir\";\
+    layout_width=\"fill\";\
+    textColor=\"#0090FF\";\
+    layout_height=\"7%h\";\
+    textSize=\"25dp\";\
+    gravity=\"center\";\
+    text=\"南\";\
+  };\
+  {\
+\
+\
+    LinearLayout;\
+    id=\"cors\";\
+    orientation=\"vertical\";\
+    layout_width=\"70%w\";\
+    gravity=\"center\";\
+    layout_height=\"70%w\";\
+    {\
+      LinearLayout;\
+      layout_gravity=\"center\";\
+      orientation=\"vertical\";\
+      id=\"cor\";\
+      layout_width=\"50%w\";\
+      gravity=\"start\";\
+      layout_height=\"50%w\";\
+      {\
+        TextView;\
+        layout_gravity=\"center\";\
+        textColor=\"#0088ff\";\
+        id=\"n\";\
+        textSize=\"20dp\";\
+        gravity=\"center\";\
+        text=\"N\";\
+      };\
+      {\
+        LinearLayout;\
+        layout_width=\"fill\";\
+        layout_marginTop=\"6%h\";\
+        layout_height=\"8%h\";\
+        {\
+          TextView;\
+          id=\"w\";\
+          textColor=\"0xff0088ff\";\
+          paddingLeft=\"6dp\";\
+          textSize=\"20dp\";\
+          gravity=\"left\";\
+          text=\"W\";\
+        };\
+        {\
+          TextView;\
+          layout_width=\"16.5%w\";\
+          layout_marginLeft=\"9%w\";\
+          textColor=\"0xff0088ff\";\
+          layout_height=\"8%h\";\
+          textSize=\"27dp\";\
+          gravity=\"center\";\
+          text=\"↑\";\
+        };\
+        {\
+          TextView;\
+          layout_marginRight=\"6dp\";\
+          id=\"e\";\
+          layout_marginLeft=\"11%w\";\
+          textColor=\"0xff0088ff\";\
+          textSize=\"20dp\";\
+          layout_width=\"6%w\";\
+          gravity=\"right\";\
+          text=\"E\";\
+        };\
+      };\
+      {\
+        TextView;\
+        layout_gravity=\"center\";\
+        layout_marginTop=\"6%h\";\
+        textColor=\"#0088ff\";\
+        id=\"s\";\
+        textSize=\"20dp\";\
+        gravity=\"center\";\
+        text=\"S\";\
+\
+      };\
+    };\
+\
+  };\
+  {\
+    TextView;\
+    id=\"deg\";\
+    textColor=\"0xff0088ff\";\
+    layout_height=\"8%h\";\
+    textSize=\"27dp\";\
+    gravity=\"center\";\
+    text=\"0°\";\
+  };\
+};\
+\
+activity.setContentView(loadlayout(layout))\
+\
+\
+import \"android.content.Context\"\
+import \"android.hardware.SensorManager\"\
+import \"android.hardware.SensorEventListener\"\
+import \"android.hardware.Sensor\"\
+dirs=\"\"\
+FPS=50\
+磁场=0\
+传感器 = activity.getSystemService(Context.SENSOR_SERVICE)\
+local 磁场传感器 = 传感器.getDefaultSensor(Sensor.TYPE_ORIENTATION)\
+传感器.registerListener(SensorEventListener({\
+  onSensorChanged=function(event)\
+    磁场 = event.values[0]\
+  end,nil}), 磁场传感器, SensorManager.SENSOR_DELAY_NORMAL)\
+function CircleButton(view,InsideColor,radiu,da,db)\
+  import \"android.graphics.drawable.GradientDrawable\"\
+  drawable = GradientDrawable()\
+  drawable.setShape(GradientDrawable.RECTANGLE)\
+  drawable.setStroke(10, 0xff0088ff,da,db)\
+  drawable.setColor(InsideColor)\
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  drawable.setGradientType(1)\
+  view.setBackgroundDrawable(drawable)\
+end\
+角度=activity.getWidth()\
+控件id=cor\
+控件颜色=0xFFFFFFFF\
+CircleButton(控件id,控件颜色,角度,2,2)\
+CircleButton(cors,控件颜色,角度,(activity.getWidth()*0.8)/2,10)\
+tick=Ticker()\
+tick.Period=1000/FPS\
+tick.onTick=function()\
+  if 磁场>165 and 磁场<195 then\
+    dirs=\"南\"\
+   elseif 磁场>195 and 磁场<255 then\
+    dirs=\"西南\"\
+   elseif 磁场>255 and 磁场<285 then\
+    dirs=\"西\"\
+   elseif 磁场>285 and 磁场<345 then\
+    dirs=\"西北\"\
+   elseif 磁场>345 or 磁场<15 then\
+    dirs=\"北\"\
+   elseif 磁场>15 and 磁场<75 then\
+    dirs=\"东北\"\
+   elseif 磁场>75 and 磁场<105 then\
+    dirs=\"东\"\
+   elseif 磁场>105 and 磁场<165 then\
+    dirs=\"东南\"\
+  end\
+  dir.setText(dirs)\
+  cors.setRotation(360-磁场)\
+  w.setRotation(磁场)\
+  s.setRotation(磁场)\
+  n.setRotation(磁场)\
+  e.setRotation(磁场)\
+  deg.setText(tostring(tointeger(磁场)..\"°\"))\
+  --Toast.makeText(activity,tostring(磁场..\"°\"),Toast.LENGTH_SHORT).show()\
+end\
+tick.start()\
+\
+function onDestroy()\
+  tick.stop()\
+  传感器.unregisterListener(Listener);\
+end\
+\
+function onTouchEvent(event)\
+  ac=event.action\
+  if ac==2 or ac==0 then\
+    x=event.X\
+    y=event.Y\
+    coe.setRotationX((activity.getHeight()-y)/30)\
+    coe.setRotationY(x/30)\
+   elseif ac==1 then\
+    coe.setRotationX(0)\
+    coe.setRotationY(0)\
+  end\
+end\
+--coe.setRotationX(activity.getHeight()*0.33)" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["name"]	= "指南针" ;
+              } ;
+          [15]	= {
+              ["onClick"]	= "加载网页(\"http://tool.uixsj.cn/s/lucky-draw-num/\")" ;
+              ["icon"]	= "drawable/minus_network.png" ;
+              ["name"]	= "抽签" ;
+              } ;
+          [16]	= {
+              ["onClick"]	= "hh={\
+  LinearLayout,\
+  orientation=\"vertical\",\
+  layout_width=\"fill\",\
+  layout_height=\"fill\",\
+  gravity=\"center\",\
+  {\
+    TextView,\
+    text=\"hello AndroLua+\",\
+    layout_width=\"fill\",\
+    layout_height=\"fill\",\
+    id=\"t\",\
+  },\
+}\
+activity.setContentView(loadlayout(hh))\
+\
+\
+require \"import\"\
+import \"android.app.*\"\
+import \"android.os.*\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+import \"com.cool.time.ClockDrawable\"\
+--activity.setTitle('AndroLua+')\
+--activity.setTheme(android.R.style.Theme_Holo_Light)\
+t.setBackground(ClockDrawable())" ;
+              ["icon"]	= "drawable/timer.png" ;
+              ["name"]	= "圆形时钟" ;
+              } ;
+          [17]	= {
+              ["onClick"]	= "--时间显示\
+--点击链接加入群聊【Androidlua交流群】：https://jq.qq.com/?_wv=1027&k=5VuTWLX\
+--点击链接加入群聊【MIUI&轻函&软件开发交流群】：https://jq.qq.com/?_wv=1027&k=5H5GRUu\
+import \"android.app.*\"\
+import \"android.os.*\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+activity.setRequestedOrientation(0);\
+local cc=0\
+layout={\
+  FrameLayout,\
+\
+  {\
+    TextView,\
+    layout_width=\"fill\",\
+    layout_height=\"fill\",\
+    textColor=\"#2196F3\",\
+    textSize=\"112dp\",\
+    gravity=\"center\",\
+    id=\"time\",\
+  },\
+  {\
+    TextView,\
+    textColor=次要文字色,\
+    textSize=\"18dp\",\
+    layout_gravity=\"bottom|center\",\
+    id=\"date\",\
+    layout_marginBottom=\"36dp\",\
+  },\
+}\
+activity.setContentView(loadlayout(layout))\
+\
+task(500,function()\
+  if\
+    time.text==\"\"\
+    then\
+    onResume()\
+  end\
+end)\
+function onResume()\
+\
+  t=Ticker()\
+  t.setPeriod(100)\
+  t.onTick=function()\
+    time.text=os.date(\"%H:%M:%S\")\
+    date.text=os.date(\"%A · %B %d\")\
+  end\
+  t.start()\
+end\
+\
+function onPause()\
+  t.stop()\
+end" ;
+              ["icon"]	= "drawable/timelapse.png" ;
+              ["name"]	= "全屏时间" ;
+              } ;
+          [18]	= {
+              ["onClick"]	= "加载网页(\"https://akirarika.github.io/mikutap/\")" ;
+              ["icon"]	= "drawable/controller_xbox.png" ;
+              ["name"]	= "减压放松" ;
+              } ;
+          } ;
+      ["启用顶部图片"]	= false ;
+      } ;
+  ["colors"]	= {
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["进度条"]	= "#4b5dc6ff" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["侧滑栏列表文字"]	= "#ff5589bb" ;
+      ["侧滑栏列表图标"]	= "#ff74d2ff" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["顶栏"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#ff5d99ff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["顶栏部件"]	= "#ff575757" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      } ;
+  ["events"]	= {
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "" ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+refresh.setRefreshing(false)" ;
+      ["程序启动"]	= "--程序启动时会执行的事件\
+\
+--需要注意:\
+--使用此模块需遵守协议，保证文件中的版权内容可见\
+--但 Fusion App 打包会将该模块文件进行加密\
+--请您务必通过其它方式保证版权内容可见，否则即视为侵权\
+--谢谢！\
+\
+--导入夜间模式\
+夜间模式=require\"night\"\
+--恢复开关夜间模式自动保存的状态\
+夜间模式.恢复()\
+\
+import \"tool\"\
+barisshow = 0;\
+\
+--引用代码请保留版权\
+--©钰棋 QQ1469755146\
+--欢迎大家搜索下载 喵娱\
+\
+import\"tool.downpop\"\
+import \"android.text.format.Formatter\"\
+\
+webView.setDownloadListener{\
+  onDownloadStart=function(url,userAgent,contentDisposition,mimetype,contentLength)\
+    文件名=URLUtil.guessFileName(url, contentDisposition, mimeType);\
+    下载链接=url\
+    文件类型=mimetype\
+    文件大小=Formatter.formatFileSize(this, contentLength)\
+    存放地址=\"喵娱/文件\"\
+    downPop(url,文件名,存放地址)\
+  end\
+}\
+\
+function onKeyDown(key,event)\
+  if(key==4)then\
+    if pop~= nil then\
+      downPop()\
+    elseif(webView.canGoBack()) then\
+      webView.goBack()\
+    else\
+      退出页面()\
+    end\
+    return true\
+  end\
+end\
+底栏布局={\
+  LinearLayout;\
+  alpha=\"0.5\";\
+  orientation=\"horizontal\";\
+  layout_width=\"-1\";\
+  layout_height=\"-1\";\
+  gravity=\"bottom\";\
+  id=\"fakebmbar\";\
+  Elevation=\"3dp\";\
+  {\
+    LinearLayout;\
+    layout_width=\"fill\";\
+    Elevation=\"3dp\";\
+    layout_height=\"5%h\";\
+    orientation=\"horizontal\";\
+    backgroundColor=\"0xFFFFFFFF\";\
+    gravity=\"center|bottom\";\
+    layout_gravity=\"center|bottom\";\
+    id=\"bmwhole\";\
+   \
+    {\
+      LinearLayout;\
+      id=\"a\";\
+      layout_width=\"20%w\";\
+      layout_marginLeft=\"0dp\";\
+      orientation=\"vertical\";\
+      gravity=\"center|right\";\
+      layout_gravity=\"center|right\";\
+      layout_height=\"fill\";\
+      {\
+        ImageView;--影像视图\
+        src=\"houtui.png\";--后退\
+        layout_height=\"20dp\";--高度\
+        ColorFilter=\"0xff757575\";\
+        layout_marginTop=\"0dp\";--边顶\
+        layout_width=\"25dp\";--宽度\
+        id=\"bmrefreshic\";\
+        layout_gravity=\"center\";\
+        backgroundColor=\"#0000000\";--背景色\
+      };\
+    };\
+   \
+    {\
+      LinearLayout;\
+      id=\"b\";\
+      layout_width=\"20%w\";\
+      layout_marginLeft=\"0dp\";\
+      orientation=\"vertical\";\
+      gravity=\"center|right\";\
+      layout_gravity=\"center|right\";\
+      layout_height=\"fill\";\
+      {\
+        ImageView;--影像视图\
+        src=\"shuxin.png\";--刷新\
+        layout_height=\"20dp\";--高度\
+        ColorFilter=0xff757575;\
+        layout_marginTop=\"0dp\";--边顶\
+        layout_width=\"25dp\";--宽度\
+        id=\"bmrefreshic\";\
+        layout_gravity=\"center\";\
+        backgroundColor=\"#0000000\";--背景色\
+      };\
+    };\
+    {\
+      LinearLayout;\
+      id=\"c\";\
+      layout_width=\"20%w\";\
+      layout_marginLeft=\"0dp\";\
+      orientation=\"vertical\";\
+      gravity=\"center|right\";\
+      layout_gravity=\"center|right\";\
+      layout_height=\"fill\";\
+      {\
+        ImageView;--影像视图\
+        src=\"qianjin.png\";--前进\
+        layout_height=\"20dp\";--高度\
+        ColorFilter=0xff757575;\
+        layout_marginTop=\"0dp\";--边顶\
+        layout_width=\"25dp\";--宽度\
+        id=\"bmrefreshic\";\
+        layout_gravity=\"center\";\
+        backgroundColor=\"#0000000\";--背景色\
+      };\
+    };\
+    \
+    {\
+      LinearLayout;\
+      id=\"bmrefresh\";\
+      layout_width=\"20%w\";\
+      layout_marginLeft=\"0dp\";\
+      orientation=\"vertical\";\
+      gravity=\"center|right\";\
+      layout_gravity=\"center|right\";\
+      layout_height=\"fill\";\
+      {\
+        ImageView;--影像视图\
+        src=\"zhugongneng.png\";\
+        layout_height=\"30dp\";--高度\
+        ColorFilter=0xff757575;\
+        layout_marginTop=\"0dp\";--边顶\
+        layout_width=\"25dp\";--宽度\
+        id=\"bmrefreshic\";\
+        layout_gravity=\"center\";\
+        backgroundColor=\"#0000000\";--背景色\
+      };\
+    };\
+  \
+  \
+  \
+  \
+  \
+  };\
+}\
+fltBtn.Parent.addView(loadlayout(底栏布局))\
+\
+\
+\
+function 波纹(id,颜色)\
+  import \"android.content.res.ColorStateList\"\
+  local attrsArray = {android.R.attr.selectableItemBackgroundBorderless} \
+  local typedArray =activity.obtainStyledAttributes(attrsArray) \
+  ripple=typedArray.getResourceId(0,0) \
+  Pretend=activity.Resources.getDrawable(ripple) \
+  Pretend.setColor(ColorStateList(int[0].class{int{}},int{颜色}))\
+  id.setBackground(Pretend.setColor(ColorStateList(int[0].class{int{}},int{颜色})))\
+end\
+\
+\
+波纹(a,0xFF757575)\
+\
+波纹(bmrefresh,0xFF757575)\
+波纹(b,0xFF757575)\
+波纹(c,0xFF757575)\
+\
+a.onClick=function()\
+网页后退()\
+end\
+b.onClick=function()\
+加载网页(\"https://xiaobaizzz.gitee.io/liulanqizhuye/viaBrowser/\")\
+end\
+c.onClick=function()\
+网页前进()\
+end\
+\
+\
+bmrefresh.onClick=function()\
+  \
+items={\"🔍   百度搜索\",\"🌎   访问网址\",\"👨   网页分享\",\"⬆️   返回顶部\",\"🔃   刷新网页\",\"➕   加入收藏\",\"🗂    打开收藏\",\"💿   复制链接\",\"🔨   切换ua\",\"🏃   退出程序\"}\
+AlertDialog.Builder(this)\
+.setTitle(\"🌎   菜单\")\
+.setNegativeButton(\"显示/隐藏顶栏\",function(v)\
+if barisshow == 0 then\
+  --状态栏\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+  else\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+  end\
+end)\
+.setNeutralButton(\"显示/隐藏悬浮球\",function(v)--设置中立按钮\
+if barisshow == 0 then\
+      fltBtn.setVisibility(View.GONE)\
+      barisshow = 1;\
+  else\
+      fltBtn.setVisibility(View.VISIBLE)\
+   barisshow = 0;\
+   end\
+    end)\
+.setItems(items,{onClick=function(l,v)\
+    if v==0 then\
+ InputLayout={\
+        LinearLayout;\
+        orientation=\"vertical\";\
+        Focusable=true,\
+        FocusableInTouchMode=true,\
+        {\
+          TextView;\
+          id=\"Prompt\",\
+          textSize=\"15sp\",\
+          layout_marginTop=\"10dp\";\
+          layout_marginLeft=\"3dp\",\
+          layout_width=\"80%w\";\
+          layout_gravity=\"center\",\
+          text=\"百度搜索\"\
+        };\
+        {\
+\
+          EditText;\
+          hint=\"关键字\";\
+          layout_marginTop=\"5dp\";\
+          layout_width=\"80%w\";\
+          layout_gravity=\"center\",\
+          id=\"edit\";\
+              };\
+      };\
+\
+      AlertDialog.Builder(this)\
+      .setTitle(\"百度搜索\")\
+      .setView(loadlayout(InputLayout))\
+      .setPositiveButton(\"确定\",{onClick=function(v)\
+          \
+  加载网页(\"http://m.baidu.com/s?word=\"..edit.text)\
+        end})\
+      .setNegativeButton(\"取消\",nil)\
+      .show()\
+      function 输入框动画(id,位置Z,位置Y,起始点,动画时间)\
+        import \"android.view.animation.*\"--导入\
+        import \"java.lang.Math\"--导入\
+        import \"com.androlua.Ticker\"--导入\
+        --当有参数反馈时，则自动进行下列动画\
+        t=Ticker()\
+         t.Period=0\
+        t.start()\
+        t.onTick=function()\
+          t.stop()--停止\
+          --扩散原理和我发的揭露动画原理相同，利用圆形扩散\
+          animator = ViewAnimationUtils.createCircularReveal(edit,位置Z,位置Y,起始点,edit.getWidth()); \
+          animator.setInterpolator(AccelerateInterpolator());\
+          animator.setDuration(2000); \
+          animator.start(); \
+        end\
+      end\
+\
+\
+\
+\
+      --输入框监听事件\
+      edit.setOnFocusChangeListener{\
+        --当焦点发生时\
+        onFocusChange=function( v, hasFocus)\
+          --如果有焦点，然后\
+          if hasFocus==true then\
+              --返回输入框动画参数\
+            --输入框动画(text,text.width/2,0,0,0)--效果1\
+            输入框动画(text,0,0,0,700)--效果2\
+\
+            --有焦点时，设置控件text的高度为5，线条变粗，手册有相关代码\
+            gd=Prompt.getLayoutParams()\
+            gd.height=2\
+            Prompt.setLayoutParams(gd)--edit线条变粗\
+                      else\
+\
+            --没有焦点时，设置控件text的原来的高度为3，线条变细，手册有相关代码\
+            gd=text.getLayoutParams()\
+            gd.height=1\
+            Prompt.setLayoutParams(gd)\
+          end\
+        end}\
+    end\
+    if v==1 then\
+   InputLayout={\
+  LinearLayout;\
+  orientation=\"vertical\";\
+  Focusable=true,\
+  FocusableInTouchMode=true,\
+  {\
+    TextView;id=\"Prompt\",\
+    textSize=\"15sp\",\
+    layout_marginTop=\"10dp\";\
+    layout_marginLeft=\"3dp\",\
+    layout_width=\"80%w\";\
+    layout_gravity=\"center\",\
+    text=\"请输入网址：\";\
+  };\
+  {\
+    EditText;\
+    hint=\"记得带上http://\";\
+    layout_marginTop=\"5dp\";\
+    layout_width=\"80%w\";\
+    layout_gravity=\"center\",\
+    id=\"edit\";\
+  };\
+};\
+\
+AlertDialog.Builder(this)\
+.setTitle(\"粘贴访问\")\
+.setView(loadlayout(InputLayout))\
+.setPositiveButton(\"访问\",{onClick=function(v)\
+   加载网页(edit.Text)\
+    --弹出消息(edit.Text);\
+   end}).setNegativeButton(\"取消\",nil)\
+.show()\
+import \"android.view.View$OnFocusChangeListener\"\
+edit.setOnFocusChangeListener(OnFocusChangeListener{ \
+  onFocusChange=function(v,hasFocus)\
+    if hasFocus then\
+      Prompt.setTextColor(0xFD009688)\
+    end\
+  end})\
+    end\
+    if v==2 then\
+分享文本(webView.getUrl())\
+\
+\
+    end\
+    if v==3 then\
+返回网页顶部()\
+    end\
+      if v==4 then\
+刷新网页()\
+    end\
+\
+\
+    if v==5 then\
+--加入收藏\13\
+add_fav()\13\
+\
+    end\
+    if v==6 then\
+--打开收藏\13\
+show_fav()\13\
+\
+    end\
+    if v==7 then\
+--复制当前页面链接\
+弹出消息(\"已复制当前页面链接\")\
+复制文本(webView.getUrl())\
+    end\
+  if v==8 then\
+items={}\
+table.insert(items,\"自定义UA\")\
+table.insert(items,\"手机模式\")\
+table.insert(items,\"电脑模式\")\
+table.insert(items,\"塞班模式\")\
+table.insert(items,\"通用模式\")\
+table.insert(items,\"默认模式\")\
+AlertDialog.Builder(this)\
+.setTitle(\"请选择需要切换的UA\")\
+.setItems(items,{onClick=function(l,v) \
+if items[v+1]==\"手机模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 (Linux; Android 7.1.1; OD105 Build/NMF26F; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043409 Safari/537.36 MicroMessenger/6.5.13.1100 NetType/WIFI Language/zh_CN\");\
+刷新网页();\
+elseif items[v+1]==\"电脑模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36\");\
+刷新网页();\
+elseif items[v+1]==\"自定义UA\" then\
+InputLayout=\
+{\
+  LinearLayout;\
+  orientation=\"vertical\";\
+  Focusable=true,\
+  FocusableInTouchMode=true,\
+  {\
+    TextView;\
+    id=\"Prompt\",\
+    textSize=\"18sp\",\
+    layout_marginTop=\"10dp\";\
+    --layout_marginLeft=\"3dp\",\
+    layout_width=\"80%w\";\
+    layout_gravity=\"center\",\
+    text=\"请输入UA代码：\";\
+    };\
+  {\
+    EditText;\
+    hint=\"这里输入UA代码\";\
+    text=a;\
+    layout_marginTop=\"5dp\";\
+    layout_width=\"80%w\";\
+    layout_gravity=\"center\",\
+    textSize=\"15sp\",\
+    id=\"UA\";\
+    };\
+  };\
+AlertDialog.Builder(this)\
+.setTitle(\"自定义UA\")\
+.setView(loadlayout(InputLayout))\
+.setPositiveButton(\"确定\",{onClick=function(v)\
+    webView.getSettings().setUserAgentString(UA.Text);\
+    a=UA.Text\
+    end})\
+.setNegativeButton(\"取消\",nil)\
+.show()\
+import \"android.view.View$OnFocusChangeListener\"\
+UA.setOnFocusChangeListener(OnFocusChangeListener{\
+  onFocusChange=function(v,hasFocus)\
+    if hasFocus then\
+      Prompt.setTextColor(0xFD009688)\
+      end\
+    end})\
+elseif items[v+1]==\"超级模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 Dalvik/2 ( Linux; U; NEM-AL10 Build/HONORNEM-AL10;Youku;7.1.4;) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Safari/537.36 (Baidu; P1 6.0) iPhone/7.1 Android/8.0 baiduboxapp/2.7.0.10\");\
+刷新网页();\
+elseif items[v+1]==\"备用模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 (Linux; U; Android 8.0.0; zh-CN; ONEPLUS A5000 Build/OPR6.170623.013) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/40.0.2214.89 UCBrowser/11.6.4.950 UWS/2.11.0.44 Mobile Safari/537.36 AlipayChannelId/5136 UCBS/2.11.0.44_180123134534 NebulaSDK/1.8.100112 Nebula AlipayDefined(nt:WIFI,ws:431|0|2.5062501,ac:sp) AliApp(AP/10.1.15.463) AlipayClient/10.1.15.463 Language/zh-Hans useStatusBar/true\");\
+刷新网页();\
+elseif items[v+1]==\"塞班模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 (Symbian/3; Series60/5.2 NokiaN8-00/012.002; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/533.4 (KHTML, like Gecko) NokiaBrowser/7.3.0 Mobile Safari/533.4 3gpp-gba\");\
+刷新网页();\
+elseif items[v+1]==\"默认模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Quark/3.8.4.128 UCBrowser/12.0.4.985 baiduboxapp/3.2.5.10 MQQBrowser/7.2.1.2965 XiaoMi/MiuiBrowser/11.9.2 SearchCraft/2.0.0 ALiSearchApp/2.4 AliApp(TB/9.5.6) BingWeb/6.9.6 3gpp-gba\");\
+刷新网页();\
+elseif items[v+1]==\"通用模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 (Linux; U; Android 6.0; zh-CN; vivo X21 Build/HEXCNFN6003006081S) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 Quark/2.4.3.987 Mobile Safari/537.36\");\
+刷新网页();\
+end\
+end})\
+.show()\
+    end\
+  if v==9 then\
+退出页面()\
+    end\
+  end})\
+.show()\
+  \
+  \
+end\13\
+\
+\
+\
+\
+\
+\
+\
+--程序启动时会执行的事件\
+--获得屏幕宽高\
+local w=this.getWidth()\
+local h=this.getHeight()\
+\
+--获取状态栏高度\
+local function getStatusBarHeight(JDPUK)\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  local resid=activity.getResources().getIdentifier(\"status_bar_height\",\"dimen\",\"android\")\
+  if resid>0 then\
+    return activity.getResources().getDimensionPixelSize(resid)\
+  end\
+end\
+jdpuk=32552732\
+\
+--设置悬浮按钮位置\
+local function setFloatButtonPosition(X,Y,J,D,P,U,K)\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  fltBtn.LayoutParams=fltBtn.LayoutParams.setMargins(0,0,w-X-fltBtn.getMeasuredWidth()/2,h-Y-fltBtn.getMeasuredHeight()/2)-- 3 2 5 5 2 7 3 2\
+  --保存悬浮按钮位置\
+  this.setSharedData(\"悬浮按钮横坐标\",X)\
+  this.setSharedData(\"悬浮按钮纵坐标\",Y)\
+end\
+\
+task(200,function(JDPUK)\
+  --恢复悬浮按钮位置\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..tostring(3)..\"2\" then error()end\
+  local x=this.getSharedData(\"悬浮按钮横坐标\")\
+  local y=this.getSharedData(\"悬浮按钮纵坐标\")\
+  if x and y then setFloatButtonPosition(x,y) end\
+end)\
+\
+--初始化按下起始位置\
+local sx\
+local sy\
+\
+--设置移动条件(最小移动范围)\
+local mr=50\
+--初始化是否移动\
+local cm=false\
+\
+--设置自动校准范围\
+local tr=50\
+--设置自动校准坐标\
+local tp={\
+  {0,nil},--左贴边\
+  {nil,0},--上贴边\
+  {w,nil},--右贴边\
+  {nil,h},--下贴边\
+}\
+task(200,function(JDPUK)--一些需要用到悬浮按钮参数的坐标，得延时等悬浮按钮准备好\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  table.insert(tp,{w/2+1,h-fltBtn.getMeasuredHeight()})--约中下位置\
+  --table.insert(tp,{w-fltBtn.getMeasuredWidth()/2,h-fltBtn.getMeasuredHeight()/2})\
+end)\
+\
+--监听悬浮按钮被按下事件\
+task(200,function(JDPUK)--延时等待悬浮按钮准备好\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  fltBtn.getChildAt(0).onTouch=function(view,event,JDPUK)--悬浮按钮本身无法监听点击事件，找子控件监听\
+    if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+\
+    --得到手指当前位置\
+    local x=event.getRawX()\
+    local y=event.getRawY()\
+\
+    if event.getAction()==MotionEvent.ACTION_DOWN then--如果是按下事件，则保存按下的位置\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+      --保存按下位置\
+      sx=x\
+      sy=y\
+      return false\
+    elseif event.getAction()==MotionEvent.ACTION_MOVE then--如果是移动事件，则移动悬浮按钮\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+\
+      if cm then\
+\
+        --fltBtn.LayoutParams=fltBtn.LayoutParams.setMargins(0,0,this.getWidth()-event.getRawX()-fltBtn.getMeasuredWidth()/2,this.getHeight()-event.getRawY()-fltBtn.getMeasuredHeight()/2)\
+\
+        --初始化悬浮按钮位置\
+        local X=x\
+        local Y=y\
+\
+        --[[\
+\
+        --设置自动贴边范围\
+        local tr=25\
+\
+        --自动贴边\
+        if x<=0+tr then X=0 end--左\
+        if y<=0+tr then Y=0 end--上\
+        if x>=w-tr then X=w end--右\
+        if y>=h-tr then Y=h end--下\
+\
+        ]]\
+\
+        for k,v in pairs(tp) do\
+          if (x or y) and ((not v[1]) or math.abs(x-v[1])<=tr) and ((not v[2]) or math.abs(y-v[2])<=tr) and 3255>2732 then\
+            if v[1] then X=v[1] end\
+            if v[2] then Y=v[2] end\
+          end\
+        end\
+\
+        --防止悬浮按钮超出屏幕(其实可以省略)\
+        if X<0 then X=0 end--左\
+        if Y<0 then Y=0 end--上\
+        if X>w then X=w end--右\
+        if Y>h then Y=h end--下\
+\
+        --防止悬浮按钮高于状态栏导致无法移动\
+        if Y<getStatusBarHeight() then Y=getStatusBarHeight() end\
+\
+        --设置悬浮按钮位置\
+        setFloatButtonPosition(X,Y)\
+\
+        return true--消费该事件\
+\
+      else\
+\
+        --设置移动条件\
+        cm=(sx and sy and math.abs((x+y)-(sx+sy))>=mr and jdpuk==tonumber(\"3255\"..\"2732\"))--32552732\
+\
+        return false\
+      end\
+    elseif event.getAction()==MotionEvent.ACTION_UP then--如果是松开事件，则...嗯处理一些东西，自己看吧\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..tostring(32) then error()end\
+\
+      --重置变量前先把需要的变量保存为局部变量\
+      local tmp=cm\
+\
+      --重置变量\
+      sx=nil\
+      sy=nil\
+      cm=false\
+\
+      --如果本次按下符合移动条件，则消费事件\
+      if tmp then\
+        return true\
+      else\
+        return false\
+      end\
+\
+    end\
+    return false\
+  end\
+end)\
+if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+\
+  --流年1403306140\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+a=1\
+b=1\
+--源码群429596449\
+--程序启动时会执行的事件\
+webView.onLongClick=function()\
+  hitTestResult = webView.getHitTestResult()\
+  if (hitTestResult.getType() == WebView.HitTestResult.IMAGE_TYPE or hitTestResult.getType() == WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE)then\
+\
+    AboutLayout={\
+      LinearLayout;\
+      orientation=\"vertical\";\
+      Focusable=true,\
+      FocusableInTouchMode=true,\
+\
+\
+      {\
+        Button;--钮扣\
+        text=\"保存所选图片\";--文本\
+        textSize=\"17\";--文本大小\
+        textColor=\"#FF000000\";\
+        backgroundColor=\"#FFFFFFFF\";--背景色\
+        layout_weight=\"1.0\"; \
+        layout_width=\"fill\";--宽度\
+        layout_marginTop=\"fill\";--边顶\
+        onClick=function()\
+          picUrl = hitTestResult.getExtra()\
+          --导入包\
+import \"android.content.Context\"\
+import \"android.net.Uri\"\
+\
+downloadManager=activity.getSystemService(Context.DOWNLOAD_SERVICE);\
+url=Uri.parse(picUrl);\
+request=DownloadManager.Request(url);\
+request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE|DownloadManager.Request.NETWORK_WIFI);\
+request.setDestinationInExternalPublicDir(\"Download\",\"PEI\");\
+request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);\
+downloadManager.enqueue(request);\
+          关闭对话框()\
+        end\
+      };\
+\
+      {\
+        Button;--钮扣\
+        text=\"复制图片链接\";--文本\
+        textSize=\"17\";--文本大小\
+        textColor=\"#FF000000\";\
+        backgroundColor=\"#FFFFFFFF\";--背景色\
+        layout_weight=\"1.0\"; \
+        layout_width=\"fill\";--宽度\
+        layout_marginTop=\"fill\";--边顶\
+        onClick=function()\
+          picUrl = hitTestResult.getExtra()\
+          复制文本(picUrl)\
+          弹出消息(\"已复制\")\
+          关闭对话框()\
+        end\
+      };\
+  \
+\
+\
+    };\
+    dlg=AlertDialog.Builder(this).setView(loadlayout(AboutLayout)).show()\
+    function 关闭对话框()\
+      return dlg and dlg.dismiss()\
+    end\
+    import \"android.graphics.Paint\"\
+  end\
+end\
+\
+function onKeyDown(key,event)\
+\
+  if(key==4)then\
+\
+    if(webView.canGoBack())then\
+\
+      webView.goBack()\
+\
+    else\
+\
+      appinfo=this.getPackageManager().getApplicationInfo(this.getPackageName(),0)\
+\
+      applabel=this.getPackageManager().getApplicationLabel(appinfo)\
+\
+      退出确认=对话框()\
+\
+      .设置消息(\"您确定要退出 \"..applabel..\" 吗?\")\
+\
+      退出按钮={\
+\
+        [1]=function()\
+\
+          退出确认\
+\
+          .设置积极按钮(\"确定\",function()\
+\
+            退出程序()\
+\
+            mediaPlayer.pause();\
+\
+          end\
+\
+          )\
+\
+          .设置中立按钮(\"清除缓存\",function()\
+\
+            对话框()\
+\
+            .设置消息(\"您确定要清除 \"..applabel..\" 的浏览记录、Cookies和表单数据吗？\")\
+\
+            .设置积极按钮(\"确定\",function()\
+\
+              os.execute(\"pm clear \"..this.packageName)\
+\
+              退出程序()\
+\
+            end)\
+\
+            .设置消极按钮(\"取消\",function()\
+\
+            end)\
+\
+            .显示()\
+\
+          end\
+\
+          )\
+\
+          .设置消极按钮(\"取消\")\
+\
+        end\
+\
+      }\
+\
+      math.randomseed(tonumber(tostring(os.time()):reverse():sub(1, 6)))\
+\
+      退出按钮[math.random(1,1)]()\
+\
+      退出确认.show()\
+\
+    end\
+\
+    return true\
+\
+  end\
+\
+end\
+\13\
+--5.清除缓存\
+function clr()\
+  --导入File类\
+  import \"java.io.File\"\
+  --显示多选框\
+  items={\"浏览记录\",\"Cookies和表单数据\"}\
+  多选对话框=AlertDialog.Builder(this)\
+  .setTitle(\"清除缓存\")\
+  --勾选后执行\
+  .setPositiveButton(\"确定\",function()\
+    if clearhistory==1 and clearall==1 then\
+      File(lstads).delete()\
+      File(lstwebads).delete()\
+      lst={}\
+      lstweb={}\
+      os.execute(\"pm clear \"..activity.getPackageName())\
+    elseif clearhistory==0 and clearall==1 then\
+      os.execute(\"pm clear \"..activity.getPackageName())\
+    elseif clearhistory==1 and clearall==0 then\
+      File(lstads).delete()\
+      File(lstwebads).delete()\
+      lst={}\
+      lstweb={}\
+    else return nil\
+    end\
+  end)\
+  --选择事件\
+  .setMultiChoiceItems(items, nil,{ onClick=function(v,p)\
+      --清除历史\
+      if p==0 then clearhistory=1\
+      end\
+      --清除缓存\
+      if p==1 then clearall=1\
+      end\
+    end})\
+  多选对话框.show();\
+  clearhistory=0\
+  clearall=0\
+end\
+\
+\13\
+--1.地址\13\
+favads=\"/data/data/\"..activity.getPackageName()..\"/fav.lua\"\13\
+favwebads=\"/data/data/\"..activity.getPackageName()..\"/favweb.lua\"\13\
+\13\
+--2.序列化\13\
+function slz(obj) \13\
+  local lua = \"\" \13\
+  local t = type(obj) \13\
+  if t == \"number\" then \13\
+    lua = lua .. obj \13\
+  elseif t == \"boolean\" then \13\
+    lua = lua .. tostring(obj) \13\
+  elseif t == \"string\" then \13\
+    lua = lua .. string.format(\"%q\", obj) \13\
+  elseif t == \"table\" then \13\
+    lua = lua .. \"{\\n\" \13\
+    for k, v in pairs(obj) do \13\
+      lua = lua .. \"[\" .. slz(k) .. \"]=\" .. slz(v) .. \",\\n\" \13\
+    end \13\
+    local metatable = getmetatable(obj) \13\
+    if metatable ~= nil and type(metatable.__index) == \"table\" then \13\
+      for k, v in pairs(metatable.__index) do \13\
+        lua = lua .. \"[\" .. slz(k) .. \"]=\" .. slz(v) .. \",\\n\" \13\
+      end \13\
+    end \13\
+    lua = lua .. \"}\" \13\
+  elseif t == \"nil\" then \13\
+    return nil \13\
+  else \13\
+    error(\"can not serialize a \" .. t .. \" type.\") \13\
+  end \13\
+  return lua \13\
+end \13\
+function rslz(lua) \13\
+  local t = type(lua) \13\
+  if t == \"nil\" or lua == \"\" then \13\
+    return {}\13\
+  elseif t == \"number\" or t == \"string\" or t == \"boolean\" then \13\
+    lua = tostring(lua) \13\
+  else \13\
+    error(\"can not unserialize a \" .. t .. \" type.\") \13\
+  end \13\
+  lua = \"return \" .. lua \13\
+  local func = loadstring(lua) \13\
+  if func == nil then \13\
+    return nil \13\
+  end \13\
+  return func() \13\
+end\13\
+\13\
+--3.读取收藏文件\13\
+function read_fav()\13\
+  import \"java.io.File\"\13\
+  File(favads).createNewFile()\13\
+  sfav=io.open(favads):read(\"*a\")\13\
+  File(favwebads).createNewFile()\13\
+  sfavweb=io.open(favwebads):read(\"*a\")\13\
+  --转换成table\13\
+  fav=rslz(sfav)\13\
+  favweb=rslz(sfavweb)\13\
+end\13\
+\13\
+--4.存储收藏文件\13\
+function save_fav()\13\
+  --转换成string\13\
+  sfav=slz(fav)\13\
+  sfavweb=slz(favweb)\13\
+  --保存\13\
+  file=io.open(favads,\"w+\")\13\
+  io.output(file)\13\
+  io.write(sfav)\13\
+  io.flush()\13\
+  io.close(file)\13\
+  file=io.open(favwebads,\"w+\")\13\
+  io.output(file)\13\
+  io.write(sfavweb)\13\
+  io.flush()\13\
+  io.close(file)\13\
+end\13\
+\13\
+--5.收藏夹布局\13\
+function favshow()\13\
+  favlayout={\13\
+    LinearLayout,\13\
+    orientation=\"1\",\13\
+    gravity=\"center\",\13\
+    layout_width=\"wrap_content\",\13\
+    layout_height=\"wrap_content\",\13\
+    {\13\
+      TextView,\13\
+      text=\"\",\13\
+      gravity=\"center\",\13\
+      layout_width=\"wrap_content\",\13\
+      textSize=\"0sp\",\13\
+      background=\"#000000\",\13\
+      layout_height=\"15dp\",},\13\
+    {\13\
+      TextView,\13\
+      text=\"书签记录\",\13\
+      gravity=\"center\",\13\
+      layout_width=\"wrap_content\",\13\
+      textSize=\"30sp\",\13\
+      textStyle=\"bold\",\13\
+      layout_height=\"50dp\",},\13\
+    {\13\
+      ListView,\13\
+      id=\"favlv\",\13\
+      items=fav,\13\
+      layout_width=\"fill\",\13\
+      layout_height=\"wrap_content\",\13\
+    },\13\
+  }\13\
+end\13\
+\13\
+--6.收藏夹显示\13\
+function show_fav() \13\
+  read_fav()\13\
+  favshow()\13\
+  fl=AlertDialog.Builder(activity)\13\
+  .setView(loadlayout(favlayout))\13\
+  .setNegativeButton(\"收起\",DialogInterface.OnClickListener{\13\
+    onClick=function()\13\
+    end\13\
+  })\13\
+  .create()\13\
+  fl.show()\13\
+  favlv.onItemClick=function(l,v,c,b)\13\
+    加载网页(favweb[b])\13\
+    fl.dismiss()\13\
+  end\13\
+  favlv.onItemLongClick=function(l,v,c,b)\13\
+    od=b\13\
+    popwin(od)\13\
+    return true\13\
+  end\13\
+end\13\
+--7.收藏夹编辑框布局\13\
+function efavshow(e1,e2)\13\
+  efavlayout={\13\
+    LinearLayout,\13\
+    orientation=\"1\",\13\
+    Focusable=true,\13\
+    FocusableInTouchMode=true,\13\
+    {\13\
+      EditText,\13\
+      id=\"efav\",\13\
+      text=e1,\13\
+      layout_marginTop=\"5dp\",\13\
+      layout_width=\"80%w\",\13\
+      layout_gravity=\"center\",\13\
+    },\13\
+    {\13\
+      EditText,\13\
+      id=\"efavweb\",\13\
+      text=e2,\13\
+      layout_margiTop=\"5dp\",\13\
+      layout_width=\"80%w\",\13\
+      layout_gravity=\"center\",\13\
+    },\13\
+  }\13\
+end\13\
+\13\
+--8.显示编辑框\13\
+function show_efav(b)\13\
+  read_fav()\13\
+  local e1=fav[b]\13\
+  local e2=favweb[b]\13\
+  efavshow(e1,e2)\13\
+  efl=AlertDialog.Builder(activity)\13\
+  .setTitle(\"编辑收藏\")\13\
+  .setView(loadlayout(efavlayout))\13\
+  .setPositiveButton(\"确认\",DialogInterface.OnClickListener{\13\
+    onClick=function()\13\
+      if (efav.text==\"\" or efavweb.text==\"\") then \13\
+        print(\"请填写完整\")\13\
+      else\13\
+        fav[b]=efav.text\13\
+        favweb[b]=efavweb.text\13\
+        save_fav()\13\
+        print(\"修改成功\")\13\
+        efl.dismiss()\13\
+        show_fav()\13\
+      end\13\
+    end})\13\
+  .setNegativeButton(\"取消\",DialogInterface.OnClickListener{\13\
+    onClick=function() \13\
+      show_fav()\13\
+    end})\13\
+  .setNeutralButton(\"删除\",DialogInterface.OnClickListener{\13\
+    onClick=function()\13\
+      对话框()\13\
+      .设置消息(\"您确定要删除吗？\")\13\
+      .设置积极按钮(\"确定\",function()\13\
+        table.remove(fav,b)\13\
+        table.remove(favweb,b)\13\
+        save_fav()\13\
+        print(\"删除成功\")\13\
+        efl.dismiss()\13\
+        show_fav()\13\
+      end)\13\
+      .设置消极按钮(\"取消\",function()\13\
+        show_fav()\13\
+      end)\13\
+      .显示()\13\
+    end})\13\
+  .create()\13\
+  efl.show()\13\
+end\13\
+\13\
+--9.添加收藏\13\
+function add_fav()\13\
+  read_fav()\13\
+  e1=webView.getTitle()\13\
+  e2=webView.getUrl()\13\
+  local rpt=0\13\
+  local nfav=#fav\13\
+  for i=1,nfav do\13\
+    if favweb[i]==webView.getUrl() then\13\
+      rpt=1\13\
+      break\13\
+    end\13\
+  end\13\
+  if rpt==1 then \13\
+    print(\"该网页已在收藏夹\")\13\
+  else \13\
+    efavshow(e1,e2)\13\
+    afl=AlertDialog.Builder(activity)\13\
+    .setTitle(\"添加收藏\")\13\
+    .setView(loadlayout(efavlayout))\13\
+    .setPositiveButton(\"添加\",DialogInterface.OnClickListener{\13\
+      onClick=function()\13\
+        if (efav.text==\"\" or efavweb.text==\"\") then\13\
+          print(\"请填写完整\")\13\
+        else\13\
+          table.insert(fav,1,efav.text)\13\
+          table.insert(favweb,1,efavweb.text)\13\
+          save_fav()\13\
+          print(\"收藏成功\")\13\
+          rpt=nil\13\
+        end\13\
+      end})\13\
+    .setNegativeButton(\"取消\",DialogInterface.OnClickListener{\13\
+      onClick=function() end})\13\
+    .create()\13\
+    afl.show()\13\
+  end\13\
+end\13\
+\13\
+--10.收藏排序\13\
+function upfav(b)\13\
+  if b~=1 then\13\
+    ufav=fav[b]\13\
+    ufavweb=favweb[b]\13\
+    table.remove(fav,b)\13\
+    table.remove(favweb,b)\13\
+    table.insert(fav,b-1,ufav)\13\
+    table.insert(favweb,b-1,ufavweb)\13\
+  end\13\
+  save_fav()\13\
+  show_fav()\13\
+end  \13\
+--11.长按弹窗\13\
+function popwin(od)\13\
+  local win1=\"向上移动\"\13\
+  local win2=\"编辑\"\13\
+  local win3=\"向下移动\"\13\
+  local wina={win1,win2,win3}\13\
+  local winb={win2,win3}\13\
+  local winc={win1,win2}\13\
+  if od==1 then\13\
+    win=winb\13\
+  elseif od==#fav then\13\
+    win=winc\13\
+  else\13\
+    win=wina\13\
+  end\13\
+  winlayout={\13\
+    LinearLayout,\13\
+    orientation=\"vertical\",\13\
+    {ListView,\13\
+      id=\"winlv\",\13\
+      items=win,\13\
+      layout_width=\"fill_parent\",\13\
+      layout_height=\"wrap_content\",},\13\
+  }\13\
+  winl=AlertDialog.Builder(activity)\13\
+  .setView(loadlayout(winlayout))\13\
+  .create()\13\
+  winl.show()\13\
+  winlv.onItemClick=function(l,v,c,b)\13\
+    if win[b]==win1 then\13\
+      fl.dismiss()\13\
+      upfav(od)\13\
+    elseif win[b]==win2 then\13\
+      fl.dismiss()\13\
+      show_efav(od)\13\
+    elseif win[b]==win3 then\13\
+      fl.dismiss()\13\
+      downfav(od)\13\
+    end\13\
+    winl.dismiss()\13\
+  end\13\
+end\13\
+function downfav(b)\13\
+  if b~=#fav then\13\
+    dfav=fav[b]\13\
+    dfavweb=favweb[b]\13\
+    table.remove(fav,b)\13\
+    table.remove(favweb,b)\13\
+    table.insert(fav,b+1,dfav)\13\
+    table.insert(favweb,b+1,dfavweb)\13\
+  end\13\
+  save_fav()\13\
+  show_fav()\13\
+end\13\
+--1.历史记录\13\
+lstads=\"/data/data/\"..activity.getPackageName()..\"/lst.lua\"\13\
+lstwebads=\"/data/data/\"..activity.getPackageName()..\"/lstweb.lua\"\13\
+--2.序列化\13\
+function slz(obj) \13\
+  local lua = \"\" \13\
+  local t = type(obj) \13\
+  if t == \"number\" then \13\
+    lua = lua .. obj \13\
+  elseif t == \"boolean\" then \13\
+    lua = lua .. tostring(obj) \13\
+  elseif t == \"string\" then \13\
+    lua = lua .. string.format(\"%q\", obj) \13\
+  elseif t == \"table\" then \13\
+    lua = lua .. \"{\\n\" \13\
+    for k, v in pairs(obj) do \13\
+      lua = lua .. \"[\" .. slz(k) .. \"]=\" .. slz(v) .. \",\\n\" \13\
+    end \13\
+    local metatable = getmetatable(obj) \13\
+    if metatable ~= nil and type(metatable.__index) == \"table\" then \13\
+      for k, v in pairs(metatable.__index) do \13\
+        lua = lua .. \"[\" .. slz(k) .. \"]=\" .. slz(v) .. \",\\n\" \13\
+      end \13\
+    end \13\
+    lua = lua .. \"}\" \13\
+  elseif t == \"nil\" then \13\
+    return nil \13\
+  else \13\
+    error(\"can not serialize a \" .. t .. \" type.\") \13\
+  end \13\
+  return lua \13\
+end \13\
+function rslz(lua) \13\
+  local t = type(lua) \13\
+  if t == \"nil\" or lua == \"\" then \13\
+    return {}\13\
+  elseif t == \"number\" or t == \"string\" or t == \"boolean\" then \13\
+    lua = tostring(lua) \13\
+  else \13\
+    error(\"can not unserialize a \" .. t .. \" type.\") \13\
+  end \13\
+  lua = \"return \" .. lua \13\
+  local func = loadstring(lua) \13\
+  if func == nil then \13\
+    return nil \13\
+  end \13\
+  return func() \13\
+end\13\
+\13\
+--3.历史记录框布局\13\
+function hstshow()\13\
+  hstlayout={\13\
+    LinearLayout,\13\
+    orientation=\"1\",\13\
+    gravity=\"center\",\13\
+    layout_width=\"wrap_content\",\13\
+    layout_height=\"wrap_content\",\13\
+    {\13\
+      TextView,\13\
+      text=\"\",\13\
+      gravity=\"center\",\13\
+      layout_width=\"wrap_content\",\13\
+      textSize=\"0sp\",\13\
+      background=\"#000000\",\13\
+      layout_height=\"15dp\",},\13\
+    {\13\
+      TextView,\13\
+      text=\"历史记录\",\13\
+      gravity=\"center\",\13\
+      layout_width=\"wrap_content\",\13\
+      textSize=\"30sp\",\13\
+      textStyle=\"bold\",\13\
+      layout_height=\"50dp\",},\13\
+    {\13\
+      ListView,\13\
+      id=\"hlst\",\13\
+      items=lst,\13\
+      layout_width=\"fill\",\13\
+      layout_height=\"wrap_content\",\13\
+    },\13\
+  }\13\
+end\13\
+\13\
+--4.读取历史文件\13\
+function read_hst()\13\
+  import \"java.io.File\"\13\
+  File(lstads).createNewFile()\13\
+  slst=io.open(lstads):read(\"*a\")\13\
+  File(lstwebads).createNewFile()\13\
+  slstweb=io.open(lstwebads):read(\"*a\")\13\
+  --转换成table\13\
+  lst=rslz(slst)\13\
+  lstweb=rslz(slstweb)\13\
+end\13\
+\13\
+--5.新网页加入历史记录\13\
+function add_hst()\13\
+  if string.len(webView.getTitle())<=300 then--粗略过掉无效标题\13\
+    newtitle=webView.getTitle()\13\
+    newurl=webView.getUrl()\13\
+    table.insert(lst,1,newtitle) --标题表添加新标题\13\
+    table.insert(lstweb,1,newurl) --网址表添加新网址\13\
+  end\13\
+end\13\
+\13\
+--6.存储历史文件\13\
+function save_hst()\13\
+  --转换成string\13\
+  slst=slz(lst)\13\
+  slstweb=slz(lstweb)\13\
+  --保存\13\
+  file=io.open(lstads,\"w+\")\13\
+  io.output(file)\13\
+  io.write(slst)\13\
+  io.flush()\13\
+  io.close(file)\13\
+  file=io.open(lstwebads,\"w+\")\13\
+  io.output(file)\13\
+  io.write(slstweb)\13\
+  io.flush()\13\
+  io.close(file)\13\
+end\13\
+\13\
+--7.显示历史记录框\13\
+function show_hst() \13\
+  hstshow()\13\
+  local hl=AlertDialog.Builder(activity)\13\
+  .setView(loadlayout(hstlayout))\13\
+  .setNegativeButton(\"收起\",DialogInterface.OnClickListener{\13\
+    onClick=function()\13\
+    end\13\
+  })\13\
+  .create()\13\
+  hl.show()\13\
+  hlst.onItemClick=function(l,v,c,b)\13\
+    加载网页(lstweb[b])\13\
+    hl.dismiss()\13\
+  end\13\
+  hlst.onItemLongClick=function(l,v,c,b)\13\
+    hl.dismiss()\13\
+    对话框()\13\
+    .设置消息(\"您确定要删除吗？\")\13\
+    .设置消极按钮(\"取消\",function()\13\
+      show_hst()\13\
+    end)\13\
+    .设置积极按钮(\"确定\",function()\13\
+      table.remove(lst,b)\13\
+      table.remove(lstweb,b)\13\
+      save_hst()\13\
+      show_hst()\13\
+    end )\13\
+    .显示()\13\
+    return true\13\
+  end\13\
+end\13\
+Http.get(\"http://wz4.in/1E2BEZC\",function()end)\
+--程序启动时会执行的事件\
+import 'android.webkit.WebView'webView.addJavascriptInterface({},'JsInterface')\
+--程序启动时会执行的事件\
+import 'android.webkit.WebView'\13\
+webView.addJavascriptInterface({},'JsInterface')\
+local clr=\"#EE546E7A\"\
+sidebar.addView(loadlayout{\
+ LinearLayout,\
+ layout_width=\"fill\",\
+ layout_height=\"fill\",\
+ orientation=\"vertical\",\
+ gravity=\"bottom\",\
+ {\
+  LinearLayout,\
+  layout_width=\"fill\",\
+  layout_height=\"80dp\",\
+  {\
+   LinearLayout,\
+   orientation=\"vertical\",\
+   layout_width=\"fill\",\
+   layout_height=\"fill\",\
+   gravity=\"center\",\
+   {\
+    RelativeLayout,\
+    layout_width=\"fill\",\
+   },\
+  },\
+ },\
+})\
+--关闭阴影\
+drawerLayout.setScrimColor(0)\
+\
+--添加背景\
+drawerLayout.addView(loadlayout({\
+  ImageView,\
+  id=\"background\",\
+  scaleType=\"fitXY\",\
+}),0)\
+\
+\
+function setdata(a,b)\
+  c = this.getSharedPreferences(\"PicCustom\", Activity.MODE_PRIVATE)\
+  c.edit().putString(a, b).commit()\
+  end\
+function getdata(a)\
+  c = this.getSharedPreferences(\"PicCustom\", Activity.MODE_PRIVATE)\
+  b = c.getString(a, \"\")\
+  return b\
+  end\
+if getdata(\"fileSrc\")==\"\" then\
+  background.setImageBitmap(loadbitmap(\"background.jpg\"))--默认背景\
+  else\
+  background.setImageBitmap(loadbitmap(getdata(\"fileSrc\")))\
+end\
+\
+\
+--获取页面根布局\
+local lay=drawerLayout.getChildAt(1)\
+\
+--侧栏圆角\
+function CircleButton(view,InsideColor,radiu)\
+  import \"android.graphics.drawable.GradientDrawable\"\
+  drawable = GradientDrawable() \
+  drawable.setShape(GradientDrawable.RECTANGLE) \
+  drawable.setColor(InsideColor)\
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  view.setBackgroundDrawable(drawable)\
+end\
+角度=30--圆角弧度\
+控件id=sidebar\
+控件颜色=0xA1FFFFFF\
+CircleButton(控件id,控件颜色,角度)\
+linearParams = sidebar.getLayoutParams()\
+linearParams.width =520--侧滑栏宽度\
+local h=this.getHeight()--获得屏幕宽高\
+linearParams.height =h-100--侧滑栏高度\
+sidebar.setLayoutParams(linearParams)\
+flt=sidebar.getLayoutParams( )\
+flt.setMargins(0, 60,0,300)\
+sidebar.setLayoutParams(flt)\
+--上下左右\
+\
+--监听侧滑滑动事件\
+local pio=this.getWidth()*0.1\
+drawerLayout.setDrawerListener(DrawerLayout.DrawerListener{\
+  onDrawerSlide=function(v,i)\
+    lay.setScaleX(1-i/3.5).setScaleY(1-i/3.5)--页面缩放\
+    lay.setTranslationX((({0,0,1,0,-1})[v.LayoutParams.gravity])*(i*7*pio))--页面位移(其中那段奇怪的表是用于判断位移方向，不过依然仅支持左右侧滑)\
+    --sidebar.setScaleX(i).setScaleY(i)--侧滑栏缩放\
+  end})\
+\
+--重写按键监听，以允许通过返回键关闭右侧侧滑\
+function onKeyDown(key,event)\
+  if(key==4)then\
+    if drawerLayout.isDrawerOpen(3) or drawerLayout.isDrawerOpen(5) then\
+      drawerLayout.closeDrawer(3)\
+    elseif(webView.canGoBack())then\
+      webView.goBack()\
+    else\
+      this.finish()\
+    end\
+    return true\
+  end\
+end\
+\
+" ;
+      } ;
+  } ;

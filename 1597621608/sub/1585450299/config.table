@@ -1,0 +1,587 @@
+{
+  ["switch"]	= {
+      ["横屏"]	= false ;
+      ["支持滑动页面"]	= false ;
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= false ;
+      } ;
+  ["web"]	= {
+      ["启用长按菜单"]	= false ;
+      ["启动网页"]	= "https://m.jd.com/" ;
+      ["customUa"]	= "Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Quark/3.8.4.128 UCBrowser/12.0.4.985 baiduboxapp/3.2.5.10 MQQBrowser/7.2.1.2965 XiaoMi/MiuiBrowser/11.9.2 SearchCraft/2.0.0 ALiSearchApp/2.4 AliApp(TB/9.5.6) BingWeb/6.9.6 3gpp-gba" ;
+      ["网页沉浸"]	= true ;
+      ["启用进度条"]	= false ;
+      ["浏览器用户标识"]	= "自定义" ;
+      ["支持打开外部应用"]	= false ;
+      } ;
+  ["colors"]	= {
+      ["顶栏"]	= "#ffc72518" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["进度条"]	= "#00000000" ;
+      ["搜索栏部件"]	= "#ff767676" ;
+      ["顶栏部件触摸"]	= "#acffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["侧滑栏列表图标"]	= "#ff72cefa" ;
+      ["侧滑栏列表文字"]	= "#ff74a5ff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["搜索栏背景"]	= "#edeeeeee" ;
+      ["悬浮按钮"]	= "#ffc72518" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      } ;
+  ["global_js"]	= "加载Js([[\
+//08:16-50\
+document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"display:none\");\
+\
+]])" ;
+  ["web_control"]	= {
+      [1]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "m-carousel-item-col,m-carousel-item-col" ;
+          ["url"]	= "m.jd.com" ;
+          } ;
+      [2]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "imgWrap,iconWrap,u-icon u-icon-miniOpenAppClose close,m-downloadBanner" ;
+          ["url"]	= "m.you.163.com" ;
+          } ;
+      [3]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "ddapp-wrapper,ddapp,http://img63.ddimg.cn/upload_img/00775/h5/WechatIMG12-1585655640.png" ;
+          ["url"]	= "www.dangdang.com" ;
+          } ;
+      [4]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "u-download-bar" ;
+          ["url"]	= "m.vip.com" ;
+          } ;
+      [5]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "common-right-d" ;
+          ["url"]	= "m.suning.com" ;
+          } ;
+      } ;
+  ["fltBtn"]	= {
+      ["图标"]	= "" ;
+      ["显示"]	= false ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件\
+--悬浮按钮点击时执行的事件\
+pop=PopupMenu(activity,fltBtn)\
+menu=pop.Menu\
+menu.add(\"刷新\").onMenuItemClick=function(a)\
+  刷新网页()\
+\
+end\
+menu.add(\"显示/隐藏顶栏\").onMenuItemClick=function(a)\
+\
+if barisshow == 0 then\
+  --状态栏\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+  else\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+  end\
+end\
+\
+menu.add(\"隐藏悬浮窗\").onMenuItemClick=function(a)\
+  fltBtn.setVisibility(View.GONE)\
+  end\
+menu.add(\"夜间模式\").onMenuItemClick=function(a)\
+  加载Js([[{css=document.createElement(\"link\");var t='html,body,form,nav,header{background-image:none !important;background-color: #363c47 !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}div,html *{background-color: #000000 !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}p,span{background-color: transparent !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}div:empty,div[id=\"x-video-button\"],div[class=\"x-advert\"]{background-color:transparent !important;}input,select,button,textarea{box-shadow:0 0 0!important;color:#c3bdbc!important;background-color: #293037 !important;border-color:#212533!important;}a,a *{background-color: transparent !important;color:#b5a598!important;text-decoration:none!important;border-color:#212533!important;text-shadow: 0 0 0!important;}a:visited,a:visited *{color:#757170!important;}';css.href=t;var o=document.getElementsByTagName(\"head\");if(o[0].appendChild(css)){var a=document.createElement(\"style\");a.appendChild(document.createTextNode(t)),document.documentElement.appendChild(a)}}]])\
+end\
+menu.add(\"退出\").onMenuItemClick=function(a)\
+  退出页面()\
+\
+end\
+pop.show()\
+--显示import \"android.view.WindowManager\"\
+--需程序启动赋予barisshow初始值0\
+\
+" ;
+      } ;
+  ["sidebar"]	= {
+      ["启用"]	= true ;
+      ["items"]	= {
+          [1]	= {
+              ["icon"]	= "drawable/subtract.png" ;
+              ["onClick"]	= "加载网页(\"https://m.jd.com/\")" ;
+              ["name"]	= "——京东" ;
+              } ;
+          [2]	= {
+              ["icon"]	= "drawable/cart.png" ;
+              ["onClick"]	= "加载网页(\"https://p.m.jd.com/cart/cart.action?fromnav=1&_gotcookie_=1\")" ;
+              ["name"]	= "购物车" ;
+              } ;
+          [3]	= {
+              ["icon"]	= "drawable/account_circle.png" ;
+              ["onClick"]	= "加载网页(\"https://home.m.jd.com/myJd/newhome.action?sceneval=2\")" ;
+              ["name"]	= "我的" ;
+              } ;
+          [4]	= {
+              ["icon"]	= "drawable/subtract.png" ;
+              ["onClick"]	= "加载网页(\"https://www.tmall.com/\")" ;
+              ["name"]	= "——天猫" ;
+              } ;
+          [5]	= {
+              ["icon"]	= "drawable/cart.png" ;
+              ["onClick"]	= "加载网页(\"https://h5.m.taobao.com/mlapp/cart.html?spm=608.8000241.links.2.181a1388MwJOeE\")" ;
+              ["name"]	= "购物车" ;
+              } ;
+          [6]	= {
+              ["icon"]	= "drawable/account_circle.png" ;
+              ["onClick"]	= "加载网页(\"http://ju.taobao.com/m/jusp/alone/personal/mtp.htm?spm=a2147.7632989.mine.1.618e4f84PUOoZ6&_format=true\")" ;
+              ["name"]	= "我的" ;
+              } ;
+          [7]	= {
+              ["icon"]	= "drawable/subtract.png" ;
+              ["onClick"]	= "加载网页(\"https://main.m.taobao.com/index.html\")\
+" ;
+              ["name"]	= "——淘宝" ;
+              } ;
+          [8]	= {
+              ["icon"]	= "drawable/rocket.png" ;
+              ["onClick"]	= "加载网页(\"https://temai.m.taobao.com/index.htm?pid=mm_30753570_11166349_39382448\")" ;
+              ["name"]	= "跳转淘宝特卖" ;
+              } ;
+          [9]	= {
+              ["icon"]	= "drawable/cart.png" ;
+              ["onClick"]	= "加载网页(\"https://main.m.taobao.com/cart/index.html?cartFrom=taobao_client&spm=a215s.7406091.toolbar.i1\")" ;
+              ["name"]	= "购物车" ;
+              } ;
+          [10]	= {
+              ["icon"]	= "drawable/account_circle.png" ;
+              ["onClick"]	= "加载网页(\"https://main.m.taobao.com/mytaobao/index.html?spm=a215s.7406091.toolbar.i3\")" ;
+              ["name"]	= "我的" ;
+              } ;
+          [11]	= {
+              ["icon"]	= "drawable/subtract.png" ;
+              ["onClick"]	= "加载网页(\"https://mobile.yangkeduo.com/index.html?refer_page_name=personal&refer_page_id=10001_1585878152105_6r3wfczjod&refer_page_sn=10001\")" ;
+              ["name"]	= "——拼多多" ;
+              } ;
+          [12]	= {
+              ["icon"]	= "drawable/account_circle.png" ;
+              ["onClick"]	= "加载网页(\"https://mobile.yangkeduo.com/personal.html?refer_page_name=index&refer_page_id=10002_1585878161993_pndej1dcx9&refer_page_sn=10002\")" ;
+              ["name"]	= "我的" ;
+              } ;
+          [13]	= {
+              ["icon"]	= "drawable/subtract.png" ;
+              ["onClick"]	= "加载网页(\"https://m.suning.com/\")" ;
+              ["name"]	= "——苏宁易购" ;
+              } ;
+          [14]	= {
+              ["icon"]	= "drawable/cart.png" ;
+              ["onClick"]	= "加载网页(\"https://shopping.suning.com/project/cart/cart1.html?safp=f73ee1cf.wapindex7.113464329889.4&safpn=10001\")" ;
+              ["name"]	= "购物车" ;
+              } ;
+          [15]	= {
+              ["icon"]	= "drawable/account_circle.png" ;
+              ["onClick"]	= "加载网页(\"https://passport.suning.com/ids/login?service=https%3A%2F%2Faq.suning.com%2Fasc%2Fauth%3FtargetUrl%3Dhttps%253A%252F%252Fmsinode.suning.com%252Fm%252Fhome.do%253Fsafpn%253D10009&loginTheme=wap_new\")" ;
+              ["name"]	= "我的" ;
+              } ;
+          [16]	= {
+              ["icon"]	= "drawable/subtract.png" ;
+              ["onClick"]	= "加载网页(\"http://m.you.163.com/\")" ;
+              ["name"]	= "——网易严选" ;
+              } ;
+          [17]	= {
+              ["icon"]	= "drawable/cart.png" ;
+              ["onClick"]	= "加载网页(\"http://m.you.163.com/cart#/?_k=p1nhql\")" ;
+              ["name"]	= "购物车" ;
+              } ;
+          [18]	= {
+              ["icon"]	= "drawable/account_circle.png" ;
+              ["onClick"]	= "加载网页(\"http://m.you.163.com/u/login?callback=%2Fucenter\")" ;
+              ["name"]	= "我的" ;
+              } ;
+          [19]	= {
+              ["icon"]	= "drawable/subtract.png" ;
+              ["onClick"]	= "加载网页(\"http://www.dangdang.com/\")" ;
+              ["name"]	= "——当当" ;
+              } ;
+          [20]	= {
+              ["icon"]	= "drawable/cart.png" ;
+              ["onClick"]	= "加载网页(\"http://cart.m.dangdang.com/cart.php?action=list_cart&sid=810d5ca3512e7f50f000b173cacf83f3\")" ;
+              ["name"]	= "购物车" ;
+              } ;
+          [21]	= {
+              ["icon"]	= "drawable/account_circle.png" ;
+              ["onClick"]	= "加载网页(\"http://home.m.dangdang.com/?sid=810d5ca3512e7f50f000b173cacf83f3\")" ;
+              ["name"]	= "我的" ;
+              } ;
+          [22]	= {
+              ["icon"]	= "drawable/subtract.png" ;
+              ["onClick"]	= "加载网页(\"https://wat.dyartstyle.com/index.php?r=index/wap\")" ;
+              ["name"]	= "——吾爱淘" ;
+              } ;
+          [23]	= {
+              ["icon"]	= "drawable/account_circle.png" ;
+              ["onClick"]	= "加载网页(\"https://wat.dyartstyle.com/index.php?r=user/index\")" ;
+              ["name"]	= "我的" ;
+              } ;
+          [24]	= {
+              ["icon"]	= "drawable/subtract.png" ;
+              ["onClick"]	= "加载网页(\"https://m.vip.com/index.html?source=www\")" ;
+              ["name"]	= "——唯品会" ;
+              } ;
+          [25]	= {
+              ["icon"]	= "drawable/cart.png" ;
+              ["onClick"]	= "加载网页(\"https://mcheckout.vip.com/cart-history.html\")" ;
+              ["name"]	= "购物车" ;
+              } ;
+          [26]	= {
+              ["icon"]	= "drawable/account_circle.png" ;
+              ["onClick"]	= "加载网页(\"https://m.vip.com/user.html\")" ;
+              ["name"]	= "我的" ;
+              } ;
+          } ;
+      ["启用顶部图片"]	= false ;
+      } ;
+  ["events"]	= {
+      ["程序启动"]	= "--感谢柯南大佬的指点\
+\
+--程序启动时会执行的事件\
+import \"tool\"\
+\
+------\
+-- 原作: Pretend° (dalao)\
+-- 修改: QQ32552732\
+-- 修改内容:\
+--  - 支持 Fusion App 原有布局\
+--  - 删除原有自定义布局等无用代码\
+--  - 稍微修改了下效果，符合个人喜好...\
+--  - 支持右侧栏\
+\
+--关闭阴影\
+drawerLayout.setScrimColor(0)\
+\
+--添加背景\
+drawerLayout.addView(loadlayout({\
+  ImageView,\
+  id=\"background\",\
+  scaleType=\"fitXY\",\
+}),0)\
+\
+\
+function setdata(a,b)\
+  c = this.getSharedPreferences(\"PicCustom\", Activity.MODE_PRIVATE)\
+  c.edit().putString(a, b).commit()\
+  end\
+function getdata(a)\
+  c = this.getSharedPreferences(\"PicCustom\", Activity.MODE_PRIVATE)\
+  b = c.getString(a, \"\")\
+  return b\
+  end\
+if getdata(\"fileSrc\")==\"\" then\
+  background.setImageBitmap(loadbitmap(\"background.jpg\"))--默认背景\
+  else\
+  background.setImageBitmap(loadbitmap(getdata(\"fileSrc\")))\
+end\
+\
+\
+--获取页面根布局\
+local lay=drawerLayout.getChildAt(1)\
+\
+--侧栏圆角\
+function CircleButton(view,InsideColor,radiu)\
+  import \"android.graphics.drawable.GradientDrawable\"\
+  drawable = GradientDrawable() \
+  drawable.setShape(GradientDrawable.RECTANGLE) \
+  drawable.setColor(InsideColor)\
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  view.setBackgroundDrawable(drawable)\
+end\
+角度=35--圆角弧度\
+控件id=sidebar\
+控件颜色=0xA1FFFFFF\
+CircleButton(控件id,控件颜色,角度)\
+linearParams = sidebar.getLayoutParams()\
+linearParams.width =520--侧滑栏宽度\
+local h=this.getHeight()--获得屏幕宽高\
+linearParams.height =h-100--侧滑栏高度\
+sidebar.setLayoutParams(linearParams)\
+flt=sidebar.getLayoutParams( )\
+flt.setMargins(0, 60,0,300)\
+sidebar.setLayoutParams(flt)\
+--上下左右\
+\
+--监听侧滑滑动事件\
+local pio=this.getWidth()*0.1\
+drawerLayout.setDrawerListener(DrawerLayout.DrawerListener{\
+  onDrawerSlide=function(v,i)\
+    lay.setScaleX(1-i/3.5).setScaleY(1-i/3.5)--页面缩放\
+    lay.setTranslationX((({0,0,1,0,-1})[v.LayoutParams.gravity])*(i*7*pio))--页面位移(其中那段奇怪的表是用于判断位移方向，不过依然仅支持左右侧滑)\
+    --sidebar.setScaleX(i).setScaleY(i)--侧滑栏缩放\
+  end})\
+\
+--重写按键监听，以允许通过返回键关闭右侧侧滑\
+function onKeyDown(key,event)\
+  if(key==4)then\
+    if drawerLayout.isDrawerOpen(3) or drawerLayout.isDrawerOpen(5) then\
+      drawerLayout.closeDrawer(3)\
+    elseif(webView.canGoBack())then\
+      webView.goBack()\
+    else\
+      this.finish()\
+    end\
+    return true\
+  end\
+end\
+\
+\
+--获得屏幕宽高\
+local w=this.getWidth()\
+local h=this.getHeight()\
+\
+--获取状态栏高度\
+local function getStatusBarHeight(JDPUK)\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  local resid=activity.getResources().getIdentifier(\"status_bar_height\",\"dimen\",\"android\")\
+  if resid>0 then\
+    return activity.getResources().getDimensionPixelSize(resid)\
+  end\
+end\
+jdpuk=32552732\
+\
+--设置悬浮按钮位置\
+local function setFloatButtonPosition(X,Y,J,D,P,U,K)\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  fltBtn.LayoutParams=fltBtn.LayoutParams.setMargins(0,0,w-X-fltBtn.getMeasuredWidth()/2,h-Y-fltBtn.getMeasuredHeight()/2)-- 3 2 5 5 2 7 3 2\
+  --保存悬浮按钮位置\
+  this.setSharedData(\"悬浮按钮横坐标\",X)\
+  this.setSharedData(\"悬浮按钮纵坐标\",Y)\
+end\
+\
+task(200,function(JDPUK)\
+  --恢复悬浮按钮位置\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..tostring(3)..\"2\" then error()end\
+  local x=this.getSharedData(\"悬浮按钮横坐标\")\
+  local y=this.getSharedData(\"悬浮按钮纵坐标\")\
+  if x and y then setFloatButtonPosition(x,y) end\
+end)\
+\
+--初始化按下起始位置\
+local sx\
+local sy\
+\
+--设置移动条件(最小移动范围)\
+local mr=50\
+--初始化是否移动\
+local cm=false\
+\
+--设置自动校准范围\
+local tr=50\
+--设置自动校准坐标\
+local tp={\
+  {0,nil},--左贴边\
+  {nil,0},--上贴边\
+  {w,nil},--右贴边\
+  {nil,h},--下贴边\
+}\
+task(200,function(JDPUK)--一些需要用到悬浮按钮参数的坐标，得延时等悬浮按钮准备好\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  table.insert(tp,{w/2+1,h-fltBtn.getMeasuredHeight()})--约中下位置\
+  --table.insert(tp,{w-fltBtn.getMeasuredWidth()/2,h-fltBtn.getMeasuredHeight()/2})\
+end)\
+\
+--监听悬浮按钮被按下事件\
+task(200,function(JDPUK)--延时等待悬浮按钮准备好\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  fltBtn.getChildAt(0).onTouch=function(view,event,JDPUK)--悬浮按钮本身无法监听点击事件，找子控件监听\
+    if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+\
+    --得到手指当前位置\
+    local x=event.getRawX()\
+    local y=event.getRawY()\
+\
+    if event.getAction()==MotionEvent.ACTION_DOWN then--如果是按下事件，则保存按下的位置\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+      --保存按下位置\
+      sx=x\
+      sy=y\
+      return false\
+    elseif event.getAction()==MotionEvent.ACTION_MOVE then--如果是移动事件，则移动悬浮按钮\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+\
+      if cm then\
+\
+        --fltBtn.LayoutParams=fltBtn.LayoutParams.setMargins(0,0,this.getWidth()-event.getRawX()-fltBtn.getMeasuredWidth()/2,this.getHeight()-event.getRawY()-fltBtn.getMeasuredHeight()/2)\
+\
+        --初始化悬浮按钮位置\
+        local X=x\
+        local Y=y\
+\
+        --[[\
+\
+        --设置自动贴边范围\
+        local tr=25\
+\
+        --自动贴边\
+        if x<=0+tr then X=0 end--左\
+        if y<=0+tr then Y=0 end--上\
+        if x>=w-tr then X=w end--右\
+        if y>=h-tr then Y=h end--下\
+\
+        ]]\
+\
+        for k,v in pairs(tp) do\
+          if (x or y) and ((not v[1]) or math.abs(x-v[1])<=tr) and ((not v[2]) or math.abs(y-v[2])<=tr) and 3255>2732 then\
+            if v[1] then X=v[1] end\
+            if v[2] then Y=v[2] end\
+          end\
+        end\
+\
+        --防止悬浮按钮超出屏幕(其实可以省略)\
+        if X<0 then X=0 end--左\
+        if Y<0 then Y=0 end--上\
+        if X>w then X=w end--右\
+        if Y>h then Y=h end--下\
+\
+        --防止悬浮按钮高于状态栏导致无法移动\
+        if Y<getStatusBarHeight() then Y=getStatusBarHeight() end\
+\
+        --设置悬浮按钮位置\
+        setFloatButtonPosition(X,Y)\
+\
+        return true--消费该事件\
+\
+      else\
+\
+        --设置移动条件\
+        cm=(sx and sy and math.abs((x+y)-(sx+sy))>=mr and jdpuk==tonumber(\"3255\"..\"2732\"))--32552732\
+\
+        return false\
+      end\
+    elseif event.getAction()==MotionEvent.ACTION_UP then--如果是松开事件，则...嗯处理一些东西，自己看吧\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..tostring(32) then error()end\
+\
+      --重置变量前先把需要的变量保存为局部变量\
+      local tmp=cm\
+\
+      --重置变量\
+      sx=nil\
+      sy=nil\
+      cm=false\
+\
+      --如果本次按下符合移动条件，则消费事件\
+      if tmp then\
+        return true\
+      else\
+        return false\
+      end\
+\
+    end\
+    return false\
+  end\
+end)\
+if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+" ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+\
+\
+" ;
+      } ;
+  ["toolbar"]	= {
+      ["搜索URL"]	= "https://so.m.jd.com/ware/search.action?keyword=%s" ;
+      ["icon_btns"]	= {
+          } ;
+      ["输入栏模式"]	= true ;
+      ["搜索框提示"]	= "人生如逆旅，我亦是行人" ;
+      ["启用搜索功能"]	= false ;
+      ["menus"]	= {
+          [4]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          [1]	= {
+              ["name"]	= "自定义侧滑背景" ;
+              ["onClick"]	= "import \"android.content.Intent\"\
+local intent= Intent(Intent.ACTION_PICK)\
+intent.setType(\"image/*\")\
+this.startActivityForResult(intent, 1)\
+------\
+\
+--回调\
+function onActivityResult(requestCode,resultCode,intent)\
+  if intent then\
+    local cursor =this.getContentResolver ().query(intent.getData(), nil, nil, nil, nil)\
+    cursor.moveToFirst()\
+    import \"android.provider.MediaStore\"\
+    local idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)\
+    fileSrc = cursor.getString(idx)\
+    bit=nil\
+    --fileSrc回调路径路径\
+    --import \"android.graphics.BitmapFactory\"\
+    --bit =BitmapFactory.decodeFile(fileSrc)\
+    --  iv.setImageBitmap(bit)\
+    background.setImageBitmap(loadbitmap(fileSrc))\
+    setdata(\"fileSrc\",fileSrc)\
+  end\
+end--nirenr" ;
+              } ;
+          [2]	= {
+              ["name"]	= "恢复默认背景" ;
+              ["onClick"]	= "c = this.getSharedPreferences(\"PicCustom\", Activity.MODE_PRIVATE) \
+c.edit().clear().commit()\
+background.setImageBitmap(loadbitmap(\"background.jpg\"))" ;
+              } ;
+          [3]	= {
+              ["name"]	= "隐藏顶栏" ;
+              ["onClick"]	= "fltBtn.setVisibility(View.VISIBLE)\
+import \"android.view.WindowManager\"\
+\
+\
+if barisshow == 0 then\
+  --状态栏\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+  else\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+  end\
+" ;
+              } ;
+          } ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏高度"]	= "40dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["侧滑栏宽度"]	= "250dp" ;
+      ["顶栏标题"]	= "人生如逆旅，我亦是行人" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["搜索栏圆角弧度"]	= "18dp" ;
+      } ;
+  } ;

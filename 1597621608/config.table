@@ -1,5 +1,57 @@
 {
+  ["web_control"]	= {
+      } ;
+  ["toolbar"]	= {
+      ["icon_btns"]	= {
+          } ;
+      ["搜索框提示"]	= "" ;
+      ["启用搜索功能"]	= false ;
+      ["menus"]	= {
+          } ;
+      ["输入栏模式"]	= false ;
+      ["搜索URL"]	= "" ;
+      } ;
+  ["global_js"]	= "/*\
+ * @name: 强制缩放\
+ * @Author: 谷花泰\
+ * @version: 1.0\
+ * @description: 让所有网页都可以缩放\
+ * @include: *\
+ * @createTime: 2019-10-04 01:47:08\
+ * @updateTime: 2019-10-09 14:46:02\
+ */\
+(function () {\
+  /* 判断是否该执行 */\
+  const key = encodeURIComponent('谷花泰:强制缩放:执行判断');\
+\
+  if (window[key]) {\
+    return;\
+  };\
+\
+  window[key] = true;\
+\
+  /* 开始执行代码 */\
+  const meta = document.createElement('meta');\
+  meta.setAttribute('name', 'viewport');\
+  meta.setAttribute('content', 'width=device-width, initial-scale=1, user-scalable=yes');\
+  document.head.appendChild(meta);\
+})();" ;
+  ["sidebar"]	= {
+      ["启用顶部图片"]	= false ;
+      ["items"]	= {
+          [1]	= {
+              ["name"]	= "About" ;
+              ["icon"]	= "drawable/aij.png" ;
+              ["onClick"]	= "进入子页面(\"about\")" ;
+              } ;
+          } ;
+      ["启用"]	= true ;
+      } ;
   ["events"]	= {
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
       ["网页加载完毕"]	= "local wl=activity.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE).getActiveNetworkInfo(); \
 \
 if wl== nil then    \
@@ -52,21 +104,7 @@ webView.addView(loadlayout(lay))\
 this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE )\
 \
 end" ;
-      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
-\
---接收参数\
-浏览器对象，新标题=..." ;
-      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
-\
---接收参数\
-浏览器对象,网页链接=..." ;
       ["程序启动"]	= "\
-\
-\
-\
-\
-\
-\
 \
 if(animationSet~=0)and(animationSet~=1)and(animationSet~=2)then--这里的判断用于方式用户在动画没有完成之前再次点击\
   animationSet=0\
@@ -79,7 +117,7 @@ if(animationSet~=0)and(animationSet~=1)and(animationSet~=2)then--这里的判断
       layout_height=\"fill\",\
       Gravity=\"center\",\
       id=\"DialogExternal\",\
-      \
+\
       {\
         CardView,\
         layout_width=\"300dp\",\
@@ -93,7 +131,7 @@ if(animationSet~=0)and(animationSet~=1)and(animationSet~=2)then--这里的判断
           layout_width=\"300dp\",\
           layout_height=\"328dp\",\
           orientation=\"vertical\",\
-         \
+\
           {\
             FrameLayout,\
             layout_width=\"300dp\",\
@@ -106,17 +144,18 @@ if(animationSet~=0)and(animationSet~=1)and(animationSet~=2)then--这里的判断
               TextView,\
               layout_width=\"250dp\",\
               layout_height=\"50dp\",\
-              layout_gravity=\"center|bottom\",\
+              --layout_gravity=\"center|Botton\",\
               layout_marginTop=\"10dp\",\
               textColor=\"#ffffffff\",\
               textSize=\"20sp\",\
               Gravity=\"center\",\
               text=\"你好吖～欢迎来到 LY ｜ Blog \",\
               id=\"nr\",\
+\
             },\
             {\
               ImageView,\
-             \
+\
               elevation='8dp';--阴影\
 \
               layout_width=\"fill\",\
@@ -126,20 +165,20 @@ if(animationSet~=0)and(animationSet~=1)and(animationSet~=2)then--这里的判断
               id=\"imgtp\",\
               -- adjustViewBounds=\"true\",\
               scaleType=\"fitXY\",\
-              src=\"https://bk.yyge.net/content/templates/Dream/images/timg.jpg\",\
+              src=\"lym.jpg\",\
             },\
-            \
           },\
+\
           {\
             LinearLayout,\
             layout_width=\"300dp\",\
             layout_height=\"120dp\",\
             orientation=\"vertical\",\
             Gravity=\"center\",\
-            style='?android:attr/buttonBarButtonStyle';\
-                onClick=function()\
-                end,\
-              id='yes',\
+             style='?android:attr/buttonBarButtonStyle';\
+              onClick=function()\
+              end,\
+            id=\"z10\",\
             {\
               TextView,\
               layout_width=\"150dp\",\
@@ -162,18 +201,7 @@ if(animationSet~=0)and(animationSet~=1)and(animationSet~=2)then--这里的判断
               text=\"Exist\",\
               id=\"qx\",\
             },\
-          {\
-                LinearLayout;\
-                id='yes',\
-                gravity='center';--重力属性\
-                orientation='vertical';--重力属性\
-                layout_width='fill';--布局宽度\
-                layout_height='fill';--布局高度\
-                style='?android:attr/buttonBarButtonStyle';\
-                onClick=function()\
-                end,\
-              };\
-          },\
+                   },\
         },\
       },\
     }\
@@ -307,6 +335,16 @@ if(animationSet~=0)and(animationSet~=1)and(animationSet~=2)then--这里的判断
     对话框()\
   end)\
 end\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
 \
 \
 \
@@ -607,17 +645,17 @@ buleng={\
             layout_height='30dp';--高度\
             CardBackgroundColor='0xfff5f5f5';--颜色\
             radius='15dp';--圆角\
-               {\
-                LinearLayout;\
-                id='gonggao',\
-                gravity='center';--重力属性\
-                orientation='vertical';--重力属性\
-                layout_width='fill';--布局宽度\
-                layout_height='fill';--布局高度\
-                style='?android:attr/buttonBarButtonStyle';\
-                onClick=function()\
-                end,\
-              };\
+            {\
+              LinearLayout;\
+              id='gonggao',\
+              gravity='center';--重力属性\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+              style='?android:attr/buttonBarButtonStyle';\
+              onClick=function()\
+              end,\
+            };\
             {\
               ImageView;--图片控件\
               src='picture/gg.png';--图片路径\
@@ -628,7 +666,7 @@ buleng={\
               layout_height='40dp';--高度\
               scaleType='fitXY';--图片显示类型\
               style='?android:attr/buttonBarButtonStyle';--安卓5.0以上控件点击水波纹效果\
-            id='laba';\
+              id='laba';\
             };\
             {\
               TextView;--文本控件\
@@ -1026,96 +1064,52 @@ end\
 \
 \
 " ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
       } ;
-  ["colors"]	= {
-      ["导航栏"]	= "#ff2c2e43" ;
-      ["搜索栏部件"]	= "#ff888888" ;
-      ["顶栏部件触摸"]	= "#22ffffff" ;
-      ["搜索栏提示文字"]	= "#80000000" ;
-      ["搜索栏部件触摸"]	= "#44000000" ;
-      ["顶栏部件"]	= "#ffffffff" ;
-      ["悬浮按钮"]	= "#ff33a7aa" ;
-      ["顶栏"]	= "#ffffffff" ;
-      ["搜索栏背景"]	= "#ffffffff" ;
-      ["悬浮按钮图标"]	= "#ffffffff" ;
-      ["侧滑栏列表文字"]	= "#ff333333" ;
-      ["侧滑栏列表图标"]	= "#ff757575" ;
-      ["进度条"]	= "#00000000" ;
-      ["侧滑栏背景"]	= "#ffffffff" ;
-      } ;
-  ["sidebar"]	= {
-      ["items"]	= {
-          [1]	= {
-              ["onClick"]	= "进入子页面(\"about\")" ;
-              ["name"]	= "About" ;
-              ["icon"]	= "drawable/aij.png" ;
-              } ;
-          } ;
-      ["启用顶部图片"]	= false ;
-      ["启用"]	= true ;
-      } ;
-  ["web_control"]	= {
-      } ;
-  ["toolbar"]	= {
-      ["输入栏模式"]	= false ;
-      ["menus"]	= {
-          } ;
-      ["icon_btns"]	= {
-          } ;
-      ["搜索框提示"]	= "" ;
-      ["搜索URL"]	= "" ;
-      ["启用搜索功能"]	= false ;
+  ["web"]	= {
+      ["启动网页"]	= "" ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["支持打开外部应用"]	= true ;
+      ["启用长按菜单"]	= false ;
+      ["启用进度条"]	= false ;
+      ["网页沉浸"]	= true ;
       } ;
   ["view_attribute"]	= {
-      ["侧滑栏宽度"]	= "240dp" ;
-      ["搜索栏阴影强度"]	= "2dp" ;
-      ["搜索栏圆角弧度"]	= "2dp" ;
-      ["顶栏阴影强度"]	= "2dp" ;
       ["顶栏标题"]	= "Title" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
       ["顶栏高度"]	= "56dp" ;
       } ;
   ["fltBtn"]	= {
-      ["显示"]	= false ;
       ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["显示"]	= false ;
       ["图标"]	= "" ;
       } ;
   ["switch"]	= {
-      ["显示状态栏"]	= true ;
-      ["启用启动图"]	= true ;
-      ["支持滑动页面"]	= false ;
       ["横屏"]	= false ;
+      ["支持滑动页面"]	= false ;
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= true ;
       } ;
-  ["global_js"]	= "/*\
- * @name: 强制缩放\
- * @Author: 谷花泰\
- * @version: 1.0\
- * @description: 让所有网页都可以缩放\
- * @include: *\
- * @createTime: 2019-10-04 01:47:08\
- * @updateTime: 2019-10-09 14:46:02\
- */\
-(function () {\
-  /* 判断是否该执行 */\
-  const key = encodeURIComponent('谷花泰:强制缩放:执行判断');\
-\
-  if (window[key]) {\
-    return;\
-  };\
-\
-  window[key] = true;\
-\
-  /* 开始执行代码 */\
-  const meta = document.createElement('meta');\
-  meta.setAttribute('name', 'viewport');\
-  meta.setAttribute('content', 'width=device-width, initial-scale=1, user-scalable=yes');\
-  document.head.appendChild(meta);\
-})();" ;
-  ["web"]	= {
-      ["浏览器用户标识"]	= "默认" ;
-      ["网页沉浸"]	= true ;
-      ["启动网页"]	= "" ;
-      ["启用长按菜单"]	= false ;
-      ["支持打开外部应用"]	= true ;
-      ["启用进度条"]	= false ;
+  ["colors"]	= {
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["进度条"]	= "#00000000" ;
+      ["顶栏"]	= "#ffffffff" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["导航栏"]	= "#ff2c2e43" ;
       } ;
   } ;

@@ -1,166 +1,47 @@
 {
-  ["switch"]	= {
-      ["启用启动图"]	= false ;
-      ["横屏"]	= false ;
-      ["显示状态栏"]	= false ;
-      ["支持滑动页面"]	= false ;
-      } ;
-  ["global_js"]	= "加载Js([[\
-//08:16-50\
-document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"display:none\");\
-\
-//15:36-38\
-document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
-\
-]])" ;
-  ["events"]	= {
-      ["程序启动"]	= "--程序启动时会执行的事件\
-sidebar.onLongClick=function()\
-  弹出消息(\"谁让你点我的！\")\
-  加载网页(\"http://tool.mkblog.cn/durms/\")\
-end\
-\
-\
---程序启动时会执行的事件\
-import \"tool\"\
-\
-sidebar2=(loadlayout(\
-{\
-  LinearLayout;\
-  orientation=\"vertical\";\
-  layout_height=\"fill\";\
-  layout_width=\"fill\";\
-  gravity=\"center\";\
-  {\
-    CardView;\
-    layout_height=\"70dp\";\
-    layout_width=\"56dp\";\
-    radius=\"\";\
-    layout_gravity=\"center\";\
-    {\
-      CardView;\
-      layout_height=\"fill\";\
-      layout_width=\"fill\";\
-      radius=\"\";\
-      id=\"zhacai\";\
-      {\
-        ImageView;\
-        src=\"icon.png\";--选择图标\
-        layout_height=\"0dp\";\
-        layout_gravity=\"center\";\
-        layout_width=\"0dp\";\
-        id=\"img\";\
-      };\
-    };\
-  };\
-}\
-))--by偶尔想吃榨菜\
-fltBtn.addView(sidebar2)\
-\
-img.onClick=function()\
-  弹出消息(\"悬浮球\")\
-end\
---渐变\
-import \"android.graphics.drawable.GradientDrawable\"\
-function 渐变(left_jb,right_jb,id)\
-  drawable = GradientDrawable(GradientDrawable.Orientation.TR_BL,{\
-    right_jb,--右色\
-    left_jb,--左色\
-  });\
-  id.setBackgroundDrawable(drawable)\
-end\
---调用渐变函数\
-渐变(0xFF50ACFF,0xFF74E8FF,toolbarParent)\
---程序启动时会执行的事件\
-\
---程序启动时会执行的事件\
-function CircleButton(view,InsideColor,radiu)\
-  import \"android.graphics.drawable.GradientDrawable\"\
-  drawable = GradientDrawable() \
-  drawable.setShape(GradientDrawable.RECTANGLE) \
-  drawable.setColor(InsideColor)\
-  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
-  view.setBackgroundDrawable(drawable)\
-end\
-角度=70--圆角弧度\
-控件id=sidebar\
-控件颜色=0xFFFFFFFF\
-CircleButton(控件id,控件颜色,角度)\
-\
-linearParams = sidebar.getLayoutParams()\
-linearParams.width =630--侧滑栏宽度\
-linearParams.height =2000--侧滑栏高度\
-sidebar.setLayoutParams(linearParams)\
-" ;
-      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
-\
---接收参数\
-浏览器对象，新标题=..." ;
-      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
-\
---接收参数\
-浏览器对象,网页链接=..." ;
-      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
-\
---接收参数\
-浏览器对象,网页链接=...\
-\
-加载Js([[\
-//08:16-50\
-document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"display:none\");\
-\
-//15:36-38\
-document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
-\
-]])" ;
-      } ;
   ["sidebar"]	= {
-      ["启用顶部图片"]	= true ;
-      ["启用"]	= true ;
       ["items"]	= {
           [1]	= {
-              ["name"]	= "搜书" ;
-              ["icon"]	= "drawable/magnify.png" ;
               ["onClick"]	= "加载网页(\"https://www.jiumodiary.com/\")" ;
+              ["icon"]	= "drawable/magnify.png" ;
+              ["name"]	= "搜书" ;
               } ;
           [2]	= {
-              ["name"]	= "阅读" ;
-              ["icon"]	= "drawable/school.png" ;
               ["onClick"]	= "加载网页(\"http://m.wufazhuce.com/article\")" ;
+              ["icon"]	= "drawable/school.png" ;
+              ["name"]	= "阅读" ;
               } ;
           [3]	= {
-              ["name"]	= "听文" ;
-              ["icon"]	= "drawable/school.png" ;
               ["onClick"]	= "加载网页(\"http://voice.meiriyiwen.com/\")" ;
+              ["icon"]	= "drawable/school.png" ;
+              ["name"]	= "听文" ;
               } ;
           [4]	= {
-              ["name"]	= "读读书" ;
-              ["icon"]	= "drawable/school.png" ;
               ["onClick"]	= "加载网页(\"http://www.dodobook.com/\")" ;
+              ["icon"]	= "drawable/school.png" ;
+              ["name"]	= "读读书" ;
               } ;
           [5]	= {
-              ["name"]	= "芒果读书" ;
-              ["icon"]	= "drawable/school.png" ;
               ["onClick"]	= "加载网页(\"http://diumx.com/#/\")" ;
+              ["icon"]	= "drawable/school.png" ;
+              ["name"]	= "芒果读书" ;
               } ;
           [6]	= {
-              ["name"]	= "移动阅读" ;
-              ["icon"]	= "drawable/school.png" ;
               ["onClick"]	= "加载网页(\"http://m.ndlib.cn/03/html/index.html\")" ;
+              ["icon"]	= "drawable/school.png" ;
+              ["name"]	= "移动阅读" ;
               } ;
           [7]	= {
-              ["name"]	= "微信读书" ;
-              ["icon"]	= "drawable/school.png" ;
               ["onClick"]	= "加载网页(\"https://weread.qq.com/\")" ;
+              ["icon"]	= "drawable/school.png" ;
+              ["name"]	= "微信读书" ;
               } ;
           [8]	= {
-              ["name"]	= "每日一文" ;
-              ["icon"]	= "drawable/school.png" ;
               ["onClick"]	= "加载网页(\"https://meiriyiwen.com/random/iphone\")" ;
+              ["icon"]	= "drawable/school.png" ;
+              ["name"]	= "每日一文" ;
               } ;
           [9]	= {
-              ["name"]	= "文章" ;
-              ["icon"]	= "drawable/school.png" ;
               ["onClick"]	= "--由于高三学习紧张，就没简单弄了个布局！\
 --主要是解析示例，修改来源于“快乐程序”开源，可去酷安搜索下载“快乐程序”\
 --沐宇影视: http://ys.myg.pub\
@@ -315,103 +196,44 @@ function 获取一文()\
   end)\
 end\
 获取一文()" ;
+              ["icon"]	= "drawable/school.png" ;
+              ["name"]	= "文章" ;
               } ;
           } ;
+      ["启用"]	= true ;
+      ["启用顶部图片"]	= true ;
       } ;
-  ["web_control"]	= {
-      [4]	= {
-          ["url"]	= "voice.meiriyiwen.com" ;
-          ["js"]	= "" ;
-          ["remove_element"]	= "header,footer,footer-bottom" ;
-          } ;
-      [1]	= {
-          ["url"]	= "m.wufazhuce.com" ;
-          ["js"]	= "" ;
-          ["remove_element"]	= "ui-link" ;
-          } ;
-      [2]	= {
-          ["url"]	= "www.jiumodiary.com" ;
-          ["js"]	= "" ;
-          ["remove_element"]	= "logo,label-div,icons icon-bestseller-tiny,icons icon-barcode-tiny,label_mid,label-a2" ;
-          } ;
-      [3]	= {
-          ["url"]	= "meiriyiwen.com" ;
-          ["js"]	= "" ;
-          ["remove_element"]	= "logo,header,footer,footer-bottom" ;
-          } ;
+  ["web"]	= {
+      ["启动网页"]	= "http://m.wufazhuce.com/one" ;
+      ["网页沉浸"]	= false ;
+      ["支持打开外部应用"]	= false ;
+      ["启用长按菜单"]	= false ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["启用进度条"]	= false ;
       } ;
-  ["view_attribute"]	= {
-      ["顶栏高度"]	= "40dp" ;
-      ["侧滑栏宽度"]	= "240dp" ;
-      ["搜索栏圆角弧度"]	= "2dp" ;
-      ["顶栏阴影强度"]	= "2dp" ;
-      ["搜索栏阴影强度"]	= "2dp" ;
-      ["顶栏标题"]	= "半层烟雨披风沙，卷入心帘尘飞扬" ;
+  ["switch"]	= {
+      ["启用启动图"]	= false ;
+      ["支持滑动页面"]	= false ;
+      ["横屏"]	= false ;
+      ["显示状态栏"]	= false ;
       } ;
   ["colors"]	= {
       ["侧滑栏列表文字"]	= "#ff4ea7d7" ;
       ["顶栏部件"]	= "#ffffffff" ;
       ["搜索栏背景"]	= "#ffffffff" ;
-      ["侧滑栏列表图标"]	= "#ff87d6f7" ;
-      ["侧滑栏背景"]	= "#ffffffff" ;
-      ["进度条"]	= "#ffa1c4fd" ;
-      ["悬浮按钮"]	= "#ff33a7aa" ;
-      ["悬浮按钮图标"]	= "#ffffffff" ;
-      ["搜索栏部件"]	= "#ff888888" ;
-      ["导航栏"]	= "#ff2c2e43" ;
       ["顶栏"]	= "#ff2c2e43" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["进度条"]	= "#ffa1c4fd" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
       ["搜索栏部件触摸"]	= "#44000000" ;
-      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["导航栏"]	= "#ff2c2e43" ;
       ["搜索栏提示文字"]	= "#80000000" ;
-      } ;
-  ["toolbar"]	= {
-      ["搜索URL"]	= "" ;
-      ["输入栏模式"]	= true ;
-      ["menus"]	= {
-          [1]	= {
-              ["name"]	= "阅读模式" ;
-              ["onClick"]	= "阅读模式()" ;
-              } ;
-          [2]	= {
-              ["name"]	= "护眼模式" ;
-              ["onClick"]	= "加载Js([[javascript:(function(){var styleElem=null,doc=document,ie=doc.all,fontColor=50,sel=\"body,body *\";styleElem=createCSS(sel,setStyle(fontColor),styleElem);function setStyle(fontColor){var colorArr=[fontColor,fontColor,fontColor];return\"background-color:#e8ffe8 !important;color:RGB(\"+colorArr.join(\"%,\")+\"%) !important;\"}function createCSS(sel,decl,styleElem){var doc=document,h=doc.getElementsByTagName(\"head\")[0],styleElem=styleElem;if(!styleElem){s=doc.createElement(\"style\");s.setAttribute(\"type\",\"text/css\");styleElem=ie?doc.styleSheets[doc.styleSheets.length-1]:h.appendChild(s)}if(ie){styleElem.addRule(sel,decl)}else{styleElem.innerHTML=\"\";styleElem.appendChild(doc.createTextNode(sel+\" {\"+decl+\"}\"))}return styleElem}})();]]);  \
-" ;
-              } ;
-          [3]	= {
-              ["name"]	= "夜间模式" ;
-              ["onClick"]	= "加载Js([[{css=document.createElement(\"link\");var t='html,body,form,nav,header{background-image:none !important;background-color: #363c47 !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}div,html *{background-color: #000000 !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}p,span{background-color: transparent !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}div:empty,div[id=\"x-video-button\"],div[class=\"x-advert\"]{background-color:transparent !important;}input,select,button,textarea{box-shadow:0 0 0!important;color:#c3bdbc!important;background-color: #293037 !important;border-color:#212533!important;}a,a *{background-color: transparent !important;color:#b5a598!important;text-decoration:none!important;border-color:#212533!important;text-shadow: 0 0 0!important;}a:visited,a:visited *{color:#757170!important;}';css.href=t;var o=document.getElementsByTagName(\"head\");if(o[0].appendChild(css)){var a=document.createElement(\"style\");a.appendChild(document.createTextNode(t)),document.documentElement.appendChild(a)}}]])" ;
-              } ;
-          [4]	= {
-              ["name"]	= "全屏" ;
-              ["onClick"]	= "fltBtn.setVisibility(View.VISIBLE)\
-import \"android.view.WindowManager\"\
-\
-\
-if barisshow == 0 then\
-  --状态栏\
-  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
-  --顶栏\
-  toolbar.parent.setVisibility(View.GONE);\
-  barisshow = 1;\
-  else\
-  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
-  toolbar.parent.setVisibility(View.VISIBLE);\
-  barisshow = 0;\
-  end\
-" ;
-              } ;
-          [5]	= {
-              ["name"]	= "退出" ;
-              ["onClick"]	= "退出页面()" ;
-              } ;
-          } ;
-      ["搜索框提示"]	= "" ;
-      ["启用搜索功能"]	= false ;
-      ["icon_btns"]	= {
-          } ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["侧滑栏列表图标"]	= "#ff87d6f7" ;
       } ;
   ["fltBtn"]	= {
-      ["显示"]	= false ;
       ["点击事件"]	= "--悬浮按钮点击时执行的事件\
 pop=PopupMenu(activity,fltBtn)\
 menu=pop.Menu\
@@ -476,14 +298,192 @@ pop.show()\
 \
 \
 " ;
+      ["显示"]	= false ;
       ["图标"]	= "" ;
       } ;
-  ["web"]	= {
-      ["启用长按菜单"]	= false ;
-      ["启用进度条"]	= false ;
-      ["浏览器用户标识"]	= "默认" ;
-      ["支持打开外部应用"]	= false ;
-      ["网页沉浸"]	= false ;
-      ["启动网页"]	= "http://m.wufazhuce.com/one" ;
+  ["global_js"]	= "加载Js([[\
+//08:16-50\
+document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"display:none\");\
+\
+//15:36-38\
+document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
+\
+]])" ;
+  ["events"]	= {
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+\
+加载Js([[\
+//08:16-50\
+document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"display:none\");\
+\
+//15:36-38\
+document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
+\
+]])" ;
+      ["程序启动"]	= "--程序启动时会执行的事件\
+sidebar.onLongClick=function()\
+  弹出消息(\"谁让你点我的！\")\
+  加载网页(\"http://tool.mkblog.cn/durms/\")\
+end\
+\
+\
+--程序启动时会执行的事件\
+import \"tool\"\
+\
+sidebar2=(loadlayout(\
+{\
+  LinearLayout;\
+  orientation=\"vertical\";\
+  layout_height=\"fill\";\
+  layout_width=\"fill\";\
+  gravity=\"center\";\
+  {\
+    CardView;\
+    layout_height=\"70dp\";\
+    layout_width=\"56dp\";\
+    radius=\"\";\
+    layout_gravity=\"center\";\
+    {\
+      CardView;\
+      layout_height=\"fill\";\
+      layout_width=\"fill\";\
+      radius=\"\";\
+      id=\"zhacai\";\
+      {\
+        ImageView;\
+        src=\"icon.png\";--选择图标\
+        layout_height=\"0dp\";\
+        layout_gravity=\"center\";\
+        layout_width=\"0dp\";\
+        id=\"img\";\
+      };\
+    };\
+  };\
+}\
+))--by偶尔想吃榨菜\
+fltBtn.addView(sidebar2)\
+\
+img.onClick=function()\
+  弹出消息(\"悬浮球\")\
+end\
+--渐变\
+import \"android.graphics.drawable.GradientDrawable\"\
+function 渐变(left_jb,right_jb,id)\
+  drawable = GradientDrawable(GradientDrawable.Orientation.TR_BL,{\
+    right_jb,--右色\
+    left_jb,--左色\
+  });\
+  id.setBackgroundDrawable(drawable)\
+end\
+--调用渐变函数\
+渐变(0xFF50ACFF,0xFF74E8FF,toolbarParent)\
+--程序启动时会执行的事件\
+\
+--程序启动时会执行的事件\
+function CircleButton(view,InsideColor,radiu)\
+  import \"android.graphics.drawable.GradientDrawable\"\
+  drawable = GradientDrawable() \
+  drawable.setShape(GradientDrawable.RECTANGLE) \
+  drawable.setColor(InsideColor)\
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  view.setBackgroundDrawable(drawable)\
+end\
+角度=70--圆角弧度\
+控件id=sidebar\
+控件颜色=0xFFFFFFFF\
+CircleButton(控件id,控件颜色,角度)\
+\
+linearParams = sidebar.getLayoutParams()\
+linearParams.width =630--侧滑栏宽度\
+linearParams.height =2000--侧滑栏高度\
+sidebar.setLayoutParams(linearParams)\
+" ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏高度"]	= "40dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏标题"]	= "半层烟雨披风沙，卷入心帘尘飞扬" ;
+      } ;
+  ["web_control"]	= {
+      [4]	= {
+          ["url"]	= "voice.meiriyiwen.com" ;
+          ["remove_element"]	= "header,footer,footer-bottom" ;
+          ["js"]	= "" ;
+          } ;
+      [1]	= {
+          ["url"]	= "m.wufazhuce.com" ;
+          ["remove_element"]	= "ui-link" ;
+          ["js"]	= "" ;
+          } ;
+      [2]	= {
+          ["url"]	= "www.jiumodiary.com" ;
+          ["remove_element"]	= "logo,label-div,icons icon-bestseller-tiny,icons icon-barcode-tiny,label_mid,label-a2" ;
+          ["js"]	= "" ;
+          } ;
+      [3]	= {
+          ["url"]	= "meiriyiwen.com" ;
+          ["remove_element"]	= "logo,header,footer,footer-bottom" ;
+          ["js"]	= "" ;
+          } ;
+      } ;
+  ["toolbar"]	= {
+      ["搜索框提示"]	= "" ;
+      ["icon_btns"]	= {
+          } ;
+      ["menus"]	= {
+          [1]	= {
+              ["onClick"]	= "阅读模式()" ;
+              ["name"]	= "阅读模式" ;
+              } ;
+          [2]	= {
+              ["onClick"]	= "加载Js([[javascript:(function(){var styleElem=null,doc=document,ie=doc.all,fontColor=50,sel=\"body,body *\";styleElem=createCSS(sel,setStyle(fontColor),styleElem);function setStyle(fontColor){var colorArr=[fontColor,fontColor,fontColor];return\"background-color:#e8ffe8 !important;color:RGB(\"+colorArr.join(\"%,\")+\"%) !important;\"}function createCSS(sel,decl,styleElem){var doc=document,h=doc.getElementsByTagName(\"head\")[0],styleElem=styleElem;if(!styleElem){s=doc.createElement(\"style\");s.setAttribute(\"type\",\"text/css\");styleElem=ie?doc.styleSheets[doc.styleSheets.length-1]:h.appendChild(s)}if(ie){styleElem.addRule(sel,decl)}else{styleElem.innerHTML=\"\";styleElem.appendChild(doc.createTextNode(sel+\" {\"+decl+\"}\"))}return styleElem}})();]]);  \
+" ;
+              ["name"]	= "护眼模式" ;
+              } ;
+          [3]	= {
+              ["onClick"]	= "加载Js([[{css=document.createElement(\"link\");var t='html,body,form,nav,header{background-image:none !important;background-color: #363c47 !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}div,html *{background-color: #000000 !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}p,span{background-color: transparent !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}div:empty,div[id=\"x-video-button\"],div[class=\"x-advert\"]{background-color:transparent !important;}input,select,button,textarea{box-shadow:0 0 0!important;color:#c3bdbc!important;background-color: #293037 !important;border-color:#212533!important;}a,a *{background-color: transparent !important;color:#b5a598!important;text-decoration:none!important;border-color:#212533!important;text-shadow: 0 0 0!important;}a:visited,a:visited *{color:#757170!important;}';css.href=t;var o=document.getElementsByTagName(\"head\");if(o[0].appendChild(css)){var a=document.createElement(\"style\");a.appendChild(document.createTextNode(t)),document.documentElement.appendChild(a)}}]])" ;
+              ["name"]	= "夜间模式" ;
+              } ;
+          [4]	= {
+              ["onClick"]	= "fltBtn.setVisibility(View.VISIBLE)\
+import \"android.view.WindowManager\"\
+\
+\
+if barisshow == 0 then\
+  --状态栏\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+  else\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+  end\
+" ;
+              ["name"]	= "全屏" ;
+              } ;
+          [5]	= {
+              ["onClick"]	= "退出页面()" ;
+              ["name"]	= "退出" ;
+              } ;
+          } ;
+      ["搜索URL"]	= "" ;
+      ["启用搜索功能"]	= false ;
+      ["输入栏模式"]	= true ;
       } ;
   } ;

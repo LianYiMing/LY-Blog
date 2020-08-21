@@ -1,5 +1,140 @@
 {
+  ["fltBtn"]	= {
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件\
+pop=PopupMenu(activity,fltBtn)\
+menu=pop.Menu\
+menu.add(\"返回顶部\").onMenuItemClick=function(a)\
+  返回网页顶部()\
+\
+end\
+menu.add(\"刷新\").onMenuItemClick=function(a)\
+  刷新网页()\
+\
+end\
+menu.add(\"阅读模式\").onMenuItemClick=function(a)\
+  阅读模式()\
+\
+end\
+menu.add(\"显示/隐藏顶栏\").onMenuItemClick=function(a)\
+\
+if barisshow == 0 then\
+  --状态栏\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+  else\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+  end\
+end\
+\
+menu.add(\"隐藏悬浮窗\").onMenuItemClick=function(a)\
+  fltBtn.setVisibility(View.GONE)\
+  end\
+menu.add(\"获取一文\").onMenuItemClick=function(a)\
+  \
+获取一文()\
+\
+end\
+menu.add(\"退出\").onMenuItemClick=function(a)\
+  退出页面()\
+\
+\
+end\
+pop.show()\
+--显示import \"android.view.WindowManager\"\
+--需程序启动赋予barisshow初始值0\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+" ;
+      ["显示"]	= false ;
+      ["图标"]	= "" ;
+      } ;
+  ["web"]	= {
+      ["支持打开外部应用"]	= false ;
+      ["启动网页"]	= "https://lianyiming.com" ;
+      ["启用长按菜单"]	= false ;
+      ["网页沉浸"]	= true ;
+      ["启用进度条"]	= false ;
+      ["浏览器用户标识"]	= "默认" ;
+      } ;
+  ["global_js"]	= "加载Js([[\
+//08:16-50\
+document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"display:none\");\
+\
+//15:36-38\
+document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
+\
+]])" ;
+  ["colors"]	= {
+      ["侧滑栏列表文字"]	= "#ff000000" ;
+      ["侧滑栏列表图标"]	= "#e1000000" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["导航栏"]	= "#ffffffff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["进度条"]	= "#2a000000" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["顶栏部件触摸"]	= "#ffffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["顶栏"]	= "#ffdcdcdc" ;
+      } ;
+  ["switch"]	= {
+      ["横屏"]	= false ;
+      ["支持滑动页面"]	= false ;
+      ["显示状态栏"]	= true ;
+      ["启用启动图"]	= false ;
+      } ;
+  ["sidebar"]	= {
+      ["启用"]	= true ;
+      ["items"]	= {
+          [1]	= {
+              ["icon"]	= "drawable/school.png" ;
+              ["onClick"]	= "加载网页(\"https://lianyiming.com/tags/\")" ;
+              ["name"]	= "Tags" ;
+              } ;
+          [2]	= {
+              ["icon"]	= "drawable/panda.png" ;
+              ["onClick"]	= "加载网页(\"https://lianyiming.com/about/\")" ;
+              ["name"]	= "About" ;
+              } ;
+          [3]	= {
+              ["icon"]	= "drawable/home_variant.png" ;
+              ["onClick"]	= "加载网页(\"https://lianyiming.com/\")" ;
+              ["name"]	= "Home" ;
+              } ;
+          } ;
+      ["启用顶部图片"]	= false ;
+      } ;
   ["events"]	= {
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
       ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
 \
 --接收参数\
@@ -13,15 +148,232 @@ document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"d
 document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
 \
 ]])" ;
-      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
-\
---接收参数\
-浏览器对象，新标题=..." ;
-      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
-\
---接收参数\
-浏览器对象,网页链接=..." ;
       ["程序启动"]	= "\
+import \"android.app.*\"\
+import \"android.os.*\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+import \"android.graphics.Typeface\"\
+import \"android.view.animation.AccelerateInterpolator\"\
+import \"android.transition.ArcMotion\"\
+import \"android.animation.AnimatorSet\"\
+import \"android.animation.Animator$AnimatorListener\"\
+import \"android.graphics.drawable.GradientDrawable\"\
+\
+began={\
+  RelativeLayout;\
+  layout_height=\"fill\";\
+  layout_width=\"fill\";\
+  id=\"began_b\";\
+  {\
+    LinearLayout;\
+    orientation=\"vertical\";\
+    layout_height=\"fill\";\
+    layout_width=\"fill\";\
+    {\
+      RelativeLayout;\
+      layout_weight=\"1\";\
+      layout_height=\"-1\";\
+      background=\"#e94e77\";\
+      id=\"top\";\
+      layout_width=\"-1\";\
+    };\
+    {\
+      RelativeLayout;\
+      layout_weight=\"1\";\
+      layout_height=\"-1\";\
+      background=\"#2EC4B6\";\
+      id=\"bottom\";\
+      layout_width=\"-1\";\
+      {\
+        TextView;\
+        layout_centerHorizontal=\"true\";\
+        textColor=\"#ffffff\";\
+        id=\"t1\";\
+        textSize=\"28sp\";\
+        layout_marginTop=\"50dp\";\
+      };\
+      {\
+        TextView;\
+        layout_centerHorizontal=\"true\";\
+        textColor=\"#ffffff\";\
+        id=\"t2\";\
+        textSize=\"14sp\";\
+        layout_marginTop=\"100dp\";\
+      };\
+    };\
+  };\
+  {\
+    ImageView;\
+    scaleType=\"fitCenter\";\
+    layout_height=\"55dp\";\
+    id=\"center\";\
+    layout_width=\"55dp\";\
+    layout_centerInParent=\"true\";\
+    src=\"extreme.png\";\
+  };\
+};\
+\
+drawerLayout.getParent().addView(loadlayout(began))\
+\
+function CircleButton(view,InsideColor,radiu)\
+  drawable = GradientDrawable() \
+  drawable.setShape(GradientDrawable.RECTANGLE) \
+  drawable.setColor(InsideColor)\
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  view.setBackgroundDrawable(drawable)\
+end\
+--控件圆角 (控件id,颜色,角度)\
+CircleButton(center,0xFF218380,360)\
+--第一行文字\
+t1.setText(\"LY ｜ Blog\")\
+ats = AnimatorSet()\
+--文字动画(参考lua手册)\
+scx=ObjectAnimator().ofFloat(t1,\"scaleX\",{0,1})\
+scy=ObjectAnimator().ofFloat(t1,\"scaleY\",{0,1})\
+tr=ObjectAnimator().ofFloat(t1, \"Y\",{1200,t1.getY()+120})\
+alpha = ObjectAnimator().ofFloat(t1, \"alpha\", {0,1})\
+--800是动画时间，毫秒\
+ats.setDuration(800)\
+ats.setInterpolator(AccelerateInterpolator())\
+ats.play(scx).with(scy).with(tr).with(alpha)\
+ats.start()\
+\
+ats.addListener(AnimatorListener{\
+  onAnimationEnd=function(animation)\
+    --第二行文字\
+    t2.setText(\"聊点有意思的\")\
+    ats2 = AnimatorSet()\
+    scx2=ObjectAnimator().ofFloat(t2,\"scaleX\",{0,1})\
+    scy2=ObjectAnimator().ofFloat(t2,\"scaleY\",{0,1})\
+    tr2=ObjectAnimator().ofFloat(t2, \"Y\",{1200,t1.getY()+140})\
+    alpha2 = ObjectAnimator().ofFloat(t2, \"alpha\", {0,1})\
+    --动画时间\
+    ats2.setDuration(800)\
+    ats2.setInterpolator(AccelerateInterpolator())\
+    ats2.play(scx2).with(scy2).with(tr2).with(alpha2)\
+    ats2.start()\
+\
+    ats2.addListener(AnimatorListener{\
+      onAnimationEnd=function(animation)\
+        phone=center\
+        set = AnimatorSet()\
+        anim = ObjectAnimator .ofFloat(phone, \"rotation\",{360,0})\
+        anim3 = ObjectAnimator .ofFloat(phone, \"rotationX\",{360,0})\
+        anim.setDuration(1000)\
+        anim3.setDuration(1000)\
+        set.play(anim).before(anim3)\
+        set.start()\
+\
+\
+        set.addListener(AnimatorListener{\
+          onAnimationEnd=function(animation)\
+            set2 = AnimatorSet()\
+            --结束动画 中间图标渐隐 上下拉开\
+            tr3=ObjectAnimator().ofFloat(top, \"Y\",{top.getY(),-2000})\
+            tr4=ObjectAnimator().ofFloat(bottom, \"Y\",{bottom.getY(),5000})\
+            al=ObjectAnimator().ofFloat(center, \"alpha\", {1,0})\
+            set2.setDuration(1000)\
+            set2.setInterpolator(AccelerateInterpolator())\
+            set2.play(tr3).with(tr4).with(al)\
+            set2.start()\
+\
+            set2.addListener(AnimatorListener{\
+              onAnimationEnd=function(animation)\
+                --动画结束执行代码\
+              end,\
+            });\
+\
+          end,\
+        });\
+\
+      end,\
+    });\
+\
+\
+\
+  end,\
+});\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+local wl=activity.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE).getActiveNetworkInfo(); \
+\
+if wl== nil then    \
+require \"import\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+\
+lay=\
+\
+{\
+  LinearLayout;\
+  backgroundColor=\"#ffffffff\",\
+  orientation=\"vertical\";\
+  layout_width=\"fill\";\
+  layout_height=\"fill\";\
+    {\
+    TextView;\
+    text=\"网络异常！请检查你的网络！\";\
+    layout_marginTop=\"100\";\
+    id=\"db\";\
+    textSize=\"20\"; \
+    textColor=wlc; \
+    layout_gravity=\"center\";\
+    layout_marginBottom=\"50\";\
+  };\
+\
+{\
+  LinearLayout;\
+  backgroundColor=\"#fffffff\",\
+  orientation=\"vertical\";\
+  layout_width=\"fill\";\
+  layout_height=\"fill\";\
+    {\
+    TextView;\
+    text=\"\";\
+    layout_marginTop=\"50\";\
+    id=\"db\";\
+    textSize=\"13\"; \
+    textColor=wlc; \
+    layout_gravity=\"left\";\
+    layout_marginBottom=\"50\";\
+};\
+};\
+};\
+\
+webView.addView(loadlayout(lay))\
+\
+\
+\
+this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE )\
+\
+end\
+\
+\
+import \"android.widget.*\"\
+import \"android.support.v4.widget.*\"\
+--请教于群内贴吧大佬，阿俊整合\
+viewParent = webView.getParent()\
+viewParent.removeView(webView)\
+refresh = SwipeRefreshLayout(this)\
+refresh.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener({\
+  onRefresh=function()\
+    刷新网页()\
+  end\
+}));\
+refresh.addView(webView)\
+viewParent.addView(refresh)\
+\
+\
+\
 --程序启动时会执行的事件\
 sidebar.onLongClick=function()\
   弹出消息(\"谁让你点我的！\")\
@@ -116,72 +468,80 @@ end\
 \
 \
 \
+--关闭阴影\
+drawerLayout.setScrimColor(0)\
+\
+--添加背景\
+drawerLayout.addView(loadlayout({\
+  ImageView,\
+  id=\"background\",\
+  scaleType=\"fitXY\",\
+}),0)\
 \
 \
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-" ;
-      } ;
-  ["fltBtn"]	= {
-      ["点击事件"]	= "--悬浮按钮点击时执行的事件\
-pop=PopupMenu(activity,fltBtn)\
-menu=pop.Menu\
-menu.add(\"返回顶部\").onMenuItemClick=function(a)\
-  返回网页顶部()\
-\
-end\
-menu.add(\"刷新\").onMenuItemClick=function(a)\
-  刷新网页()\
-\
-end\
-menu.add(\"阅读模式\").onMenuItemClick=function(a)\
-  阅读模式()\
-\
-end\
-menu.add(\"显示/隐藏顶栏\").onMenuItemClick=function(a)\
-\
-if barisshow == 0 then\
-  --状态栏\
-  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
-  --顶栏\
-  toolbar.parent.setVisibility(View.GONE);\
-  barisshow = 1;\
+function setdata(a,b)\
+  c = this.getSharedPreferences(\"PicCustom\", Activity.MODE_PRIVATE)\
+  c.edit().putString(a, b).commit()\
+  end\
+function getdata(a)\
+  c = this.getSharedPreferences(\"PicCustom\", Activity.MODE_PRIVATE)\
+  b = c.getString(a, \"\")\
+  return b\
+  end\
+if getdata(\"fileSrc\")==\"\" then\
+  background.setImageBitmap(loadbitmap(\"background.jpg\"))--默认背景\
   else\
-  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
-  toolbar.parent.setVisibility(View.VISIBLE);\
-  barisshow = 0;\
+  background.setImageBitmap(loadbitmap(getdata(\"fileSrc\")))\
+end\
+\
+\
+--获取页面根布局\
+local lay=drawerLayout.getChildAt(1)\
+--侧栏圆角\
+function CircleButton(view,InsideColor,radiu)\
+  import \"android.graphics.drawable.GradientDrawable\"\
+  drawable = GradientDrawable() \
+  drawable.setShape(GradientDrawable.RECTANGLE) \
+  drawable.setColor(InsideColor)\
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  view.setBackgroundDrawable(drawable)\
+end\
+角度=5--圆角弧度\
+控件id=sidebar\
+控件颜色=0xA1FFFFFF\
+CircleButton(控件id,控件颜色,角度)\
+linearParams = sidebar.getLayoutParams()\
+linearParams.width =900--侧滑栏宽度\
+local h=this.getHeight()--获得屏幕宽高\
+linearParams.height =h-50--侧滑栏高度\
+sidebar.setLayoutParams(linearParams)\
+flt=sidebar.getLayoutParams( )\
+flt.setMargins(0, 60,0,300)\
+sidebar.setLayoutParams(flt)\
+--上下左右\
+\
+--监听侧滑滑动事件\
+local pio=this.getWidth()*0.1\
+drawerLayout.setDrawerListener(DrawerLayout.DrawerListener{\
+  onDrawerSlide=function(v,i)\
+    lay.setScaleX(1-i/3.5).setScaleY(1-i/3.5)--页面缩放\
+    lay.setTranslationX((({0,0,1,0,-1})[v.LayoutParams.gravity])*(i*7*pio))--页面位移(其中那段奇怪的表是用于判断位移方向，不过依然仅支持左右侧滑)\
+    --sidebar.setScaleX(i).setScaleY(i)--侧滑栏缩放\
+  end})\
+\
+--重写按键监听，以允许通过返回键关闭右侧侧滑\
+function onKeyDown(key,event)\
+  if(key==4)then\
+    if drawerLayout.isDrawerOpen(3) or drawerLayout.isDrawerOpen(5) then\
+      drawerLayout.closeDrawer(3)\
+    elseif(webView.canGoBack())then\
+      webView.goBack()\
+    else\
+      this.finish()\
+    end\
+    return true\
   end\
 end\
-\
-menu.add(\"隐藏悬浮窗\").onMenuItemClick=function(a)\
-  fltBtn.setVisibility(View.GONE)\
-  end\
-menu.add(\"获取一文\").onMenuItemClick=function(a)\
-  \
-获取一文()\
-\
-end\
-menu.add(\"退出\").onMenuItemClick=function(a)\
-  退出页面()\
-\
-\
-end\
-pop.show()\
---显示import \"android.view.WindowManager\"\
---需程序启动赋予barisshow初始值0\
 \
 \
 \
@@ -200,66 +560,94 @@ pop.show()\
 \
 \
 " ;
-      ["显示"]	= false ;
-      ["图标"]	= "" ;
       } ;
-  ["view_attribute"]	= {
-      ["顶栏标题"]	= "半层烟雨披风沙，卷入心帘尘飞扬" ;
-      ["顶栏阴影强度"]	= "100dp" ;
-      ["侧滑栏宽度"]	= "240dp" ;
-      ["顶栏高度"]	= "34dp" ;
-      ["搜索栏阴影强度"]	= "2dp" ;
-      ["搜索栏圆角弧度"]	= "100dp" ;
+  ["web_control"]	= {
+      [1]	= {
+          ["url"]	= "m.wufazhuce.com" ;
+          ["remove_element"]	= "ui-link" ;
+          ["js"]	= "" ;
+          } ;
+      [2]	= {
+          ["url"]	= "www.jiumodiary.com" ;
+          ["remove_element"]	= "logo,label-div,icons icon-bestseller-tiny,icons icon-barcode-tiny,label_mid,label-a2" ;
+          ["js"]	= "" ;
+          } ;
+      [3]	= {
+          ["url"]	= "meiriyiwen.com" ;
+          ["remove_element"]	= "logo,header,footer,footer-bottom" ;
+          ["js"]	= "" ;
+          } ;
+      [4]	= {
+          ["url"]	= "voice.meiriyiwen.com" ;
+          ["remove_element"]	= "header,footer,footer-bottom" ;
+          ["js"]	= "" ;
+          } ;
+      [5]	= {
+          ["url"]	= "lianyiming.com" ;
+          ["remove_element"]	= "col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12 col-xs-12 sidebar-container,copyright text-muted,list-inline text-center,navbar-brand,navbar-toggle,col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12 col-xs-12 sidebar-container" ;
+          ["js"]	= "/*\
+ * @name: 下拉刷新\
+ * @Author: Sky\
+ * @version: 1.6\
+ * @description: 位于页面顶端时下拉刷新\
+ * @include: *\
+ * @createTime: 2020-3-6 01:00\
+ * @updateTime: 2020-6-4 20:30\
+ */\
+(function(){const\
+/*等号后的数表示最小触发下拉距离*/\
+ min_dY = 300,\
+/*－－－－以下勿改－－－－*/\
+ key = encodeURIComponent('下拉刷新:执行判断');\
+ if(window[key]){return;}\
+ try {\
+  window[key] = true;\
+  let strtX, strtY = 0, rchTp, onePt = false;\
+  document.addEventListener('touchstart', function(e){\
+   if(onePt){rchTp = false;} /*超过一点触碰时不刷新*/\
+   else {\
+    onePt = true;\
+    rchTp = (document.body.scrollTop || document.documentElement.scrollTop) < 50;\
+    strtX = e.touches[0].pageX;\
+    strtY = e.touches[0].pageY;\
+   }\
+  }, {'passive':true});\
+  document.addEventListener('touchend', function(e){\
+   if(rchTp){\
+    const dY = Math.floor(e.changedTouches[0].pageY - strtY);\
+    if(dY > min_dY && Math.abs(e.changedTouches[0].pageX - strtX) < (0.4*dY)){location.reload();}\
+\9rchTp = false;\
+   }\
+   onePt = false;\
+  }, {'passive':true, 'capture':true});\
+ } catch(err){console.log('下拉刷新：', err);}\
+})();" ;
+          } ;
       } ;
-  ["switch"]	= {
-      ["横屏"]	= false ;
-      ["启用启动图"]	= false ;
-      ["支持滑动页面"]	= false ;
-      ["显示状态栏"]	= true ;
-      } ;
-  ["colors"]	= {
-      ["侧滑栏列表图标"]	= "#ff000000" ;
-      ["悬浮按钮图标"]	= "#ffffffff" ;
-      ["搜索栏背景"]	= "#ffffffff" ;
-      ["搜索栏部件"]	= "#ff888888" ;
-      ["导航栏"]	= "#ffffffff" ;
-      ["搜索栏部件触摸"]	= "#44000000" ;
-      ["侧滑栏列表文字"]	= "#ff000000" ;
-      ["侧滑栏背景"]	= "#ffffffff" ;
-      ["顶栏"]	= "#ff000000" ;
-      ["顶栏部件触摸"]	= "#ff000000" ;
-      ["进度条"]	= "#2a000000" ;
-      ["悬浮按钮"]	= "#ff33a7aa" ;
-      ["顶栏部件"]	= "#ffffffff" ;
-      ["搜索栏提示文字"]	= "#80000000" ;
-      } ;
-  ["global_js"]	= "加载Js([[\
-//08:16-50\
-document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"display:none\");\
-\
-//15:36-38\
-document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
-\
-]])" ;
   ["toolbar"]	= {
-      ["搜索框提示"]	= "" ;
+      ["icon_btns"]	= {
+          [1]	= {
+              ["onClick"]	= "加载Js([[javascript:(function(){var styleElem=null,doc=document,ie=doc.all,fontColor=50,sel=\"body,body *\";styleElem=createCSS(sel,setStyle(fontColor),styleElem);function setStyle(fontColor){var colorArr=[fontColor,fontColor,fontColor];return\"background-color:#e8ffe8 !important;color:RGB(\"+colorArr.join(\"%,\")+\"%) !important;\"}function createCSS(sel,decl,styleElem){var doc=document,h=doc.getElementsByTagName(\"head\")[0],styleElem=styleElem;if(!styleElem){s=doc.createElement(\"style\");s.setAttribute(\"type\",\"text/css\");styleElem=ie?doc.styleSheets[doc.styleSheets.length-1]:h.appendChild(s)}if(ie){styleElem.addRule(sel,decl)}else{styleElem.innerHTML=\"\";styleElem.appendChild(doc.createTextNode(sel+\" {\"+decl+\"}\"))}return styleElem}})();]]);" ;
+              ["icon"]	= "pine_tree_box" ;
+              } ;
+          } ;
+      ["输入栏模式"]	= false ;
       ["搜索URL"]	= "" ;
       ["menus"]	= {
           [1]	= {
-              ["name"]	= "阅读模式" ;
               ["onClick"]	= "阅读模式()" ;
+              ["name"]	= "阅读模式" ;
               } ;
           [2]	= {
-              ["name"]	= "护眼模式" ;
               ["onClick"]	= "加载Js([[javascript:(function(){var styleElem=null,doc=document,ie=doc.all,fontColor=50,sel=\"body,body *\";styleElem=createCSS(sel,setStyle(fontColor),styleElem);function setStyle(fontColor){var colorArr=[fontColor,fontColor,fontColor];return\"background-color:#e8ffe8 !important;color:RGB(\"+colorArr.join(\"%,\")+\"%) !important;\"}function createCSS(sel,decl,styleElem){var doc=document,h=doc.getElementsByTagName(\"head\")[0],styleElem=styleElem;if(!styleElem){s=doc.createElement(\"style\");s.setAttribute(\"type\",\"text/css\");styleElem=ie?doc.styleSheets[doc.styleSheets.length-1]:h.appendChild(s)}if(ie){styleElem.addRule(sel,decl)}else{styleElem.innerHTML=\"\";styleElem.appendChild(doc.createTextNode(sel+\" {\"+decl+\"}\"))}return styleElem}})();]]);  \
 " ;
+              ["name"]	= "护眼模式" ;
               } ;
           [3]	= {
-              ["name"]	= "夜间模式" ;
               ["onClick"]	= "加载Js([[{css=document.createElement(\"link\");var t='html,body,form,nav,header{background-image:none !important;background-color: #363c47 !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}div,html *{background-color: #000000 !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}p,span{background-color: transparent !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}div:empty,div[id=\"x-video-button\"],div[class=\"x-advert\"]{background-color:transparent !important;}input,select,button,textarea{box-shadow:0 0 0!important;color:#c3bdbc!important;background-color: #293037 !important;border-color:#212533!important;}a,a *{background-color: transparent !important;color:#b5a598!important;text-decoration:none!important;border-color:#212533!important;text-shadow: 0 0 0!important;}a:visited,a:visited *{color:#757170!important;}';css.href=t;var o=document.getElementsByTagName(\"head\");if(o[0].appendChild(css)){var a=document.createElement(\"style\");a.appendChild(document.createTextNode(t)),document.documentElement.appendChild(a)}}]])" ;
+              ["name"]	= "夜间模式" ;
               } ;
           [4]	= {
-              ["name"]	= "灰色模式" ;
               ["onClick"]	= "加载Js([[/*\
  * @name: 全网灰色，致敬英雄\
  * @Author: 谷花泰\
@@ -354,9 +742,9 @@ document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");
     console.log('via插件：全网灰色运行出错');\
   };\
 })();]])" ;
+              ["name"]	= "灰色模式" ;
               } ;
           [5]	= {
-              ["name"]	= "全屏" ;
               ["onClick"]	= "fltBtn.setVisibility(View.VISIBLE)\
 import \"android.view.WindowManager\"\
 \
@@ -373,9 +761,9 @@ if barisshow == 0 then\
   barisshow = 0;\
   end\
 " ;
+              ["name"]	= "全屏" ;
               } ;
           [6]	= {
-              ["name"]	= "自由编辑" ;
               ["onClick"]	= "加载Js([[/*\
  * @name: 审查元素\
  * @Author: Nekko\
@@ -385,9 +773,9 @@ if barisshow == 0 then\
  */\
 {javascript:document.body.contentEditable='true'; document.designMode='on'; void 0};\
 document.getElementsByTagName(\"html\").item(0).appendChild(an);]])" ;
+              ["name"]	= "自由编辑" ;
               } ;
           [7]	= {
-              ["name"]	= "资源圆体(Medium)" ;
               ["onClick"]	= "加载Js([[/*\
  * @name: 更换字体\
  * @Author: Sky\
@@ -427,9 +815,9 @@ document.getElementsByTagName(\"html\").item(0).appendChild(an);]])" ;
   document.head.append(css);\
  } catch(err){console.log('更换字体：', err);}\
 })();]])" ;
+              ["name"]	= "资源圆体(Medium)" ;
               } ;
           [8]	= {
-              ["name"]	= "阿里巴巴普惠体(Medium)" ;
               ["onClick"]	= "加载Js([[/*\
  * @name: 更换字体\
  * @Author: Sky\
@@ -469,9 +857,9 @@ document.getElementsByTagName(\"html\").item(0).appendChild(an);]])" ;
   document.head.append(css);\
  } catch(err){console.log('更换字体：', err);}\
 })();]])" ;
+              ["name"]	= "阿里巴巴普惠体(Medium)" ;
               } ;
           [9]	= {
-              ["name"]	= "OPPO Sans(Medium)" ;
               ["onClick"]	= "加载Js([[/*\
  * @name: 更换字体\
  * @Author: Sky\
@@ -511,9 +899,9 @@ document.getElementsByTagName(\"html\").item(0).appendChild(an);]])" ;
   document.head.append(css);\
  } catch(err){console.log('更换字体：', err);}\
 })();]])" ;
+              ["name"]	= "OPPO Sans(Medium)" ;
               } ;
           [10]	= {
-              ["name"]	= "方正书宋" ;
               ["onClick"]	= "加载Js([[/*\
  * @name: 更换字体\
  * @Author: Sky\
@@ -553,9 +941,9 @@ document.getElementsByTagName(\"html\").item(0).appendChild(an);]])" ;
   document.head.append(css);\
  } catch(err){console.log('更换字体：', err);}\
 })();]])" ;
+              ["name"]	= "方正书宋" ;
               } ;
           [11]	= {
-              ["name"]	= "方正楷体" ;
               ["onClick"]	= "加载Js([[/*\
  * @name: 更换字体\
  * @Author: Sky\
@@ -595,9 +983,9 @@ document.getElementsByTagName(\"html\").item(0).appendChild(an);]])" ;
   document.head.append(css);\
  } catch(err){console.log('更换字体：', err);}\
 })();]])" ;
+              ["name"]	= "方正楷体" ;
               } ;
           [12]	= {
-              ["name"]	= "濑户字体简体" ;
               ["onClick"]	= "加载Js([[/*\
  * @name: 更换字体\
  * @Author: Sky\
@@ -637,103 +1025,50 @@ document.getElementsByTagName(\"html\").item(0).appendChild(an);]])" ;
   document.head.append(css);\
  } catch(err){console.log('更换字体：', err);}\
 })();]])" ;
+              ["name"]	= "濑户字体简体" ;
+              } ;
+          [13]	= {
+              ["onClick"]	= "import \"android.content.Intent\"\
+local intent= Intent(Intent.ACTION_PICK)\
+intent.setType(\"image/*\")\
+this.startActivityForResult(intent, 1)\
+------\
+\
+--回调\
+function onActivityResult(requestCode,resultCode,intent)\
+  if intent then\
+    local cursor =this.getContentResolver ().query(intent.getData(), nil, nil, nil, nil)\
+    cursor.moveToFirst()\
+    import \"android.provider.MediaStore\"\
+    local idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)\
+    fileSrc = cursor.getString(idx)\
+    bit=nil\
+    --fileSrc回调路径路径\
+    --import \"android.graphics.BitmapFactory\"\
+    --bit =BitmapFactory.decodeFile(fileSrc)\
+    --  iv.setImageBitmap(bit)\
+    background.setImageBitmap(loadbitmap(fileSrc))\
+    setdata(\"fileSrc\",fileSrc)\
+  end\
+end--nirenr" ;
+              ["name"]	= "自定义背景" ;
+              } ;
+          [14]	= {
+              ["onClick"]	= "c = this.getSharedPreferences(\"PicCustom\", Activity.MODE_PRIVATE) \
+c.edit().clear().commit()\
+background.setImageBitmap(loadbitmap(\"background.jpg\"))" ;
+              ["name"]	= "默认背景" ;
               } ;
           } ;
-      ["输入栏模式"]	= false ;
+      ["搜索框提示"]	= "" ;
       ["启用搜索功能"]	= false ;
-      ["icon_btns"]	= {
-          } ;
       } ;
-  ["sidebar"]	= {
-      ["items"]	= {
-          [1]	= {
-              ["icon"]	= "drawable/school.png" ;
-              ["onClick"]	= "加载网页(\"https://lianyiming.com/tags/\")" ;
-              ["name"]	= "Tags" ;
-              } ;
-          [2]	= {
-              ["icon"]	= "drawable/panda.png" ;
-              ["onClick"]	= "加载网页(\"https://lianyiming.com/about/\")" ;
-              ["name"]	= "About" ;
-              } ;
-          [3]	= {
-              ["icon"]	= "drawable/home_variant.png" ;
-              ["onClick"]	= "加载网页(\"https://lianyiming.com/\")" ;
-              ["name"]	= "Home" ;
-              } ;
-          } ;
-      ["启用顶部图片"]	= true ;
-      ["启用"]	= true ;
-      } ;
-  ["web_control"]	= {
-      [1]	= {
-          ["js"]	= "" ;
-          ["remove_element"]	= "ui-link" ;
-          ["url"]	= "m.wufazhuce.com" ;
-          } ;
-      [2]	= {
-          ["js"]	= "" ;
-          ["remove_element"]	= "logo,label-div,icons icon-bestseller-tiny,icons icon-barcode-tiny,label_mid,label-a2" ;
-          ["url"]	= "www.jiumodiary.com" ;
-          } ;
-      [3]	= {
-          ["js"]	= "" ;
-          ["remove_element"]	= "logo,header,footer,footer-bottom" ;
-          ["url"]	= "meiriyiwen.com" ;
-          } ;
-      [4]	= {
-          ["js"]	= "" ;
-          ["remove_element"]	= "header,footer,footer-bottom" ;
-          ["url"]	= "voice.meiriyiwen.com" ;
-          } ;
-      [5]	= {
-          ["js"]	= "/*\
- * @name: 下拉刷新\
- * @Author: Sky\
- * @version: 1.6\
- * @description: 位于页面顶端时下拉刷新\
- * @include: *\
- * @createTime: 2020-3-6 01:00\
- * @updateTime: 2020-6-4 20:30\
- */\
-(function(){const\
-/*等号后的数表示最小触发下拉距离*/\
- min_dY = 300,\
-/*－－－－以下勿改－－－－*/\
- key = encodeURIComponent('下拉刷新:执行判断');\
- if(window[key]){return;}\
- try {\
-  window[key] = true;\
-  let strtX, strtY = 0, rchTp, onePt = false;\
-  document.addEventListener('touchstart', function(e){\
-   if(onePt){rchTp = false;} /*超过一点触碰时不刷新*/\
-   else {\
-    onePt = true;\
-    rchTp = (document.body.scrollTop || document.documentElement.scrollTop) < 50;\
-    strtX = e.touches[0].pageX;\
-    strtY = e.touches[0].pageY;\
-   }\
-  }, {'passive':true});\
-  document.addEventListener('touchend', function(e){\
-   if(rchTp){\
-    const dY = Math.floor(e.changedTouches[0].pageY - strtY);\
-    if(dY > min_dY && Math.abs(e.changedTouches[0].pageX - strtX) < (0.4*dY)){location.reload();}\
-\9rchTp = false;\
-   }\
-   onePt = false;\
-  }, {'passive':true, 'capture':true});\
- } catch(err){console.log('下拉刷新：', err);}\
-})();" ;
-          ["remove_element"]	= "col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12 col-xs-12 sidebar-container,copyright text-muted,list-inline text-center,navbar-brand,navbar-toggle,col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12 col-xs-12 sidebar-container" ;
-          ["url"]	= "lianyiming.com" ;
-          } ;
-      } ;
-  ["web"]	= {
-      ["启动网页"]	= "https://lianyiming.com" ;
-      ["启用长按菜单"]	= false ;
-      ["支持打开外部应用"]	= false ;
-      ["浏览器用户标识"]	= "默认" ;
-      ["启用进度条"]	= false ;
-      ["网页沉浸"]	= true ;
+  ["view_attribute"]	= {
+      ["顶栏标题"]	= "半层烟雨披风沙，卷入心帘尘飞扬" ;
+      ["搜索栏圆角弧度"]	= "100dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏阴影强度"]	= "100dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏高度"]	= "34dp" ;
       } ;
   } ;

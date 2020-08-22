@@ -1,6 +1,31 @@
 {
+  ["view_attribute"]	= {
+      ["顶栏高度"]	= "0dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "" ;
+      ["标签栏滑动条高度"]	= "3dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["标签栏高度"]	= "48dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      } ;
+  ["sidebar"]	= {
+      ["启用顶部图片"]	= false ;
+      ["items"]	= {
+          } ;
+      ["启用"]	= true ;
+      } ;
+  ["web"]	= {
+      ["支持打开外部应用"]	= false ;
+      ["惰性加载"]	= true ;
+      ["customUa"]	= "Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Quark/3.8.4.128 UCBrowser/12.0.4.985 baiduboxapp/3.2.5.10 MQQBrowser/7.2.1.2965 XiaoMi/MiuiBrowser/11.9.2 SearchCraft/2.0.0 ALiSearchApp/2.4 AliApp(TB/9.5.6) BingWeb/6.9.6 3gpp-gba" ;
+      ["启用进度条"]	= true ;
+      ["浏览器用户标识"]	= "自定义" ;
+      ["启用长按菜单"]	= false ;
+      ["网页沉浸"]	= false ;
+      } ;
   ["events"]	= {
-      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
 \
 --接收参数\
 浏览器对象,网页链接=..." ;
@@ -36,7 +61,7 @@ sidebar2=(loadlayout(\
     };\
   };\
 }\
-))--by偶尔想吃榨菜\
+))--\
 fltBtn.addView(sidebar2)\
 \
 img.onClick=function()\
@@ -148,30 +173,83 @@ animSet.start()\
 \
 \
 " ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
       ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
 \
 --接收参数\
 浏览器对象,新标题=..." ;
-      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
-\
---接收参数\
-浏览器对象,网页链接=..." ;
       } ;
-  ["sidebar"]	= {
-      ["items"]	= {
+  ["switch"]	= {
+      ["支持滑动页面"]	= true ;
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= false ;
+      ["横屏"]	= false ;
+      } ;
+  ["toolbar"]	= {
+      ["搜索框提示"]	= "输入关键词搜索.." ;
+      ["搜索URL"]	= "" ;
+      ["menus"]	= {
           } ;
-      ["启用"]	= true ;
-      ["启用顶部图片"]	= false ;
+      ["icon_btns"]	= {
+          } ;
+      ["输入栏模式"]	= false ;
+      ["启用搜索功能"]	= false ;
       } ;
-  ["view_attribute"]	= {
-      ["搜索栏阴影强度"]	= "2dp" ;
-      ["顶栏标题"]	= "" ;
-      ["顶栏阴影强度"]	= "2dp" ;
-      ["侧滑栏宽度"]	= "240dp" ;
-      ["标签栏滑动条高度"]	= "3dp" ;
-      ["标签栏高度"]	= "48dp" ;
-      ["搜索栏圆角弧度"]	= "2dp" ;
-      ["顶栏高度"]	= "0dp" ;
+  ["colors"]	= {
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["标签栏文本"]	= "#ffffffff" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["顶栏部件触摸"]	= "#33ffffff" ;
+      ["顶栏"]	= "#ff6badeb" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["标签栏滑动条"]	= "#ff4db6ac" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["进度条"]	= "#ff4db6ac" ;
+      ["状态栏"]	= "#ffffffff" ;
+      ["标签栏项目触摸"]	= "#33000000" ;
+      ["悬浮按钮"]	= "#d663b3da" ;
+      ["悬浮按钮图标"]	= "#ff74a5ff" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      } ;
+  ["web_control"]	= {
+      [1]	= {
+          ["url"]	= "quark.sm.cn" ;
+          ["js"]	= "" ;
+          ["remove_element"]	= "c-container dl-container c-container--v1_0_0 js-everyday-read,sentence-container js-sentence-container" ;
+          } ;
+      [2]	= {
+          ["url"]	= "m.baidu.com" ;
+          ["js"]	= "" ;
+          ["remove_element"]	= "go-to-download,article-title,article-thumb,intro-title,go-to-attention,app-bar,bottom-intro,article hairlines android-style,intro-link intro-conversation,intro-link intro-camera,intro-link intro-offline,bottom-intro,article-thumb,app-bar,header,title-zh,title-en,pas-tag,title-tag,article-container,extra,gotop hide,article-thumb-img,st-net-tips,app-bar,app-bar-text" ;
+          } ;
+      [3]	= {
+          ["url"]	= "translate.google.cn" ;
+          ["js"]	= "" ;
+          ["remove_element"]	= "ft-icon-row,ft-icon-ctr,footer-icon-container ft-icon-img-hst,ft-icon-img-ctr,ft-icon-oval,ft-icon-img-hst,ft-icon-notification,ft-icon-txt,feedback-link,gb_sc" ;
+          } ;
+      [4]	= {
+          ["url"]	= "fanyi.sogou.com" ;
+          ["js"]	= "" ;
+          ["remove_element"]	= "download-text,btn-download,title,box-logo,logo,setting,setting-icon" ;
+          } ;
+      [5]	= {
+          ["url"]	= "tools.miku.ac" ;
+          ["js"]	= "" ;
+          ["remove_element"]	= "navbar,el-tooltip btn item focusing,eva eva-menu-outline,el-tooltip type-icon vipDate focusing,theme-btn,nya-title,main" ;
+          } ;
+      } ;
+  ["fltBtn"]	= {
+      ["图标"]	= "" ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件\
+退出页面()" ;
+      ["显示"]	= false ;
       } ;
   ["tab_bar"]	= {
       ["items"]	= {
@@ -191,84 +269,6 @@ animSet.start()\
               ["url"]	= "https://quark.sm.cn/api/rest?method=quark_fanyi.dlpage&uc_param_str=dnntnwvepffrgibijbprsvdsdichei&from=kkframenew&schema=v2&format=html&entry=fanyi_jinshan" ;
               ["name"]	= "夸克" ;
               } ;
-          } ;
-      } ;
-  ["switch"]	= {
-      ["启用启动图"]	= false ;
-      ["支持滑动页面"]	= true ;
-      ["横屏"]	= false ;
-      ["显示状态栏"]	= false ;
-      } ;
-  ["toolbar"]	= {
-      ["menus"]	= {
-          } ;
-      ["搜索框提示"]	= "输入关键词搜索.." ;
-      ["搜索URL"]	= "" ;
-      ["启用搜索功能"]	= false ;
-      ["icon_btns"]	= {
-          } ;
-      ["输入栏模式"]	= false ;
-      } ;
-  ["fltBtn"]	= {
-      ["点击事件"]	= "--悬浮按钮点击时执行的事件\
-退出页面()" ;
-      ["图标"]	= "" ;
-      ["显示"]	= false ;
-      } ;
-  ["web"]	= {
-      ["customUa"]	= "Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Quark/3.8.4.128 UCBrowser/12.0.4.985 baiduboxapp/3.2.5.10 MQQBrowser/7.2.1.2965 XiaoMi/MiuiBrowser/11.9.2 SearchCraft/2.0.0 ALiSearchApp/2.4 AliApp(TB/9.5.6) BingWeb/6.9.6 3gpp-gba" ;
-      ["启用进度条"]	= true ;
-      ["浏览器用户标识"]	= "自定义" ;
-      ["网页沉浸"]	= false ;
-      ["惰性加载"]	= true ;
-      ["启用长按菜单"]	= false ;
-      ["支持打开外部应用"]	= false ;
-      } ;
-  ["colors"]	= {
-      ["标签栏文本"]	= "#ffffffff" ;
-      ["搜索栏部件"]	= "#ff888888" ;
-      ["顶栏"]	= "#ff6badeb" ;
-      ["搜索栏部件触摸"]	= "#44000000" ;
-      ["导航栏"]	= "#ff2c2e43" ;
-      ["标签栏滑动条"]	= "#ff4db6ac" ;
-      ["侧滑栏列表图标"]	= "#ff757575" ;
-      ["侧滑栏列表文字"]	= "#ff333333" ;
-      ["侧滑栏背景"]	= "#ffffffff" ;
-      ["搜索栏背景"]	= "#ffffffff" ;
-      ["状态栏"]	= "#ffffffff" ;
-      ["悬浮按钮"]	= "#d663b3da" ;
-      ["搜索栏提示文字"]	= "#80000000" ;
-      ["顶栏部件触摸"]	= "#33ffffff" ;
-      ["标签栏项目触摸"]	= "#33000000" ;
-      ["悬浮按钮图标"]	= "#ff74a5ff" ;
-      ["进度条"]	= "#ff4db6ac" ;
-      ["顶栏部件"]	= "#ffffffff" ;
-      } ;
-  ["web_control"]	= {
-      [1]	= {
-          ["js"]	= "" ;
-          ["remove_element"]	= "c-container dl-container c-container--v1_0_0 js-everyday-read,sentence-container js-sentence-container" ;
-          ["url"]	= "quark.sm.cn" ;
-          } ;
-      [2]	= {
-          ["js"]	= "" ;
-          ["remove_element"]	= "go-to-download,article-title,article-thumb,intro-title,go-to-attention,app-bar,bottom-intro,article hairlines android-style,intro-link intro-conversation,intro-link intro-camera,intro-link intro-offline,bottom-intro,article-thumb,app-bar,header,title-zh,title-en,pas-tag,title-tag,article-container,extra,gotop hide,article-thumb-img,st-net-tips,app-bar,app-bar-text" ;
-          ["url"]	= "m.baidu.com" ;
-          } ;
-      [3]	= {
-          ["js"]	= "" ;
-          ["remove_element"]	= "ft-icon-row,ft-icon-ctr,footer-icon-container ft-icon-img-hst,ft-icon-img-ctr,ft-icon-oval,ft-icon-img-hst,ft-icon-notification,ft-icon-txt,feedback-link,gb_sc" ;
-          ["url"]	= "translate.google.cn" ;
-          } ;
-      [4]	= {
-          ["js"]	= "" ;
-          ["remove_element"]	= "download-text,btn-download,title,box-logo,logo,setting,setting-icon" ;
-          ["url"]	= "fanyi.sogou.com" ;
-          } ;
-      [5]	= {
-          ["js"]	= "" ;
-          ["remove_element"]	= "navbar,el-tooltip btn item focusing,eva eva-menu-outline,el-tooltip type-icon vipDate focusing,theme-btn,nya-title,main" ;
-          ["url"]	= "tools.miku.ac" ;
           } ;
       } ;
   } ;

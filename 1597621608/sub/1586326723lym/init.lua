@@ -1,2 +1,2 @@
-template="tool"
 name="阅读"
+template="tool"

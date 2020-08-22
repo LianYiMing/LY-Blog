@@ -1,27 +1,24 @@
 {
-  ["colors"]	= {
-      ["悬浮按钮图标"]	= "#ffffffff" ;
-      ["悬浮按钮"]	= "#ff74d2ff" ;
-      ["搜索栏部件"]	= "#ff888888" ;
-      ["搜索栏提示文字"]	= "#80000000" ;
-      ["导航栏"]	= "#ff2c2e43" ;
-      ["顶栏部件触摸"]	= "#22ffffff" ;
-      ["搜索栏部件触摸"]	= "#44000000" ;
-      ["搜索栏背景"]	= "#ffffffff" ;
-      ["侧滑栏列表文字"]	= "#ff333333" ;
-      ["进度条"]	= "#00000000" ;
-      ["顶栏部件"]	= "#ffffffff" ;
-      ["顶栏"]	= "#ffa2c5ff" ;
-      ["侧滑栏列表图标"]	= "#ff757575" ;
-      ["侧滑栏背景"]	= "#ffffffff" ;
+  ["view_attribute"]	= {
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏高度"]	= "42dp" ;
       } ;
-  ["toolbar"]	= {
-      ["输入栏模式"]	= true ;
-      ["icon_btns"]	= {
-          } ;
-      ["menus"]	= {
-          [1]	= {
-              ["onClick"]	= "if SetHSP==nil then \
+  ["fltBtn"]	= {
+      ["显示"]	= true ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件\
+--悬浮按钮点击时执行的事件\
+pop=PopupMenu(activity,fltBtn)\
+menu=pop.Menu\
+menu.add(\"刷新\").onMenuItemClick=function(a)\
+  刷新网页()\
+\
+end\
+menu.add(\"强制横屏/竖屏\").onMenuItemClick=function(a)\
+if SetHSP==nil then \
 --横屏 \
 activity.setRequestedOrientation(0); \
 SetHSP=\"H\" \
@@ -39,11 +36,16 @@ else \
 --竖屏 \
 activity.setRequestedOrientation(1); \
 SetHSP=nil \
-end" ;
-              ["name"]	= "强制横屏/竖屏" ;
-              } ;
-          [2]	= {
-              ["onClick"]	= "   --调用系统播放器播放视屏\
+end\
+end\
+\
+menu.add(\"隐藏悬浮窗\").onMenuItemClick=function(a)\
+  fltBtn.setVisibility(View.GONE)\
+  end\
+\
+\
+menu.add(\"播放器\").onMenuItemClick=function(a)\
+     --调用系统播放器播放视屏\
       import \"android.net.Uri\";\
       import \"android.content.Intent\";\
       function loadTheJs()\
@@ -59,98 +61,39 @@ end" ;
           activity.startActivity(intent);\
         end);\
       end\
-      弹出消息(\"调用播放器播放\")" ;
-              ["name"]	= "调用播放器" ;
-              } ;
-          [3]	= {
-              ["onClick"]	= "fltBtn.setVisibility(View.VISIBLE)\
-import \"android.view.WindowManager\"\
+      弹出消息(\"调用播放器播放\")\
+\
+end\
+menu.add(\"退出\").onMenuItemClick=function(a)\
+  退出页面()\
+\
+end\
+\
+pop.show()\
+--显示import \"android.view.WindowManager\"\
+--需程序启动赋予barisshow初始值0\
 \
 \
-if barisshow == 0 then\
-  --状态栏\
-  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
-  --顶栏\
-  toolbar.parent.setVisibility(View.GONE);\
-  barisshow = 1;\
-  else\
-  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
-  toolbar.parent.setVisibility(View.VISIBLE);\
-  barisshow = 0;\
-  end\
-" ;
-              ["name"]	= "全屏" ;
-              } ;
-          [4]	= {
-              ["onClick"]	= "items={\"酷投屏\",\"快点投屏\",\"投屏使用须知\"}\13\
-\13\
-AlertDialog.Builder(this)\13\
-\13\
-.setTitle(\"投屏方式\")\13\
-\13\
-.setItems(items,{onClick=function(l,v)\13\
-\13\
-  if v==0 then\13\
-\13\
-复制文本(webView.getUrl())\13\
-\13\
-弹出消息(\"当前网页已复制完毕正在打开（酷投屏），请手动粘贴网址到播放位置进行投屏播放\")\13\
-\13\
-packageName=\"com.dlna.coolcast\"\13\
-\13\
-import \"android.content.Intent\"\13\
-\13\
-import \"android.content.pm.PackageManager\"\13\
-\13\
-manager = activity.getPackageManager()\13\
-\13\
-open = manager.getLaunchIntentForPackage(packageName)\13\
-\13\
-this.startActivity(open)\13\
-\13\
-  end\13\
-\13\
-  if v==1 then\13\
-\13\
-复制文本(webView.getUrl())\13\
-\13\
-弹出消息(\"当前网页已复制完毕正在打开（快点投屏） ，请手动粘贴网址到播放位置进行投屏播放！\")\13\
-\13\
-packageName=\"com.wukongtv.wkcast\"\13\
-\13\
-import \"android.content.Intent\"\13\
-\13\
-import \"android.content.pm.PackageManager\"\13\
-\13\
-manager = activity.getPackageManager()\13\
-\13\
-open = manager.getLaunchIntentForPackage(packageName)\13\
-\13\
-this.startActivity(open)\13\
-\13\
-  end\13\
-\13\
-  if v==2 then\13\
-\13\
-对话框()\13\
-\13\
-.设置标题(\"投屏使用须知\")\13\
-\13\
-.设置消息(\"进行第三方投屏之前，请先提前下载好你所需要的投屏软件（酷投屏或快点投屏），否则会出现错误导致无法进行投屏！下方是我自己整理的去广告版本。\")\13\
-\13\
-.设置积极按钮(\"前往下载\",function()\13\
-  进入子页面(\"调用界面\",{链接=\"https://lanzous.com/b00nm154b\"})\
-  \
-\13\
-end)\13\
-\13\
-.显示()\13\
-\13\
-  end\13\
-\13\
- end})\13\
-\13\
-.show()\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
 \
 \
 \
@@ -163,16 +106,13 @@ end)\13\
 \
 \
 " ;
-              ["name"]	= "投屏" ;
-              } ;
-          [5]	= {
-              ["onClick"]	= "退出页面()" ;
-              ["name"]	= "退出" ;
-              } ;
-          } ;
-      ["启用搜索功能"]	= false ;
-      ["搜索URL"]	= "" ;
-      ["搜索框提示"]	= "" ;
+      ["图标"]	= "" ;
+      } ;
+  ["switch"]	= {
+      ["横屏"]	= false ;
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= false ;
+      ["支持滑动页面"]	= true ;
       } ;
   ["web_control"]	= {
       [2]	= {
@@ -186,29 +126,8 @@ end)\13\
           ["js"]	= "" ;
           } ;
       } ;
-  ["view_attribute"]	= {
-      ["搜索栏圆角弧度"]	= "2dp" ;
-      ["顶栏标题"]	= "" ;
-      ["顶栏阴影强度"]	= "2dp" ;
-      ["顶栏高度"]	= "42dp" ;
-      ["搜索栏阴影强度"]	= "2dp" ;
-      ["侧滑栏宽度"]	= "240dp" ;
-      } ;
-  ["sidebar"]	= {
-      ["启用"]	= false ;
-      ["启用顶部图片"]	= false ;
-      ["items"]	= {
-          } ;
-      } ;
-  ["switch"]	= {
-      ["支持滑动页面"]	= true ;
-      ["启用启动图"]	= false ;
-      ["横屏"]	= false ;
-      ["显示状态栏"]	= false ;
-      } ;
   ["events"]	= {
-      ["收到新标题"]	= "" ;
-      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
 \
 --接收参数\
 浏览器对象,网页链接=..." ;
@@ -595,32 +514,51 @@ if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\
 \
 \
 " ;
-      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
 \
 --接收参数\
 浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "" ;
+      } ;
+  ["sidebar"]	= {
+      ["items"]	= {
+          } ;
+      ["启用"]	= false ;
+      ["启用顶部图片"]	= false ;
+      } ;
+  ["colors"]	= {
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#ff74d2ff" ;
+      ["进度条"]	= "#00000000" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["顶栏"]	= "#ffa2c5ff" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
       } ;
   ["web"]	= {
+      ["启动网页"]	= "" ;
       ["支持打开外部应用"]	= false ;
       ["启用长按菜单"]	= false ;
-      ["customUa"]	= "Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Quark/3.8.4.128 UCBrowser/12.0.4.985 baiduboxapp/3.2.5.10 MQQBrowser/7.2.1.2965 XiaoMi/MiuiBrowser/11.9.2 SearchCraft/2.0.0 ALiSearchApp/2.4 AliApp(TB/9.5.6) BingWeb/6.9.6 3gpp-gba" ;
-      ["网页沉浸"]	= true ;
       ["启用进度条"]	= false ;
+      ["customUa"]	= "Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Quark/3.8.4.128 UCBrowser/12.0.4.985 baiduboxapp/3.2.5.10 MQQBrowser/7.2.1.2965 XiaoMi/MiuiBrowser/11.9.2 SearchCraft/2.0.0 ALiSearchApp/2.4 AliApp(TB/9.5.6) BingWeb/6.9.6 3gpp-gba" ;
       ["浏览器用户标识"]	= "自定义" ;
-      ["启动网页"]	= "" ;
+      ["网页沉浸"]	= true ;
       } ;
-  ["fltBtn"]	= {
-      ["图标"]	= "" ;
-      ["点击事件"]	= "--悬浮按钮点击时执行的事件\
---悬浮按钮点击时执行的事件\
-pop=PopupMenu(activity,fltBtn)\
-menu=pop.Menu\
-menu.add(\"刷新\").onMenuItemClick=function(a)\
-  刷新网页()\
-\
-end\
-menu.add(\"强制横屏/竖屏\").onMenuItemClick=function(a)\
-if SetHSP==nil then \
+  ["toolbar"]	= {
+      ["搜索URL"]	= "" ;
+      ["搜索框提示"]	= "" ;
+      ["输入栏模式"]	= true ;
+      ["启用搜索功能"]	= false ;
+      ["menus"]	= {
+          [1]	= {
+              ["onClick"]	= "if SetHSP==nil then \
 --横屏 \
 activity.setRequestedOrientation(0); \
 SetHSP=\"H\" \
@@ -638,16 +576,11 @@ else \
 --竖屏 \
 activity.setRequestedOrientation(1); \
 SetHSP=nil \
-end\
-end\
-\
-menu.add(\"隐藏悬浮窗\").onMenuItemClick=function(a)\
-  fltBtn.setVisibility(View.GONE)\
-  end\
-\
-\
-menu.add(\"播放器\").onMenuItemClick=function(a)\
-     --调用系统播放器播放视屏\
+end" ;
+              ["name"]	= "强制横屏/竖屏" ;
+              } ;
+          [2]	= {
+              ["onClick"]	= "   --调用系统播放器播放视屏\
       import \"android.net.Uri\";\
       import \"android.content.Intent\";\
       function loadTheJs()\
@@ -663,39 +596,98 @@ menu.add(\"播放器\").onMenuItemClick=function(a)\
           activity.startActivity(intent);\
         end);\
       end\
-      弹出消息(\"调用播放器播放\")\
-\
-end\
-menu.add(\"退出\").onMenuItemClick=function(a)\
-  退出页面()\
-\
-end\
-\
-pop.show()\
---显示import \"android.view.WindowManager\"\
---需程序启动赋予barisshow初始值0\
+      弹出消息(\"调用播放器播放\")" ;
+              ["name"]	= "调用播放器" ;
+              } ;
+          [3]	= {
+              ["onClick"]	= "fltBtn.setVisibility(View.VISIBLE)\
+import \"android.view.WindowManager\"\
 \
 \
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
+if barisshow == 0 then\
+  --状态栏\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+  else\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+  end\
+" ;
+              ["name"]	= "全屏" ;
+              } ;
+          [4]	= {
+              ["onClick"]	= "items={\"酷投屏\",\"快点投屏\",\"投屏使用须知\"}\13\
+\13\
+AlertDialog.Builder(this)\13\
+\13\
+.setTitle(\"投屏方式\")\13\
+\13\
+.setItems(items,{onClick=function(l,v)\13\
+\13\
+  if v==0 then\13\
+\13\
+复制文本(webView.getUrl())\13\
+\13\
+弹出消息(\"当前网页已复制完毕正在打开（酷投屏），请手动粘贴网址到播放位置进行投屏播放\")\13\
+\13\
+packageName=\"com.dlna.coolcast\"\13\
+\13\
+import \"android.content.Intent\"\13\
+\13\
+import \"android.content.pm.PackageManager\"\13\
+\13\
+manager = activity.getPackageManager()\13\
+\13\
+open = manager.getLaunchIntentForPackage(packageName)\13\
+\13\
+this.startActivity(open)\13\
+\13\
+  end\13\
+\13\
+  if v==1 then\13\
+\13\
+复制文本(webView.getUrl())\13\
+\13\
+弹出消息(\"当前网页已复制完毕正在打开（快点投屏） ，请手动粘贴网址到播放位置进行投屏播放！\")\13\
+\13\
+packageName=\"com.wukongtv.wkcast\"\13\
+\13\
+import \"android.content.Intent\"\13\
+\13\
+import \"android.content.pm.PackageManager\"\13\
+\13\
+manager = activity.getPackageManager()\13\
+\13\
+open = manager.getLaunchIntentForPackage(packageName)\13\
+\13\
+this.startActivity(open)\13\
+\13\
+  end\13\
+\13\
+  if v==2 then\13\
+\13\
+对话框()\13\
+\13\
+.设置标题(\"投屏使用须知\")\13\
+\13\
+.设置消息(\"进行第三方投屏之前，请先提前下载好你所需要的投屏软件（酷投屏或快点投屏），否则会出现错误导致无法进行投屏！下方是我自己整理的去广告版本。\")\13\
+\13\
+.设置积极按钮(\"前往下载\",function()\13\
+  进入子页面(\"调用界面\",{链接=\"https://lanzous.com/b00nm154b\"})\
+  \
+\13\
+end)\13\
+\13\
+.显示()\13\
+\13\
+  end\13\
+\13\
+ end})\13\
+\13\
+.show()\
 \
 \
 \
@@ -708,6 +700,26 @@ pop.show()\
 \
 \
 " ;
-      ["显示"]	= true ;
+              ["name"]	= "投屏" ;
+              } ;
+          [5]	= {
+              ["onClick"]	= "退出页面()" ;
+              ["name"]	= "退出" ;
+              } ;
+          } ;
+      ["icon_btns"]	= {
+          [1]	= {
+              ["onClick"]	= "if SetHSP==nil then\13\
+  --横屏\13\
+  activity.setRequestedOrientation(0); \13\
+  SetHSP=\"H\"\13\
+else\13\
+  --竖屏\13\
+  activity.setRequestedOrientation(1); \13\
+  SetHSP=nil\13\
+end\13" ;
+              ["icon"]	= "screen_rotation" ;
+              } ;
+          } ;
       } ;
   } ;

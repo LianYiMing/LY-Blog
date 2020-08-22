@@ -1,31 +1,40 @@
 {
-  ["colors"]	= {
-      ["搜索栏部件触摸"]	= "#44000000" ;
-      ["搜索栏背景"]	= "#ffffffff" ;
-      ["顶栏部件触摸"]	= "#22ffffff" ;
-      ["悬浮按钮图标"]	= "#ffffffff" ;
-      ["侧滑栏列表图标"]	= "#ff757575" ;
-      ["搜索栏部件"]	= "#ff888888" ;
-      ["进度条"]	= "#00000000" ;
-      ["侧滑栏列表文字"]	= "#ff333333" ;
-      ["导航栏"]	= "#ff2c2e43" ;
-      ["顶栏部件"]	= "#ffffffff" ;
-      ["悬浮按钮"]	= "#ff33a7aa" ;
-      ["顶栏"]	= "#ff2c2e43" ;
-      ["搜索栏提示文字"]	= "#80000000" ;
-      ["侧滑栏背景"]	= "#ffffffff" ;
+  ["switch"]	= {
+      ["显示状态栏"]	= true ;
+      ["启用启动图"]	= false ;
+      ["横屏"]	= false ;
+      ["支持滑动页面"]	= false ;
+      } ;
+  ["sidebar"]	= {
+      ["items"]	= {
+          } ;
+      ["启用"]	= true ;
+      ["启用顶部图片"]	= false ;
+      } ;
+  ["web_control"]	= {
       } ;
   ["web"]	= {
-      ["启用长按菜单"]	= false ;
-      ["浏览器用户标识"]	= "默认" ;
-      ["支持打开外部应用"]	= true ;
-      ["启用进度条"]	= false ;
-      ["启动网页"]	= "" ;
       ["网页沉浸"]	= false ;
+      ["启用进度条"]	= false ;
+      ["支持打开外部应用"]	= true ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["启用长按菜单"]	= false ;
+      ["启动网页"]	= "" ;
+      } ;
+  ["fltBtn"]	= {
+      ["显示"]	= false ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["图标"]	= "" ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏高度"]	= "56dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏标题"]	= "Title" ;
       } ;
   ["toolbar"]	= {
-      ["搜索框提示"]	= "" ;
-      ["搜索URL"]	= "" ;
       ["icon_btns"]	= {
           } ;
       ["输入栏模式"]	= true ;
@@ -35,10 +44,16 @@
               ["onClick"]	= "退出页面()" ;
               } ;
           } ;
+      ["搜索框提示"]	= "" ;
       ["启用搜索功能"]	= false ;
+      ["搜索URL"]	= "" ;
       } ;
   ["events"]	= {
       ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
 \
 --接收参数\
 浏览器对象,网页链接=..." ;
@@ -298,7 +313,11 @@ xfy=--浏览器布局\
               layout_width='fill';--布局宽度\
               layout_height='fill';--布局高度\
               onClick=function()\
-                弹出消息(\"我是按钮\")\
+               import \"android.content.Intent\"\
+import \"android.net.Uri\"\
+url=\"https://lianyiming.com\"\
+viewIntent = Intent(\"android.intent.action.VIEW\",Uri.parse(url))\
+activity.startActivity(viewIntent)\
               end,\
               {\
                 ImageView;--图片控件\
@@ -312,7 +331,7 @@ xfy=--浏览器布局\
                 TextView;--文本控件\
                 layout_marginTop='3dp';--布局顶距\
                 textColor='#FF6A6A6A';--文字颜色\
-                text='关于我们';--显示的文字\
+                text='窝の网站';--显示的文字\
                 textSize='15sp';--文字大小\
               };\
             };\
@@ -333,7 +352,11 @@ xfy=--浏览器布局\
               layout_width='fill';--布局宽度\
               layout_height='fill';--布局高度\
               onClick=function()\
-                弹出消息(\"我是按钮\")\
+           import \"android.content.Intent\"\
+import \"android.net.Uri\"\
+url=\"https://github.com/LianYiMing/LY-Blog\"\
+viewIntent = Intent(\"android.intent.action.VIEW\",Uri.parse(url))\
+activity.startActivity(viewIntent)\
               end,\
               {\
                 ImageView;--图片控件\
@@ -347,7 +370,7 @@ xfy=--浏览器布局\
                 TextView;--文本控件\
                 layout_marginTop='3dp';--布局顶距\
                 textColor='#FF6A6A6A';--文字颜色\
-                text='贡献者名册';--显示的文字\
+                text='App源码';--显示的文字\
                 textSize='15sp';--文字大小\
               };\
             };\
@@ -368,7 +391,7 @@ xfy=--浏览器布局\
               layout_width='fill';--布局宽度\
               layout_height='fill';--布局高度\
               onClick=function()\
-                弹出消息(\"我是按钮\")\
+              进入子页面(\"反馈\")\
               end,\
               {\
                 ImageView;--图片控件\
@@ -382,14 +405,11 @@ xfy=--浏览器布局\
                 TextView;--文本控件\
                 layout_marginTop='3dp';--布局顶距\
                 textColor='#FF6A6A6A';--文字颜色\
-                text='公众号';--显示的文字\
+                text='Bug反馈';--显示的文字\
                 textSize='15sp';--文字大小\
                 onClick=function()\
-                  import \"android.content.Intent\"\
-                  import \"android.net.Uri\"\
-                  url=\"https://mp.weixin.qq.com/s/7oEX4dRnvKM1HdKwvrMr2g\"\
-                  viewIntent = Intent(\"android.intent.action.VIEW\",Uri.parse(url))\
-                  activity.startActivity(viewIntent)\
+                  \
+                  \
                 end,\
               };\
             };\
@@ -450,10 +470,7 @@ xfy=--浏览器布局\
               orientation='vertical';--重力属性\
               layout_width='fill';--布局宽度\
               layout_height='fill';--布局高度\
-              onClick=function()\
-                弹出消息(\"我是按钮\")\
-              end,\
-\
+            \
               {\
                 ImageView;--图片控件\
                 src='zy/5.png';--图片路径\
@@ -596,41 +613,153 @@ if wl== nil then\
     退出页面()\
   end)\
 \
-end" ;
-      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+end\
 \
---接收参数\
-浏览器对象,网页链接=..." ;
+\
+ gx.onClick=function()\
+\
+import \"android.content.Intent\"\
+import \"android.net.Uri\"\
+import \"android.provider.Settings\"\
+import \"android.app.ProgressDialog\"\
+import \"android.app.AlertDialog\"\
+local appid =12571\
+--将 10001 改成你在 https://aus.nowtime.cc 获取的 APPID\
+--获取方法[教程可能有点旧(其实我太懒)，就先将就下吧] https://nowtime.cc/lua/331.html\
+local packinfo = this.getPackageManager().getPackageInfo(this.getPackageName(),((32552732/2/2-8183)/10000-6-231)/9)\
+local appinfo = this.getPackageManager().getApplicationInfo(this.getPackageName(),0)\
+local versionName = tostring(packinfo.versionName)-- 版本名（cc.nowtime）\
+local versionCode = tonumber(packinfo.versionCode)-- 版本号（10010）\
+local check_update_url = \"https://aus.nowtime.cc/api/query/update?appid=\"..appid..\"&version_code=\"..versionCode\
+if(activity.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE).getActiveNetworkInfo() == nil) then\
+  AlertDialog.Builder(this)\
+  .setTitle(\"oh我的朋友\")\
+  .setMessage(\"你未连接至互联网 或 当前连接的网络不可用，请检查你的网络设置\")\
+  .setNeutralButton(\"确定\",nil)\
+  .setNegativeButton(\"打开 数据连接\",{onClick=function()\
+      intent = Intent(Settings.ACTION_DATA_ROAMING_SETTINGS)\
+      this.startActivity(intent)\
+    end})\
+  .setPositiveButton(\"连接 Wi-Fi\",{onClick=function()\
+      intent = Intent(Settings.ACTION_WIFI_SETTINGS)\
+      this.startActivity(intent)\
+    end})\
+  .show();\
+  return false\
+  -- 就此中断，不再继续执行下面代码\
+end\
+--圆形旋转样式\
+check_update_dialog = ProgressDialog(this)\
+check_update_dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER)\
+check_update_dialog.setTitle(\"Tips\")\
+--设置进度条的形式为圆形转动的进度条\
+check_update_dialog.setMessage(\"为大哥您检查更新ing，稍等就好了辣……\\n\\n Tips→按手机「返回键」可以取消检查更新呢\")\
+check_update_dialog.setCancelable(true)--设置是否可以通过点击Back键取消\
+check_update_dialog.setCanceledOnTouchOutside(false)--设置在点击Dialog外是否取消Dialog进度条\
+check_update_dialog.setOnCancelListener{\
+  onCancel=function(l)\
+    print(\"您取消了「检查更新」操作\")\
+    return false\
+  end}\
+--取消对话框监听事件\
+check_update_dialog.show()\
+Http.get(check_update_url,nil,\"UTF-8\",nil,function(http_code,content,cookie,header)\
+  check_update_dialog.hide()\
+  if (http_code == -1) then\
+    AlertDialog.Builder(this)\
+    .setTitle(\"正在努力search中\")\
+    .setMessage(\"检查更新时貌似出现了些小问题的说。可能的原因有：\\n1.API 服务器可能暂时出现故障，请稍后再试！\\n2.请检查你的网络设置？\")\
+    .setPositiveButton(\"确定\",nil)\
+    .setNeutralButton(\"检查 Wi-Fi\",{onClick=function()\
+        intent = Intent(Settings.ACTION_WIFI_SETTINGS)\
+        this.startActivity(intent)\
+      end})\
+    .setNegativeButton(\"检查 流量\",{onClick=function()\
+        intent = Intent(Settings.ACTION_DATA_ROAMING_SETTINGS)\
+        this.startActivity(intent)\
+      end})\
+    .show()\
+  else\
+    code = tonumber(string.match(content,'\"code\":(.-),'))-- 状态码\
+    msg = string.match(content,'\"msg\":\"(.-)\"')-- 消息\
+    if(code == 200) then\
+      new_versionCode = tonumber(string.match(content,'\"version_code\":(.-),'))--版本号\
+      new_versionName = string.match(content,'\"version_name\":\"(.-)\"')--版本名\
+      apk_url = string.gsub(string.match(content,'\"apk_url\":\"(.-)\"'),'\\\\','')--下载地址\
+      update_log = string.gsub(string.match(content,'\"update_log\":\"(.-)\"'),'\\\\n',\"\\n\")--更新日志\
+      update_date = string.match(content,'\"update_time\":\"(.-)\"')--发布更新时间\
+      if (new_versionCode > versionCode) then\
+        AlertDialog.Builder(this)\
+        .setTitle(\"发现liǎo新版本呢\")\
+        .setMessage(\"当前版本：V\"..versionName..\"(\"..versionCode..\")\\n最新版本：V\"..new_versionName..\"(\"..new_versionCode..\")\\n版本发布时间：\"..update_date..\"\\n\\n更新日志：\\n\"..update_log)\
+        .setPositiveButton(\"立即给窝更新！\",{onClick=function()\
+            print(\"请选择一个应用或浏览器打开\")\
+            intent = Intent(\"android.intent.action.VIEW\")\
+            intent .setData(Uri.parse(apk_url))\
+            this.startActivity(Intent.createChooser(intent, \"请选择一个应用或浏览器用以下载最新版 APP\"))\
+          end})\
+        .setNeutralButton(\"复制链接\",{onClick=function()\
+            activity.getSystemService(Context.CLIPBOARD_SERVICE).setText(apk_url)--将下载链接复制到剪切板\
+            print(\"新版 LY｜Blog 下载链接，复制成功！请粘贴到浏览器下载。\")\
+          end})\
+        .setNegativeButton(\"以后再说\",nill)\
+        .show()\
+      else\
+        AlertDialog.Builder(this)\
+        .setTitle(\"无可用更新\")\
+        .setMessage(\"您使用的是最新版本！\\n当前版本：\"..versionName..\"（\"..versionCode..\"）\\n最新版本：\"..new_versionName..\"（\"..new_versionCode..\"）\")\
+        .setPositiveButton(\"知道啦\",nil)\
+        .show()\
+      end\
+    else\
+      AlertDialog.Builder(this)\
+      .setTitle(\"木有更新\")\
+      .setMessage(\"窝还木有发布新版呢\")\
+      .setPositiveButton(\"退下吧\",nil)\
+      .show()\
+    end\
+  end\
+end)               \
+              end\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+" ;
       ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
 \
 --接收参数\
 浏览器对象，新标题=..." ;
       } ;
-  ["web_control"]	= {
-      } ;
-  ["switch"]	= {
-      ["横屏"]	= false ;
-      ["启用启动图"]	= false ;
-      ["显示状态栏"]	= true ;
-      ["支持滑动页面"]	= false ;
-      } ;
-  ["fltBtn"]	= {
-      ["显示"]	= false ;
-      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
-      ["图标"]	= "" ;
-      } ;
-  ["sidebar"]	= {
-      ["items"]	= {
-          } ;
-      ["启用顶部图片"]	= false ;
-      ["启用"]	= true ;
-      } ;
-  ["view_attribute"]	= {
-      ["顶栏标题"]	= "Title" ;
-      ["顶栏阴影强度"]	= "2dp" ;
-      ["搜索栏阴影强度"]	= "2dp" ;
-      ["搜索栏圆角弧度"]	= "2dp" ;
-      ["顶栏高度"]	= "56dp" ;
-      ["侧滑栏宽度"]	= "240dp" ;
+  ["colors"]	= {
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["顶栏"]	= "#ff2c2e43" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["进度条"]	= "#00000000" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
       } ;
   } ;

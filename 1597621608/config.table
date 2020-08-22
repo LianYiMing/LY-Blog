@@ -1,53 +1,59 @@
 {
-  ["web_control"]	= {
+  ["colors"]	= {
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["进度条"]	= "#00000000" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["顶栏"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["搜索栏部件"]	= "#ff888888" ;
       } ;
-  ["toolbar"]	= {
-      ["icon_btns"]	= {
-          } ;
-      ["搜索框提示"]	= "" ;
-      ["启用搜索功能"]	= false ;
-      ["menus"]	= {
-          } ;
-      ["输入栏模式"]	= false ;
-      ["搜索URL"]	= "" ;
+  ["fltBtn"]	= {
+      ["图标"]	= "" ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["显示"]	= false ;
       } ;
-  ["global_js"]	= "/*\
- * @name: 强制缩放\
- * @Author: 谷花泰\
- * @version: 1.0\
- * @description: 让所有网页都可以缩放\
- * @include: *\
- * @createTime: 2019-10-04 01:47:08\
- * @updateTime: 2019-10-09 14:46:02\
- */\
-(function () {\
-  /* 判断是否该执行 */\
-  const key = encodeURIComponent('谷花泰:强制缩放:执行判断');\
-\
-  if (window[key]) {\
-    return;\
-  };\
-\
-  window[key] = true;\
-\
-  /* 开始执行代码 */\
-  const meta = document.createElement('meta');\
-  meta.setAttribute('name', 'viewport');\
-  meta.setAttribute('content', 'width=device-width, initial-scale=1, user-scalable=yes');\
-  document.head.appendChild(meta);\
-})();" ;
   ["sidebar"]	= {
-      ["启用顶部图片"]	= false ;
       ["items"]	= {
           [1]	= {
-              ["name"]	= "About" ;
-              ["icon"]	= "drawable/aij.png" ;
               ["onClick"]	= "进入子页面(\"about\")" ;
+              ["icon"]	= "drawable/aij.png" ;
+              ["name"]	= "About" ;
               } ;
           } ;
       ["启用"]	= true ;
+      ["启用顶部图片"]	= false ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["web"]	= {
+      ["启用长按菜单"]	= false ;
+      ["启用进度条"]	= false ;
+      ["支持打开外部应用"]	= true ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["启动网页"]	= "" ;
+      ["网页沉浸"]	= true ;
+      } ;
+  ["view_attribute"]	= {
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏标题"]	= "Title" ;
       } ;
   ["events"]	= {
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
       ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
 \
 --接收参数\
@@ -104,7 +110,56 @@ webView.addView(loadlayout(lay))\
 this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE )\
 \
 end" ;
-      ["程序启动"]	= "\
+      ["程序启动"]	= "--程序启动时会执行的事件\
+\
+--远程推送通知栏消息\
+require \"import\"\
+import \"android.app.*\"\
+import \"android.os.*\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+import \"android.content.Context\"\
+import \"android.content.Intent\"\
+import \"android.app.PendingIntent\"\
+import \"android.app.Notification\"\
+urla=\"https://github.com/LianYiMing/LY-Blog\"--换自己的远程链接\
+--远程链接，可使用的讯飞语记，其他网页，过滤规则可以需要重写。\
+Http.get(urla,nil,nil,nil,function(code,content)\
+  if code==200 then\
+\
+    content=content:gsub(\"amp;\",\"\") or content;\
+    content=content:gsub(\"<div>\",\"\") or content;\
+    content=content:gsub(\"</div>\",\"\") or content;\
+    --content=content:gsub(\"amp;\",\"\") or content;\
+    content=content:gsub(\"&nbsp;\",\"\") or content;\
+    local 开关=content:match(\"【通知开关】(.-)【通知开关】\")\
+    local 通知标题=content:match(\"【通知标题】(.-)【通知标题】\")\
+    local 文字=content:match(\"【文字】(.-)【文字】\")\
+    local urlb=content:match(\"【网址】(.-)【网址】\")\
+    if 开关==\"开\" then \
+      mBuilder = Notification.Builder(this);\
+      mBuilder.setSmallIcon(R.drawable.icon)--设置图标\
+      mBuilder.setContentTitle(烤面筋);--大标\
+      mBuilder.setContentText(文字);--小标\
+      mBuilder.setAutoCancel(true);--设置这个标志当用户单击面板就可以让通知将自动取消\
+      mBuilder.setDefaults( Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE) --使用默认震动\
+      notificationManager =activity.getSystemService(Context.NOTIFICATION_SERVICE)\
+      notificationIntent =Intent(Intent.ACTION_VIEW, Uri.parse(urlb))\
+      pendingIntent = PendingIntent.getActivity(activity.getApplicationContext(), 0, notificationIntent, Intent.FLAG_ACTIVITY_NEW_TASK);\
+      mBuilder.setContentIntent(pendingIntent).setAutoCancel(true)\
+      mBuilder.setOngoing(false)--ture，设置他为一\
+      mBuilder.setPriority(Notification.PRIORITY_DEFAULT) --设置该通知优先级\
+      notificationManager.notify(1, mBuilder.build()) --发送通知\
+      --notificationManager.cancel(1);           --关闭通知\
+     \
+    elseif 开关==\"关\" then\
+      -- print\"关\"\
+      return true\
+    end\
+  end\
+end)\
+\
+--分割线\
 \
 if(animationSet~=0)and(animationSet~=1)and(animationSet~=2)then--这里的判断用于方式用户在动画没有完成之前再次点击\
   animationSet=0\
@@ -1064,52 +1119,46 @@ end\
 \
 \
 " ;
-      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+      } ;
+  ["global_js"]	= "/*\
+ * @name: 强制缩放\
+ * @Author: 谷花泰\
+ * @version: 1.0\
+ * @description: 让所有网页都可以缩放\
+ * @include: *\
+ * @createTime: 2019-10-04 01:47:08\
+ * @updateTime: 2019-10-09 14:46:02\
+ */\
+(function () {\
+  /* 判断是否该执行 */\
+  const key = encodeURIComponent('谷花泰:强制缩放:执行判断');\
 \
---接收参数\
-浏览器对象，新标题=..." ;
-      } ;
-  ["web"]	= {
-      ["启动网页"]	= "" ;
-      ["浏览器用户标识"]	= "默认" ;
-      ["支持打开外部应用"]	= true ;
-      ["启用长按菜单"]	= false ;
-      ["启用进度条"]	= false ;
-      ["网页沉浸"]	= true ;
-      } ;
-  ["view_attribute"]	= {
-      ["顶栏标题"]	= "Title" ;
-      ["搜索栏圆角弧度"]	= "2dp" ;
-      ["搜索栏阴影强度"]	= "2dp" ;
-      ["侧滑栏宽度"]	= "240dp" ;
-      ["顶栏阴影强度"]	= "2dp" ;
-      ["顶栏高度"]	= "56dp" ;
-      } ;
-  ["fltBtn"]	= {
-      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
-      ["显示"]	= false ;
-      ["图标"]	= "" ;
-      } ;
+  if (window[key]) {\
+    return;\
+  };\
+\
+  window[key] = true;\
+\
+  /* 开始执行代码 */\
+  const meta = document.createElement('meta');\
+  meta.setAttribute('name', 'viewport');\
+  meta.setAttribute('content', 'width=device-width, initial-scale=1, user-scalable=yes');\
+  document.head.appendChild(meta);\
+})();" ;
   ["switch"]	= {
+      ["启用启动图"]	= true ;
       ["横屏"]	= false ;
-      ["支持滑动页面"]	= false ;
-      ["启用启动图"]	= false ;
       ["显示状态栏"]	= true ;
+      ["支持滑动页面"]	= false ;
       } ;
-  ["colors"]	= {
-      ["顶栏部件"]	= "#ffffffff" ;
-      ["侧滑栏列表文字"]	= "#ff333333" ;
-      ["搜索栏部件"]	= "#ff888888" ;
-      ["搜索栏背景"]	= "#ffffffff" ;
-      ["悬浮按钮"]	= "#ff33a7aa" ;
-      ["侧滑栏背景"]	= "#ffffffff" ;
-      ["顶栏部件触摸"]	= "#22ffffff" ;
-      ["搜索栏部件触摸"]	= "#44000000" ;
-      ["搜索栏提示文字"]	= "#80000000" ;
-      ["悬浮按钮图标"]	= "#ffffffff" ;
-      ["进度条"]	= "#00000000" ;
-      ["顶栏"]	= "#ffffffff" ;
-      ["侧滑栏列表图标"]	= "#ff757575" ;
-      ["导航栏"]	= "#ff2c2e43" ;
+  ["toolbar"]	= {
+      ["启用搜索功能"]	= false ;
+      ["icon_btns"]	= {
+          } ;
+      ["menus"]	= {
+          } ;
+      ["输入栏模式"]	= false ;
+      ["搜索框提示"]	= "" ;
+      ["搜索URL"]	= "" ;
       } ;
   } ;

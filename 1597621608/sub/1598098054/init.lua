@@ -1,2 +1,2 @@
-name="搜索"
 template="tool"
+name="更新"

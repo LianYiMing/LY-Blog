@@ -1,6 +1,5 @@
 {
   ["fltBtn"]	= {
-      ["图标"]	= "" ;
       ["点击事件"]	= "--悬浮按钮点击时执行的事件\
 --悬浮按钮点击时执行的事件\
 pop=PopupMenu(activity,fltBtn)\
@@ -99,27 +98,12 @@ pop.show()\
 \
 " ;
       ["显示"]	= true ;
-      } ;
-  ["web"]	= {
-      ["启用进度条"]	= false ;
-      ["启动网页"]	= "https://www.lanmays.com/" ;
-      ["支持打开外部应用"]	= false ;
-      ["网页沉浸"]	= false ;
-      ["启用长按菜单"]	= false ;
-      ["customUa"]	= "Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Quark/3.8.4.128 UCBrowser/12.0.4.985 baiduboxapp/3.2.5.10 MQQBrowser/7.2.1.2965 XiaoMi/MiuiBrowser/11.9.2 SearchCraft/2.0.0 ALiSearchApp/2.4 AliApp(TB/9.5.6) BingWeb/6.9.6 3gpp-gba" ;
-      ["浏览器用户标识"]	= "自定义" ;
-      } ;
-  ["view_attribute"]	= {
-      ["搜索栏阴影强度"]	= "2dp" ;
-      ["侧滑栏宽度"]	= "250dp" ;
-      ["搜索栏圆角弧度"]	= "10dp" ;
-      ["顶栏阴影强度"]	= "2dp" ;
-      ["顶栏标题"]	= "秋阴不散霜飞晚，留得枯荷听雨声" ;
-      ["顶栏高度"]	= "40dp" ;
+      ["图标"]	= "" ;
       } ;
   ["toolbar"]	= {
-      ["搜索URL"]	= "" ;
+      ["搜索框提示"]	= "秋阴不散霜飞晚，留得枯荷听雨声" ;
       ["启用搜索功能"]	= false ;
+      ["输入栏模式"]	= false ;
       ["icon_btns"]	= {
           [2]	= {
               ["onClick"]	= "\
@@ -825,8 +809,13 @@ end)\13\
               ["name"]	= "退出" ;
               } ;
           } ;
-      ["输入栏模式"]	= false ;
-      ["搜索框提示"]	= "秋阴不散霜飞晚，留得枯荷听雨声" ;
+      ["搜索URL"]	= "" ;
+      } ;
+  ["switch"]	= {
+      ["显示状态栏"]	= true ;
+      ["启用启动图"]	= false ;
+      ["支持滑动页面"]	= true ;
+      ["横屏"]	= false ;
       } ;
   ["sidebar"]	= {
       ["启用顶部图片"]	= false ;
@@ -1632,78 +1621,78 @@ end\
 \
 \
 " ;
-              ["icon"]	= "drawable/brightness_7.png" ;
               ["name"]	= "设置" ;
+              ["icon"]	= "drawable/brightness_7.png" ;
               } ;
           [1]	= {
               ["onClick"]	= "加载网页(\"https://www.lanmays.com/\")" ;
-              ["icon"]	= "drawable/beats.png" ;
               ["name"]	= "蓝马影视" ;
+              ["icon"]	= "drawable/beats.png" ;
               } ;
           [2]	= {
               ["onClick"]	= "加载网页(\"http://v.bwcxy.com/\")" ;
-              ["icon"]	= "drawable/beats.png" ;
               ["name"]	= "初心视频" ;
+              ["icon"]	= "drawable/beats.png" ;
               } ;
           [3]	= {
               ["onClick"]	= "加载网页(\"http://www.onettui.xyz/\")" ;
-              ["icon"]	= "drawable/beats.png" ;
               ["name"]	= "one影视" ;
+              ["icon"]	= "drawable/beats.png" ;
               } ;
           [4]	= {
               ["onClick"]	= "加载网页(\"https://www.nfmovies.com/\")" ;
-              ["icon"]	= "drawable/beats.png" ;
               ["name"]	= "奈菲影视" ;
+              ["icon"]	= "drawable/beats.png" ;
               } ;
           [5]	= {
               ["onClick"]	= "加载网页(\"https://m.kuhuiv.com/\")" ;
-              ["icon"]	= "drawable/beats.png" ;
               ["name"]	= "酷绘影视" ;
+              ["icon"]	= "drawable/beats.png" ;
               } ;
           [6]	= {
               ["onClick"]	= "加载网页(\"https://www.yunkanju.com/\")" ;
-              ["icon"]	= "drawable/beats.png" ;
               ["name"]	= "云看剧" ;
+              ["icon"]	= "drawable/beats.png" ;
               } ;
           [7]	= {
               ["onClick"]	= "加载网页(\"http://kkbds.top/\")" ;
-              ["icon"]	= "drawable/beats.png" ;
               ["name"]	= "看看吧" ;
+              ["icon"]	= "drawable/beats.png" ;
               } ;
           [8]	= {
               ["onClick"]	= "加载网页(\"http://yingmiwo.com/\")" ;
-              ["icon"]	= "drawable/beats.png" ;
               ["name"]	= "影迷窝" ;
+              ["icon"]	= "drawable/beats.png" ;
               } ;
           [9]	= {
               ["onClick"]	= "加载网页(\"https://www.shenma4480.com/\")" ;
-              ["icon"]	= "drawable/beats.png" ;
               ["name"]	= "神马影视" ;
+              ["icon"]	= "drawable/beats.png" ;
               } ;
           [10]	= {
               ["onClick"]	= "加载网页(\"https://m.pianku.tv/\")" ;
-              ["icon"]	= "drawable/beats.png" ;
               ["name"]	= "片库影视" ;
+              ["icon"]	= "drawable/beats.png" ;
               } ;
           [11]	= {
               ["onClick"]	= "加载网页(\"http://www.tntdy3.vip/\")" ;
-              ["icon"]	= "drawable/beats.png" ;
               ["name"]	= "TNT影视" ;
+              ["icon"]	= "drawable/beats.png" ;
               } ;
           [12]	= {
               ["onClick"]	= "加载网页(\"https://kuyun.tv/\")" ;
-              ["icon"]	= "drawable/beats.png" ;
               ["name"]	= "酷云影视" ;
+              ["icon"]	= "drawable/beats.png" ;
               } ;
           [13]	= {
               ["onClick"]	= "加载网页(\"http://pqufed2935.iboniu.icu/\")" ;
-              ["icon"]	= "drawable/beats.png" ;
               ["name"]	= "初见影视" ;
+              ["icon"]	= "drawable/beats.png" ;
               } ;
           [14]	= {
               ["onClick"]	= "加载网页(\"https://www.juhuitv.net/homem/0\")" ;
-              ["icon"]	= "drawable/beats.png" ;
               ["name"]	= "剧汇影视" ;
+              ["icon"]	= "drawable/beats.png" ;
               } ;
           [15]	= {
               ["onClick"]	= "\
@@ -1759,12 +1748,111 @@ end\
 \
 \
 " ;
-              ["icon"]	= "drawable/youtube_play.png" ;
               ["name"]	= "YouTube" ;
+              ["icon"]	= "drawable/youtube_play.png" ;
               } ;
           } ;
       } ;
+  ["global_js"]	= "var d=document;var s=d.createElement('script');s.setAttribute('src', ' https://greasyfork.org/scripts/7410-jskillad/code/jsKillAD.user.js');d.head.appendChild(s); " ;
+  ["colors"]	= {
+      ["悬浮按钮"]	= "#ffa2dcff" ;
+      ["侧滑栏列表文字"]	= "#e774a5ff" ;
+      ["顶栏部件触摸"]	= "#c76f6f6f" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["进度条"]	= "#00000000" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["顶栏"]	= "#ffefefef" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["侧滑栏列表图标"]	= "#ff8bddff" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      } ;
+  ["web"]	= {
+      ["网页沉浸"]	= true ;
+      ["启用进度条"]	= false ;
+      ["浏览器用户标识"]	= "自定义" ;
+      ["支持打开外部应用"]	= false ;
+      ["启用长按菜单"]	= false ;
+      ["customUa"]	= "Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Quark/3.8.4.128 UCBrowser/12.0.4.985 baiduboxapp/3.2.5.10 MQQBrowser/7.2.1.2965 XiaoMi/MiuiBrowser/11.9.2 SearchCraft/2.0.0 ALiSearchApp/2.4 AliApp(TB/9.5.6) BingWeb/6.9.6 3gpp-gba" ;
+      ["启动网页"]	= "https://www.lanmays.com/" ;
+      } ;
+  ["web_control"]	= {
+      [8]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "sjdb_img_84077" ;
+          ["url"]	= "www.lanmays.com" ;
+          } ;
+      [1]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "ARXPYMINFL,NHEHWEWRHD,XCFAAYRMFL,XCFAAYRMDV" ;
+          ["url"]	= "www.vip1280.cn" ;
+          } ;
+      [2]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "show_img-2415689770463175004-1083," ;
+          ["url"]	= "v.bwcxy.com" ;
+          } ;
+      [3]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "fed-swip-container fed-part-rows swiper-container-horizontal swiper-container-android,fed-swip-title fed-text-white fed-part-eone,fed-part-eone fed-font-xviii fed-swip-head" ;
+          ["url"]	= "m.kuhuiv.com" ;
+          } ;
+      [4]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "link-app-img,c-guide-img" ;
+          ["url"]	= "m.iqiyi.com" ;
+          } ;
+      [5]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "gourl1s1hQoASYbz7zxtXY2258" ;
+          ["url"]	= "m.pianku.tv" ;
+          } ;
+      [6]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "logoContainer___3wCwL,adsContainer___24E_1,downLoaderImg___3HA9l" ;
+          ["url"]	= "www.juhuitv.net" ;
+          } ;
+      [7]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "WANG" ;
+          ["url"]	= "cdn.yangju.vip" ;
+          } ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["顶栏高度"]	= "40dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "秋阴不散霜飞晚，留得枯荷听雨声" ;
+      ["侧滑栏宽度"]	= "250dp" ;
+      ["搜索栏圆角弧度"]	= "10dp" ;
+      } ;
   ["events"]	= {
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+" ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+\
+加载Js([[\
+//06:56-40\
+document.getElementsByTagName(\"img\")[14].setAttribute(\"style\",\"display:none\");\
+document.getElementById(\"ARXPYMINFL\").setAttribute(\"style\",\"display:none\");\
+document.getElementsByTagName(\"img\")[16].click();\
+\
+]])\
+加载Js([[\
+//20:04-17\
+document.getElementById(\"show_img-2415689770463175004-1083\").setAttribute(\"style\",\"display:none\");\
+\
+]])\
+" ;
       ["程序启动"]	= "\
 \
 require \"import\"\
@@ -1793,7 +1881,7 @@ json=require (\"json\") --解析json字符\
   end)\
 \
 --程序启动时会执行的事件\
-import \"快捷工具栏\"\
+import \"tool\"\
 barisshow = 0;\
 \
 --渐变\
@@ -1809,26 +1897,11 @@ end\
 渐变(0xFF8EAAFE,0xFFB7C9FF,toolbarParent)\
 --程序启动时会执行的事件\
 sidebar.onLongClick=function()\
-  弹出消息(\"这都被你发现了，那就直说了，我喜欢你😆！\")\
+  弹出消息(\"这都被你发现了，那就直说了，烤面筋可带劲了！\")\
   加载网页(\"https://www.tool2.cn/Gams/PlaneWars/\")\
 end\
 \
---长按侧滑栏即可触发该功能\
---包括侧栏定图和侧栏留白部分（就是除了侧栏按钮外的部分）\
---有什么用？可以写个彩蛋哈，具体效果看群附件QQ爹博客1.3.1版本\
---感谢柯南大佬的指点\
 \
-\
-\
-\
-------\
--- 原作: Pretend° (dalao)\
--- 修改: QQ32552732\
--- 修改内容:\
---  - 支持 Fusion App 原有布局\
---  - 删除原有自定义布局等无用代码\
---  - 稍微修改了下效果，符合个人喜好...\
---  - 支持右侧栏\
 \
 --关闭阴影\
 drawerLayout.setScrimColor(0)\
@@ -2060,93 +2133,5 @@ if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\
 \
 " ;
       ["收到新标题"]	= "" ;
-      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
-\
---接收参数\
-浏览器对象,网页链接=...\
-" ;
-      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
-\
---接收参数\
-浏览器对象,网页链接=...\
-\
-加载Js([[\
-//06:56-40\
-document.getElementsByTagName(\"img\")[14].setAttribute(\"style\",\"display:none\");\
-document.getElementById(\"ARXPYMINFL\").setAttribute(\"style\",\"display:none\");\
-document.getElementsByTagName(\"img\")[16].click();\
-\
-]])\
-加载Js([[\
-//20:04-17\
-document.getElementById(\"show_img-2415689770463175004-1083\").setAttribute(\"style\",\"display:none\");\
-\
-]])\
-" ;
-      } ;
-  ["global_js"]	= "var d=document;var s=d.createElement('script');s.setAttribute('src', ' https://greasyfork.org/scripts/7410-jskillad/code/jsKillAD.user.js');d.head.appendChild(s); " ;
-  ["switch"]	= {
-      ["显示状态栏"]	= false ;
-      ["支持滑动页面"]	= true ;
-      ["启用启动图"]	= false ;
-      ["横屏"]	= false ;
-      } ;
-  ["web_control"]	= {
-      [8]	= {
-          ["url"]	= "www.lanmays.com" ;
-          ["remove_element"]	= "sjdb_img_84077" ;
-          ["js"]	= "" ;
-          } ;
-      [1]	= {
-          ["url"]	= "www.vip1280.cn" ;
-          ["remove_element"]	= "ARXPYMINFL,NHEHWEWRHD,XCFAAYRMFL,XCFAAYRMDV" ;
-          ["js"]	= "" ;
-          } ;
-      [2]	= {
-          ["url"]	= "v.bwcxy.com" ;
-          ["remove_element"]	= "show_img-2415689770463175004-1083," ;
-          ["js"]	= "" ;
-          } ;
-      [3]	= {
-          ["url"]	= "m.kuhuiv.com" ;
-          ["remove_element"]	= "fed-swip-container fed-part-rows swiper-container-horizontal swiper-container-android,fed-swip-title fed-text-white fed-part-eone,fed-part-eone fed-font-xviii fed-swip-head" ;
-          ["js"]	= "" ;
-          } ;
-      [4]	= {
-          ["url"]	= "m.iqiyi.com" ;
-          ["remove_element"]	= "link-app-img,c-guide-img" ;
-          ["js"]	= "" ;
-          } ;
-      [5]	= {
-          ["url"]	= "m.pianku.tv" ;
-          ["remove_element"]	= "gourl1s1hQoASYbz7zxtXY2258" ;
-          ["js"]	= "" ;
-          } ;
-      [6]	= {
-          ["url"]	= "www.juhuitv.net" ;
-          ["remove_element"]	= "logoContainer___3wCwL,adsContainer___24E_1,downLoaderImg___3HA9l" ;
-          ["js"]	= "" ;
-          } ;
-      [7]	= {
-          ["url"]	= "cdn.yangju.vip" ;
-          ["remove_element"]	= "WANG" ;
-          ["js"]	= "" ;
-          } ;
-      } ;
-  ["colors"]	= {
-      ["侧滑栏列表图标"]	= "#ff8bddff" ;
-      ["搜索栏部件"]	= "#ff888888" ;
-      ["顶栏部件触摸"]	= "#c76f6f6f" ;
-      ["侧滑栏列表文字"]	= "#e774a5ff" ;
-      ["搜索栏背景"]	= "#ffffffff" ;
-      ["悬浮按钮图标"]	= "#ffffffff" ;
-      ["侧滑栏背景"]	= "#ffffffff" ;
-      ["搜索栏部件触摸"]	= "#44000000" ;
-      ["悬浮按钮"]	= "#ffa2dcff" ;
-      ["顶栏"]	= "#ffefefef" ;
-      ["导航栏"]	= "#ff2c2e43" ;
-      ["顶栏部件"]	= "#ffffffff" ;
-      ["进度条"]	= "#00000000" ;
-      ["搜索栏提示文字"]	= "#80000000" ;
       } ;
   } ;

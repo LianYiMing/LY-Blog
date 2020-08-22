@@ -23,17 +23,16 @@
 ### 环境
 Androlua 是一种安卓系统里边开发APP的语言，非常方便，在手机上就可以自己写自己的APP
 具体需要用到的应用
-1.fusionapp
+1.[Fusion App](https://www.coolapk.com/apk/cn.coldsong.fusionapp)
 
 2.Fusioncode
 
 ### 开始
 
-打开FusionAPP,导入原码里边的fas后缀的文件，就可以看到了LY Blog的源码
+打开FusionAPP,导入原码![](https://raw.githubusercontent.com/lianyiming/lianyiming.github.io/master/img/readme-side.png)
+里边的fas后缀的文件，就可以看到了LY Blog的源码
 有很多的参数可以调，
 
-
-![](https://raw.githubusercontent.com/lianyiming/lianyiming.github.io/master/img/readme-side.png)
 
 
 ```

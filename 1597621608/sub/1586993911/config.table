@@ -1,15 +1,248 @@
 {
   ["view_attribute"]	= {
       ["顶栏高度"]	= "40dp" ;
-      ["顶栏标题"]	= "欲寄彩笺兼尺素，山长水阔知何处" ;
       ["搜索栏阴影强度"]	= "2dp" ;
+      ["底栏高度"]	= "48dp" ;
+      ["顶栏标题"]	= "欲寄彩笺兼尺素，山长水阔知何处" ;
+      ["顶栏阴影强度"]	= "2dp" ;
       ["侧滑栏宽度"]	= "240dp" ;
       ["底栏图标大小"]	= "24dp" ;
-      ["底栏高度"]	= "48dp" ;
       ["搜索栏圆角弧度"]	= "2dp" ;
-      ["顶栏阴影强度"]	= "2dp" ;
+      } ;
+  ["toolbar"]	= {
+      ["menus"]	= {
+          [4]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          [1]	= {
+              ["name"]	= "自定义侧滑背景" ;
+              ["onClick"]	= "import \"android.content.Intent\"\
+local intent= Intent(Intent.ACTION_PICK)\
+intent.setType(\"image/*\")\
+this.startActivityForResult(intent, 1)\
+------\
+\
+--回调\
+function onActivityResult(requestCode,resultCode,intent)\
+  if intent then\
+    local cursor =this.getContentResolver ().query(intent.getData(), nil, nil, nil, nil)\
+    cursor.moveToFirst()\
+    import \"android.provider.MediaStore\"\
+    local idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)\
+    fileSrc = cursor.getString(idx)\
+    bit=nil\
+    --fileSrc回调路径路径\
+    --import \"android.graphics.BitmapFactory\"\
+    --bit =BitmapFactory.decodeFile(fileSrc)\
+    --  iv.setImageBitmap(bit)\
+    background.setImageBitmap(loadbitmap(fileSrc))\
+    setdata(\"fileSrc\",fileSrc)\
+  end\
+end--nirenr" ;
+              } ;
+          [2]	= {
+              ["name"]	= "恢复默认背景" ;
+              ["onClick"]	= "c = this.getSharedPreferences(\"PicCustom\", Activity.MODE_PRIVATE) \
+c.edit().clear().commit()\
+background.setImageBitmap(loadbitmap(\"background.jpg\"))" ;
+              } ;
+          [3]	= {
+              ["name"]	= "刷新" ;
+              ["onClick"]	= "刷新网页()" ;
+              } ;
+          } ;
+      ["输入栏模式"]	= false ;
+      ["搜索功能"]	= false ;
+      ["搜索框提示"]	= "" ;
+      ["搜索URL"]	= "" ;
+      ["icon_btns"]	= {
+          } ;
+      ["启用搜索功能"]	= false ;
+      } ;
+  ["sidebar"]	= {
+      ["启用顶部图片"]	= false ;
+      ["启用"]	= true ;
+      ["items"]	= {
+          [1]	= {
+              ["name"]	= "吾爱破解论坛" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://www.52pojie.cn/forum.php?mod=forumdisplay&fid=16&filter=lastpost&orderby=lastpost\")" ;
+              } ;
+          [2]	= {
+              ["name"]	= "移动叔叔论坛" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://wap.sogou.com/ntcweb?bilog=vrcid%3Atitle.977259d&spver=1&clickTime=1579754534835&clickType=click&pno=2&id=06f408e7-d294-479a-9d6e-fa2477c6aee2&level=4&wml=0&rcer=Q9PEmkoIqlM_7Gbkf&is_per=0&g_ut=3&bid=sogou-mobb-248eb1f330c4c4bf&dp=1&key=%E9%AD%85%E8%93%9Dnote6miui10%E5%8C%85&url=http%3A%2F%2Fbbs.ydss.cn%2F&pst=6\")" ;
+              } ;
+          [3]	= {
+              ["name"]	= "智友论坛" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"http://bbs.zhiyoo.net/forum.php?mod=forumdisplay&fid=42&mobile=2\")" ;
+              } ;
+          [4]	= {
+              ["name"]	= "机锋论坛" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"http://bbs.gfan.com/forum.php?mod=forumdisplay&fid=62&filter=author&orderby=dateline\")" ;
+              } ;
+          [5]	= {
+              ["name"]	= "八神论坛" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"http://zntx.cc/download/book_list.aspx?siteid=956&classid=2336&action=new\")" ;
+              } ;
+          [6]	= {
+              ["name"]	= "一加论坛" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"http://www.oneplusbbs.com/forum-52-1.html\")" ;
+              } ;
+          [7]	= {
+              ["name"]	= "冰封论坛" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://www.zzlzl.com/\")" ;
+              } ;
+          [8]	= {
+              ["name"]	= "微点分享" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://www.wefocu.com/\")" ;
+              } ;
+          [9]	= {
+              ["name"]	= "声明" ;
+              ["icon"]	= "drawable/bookmark.png" ;
+              ["onClick"]	= "圆角对话框()\
+.设置标题(\"LYM:\")\
+.设置消息(\"此侧滑栏中的应用不建议使用，窝是按照个人使用习惯来制作软件的。如果你擅自下载并使用了侧滑栏中的软件对你个人造成的损失，作者不负任何责任\\n另外，由于作者能力有限，应用过于粗糙，敬请见谅😄\\n\")\
+.设置圆角(\"11dp\")\
+.设置积极按钮(\"我明白了\",function()\
+  print(\"祝你使用愉快😀\")\
+end)\
+.设置中立按钮(\"好的，我不用\")\
+.设置消极按钮(\"辣鸡玩意\",function()\
+  退出页面()\
+  end)\
+.显示()\
+\
+\
+\
+--[[\
+对话框()\
+.设置标题(\"标题\")\
+.设置消息(\"消息\")\
+.设置积极按钮(\"确定\",function()\
+  显示消息(\"点击了确定\")\
+end)\
+.设置消极按钮(\"取消\")\
+.显示()]]" ;
+              } ;
+          } ;
+      } ;
+  ["global_js"]	= "加载Js([[\
+//08:16-50\
+document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"display:none\");\
+\
+//15:36-38\
+document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
+\
+//08:35-34\
+document.getElementsByClassName(\"container\")[0].style.marginTop=\"-30.0px\";\
+document.getElementById(\"nav-outer\").style.marginTop=\"-70.0px\";\
+document.getElementsByTagName(\"body\")[0].style.marginTop=\"-60.0px\";\
+\
+]])" ;
+  ["bottomBar"]	= {
+      [1]	= {
+          ["text"]	= "百度" ;
+          ["icon"]	= "drawable/yingyongshangdianyouhua.png" ;
+          ["statusBarColor"]	= "" ;
+          ["url"]	= "https://mobile.baidu.com/?source=mobres&from=1010680m" ;
+          } ;
+      [2]	= {
+          ["text"]	= "腾讯" ;
+          ["icon"]	= "drawable/yingyongbao.png" ;
+          ["statusBarColor"]	= "" ;
+          ["url"]	= "https://cftweb.3g.qq.com/qqappstore/index" ;
+          } ;
+      [3]	= {
+          ["text"]	= "酷安" ;
+          ["icon"]	= "drawable/kuancoolapklogo.png" ;
+          ["statusBarColor"]	= "" ;
+          ["url"]	= "https://www.coolapk.com/apk/" ;
+          } ;
+      [4]	= {
+          ["text"]	= "豌豆荚" ;
+          ["icon"]	= "drawable/wandoujia.png" ;
+          ["statusBarColor"]	= "" ;
+          ["url"]	= "https://m.wandoujia.com/" ;
+          } ;
+      } ;
+  ["web"]	= {
+      ["浏览器用户标识"]	= "默认" ;
+      ["启用长按菜单"]	= false ;
+      ["启用进度条"]	= false ;
+      ["网页沉浸"]	= false ;
+      ["默认广告标记标签"]	= "" ;
+      ["支持打开外部应用"]	= false ;
+      ["惰性加载"]	= false ;
+      } ;
+  ["switch"]	= {
+      ["支持滑动页面"]	= true ;
+      ["启用启动图"]	= false ;
+      ["横屏"]	= false ;
+      ["显示状态栏"]	= false ;
+      } ;
+  ["web_control"]	= {
+      [4]	= {
+          ["remove_element"]	= "banner shadow,textads shadow,header clearfix" ;
+          ["js"]	= "" ;
+          ["url"]	= "www.zzlzl.com" ;
+          } ;
+      [1]	= {
+          ["remove_element"]	= "under," ;
+          ["js"]	= "" ;
+          ["url"]	= "www.coolapk.com" ;
+          } ;
+      [2]	= {
+          ["remove_element"]	= "fixed-download-wrap show,detail-appsearch-button" ;
+          ["js"]	= "" ;
+          ["url"]	= "mobile.baidu.com" ;
+          } ;
+      [3]	= {
+          ["remove_element"]	= "app-icon,app-info,appbao-download-banner,tips app horizontal," ;
+          ["js"]	= "" ;
+          ["url"]	= "a.app.qq.com" ;
+          } ;
+      } ;
+  ["colors"]	= {
+      ["底栏图标触摸波纹"]	= "#24000000" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["侧滑栏列表图标"]	= "#ff8bddff" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["底栏图标选中"]	= "#ff74d2ff" ;
+      ["侧滑栏列表文字"]	= "#ff74a5ff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["底栏"]	= "#ffffffff" ;
+      ["悬浮按钮图标"]	= "#FFFFFF" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["顶栏部件触摸"]	= "#22000000" ;
+      ["顶栏"]	= "#ff2c2e43" ;
+      ["进度条"]	= "#14aaaaaa" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["底栏图标"]	= "#ffa6a6a6" ;
       } ;
   ["events"]	= {
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+" ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+新标题=..." ;
       ["程序启动"]	= "\
 \
 import 'RoundedDialog'\
@@ -26,14 +259,6 @@ end\
 渐变(0xFF209CFE,0xFF53C6E5,toolbarParent)\
 \
 \
-------\
--- 原作: Pretend° (dalao)\
--- 修改: QQ32552732\
--- 修改内容:\
---  - 支持 Fusion App 原有布局\
---  - 删除原有自定义布局等无用代码\
---  - 稍微修改了下效果，符合个人喜好...\
---  - 支持右侧栏\
 \
 --关闭阴影\
 drawerLayout.setScrimColor(0)\
@@ -178,238 +403,5 @@ end\
 }\
 \
 " ;
-      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
-\
---接收参数\
-浏览器对象,网页链接=..." ;
-      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
-\
---接收参数\
-新标题=..." ;
-      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
-\
---接收参数\
-浏览器对象,网页链接=...\
-" ;
-      } ;
-  ["web"]	= {
-      ["浏览器用户标识"]	= "默认" ;
-      ["网页沉浸"]	= false ;
-      ["惰性加载"]	= false ;
-      ["启用长按菜单"]	= false ;
-      ["默认广告标记标签"]	= "" ;
-      ["支持打开外部应用"]	= false ;
-      ["启用进度条"]	= false ;
-      } ;
-  ["colors"]	= {
-      ["顶栏部件触摸"]	= "#22000000" ;
-      ["搜索栏背景"]	= "#ffffffff" ;
-      ["导航栏"]	= "#ff2c2e43" ;
-      ["搜索栏提示文字"]	= "#80000000" ;
-      ["搜索栏部件触摸"]	= "#44000000" ;
-      ["进度条"]	= "#14aaaaaa" ;
-      ["侧滑栏列表图标"]	= "#ff8bddff" ;
-      ["顶栏"]	= "#ff2c2e43" ;
-      ["底栏图标触摸波纹"]	= "#24000000" ;
-      ["顶栏部件"]	= "#ffffffff" ;
-      ["搜索栏部件"]	= "#ff888888" ;
-      ["底栏"]	= "#ffffffff" ;
-      ["侧滑栏背景"]	= "#ffffffff" ;
-      ["底栏图标选中"]	= "#ff74d2ff" ;
-      ["侧滑栏列表文字"]	= "#ff74a5ff" ;
-      ["底栏图标"]	= "#ffa6a6a6" ;
-      ["悬浮按钮图标"]	= "#FFFFFF" ;
-      } ;
-  ["bottomBar"]	= {
-      [1]	= {
-          ["icon"]	= "drawable/yingyongshangdianyouhua.png" ;
-          ["text"]	= "百度" ;
-          ["statusBarColor"]	= "" ;
-          ["url"]	= "https://mobile.baidu.com/?source=mobres&from=1010680m" ;
-          } ;
-      [2]	= {
-          ["icon"]	= "drawable/yingyongbao.png" ;
-          ["text"]	= "腾讯" ;
-          ["statusBarColor"]	= "" ;
-          ["url"]	= "https://cftweb.3g.qq.com/qqappstore/index" ;
-          } ;
-      [3]	= {
-          ["icon"]	= "drawable/kuancoolapklogo.png" ;
-          ["text"]	= "酷安" ;
-          ["statusBarColor"]	= "" ;
-          ["url"]	= "https://www.coolapk.com/apk/" ;
-          } ;
-      [4]	= {
-          ["icon"]	= "drawable/wandoujia.png" ;
-          ["text"]	= "豌豆荚" ;
-          ["statusBarColor"]	= "" ;
-          ["url"]	= "https://m.wandoujia.com/" ;
-          } ;
-      } ;
-  ["web_control"]	= {
-      [4]	= {
-          ["remove_element"]	= "banner shadow,textads shadow,header clearfix" ;
-          ["js"]	= "" ;
-          ["url"]	= "www.zzlzl.com" ;
-          } ;
-      [1]	= {
-          ["remove_element"]	= "under," ;
-          ["js"]	= "" ;
-          ["url"]	= "www.coolapk.com" ;
-          } ;
-      [2]	= {
-          ["remove_element"]	= "fixed-download-wrap show,detail-appsearch-button" ;
-          ["js"]	= "" ;
-          ["url"]	= "mobile.baidu.com" ;
-          } ;
-      [3]	= {
-          ["remove_element"]	= "app-icon,app-info,appbao-download-banner,tips app horizontal," ;
-          ["js"]	= "" ;
-          ["url"]	= "a.app.qq.com" ;
-          } ;
-      } ;
-  ["switch"]	= {
-      ["显示状态栏"]	= false ;
-      ["支持滑动页面"]	= true ;
-      ["启用启动图"]	= false ;
-      ["横屏"]	= false ;
-      } ;
-  ["toolbar"]	= {
-      ["menus"]	= {
-          [4]	= {
-              ["name"]	= "退出" ;
-              ["onClick"]	= "退出页面()" ;
-              } ;
-          [1]	= {
-              ["name"]	= "自定义侧滑背景" ;
-              ["onClick"]	= "import \"android.content.Intent\"\
-local intent= Intent(Intent.ACTION_PICK)\
-intent.setType(\"image/*\")\
-this.startActivityForResult(intent, 1)\
-------\
-\
---回调\
-function onActivityResult(requestCode,resultCode,intent)\
-  if intent then\
-    local cursor =this.getContentResolver ().query(intent.getData(), nil, nil, nil, nil)\
-    cursor.moveToFirst()\
-    import \"android.provider.MediaStore\"\
-    local idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)\
-    fileSrc = cursor.getString(idx)\
-    bit=nil\
-    --fileSrc回调路径路径\
-    --import \"android.graphics.BitmapFactory\"\
-    --bit =BitmapFactory.decodeFile(fileSrc)\
-    --  iv.setImageBitmap(bit)\
-    background.setImageBitmap(loadbitmap(fileSrc))\
-    setdata(\"fileSrc\",fileSrc)\
-  end\
-end--nirenr" ;
-              } ;
-          [2]	= {
-              ["name"]	= "恢复默认背景" ;
-              ["onClick"]	= "c = this.getSharedPreferences(\"PicCustom\", Activity.MODE_PRIVATE) \
-c.edit().clear().commit()\
-background.setImageBitmap(loadbitmap(\"background.jpg\"))" ;
-              } ;
-          [3]	= {
-              ["name"]	= "刷新" ;
-              ["onClick"]	= "刷新网页()" ;
-              } ;
-          } ;
-      ["icon_btns"]	= {
-          } ;
-      ["搜索框提示"]	= "" ;
-      ["搜索URL"]	= "" ;
-      ["输入栏模式"]	= false ;
-      ["启用搜索功能"]	= false ;
-      ["搜索功能"]	= false ;
-      } ;
-  ["global_js"]	= "加载Js([[\
-//08:16-50\
-document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"display:none\");\
-\
-//15:36-38\
-document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
-\
-//08:35-34\
-document.getElementsByClassName(\"container\")[0].style.marginTop=\"-30.0px\";\
-document.getElementById(\"nav-outer\").style.marginTop=\"-70.0px\";\
-document.getElementsByTagName(\"body\")[0].style.marginTop=\"-60.0px\";\
-\
-]])" ;
-  ["sidebar"]	= {
-      ["启用顶部图片"]	= false ;
-      ["启用"]	= true ;
-      ["items"]	= {
-          [1]	= {
-              ["icon"]	= "drawable/compass.png" ;
-              ["name"]	= "吾爱破解论坛" ;
-              ["onClick"]	= "加载网页(\"https://www.52pojie.cn/forum.php?mod=forumdisplay&fid=16&filter=lastpost&orderby=lastpost\")" ;
-              } ;
-          [2]	= {
-              ["icon"]	= "drawable/compass.png" ;
-              ["name"]	= "移动叔叔论坛" ;
-              ["onClick"]	= "加载网页(\"https://wap.sogou.com/ntcweb?bilog=vrcid%3Atitle.977259d&spver=1&clickTime=1579754534835&clickType=click&pno=2&id=06f408e7-d294-479a-9d6e-fa2477c6aee2&level=4&wml=0&rcer=Q9PEmkoIqlM_7Gbkf&is_per=0&g_ut=3&bid=sogou-mobb-248eb1f330c4c4bf&dp=1&key=%E9%AD%85%E8%93%9Dnote6miui10%E5%8C%85&url=http%3A%2F%2Fbbs.ydss.cn%2F&pst=6\")" ;
-              } ;
-          [3]	= {
-              ["icon"]	= "drawable/compass.png" ;
-              ["name"]	= "智友论坛" ;
-              ["onClick"]	= "加载网页(\"http://bbs.zhiyoo.net/forum.php?mod=forumdisplay&fid=42&mobile=2\")" ;
-              } ;
-          [4]	= {
-              ["icon"]	= "drawable/compass.png" ;
-              ["name"]	= "机锋论坛" ;
-              ["onClick"]	= "加载网页(\"http://bbs.gfan.com/forum.php?mod=forumdisplay&fid=62&filter=author&orderby=dateline\")" ;
-              } ;
-          [5]	= {
-              ["icon"]	= "drawable/compass.png" ;
-              ["name"]	= "八神论坛" ;
-              ["onClick"]	= "加载网页(\"http://zntx.cc/download/book_list.aspx?siteid=956&classid=2336&action=new\")" ;
-              } ;
-          [6]	= {
-              ["icon"]	= "drawable/compass.png" ;
-              ["name"]	= "一加论坛" ;
-              ["onClick"]	= "加载网页(\"http://www.oneplusbbs.com/forum-52-1.html\")" ;
-              } ;
-          [7]	= {
-              ["icon"]	= "drawable/compass.png" ;
-              ["name"]	= "冰封论坛" ;
-              ["onClick"]	= "加载网页(\"https://www.zzlzl.com/\")" ;
-              } ;
-          [8]	= {
-              ["icon"]	= "drawable/compass.png" ;
-              ["name"]	= "微点分享" ;
-              ["onClick"]	= "加载网页(\"https://www.wefocu.com/\")" ;
-              } ;
-          [9]	= {
-              ["icon"]	= "drawable/bookmark.png" ;
-              ["name"]	= "声明" ;
-              ["onClick"]	= "圆角对话框()\
-.设置标题(\"LYM:\")\
-.设置消息(\"此侧滑栏中的应用不建议使用，窝是按照个人使用习惯来制作软件的。如果你擅自下载并使用了侧滑栏中的软件对你个人造成的损失，作者不负任何责任\\n另外，由于作者能力有限，应用过于粗糙，敬请见谅😄\\n\")\
-.设置圆角(\"11dp\")\
-.设置积极按钮(\"我明白了\",function()\
-  print(\"祝你使用愉快😀\")\
-end)\
-.设置中立按钮(\"好的，我不用\")\
-.设置消极按钮(\"辣鸡玩意\",function()\
-  退出页面()\
-  end)\
-.显示()\
-\
-\
-\
---[[\
-对话框()\
-.设置标题(\"标题\")\
-.设置消息(\"消息\")\
-.设置积极按钮(\"确定\",function()\
-  显示消息(\"点击了确定\")\
-end)\
-.设置消极按钮(\"取消\")\
-.显示()]]" ;
-              } ;
-          } ;
       } ;
   } ;

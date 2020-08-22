@@ -1,49 +1,104 @@
 {
   ["switch"]	= {
-      ["支持滑动页面"]	= true ;
       ["横屏"]	= false ;
-      ["显示状态栏"]	= false ;
       ["启用启动图"]	= false ;
+      ["支持滑动页面"]	= true ;
+      ["显示状态栏"]	= false ;
       } ;
-  ["web_control"]	= {
-      [2]	= {
-          ["remove_element"]	= "app" ;
-          ["url"]	= "www.nieta.co" ;
-          ["js"]	= "" ;
-          } ;
-      [1]	= {
-          ["remove_element"]	= "openapp,text,m-video-openapp,open-app" ;
-          ["url"]	= "m.bilibili.com" ;
-          ["js"]	= "" ;
+  ["colors"]	= {
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#f8f586c6" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["侧滑栏列表图标"]	= "#ff74d2ff" ;
+      ["侧滑栏列表文字"]	= "#ff5589bb" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["进度条"]	= "#00000000" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["顶栏"]	= "#ffffffff" ;
+      } ;
+  ["web"]	= {
+      ["启用长按菜单"]	= false ;
+      ["customUa"]	= "Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Quark/3.8.4.128 UCBrowser/12.0.4.985 baiduboxapp/3.2.5.10 MQQBrowser/7.2.1.2965 XiaoMi/MiuiBrowser/11.9.2 SearchCraft/2.0.0 ALiSearchApp/2.4 AliApp(TB/9.5.6) BingWeb/6.9.6 3gpp-gba" ;
+      ["支持打开外部应用"]	= false ;
+      ["网页沉浸"]	= false ;
+      ["浏览器用户标识"]	= "自定义" ;
+      ["启动网页"]	= "http://www.nieta.co/?m=vod-detail-id-5692.html" ;
+      ["启用进度条"]	= false ;
+      } ;
+  ["sidebar"]	= {
+      ["启用顶部图片"]	= true ;
+      ["启用"]	= true ;
+      ["items"]	= {
+          [1]	= {
+              ["name"]	= "哔咪" ;
+              ["icon"]	= "drawable/beats.png" ;
+              ["onClick"]	= "加载网页(\"http://www.bimibimi.me/\")" ;
+              } ;
+          [2]	= {
+              ["name"]	= "奇米" ;
+              ["icon"]	= "drawable/beats.png" ;
+              ["onClick"]	= "加载网页(\"http://www.qimiqimi.co/\")" ;
+              } ;
+          [3]	= {
+              ["name"]	= "动漫岛" ;
+              ["icon"]	= "drawable/beats.png" ;
+              ["onClick"]	= "加载网页(\"http://www.dmd8.com/\")" ;
+              } ;
+          [4]	= {
+              ["name"]	= "Zzzfun" ;
+              ["icon"]	= "drawable/beats.png" ;
+              ["onClick"]	= "加载网页(\"http://m.zzzfun.com/\")" ;
+              } ;
+          [5]	= {
+              ["name"]	= "捏他追剧" ;
+              ["icon"]	= "drawable/beats.png" ;
+              ["onClick"]	= "加载网页(\"http://www.nieta.co/?m=vod-detail-id-5692.html\")" ;
+              } ;
+          [6]	= {
+              ["name"]	= "迅播动漫" ;
+              ["icon"]	= "drawable/beats.png" ;
+              ["onClick"]	= "加载网页(\"https://dm.xbdm.net/\")" ;
+              } ;
+          [7]	= {
+              ["name"]	= "樱花动漫" ;
+              ["icon"]	= "drawable/beats.png" ;
+              ["onClick"]	= "加载网页(\"http://m.imomoe.in/\")" ;
+              } ;
+          [8]	= {
+              ["name"]	= "樱花风车" ;
+              ["icon"]	= "drawable/beats.png" ;
+              ["onClick"]	= "加载网页(\"http://7666.tv/\")" ;
+              } ;
+          [9]	= {
+              ["name"]	= "极的箱子" ;
+              ["icon"]	= "drawable/beats.png" ;
+              ["onClick"]	= "加载网页(\"https://www.jidexiangzi.com/\")" ;
+              } ;
+          [10]	= {
+              ["name"]	= "嘀哩嘀哩" ;
+              ["icon"]	= "drawable/beats.png" ;
+              ["onClick"]	= "加载网页(\"https://www.dilidili66.com/\")" ;
+              } ;
+          [11]	= {
+              ["name"]	= "动漫西西" ;
+              ["icon"]	= "drawable/beats.png" ;
+              ["onClick"]	= "加载网页(\"https://www.dmxixi.com/index.html\")" ;
+              } ;
+          [12]	= {
+              ["name"]	= "哔咔萌" ;
+              ["icon"]	= "drawable/beats.png" ;
+              ["onClick"]	= "加载网页(\"https://www.bika.moe/\")" ;
+              } ;
           } ;
       } ;
   ["global_js"]	= "var d=document;var s=d.createElement('script');s.setAttribute('src', ' https://greasyfork.org/scripts/7410-jskillad/code/jsKillAD.user.js');d.head.appendChild(s); " ;
-  ["view_attribute"]	= {
-      ["顶栏高度"]	= "40dp" ;
-      ["顶栏阴影强度"]	= "2dp" ;
-      ["搜索栏阴影强度"]	= "2dp" ;
-      ["搜索栏圆角弧度"]	= "2dp" ;
-      ["顶栏标题"]	= "预买桂花同载酒，终不似，少年游" ;
-      ["侧滑栏宽度"]	= "240dp" ;
-      } ;
-  ["colors"]	= {
-      ["进度条"]	= "#00000000" ;
-      ["侧滑栏列表图标"]	= "#ff74d2ff" ;
-      ["顶栏"]	= "#ffffffff" ;
-      ["顶栏部件触摸"]	= "#22ffffff" ;
-      ["悬浮按钮"]	= "#f8f586c6" ;
-      ["导航栏"]	= "#ff2c2e43" ;
-      ["搜索栏部件"]	= "#ff888888" ;
-      ["搜索栏部件触摸"]	= "#44000000" ;
-      ["搜索栏提示文字"]	= "#80000000" ;
-      ["侧滑栏列表文字"]	= "#ff5589bb" ;
-      ["侧滑栏背景"]	= "#ffffffff" ;
-      ["悬浮按钮图标"]	= "#ffffffff" ;
-      ["顶栏部件"]	= "#ffffffff" ;
-      ["搜索栏背景"]	= "#ffffffff" ;
-      } ;
   ["fltBtn"]	= {
-      ["图标"]	= "" ;
+      ["显示"]	= true ;
       ["点击事件"]	= "--悬浮按钮点击时执行的事件\
 --悬浮按钮点击时执行的事件\
 pop=PopupMenu(activity,fltBtn)\
@@ -141,22 +196,272 @@ pop.show()\
 \
 \
 " ;
-      ["显示"]	= true ;
+      ["图标"]	= "" ;
       } ;
-  ["web"]	= {
-      ["网页沉浸"]	= false ;
-      ["浏览器用户标识"]	= "自定义" ;
-      ["启用进度条"]	= false ;
-      ["customUa"]	= "Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Quark/3.8.4.128 UCBrowser/12.0.4.985 baiduboxapp/3.2.5.10 MQQBrowser/7.2.1.2965 XiaoMi/MiuiBrowser/11.9.2 SearchCraft/2.0.0 ALiSearchApp/2.4 AliApp(TB/9.5.6) BingWeb/6.9.6 3gpp-gba" ;
-      ["启用长按菜单"]	= false ;
-      ["启动网页"]	= "http://www.nieta.co/?m=vod-detail-id-5692.html" ;
-      ["支持打开外部应用"]	= false ;
+  ["web_control"]	= {
+      [2]	= {
+          ["url"]	= "www.nieta.co" ;
+          ["remove_element"]	= "app" ;
+          ["js"]	= "" ;
+          } ;
+      [1]	= {
+          ["url"]	= "m.bilibili.com" ;
+          ["remove_element"]	= "openapp,text,m-video-openapp,open-app" ;
+          ["js"]	= "" ;
+          } ;
+      } ;
+  ["events"]	= {
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "" ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["程序启动"]	= "\
+page=true\
+\
+\
+require \"import\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+import \"android.os.Build\"\
+import \"android.app.*\"\
+import\"json\"\
+  --程序启动时会执行的事件\
+json=require (\"json\") --解析json字符\
+  local url=\"https://api.gushi.ci/shuqing/aiqing.json\"\
+  --sj(m,\"txt\":\"\",\"state\",m)\
+  Http.get(url,nil,\"utf8\",nil,function(code,content,cookie,header)\
+    if(code==200 and content)then\
+      local json=json.decode(content)\
+      -- print(dump(json))--输出json字符\
+      --print(json.txt)\
+      local sj=json.content\
+      local ly=json.origin\
+      local zz=json.author\
+ \
+  设置顶栏标题(sj)\
+    else\
+      print(\"获取语录异常\"..code)\
+    end\
+  end)\
+\
+\
+\
+import 'RoundedDialog'\
+\
+--程序启动时会执行的事件\
+import \"tool\"\
+--渐变\
+import \"android.graphics.drawable.GradientDrawable\"\
+function 渐变(left_jb,right_jb,id)\
+  drawable = GradientDrawable(GradientDrawable.Orientation.TR_BL,{\
+    right_jb,--右色\
+    left_jb,--左色\
+  });\
+  id.setBackgroundDrawable(drawable)\
+end\
+--调用渐变函数\
+渐变(0xFFFFA2DB,0xFFF3CFEB,toolbarParent)\
+sidebar.onLongClick=function()\
+  弹出消息(\"加油，奥利给！\")\
+  加载网页(\"https://www.tool2.cn/Gams/fishing/\")\
+  if SetHSP==nil then\13\
+  --横屏\13\
+  activity.setRequestedOrientation(0); \13\
+  SetHSP=\"H\"\13\
+else\13\
+  --竖屏\13\
+  activity.setRequestedOrientation(1); \13\
+  SetHSP=nil\13\
+end\13\
+  end\
+\
+\
+ \
+\
+--程序启动时会执行的事件\
+function CircleButton(view,InsideColor,radiu)\
+  import \"android.graphics.drawable.GradientDrawable\"\
+  drawable = GradientDrawable() \
+  drawable.setShape(GradientDrawable.RECTANGLE) \
+  drawable.setColor(InsideColor)\
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  view.setBackgroundDrawable(drawable)\
+end\
+角度=70--圆角弧度\
+控件id=sidebar\
+控件颜色=0xFFFFFFFF\
+CircleButton(控件id,控件颜色,角度)\
+\
+linearParams = sidebar.getLayoutParams()\
+linearParams.width =630--侧滑栏宽度\
+linearParams.height =2500--侧滑栏高度\
+sidebar.setLayoutParams(linearParams)\
+\
+\
+\
+\
+\
+--获得屏幕宽高\
+local w=this.getWidth()\
+local h=this.getHeight()\
+\
+--获取状态栏高度\
+local function getStatusBarHeight(JDPUK)\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  local resid=activity.getResources().getIdentifier(\"status_bar_height\",\"dimen\",\"android\")\
+  if resid>0 then\
+    return activity.getResources().getDimensionPixelSize(resid)\
+  end\
+end\
+jdpuk=32552732\
+\
+--设置悬浮按钮位置\
+local function setFloatButtonPosition(X,Y,J,D,P,U,K)\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  fltBtn.LayoutParams=fltBtn.LayoutParams.setMargins(0,0,w-X-fltBtn.getMeasuredWidth()/2,h-Y-fltBtn.getMeasuredHeight()/2)-- 3 2 5 5 2 7 3 2\
+  --保存悬浮按钮位置\
+  this.setSharedData(\"悬浮按钮横坐标\",X)\
+  this.setSharedData(\"悬浮按钮纵坐标\",Y)\
+end\
+\
+task(200,function(JDPUK)\
+  --恢复悬浮按钮位置\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..tostring(3)..\"2\" then error()end\
+  local x=this.getSharedData(\"悬浮按钮横坐标\")\
+  local y=this.getSharedData(\"悬浮按钮纵坐标\")\
+  if x and y then setFloatButtonPosition(x,y) end\
+end)\
+\
+--初始化按下起始位置\
+local sx\
+local sy\
+\
+--设置移动条件(最小移动范围)\
+local mr=50\
+--初始化是否移动\
+local cm=false\
+\
+--设置自动校准范围\
+local tr=50\
+--设置自动校准坐标\
+local tp={\
+  {0,nil},--左贴边\
+  {nil,0},--上贴边\
+  {w,nil},--右贴边\
+  {nil,h},--下贴边\
+}\
+task(200,function(JDPUK)--一些需要用到悬浮按钮参数的坐标，得延时等悬浮按钮准备好\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  table.insert(tp,{w/2+1,h-fltBtn.getMeasuredHeight()})--约中下位置\
+  --table.insert(tp,{w-fltBtn.getMeasuredWidth()/2,h-fltBtn.getMeasuredHeight()/2})\
+end)\
+\
+--监听悬浮按钮被按下事件\
+task(200,function(JDPUK)--延时等待悬浮按钮准备好\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  fltBtn.getChildAt(0).onTouch=function(view,event,JDPUK)--悬浮按钮本身无法监听点击事件，找子控件监听\
+    if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+\
+    --得到手指当前位置\
+    local x=event.getRawX()\
+    local y=event.getRawY()\
+\
+    if event.getAction()==MotionEvent.ACTION_DOWN then--如果是按下事件，则保存按下的位置\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+      --保存按下位置\
+      sx=x\
+      sy=y\
+      return false\
+    elseif event.getAction()==MotionEvent.ACTION_MOVE then--如果是移动事件，则移动悬浮按钮\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+\
+      if cm then\
+\
+        --fltBtn.LayoutParams=fltBtn.LayoutParams.setMargins(0,0,this.getWidth()-event.getRawX()-fltBtn.getMeasuredWidth()/2,this.getHeight()-event.getRawY()-fltBtn.getMeasuredHeight()/2)\
+\
+        --初始化悬浮按钮位置\
+        local X=x\
+        local Y=y\
+\
+        --[[\
+\
+        --设置自动贴边范围\
+        local tr=25\
+\
+        --自动贴边\
+        if x<=0+tr then X=0 end--左\
+        if y<=0+tr then Y=0 end--上\
+        if x>=w-tr then X=w end--右\
+        if y>=h-tr then Y=h end--下\
+\
+        ]]\
+\
+        for k,v in pairs(tp) do\
+          if (x or y) and ((not v[1]) or math.abs(x-v[1])<=tr) and ((not v[2]) or math.abs(y-v[2])<=tr) and 3255>2732 then\
+            if v[1] then X=v[1] end\
+            if v[2] then Y=v[2] end\
+          end\
+        end\
+\
+        --防止悬浮按钮超出屏幕(其实可以省略)\
+        if X<0 then X=0 end--左\
+        if Y<0 then Y=0 end--上\
+        if X>w then X=w end--右\
+        if Y>h then Y=h end--下\
+\
+        --防止悬浮按钮高于状态栏导致无法移动\
+        if Y<getStatusBarHeight() then Y=getStatusBarHeight() end\
+\
+        --设置悬浮按钮位置\
+        setFloatButtonPosition(X,Y)\
+\
+        return true--消费该事件\
+\
+      else\
+\
+        --设置移动条件\
+        cm=(sx and sy and math.abs((x+y)-(sx+sy))>=mr and jdpuk==tonumber(\"3255\"..\"2732\"))--32552732\
+\
+        return false\
+      end\
+    elseif event.getAction()==MotionEvent.ACTION_UP then--如果是松开事件，则...嗯处理一些东西，自己看吧\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..tostring(32) then error()end\
+\
+      --重置变量前先把需要的变量保存为局部变量\
+      local tmp=cm\
+\
+      --重置变量\
+      sx=nil\
+      sy=nil\
+      cm=false\
+\
+      --如果本次按下符合移动条件，则消费事件\
+      if tmp then\
+        return true\
+      else\
+        return false\
+      end\
+\
+    end\
+    return false\
+  end\
+end)\
+if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+\
+\
+\
+" ;
       } ;
   ["toolbar"]	= {
-      ["搜索URL"]	= "" ;
+      ["搜索框提示"]	= "" ;
+      ["启用搜索功能"]	= false ;
       ["icon_btns"]	= {
           [2]	= {
-              ["icon"]	= "magnify" ;
               ["onClick"]	= "\
 搜索弹窗=\
 {--布局\
@@ -442,15 +747,15 @@ end\
 \
 \
 " ;
+              ["icon"]	= "magnify" ;
               } ;
           [1]	= {
-              ["icon"]	= "refresh" ;
               ["onClick"]	= "刷新网页()" ;
+              ["icon"]	= "refresh" ;
               } ;
           } ;
-      ["启用搜索功能"]	= false ;
+      ["搜索URL"]	= "" ;
       ["输入栏模式"]	= true ;
-      ["搜索框提示"]	= "" ;
       ["menus"]	= {
           [1]	= {
               ["name"]	= "强制横屏/竖屏" ;
@@ -820,325 +1125,12 @@ end)\13\
               } ;
           } ;
       } ;
-  ["events"]	= {
-      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
-\
---接收参数\
-浏览器对象,网页链接=..." ;
-      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
-\
---接收参数\
-浏览器对象,网页链接=..." ;
-      ["程序启动"]	= "\
-\
---原工程一言修复打包错误\
-\
-page=true\
-\
-\
-require \"import\"\
-import \"android.widget.*\"\
-import \"android.view.*\"\
-import \"android.os.Build\"\
-import \"android.app.*\"\
-import\"json\"\
-  --程序启动时会执行的事件\
-json=require (\"json\") --解析json字符\
-  local url=\"https://api.gushi.ci/shuqing/aiqing.json\"\
-  --sj(m,\"txt\":\"\",\"state\",m)\
-  Http.get(url,nil,\"utf8\",nil,function(code,content,cookie,header)\
-    if(code==200 and content)then\
-      local json=json.decode(content)\
-      -- print(dump(json))--输出json字符\
-      --print(json.txt)\
-      local sj=json.content\
-      local ly=json.origin\
-      local zz=json.author\
- \
-  设置顶栏标题(sj)\
-    else\
-      print(\"获取语录异常\"..code)\
-    end\
-  end)\
-\
-\
-\
-import 'RoundedDialog'\
-\
---程序启动时会执行的事件\
-import \"快捷工具栏\"\
---渐变\
-import \"android.graphics.drawable.GradientDrawable\"\
-function 渐变(left_jb,right_jb,id)\
-  drawable = GradientDrawable(GradientDrawable.Orientation.TR_BL,{\
-    right_jb,--右色\
-    left_jb,--左色\
-  });\
-  id.setBackgroundDrawable(drawable)\
-end\
---调用渐变函数\
-渐变(0xFFFFA2DB,0xFFF3CFEB,toolbarParent)\
-sidebar.onLongClick=function()\
-  弹出消息(\"加油，奥利给！\")\
-  加载网页(\"https://www.tool2.cn/Gams/fishing/\")\
-  if SetHSP==nil then\13\
-  --横屏\13\
-  activity.setRequestedOrientation(0); \13\
-  SetHSP=\"H\"\13\
-else\13\
-  --竖屏\13\
-  activity.setRequestedOrientation(1); \13\
-  SetHSP=nil\13\
-end\13\
-  end\
-\
-\
- \
-\
-\
---长按侧滑栏即可触发该功能\
---包括侧栏定图和侧栏留白部分（就是除了侧栏按钮外的部分）\
---有什么用？可以写个彩蛋哈，具体效果看群附件QQ爹博客1.3.1版本\
-\
---程序启动时会执行的事件\
-function CircleButton(view,InsideColor,radiu)\
-  import \"android.graphics.drawable.GradientDrawable\"\
-  drawable = GradientDrawable() \
-  drawable.setShape(GradientDrawable.RECTANGLE) \
-  drawable.setColor(InsideColor)\
-  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
-  view.setBackgroundDrawable(drawable)\
-end\
-角度=70--圆角弧度\
-控件id=sidebar\
-控件颜色=0xFFFFFFFF\
-CircleButton(控件id,控件颜色,角度)\
-\
-linearParams = sidebar.getLayoutParams()\
-linearParams.width =630--侧滑栏宽度\
-linearParams.height =2500--侧滑栏高度\
-sidebar.setLayoutParams(linearParams)\
-\
-\
-\
-\
-\
---获得屏幕宽高\
-local w=this.getWidth()\
-local h=this.getHeight()\
-\
---获取状态栏高度\
-local function getStatusBarHeight(JDPUK)\
-  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
-  local resid=activity.getResources().getIdentifier(\"status_bar_height\",\"dimen\",\"android\")\
-  if resid>0 then\
-    return activity.getResources().getDimensionPixelSize(resid)\
-  end\
-end\
-jdpuk=32552732\
-\
---设置悬浮按钮位置\
-local function setFloatButtonPosition(X,Y,J,D,P,U,K)\
-  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
-  fltBtn.LayoutParams=fltBtn.LayoutParams.setMargins(0,0,w-X-fltBtn.getMeasuredWidth()/2,h-Y-fltBtn.getMeasuredHeight()/2)-- 3 2 5 5 2 7 3 2\
-  --保存悬浮按钮位置\
-  this.setSharedData(\"悬浮按钮横坐标\",X)\
-  this.setSharedData(\"悬浮按钮纵坐标\",Y)\
-end\
-\
-task(200,function(JDPUK)\
-  --恢复悬浮按钮位置\
-  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..tostring(3)..\"2\" then error()end\
-  local x=this.getSharedData(\"悬浮按钮横坐标\")\
-  local y=this.getSharedData(\"悬浮按钮纵坐标\")\
-  if x and y then setFloatButtonPosition(x,y) end\
-end)\
-\
---初始化按下起始位置\
-local sx\
-local sy\
-\
---设置移动条件(最小移动范围)\
-local mr=50\
---初始化是否移动\
-local cm=false\
-\
---设置自动校准范围\
-local tr=50\
---设置自动校准坐标\
-local tp={\
-  {0,nil},--左贴边\
-  {nil,0},--上贴边\
-  {w,nil},--右贴边\
-  {nil,h},--下贴边\
-}\
-task(200,function(JDPUK)--一些需要用到悬浮按钮参数的坐标，得延时等悬浮按钮准备好\
-  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
-  table.insert(tp,{w/2+1,h-fltBtn.getMeasuredHeight()})--约中下位置\
-  --table.insert(tp,{w-fltBtn.getMeasuredWidth()/2,h-fltBtn.getMeasuredHeight()/2})\
-end)\
-\
---监听悬浮按钮被按下事件\
-task(200,function(JDPUK)--延时等待悬浮按钮准备好\
-  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
-  fltBtn.getChildAt(0).onTouch=function(view,event,JDPUK)--悬浮按钮本身无法监听点击事件，找子控件监听\
-    if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
-\
-    --得到手指当前位置\
-    local x=event.getRawX()\
-    local y=event.getRawY()\
-\
-    if event.getAction()==MotionEvent.ACTION_DOWN then--如果是按下事件，则保存按下的位置\
-      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
-      --保存按下位置\
-      sx=x\
-      sy=y\
-      return false\
-    elseif event.getAction()==MotionEvent.ACTION_MOVE then--如果是移动事件，则移动悬浮按钮\
-      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
-\
-      if cm then\
-\
-        --fltBtn.LayoutParams=fltBtn.LayoutParams.setMargins(0,0,this.getWidth()-event.getRawX()-fltBtn.getMeasuredWidth()/2,this.getHeight()-event.getRawY()-fltBtn.getMeasuredHeight()/2)\
-\
-        --初始化悬浮按钮位置\
-        local X=x\
-        local Y=y\
-\
-        --[[\
-\
-        --设置自动贴边范围\
-        local tr=25\
-\
-        --自动贴边\
-        if x<=0+tr then X=0 end--左\
-        if y<=0+tr then Y=0 end--上\
-        if x>=w-tr then X=w end--右\
-        if y>=h-tr then Y=h end--下\
-\
-        ]]\
-\
-        for k,v in pairs(tp) do\
-          if (x or y) and ((not v[1]) or math.abs(x-v[1])<=tr) and ((not v[2]) or math.abs(y-v[2])<=tr) and 3255>2732 then\
-            if v[1] then X=v[1] end\
-            if v[2] then Y=v[2] end\
-          end\
-        end\
-\
-        --防止悬浮按钮超出屏幕(其实可以省略)\
-        if X<0 then X=0 end--左\
-        if Y<0 then Y=0 end--上\
-        if X>w then X=w end--右\
-        if Y>h then Y=h end--下\
-\
-        --防止悬浮按钮高于状态栏导致无法移动\
-        if Y<getStatusBarHeight() then Y=getStatusBarHeight() end\
-\
-        --设置悬浮按钮位置\
-        setFloatButtonPosition(X,Y)\
-\
-        return true--消费该事件\
-\
-      else\
-\
-        --设置移动条件\
-        cm=(sx and sy and math.abs((x+y)-(sx+sy))>=mr and jdpuk==tonumber(\"3255\"..\"2732\"))--32552732\
-\
-        return false\
-      end\
-    elseif event.getAction()==MotionEvent.ACTION_UP then--如果是松开事件，则...嗯处理一些东西，自己看吧\
-      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..tostring(32) then error()end\
-\
-      --重置变量前先把需要的变量保存为局部变量\
-      local tmp=cm\
-\
-      --重置变量\
-      sx=nil\
-      sy=nil\
-      cm=false\
-\
-      --如果本次按下符合移动条件，则消费事件\
-      if tmp then\
-        return true\
-      else\
-        return false\
-      end\
-\
-    end\
-    return false\
-  end\
-end)\
-if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
-\
-\
-\
-" ;
-      ["收到新标题"]	= "" ;
-      } ;
-  ["sidebar"]	= {
-      ["启用顶部图片"]	= true ;
-      ["items"]	= {
-          [1]	= {
-              ["icon"]	= "drawable/beats.png" ;
-              ["name"]	= "哔咪" ;
-              ["onClick"]	= "加载网页(\"http://www.bimibimi.me/\")" ;
-              } ;
-          [2]	= {
-              ["icon"]	= "drawable/beats.png" ;
-              ["name"]	= "奇米" ;
-              ["onClick"]	= "加载网页(\"http://www.qimiqimi.co/\")" ;
-              } ;
-          [3]	= {
-              ["icon"]	= "drawable/beats.png" ;
-              ["name"]	= "动漫岛" ;
-              ["onClick"]	= "加载网页(\"http://www.dmd8.com/\")" ;
-              } ;
-          [4]	= {
-              ["icon"]	= "drawable/beats.png" ;
-              ["name"]	= "Zzzfun" ;
-              ["onClick"]	= "加载网页(\"http://m.zzzfun.com/\")" ;
-              } ;
-          [5]	= {
-              ["icon"]	= "drawable/beats.png" ;
-              ["name"]	= "捏他追剧" ;
-              ["onClick"]	= "加载网页(\"http://www.nieta.co/?m=vod-detail-id-5692.html\")" ;
-              } ;
-          [6]	= {
-              ["icon"]	= "drawable/beats.png" ;
-              ["name"]	= "迅播动漫" ;
-              ["onClick"]	= "加载网页(\"https://dm.xbdm.net/\")" ;
-              } ;
-          [7]	= {
-              ["icon"]	= "drawable/beats.png" ;
-              ["name"]	= "樱花动漫" ;
-              ["onClick"]	= "加载网页(\"http://m.imomoe.in/\")" ;
-              } ;
-          [8]	= {
-              ["icon"]	= "drawable/beats.png" ;
-              ["name"]	= "樱花风车" ;
-              ["onClick"]	= "加载网页(\"http://7666.tv/\")" ;
-              } ;
-          [9]	= {
-              ["icon"]	= "drawable/beats.png" ;
-              ["name"]	= "极的箱子" ;
-              ["onClick"]	= "加载网页(\"https://www.jidexiangzi.com/\")" ;
-              } ;
-          [10]	= {
-              ["icon"]	= "drawable/beats.png" ;
-              ["name"]	= "嘀哩嘀哩" ;
-              ["onClick"]	= "加载网页(\"https://www.dilidili66.com/\")" ;
-              } ;
-          [11]	= {
-              ["icon"]	= "drawable/beats.png" ;
-              ["name"]	= "动漫西西" ;
-              ["onClick"]	= "加载网页(\"https://www.dmxixi.com/index.html\")" ;
-              } ;
-          [12]	= {
-              ["icon"]	= "drawable/beats.png" ;
-              ["name"]	= "哔咔萌" ;
-              ["onClick"]	= "加载网页(\"https://www.bika.moe/\")" ;
-              } ;
-          } ;
-      ["启用"]	= true ;
+  ["view_attribute"]	= {
+      ["顶栏高度"]	= "40dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏标题"]	= "预买桂花同载酒，终不似，少年游" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
       } ;
   } ;

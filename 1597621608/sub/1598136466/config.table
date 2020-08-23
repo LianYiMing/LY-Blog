@@ -1,0 +1,591 @@
+{
+  ["events"]	= {
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["程序启动"]	= "--程序启动时会执行的事件\
+require \"import\"\
+import \"android.app.*\"\
+import \"android.os.*\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+activity.setTitle('缪zēi扣!')\
+layout=--布局奠定\
+{\
+  LinearLayout;--线性布局\
+  orientation='vertical';--重力属性\
+  layout_width='fill';--布局宽度\
+  layout_height='fill';--布局高度\
+  background='Icon/bj.png';--布局背景颜色(或者图片路径)\
+  gravity='center';--默认居中\
+  {\
+    TextView;--文本控件\
+    layout_width='fill';--文本宽度\
+    layout_height='50dp';--文本高度\
+    gravity='center';--重力属性\
+    textColor='#FF2885DE';--文字颜色\
+    text='某得播放任何音乐';--显示的文字\
+    textSize='20sp';--文字大小\
+    id=\"tv_title\",\
+  };\
+  {\
+    LinearLayout;--线性布局\
+    orientation='vertical';--重力属性\
+    layout_width='fill';--布局宽度\
+    layout_height='50%h';--布局高度\
+    gravity='center';--默认居中\
+    {\
+      CircleImageView;--圆形图片\
+      src='Icon/z.png';--图片路径\
+      layout_width='110dp';--图片宽度\
+      layout_height='110dp';--图片高度\
+      ColorFilter=\"#FF2885DE\";\
+      id=\"旋转\";\
+    };\
+  };\
+  {\
+    LinearLayout;--线性布局\
+    orientation='horizontal';--重力属性\
+    layout_width='fill';--布局宽度\
+    layout_height='100dp';--布局高度\
+    gravity='right|center';--默认居中\
+    {\
+      CircleImageView;--圆形图片\
+      src='Icon/cp.png';--图片路径\
+      layout_width='25dp';--布局宽度\
+      layout_height='25dp';--布局高度\
+      onClick=\"on_playlist\",\
+      layout_marginRight='10dp';--布局右距\
+      ColorFilter=\"#1296db\";\
+    },\
+    {\
+      CircleImageView;--圆形图片\
+      src='Icon/lb.png';--图片路径\
+      layout_width='25dp';--布局宽度\
+      layout_height='50dp';--布局高度\
+      onClick=\"on_Menu\",\
+      layout_marginRight='20dp';--布局右距\
+    },\
+  };\
+  {\
+    LinearLayout;--线性布局\
+    orientation='horizontal';--重力属性\
+    layout_width='fill';--布局宽度\
+    layout_height='50dp';--布局高度\
+    gravity='center';--默认居中\
+    {\
+      TextView,\
+      layout_height=\"wrap_content\",\
+      text=\"00:00\",\
+      textColor='#FF2885DE';\
+      --布局内文字着色,默认黑色\
+      id=\"tv_startTime\",\
+      layout_width=\"wrap_content\";\
+      layout_marginRight='10dp';--布局右距\
+    },\
+    {\
+      SeekBar,\
+      layout_height=\"wrap_content\",\
+      layout_width='70%w';--布局宽度\
+      id=\"mainProgressBar1\",\
+      id=\"pb_time\",\
+    },\
+    {\
+      TextView,\
+      layout_height=\"wrap_content\",\
+      text=\"00:00\",\
+      id=\"tv_endTime\",\
+      textColor='#FF2885DE';\
+      layout_marginLeft='10dp';--布局左距\
+      layout_width=\"wrap_content\"\
+    },\
+  };\
+  {\
+    LinearLayout;--线性布局\
+    orientation='horizontal';--重力属性\
+    layout_width='fill';--布局宽度\
+    layout_height='170dp';--布局高度\
+    gravity='center';--默认居中\
+    {\
+      CircleImageView;--圆形图片\
+      src='Icon/s.png';--图片路径\
+      layout_width='50dp';--布局宽度\
+      layout_height='50dp';--布局高度\
+      onClick=\"on_pre\",\
+      layout_marginRight='20dp';--布局右距\
+    },\
+    {\
+      CircleImageView;--圆形图片\
+      src='Icon/bf.png';--图片路径\
+      layout_width='50dp';--布局宽度\
+      layout_height='50dp';--布局高度\
+      id=\"bn_pause\",\
+      onClick=\"on_pause\",\
+    },\
+    {\
+      CircleImageView;--圆形图片\
+      src='Icon/x.png';--图片路径\
+      layout_width='50dp';--布局宽度\
+      layout_height='50dp';--布局高度\
+      onClick=\"on_next\",\
+      layout_marginLeft='20dp';--布局左距\
+    },\
+  };\
+};\
+activity.setContentView(loadlayout(layout))\
+import \"android.media.*\"\
+import \"android.view.*\"\
+import \"android.content.*\"\
+import \"java.io.*\"\
+import \"java.util.*\"\
+import \"android.content.Context\"\
+import \"android.provider.*\"\
+--require \"layout\"\
+--activity.setTitle(\"美美播放器\")\
+--activity.setTheme(android.R.style.Theme_Holo_Light)\
+local arr=nil\
+local pd--扫描进度条变量,定义在这容易操作\
+local mp=MediaPlayer()\
+local t=nil\
+local isPlay=false\
+local curPlay=nil --当前正在播放的mp3的路径\
+local listpath=\"/sdcard/pl.txt\"\
+local tf=File(listpath)\
+local dur--歌曲长度\
+local cur--播放当前位置\
+local min,sec=0,0--分和秒\
+local curIdx=0--当前播放的mp3在列表中的索引\
+\
+--播放音乐，不异步可控\
+--@mp MediaPlayer对象\
+--@path 歌曲完整路径\
+function play(mp,path)\
+  mp.reset()\
+  mp.setDataSource(path)\
+  mp.prepare()\
+  mp.start()\
+end\
+\
+--异步调用代码块，获取文件夹下的所有mp3文件。并存在arr中\
+local _getList= [[\
+require \"import\"\
+import \"java.io.*\"\
+local path,arr=...\
+local name,t\
+\
+function _get(path)\
+    local f=File(path)\
+    local  l=f.listFiles()\
+    \
+    for i=0,#l-1 do\
+        t=l[i]\
+        name= t.getName()\
+        if  t.isFile() and string.find(string.lower(name),\"%.mp3$\") and t.length()>1024*1024*2 then --歌曲大于2m才添加\
+            arr.add(t)\
+            end\
+        if t.isDirectory() then\
+            _get(t.toString())\
+            end\
+        end --for\
+    end --_get\
+_get(path)--重要......\
+]]\
+--获取某文件夹下所有mp3文件。并存在arr中\
+function getList(path)\
+  arr=ArrayList()\
+  task( _getList,path,arr,getListFinish)\
+end\
+--回调函数，获取某文件夹下所有mp3文件完成时被调用\
+function getListFinish()\
+  writeFile(\"/sdcard/pl.txt\",arr)\
+  pd.cancel()\
+end\
+--写入文件\
+--@path  文件完整路径\
+--@list    ArrayList\
+function writeFile(path,list)\
+  local fw=FileWriter(path)\
+  local bw=BufferedWriter(fw)\
+  for i=0,list.size()-1 do\
+    str=list.get(i).toString()\
+    bw.write(str,0,utf8.len(str))\
+    bw.newLine()\
+  end\
+  bw.flush()\
+  bw.close()\
+end\
+--读文件\
+--path 完整路径\
+--return ArrayList\
+function readFile(path)\
+  local al=ArrayList()\
+  local fr=FileReader(path)\
+  local br=BufferedReader(fr)\
+  local ch=0\
+  while(br.read()~=-1 )\
+    do\
+    al.add(br.readLine())\
+  end\
+  br.close()\
+  return al\
+end\
+\
+--显示歌曲列表\
+--@path 列表文件路径\
+--@mediaplayer\
+function showList(path,mp)\
+  local al= readFile(path)\
+  arr=al\
+  local names={}\
+  local paths={}\
+  for i=0,al.size()-1 do\
+    table.insert(paths,al.get(i))\
+    table.insert(names,File(al.get(i)).getName())\
+\
+  end\
+  local ad= AlertDialog.Builder(activity)\
+  ad.setTitle(\"歌曲列表\")\
+  ad.setItems(String(names)\
+  ,DialogInterface.OnClickListener{\
+    onClick=function(dialog,which)\
+      curPlay=paths[which+1]\
+      curIdx=which\
+      play(mp,curPlay)\
+      local tt=string.gsub(names[which+1],\".mp3$\",\"\")--偷懒一下\
+      tv_title.setText(\"正在播放:\"..tt)\
+      bn_pause.setImageBitmap(loadbitmap(\"Icon/zt.png\"))\
+    end\
+  })\
+  ad.setNegativeButton( \"取消\", nil)\
+  ad= ad.create()\
+  local window = ad.getWindow()\
+  local lp = window.getAttributes()\
+  --设置透明度\
+  lp.alpha = 0.8\
+  window.setAttributes(lp)\
+  ad.show()\
+end\
+--弹出进度条\
+--@text 进度条的文本\
+function showProcessBar(text)\
+  pd = ProgressDialog\
+  .show(activity, nil, text)\
+  pd.setCancelable(false)\
+end\
+\
+\
+--弹出文本框对话框\
+--@pa 进度条对象\
+function showEditDialog(msg)\
+  local edit=EditText(activity)\
+  edit.setText(\"/sdcard/\")\
+  local dl =AlertDialog.Builder(activity)\
+  dl.setTitle(msg)\
+  dl.setView(edit)\
+  dl.setPositiveButton(\"确定\",\
+  DialogInterface.OnClickListener{\
+    onClick=function(dialog,which)\
+      showProcessBar(\"扫描音乐中，请稍候……\")\
+      getList(edit.getText().toString())\
+    end\
+  })\
+  dl.show()\
+end\
+--全局代码###################\
+if tf.exists()==false then--文件列表不存在的\
+  showEditDialog(\"初次使用介个需要设置扫描音乐的路径的说\")\
+ else\
+  arr= readFile(listpath)\
+end\
+--###################\
+\
+--实时更新进度条和时间显示\
+function updateTime(m,s)\
+  if m<10 then m=\"0\"..m end\
+  if s<10 then s=\"0\"..s end\
+  tv_startTime.setText(m..\":\"..s)\
+  pb_time.setProgress(mp.getCurrentPosition())\
+end\
+\
+--计时器代码\
+function _run(m,s)\
+  function run()\
+\
+    s=s+1\
+    if(s==60) then\
+      m=m+1\
+      s=0\
+    end\
+    call(\"updateTime\",m,s)\
+  end\
+end\
+\
+--上一曲\
+function on_pre(v)\
+  if(curIdx>0) then\
+    curIdx=curIdx-1\
+    play(mp,arr.get(curIdx))\
+    local tt=string.gsub(File(arr.get(curIdx)).getName(),\".mp3$\",\"\")--偷懒一下\
+    tv_title.setText(\"正在播放:\"..tt)\
+    bn_pause.setImageBitmap(loadbitmap(\"Icon/zt.png\"))\
+  end\
+end\
+\
+--下一曲\
+function on_next(v)\
+  if(curIdx<arr.size()-1) then\
+    if curIdx==0 and not mp.isPlaying() then\
+      play(mp,arr.get(0))\
+      local tt=string.gsub(File(arr.get(0)).getName(),\".mp3$\",\"\")--偷懒一下\
+      tv_title.setText(\"正在播放:\"..tt)\
+      bn_pause.setImageBitmap(loadbitmap(\"Icon/zt.png\"))\
+     else\
+      curIdx=curIdx+1\
+      play(mp,arr.get(curIdx))\
+      local tt=string.gsub(File(arr.get(curIdx)).getName(),\".mp3$\",\"\")--偷懒一下\
+      tv_title.setText(\"正在播放:\"..tt)\
+      bn_pause.setImageBitmap(loadbitmap(\"Icon/zt.png\"))\
+    end\
+  end\
+end\
+\
+--设置mediaPlayer播放结束时的回调函数\
+mp.setOnCompletionListener(MediaPlayer.OnCompletionListener{\
+  onCompletion=function(mper)\
+    --     print(\"歌曲播放结束\")\
+    pb_time.setProgress(mp.getCurrentPosition())\
+    t.Enabled=false\
+    t.stop()\
+    t=nil\
+    on_next(v)\
+  end})\
+\
+--时间转换函数\
+function formatTime(time)\
+  local min,sec=0,0\
+  sec=math.floor(time/1000)\
+  if(sec>60) then\
+    min=math.floor(sec/60)\
+    sec=math.floor(sec%60)\
+  end\
+  if min<10 then min=\"0\"..min end\
+  if sec<10 then sec=\"0\"..sec end\
+  return min..\":\"..sec\
+end\
+--时间设置\
+function setTime(time)\
+  local min,sec=0,0\
+  sec=math.floor(time/1000)\
+  if(sec>60) then\
+    min=math.floor(sec/60)\
+    sec=math.floor(sec%60)\
+  end\
+\
+  return min,sec\
+end\
+--歌曲开始播放\
+mp.setOnPreparedListener(MediaPlayer.OnPreparedListener{\
+  onPrepared=function(mper)\
+    dur=mper.getDuration()--获取歌曲的时常\
+    pb_time.setMax(dur)\
+    local tt=formatTime(dur)\
+    tv_startTime.setText(\"00:00\")\
+    tv_endTime.setText(tt)\
+\
+    min,sec=0,0\
+    if t~=nil then --计时器不为空就停止\
+      t.Enabled=false\
+      t.stop()\
+      t=nil\
+    end\
+    --歌曲开始播放又计时\
+    t=timer(_run,0,1000,min,sec)\
+    t.Enabled=true\
+  end})\
+\
+--按下暂停时发生\
+function on_pause(v)\
+  if(mp.isPlaying()) then\
+    mp.pause()\
+    bn_pause.setImageBitmap(loadbitmap(\"Icon/bf.png\"))\
+    if(t~=nil) then\
+      t.Enabled=false\
+    end\
+   else\
+    if(t~=nil) then--如果为空那就是播放完了的情况\
+      mp.start()\
+      bn_pause.setImageBitmap(loadbitmap(\"Icon/zt.png\"))\
+      t.Enabled=true\
+    end\
+  end\
+end\
+\
+--按下\"列表\"按钮\
+function on_playlist(v)\
+  showList(listpath,mp)\
+end\
+\
+\
+\
+function on_Menu(v)\
+  local items={\"更新列表\",\"退出\"}\
+  local ad= AlertDialog.Builder(activity)\
+  ad.setTitle(\"\")\
+  ad.setItems(String(items)\
+  ,DialogInterface.OnClickListener{\
+    onClick=function(dialog,which)\
+      if which==0 then\
+        showEditDialog(\"输入路径以重新扫描\")\
+       elseif which==1 then\
+        \
+       elseif which==2 then\
+        if t~=nil then\
+          t.stop()\
+        end\
+        mp.stop()\
+        mp.release()--释放资源\
+        activity.finish()\
+      end--判断选了哪项的if\
+    end--onClick\
+  })\
+  ad.setNegativeButton( \"取消\", nil)\
+  ad= ad.create()\
+  ad.show()\
+end\
+\
+function onKeyDown(code,event)\
+  if (code== KeyEvent.KEYCODE_BACK)then\
+    --并不会发生什么...\
+    if t~=nil then\
+      t.stop()\
+    end\
+    mp.stop()\
+    mp.release()--释放资源\
+  end\
+end\
+\
+\
+\
+\
+\
+--进度跳转\
+pb_time.setOnSeekBarChangeListener(\
+SeekBar.OnSeekBarChangeListener{\
+  onStopTrackingTouch=function(bar)\
+    if mp.isPlaying() then\
+      local cur=bar.getProgress()\
+      local tt=formatTime(cur)\
+      min,sec=setTime(cur)\
+      tv_startTime.setText(tt)\
+      mp.seekTo(cur)\
+      if t~=nil then --计时器不为空就停止\
+        t.Enabled=false\
+        t.stop()\
+        t=nil\
+      end\
+      --重新计时\
+      t=timer(_run,0,1000,min,sec)\
+      t.Enabled=true\
+    end\
+\
+  end})\
+import \"android.view.animation.LinearInterpolator\"\
+import \"android.animation.ValueAnimator\"\
+c =ObjectAnimator()\
+c.setTarget(旋转);\
+c.setDuration(20000);\
+c.setRepeatCount(ValueAnimator.INFINITE)\
+c.setPropertyName(\"rotation\");\
+c.setFloatValues({0,720});\
+c.setRepeatMode(ValueAnimator.INFINITE)\
+c.setInterpolator(LinearInterpolator() )\
+c.start();\
+esc=0\
+function onKeyDown(key,event)\
+  if(key==4)then\
+    esc=esc+1\
+    activity.moveTaskToBack(true)\
+    task(1000,function()\
+      esc=0\
+    end)\
+    return true\
+  end\
+end\
+import \"android.view.WindowManager\"\
+activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);" ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      } ;
+  ["switch"]	= {
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= true ;
+      ["支持滑动页面"]	= true ;
+      ["横屏"]	= false ;
+      } ;
+  ["fltBtn"]	= {
+      ["显示"]	= true ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["图标"]	= "" ;
+      } ;
+  ["colors"]	= {
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["进度条"]	= "#00000000" ;
+      ["顶栏"]	= "#ff2c2e43" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      } ;
+  ["sidebar"]	= {
+      ["启用"]	= true ;
+      ["启用顶部图片"]	= false ;
+      ["items"]	= {
+          } ;
+      } ;
+  ["web"]	= {
+      ["启用进度条"]	= true ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["网页沉浸"]	= false ;
+      ["启动网页"]	= "" ;
+      ["启用长按菜单"]	= true ;
+      ["支持打开外部应用"]	= true ;
+      } ;
+  ["toolbar"]	= {
+      ["搜索框提示"]	= "" ;
+      ["搜索URL"]	= "" ;
+      ["启用搜索功能"]	= false ;
+      ["menus"]	= {
+          [1]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          } ;
+      ["输入栏模式"]	= true ;
+      ["icon_btns"]	= {
+          } ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏标题"]	= "Title" ;
+      } ;
+  } ;

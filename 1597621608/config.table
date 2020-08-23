@@ -1,63 +1,14 @@
 {
-  ["colors"]	= {
-      ["侧滑栏背景"]	= "#ffffffff" ;
-      ["导航栏"]	= "#ff2c2e43" ;
-      ["进度条"]	= "#00000000" ;
-      ["搜索栏背景"]	= "#ffffffff" ;
-      ["侧滑栏列表文字"]	= "#ff333333" ;
-      ["顶栏"]	= "#ffffffff" ;
-      ["悬浮按钮"]	= "#ff33a7aa" ;
-      ["侧滑栏列表图标"]	= "#ff757575" ;
-      ["顶栏部件触摸"]	= "#22ffffff" ;
-      ["搜索栏部件触摸"]	= "#44000000" ;
-      ["悬浮按钮图标"]	= "#ffffffff" ;
-      ["搜索栏提示文字"]	= "#80000000" ;
-      ["顶栏部件"]	= "#ffffffff" ;
-      ["搜索栏部件"]	= "#ff888888" ;
-      } ;
   ["fltBtn"]	= {
+      ["显示"]	= false ;
       ["图标"]	= "" ;
       ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
-      ["显示"]	= false ;
-      } ;
-  ["sidebar"]	= {
-      ["items"]	= {
-          [1]	= {
-              ["onClick"]	= "进入子页面(\"about\")" ;
-              ["icon"]	= "drawable/aij.png" ;
-              ["name"]	= "About" ;
-              } ;
-          } ;
-      ["启用"]	= true ;
-      ["启用顶部图片"]	= false ;
-      } ;
-  ["web_control"]	= {
-      } ;
-  ["web"]	= {
-      ["启用长按菜单"]	= false ;
-      ["启用进度条"]	= false ;
-      ["支持打开外部应用"]	= true ;
-      ["浏览器用户标识"]	= "默认" ;
-      ["启动网页"]	= "" ;
-      ["网页沉浸"]	= true ;
-      } ;
-  ["view_attribute"]	= {
-      ["搜索栏圆角弧度"]	= "2dp" ;
-      ["顶栏高度"]	= "56dp" ;
-      ["顶栏阴影强度"]	= "2dp" ;
-      ["搜索栏阴影强度"]	= "2dp" ;
-      ["侧滑栏宽度"]	= "240dp" ;
-      ["顶栏标题"]	= "Title" ;
       } ;
   ["events"]	= {
       ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
 \
 --接收参数\
 浏览器对象，新标题=..." ;
-      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
-\
---接收参数\
-浏览器对象,网页链接=..." ;
       ["网页加载完毕"]	= "local wl=activity.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE).getActiveNetworkInfo(); \
 \
 if wl== nil then    \
@@ -1051,6 +1002,71 @@ ab.onClick=function()\
   进入子页面(\"about\")\
   --在这里填写控件单击事件  \
 end\
+z8.onClick=function()\
+  \
+require \"import\"\
+import \"android.app.*\"\
+import \"android.os.*\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+import \"android.content.Context\"\
+--activity.setTitle()\
+--activity.setTheme(android.R.style.Theme_Holo_Light)\
+\
+--导入AudioManager类\
+import \"android.media.AudioManager\"\
+\
+--得到音频管理对象\
+mAudioManager = activity.getSystemService(Context.AUDIO_SERVICE);\
+\
+--获取当前音乐音量\
+mVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);\
+\
+mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 1000, 1);--设置1显示音量调节窗口0为隐藏\
+--禁用返回(源码来自微云，作者佚名)\
+page=0\
+function onKeyDown(key,event)\
+  if(key==4)then\
+    if(webView.canGoBack())then\
+      webView.goBack()\
+    else\
+      page=page+1\
+      if(page==50)then\
+        appinfo=this.getPackageManager().getApplicationInfo(this.getPackageName(),0)\
+        applabel=this.getPackageManager().getApplicationLabel(appinfo)\
+      end\
+    end\
+    return true\
+  end\
+end\
+--背景音乐(源码来自微云，作者佚名)\
+--打包安装后才能播放哈，别再fa里直接运行\
+\
+import \"android.media.MediaPlayer\"\
+import \"java.io.*\"\
+\
+local m=MediaPlayer()\
+function 播放(path)\
+ m.reset()\
+ m.setDataSource(path)\
+ m.prepare()\
+ m.start()\
+end\
+路径=this.getFilesDir().toString()..\"/drawable/kmj.mp3\"\
+file,err=io.open(路径)\
+if err==nil then\
+ 播放(路径)\
+else\
+ 弹出消息(\"可带劲了～\")\
+end\
+\
+\
+--说明:先把歌的文件复制到文件“Fusion APP-Project-一串数字-drawable”\
+\
+--注意！一定要把音乐名称改为英文，否则无法安装！\
+\
+--有部分源码无法联系原作者，请原作者看到后尽快取得联系！\
+  end\
 z1.onClick=function()\
   进入子页面(\"air\")\
   --在这里填写控件单击事件  \
@@ -1064,6 +1080,7 @@ music.onClick=function()\
   --在这里填写控件单击事件  \
 end\
 video.onClick=function()\
+  进入子页面(\"音乐\")\
   --在这里填写控件单击事件  \
 end\
 function 波纹(id,颜色)\
@@ -1119,6 +1136,10 @@ end\
 \
 \
 " ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
       } ;
   ["global_js"]	= "/*\
  * @name: 强制缩放\
@@ -1145,20 +1166,65 @@ end\
   meta.setAttribute('content', 'width=device-width, initial-scale=1, user-scalable=yes');\
   document.head.appendChild(meta);\
 })();" ;
-  ["switch"]	= {
-      ["启用启动图"]	= true ;
-      ["横屏"]	= false ;
-      ["显示状态栏"]	= true ;
-      ["支持滑动页面"]	= false ;
+  ["web"]	= {
+      ["启用长按菜单"]	= false ;
+      ["支持打开外部应用"]	= true ;
+      ["启用进度条"]	= false ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["网页沉浸"]	= true ;
+      ["启动网页"]	= "" ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["sidebar"]	= {
+      ["启用"]	= true ;
+      ["启用顶部图片"]	= false ;
+      ["items"]	= {
+          [1]	= {
+              ["icon"]	= "drawable/aij.png" ;
+              ["name"]	= "About" ;
+              ["onClick"]	= "进入子页面(\"about\")" ;
+              } ;
+          } ;
       } ;
   ["toolbar"]	= {
-      ["启用搜索功能"]	= false ;
-      ["icon_btns"]	= {
-          } ;
       ["menus"]	= {
           } ;
+      ["启用搜索功能"]	= false ;
       ["输入栏模式"]	= false ;
-      ["搜索框提示"]	= "" ;
+      ["icon_btns"]	= {
+          } ;
       ["搜索URL"]	= "" ;
+      ["搜索框提示"]	= "" ;
+      } ;
+  ["colors"]	= {
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["进度条"]	= "#00000000" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["顶栏"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏高度"]	= "56dp" ;
+      ["顶栏标题"]	= "Title" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      } ;
+  ["switch"]	= {
+      ["横屏"]	= false ;
+      ["显示状态栏"]	= true ;
+      ["启用启动图"]	= true ;
+      ["支持滑动页面"]	= false ;
       } ;
   } ;

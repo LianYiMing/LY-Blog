@@ -1,59 +1,65 @@
 {
-  ["switch"]	= {
-      ["显示状态栏"]	= true ;
-      ["启用启动图"]	= false ;
-      ["横屏"]	= false ;
-      ["支持滑动页面"]	= false ;
-      } ;
-  ["sidebar"]	= {
-      ["items"]	= {
-          } ;
-      ["启用"]	= true ;
-      ["启用顶部图片"]	= false ;
-      } ;
-  ["web_control"]	= {
-      } ;
   ["web"]	= {
-      ["网页沉浸"]	= false ;
-      ["启用进度条"]	= false ;
-      ["支持打开外部应用"]	= true ;
       ["浏览器用户标识"]	= "默认" ;
-      ["启用长按菜单"]	= false ;
       ["启动网页"]	= "" ;
-      } ;
-  ["fltBtn"]	= {
-      ["显示"]	= false ;
-      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
-      ["图标"]	= "" ;
-      } ;
-  ["view_attribute"]	= {
-      ["顶栏高度"]	= "56dp" ;
-      ["搜索栏阴影强度"]	= "2dp" ;
-      ["侧滑栏宽度"]	= "240dp" ;
-      ["顶栏阴影强度"]	= "2dp" ;
-      ["搜索栏圆角弧度"]	= "2dp" ;
-      ["顶栏标题"]	= "Title" ;
+      ["网页沉浸"]	= false ;
+      ["支持打开外部应用"]	= true ;
+      ["启用长按菜单"]	= false ;
+      ["启用进度条"]	= false ;
       } ;
   ["toolbar"]	= {
-      ["icon_btns"]	= {
-          } ;
-      ["输入栏模式"]	= true ;
       ["menus"]	= {
           [1]	= {
-              ["name"]	= "退出" ;
               ["onClick"]	= "退出页面()" ;
+              ["name"]	= "退出" ;
               } ;
           } ;
       ["搜索框提示"]	= "" ;
-      ["启用搜索功能"]	= false ;
       ["搜索URL"]	= "" ;
+      ["启用搜索功能"]	= false ;
+      ["icon_btns"]	= {
+          } ;
+      ["输入栏模式"]	= true ;
+      } ;
+  ["colors"]	= {
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["进度条"]	= "#00000000" ;
+      ["顶栏"]	= "#ff2c2e43" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      } ;
+  ["switch"]	= {
+      ["支持滑动页面"]	= false ;
+      ["横屏"]	= false ;
+      ["显示状态栏"]	= true ;
+      ["启用启动图"]	= false ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["view_attribute"]	= {
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏标题"]	= "Title" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      } ;
+  ["fltBtn"]	= {
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["显示"]	= false ;
+      ["图标"]	= "" ;
       } ;
   ["events"]	= {
       ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
-\
---接收参数\
-浏览器对象,网页链接=..." ;
-      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
 \
 --接收参数\
 浏览器对象,网页链接=..." ;
@@ -213,7 +219,7 @@ xfy=--浏览器布局\
                   TextView;--文本控件\
                   layout_marginTop=\"4dp\",\
                   --textColor='#333333';--文字颜色\
-                  text='Online： 8:00 - 23:00';--显示的文字\
+                  text='一只烤面筋的程书林';--显示的文字\
                   textSize='14dp';--文字大小\
                 };\
 \
@@ -313,11 +319,8 @@ xfy=--浏览器布局\
               layout_width='fill';--布局宽度\
               layout_height='fill';--布局高度\
               onClick=function()\
-               import \"android.content.Intent\"\
-import \"android.net.Uri\"\
-url=\"https://lianyiming.com\"\
-viewIntent = Intent(\"android.intent.action.VIEW\",Uri.parse(url))\
-activity.startActivity(viewIntent)\
+                加QQ群(1142827883)\
+              -- import \"android.content.Intent\"import \"android.net.Uri\"url=\"https://lianyiming.com\"viewIntent = Intent(\"android.intent.action.VIEW\",Uri.parse(url))activity.startActivity(viewIntent)\
               end,\
               {\
                 ImageView;--图片控件\
@@ -331,7 +334,7 @@ activity.startActivity(viewIntent)\
                 TextView;--文本控件\
                 layout_marginTop='3dp';--布局顶距\
                 textColor='#FF6A6A6A';--文字颜色\
-                text='窝の网站';--显示的文字\
+                text='QQ入伙';--显示的文字\
                 textSize='15sp';--文字大小\
               };\
             };\
@@ -745,21 +748,15 @@ end)               \
 \
 --接收参数\
 浏览器对象，新标题=..." ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
       } ;
-  ["colors"]	= {
-      ["搜索栏部件"]	= "#ff888888" ;
-      ["悬浮按钮图标"]	= "#ffffffff" ;
-      ["搜索栏提示文字"]	= "#80000000" ;
-      ["顶栏部件"]	= "#ffffffff" ;
-      ["搜索栏背景"]	= "#ffffffff" ;
-      ["顶栏"]	= "#ff2c2e43" ;
-      ["顶栏部件触摸"]	= "#22ffffff" ;
-      ["侧滑栏列表图标"]	= "#ff757575" ;
-      ["进度条"]	= "#00000000" ;
-      ["侧滑栏背景"]	= "#ffffffff" ;
-      ["侧滑栏列表文字"]	= "#ff333333" ;
-      ["搜索栏部件触摸"]	= "#44000000" ;
-      ["导航栏"]	= "#ff2c2e43" ;
-      ["悬浮按钮"]	= "#ff33a7aa" ;
+  ["sidebar"]	= {
+      ["items"]	= {
+          } ;
+      ["启用顶部图片"]	= false ;
+      ["启用"]	= true ;
       } ;
   } ;

@@ -2,7 +2,6 @@
 ![]()
 
 [![Build Status](https://travis-ci.org/lianyiming/LY-Blog.svg?branch=master)](https://travis-ci.org/lianyiming/LY-Blog)
-[![codebeat badge](https://codebeat.co/badges/5f031df3-f6c1-4ec0-911a-ff6617ca50b9)](https://codebeat.co/projects/github-com-lianyiming-lianyiming-github-io-master)
 [![GitHub issues](https://img.shields.io/github/issues/lianyiming/LY-Blog.svg?style=flat)](https://github.com/lianyiming/LY-Blog/issues)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/home-assistant/home-assistant-iOS/blob/master/LICENSE)
 [![](https://img.shields.io/github/stars/lianyiming/LY-Blog.svg?style=social&label=Star)](https://github.com/lianyiming/LY-Blog)

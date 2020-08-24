@@ -23,11 +23,12 @@ Androlua 是一种安卓系统里边开发APP的语言，非常方便，在手�
 
 ### 开始
 
-打开FusionAPP,导入源码![](https://raw.githubusercontent.com/LianYiMing/LY-Blog/master/_img/%E7%AC%AC%E4%B8%80%E6%AD%A5.jpg)
+打开FusionAPP,导入源码
+![](https://raw.githubusercontent.com/LianYiMing/LY-Blog/master/_img/%E7%AC%AC%E4%B8%80%E6%AD%A5.jpg)
 Ps:源码就是code里边的fas后缀的文件，导入后就可以看到了LY Blog的源码
 ![](https://raw.githubusercontent.com/LianYiMing/LY-Blog/master/_img/%E7%AC%AC%E4%BA%8C%E6%AD%A5.jpg)(![](https://raw.githubusercontent.com/LianYiMing/LY-Blog/master/_img/%E7%AC%AC%E4%BA%8C%E6%AD%A5.jpg))![](https://raw.githubusercontent.com/LianYiMing/LY-Blog/master/_img/%E7%AC%AC%E4%BA%8C%E6%AD%A5.jpg)
 到底下的事件里有很多的参数可以调
-![](https://raw.githubusercontent.com/LianYiMing/LY-Blog/master/_img/%E7%AC%AC%E4%BA%8C%E6%AD%A5.jpg)
+![](https://raw.githubusercontent.com/LianYiMing/LY-Blog/master/_img/%E7%AC%AC%E4%B8%89%E6%AD%A5.jpg)
 
 
 ```

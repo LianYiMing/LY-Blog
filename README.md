@@ -1,5 +1,5 @@
 
-![](https://raw.githubusercontent.com/LianYiMing/LY-Blog/master/_img/%E7%AC%AC%E4%B8%80%E6%AD%A5.jpg)
+![]()
 
 [![Build Status](https://travis-ci.org/lianyiming/LY-Blog.svg?branch=master)](https://travis-ci.org/lianyiming/LY-Blog)
 [![GitHub issues](https://img.shields.io/github/issues/lianyiming/LY-Blog.svg?style=flat)](https://github.com/lianyiming/LY-Blog/issues)
@@ -23,17 +23,15 @@ Androlua 是一种安卓系统里边开发APP的语言，非常方便，在手�
 
 ### 开始
 
-打开FusionAPP,导入原码![](https://raw.githubusercontent.com/lianyiming/lianyiming.github.io/master/img/readme-side.png)
-里边的fas后缀的文件，就可以看到了LY Blog的源码
-有很多的参数可以调，
-
+打开FusionAPP,导入源码![](https://raw.githubusercontent.com/LianYiMing/LY-Blog/master/_img/%E7%AC%AC%E4%B8%80%E6%AD%A5.jpg)
+Ps:源码就是code里边的fas后缀的文件，导入后就可以看到了LY Blog的源码
+![](https://raw.githubusercontent.com/LianYiMing/LY-Blog/master/_img/%E7%AC%AC%E4%BA%8C%E6%AD%A5.jpg)(![](https://raw.githubusercontent.com/LianYiMing/LY-Blog/master/_img/%E7%AC%AC%E4%BA%8C%E6%AD%A5.jpg))![](https://raw.githubusercontent.com/LianYiMing/LY-Blog/master/_img/%E7%AC%AC%E4%BA%8C%E6%AD%A5.jpg)
+到底下的事件里有很多的参数可以调
+![](https://raw.githubusercontent.com/LianYiMing/LY-Blog/master/_img/%E7%AC%AC%E4%BA%8C%E6%AD%A5.jpg)
 
 
 ```
-# Sidebar settings
-sidebar: true  #添加侧边栏
-sidebar-about-description: "简单的描述一下你自己"
-sidebar-avatar: /img/avatar-by.jpg     #你的大头贴，请使用绝对地址.注意：名字区分大小写！后缀名也是
+
 ```
 
 

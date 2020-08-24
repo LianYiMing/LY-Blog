@@ -1,5 +1,5 @@
 
-![]()
+![](https://raw.githubusercontent.com/LianYiMing/LY-Blog/master/_img/%E7%AC%AC%E4%B8%80%E6%AD%A5.jpg)
 
 [![Build Status](https://travis-ci.org/lianyiming/LY-Blog.svg?branch=master)](https://travis-ci.org/lianyiming/LY-Blog)
 [![GitHub issues](https://img.shields.io/github/issues/lianyiming/LY-Blog.svg?style=flat)](https://github.com/lianyiming/LY-Blog/issues)

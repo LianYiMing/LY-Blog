@@ -1,1673 +1,5 @@
 {
-  ["view_attribute"]	= {
-      ["搜索栏圆角弧度"]	= "30dp" ;
-      ["顶栏标题"]	= "愿世间烦恼与你无缘，愿一切美好常伴人间" ;
-      ["搜索栏阴影强度"]	= "2dp" ;
-      ["顶栏阴影强度"]	= "2dp" ;
-      ["顶栏高度"]	= "40dp" ;
-      ["侧滑栏宽度"]	= "100dp" ;
-      } ;
-  ["sidebar"]	= {
-      ["启用"]	= true ;
-      ["启用顶部图片"]	= false ;
-      ["items"]	= {
-          [1]	= {
-              ["icon"]	= "drawable/apple.png" ;
-              ["onClick"]	= "import \"applist\" \
---设置底部导航栏(虚拟按键)透明(沉浸)\
-activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)\
---设置底部导航栏颜色\
-activity.getWindow().setNavigationBarColor(Color.parseColor(\"#1bb5d7\"))" ;
-              ["name"]	= "应用管理" ;
-              } ;
-          [2]	= {
-              ["icon"]	= "drawable/music_circle.png" ;
-              ["onClick"]	= "加载网页(\"https://m.sq688.com/search.php?key=%E5%91%A8%E6%\")" ;
-              ["name"]	= "无损音乐下载" ;
-              } ;
-          [3]	= {
-              ["icon"]	= "drawable/music_note.png" ;
-              ["onClick"]	= "加载网页(\"http://music.junyuewl.com/\")" ;
-              ["name"]	= "音乐播放" ;
-              } ;
-          [4]	= {
-              ["icon"]	= "drawable/music_circle.png" ;
-              ["onClick"]	= "加载网页(\"https://cloud.ccswust.org/\")" ;
-              ["name"]	= "音乐下载" ;
-              } ;
-          [5]	= {
-              ["icon"]	= "drawable/arrow_down_bold_circle.png" ;
-              ["onClick"]	= "加载网页(\"http://www.html22.com/zh/\")\
-" ;
-              ["name"]	= "文库下载" ;
-              } ;
-          [6]	= {
-              ["icon"]	= "drawable/school.png" ;
-              ["onClick"]	= "加载网页(\"https://suulnnka.github.io/BullshitGenerator/index.html\")" ;
-              ["name"]	= "文章生成" ;
-              } ;
-          [7]	= {
-              ["icon"]	= "drawable/numeric_9_plus_box.png" ;
-              ["onClick"]	= "--来自快乐程序\
-layout={\
-  LinearLayout,\
-  orientation=\"vertical\",\
-  layout_width=\"fill\",\
-\
-  {\
-    LinearLayout,\
-    layout_width=\"fill\",\
-    padding=\"16dp\",\
-    paddingTop=\"8dp\",\
-    paddingBottom=\"8dp\",\
-    gravity=\"center\",\
-    {\
-      EditText,\
-      gravity=\"center\",\
-      ems=6,\
-      singleLine=true,\
-      backgroundColor=0,\
-\
-      hint=\"最小值\",\
-      inputType=\"number\",\
-      id=\"min\",\
-      text=\"0\",\
-      layout_weight=1,\
-    },\
-    {\
-      TextView,\
-      layout_gravity=\"center\",\
-      text=\"<\",\
-    },\
-    {\
-      EditText,\
-      ems=6,\
-      gravity=\"center\",\
-      backgroundColor=0,\
-      hint=\"最大值\",\
-      text=\"100\",\
-      inputType=\"number\",\
-      layout_weight=1,\
-      id=\"max\",\
-\
-      singleLine=true,\
-    },\
-  },\
-  {\
-    ScrollView,\
-    layout_width=\"fill\",\
-\
-    layout_weight=1,\
-    {\
-      TextView,\
-      id=\"tex\",\
-\
-      textSize=\"56dp\",\
-      layout_gravity=\"center\",\
-      layout_height=\"fill\",\
-      padding=\"16dp\",\
-      textIsSelectable=true,\
-    },\
-  },\
-  {\
-    Button,\
-    text=\"生成\",\
-    layout_width=\"fill\",\
-    layout_margin=\"16dp\",\
-\
-    textColor=0xfffafafa,\
-    id=\"bt\",\
-    textSize=\"16dp\",\
-\
-  },\
-};\
-\
-require \"import\"\
-import \"android.app.*\"\
-import \"android.os.*\"\
-import \"android.widget.*\"\
-import \"android.view.*\"\
-\
-\
-activity.setTheme(android.R.style.Theme_DeviceDefault_Light)--设置md主题\
---activity.setTheme(R.AndLua1)\
-activity.setTitle(\"随机数生成\")--标题\
-activity.setContentView(loadlayout(layout))\
-\
---控件圆角函数\
-function 控件圆角(id,InsideColor,radiu)\
-  import \"android.graphics.drawable.GradientDrawable\"\
-  drawable = GradientDrawable()\
-  drawable.setShape(GradientDrawable.RECTANGLE)\
-  drawable.setColor(InsideColor) drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
-  id.setBackgroundDrawable(drawable)\
-end\
-\
-控件圆角(bt,0xFF2196F3,360)--设置按钮圆角\
---来着快乐程序，代码手册首次整理https://www.lanzous.com/i82ncaf\
-tex.setText(tostring(math.random(0,100)))--设置默认数值为1-100的随机数值\
-\
-bt.onClick=function()--按钮点击时间\
-  tex.setText(tostring(math.random(tonumber(min.text),tonumber(max.text))))--获取输入框的数值并转换为number，取随机数后转换为string型数值并设置给tex\
-end\
-" ;
-              ["name"]	= "随机数生成" ;
-              } ;
-          [8]	= {
-              ["icon"]	= "drawable/pencil_box.png" ;
-              ["onClick"]	= "加载网页(\"https://tools.miku.ac/ocr\")" ;
-              ["name"]	= "图片转文字" ;
-              } ;
-          [9]	= {
-              ["icon"]	= "drawable/flower.png" ;
-              ["onClick"]	= "加载网页(\"https://tools.miku.ac/pomodoro_technique\")" ;
-              ["name"]	= "白噪音专注" ;
-              } ;
-          [10]	= {
-              ["icon"]	= "drawable/timer.png" ;
-              ["onClick"]	= "加载网页(\"https://tools.miku.ac/screen_clock\")" ;
-              ["name"]	= "时钟屏保" ;
-              } ;
-          [11]	= {
-              ["icon"]	= "drawable/account_check.png" ;
-              ["onClick"]	= "加载网页(\"https://tools.miku.ac/lifecount\")" ;
-              ["name"]	= "人生小格" ;
-              } ;
-          [12]	= {
-              ["icon"]	= "drawable/music_note.png" ;
-              ["onClick"]	= "--程序启动时会执行的事件\
-require \"import\"\
-import \"android.app.*\"\
-import \"android.os.*\"\
-import \"android.widget.*\"\
-import \"android.view.*\"\
-activity.setTitle('音乐')\
-layout=--布局奠定\
-{\
-  LinearLayout;--线性布局\
-  orientation='vertical';--重力属性\
-  layout_width='fill';--布局宽度\
-  layout_height='fill';--布局高度\
-  background='Icon/bj.png';--布局背景颜色(或者图片路径)\
-  gravity='center';--默认居中\
-  {\
-    TextView;--文本控件\
-    layout_width='fill';--文本宽度\
-    layout_height='50dp';--文本高度\
-    gravity='center';--重力属性\
-    textColor='#FF2885DE';--文字颜色\
-    text='未播放任何音乐';--显示的文字\
-    textSize='20sp';--文字大小\
-    id=\"tv_title\",\
-  };\
-  {\
-    LinearLayout;--线性布局\
-    orientation='vertical';--重力属性\
-    layout_width='fill';--布局宽度\
-    layout_height='50%h';--布局高度\
-    gravity='center';--默认居中\
-    {\
-      CircleImageView;--圆形图片\
-      src='Icon/z.png';--图片路径\
-      layout_width='180dp';--图片宽度\
-      layout_height='180dp';--图片高度\
-      ColorFilter=\"#FF2885DE\";\
-      id=\"旋转\";\
-    };\
-  };\
-  {\
-    LinearLayout;--线性布局\
-    orientation='horizontal';--重力属性\
-    layout_width='fill';--布局宽度\
-    layout_height='100dp';--布局高度\
-    gravity='right|center';--默认居中\
-    {\
-      CircleImageView;--圆形图片\
-      src='Icon/cp.png';--图片路径\
-      layout_width='25dp';--布局宽度\
-      layout_height='25dp';--布局高度\
-      onClick=\"on_playlist\",\
-      layout_marginRight='10dp';--布局右距\
-      ColorFilter=\"#1296db\";\
-    },\
-    {\
-      CircleImageView;--圆形图片\
-      src='Icon/lb.png';--图片路径\
-      layout_width='25dp';--布局宽度\
-      layout_height='50dp';--布局高度\
-      onClick=\"on_Menu\",\
-      layout_marginRight='20dp';--布局右距\
-    },\
-  };\
-  {\
-    LinearLayout;--线性布局\
-    orientation='horizontal';--重力属性\
-    layout_width='fill';--布局宽度\
-    layout_height='50dp';--布局高度\
-    gravity='center';--默认居中\
-    {\
-      TextView,\
-      layout_height=\"wrap_content\",\
-      text=\"00:00\",\
-      textColor='#FF2885DE';\
-      --布局内文字着色,默认黑色\
-      id=\"tv_startTime\",\
-      layout_width=\"wrap_content\";\
-      layout_marginRight='10dp';--布局右距\
-    },\
-    {\
-      SeekBar,\
-      layout_height=\"wrap_content\",\
-      layout_width='70%w';--布局宽度\
-      id=\"mainProgressBar1\",\
-      id=\"pb_time\",\
-    },\
-    {\
-      TextView,\
-      layout_height=\"wrap_content\",\
-      text=\"00:00\",\
-      id=\"tv_endTime\",\
-      textColor='#FF2885DE';\
-      layout_marginLeft='10dp';--布局左距\
-      layout_width=\"wrap_content\"\
-    },\
-  };\
-  {\
-    LinearLayout;--线性布局\
-    orientation='horizontal';--重力属性\
-    layout_width='fill';--布局宽度\
-    layout_height='170dp';--布局高度\
-    gravity='center';--默认居中\
-    {\
-      CircleImageView;--圆形图片\
-      src='Icon/s.png';--图片路径\
-      layout_width='50dp';--布局宽度\
-      layout_height='50dp';--布局高度\
-      onClick=\"on_pre\",\
-      layout_marginRight='20dp';--布局右距\
-    },\
-    {\
-      CircleImageView;--圆形图片\
-      src='Icon/bf.png';--图片路径\
-      layout_width='50dp';--布局宽度\
-      layout_height='50dp';--布局高度\
-      id=\"bn_pause\",\
-      onClick=\"on_pause\",\
-    },\
-    {\
-      CircleImageView;--圆形图片\
-      src='Icon/x.png';--图片路径\
-      layout_width='50dp';--布局宽度\
-      layout_height='50dp';--布局高度\
-      onClick=\"on_next\",\
-      layout_marginLeft='20dp';--布局左距\
-    },\
-  };\
-};\
-activity.setContentView(loadlayout(layout))\
-import \"android.media.*\"\
-import \"android.view.*\"\
-import \"android.content.*\"\
-import \"java.io.*\"\
-import \"java.util.*\"\
-import \"android.content.Context\"\
-import \"android.provider.*\"\
---require \"layout\"\
---activity.setTitle(\"美美播放器\")\
---activity.setTheme(android.R.style.Theme_Holo_Light)\
-local arr=nil\
-local pd--扫描进度条变量,定义在这容易操作\
-local mp=MediaPlayer()\
-local t=nil\
-local isPlay=false\
-local curPlay=nil --当前正在播放的mp3的路径\
-local listpath=\"/sdcard/pl.txt\"\
-local tf=File(listpath)\
-local dur--歌曲长度\
-local cur--播放当前位置\
-local min,sec=0,0--分和秒\
-local curIdx=0--当前播放的mp3在列表中的索引\
-\
---播放音乐，不异步可控\
---@mp MediaPlayer对象\
---@path 歌曲完整路径\
-function play(mp,path)\
-  mp.reset()\
-  mp.setDataSource(path)\
-  mp.prepare()\
-  mp.start()\
-end\
-\
---异步调用代码块，获取文件夹下的所有mp3文件。并存在arr中\
-local _getList= [[\
-require \"import\"\
-import \"java.io.*\"\
-local path,arr=...\
-local name,t\
-\
-function _get(path)\
-    local f=File(path)\
-    local  l=f.listFiles()\
-    \
-    for i=0,#l-1 do\
-        t=l[i]\
-        name= t.getName()\
-        if  t.isFile() and string.find(string.lower(name),\"%.mp3$\") and t.length()>1024*1024*2 then --歌曲大于2m才添加\
-            arr.add(t)\
-            end\
-        if t.isDirectory() then\
-            _get(t.toString())\
-            end\
-        end --for\
-    end --_get\
-_get(path)--重要......\
-]]\
---获取某文件夹下所有mp3文件。并存在arr中\
-function getList(path)\
-  arr=ArrayList()\
-  task( _getList,path,arr,getListFinish)\
-end\
---回调函数，获取某文件夹下所有mp3文件完成时被调用\
-function getListFinish()\
-  writeFile(\"/sdcard/pl.txt\",arr)\
-  pd.cancel()\
-end\
---写入文件\
---@path  文件完整路径\
---@list    ArrayList\
-function writeFile(path,list)\
-  local fw=FileWriter(path)\
-  local bw=BufferedWriter(fw)\
-  for i=0,list.size()-1 do\
-    str=list.get(i).toString()\
-    bw.write(str,0,utf8.len(str))\
-    bw.newLine()\
-  end\
-  bw.flush()\
-  bw.close()\
-end\
---读文件\
---path 完整路径\
---return ArrayList\
-function readFile(path)\
-  local al=ArrayList()\
-  local fr=FileReader(path)\
-  local br=BufferedReader(fr)\
-  local ch=0\
-  while(br.read()~=-1 )\
-    do\
-    al.add(br.readLine())\
-  end\
-  br.close()\
-  return al\
-end\
-\
---显示歌曲列表\
---@path 列表文件路径\
---@mediaplayer\
-function showList(path,mp)\
-  local al= readFile(path)\
-  arr=al\
-  local names={}\
-  local paths={}\
-  for i=0,al.size()-1 do\
-    table.insert(paths,al.get(i))\
-    table.insert(names,File(al.get(i)).getName())\
-\
-  end\
-  local ad= AlertDialog.Builder(activity)\
-  ad.setTitle(\"歌曲列表\")\
-  ad.setItems(String(names)\
-  ,DialogInterface.OnClickListener{\
-    onClick=function(dialog,which)\
-      curPlay=paths[which+1]\
-      curIdx=which\
-      play(mp,curPlay)\
-      local tt=string.gsub(names[which+1],\".mp3$\",\"\")--偷懒一下\
-      tv_title.setText(\"正在播放:\"..tt)\
-      bn_pause.setImageBitmap(loadbitmap(\"Icon/zt.png\"))\
-    end\
-  })\
-  ad.setNegativeButton( \"取消\", nil)\
-  ad= ad.create()\
-  local window = ad.getWindow()\
-  local lp = window.getAttributes()\
-  --设置透明度\
-  lp.alpha = 0.8\
-  window.setAttributes(lp)\
-  ad.show()\
-end\
---弹出进度条\
---@text 进度条的文本\
-function showProcessBar(text)\
-  pd = ProgressDialog\
-  .show(activity, nil, text)\
-  pd.setCancelable(false)\
-end\
-\
-\
---弹出文本框对话框\
---@pa 进度条对象\
-function showEditDialog(msg)\
-  local edit=EditText(activity)\
-  edit.setText(\"/sdcard/\")\
-  local dl =AlertDialog.Builder(activity)\
-  dl.setTitle(msg)\
-  dl.setView(edit)\
-  dl.setPositiveButton(\"确定\",\
-  DialogInterface.OnClickListener{\
-    onClick=function(dialog,which)\
-      showProcessBar(\"扫描音乐中，请稍候……\")\
-      getList(edit.getText().toString())\
-    end\
-  })\
-  dl.show()\
-end\
---全局代码###################\
-if tf.exists()==false then--文件列表不存在\
-  showEditDialog(\"初次使用软件，设置扫描音乐的路径\")\
- else\
-  arr= readFile(listpath)\
-end\
---###################\
-\
---实时更新进度条和时间显示\
-function updateTime(m,s)\
-  if m<10 then m=\"0\"..m end\
-  if s<10 then s=\"0\"..s end\
-  tv_startTime.setText(m..\":\"..s)\
-  pb_time.setProgress(mp.getCurrentPosition())\
-end\
-\
---计时器代码\
-function _run(m,s)\
-  function run()\
-\
-    s=s+1\
-    if(s==60) then\
-      m=m+1\
-      s=0\
-    end\
-    call(\"updateTime\",m,s)\
-  end\
-end\
-\
---上一曲\
-function on_pre(v)\
-  if(curIdx>0) then\
-    curIdx=curIdx-1\
-    play(mp,arr.get(curIdx))\
-    local tt=string.gsub(File(arr.get(curIdx)).getName(),\".mp3$\",\"\")--偷懒一下\
-    tv_title.setText(\"正在播放:\"..tt)\
-    bn_pause.setImageBitmap(loadbitmap(\"Icon/zt.png\"))\
-  end\
-end\
-\
---下一曲\
-function on_next(v)\
-  if(curIdx<arr.size()-1) then\
-    if curIdx==0 and not mp.isPlaying() then\
-      play(mp,arr.get(0))\
-      local tt=string.gsub(File(arr.get(0)).getName(),\".mp3$\",\"\")--偷懒一下\
-      tv_title.setText(\"正在播放:\"..tt)\
-      bn_pause.setImageBitmap(loadbitmap(\"Icon/zt.png\"))\
-     else\
-      curIdx=curIdx+1\
-      play(mp,arr.get(curIdx))\
-      local tt=string.gsub(File(arr.get(curIdx)).getName(),\".mp3$\",\"\")--偷懒一下\
-      tv_title.setText(\"正在播放:\"..tt)\
-      bn_pause.setImageBitmap(loadbitmap(\"Icon/zt.png\"))\
-    end\
-  end\
-end\
-\
---设置mediaPlayer播放结束时的回调函数\
-mp.setOnCompletionListener(MediaPlayer.OnCompletionListener{\
-  onCompletion=function(mper)\
-    --     print(\"歌曲播放结束\")\
-    pb_time.setProgress(mp.getCurrentPosition())\
-    t.Enabled=false\
-    t.stop()\
-    t=nil\
-    on_next(v)\
-  end})\
-\
---时间转换函数\
-function formatTime(time)\
-  local min,sec=0,0\
-  sec=math.floor(time/1000)\
-  if(sec>60) then\
-    min=math.floor(sec/60)\
-    sec=math.floor(sec%60)\
-  end\
-  if min<10 then min=\"0\"..min end\
-  if sec<10 then sec=\"0\"..sec end\
-  return min..\":\"..sec\
-end\
---时间设置\
-function setTime(time)\
-  local min,sec=0,0\
-  sec=math.floor(time/1000)\
-  if(sec>60) then\
-    min=math.floor(sec/60)\
-    sec=math.floor(sec%60)\
-  end\
-\
-  return min,sec\
-end\
---歌曲开始播放\
-mp.setOnPreparedListener(MediaPlayer.OnPreparedListener{\
-  onPrepared=function(mper)\
-    dur=mper.getDuration()--获取歌曲的时常\
-    pb_time.setMax(dur)\
-    local tt=formatTime(dur)\
-    tv_startTime.setText(\"00:00\")\
-    tv_endTime.setText(tt)\
-\
-    min,sec=0,0\
-    if t~=nil then --计时器不为空就停止\
-      t.Enabled=false\
-      t.stop()\
-      t=nil\
-    end\
-    --歌曲开始播放又计时\
-    t=timer(_run,0,1000,min,sec)\
-    t.Enabled=true\
-  end})\
-\
---按下暂停时发生\
-function on_pause(v)\
-  if(mp.isPlaying()) then\
-    mp.pause()\
-    bn_pause.setImageBitmap(loadbitmap(\"Icon/bf.png\"))\
-    if(t~=nil) then\
-      t.Enabled=false\
-    end\
-   else\
-    if(t~=nil) then--如果为空那就是播放完了的情况\
-      mp.start()\
-      bn_pause.setImageBitmap(loadbitmap(\"Icon/zt.png\"))\
-      t.Enabled=true\
-    end\
-  end\
-end\
-\
---按下\"列表\"按钮\
-function on_playlist(v)\
-  showList(listpath,mp)\
-end\
-\
-\
-\
-function on_Menu(v)\
-  local items={\"更新列表\",\"关于\",\"退出\"}\
-  local ad= AlertDialog.Builder(activity)\
-  ad.setTitle(\"更多\")\
-  ad.setItems(String(items)\
-  ,DialogInterface.OnClickListener{\
-    onClick=function(dialog,which)\
-      if which==0 then\
-        showEditDialog(\"输入路径以重新扫描\")\
-       elseif which==1 then\
-        print(\"子清修改\")\
-       elseif which==2 then\
-        if t~=nil then\
-          t.stop()\
-        end\
-        mp.stop()\
-        mp.release()--释放资源\
-        activity.finish()\
-      end--判断选了哪项的if\
-    end--onClick\
-  })\
-  ad.setNegativeButton( \"取消\", nil)\
-  ad= ad.create()\
-  ad.show()\
-end\
-\
-function onKeyDown(code,event)\
-  if (code== KeyEvent.KEYCODE_BACK)then\
-    --并不会发生什么...\
-    if t~=nil then\
-      t.stop()\
-    end\
-    mp.stop()\
-    mp.release()--释放资源\
-  end\
-end\
-\
-\
-\
-\
-\
---进度跳转\
-pb_time.setOnSeekBarChangeListener(\
-SeekBar.OnSeekBarChangeListener{\
-  onStopTrackingTouch=function(bar)\
-    if mp.isPlaying() then\
-      local cur=bar.getProgress()\
-      local tt=formatTime(cur)\
-      min,sec=setTime(cur)\
-      tv_startTime.setText(tt)\
-      mp.seekTo(cur)\
-      if t~=nil then --计时器不为空就停止\
-        t.Enabled=false\
-        t.stop()\
-        t=nil\
-      end\
-      --重新计时\
-      t=timer(_run,0,1000,min,sec)\
-      t.Enabled=true\
-    end\
-\
-  end})\
-import \"android.view.animation.LinearInterpolator\"\
-import \"android.animation.ValueAnimator\"\
-c =ObjectAnimator()\
-c.setTarget(旋转);\
-c.setDuration(20000);\
-c.setRepeatCount(ValueAnimator.INFINITE)\
-c.setPropertyName(\"rotation\");\
-c.setFloatValues({0,720});\
-c.setRepeatMode(ValueAnimator.INFINITE)\
-c.setInterpolator(LinearInterpolator() )\
-c.start();\
-esc=0\
-function onKeyDown(key,event)\
-  if(key==4)then\
-    esc=esc+1\
-    activity.moveTaskToBack(true)\
-    task(1000,function()\
-      esc=0\
-    end)\
-    return true\
-  end\
-end\
---[[\
-\
-    小六美化©QQ1785333334\
-\
-   美化不易,且用且珍惜\
-   \
-]]\
-import \"android.view.WindowManager\"\
-activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
-" ;
-              ["name"]	= "本地音乐" ;
-              } ;
-          [13]	= {
-              ["icon"]	= "drawable/contrast_circle.png" ;
-              ["onClick"]	= "require \"import\"\
-import \"android.widget.*\"\
-import \"android.view.*\"\
-import \"android.text.method.*\"\
-import 'android.webkit.WebView'\
-import \"android.app.AlertDialog\"\
-local hh={}\
-\
-layout={\
-  LinearLayout,\
-  layout_width=\"fill\",\
-  layout_height=\"fill\",\
-  orientation=\"vertical\",\
-  background='#ffe9e9e9',\
-  {\
-    HorizontalScrollView,\
-    FillViewport=true,\
-    layout_gravity=\"left\",\
-    layout_width=\"fill\",\
-    {\
-      TextView,\
-      text=\"\",\
-      textSize=30,\
-      textColor='0xff000000',\
-\
-      lines=1,\
-      Gravity=\"left\",\
-      layout_width=\"wrap\",\
-    },\
-  },\
-  {\
-    HorizontalScrollView,\
-    FillViewport=true,\
-    layout_gravity=\"left\",\
-    layout_width=\"fill\",\
-    {\
-      TextView,\
-      text=\"\",\
-      id=\"input\",\
-      textSize=60,\
-      textColor='0xff000000',\
-      lines=1,\
-      Gravity=\"left\",\
-      layout_width=\"wrap\",\
-    },\
-  },\
-  {\
-    HorizontalScrollView,\
-    FillViewport=true,\
-    layout_gravity=\"right\",\
-    layout_width=\"fill\",\
-    {\
-      TextView,\
-      text=\"\",\
-      id=\"output\",\
-      Gravity=\"right\",\
-      textSize=80,\
-      textColor='0xff000000',\
-      onClick=\"up\",\
-      lines=1,\
-      layout_width=\"wrap\",\
-    },\
-  },\
-  {\
-    LinearLayout,\
-    layout_width=\"fill\",\
-    layout_height=\"fill\",\
-    layout_weight=\"1.0\",\
-    {\
-      Button,\
-      textSize=40,\
-      textSize=40,\
-      text=\"(\",\
-      onClick=\"click\",\
-      background='#fffafafa',\
-      layout_width=\"fill\",\
-      layout_height=\"fill\",\
-      layout_weight=\"1.0\",\
-    },\
-    {\
-      Button,\
-      textSize=40,\
-      text=\")\",\
-      onClick=\"click\",\
-      layout_width=\"fill\",\
-      background='#fffafafa',\
-      layout_height=\"fill\",\
-      layout_weight=\"1.0\",\
-    },\
-    {\
-      Button,\
-      textSize=30,\
-      text=\"菜单\",\
-      id=\"endg\",\
-      onClick=\"菜单\",\
-      background='#fffafafa',\
-      layout_width=\"fill\",\
-      layout_height=\"fill\",\
-      layout_weight=\"1.0\",\
-    },\
-    {\
-      Button,\
-      textSize=30,\
-      text=\"清空\",\
-      onClick=\"clear\",\
-      background='#fffafafa',\
-      layout_width=\"fill\",\
-      layout_height=\"fill\",\
-      layout_weight=\"1.0\",\
-    },\
-  },\
-  {\
-    LinearLayout,\
-    layout_width=\"fill\",\
-    layout_height=\"fill\",\
-    layout_weight=\"1.0\",\
-    {\
-      Button,\
-      textSize=40,\
-      text=\"1\",\
-      onClick=\"click\",\
-      backgroundColor='#ffffffff',\
-      layout_width=\"fill\",\
-      layout_height=\"fill\",\
-      layout_weight=\"1.0\",\
-    },\
-    {\
-      Button,\
-      textSize=40,\
-      text=\"2\",\
-      onClick=\"click\",\
-      backgroundColor='#ffffffff',\
-      layout_width=\"fill\",\
-      layout_height=\"fill\",\
-      layout_weight=\"1.0\",\
-    },\
-    {\
-      Button,\
-      textSize=40,\
-      text=\"3\",\
-      onClick=\"click\",\
-      backgroundColor='#ffffffff',\
-      layout_width=\"fill\",\
-      layout_height=\"fill\",\
-      layout_weight=\"1.0\",\
-    },\
-    {\
-      Button,\
-      textSize=40,\
-      text=\"+\",\
-      onClick=\"click\",\
-      layout_width=\"fill\",\
-      background='#fffafafa',\
-      layout_height=\"fill\",\
-      layout_weight=\"1.0\",\
-    },\
-  },\
-  {\
-    LinearLayout,\
-    layout_width=\"fill\",\
-    layout_height=\"fill\",\
-    layout_weight=\"1.0\",\
-    {\
-      Button,\
-      textSize=40,\
-      text=\"4\",\
-      onClick=\"click\",\
-      backgroundColor='#ffffffff',\
-      layout_width=\"fill\",\
-      layout_height=\"fill\",\
-      layout_weight=\"1.0\",\
-    },\
-    {\
-      Button,\
-      textSize=40,\
-      text=\"5\",\
-      onClick=\"click\",\
-      backgroundColor='#ffffffff',\
-      layout_width=\"fill\",\
-      layout_height=\"fill\",\
-      layout_weight=\"1.0\",\
-    },\
-    {\
-      Button,\
-      textSize=40,\
-      text=\"6\",\
-      backgroundColor='#ffffffff',\
-      onClick=\"click\",\
-      layout_width=\"fill\",\
-      layout_height=\"fill\",\
-      layout_weight=\"1.0\",\
-    },\
-    {\
-      Button,\
-      textSize=40,\
-      text=\"-\",\
-      onClick=\"click\",\
-      layout_width=\"fill\",\
-      layout_height=\"fill\",\
-      background='#fffafafa',\
-      layout_weight=\"1.0\",\
-    },\
-  },\
-  {\
-    LinearLayout,\
-    layout_width=\"fill\",\
-    layout_height=\"fill\",\
-    layout_weight=\"1.0\",\
-    {\
-      Button,\
-      textSize=40,\
-      text=\"7\",\
-      onClick=\"click\",\
-      backgroundColor='#ffffffff',\
-      layout_width=\"fill\",\
-      layout_height=\"fill\",\
-      layout_weight=\"1.0\",\
-    },\
-    {\
-      Button,\
-      textSize=40,\
-      text=\"8\",\
-      onClick=\"click\",\
-      backgroundColor='#ffffffff',\
-      layout_width=\"fill\",\
-      layout_height=\"fill\",\
-      layout_weight=\"1.0\",\
-    },\
-    {\
-      Button,\
-      textSize=40,\
-      text=\"9\",\
-      onClick=\"click\",\
-      backgroundColor='#ffffffff',\
-      layout_width=\"fill\",\
-      layout_height=\"fill\",\
-      layout_weight=\"1.0\",\
-    },\
-    {\
-      Button,\
-      textSize=40,\
-      text=\"*\",\
-      onClick=\"click\",\
-      layout_width=\"fill\",\
-      layout_height=\"fill\",\
-      background='#fffafafa',\
-      layout_weight=\"1.0\",\
-    },\
-  },\
-  {\
-    LinearLayout,\
-    layout_width=\"fill\",\
-    layout_height=\"fill\",\
-    layout_weight=\"1.0\",\
-    {\
-      Button,\
-      textSize=40,\
-      text=\"0\",\
-      onClick=\"click\",\
-      backgroundColor='#ffffffff',\
-      layout_width=\"fill\",\
-      layout_height=\"fill\",\
-      layout_weight=\"1.0\",\
-    },\
-    {\
-      Button,\
-      textSize=40,\
-      text=\".\",\
-      onClick=\"click\",\
-      layout_width=\"fill\",\
-      layout_height=\"fill\",\
-      background='#fffafafa',\
-      layout_weight=\"1.0\",\
-    },\
-    {\
-      Button,\
-      textSize=40,\
-      text=\"=\",\
-      textColor=\"#FFffffff\",\
-      onClick=\"enter\",\
-      layout_width=\"fill\",\
-      layout_height=\"fill\",\
-      background='#FF006BFF',\
-      layout_weight=\"1.0\",\
-    },\
-    {\
-      Button,\
-      textSize=40,\
-      text=\"/\",\
-      onClick=\"click\",\
-      layout_width=\"fill\",\
-      background='#fffafafa',\
-      layout_height=\"fill\",\
-      layout_weight=\"1.0\",\
-    },\
-  },\
-}\
-\
-activity.setContentView(loadlayout(layout))\
-\
-function click(v) local t=v.getText() if t==\"¡û\" then local i=input.getText().toString() input.setText(string.sub(i,1,-2)) else input.append(t) end\
-  local s,r=pcall(dostring,\"return \"..input.getText().toString())\
-  if s then\
-    if r then\
-      output.setText(tostring(r))\
-     else\
-      output.setText(\"\")\
-    end\
-  end\
-end\
-\
-function clear()\
-  input.setText(\"\")\
-  output.setText(\"\")\
-end\
-function up()\
-  input.setText(output.getText())\
-end\
-\
-function dostring(s)\
-  return assert(loadstring(s))()\
-end\
-\
-\
-function enter()\
-  local s,r=pcall(loadstring(\"return \"..input.getText().toString()))\
-  if s then\
-    if r then\
-      output.setText(tostring(r))\
-     else\
-      output.setText(\"\")\
-    end\
-   else\
-    output.setText(\"输入错误\")\
-  end\
-end\
-function 菜单()\
-  pop=PopupMenu(activity,endg)\
-  menu=pop.Menu\
-  menu.add(\"⌨     用输入法输入\").onMenuItemClick=function(a)\
-    --输入对话框（自定义布局对话框，带输入框的）\
-    InputLayout={\
-      LinearLayout;\
-      orientation=\"vertical\";--重力属性\
-      Focusable=true,--可聚焦\
-      FocusableInTouchMode=true,--可聚焦在触摸模式下，可变色\
-      {\
-        TextView;--文本控件\
-        id=\"Text\",\
-        layout_width='80%w';--文本宽度\
-        layout_marginTop='10dp';--布局顶距\
-        layout_marginLeft='3dp';--布局左距\
-        layout_gravity='center';--重力属性\
-        text='输入想要输入的内容：';--显示的文字\
-        textSize='15sp';--文字大小\
-      };\
-      {\
-        EditText;--编辑框控件\
-        id=\"edit\";\
-        layout_width='80%w';--编辑框宽度\
-        layout_marginTop='5dp';--布局顶距\
-        layout_gravity=\"center\",--重力属性\
-        Hint='请输入...';--设置编辑框为空时的提示文字\
-      };\
-    };\
-\
-    AlertDialog.Builder(this)\
-    .setTitle(\"用输入法输入\")--设置标题\
-    .setView(loadlayout(InputLayout))--设置布局\
-    .setPositiveButton(\"确定\",function(v)--设置积极按钮\
-      input.setText(edit.Text)\
-    end)\
-    .setNegativeButton(\"取消\",nil)--设置消极按钮\
-    .show()--显示弹窗\
-    import \"android.view.View$OnFocusChangeListener\"\
-    edit.setOnFocusChangeListener(OnFocusChangeListener{\
-      onFocusChange=function(v,hasFocus)\
-        if hasFocus then\
-          Text.setTextColor(0xFD009688)--当编辑框被点击时修改标题下的文本颜色\
-        end\
-      end})\
-  end\
-  pop.show()--显示@小米～\
-end\
---activity.setTheme(android.R.style.Theme_Material_NoActionBar)\
-\
-\
-" ;
-              ["name"]	= "计算器" ;
-              } ;
-          [14]	= {
-              ["icon"]	= "drawable/compass.png" ;
-              ["onClick"]	= "--&收集自快乐小程序\
-layout={\
-  LinearLayout;\
-  orientation=\"vertical\";\
-  layout_width=\"fill\";\
-  layout_height=\"fill\";\
-  id=\"coe\",\
-  gravity=\"center\";\
-  {\
-    TextView;\
-    id=\"dir\";\
-    layout_width=\"fill\";\
-    textColor=\"#0090FF\";\
-    layout_height=\"7%h\";\
-    textSize=\"25dp\";\
-    gravity=\"center\";\
-    text=\"南\";\
-  };\
-  {\
-\
-\
-    LinearLayout;\
-    id=\"cors\";\
-    orientation=\"vertical\";\
-    layout_width=\"70%w\";\
-    gravity=\"center\";\
-    layout_height=\"70%w\";\
-    {\
-      LinearLayout;\
-      layout_gravity=\"center\";\
-      orientation=\"vertical\";\
-      id=\"cor\";\
-      layout_width=\"50%w\";\
-      gravity=\"start\";\
-      layout_height=\"50%w\";\
-      {\
-        TextView;\
-        layout_gravity=\"center\";\
-        textColor=\"#0088ff\";\
-        id=\"n\";\
-        textSize=\"20dp\";\
-        gravity=\"center\";\
-        text=\"N\";\
-      };\
-      {\
-        LinearLayout;\
-        layout_width=\"fill\";\
-        layout_marginTop=\"6%h\";\
-        layout_height=\"8%h\";\
-        {\
-          TextView;\
-          id=\"w\";\
-          textColor=\"0xff0088ff\";\
-          paddingLeft=\"6dp\";\
-          textSize=\"20dp\";\
-          gravity=\"left\";\
-          text=\"W\";\
-        };\
-        {\
-          TextView;\
-          layout_width=\"16.5%w\";\
-          layout_marginLeft=\"9%w\";\
-          textColor=\"0xff0088ff\";\
-          layout_height=\"8%h\";\
-          textSize=\"27dp\";\
-          gravity=\"center\";\
-          text=\"↑\";\
-        };\
-        {\
-          TextView;\
-          layout_marginRight=\"6dp\";\
-          id=\"e\";\
-          layout_marginLeft=\"11%w\";\
-          textColor=\"0xff0088ff\";\
-          textSize=\"20dp\";\
-          layout_width=\"6%w\";\
-          gravity=\"right\";\
-          text=\"E\";\
-        };\
-      };\
-      {\
-        TextView;\
-        layout_gravity=\"center\";\
-        layout_marginTop=\"6%h\";\
-        textColor=\"#0088ff\";\
-        id=\"s\";\
-        textSize=\"20dp\";\
-        gravity=\"center\";\
-        text=\"S\";\
-\
-      };\
-    };\
-\
-  };\
-  {\
-    TextView;\
-    id=\"deg\";\
-    textColor=\"0xff0088ff\";\
-    layout_height=\"8%h\";\
-    textSize=\"27dp\";\
-    gravity=\"center\";\
-    text=\"0°\";\
-  };\
-};\
-\
-activity.setContentView(loadlayout(layout))\
-\
-\
-import \"android.content.Context\"\
-import \"android.hardware.SensorManager\"\
-import \"android.hardware.SensorEventListener\"\
-import \"android.hardware.Sensor\"\
-dirs=\"\"\
-FPS=50\
-磁场=0\
-传感器 = activity.getSystemService(Context.SENSOR_SERVICE)\
-local 磁场传感器 = 传感器.getDefaultSensor(Sensor.TYPE_ORIENTATION)\
-传感器.registerListener(SensorEventListener({\
-  onSensorChanged=function(event)\
-    磁场 = event.values[0]\
-  end,nil}), 磁场传感器, SensorManager.SENSOR_DELAY_NORMAL)\
-function CircleButton(view,InsideColor,radiu,da,db)\
-  import \"android.graphics.drawable.GradientDrawable\"\
-  drawable = GradientDrawable()\
-  drawable.setShape(GradientDrawable.RECTANGLE)\
-  drawable.setStroke(10, 0xff0088ff,da,db)\
-  drawable.setColor(InsideColor)\
-  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
-  drawable.setGradientType(1)\
-  view.setBackgroundDrawable(drawable)\
-end\
-角度=activity.getWidth()\
-控件id=cor\
-控件颜色=0xFFFFFFFF\
-CircleButton(控件id,控件颜色,角度,2,2)\
-CircleButton(cors,控件颜色,角度,(activity.getWidth()*0.8)/2,10)\
-tick=Ticker()\
-tick.Period=1000/FPS\
-tick.onTick=function()\
-  if 磁场>165 and 磁场<195 then\
-    dirs=\"南\"\
-   elseif 磁场>195 and 磁场<255 then\
-    dirs=\"西南\"\
-   elseif 磁场>255 and 磁场<285 then\
-    dirs=\"西\"\
-   elseif 磁场>285 and 磁场<345 then\
-    dirs=\"西北\"\
-   elseif 磁场>345 or 磁场<15 then\
-    dirs=\"北\"\
-   elseif 磁场>15 and 磁场<75 then\
-    dirs=\"东北\"\
-   elseif 磁场>75 and 磁场<105 then\
-    dirs=\"东\"\
-   elseif 磁场>105 and 磁场<165 then\
-    dirs=\"东南\"\
-  end\
-  dir.setText(dirs)\
-  cors.setRotation(360-磁场)\
-  w.setRotation(磁场)\
-  s.setRotation(磁场)\
-  n.setRotation(磁场)\
-  e.setRotation(磁场)\
-  deg.setText(tostring(tointeger(磁场)..\"°\"))\
-  --Toast.makeText(activity,tostring(磁场..\"°\"),Toast.LENGTH_SHORT).show()\
-end\
-tick.start()\
-\
-function onDestroy()\
-  tick.stop()\
-  传感器.unregisterListener(Listener);\
-end\
-\
-function onTouchEvent(event)\
-  ac=event.action\
-  if ac==2 or ac==0 then\
-    x=event.X\
-    y=event.Y\
-    coe.setRotationX((activity.getHeight()-y)/30)\
-    coe.setRotationY(x/30)\
-   elseif ac==1 then\
-    coe.setRotationX(0)\
-    coe.setRotationY(0)\
-  end\
-end\
---coe.setRotationX(activity.getHeight()*0.33)" ;
-              ["name"]	= "指南针" ;
-              } ;
-          [15]	= {
-              ["icon"]	= "drawable/minus_network.png" ;
-              ["onClick"]	= "加载网页(\"http://tool.uixsj.cn/s/lucky-draw-num/\")" ;
-              ["name"]	= "抽签" ;
-              } ;
-          [16]	= {
-              ["icon"]	= "drawable/timer.png" ;
-              ["onClick"]	= "hh={\
-  LinearLayout,\
-  orientation=\"vertical\",\
-  layout_width=\"fill\",\
-  layout_height=\"fill\",\
-  gravity=\"center\",\
-  {\
-    TextView,\
-    text=\"hello AndroLua+\",\
-    layout_width=\"fill\",\
-    layout_height=\"fill\",\
-    id=\"t\",\
-  },\
-}\
-activity.setContentView(loadlayout(hh))\
-\
-\
-require \"import\"\
-import \"android.app.*\"\
-import \"android.os.*\"\
-import \"android.widget.*\"\
-import \"android.view.*\"\
-import \"com.cool.time.ClockDrawable\"\
---activity.setTitle('AndroLua+')\
---activity.setTheme(android.R.style.Theme_Holo_Light)\
-t.setBackground(ClockDrawable())" ;
-              ["name"]	= "圆形时钟" ;
-              } ;
-          [17]	= {
-              ["icon"]	= "drawable/timelapse.png" ;
-              ["onClick"]	= "--时间显示\
---点击链接加入群聊【Androidlua交流群】：https://jq.qq.com/?_wv=1027&k=5VuTWLX\
---点击链接加入群聊【MIUI&轻函&软件开发交流群】：https://jq.qq.com/?_wv=1027&k=5H5GRUu\
-import \"android.app.*\"\
-import \"android.os.*\"\
-import \"android.widget.*\"\
-import \"android.view.*\"\
-activity.setRequestedOrientation(0);\
-local cc=0\
-layout={\
-  FrameLayout,\
-\
-  {\
-    TextView,\
-    layout_width=\"fill\",\
-    layout_height=\"fill\",\
-    textColor=\"#2196F3\",\
-    textSize=\"112dp\",\
-    gravity=\"center\",\
-    id=\"time\",\
-  },\
-  {\
-    TextView,\
-    textColor=次要文字色,\
-    textSize=\"18dp\",\
-    layout_gravity=\"bottom|center\",\
-    id=\"date\",\
-    layout_marginBottom=\"36dp\",\
-  },\
-}\
-activity.setContentView(loadlayout(layout))\
-\
-task(500,function()\
-  if\
-    time.text==\"\"\
-    then\
-    onResume()\
-  end\
-end)\
-function onResume()\
-\
-  t=Ticker()\
-  t.setPeriod(100)\
-  t.onTick=function()\
-    time.text=os.date(\"%H:%M:%S\")\
-    date.text=os.date(\"%A · %B %d\")\
-  end\
-  t.start()\
-end\
-\
-function onPause()\
-  t.stop()\
-end" ;
-              ["name"]	= "全屏时间" ;
-              } ;
-          [18]	= {
-              ["icon"]	= "drawable/controller_xbox.png" ;
-              ["onClick"]	= "加载网页(\"https://akirarika.github.io/mikutap/\")" ;
-              ["name"]	= "减压放松" ;
-              } ;
-          } ;
-      } ;
-  ["global_js"]	= "" ;
-  ["web_control"]	= {
-      [1]	= {
-          ["remove_element"]	= "envelope" ;
-          ["url"]	= "m.baidu.com" ;
-          ["js"]	= "" ;
-          } ;
-      [2]	= {
-          ["remove_element"]	= "navbar-header,sr-only,icon-bar,navbar-brand,text-center text-muted credit" ;
-          ["url"]	= "tool.uixsj.cn" ;
-          ["js"]	= "" ;
-          } ;
-      [3]	= {
-          ["remove_element"]	= "navbar,el-tooltip btn item focusing,eva eva-menu-outline,navbar,el-tooltip btn item focusing,eva eva-menu-outline,el-tooltip type-icon vipDate focusing,theme-btn,nya-title,main" ;
-          ["url"]	= "tools.miku.ac" ;
-          ["js"]	= "" ;
-          } ;
-      } ;
-  ["fltBtn"]	= {
-      ["显示"]	= false ;
-      ["点击事件"]	= "\
-items={\"🔍   百度搜索\",\"🌎   访问网址\",\"👨   网页分享\",\"⬆️   返回顶部\",\"🔃   刷新网页\",\"➕   加入收藏\",\"🗂    打开收藏\",\"💿   复制链接\",\"🔨   切换ua\",\"🏃   退出程序\"}\
-AlertDialog.Builder(this)\
-.setTitle(\"🌎   菜单\")\
-.setNegativeButton(\"显示/隐藏顶栏\",function(v)\
-if barisshow == 0 then\
-  --状态栏\
-  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
-  --顶栏\
-  toolbar.parent.setVisibility(View.GONE);\
-  barisshow = 1;\
-  else\
-  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
-  toolbar.parent.setVisibility(View.VISIBLE);\
-  barisshow = 0;\
-  end\
-end)\
-.setNeutralButton(\"显示/隐藏悬浮球\",function(v)--设置中立按钮\
-if barisshow == 0 then\
-      fltBtn.setVisibility(View.GONE)\
-      barisshow = 1;\
-  else\
-      fltBtn.setVisibility(View.VISIBLE)\
-   barisshow = 0;\
-   end\
-    end)\
-.setItems(items,{onClick=function(l,v)\
-    if v==0 then\
- InputLayout={\
-        LinearLayout;\
-        orientation=\"vertical\";\
-        Focusable=true,\
-        FocusableInTouchMode=true,\
-        {\
-          TextView;\
-          id=\"Prompt\",\
-          textSize=\"15sp\",\
-          layout_marginTop=\"10dp\";\
-          layout_marginLeft=\"3dp\",\
-          layout_width=\"80%w\";\
-          layout_gravity=\"center\",\
-          text=\"百度搜索\"\
-        };\
-        {\
-\
-          EditText;\
-          hint=\"关键字\";\
-          layout_marginTop=\"5dp\";\
-          layout_width=\"80%w\";\
-          layout_gravity=\"center\",\
-          id=\"edit\";\
-              };\
-      };\
-\
-      AlertDialog.Builder(this)\
-      .setTitle(\"百度搜索\")\
-      .setView(loadlayout(InputLayout))\
-      .setPositiveButton(\"确定\",{onClick=function(v)\
-          \
-  加载网页(\"http://m.baidu.com/s?word=\"..edit.text)\
-        end})\
-      .setNegativeButton(\"取消\",nil)\
-      .show()\
-      function 输入框动画(id,位置Z,位置Y,起始点,动画时间)\
-        import \"android.view.animation.*\"--导入\
-        import \"java.lang.Math\"--导入\
-        import \"com.androlua.Ticker\"--导入\
-        --当有参数反馈时，则自动进行下列动画\
-        t=Ticker()\
-         t.Period=0\
-        t.start()\
-        t.onTick=function()\
-          t.stop()--停止\
-          --扩散原理和我发的揭露动画原理相同，利用圆形扩散\
-          animator = ViewAnimationUtils.createCircularReveal(edit,位置Z,位置Y,起始点,edit.getWidth()); \
-          animator.setInterpolator(AccelerateInterpolator());\
-          animator.setDuration(2000); \
-          animator.start(); \
-        end\
-      end\
-\
-\
-\
-\
-      --输入框监听事件\
-      edit.setOnFocusChangeListener{\
-        --当焦点发生时\
-        onFocusChange=function( v, hasFocus)\
-          --如果有焦点，然后\
-          if hasFocus==true then\
-              --返回输入框动画参数\
-            --输入框动画(text,text.width/2,0,0,0)--效果1\
-            输入框动画(text,0,0,0,700)--效果2\
-\
-            --有焦点时，设置控件text的高度为5，线条变粗，手册有相关代码\
-            gd=Prompt.getLayoutParams()\
-            gd.height=2\
-            Prompt.setLayoutParams(gd)--edit线条变粗\
-                      else\
-\
-            --没有焦点时，设置控件text的原来的高度为3，线条变细，手册有相关代码\
-            gd=text.getLayoutParams()\
-            gd.height=1\
-            Prompt.setLayoutParams(gd)\
-          end\
-        end}\
-    end\
-    if v==1 then\
-   InputLayout={\
-  LinearLayout;\
-  orientation=\"vertical\";\
-  Focusable=true,\
-  FocusableInTouchMode=true,\
-  {\
-    TextView;id=\"Prompt\",\
-    textSize=\"15sp\",\
-    layout_marginTop=\"10dp\";\
-    layout_marginLeft=\"3dp\",\
-    layout_width=\"80%w\";\
-    layout_gravity=\"center\",\
-    text=\"请输入网址：\";\
-  };\
-  {\
-    EditText;\
-    hint=\"记得带上http://\";\
-    layout_marginTop=\"5dp\";\
-    layout_width=\"80%w\";\
-    layout_gravity=\"center\",\
-    id=\"edit\";\
-  };\
-};\
-\
-AlertDialog.Builder(this)\
-.setTitle(\"粘贴访问\")\
-.setView(loadlayout(InputLayout))\
-.setPositiveButton(\"访问\",{onClick=function(v)\
-   加载网页(edit.Text)\
-    --弹出消息(edit.Text);\
-   end}).setNegativeButton(\"取消\",nil)\
-.show()\
-import \"android.view.View$OnFocusChangeListener\"\
-edit.setOnFocusChangeListener(OnFocusChangeListener{ \
-  onFocusChange=function(v,hasFocus)\
-    if hasFocus then\
-      Prompt.setTextColor(0xFD009688)\
-    end\
-  end})\
-    end\
-    if v==2 then\
-分享文本(webView.getUrl())\
-\
-\
-    end\
-    if v==3 then\
-返回网页顶部()\
-    end\
-      if v==4 then\
-刷新网页()\
-    end\
-\
-\
-    if v==5 then\
---加入收藏\13\
-add_fav()\13\
-\
-    end\
-    if v==6 then\
---打开收藏\13\
-show_fav()\13\
-\
-    end\
-    if v==7 then\
---复制当前页面链接\
-弹出消息(\"已复制当前页面链接\")\
-复制文本(webView.getUrl())\
-    end\
-  if v==8 then\
-items={}\
-table.insert(items,\"自定义UA\")\
-table.insert(items,\"手机模式\")\
-table.insert(items,\"电脑模式\")\
-table.insert(items,\"塞班模式\")\
-table.insert(items,\"通用模式\")\
-table.insert(items,\"默认模式\")\
-AlertDialog.Builder(this)\
-.setTitle(\"请选择需要切换的UA\")\
-.setItems(items,{onClick=function(l,v) \
-if items[v+1]==\"手机模式\" then\
-webView.getSettings().setUserAgentString(\"Mozilla/5.0 (Linux; Android 7.1.1; OD105 Build/NMF26F; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043409 Safari/537.36 MicroMessenger/6.5.13.1100 NetType/WIFI Language/zh_CN\");\
-刷新网页();\
-elseif items[v+1]==\"电脑模式\" then\
-webView.getSettings().setUserAgentString(\"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36\");\
-刷新网页();\
-elseif items[v+1]==\"自定义UA\" then\
-InputLayout=\
-{\
-  LinearLayout;\
-  orientation=\"vertical\";\
-  Focusable=true,\
-  FocusableInTouchMode=true,\
-  {\
-    TextView;\
-    id=\"Prompt\",\
-    textSize=\"18sp\",\
-    layout_marginTop=\"10dp\";\
-    --layout_marginLeft=\"3dp\",\
-    layout_width=\"80%w\";\
-    layout_gravity=\"center\",\
-    text=\"请输入UA代码：\";\
-    };\
-  {\
-    EditText;\
-    hint=\"这里输入UA代码\";\
-    text=a;\
-    layout_marginTop=\"5dp\";\
-    layout_width=\"80%w\";\
-    layout_gravity=\"center\",\
-    textSize=\"15sp\",\
-    id=\"UA\";\
-    };\
-  };\
-AlertDialog.Builder(this)\
-.setTitle(\"自定义UA\")\
-.setView(loadlayout(InputLayout))\
-.setPositiveButton(\"确定\",{onClick=function(v)\
-    webView.getSettings().setUserAgentString(UA.Text);\
-    a=UA.Text\
-    end})\
-.setNegativeButton(\"取消\",nil)\
-.show()\
-import \"android.view.View$OnFocusChangeListener\"\
-UA.setOnFocusChangeListener(OnFocusChangeListener{\
-  onFocusChange=function(v,hasFocus)\
-    if hasFocus then\
-      Prompt.setTextColor(0xFD009688)\
-      end\
-    end})\
-elseif items[v+1]==\"超级模式\" then\
-webView.getSettings().setUserAgentString(\"Mozilla/5.0 Dalvik/2 ( Linux; U; NEM-AL10 Build/HONORNEM-AL10;Youku;7.1.4;) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Safari/537.36 (Baidu; P1 6.0) iPhone/7.1 Android/8.0 baiduboxapp/2.7.0.10\");\
-刷新网页();\
-elseif items[v+1]==\"备用模式\" then\
-webView.getSettings().setUserAgentString(\"Mozilla/5.0 (Linux; U; Android 8.0.0; zh-CN; ONEPLUS A5000 Build/OPR6.170623.013) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/40.0.2214.89 UCBrowser/11.6.4.950 UWS/2.11.0.44 Mobile Safari/537.36 AlipayChannelId/5136 UCBS/2.11.0.44_180123134534 NebulaSDK/1.8.100112 Nebula AlipayDefined(nt:WIFI,ws:431|0|2.5062501,ac:sp) AliApp(AP/10.1.15.463) AlipayClient/10.1.15.463 Language/zh-Hans useStatusBar/true\");\
-刷新网页();\
-elseif items[v+1]==\"塞班模式\" then\
-webView.getSettings().setUserAgentString(\"Mozilla/5.0 (Symbian/3; Series60/5.2 NokiaN8-00/012.002; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/533.4 (KHTML, like Gecko) NokiaBrowser/7.3.0 Mobile Safari/533.4 3gpp-gba\");\
-刷新网页();\
-elseif items[v+1]==\"默认模式\" then\
-webView.getSettings().setUserAgentString(\"Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Quark/3.8.4.128 UCBrowser/12.0.4.985 baiduboxapp/3.2.5.10 MQQBrowser/7.2.1.2965 XiaoMi/MiuiBrowser/11.9.2 SearchCraft/2.0.0 ALiSearchApp/2.4 AliApp(TB/9.5.6) BingWeb/6.9.6 3gpp-gba\");\
-刷新网页();\
-elseif items[v+1]==\"通用模式\" then\
-webView.getSettings().setUserAgentString(\"Mozilla/5.0 (Linux; U; Android 6.0; zh-CN; vivo X21 Build/HEXCNFN6003006081S) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 Quark/2.4.3.987 Mobile Safari/537.36\");\
-刷新网页();\
-end\
-end})\
-.show()\
-    end\
-  if v==9 then\
-退出页面()\
-    end\
-  end})\
-.show()\
-  \
-  \
-\
-\
-" ;
-      ["图标"]	= "" ;
-      } ;
   ["events"]	= {
-      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
-\
---接收参数\
-浏览器对象,网页链接=..." ;
       ["程序启动"]	= "--程序启动时会执行的事件\
 \
 \
@@ -3047,64 +1379,43 @@ function onKeyDown(key,event)\
 end\
 \
 " ;
+      ["收到新标题"]	= "" ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
       ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
 \
 --接收参数\
 浏览器对象,网页链接=...\
 refresh.setRefreshing(false)" ;
-      ["收到新标题"]	= "" ;
       } ;
-  ["switch"]	= {
-      ["显示状态栏"]	= false ;
-      ["启用启动图"]	= false ;
-      ["横屏"]	= false ;
-      ["支持滑动页面"]	= false ;
-      } ;
-  ["web"]	= {
-      ["customUa"]	= "Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Quark/3.8.4.128 UCBrowser/12.0.4.985 baiduboxapp/3.2.5.10 MQQBrowser/7.2.1.2965 XiaoMi/MiuiBrowser/11.9.2 SearchCraft/2.0.0 ALiSearchApp/2.4 AliApp(TB/9.5.6) BingWeb/6.9.6 3gpp-gba" ;
-      ["浏览器用户标识"]	= "自定义" ;
-      ["网页沉浸"]	= true ;
-      ["启用长按菜单"]	= true ;
-      ["启动网页"]	= "https://xiaobaizzz.gitee.io/liulanqizhuye/viaBrowser/" ;
-      ["支持打开外部应用"]	= false ;
-      ["启用进度条"]	= true ;
-      } ;
-  ["colors"]	= {
-      ["悬浮按钮图标"]	= "#ffffffff" ;
-      ["侧滑栏列表文字"]	= "#ff5589bb" ;
-      ["顶栏部件触摸"]	= "#22ffffff" ;
-      ["搜索栏背景"]	= "#ffffffff" ;
-      ["顶栏部件"]	= "#ff575757" ;
-      ["侧滑栏背景"]	= "#ffffffff" ;
-      ["搜索栏部件"]	= "#ff888888" ;
-      ["顶栏"]	= "#ffffffff" ;
-      ["悬浮按钮"]	= "#ff5d99ff" ;
-      ["搜索栏提示文字"]	= "#80000000" ;
-      ["侧滑栏列表图标"]	= "#ff757575" ;
-      ["导航栏"]	= "#ff2c2e43" ;
-      ["进度条"]	= "#4b5dc6ff" ;
-      ["搜索栏部件触摸"]	= "#44000000" ;
+  ["view_attribute"]	= {
+      ["搜索栏圆角弧度"]	= "30dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏高度"]	= "40dp" ;
+      ["侧滑栏宽度"]	= "100dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "愿世间烦恼与你无缘，愿一切美好常伴人间" ;
       } ;
   ["toolbar"]	= {
-      ["启用搜索功能"]	= true ;
-      ["输入栏模式"]	= true ;
-      ["icon_btns"]	= {
-          } ;
+      ["搜索URL"]	= "http://www.baidu.com/s?wd=%s" ;
       ["搜索框提示"]	= "愿世间烦恼与你无缘，愿一切美好常伴人间" ;
       ["menus"]	= {
           [8]	= {
-              ["onClick"]	= "退出页面()" ;
               ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
               } ;
           [1]	= {
+              ["name"]	= "其他浏览器打开" ;
               ["onClick"]	= "import \"android.content.Intent\"\
 import \"android.net.Uri\"\
 url=webView.getUrl()\
 viewIntent = Intent(\"android.intent.action.VIEW\",Uri.parse(url))\
 activity.startActivity(viewIntent)" ;
-              ["name"]	= "其他浏览器打开" ;
               } ;
           [2]	= {
+              ["name"]	= "自定义侧滑背景" ;
               ["onClick"]	= "import \"android.content.Intent\"\
 local intent= Intent(Intent.ACTION_PICK)\
 intent.setType(\"image/*\")\
@@ -3128,15 +1439,15 @@ function onActivityResult(requestCode,resultCode,intent)\
     setdata(\"fileSrc\",fileSrc)\
   end\
 end--nirenr" ;
-              ["name"]	= "自定义侧滑背景" ;
               } ;
           [3]	= {
+              ["name"]	= "恢复默认背景" ;
               ["onClick"]	= "c = this.getSharedPreferences(\"PicCustom\", Activity.MODE_PRIVATE) \
 c.edit().clear().commit()\
 background.setImageBitmap(loadbitmap(\"background.jpg\"))" ;
-              ["name"]	= "恢复默认背景" ;
               } ;
           [4]	= {
+              ["name"]	= "广告拦截" ;
               ["onClick"]	= "\
 sound={\
   LinearLayout,\
@@ -3351,13 +1662,13 @@ else\
   弹出消息(\"已连接云广告拦截服务\")\
 end\
 end)" ;
-              ["name"]	= "广告拦截" ;
               } ;
           [5]	= {
-              ["onClick"]	= "夜间模式.切换()" ;
               ["name"]	= "夜间模式" ;
+              ["onClick"]	= "夜间模式.切换()" ;
               } ;
           [6]	= {
+              ["name"]	= "设置" ;
               ["onClick"]	= "items={\"⬛   渐变色\",\"🔨   选择对话框主题\",\"↩️   屏幕方向手动切换\",\"↪️   屏幕方向跟随系统\",\"🔨   清理缓存\"}\
 AlertDialog.Builder(this)\
 .setTitle(\"🛠   程序设置\")\
@@ -3928,9 +2239,9 @@ end)\
 end\
   end})\
 .show()" ;
-              ["name"]	= "设置" ;
               } ;
           [7]	= {
+              ["name"]	= "关于" ;
               ["onClick"]	= "--程序启动时会执行的事件\
 --程序启动时会执行的事件\
 toolbarParent.setBackgroundColor(Color.parseColor(\"#ff4c9afa\"));--顶栏颜色\
@@ -4240,9 +2551,1698 @@ LinearLayout,\
 --作者音六网络科技\
 --QQ1785333334\
 --请勿删除版权以表示对作者的尊敬" ;
-              ["name"]	= "关于" ;
               } ;
           } ;
-      ["搜索URL"]	= "http://www.baidu.com/s?wd=%s" ;
+      ["启用搜索功能"]	= true ;
+      ["icon_btns"]	= {
+          } ;
+      ["输入栏模式"]	= true ;
+      } ;
+  ["web"]	= {
+      ["浏览器用户标识"]	= "自定义" ;
+      ["启动网页"]	= "https://xiaobaizzz.gitee.io/liulanqizhuye/viaBrowser/" ;
+      ["启用长按菜单"]	= true ;
+      ["customUa"]	= "Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Quark/3.8.4.128 UCBrowser/12.0.4.985 baiduboxapp/3.2.5.10 MQQBrowser/7.2.1.2965 XiaoMi/MiuiBrowser/11.9.2 SearchCraft/2.0.0 ALiSearchApp/2.4 AliApp(TB/9.5.6) BingWeb/6.9.6 3gpp-gba" ;
+      ["网页沉浸"]	= true ;
+      ["启用进度条"]	= true ;
+      ["支持打开外部应用"]	= false ;
+      } ;
+  ["fltBtn"]	= {
+      ["点击事件"]	= "\
+items={\"🔍   百度搜索\",\"🌎   访问网址\",\"👨   网页分享\",\"⬆️   返回顶部\",\"🔃   刷新网页\",\"➕   加入收藏\",\"🗂    打开收藏\",\"💿   复制链接\",\"🔨   切换ua\",\"🏃   退出程序\"}\
+AlertDialog.Builder(this)\
+.setTitle(\"🌎   菜单\")\
+.setNegativeButton(\"显示/隐藏顶栏\",function(v)\
+if barisshow == 0 then\
+  --状态栏\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+  else\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+  end\
+end)\
+.setNeutralButton(\"显示/隐藏悬浮球\",function(v)--设置中立按钮\
+if barisshow == 0 then\
+      fltBtn.setVisibility(View.GONE)\
+      barisshow = 1;\
+  else\
+      fltBtn.setVisibility(View.VISIBLE)\
+   barisshow = 0;\
+   end\
+    end)\
+.setItems(items,{onClick=function(l,v)\
+    if v==0 then\
+ InputLayout={\
+        LinearLayout;\
+        orientation=\"vertical\";\
+        Focusable=true,\
+        FocusableInTouchMode=true,\
+        {\
+          TextView;\
+          id=\"Prompt\",\
+          textSize=\"15sp\",\
+          layout_marginTop=\"10dp\";\
+          layout_marginLeft=\"3dp\",\
+          layout_width=\"80%w\";\
+          layout_gravity=\"center\",\
+          text=\"百度搜索\"\
+        };\
+        {\
+\
+          EditText;\
+          hint=\"关键字\";\
+          layout_marginTop=\"5dp\";\
+          layout_width=\"80%w\";\
+          layout_gravity=\"center\",\
+          id=\"edit\";\
+              };\
+      };\
+\
+      AlertDialog.Builder(this)\
+      .setTitle(\"百度搜索\")\
+      .setView(loadlayout(InputLayout))\
+      .setPositiveButton(\"确定\",{onClick=function(v)\
+          \
+  加载网页(\"http://m.baidu.com/s?word=\"..edit.text)\
+        end})\
+      .setNegativeButton(\"取消\",nil)\
+      .show()\
+      function 输入框动画(id,位置Z,位置Y,起始点,动画时间)\
+        import \"android.view.animation.*\"--导入\
+        import \"java.lang.Math\"--导入\
+        import \"com.androlua.Ticker\"--导入\
+        --当有参数反馈时，则自动进行下列动画\
+        t=Ticker()\
+         t.Period=0\
+        t.start()\
+        t.onTick=function()\
+          t.stop()--停止\
+          --扩散原理和我发的揭露动画原理相同，利用圆形扩散\
+          animator = ViewAnimationUtils.createCircularReveal(edit,位置Z,位置Y,起始点,edit.getWidth()); \
+          animator.setInterpolator(AccelerateInterpolator());\
+          animator.setDuration(2000); \
+          animator.start(); \
+        end\
+      end\
+\
+\
+\
+\
+      --输入框监听事件\
+      edit.setOnFocusChangeListener{\
+        --当焦点发生时\
+        onFocusChange=function( v, hasFocus)\
+          --如果有焦点，然后\
+          if hasFocus==true then\
+              --返回输入框动画参数\
+            --输入框动画(text,text.width/2,0,0,0)--效果1\
+            输入框动画(text,0,0,0,700)--效果2\
+\
+            --有焦点时，设置控件text的高度为5，线条变粗，手册有相关代码\
+            gd=Prompt.getLayoutParams()\
+            gd.height=2\
+            Prompt.setLayoutParams(gd)--edit线条变粗\
+                      else\
+\
+            --没有焦点时，设置控件text的原来的高度为3，线条变细，手册有相关代码\
+            gd=text.getLayoutParams()\
+            gd.height=1\
+            Prompt.setLayoutParams(gd)\
+          end\
+        end}\
+    end\
+    if v==1 then\
+   InputLayout={\
+  LinearLayout;\
+  orientation=\"vertical\";\
+  Focusable=true,\
+  FocusableInTouchMode=true,\
+  {\
+    TextView;id=\"Prompt\",\
+    textSize=\"15sp\",\
+    layout_marginTop=\"10dp\";\
+    layout_marginLeft=\"3dp\",\
+    layout_width=\"80%w\";\
+    layout_gravity=\"center\",\
+    text=\"请输入网址：\";\
+  };\
+  {\
+    EditText;\
+    hint=\"记得带上http://\";\
+    layout_marginTop=\"5dp\";\
+    layout_width=\"80%w\";\
+    layout_gravity=\"center\",\
+    id=\"edit\";\
+  };\
+};\
+\
+AlertDialog.Builder(this)\
+.setTitle(\"粘贴访问\")\
+.setView(loadlayout(InputLayout))\
+.setPositiveButton(\"访问\",{onClick=function(v)\
+   加载网页(edit.Text)\
+    --弹出消息(edit.Text);\
+   end}).setNegativeButton(\"取消\",nil)\
+.show()\
+import \"android.view.View$OnFocusChangeListener\"\
+edit.setOnFocusChangeListener(OnFocusChangeListener{ \
+  onFocusChange=function(v,hasFocus)\
+    if hasFocus then\
+      Prompt.setTextColor(0xFD009688)\
+    end\
+  end})\
+    end\
+    if v==2 then\
+分享文本(webView.getUrl())\
+\
+\
+    end\
+    if v==3 then\
+返回网页顶部()\
+    end\
+      if v==4 then\
+刷新网页()\
+    end\
+\
+\
+    if v==5 then\
+--加入收藏\13\
+add_fav()\13\
+\
+    end\
+    if v==6 then\
+--打开收藏\13\
+show_fav()\13\
+\
+    end\
+    if v==7 then\
+--复制当前页面链接\
+弹出消息(\"已复制当前页面链接\")\
+复制文本(webView.getUrl())\
+    end\
+  if v==8 then\
+items={}\
+table.insert(items,\"自定义UA\")\
+table.insert(items,\"手机模式\")\
+table.insert(items,\"电脑模式\")\
+table.insert(items,\"塞班模式\")\
+table.insert(items,\"通用模式\")\
+table.insert(items,\"默认模式\")\
+AlertDialog.Builder(this)\
+.setTitle(\"请选择需要切换的UA\")\
+.setItems(items,{onClick=function(l,v) \
+if items[v+1]==\"手机模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 (Linux; Android 7.1.1; OD105 Build/NMF26F; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043409 Safari/537.36 MicroMessenger/6.5.13.1100 NetType/WIFI Language/zh_CN\");\
+刷新网页();\
+elseif items[v+1]==\"电脑模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36\");\
+刷新网页();\
+elseif items[v+1]==\"自定义UA\" then\
+InputLayout=\
+{\
+  LinearLayout;\
+  orientation=\"vertical\";\
+  Focusable=true,\
+  FocusableInTouchMode=true,\
+  {\
+    TextView;\
+    id=\"Prompt\",\
+    textSize=\"18sp\",\
+    layout_marginTop=\"10dp\";\
+    --layout_marginLeft=\"3dp\",\
+    layout_width=\"80%w\";\
+    layout_gravity=\"center\",\
+    text=\"请输入UA代码：\";\
+    };\
+  {\
+    EditText;\
+    hint=\"这里输入UA代码\";\
+    text=a;\
+    layout_marginTop=\"5dp\";\
+    layout_width=\"80%w\";\
+    layout_gravity=\"center\",\
+    textSize=\"15sp\",\
+    id=\"UA\";\
+    };\
+  };\
+AlertDialog.Builder(this)\
+.setTitle(\"自定义UA\")\
+.setView(loadlayout(InputLayout))\
+.setPositiveButton(\"确定\",{onClick=function(v)\
+    webView.getSettings().setUserAgentString(UA.Text);\
+    a=UA.Text\
+    end})\
+.setNegativeButton(\"取消\",nil)\
+.show()\
+import \"android.view.View$OnFocusChangeListener\"\
+UA.setOnFocusChangeListener(OnFocusChangeListener{\
+  onFocusChange=function(v,hasFocus)\
+    if hasFocus then\
+      Prompt.setTextColor(0xFD009688)\
+      end\
+    end})\
+elseif items[v+1]==\"超级模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 Dalvik/2 ( Linux; U; NEM-AL10 Build/HONORNEM-AL10;Youku;7.1.4;) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Safari/537.36 (Baidu; P1 6.0) iPhone/7.1 Android/8.0 baiduboxapp/2.7.0.10\");\
+刷新网页();\
+elseif items[v+1]==\"备用模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 (Linux; U; Android 8.0.0; zh-CN; ONEPLUS A5000 Build/OPR6.170623.013) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/40.0.2214.89 UCBrowser/11.6.4.950 UWS/2.11.0.44 Mobile Safari/537.36 AlipayChannelId/5136 UCBS/2.11.0.44_180123134534 NebulaSDK/1.8.100112 Nebula AlipayDefined(nt:WIFI,ws:431|0|2.5062501,ac:sp) AliApp(AP/10.1.15.463) AlipayClient/10.1.15.463 Language/zh-Hans useStatusBar/true\");\
+刷新网页();\
+elseif items[v+1]==\"塞班模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 (Symbian/3; Series60/5.2 NokiaN8-00/012.002; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/533.4 (KHTML, like Gecko) NokiaBrowser/7.3.0 Mobile Safari/533.4 3gpp-gba\");\
+刷新网页();\
+elseif items[v+1]==\"默认模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Quark/3.8.4.128 UCBrowser/12.0.4.985 baiduboxapp/3.2.5.10 MQQBrowser/7.2.1.2965 XiaoMi/MiuiBrowser/11.9.2 SearchCraft/2.0.0 ALiSearchApp/2.4 AliApp(TB/9.5.6) BingWeb/6.9.6 3gpp-gba\");\
+刷新网页();\
+elseif items[v+1]==\"通用模式\" then\
+webView.getSettings().setUserAgentString(\"Mozilla/5.0 (Linux; U; Android 6.0; zh-CN; vivo X21 Build/HEXCNFN6003006081S) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 Quark/2.4.3.987 Mobile Safari/537.36\");\
+刷新网页();\
+end\
+end})\
+.show()\
+    end\
+  if v==9 then\
+退出页面()\
+    end\
+  end})\
+.show()\
+  \
+  \
+\
+\
+" ;
+      ["图标"]	= "" ;
+      ["显示"]	= false ;
+      } ;
+  ["global_js"]	= "" ;
+  ["sidebar"]	= {
+      ["items"]	= {
+          [1]	= {
+              ["name"]	= "应用管理" ;
+              ["onClick"]	= "import \"applist\" \
+--设置底部导航栏(虚拟按键)透明(沉浸)\
+activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)\
+--设置底部导航栏颜色\
+activity.getWindow().setNavigationBarColor(Color.parseColor(\"#1bb5d7\"))" ;
+              ["icon"]	= "drawable/apple.png" ;
+              } ;
+          [2]	= {
+              ["name"]	= "无损音乐下载" ;
+              ["onClick"]	= "加载网页(\"https://m.sq688.com/search.php?key=%E5%91%A8%E6%\")" ;
+              ["icon"]	= "drawable/music_circle.png" ;
+              } ;
+          [3]	= {
+              ["name"]	= "音乐播放" ;
+              ["onClick"]	= "加载网页(\"http://music.junyuewl.com/\")" ;
+              ["icon"]	= "drawable/music_note.png" ;
+              } ;
+          [4]	= {
+              ["name"]	= "音乐下载" ;
+              ["onClick"]	= "加载网页(\"https://cloud.ccswust.org/\")" ;
+              ["icon"]	= "drawable/music_circle.png" ;
+              } ;
+          [5]	= {
+              ["name"]	= "文库下载" ;
+              ["onClick"]	= "加载网页(\"http://www.html22.com/zh/\")\
+" ;
+              ["icon"]	= "drawable/arrow_down_bold_circle.png" ;
+              } ;
+          [6]	= {
+              ["name"]	= "文章生成" ;
+              ["onClick"]	= "加载网页(\"https://suulnnka.github.io/BullshitGenerator/index.html\")" ;
+              ["icon"]	= "drawable/school.png" ;
+              } ;
+          [7]	= {
+              ["name"]	= "随机数生成" ;
+              ["onClick"]	= "--来自快乐程序\
+layout={\
+  LinearLayout,\
+  orientation=\"vertical\",\
+  layout_width=\"fill\",\
+\
+  {\
+    LinearLayout,\
+    layout_width=\"fill\",\
+    padding=\"16dp\",\
+    paddingTop=\"8dp\",\
+    paddingBottom=\"8dp\",\
+    gravity=\"center\",\
+    {\
+      EditText,\
+      gravity=\"center\",\
+      ems=6,\
+      singleLine=true,\
+      backgroundColor=0,\
+\
+      hint=\"最小值\",\
+      inputType=\"number\",\
+      id=\"min\",\
+      text=\"0\",\
+      layout_weight=1,\
+    },\
+    {\
+      TextView,\
+      layout_gravity=\"center\",\
+      text=\"<\",\
+    },\
+    {\
+      EditText,\
+      ems=6,\
+      gravity=\"center\",\
+      backgroundColor=0,\
+      hint=\"最大值\",\
+      text=\"100\",\
+      inputType=\"number\",\
+      layout_weight=1,\
+      id=\"max\",\
+\
+      singleLine=true,\
+    },\
+  },\
+  {\
+    ScrollView,\
+    layout_width=\"fill\",\
+\
+    layout_weight=1,\
+    {\
+      TextView,\
+      id=\"tex\",\
+\
+      textSize=\"56dp\",\
+      layout_gravity=\"center\",\
+      layout_height=\"fill\",\
+      padding=\"16dp\",\
+      textIsSelectable=true,\
+    },\
+  },\
+  {\
+    Button,\
+    text=\"生成\",\
+    layout_width=\"fill\",\
+    layout_margin=\"16dp\",\
+\
+    textColor=0xfffafafa,\
+    id=\"bt\",\
+    textSize=\"16dp\",\
+\
+  },\
+};\
+\
+require \"import\"\
+import \"android.app.*\"\
+import \"android.os.*\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+\
+\
+activity.setTheme(android.R.style.Theme_DeviceDefault_Light)--设置md主题\
+--activity.setTheme(R.AndLua1)\
+activity.setTitle(\"随机数生成\")--标题\
+activity.setContentView(loadlayout(layout))\
+\
+--控件圆角函数\
+function 控件圆角(id,InsideColor,radiu)\
+  import \"android.graphics.drawable.GradientDrawable\"\
+  drawable = GradientDrawable()\
+  drawable.setShape(GradientDrawable.RECTANGLE)\
+  drawable.setColor(InsideColor) drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  id.setBackgroundDrawable(drawable)\
+end\
+\
+控件圆角(bt,0xFF2196F3,360)--设置按钮圆角\
+--来着快乐程序，代码手册首次整理https://www.lanzous.com/i82ncaf\
+tex.setText(tostring(math.random(0,100)))--设置默认数值为1-100的随机数值\
+\
+bt.onClick=function()--按钮点击时间\
+  tex.setText(tostring(math.random(tonumber(min.text),tonumber(max.text))))--获取输入框的数值并转换为number，取随机数后转换为string型数值并设置给tex\
+end\
+" ;
+              ["icon"]	= "drawable/numeric_9_plus_box.png" ;
+              } ;
+          [8]	= {
+              ["name"]	= "图片转文字" ;
+              ["onClick"]	= "加载网页(\"https://tools.miku.ac/ocr\")" ;
+              ["icon"]	= "drawable/pencil_box.png" ;
+              } ;
+          [9]	= {
+              ["name"]	= "白噪音专注" ;
+              ["onClick"]	= "加载网页(\"https://tools.miku.ac/pomodoro_technique\")" ;
+              ["icon"]	= "drawable/flower.png" ;
+              } ;
+          [10]	= {
+              ["name"]	= "时钟屏保" ;
+              ["onClick"]	= "加载网页(\"https://tools.miku.ac/screen_clock\")" ;
+              ["icon"]	= "drawable/timer.png" ;
+              } ;
+          [11]	= {
+              ["name"]	= "人生小格" ;
+              ["onClick"]	= "加载网页(\"https://tools.miku.ac/lifecount\")" ;
+              ["icon"]	= "drawable/account_check.png" ;
+              } ;
+          [12]	= {
+              ["name"]	= "本地音乐" ;
+              ["onClick"]	= "--程序启动时会执行的事件\
+require \"import\"\
+import \"android.app.*\"\
+import \"android.os.*\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+activity.setTitle('音乐')\
+layout=--布局奠定\
+{\
+  LinearLayout;--线性布局\
+  orientation='vertical';--重力属性\
+  layout_width='fill';--布局宽度\
+  layout_height='fill';--布局高度\
+  background='Icon/bj.png';--布局背景颜色(或者图片路径)\
+  gravity='center';--默认居中\
+  {\
+    TextView;--文本控件\
+    layout_width='fill';--文本宽度\
+    layout_height='50dp';--文本高度\
+    gravity='center';--重力属性\
+    textColor='#FF2885DE';--文字颜色\
+    text='未播放任何音乐';--显示的文字\
+    textSize='20sp';--文字大小\
+    id=\"tv_title\",\
+  };\
+  {\
+    LinearLayout;--线性布局\
+    orientation='vertical';--重力属性\
+    layout_width='fill';--布局宽度\
+    layout_height='50%h';--布局高度\
+    gravity='center';--默认居中\
+    {\
+      CircleImageView;--圆形图片\
+      src='Icon/z.png';--图片路径\
+      layout_width='180dp';--图片宽度\
+      layout_height='180dp';--图片高度\
+      ColorFilter=\"#FF2885DE\";\
+      id=\"旋转\";\
+    };\
+  };\
+  {\
+    LinearLayout;--线性布局\
+    orientation='horizontal';--重力属性\
+    layout_width='fill';--布局宽度\
+    layout_height='100dp';--布局高度\
+    gravity='right|center';--默认居中\
+    {\
+      CircleImageView;--圆形图片\
+      src='Icon/cp.png';--图片路径\
+      layout_width='25dp';--布局宽度\
+      layout_height='25dp';--布局高度\
+      onClick=\"on_playlist\",\
+      layout_marginRight='10dp';--布局右距\
+      ColorFilter=\"#1296db\";\
+    },\
+    {\
+      CircleImageView;--圆形图片\
+      src='Icon/lb.png';--图片路径\
+      layout_width='25dp';--布局宽度\
+      layout_height='50dp';--布局高度\
+      onClick=\"on_Menu\",\
+      layout_marginRight='20dp';--布局右距\
+    },\
+  };\
+  {\
+    LinearLayout;--线性布局\
+    orientation='horizontal';--重力属性\
+    layout_width='fill';--布局宽度\
+    layout_height='50dp';--布局高度\
+    gravity='center';--默认居中\
+    {\
+      TextView,\
+      layout_height=\"wrap_content\",\
+      text=\"00:00\",\
+      textColor='#FF2885DE';\
+      --布局内文字着色,默认黑色\
+      id=\"tv_startTime\",\
+      layout_width=\"wrap_content\";\
+      layout_marginRight='10dp';--布局右距\
+    },\
+    {\
+      SeekBar,\
+      layout_height=\"wrap_content\",\
+      layout_width='70%w';--布局宽度\
+      id=\"mainProgressBar1\",\
+      id=\"pb_time\",\
+    },\
+    {\
+      TextView,\
+      layout_height=\"wrap_content\",\
+      text=\"00:00\",\
+      id=\"tv_endTime\",\
+      textColor='#FF2885DE';\
+      layout_marginLeft='10dp';--布局左距\
+      layout_width=\"wrap_content\"\
+    },\
+  };\
+  {\
+    LinearLayout;--线性布局\
+    orientation='horizontal';--重力属性\
+    layout_width='fill';--布局宽度\
+    layout_height='170dp';--布局高度\
+    gravity='center';--默认居中\
+    {\
+      CircleImageView;--圆形图片\
+      src='Icon/s.png';--图片路径\
+      layout_width='50dp';--布局宽度\
+      layout_height='50dp';--布局高度\
+      onClick=\"on_pre\",\
+      layout_marginRight='20dp';--布局右距\
+    },\
+    {\
+      CircleImageView;--圆形图片\
+      src='Icon/bf.png';--图片路径\
+      layout_width='50dp';--布局宽度\
+      layout_height='50dp';--布局高度\
+      id=\"bn_pause\",\
+      onClick=\"on_pause\",\
+    },\
+    {\
+      CircleImageView;--圆形图片\
+      src='Icon/x.png';--图片路径\
+      layout_width='50dp';--布局宽度\
+      layout_height='50dp';--布局高度\
+      onClick=\"on_next\",\
+      layout_marginLeft='20dp';--布局左距\
+    },\
+  };\
+};\
+activity.setContentView(loadlayout(layout))\
+import \"android.media.*\"\
+import \"android.view.*\"\
+import \"android.content.*\"\
+import \"java.io.*\"\
+import \"java.util.*\"\
+import \"android.content.Context\"\
+import \"android.provider.*\"\
+--require \"layout\"\
+--activity.setTitle(\"美美播放器\")\
+--activity.setTheme(android.R.style.Theme_Holo_Light)\
+local arr=nil\
+local pd--扫描进度条变量,定义在这容易操作\
+local mp=MediaPlayer()\
+local t=nil\
+local isPlay=false\
+local curPlay=nil --当前正在播放的mp3的路径\
+local listpath=\"/sdcard/pl.txt\"\
+local tf=File(listpath)\
+local dur--歌曲长度\
+local cur--播放当前位置\
+local min,sec=0,0--分和秒\
+local curIdx=0--当前播放的mp3在列表中的索引\
+\
+--播放音乐，不异步可控\
+--@mp MediaPlayer对象\
+--@path 歌曲完整路径\
+function play(mp,path)\
+  mp.reset()\
+  mp.setDataSource(path)\
+  mp.prepare()\
+  mp.start()\
+end\
+\
+--异步调用代码块，获取文件夹下的所有mp3文件。并存在arr中\
+local _getList= [[\
+require \"import\"\
+import \"java.io.*\"\
+local path,arr=...\
+local name,t\
+\
+function _get(path)\
+    local f=File(path)\
+    local  l=f.listFiles()\
+    \
+    for i=0,#l-1 do\
+        t=l[i]\
+        name= t.getName()\
+        if  t.isFile() and string.find(string.lower(name),\"%.mp3$\") and t.length()>1024*1024*2 then --歌曲大于2m才添加\
+            arr.add(t)\
+            end\
+        if t.isDirectory() then\
+            _get(t.toString())\
+            end\
+        end --for\
+    end --_get\
+_get(path)--重要......\
+]]\
+--获取某文件夹下所有mp3文件。并存在arr中\
+function getList(path)\
+  arr=ArrayList()\
+  task( _getList,path,arr,getListFinish)\
+end\
+--回调函数，获取某文件夹下所有mp3文件完成时被调用\
+function getListFinish()\
+  writeFile(\"/sdcard/pl.txt\",arr)\
+  pd.cancel()\
+end\
+--写入文件\
+--@path  文件完整路径\
+--@list    ArrayList\
+function writeFile(path,list)\
+  local fw=FileWriter(path)\
+  local bw=BufferedWriter(fw)\
+  for i=0,list.size()-1 do\
+    str=list.get(i).toString()\
+    bw.write(str,0,utf8.len(str))\
+    bw.newLine()\
+  end\
+  bw.flush()\
+  bw.close()\
+end\
+--读文件\
+--path 完整路径\
+--return ArrayList\
+function readFile(path)\
+  local al=ArrayList()\
+  local fr=FileReader(path)\
+  local br=BufferedReader(fr)\
+  local ch=0\
+  while(br.read()~=-1 )\
+    do\
+    al.add(br.readLine())\
+  end\
+  br.close()\
+  return al\
+end\
+\
+--显示歌曲列表\
+--@path 列表文件路径\
+--@mediaplayer\
+function showList(path,mp)\
+  local al= readFile(path)\
+  arr=al\
+  local names={}\
+  local paths={}\
+  for i=0,al.size()-1 do\
+    table.insert(paths,al.get(i))\
+    table.insert(names,File(al.get(i)).getName())\
+\
+  end\
+  local ad= AlertDialog.Builder(activity)\
+  ad.setTitle(\"歌曲列表\")\
+  ad.setItems(String(names)\
+  ,DialogInterface.OnClickListener{\
+    onClick=function(dialog,which)\
+      curPlay=paths[which+1]\
+      curIdx=which\
+      play(mp,curPlay)\
+      local tt=string.gsub(names[which+1],\".mp3$\",\"\")--偷懒一下\
+      tv_title.setText(\"正在播放:\"..tt)\
+      bn_pause.setImageBitmap(loadbitmap(\"Icon/zt.png\"))\
+    end\
+  })\
+  ad.setNegativeButton( \"取消\", nil)\
+  ad= ad.create()\
+  local window = ad.getWindow()\
+  local lp = window.getAttributes()\
+  --设置透明度\
+  lp.alpha = 0.8\
+  window.setAttributes(lp)\
+  ad.show()\
+end\
+--弹出进度条\
+--@text 进度条的文本\
+function showProcessBar(text)\
+  pd = ProgressDialog\
+  .show(activity, nil, text)\
+  pd.setCancelable(false)\
+end\
+\
+\
+--弹出文本框对话框\
+--@pa 进度条对象\
+function showEditDialog(msg)\
+  local edit=EditText(activity)\
+  edit.setText(\"/sdcard/\")\
+  local dl =AlertDialog.Builder(activity)\
+  dl.setTitle(msg)\
+  dl.setView(edit)\
+  dl.setPositiveButton(\"确定\",\
+  DialogInterface.OnClickListener{\
+    onClick=function(dialog,which)\
+      showProcessBar(\"扫描音乐中，请稍候……\")\
+      getList(edit.getText().toString())\
+    end\
+  })\
+  dl.show()\
+end\
+--全局代码###################\
+if tf.exists()==false then--文件列表不存在\
+  showEditDialog(\"初次使用软件，设置扫描音乐的路径\")\
+ else\
+  arr= readFile(listpath)\
+end\
+--###################\
+\
+--实时更新进度条和时间显示\
+function updateTime(m,s)\
+  if m<10 then m=\"0\"..m end\
+  if s<10 then s=\"0\"..s end\
+  tv_startTime.setText(m..\":\"..s)\
+  pb_time.setProgress(mp.getCurrentPosition())\
+end\
+\
+--计时器代码\
+function _run(m,s)\
+  function run()\
+\
+    s=s+1\
+    if(s==60) then\
+      m=m+1\
+      s=0\
+    end\
+    call(\"updateTime\",m,s)\
+  end\
+end\
+\
+--上一曲\
+function on_pre(v)\
+  if(curIdx>0) then\
+    curIdx=curIdx-1\
+    play(mp,arr.get(curIdx))\
+    local tt=string.gsub(File(arr.get(curIdx)).getName(),\".mp3$\",\"\")--偷懒一下\
+    tv_title.setText(\"正在播放:\"..tt)\
+    bn_pause.setImageBitmap(loadbitmap(\"Icon/zt.png\"))\
+  end\
+end\
+\
+--下一曲\
+function on_next(v)\
+  if(curIdx<arr.size()-1) then\
+    if curIdx==0 and not mp.isPlaying() then\
+      play(mp,arr.get(0))\
+      local tt=string.gsub(File(arr.get(0)).getName(),\".mp3$\",\"\")--偷懒一下\
+      tv_title.setText(\"正在播放:\"..tt)\
+      bn_pause.setImageBitmap(loadbitmap(\"Icon/zt.png\"))\
+     else\
+      curIdx=curIdx+1\
+      play(mp,arr.get(curIdx))\
+      local tt=string.gsub(File(arr.get(curIdx)).getName(),\".mp3$\",\"\")--偷懒一下\
+      tv_title.setText(\"正在播放:\"..tt)\
+      bn_pause.setImageBitmap(loadbitmap(\"Icon/zt.png\"))\
+    end\
+  end\
+end\
+\
+--设置mediaPlayer播放结束时的回调函数\
+mp.setOnCompletionListener(MediaPlayer.OnCompletionListener{\
+  onCompletion=function(mper)\
+    --     print(\"歌曲播放结束\")\
+    pb_time.setProgress(mp.getCurrentPosition())\
+    t.Enabled=false\
+    t.stop()\
+    t=nil\
+    on_next(v)\
+  end})\
+\
+--时间转换函数\
+function formatTime(time)\
+  local min,sec=0,0\
+  sec=math.floor(time/1000)\
+  if(sec>60) then\
+    min=math.floor(sec/60)\
+    sec=math.floor(sec%60)\
+  end\
+  if min<10 then min=\"0\"..min end\
+  if sec<10 then sec=\"0\"..sec end\
+  return min..\":\"..sec\
+end\
+--时间设置\
+function setTime(time)\
+  local min,sec=0,0\
+  sec=math.floor(time/1000)\
+  if(sec>60) then\
+    min=math.floor(sec/60)\
+    sec=math.floor(sec%60)\
+  end\
+\
+  return min,sec\
+end\
+--歌曲开始播放\
+mp.setOnPreparedListener(MediaPlayer.OnPreparedListener{\
+  onPrepared=function(mper)\
+    dur=mper.getDuration()--获取歌曲的时常\
+    pb_time.setMax(dur)\
+    local tt=formatTime(dur)\
+    tv_startTime.setText(\"00:00\")\
+    tv_endTime.setText(tt)\
+\
+    min,sec=0,0\
+    if t~=nil then --计时器不为空就停止\
+      t.Enabled=false\
+      t.stop()\
+      t=nil\
+    end\
+    --歌曲开始播放又计时\
+    t=timer(_run,0,1000,min,sec)\
+    t.Enabled=true\
+  end})\
+\
+--按下暂停时发生\
+function on_pause(v)\
+  if(mp.isPlaying()) then\
+    mp.pause()\
+    bn_pause.setImageBitmap(loadbitmap(\"Icon/bf.png\"))\
+    if(t~=nil) then\
+      t.Enabled=false\
+    end\
+   else\
+    if(t~=nil) then--如果为空那就是播放完了的情况\
+      mp.start()\
+      bn_pause.setImageBitmap(loadbitmap(\"Icon/zt.png\"))\
+      t.Enabled=true\
+    end\
+  end\
+end\
+\
+--按下\"列表\"按钮\
+function on_playlist(v)\
+  showList(listpath,mp)\
+end\
+\
+\
+\
+function on_Menu(v)\
+  local items={\"更新列表\",\"关于\",\"退出\"}\
+  local ad= AlertDialog.Builder(activity)\
+  ad.setTitle(\"更多\")\
+  ad.setItems(String(items)\
+  ,DialogInterface.OnClickListener{\
+    onClick=function(dialog,which)\
+      if which==0 then\
+        showEditDialog(\"输入路径以重新扫描\")\
+       elseif which==1 then\
+        print(\"子清修改\")\
+       elseif which==2 then\
+        if t~=nil then\
+          t.stop()\
+        end\
+        mp.stop()\
+        mp.release()--释放资源\
+        activity.finish()\
+      end--判断选了哪项的if\
+    end--onClick\
+  })\
+  ad.setNegativeButton( \"取消\", nil)\
+  ad= ad.create()\
+  ad.show()\
+end\
+\
+function onKeyDown(code,event)\
+  if (code== KeyEvent.KEYCODE_BACK)then\
+    --并不会发生什么...\
+    if t~=nil then\
+      t.stop()\
+    end\
+    mp.stop()\
+    mp.release()--释放资源\
+  end\
+end\
+\
+\
+\
+\
+\
+--进度跳转\
+pb_time.setOnSeekBarChangeListener(\
+SeekBar.OnSeekBarChangeListener{\
+  onStopTrackingTouch=function(bar)\
+    if mp.isPlaying() then\
+      local cur=bar.getProgress()\
+      local tt=formatTime(cur)\
+      min,sec=setTime(cur)\
+      tv_startTime.setText(tt)\
+      mp.seekTo(cur)\
+      if t~=nil then --计时器不为空就停止\
+        t.Enabled=false\
+        t.stop()\
+        t=nil\
+      end\
+      --重新计时\
+      t=timer(_run,0,1000,min,sec)\
+      t.Enabled=true\
+    end\
+\
+  end})\
+import \"android.view.animation.LinearInterpolator\"\
+import \"android.animation.ValueAnimator\"\
+c =ObjectAnimator()\
+c.setTarget(旋转);\
+c.setDuration(20000);\
+c.setRepeatCount(ValueAnimator.INFINITE)\
+c.setPropertyName(\"rotation\");\
+c.setFloatValues({0,720});\
+c.setRepeatMode(ValueAnimator.INFINITE)\
+c.setInterpolator(LinearInterpolator() )\
+c.start();\
+esc=0\
+function onKeyDown(key,event)\
+  if(key==4)then\
+    esc=esc+1\
+    activity.moveTaskToBack(true)\
+    task(1000,function()\
+      esc=0\
+    end)\
+    return true\
+  end\
+end\
+--[[\
+\
+    小六美化©QQ1785333334\
+\
+   美化不易,且用且珍惜\
+   \
+]]\
+import \"android.view.WindowManager\"\
+activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+" ;
+              ["icon"]	= "drawable/music_note.png" ;
+              } ;
+          [13]	= {
+              ["name"]	= "计算器" ;
+              ["onClick"]	= "require \"import\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+import \"android.text.method.*\"\
+import 'android.webkit.WebView'\
+import \"android.app.AlertDialog\"\
+local hh={}\
+\
+layout={\
+  LinearLayout,\
+  layout_width=\"fill\",\
+  layout_height=\"fill\",\
+  orientation=\"vertical\",\
+  background='#ffe9e9e9',\
+  {\
+    HorizontalScrollView,\
+    FillViewport=true,\
+    layout_gravity=\"left\",\
+    layout_width=\"fill\",\
+    {\
+      TextView,\
+      text=\"\",\
+      textSize=30,\
+      textColor='0xff000000',\
+\
+      lines=1,\
+      Gravity=\"left\",\
+      layout_width=\"wrap\",\
+    },\
+  },\
+  {\
+    HorizontalScrollView,\
+    FillViewport=true,\
+    layout_gravity=\"left\",\
+    layout_width=\"fill\",\
+    {\
+      TextView,\
+      text=\"\",\
+      id=\"input\",\
+      textSize=60,\
+      textColor='0xff000000',\
+      lines=1,\
+      Gravity=\"left\",\
+      layout_width=\"wrap\",\
+    },\
+  },\
+  {\
+    HorizontalScrollView,\
+    FillViewport=true,\
+    layout_gravity=\"right\",\
+    layout_width=\"fill\",\
+    {\
+      TextView,\
+      text=\"\",\
+      id=\"output\",\
+      Gravity=\"right\",\
+      textSize=80,\
+      textColor='0xff000000',\
+      onClick=\"up\",\
+      lines=1,\
+      layout_width=\"wrap\",\
+    },\
+  },\
+  {\
+    LinearLayout,\
+    layout_width=\"fill\",\
+    layout_height=\"fill\",\
+    layout_weight=\"1.0\",\
+    {\
+      Button,\
+      textSize=40,\
+      textSize=40,\
+      text=\"(\",\
+      onClick=\"click\",\
+      background='#fffafafa',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\")\",\
+      onClick=\"click\",\
+      layout_width=\"fill\",\
+      background='#fffafafa',\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=30,\
+      text=\"菜单\",\
+      id=\"endg\",\
+      onClick=\"菜单\",\
+      background='#fffafafa',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=30,\
+      text=\"清空\",\
+      onClick=\"clear\",\
+      background='#fffafafa',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+  },\
+  {\
+    LinearLayout,\
+    layout_width=\"fill\",\
+    layout_height=\"fill\",\
+    layout_weight=\"1.0\",\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"1\",\
+      onClick=\"click\",\
+      backgroundColor='#ffffffff',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"2\",\
+      onClick=\"click\",\
+      backgroundColor='#ffffffff',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"3\",\
+      onClick=\"click\",\
+      backgroundColor='#ffffffff',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"+\",\
+      onClick=\"click\",\
+      layout_width=\"fill\",\
+      background='#fffafafa',\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+  },\
+  {\
+    LinearLayout,\
+    layout_width=\"fill\",\
+    layout_height=\"fill\",\
+    layout_weight=\"1.0\",\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"4\",\
+      onClick=\"click\",\
+      backgroundColor='#ffffffff',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"5\",\
+      onClick=\"click\",\
+      backgroundColor='#ffffffff',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"6\",\
+      backgroundColor='#ffffffff',\
+      onClick=\"click\",\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"-\",\
+      onClick=\"click\",\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      background='#fffafafa',\
+      layout_weight=\"1.0\",\
+    },\
+  },\
+  {\
+    LinearLayout,\
+    layout_width=\"fill\",\
+    layout_height=\"fill\",\
+    layout_weight=\"1.0\",\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"7\",\
+      onClick=\"click\",\
+      backgroundColor='#ffffffff',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"8\",\
+      onClick=\"click\",\
+      backgroundColor='#ffffffff',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"9\",\
+      onClick=\"click\",\
+      backgroundColor='#ffffffff',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"*\",\
+      onClick=\"click\",\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      background='#fffafafa',\
+      layout_weight=\"1.0\",\
+    },\
+  },\
+  {\
+    LinearLayout,\
+    layout_width=\"fill\",\
+    layout_height=\"fill\",\
+    layout_weight=\"1.0\",\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"0\",\
+      onClick=\"click\",\
+      backgroundColor='#ffffffff',\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\".\",\
+      onClick=\"click\",\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      background='#fffafafa',\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"=\",\
+      textColor=\"#FFffffff\",\
+      onClick=\"enter\",\
+      layout_width=\"fill\",\
+      layout_height=\"fill\",\
+      background='#FF006BFF',\
+      layout_weight=\"1.0\",\
+    },\
+    {\
+      Button,\
+      textSize=40,\
+      text=\"/\",\
+      onClick=\"click\",\
+      layout_width=\"fill\",\
+      background='#fffafafa',\
+      layout_height=\"fill\",\
+      layout_weight=\"1.0\",\
+    },\
+  },\
+}\
+\
+activity.setContentView(loadlayout(layout))\
+\
+function click(v) local t=v.getText() if t==\"¡û\" then local i=input.getText().toString() input.setText(string.sub(i,1,-2)) else input.append(t) end\
+  local s,r=pcall(dostring,\"return \"..input.getText().toString())\
+  if s then\
+    if r then\
+      output.setText(tostring(r))\
+     else\
+      output.setText(\"\")\
+    end\
+  end\
+end\
+\
+function clear()\
+  input.setText(\"\")\
+  output.setText(\"\")\
+end\
+function up()\
+  input.setText(output.getText())\
+end\
+\
+function dostring(s)\
+  return assert(loadstring(s))()\
+end\
+\
+\
+function enter()\
+  local s,r=pcall(loadstring(\"return \"..input.getText().toString()))\
+  if s then\
+    if r then\
+      output.setText(tostring(r))\
+     else\
+      output.setText(\"\")\
+    end\
+   else\
+    output.setText(\"输入错误\")\
+  end\
+end\
+function 菜单()\
+  pop=PopupMenu(activity,endg)\
+  menu=pop.Menu\
+  menu.add(\"⌨     用输入法输入\").onMenuItemClick=function(a)\
+    --输入对话框（自定义布局对话框，带输入框的）\
+    InputLayout={\
+      LinearLayout;\
+      orientation=\"vertical\";--重力属性\
+      Focusable=true,--可聚焦\
+      FocusableInTouchMode=true,--可聚焦在触摸模式下，可变色\
+      {\
+        TextView;--文本控件\
+        id=\"Text\",\
+        layout_width='80%w';--文本宽度\
+        layout_marginTop='10dp';--布局顶距\
+        layout_marginLeft='3dp';--布局左距\
+        layout_gravity='center';--重力属性\
+        text='输入想要输入的内容：';--显示的文字\
+        textSize='15sp';--文字大小\
+      };\
+      {\
+        EditText;--编辑框控件\
+        id=\"edit\";\
+        layout_width='80%w';--编辑框宽度\
+        layout_marginTop='5dp';--布局顶距\
+        layout_gravity=\"center\",--重力属性\
+        Hint='请输入...';--设置编辑框为空时的提示文字\
+      };\
+    };\
+\
+    AlertDialog.Builder(this)\
+    .setTitle(\"用输入法输入\")--设置标题\
+    .setView(loadlayout(InputLayout))--设置布局\
+    .setPositiveButton(\"确定\",function(v)--设置积极按钮\
+      input.setText(edit.Text)\
+    end)\
+    .setNegativeButton(\"取消\",nil)--设置消极按钮\
+    .show()--显示弹窗\
+    import \"android.view.View$OnFocusChangeListener\"\
+    edit.setOnFocusChangeListener(OnFocusChangeListener{\
+      onFocusChange=function(v,hasFocus)\
+        if hasFocus then\
+          Text.setTextColor(0xFD009688)--当编辑框被点击时修改标题下的文本颜色\
+        end\
+      end})\
+  end\
+  pop.show()--显示@小米～\
+end\
+--activity.setTheme(android.R.style.Theme_Material_NoActionBar)\
+\
+\
+" ;
+              ["icon"]	= "drawable/contrast_circle.png" ;
+              } ;
+          [14]	= {
+              ["name"]	= "指南针" ;
+              ["onClick"]	= "--&收集自快乐小程序\
+layout={\
+  LinearLayout;\
+  orientation=\"vertical\";\
+  layout_width=\"fill\";\
+  layout_height=\"fill\";\
+  id=\"coe\",\
+  gravity=\"center\";\
+  {\
+    TextView;\
+    id=\"dir\";\
+    layout_width=\"fill\";\
+    textColor=\"#0090FF\";\
+    layout_height=\"7%h\";\
+    textSize=\"25dp\";\
+    gravity=\"center\";\
+    text=\"南\";\
+  };\
+  {\
+\
+\
+    LinearLayout;\
+    id=\"cors\";\
+    orientation=\"vertical\";\
+    layout_width=\"70%w\";\
+    gravity=\"center\";\
+    layout_height=\"70%w\";\
+    {\
+      LinearLayout;\
+      layout_gravity=\"center\";\
+      orientation=\"vertical\";\
+      id=\"cor\";\
+      layout_width=\"50%w\";\
+      gravity=\"start\";\
+      layout_height=\"50%w\";\
+      {\
+        TextView;\
+        layout_gravity=\"center\";\
+        textColor=\"#0088ff\";\
+        id=\"n\";\
+        textSize=\"20dp\";\
+        gravity=\"center\";\
+        text=\"N\";\
+      };\
+      {\
+        LinearLayout;\
+        layout_width=\"fill\";\
+        layout_marginTop=\"6%h\";\
+        layout_height=\"8%h\";\
+        {\
+          TextView;\
+          id=\"w\";\
+          textColor=\"0xff0088ff\";\
+          paddingLeft=\"6dp\";\
+          textSize=\"20dp\";\
+          gravity=\"left\";\
+          text=\"W\";\
+        };\
+        {\
+          TextView;\
+          layout_width=\"16.5%w\";\
+          layout_marginLeft=\"9%w\";\
+          textColor=\"0xff0088ff\";\
+          layout_height=\"8%h\";\
+          textSize=\"27dp\";\
+          gravity=\"center\";\
+          text=\"↑\";\
+        };\
+        {\
+          TextView;\
+          layout_marginRight=\"6dp\";\
+          id=\"e\";\
+          layout_marginLeft=\"11%w\";\
+          textColor=\"0xff0088ff\";\
+          textSize=\"20dp\";\
+          layout_width=\"6%w\";\
+          gravity=\"right\";\
+          text=\"E\";\
+        };\
+      };\
+      {\
+        TextView;\
+        layout_gravity=\"center\";\
+        layout_marginTop=\"6%h\";\
+        textColor=\"#0088ff\";\
+        id=\"s\";\
+        textSize=\"20dp\";\
+        gravity=\"center\";\
+        text=\"S\";\
+\
+      };\
+    };\
+\
+  };\
+  {\
+    TextView;\
+    id=\"deg\";\
+    textColor=\"0xff0088ff\";\
+    layout_height=\"8%h\";\
+    textSize=\"27dp\";\
+    gravity=\"center\";\
+    text=\"0°\";\
+  };\
+};\
+\
+activity.setContentView(loadlayout(layout))\
+\
+\
+import \"android.content.Context\"\
+import \"android.hardware.SensorManager\"\
+import \"android.hardware.SensorEventListener\"\
+import \"android.hardware.Sensor\"\
+dirs=\"\"\
+FPS=50\
+磁场=0\
+传感器 = activity.getSystemService(Context.SENSOR_SERVICE)\
+local 磁场传感器 = 传感器.getDefaultSensor(Sensor.TYPE_ORIENTATION)\
+传感器.registerListener(SensorEventListener({\
+  onSensorChanged=function(event)\
+    磁场 = event.values[0]\
+  end,nil}), 磁场传感器, SensorManager.SENSOR_DELAY_NORMAL)\
+function CircleButton(view,InsideColor,radiu,da,db)\
+  import \"android.graphics.drawable.GradientDrawable\"\
+  drawable = GradientDrawable()\
+  drawable.setShape(GradientDrawable.RECTANGLE)\
+  drawable.setStroke(10, 0xff0088ff,da,db)\
+  drawable.setColor(InsideColor)\
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  drawable.setGradientType(1)\
+  view.setBackgroundDrawable(drawable)\
+end\
+角度=activity.getWidth()\
+控件id=cor\
+控件颜色=0xFFFFFFFF\
+CircleButton(控件id,控件颜色,角度,2,2)\
+CircleButton(cors,控件颜色,角度,(activity.getWidth()*0.8)/2,10)\
+tick=Ticker()\
+tick.Period=1000/FPS\
+tick.onTick=function()\
+  if 磁场>165 and 磁场<195 then\
+    dirs=\"南\"\
+   elseif 磁场>195 and 磁场<255 then\
+    dirs=\"西南\"\
+   elseif 磁场>255 and 磁场<285 then\
+    dirs=\"西\"\
+   elseif 磁场>285 and 磁场<345 then\
+    dirs=\"西北\"\
+   elseif 磁场>345 or 磁场<15 then\
+    dirs=\"北\"\
+   elseif 磁场>15 and 磁场<75 then\
+    dirs=\"东北\"\
+   elseif 磁场>75 and 磁场<105 then\
+    dirs=\"东\"\
+   elseif 磁场>105 and 磁场<165 then\
+    dirs=\"东南\"\
+  end\
+  dir.setText(dirs)\
+  cors.setRotation(360-磁场)\
+  w.setRotation(磁场)\
+  s.setRotation(磁场)\
+  n.setRotation(磁场)\
+  e.setRotation(磁场)\
+  deg.setText(tostring(tointeger(磁场)..\"°\"))\
+  --Toast.makeText(activity,tostring(磁场..\"°\"),Toast.LENGTH_SHORT).show()\
+end\
+tick.start()\
+\
+function onDestroy()\
+  tick.stop()\
+  传感器.unregisterListener(Listener);\
+end\
+\
+function onTouchEvent(event)\
+  ac=event.action\
+  if ac==2 or ac==0 then\
+    x=event.X\
+    y=event.Y\
+    coe.setRotationX((activity.getHeight()-y)/30)\
+    coe.setRotationY(x/30)\
+   elseif ac==1 then\
+    coe.setRotationX(0)\
+    coe.setRotationY(0)\
+  end\
+end\
+--coe.setRotationX(activity.getHeight()*0.33)" ;
+              ["icon"]	= "drawable/compass.png" ;
+              } ;
+          [15]	= {
+              ["name"]	= "抽签" ;
+              ["onClick"]	= "加载网页(\"http://tool.uixsj.cn/s/lucky-draw-num/\")" ;
+              ["icon"]	= "drawable/minus_network.png" ;
+              } ;
+          [16]	= {
+              ["name"]	= "圆形时钟" ;
+              ["onClick"]	= "hh={\
+  LinearLayout,\
+  orientation=\"vertical\",\
+  layout_width=\"fill\",\
+  layout_height=\"fill\",\
+  gravity=\"center\",\
+  {\
+    TextView,\
+    text=\"hello AndroLua+\",\
+    layout_width=\"fill\",\
+    layout_height=\"fill\",\
+    id=\"t\",\
+  },\
+}\
+activity.setContentView(loadlayout(hh))\
+\
+\
+require \"import\"\
+import \"android.app.*\"\
+import \"android.os.*\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+import \"com.cool.time.ClockDrawable\"\
+--activity.setTitle('AndroLua+')\
+--activity.setTheme(android.R.style.Theme_Holo_Light)\
+t.setBackground(ClockDrawable())" ;
+              ["icon"]	= "drawable/timer.png" ;
+              } ;
+          [17]	= {
+              ["name"]	= "全屏时间" ;
+              ["onClick"]	= "--时间显示\
+--点击链接加入群聊【Androidlua交流群】：https://jq.qq.com/?_wv=1027&k=5VuTWLX\
+--点击链接加入群聊【MIUI&轻函&软件开发交流群】：https://jq.qq.com/?_wv=1027&k=5H5GRUu\
+import \"android.app.*\"\
+import \"android.os.*\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+activity.setRequestedOrientation(0);\
+local cc=0\
+layout={\
+  FrameLayout,\
+\
+  {\
+    TextView,\
+    layout_width=\"fill\",\
+    layout_height=\"fill\",\
+    textColor=\"#2196F3\",\
+    textSize=\"112dp\",\
+    gravity=\"center\",\
+    id=\"time\",\
+  },\
+  {\
+    TextView,\
+    textColor=次要文字色,\
+    textSize=\"18dp\",\
+    layout_gravity=\"bottom|center\",\
+    id=\"date\",\
+    layout_marginBottom=\"36dp\",\
+  },\
+}\
+activity.setContentView(loadlayout(layout))\
+\
+task(500,function()\
+  if\
+    time.text==\"\"\
+    then\
+    onResume()\
+  end\
+end)\
+function onResume()\
+\
+  t=Ticker()\
+  t.setPeriod(100)\
+  t.onTick=function()\
+    time.text=os.date(\"%H:%M:%S\")\
+    date.text=os.date(\"%A · %B %d\")\
+  end\
+  t.start()\
+end\
+\
+function onPause()\
+  t.stop()\
+end" ;
+              ["icon"]	= "drawable/timelapse.png" ;
+              } ;
+          [18]	= {
+              ["name"]	= "减压放松" ;
+              ["onClick"]	= "加载网页(\"https://akirarika.github.io/mikutap/\")" ;
+              ["icon"]	= "drawable/controller_xbox.png" ;
+              } ;
+          } ;
+      ["启用顶部图片"]	= false ;
+      ["启用"]	= true ;
+      } ;
+  ["colors"]	= {
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["进度条"]	= "#4b5dc6ff" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["悬浮按钮"]	= "#ff5d99ff" ;
+      ["顶栏"]	= "#ffffffff" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["顶栏部件"]	= "#ff575757" ;
+      ["侧滑栏列表文字"]	= "#ff5589bb" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      } ;
+  ["switch"]	= {
+      ["支持滑动页面"]	= false ;
+      ["显示状态栏"]	= false ;
+      ["横屏"]	= false ;
+      ["启用启动图"]	= false ;
+      } ;
+  ["web_control"]	= {
+      [1]	= {
+          ["url"]	= "m.baidu.com" ;
+          ["js"]	= "" ;
+          ["remove_element"]	= "envelope" ;
+          } ;
+      [2]	= {
+          ["url"]	= "tool.uixsj.cn" ;
+          ["js"]	= "" ;
+          ["remove_element"]	= "navbar-header,sr-only,icon-bar,navbar-brand,text-center text-muted credit" ;
+          } ;
+      [3]	= {
+          ["url"]	= "tools.miku.ac" ;
+          ["js"]	= "" ;
+          ["remove_element"]	= "navbar,el-tooltip btn item focusing,eva eva-menu-outline,navbar,el-tooltip btn item focusing,eva eva-menu-outline,el-tooltip type-icon vipDate focusing,theme-btn,nya-title,main" ;
+          } ;
       } ;
   } ;

@@ -1,2 +1,2 @@
-name="movie"
 template="tool"
+name="movie"

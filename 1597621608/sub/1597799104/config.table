@@ -1,44 +1,185 @@
 {
-  ["toolbar"]	= {
-      ["输入栏模式"]	= true ;
-      ["icon_btns"]	= {
-          } ;
-      ["搜索URL"]	= "" ;
-      ["启用搜索功能"]	= false ;
-      ["搜索框提示"]	= "" ;
-      ["menus"]	= {
-          [1]	= {
-              ["onClick"]	= "退出页面()" ;
-              ["name"]	= "退出" ;
-              } ;
-          } ;
+  ["colors"]	= {
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["进度条"]	= "#00000000" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["顶栏"]	= "#ff2c2e43" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
       } ;
   ["web"]	= {
-      ["网页沉浸"]	= true ;
       ["支持打开外部应用"]	= true ;
-      ["启用进度条"]	= true ;
-      ["启动网页"]	= "" ;
       ["浏览器用户标识"]	= "默认" ;
+      ["启动网页"]	= "" ;
+      ["网页沉浸"]	= true ;
+      ["启用进度条"]	= true ;
       ["启用长按菜单"]	= true ;
       } ;
-  ["sidebar"]	= {
-      ["启用顶部图片"]	= false ;
-      ["启用"]	= true ;
-      ["items"]	= {
-          } ;
-      } ;
-  ["fltBtn"]	= {
-      ["图标"]	= "" ;
-      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
-      ["显示"]	= true ;
-      } ;
   ["events"]	= {
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["网页加载完毕"]	= "\
+import \"android.app.*\"\
+import \"android.os.*\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+import \"android.graphics.Typeface\"\
+import \"android.view.animation.AccelerateInterpolator\"\
+import \"android.transition.ArcMotion\"\
+import \"android.animation.AnimatorSet\"\
+import \"android.animation.Animator$AnimatorListener\"\
+import \"android.graphics.drawable.GradientDrawable\"\
+\
+began={\
+  RelativeLayout;\
+  layout_height=\"fill\";\
+  layout_width=\"fill\";\
+  id=\"began_b\";\
+  {\
+    LinearLayout;\
+    orientation=\"vertical\";\
+    layout_height=\"fill\";\
+    layout_width=\"fill\";\
+    {\
+      RelativeLayout;\
+      layout_weight=\"1\";\
+      layout_height=\"-1\";\
+      background=\"#e94e77\";\
+      id=\"top\";\
+      layout_width=\"-1\";\
+    };\
+    {\
+      RelativeLayout;\
+      layout_weight=\"1\";\
+      layout_height=\"-1\";\
+      background=\"#2EC4B6\";\
+      id=\"bottom\";\
+      layout_width=\"-1\";\
+      {\
+        TextView;\
+        layout_centerHorizontal=\"true\";\
+        textColor=\"#ffffff\";\
+        id=\"t1\";\
+        textSize=\"28sp\";\
+        layout_marginTop=\"50dp\";\
+      };\
+      {\
+        TextView;\
+        layout_centerHorizontal=\"true\";\
+        textColor=\"#ffffff\";\
+        id=\"t2\";\
+        textSize=\"14sp\";\
+        layout_marginTop=\"100dp\";\
+      };\
+    };\
+  };\
+  {\
+    ImageView;\
+    scaleType=\"fitCenter\";\
+    layout_height=\"55dp\";\
+    id=\"center\";\
+    layout_width=\"55dp\";\
+    layout_centerInParent=\"true\";\
+    src=\"extreme.png\";\
+  };\
+};\
+\
+drawerLayout.getParent().addView(loadlayout(began))\
+\
+function CircleButton(view,InsideColor,radiu)\
+  drawable = GradientDrawable() \
+  drawable.setShape(GradientDrawable.RECTANGLE) \
+  drawable.setColor(InsideColor)\
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  view.setBackgroundDrawable(drawable)\
+end\
+--控件圆角 (控件id,颜色,角度)\
+CircleButton(center,0xFF218380,360)\
+--第一行文字\
+t1.setText(\"自制启动动画\")\
+ats = AnimatorSet()\
+--文字动画(参考lua手册)\
+scx=ObjectAnimator().ofFloat(t1,\"scaleX\",{0,1})\
+scy=ObjectAnimator().ofFloat(t1,\"scaleY\",{0,1})\
+tr=ObjectAnimator().ofFloat(t1, \"Y\",{1200,t1.getY()+120})\
+alpha = ObjectAnimator().ofFloat(t1, \"alpha\", {0,1})\
+--800是动画时间，毫秒\
+ats.setDuration(800)\
+ats.setInterpolator(AccelerateInterpolator())\
+ats.play(scx).with(scy).with(tr).with(alpha)\
+ats.start()\
+\
+ats.addListener(AnimatorListener{\
+  onAnimationEnd=function(animation)\
+    --第二行文字\
+    t2.setText(\"给你不一样的体验\")\
+    ats2 = AnimatorSet()\
+    scx2=ObjectAnimator().ofFloat(t2,\"scaleX\",{0,1})\
+    scy2=ObjectAnimator().ofFloat(t2,\"scaleY\",{0,1})\
+    tr2=ObjectAnimator().ofFloat(t2, \"Y\",{1200,t1.getY()+140})\
+    alpha2 = ObjectAnimator().ofFloat(t2, \"alpha\", {0,1})\
+    --动画时间\
+    ats2.setDuration(800)\
+    ats2.setInterpolator(AccelerateInterpolator())\
+    ats2.play(scx2).with(scy2).with(tr2).with(alpha2)\
+    ats2.start()\
+\
+    ats2.addListener(AnimatorListener{\
+      onAnimationEnd=function(animation)\
+        phone=center\
+        set = AnimatorSet()\
+        anim = ObjectAnimator .ofFloat(phone, \"rotation\",{360,0})\
+        anim3 = ObjectAnimator .ofFloat(phone, \"rotationX\",{360,0})\
+        anim.setDuration(1000)\
+        anim3.setDuration(1000)\
+        set.play(anim).before(anim3)\
+        set.start()\
+\
+\
+        set.addListener(AnimatorListener{\
+          onAnimationEnd=function(animation)\
+            set2 = AnimatorSet()\
+            --结束动画 中间图标渐隐 上下拉开\
+            tr3=ObjectAnimator().ofFloat(top, \"Y\",{top.getY(),-2000})\
+            tr4=ObjectAnimator().ofFloat(bottom, \"Y\",{bottom.getY(),5000})\
+            al=ObjectAnimator().ofFloat(center, \"alpha\", {1,0})\
+            set2.setDuration(1000)\
+            set2.setInterpolator(AccelerateInterpolator())\
+            set2.play(tr3).with(tr4).with(al)\
+            set2.start()\
+\
+            set2.addListener(AnimatorListener{\
+              onAnimationEnd=function(animation)\
+                --动画结束执行代码\
+              end,\
+            });\
+\
+          end,\
+        });\
+\
+      end,\
+    });\
+\
+\
+\
+  end,\
+});" ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
       ["程序启动"]	= "\
-\
-\
-\
-\
-\
+进入子页面(\"密码\")\
 bssy=\
 {\
   LinearLayout;--线性布局\
@@ -949,191 +1090,46 @@ bssy=\
 \
 \
 " ;
-      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
-\
---接收参数\
-浏览器对象，新标题=..." ;
-      ["网页加载完毕"]	= "\
-import \"android.app.*\"\
-import \"android.os.*\"\
-import \"android.widget.*\"\
-import \"android.view.*\"\
-import \"android.graphics.Typeface\"\
-import \"android.view.animation.AccelerateInterpolator\"\
-import \"android.transition.ArcMotion\"\
-import \"android.animation.AnimatorSet\"\
-import \"android.animation.Animator$AnimatorListener\"\
-import \"android.graphics.drawable.GradientDrawable\"\
-\
-began={\
-  RelativeLayout;\
-  layout_height=\"fill\";\
-  layout_width=\"fill\";\
-  id=\"began_b\";\
-  {\
-    LinearLayout;\
-    orientation=\"vertical\";\
-    layout_height=\"fill\";\
-    layout_width=\"fill\";\
-    {\
-      RelativeLayout;\
-      layout_weight=\"1\";\
-      layout_height=\"-1\";\
-      background=\"#e94e77\";\
-      id=\"top\";\
-      layout_width=\"-1\";\
-    };\
-    {\
-      RelativeLayout;\
-      layout_weight=\"1\";\
-      layout_height=\"-1\";\
-      background=\"#2EC4B6\";\
-      id=\"bottom\";\
-      layout_width=\"-1\";\
-      {\
-        TextView;\
-        layout_centerHorizontal=\"true\";\
-        textColor=\"#ffffff\";\
-        id=\"t1\";\
-        textSize=\"28sp\";\
-        layout_marginTop=\"50dp\";\
-      };\
-      {\
-        TextView;\
-        layout_centerHorizontal=\"true\";\
-        textColor=\"#ffffff\";\
-        id=\"t2\";\
-        textSize=\"14sp\";\
-        layout_marginTop=\"100dp\";\
-      };\
-    };\
-  };\
-  {\
-    ImageView;\
-    scaleType=\"fitCenter\";\
-    layout_height=\"55dp\";\
-    id=\"center\";\
-    layout_width=\"55dp\";\
-    layout_centerInParent=\"true\";\
-    src=\"extreme.png\";\
-  };\
-};\
-\
-drawerLayout.getParent().addView(loadlayout(began))\
-\
-function CircleButton(view,InsideColor,radiu)\
-  drawable = GradientDrawable() \
-  drawable.setShape(GradientDrawable.RECTANGLE) \
-  drawable.setColor(InsideColor)\
-  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
-  view.setBackgroundDrawable(drawable)\
-end\
---控件圆角 (控件id,颜色,角度)\
-CircleButton(center,0xFF218380,360)\
---第一行文字\
-t1.setText(\"自制启动动画\")\
-ats = AnimatorSet()\
---文字动画(参考lua手册)\
-scx=ObjectAnimator().ofFloat(t1,\"scaleX\",{0,1})\
-scy=ObjectAnimator().ofFloat(t1,\"scaleY\",{0,1})\
-tr=ObjectAnimator().ofFloat(t1, \"Y\",{1200,t1.getY()+120})\
-alpha = ObjectAnimator().ofFloat(t1, \"alpha\", {0,1})\
---800是动画时间，毫秒\
-ats.setDuration(800)\
-ats.setInterpolator(AccelerateInterpolator())\
-ats.play(scx).with(scy).with(tr).with(alpha)\
-ats.start()\
-\
-ats.addListener(AnimatorListener{\
-  onAnimationEnd=function(animation)\
-    --第二行文字\
-    t2.setText(\"给你不一样的体验\")\
-    ats2 = AnimatorSet()\
-    scx2=ObjectAnimator().ofFloat(t2,\"scaleX\",{0,1})\
-    scy2=ObjectAnimator().ofFloat(t2,\"scaleY\",{0,1})\
-    tr2=ObjectAnimator().ofFloat(t2, \"Y\",{1200,t1.getY()+140})\
-    alpha2 = ObjectAnimator().ofFloat(t2, \"alpha\", {0,1})\
-    --动画时间\
-    ats2.setDuration(800)\
-    ats2.setInterpolator(AccelerateInterpolator())\
-    ats2.play(scx2).with(scy2).with(tr2).with(alpha2)\
-    ats2.start()\
-\
-    ats2.addListener(AnimatorListener{\
-      onAnimationEnd=function(animation)\
-        phone=center\
-        set = AnimatorSet()\
-        anim = ObjectAnimator .ofFloat(phone, \"rotation\",{360,0})\
-        anim3 = ObjectAnimator .ofFloat(phone, \"rotationX\",{360,0})\
-        anim.setDuration(1000)\
-        anim3.setDuration(1000)\
-        set.play(anim).before(anim3)\
-        set.start()\
-\
-\
-        set.addListener(AnimatorListener{\
-          onAnimationEnd=function(animation)\
-            set2 = AnimatorSet()\
-            --结束动画 中间图标渐隐 上下拉开\
-            tr3=ObjectAnimator().ofFloat(top, \"Y\",{top.getY(),-2000})\
-            tr4=ObjectAnimator().ofFloat(bottom, \"Y\",{bottom.getY(),5000})\
-            al=ObjectAnimator().ofFloat(center, \"alpha\", {1,0})\
-            set2.setDuration(1000)\
-            set2.setInterpolator(AccelerateInterpolator())\
-            set2.play(tr3).with(tr4).with(al)\
-            set2.start()\
-\
-            set2.addListener(AnimatorListener{\
-              onAnimationEnd=function(animation)\
-                --动画结束执行代码\
-              end,\
-            });\
-\
-          end,\
-        });\
-\
-      end,\
-    });\
-\
-\
-\
-  end,\
-});" ;
-      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
-\
---接收参数\
-浏览器对象,网页链接=..." ;
+      } ;
+  ["fltBtn"]	= {
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["图标"]	= "" ;
+      ["显示"]	= true ;
+      } ;
+  ["switch"]	= {
+      ["显示状态栏"]	= true ;
+      ["支持滑动页面"]	= true ;
+      ["横屏"]	= false ;
+      ["启用启动图"]	= false ;
       } ;
   ["view_attribute"]	= {
-      ["顶栏标题"]	= "Title" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
       ["顶栏高度"]	= "56dp" ;
       ["顶栏阴影强度"]	= "2dp" ;
-      ["侧滑栏宽度"]	= "240dp" ;
-      ["搜索栏阴影强度"]	= "2dp" ;
-      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏标题"]	= "Title" ;
       } ;
-  ["colors"]	= {
-      ["搜索栏部件"]	= "#ff888888" ;
-      ["顶栏部件触摸"]	= "#22ffffff" ;
-      ["悬浮按钮图标"]	= "#ffffffff" ;
-      ["侧滑栏列表文字"]	= "#ff333333" ;
-      ["搜索栏部件触摸"]	= "#44000000" ;
-      ["顶栏部件"]	= "#ffffffff" ;
-      ["搜索栏背景"]	= "#ffffffff" ;
-      ["侧滑栏列表图标"]	= "#ff757575" ;
-      ["悬浮按钮"]	= "#ff33a7aa" ;
-      ["导航栏"]	= "#ff2c2e43" ;
-      ["搜索栏提示文字"]	= "#80000000" ;
-      ["顶栏"]	= "#ff2c2e43" ;
-      ["侧滑栏背景"]	= "#ffffffff" ;
-      ["进度条"]	= "#00000000" ;
+  ["toolbar"]	= {
+      ["启用搜索功能"]	= false ;
+      ["搜索URL"]	= "" ;
+      ["搜索框提示"]	= "" ;
+      ["icon_btns"]	= {
+          } ;
+      ["menus"]	= {
+          [1]	= {
+              ["onClick"]	= "退出页面()" ;
+              ["name"]	= "退出" ;
+              } ;
+          } ;
+      ["输入栏模式"]	= true ;
       } ;
   ["web_control"]	= {
       } ;
-  ["switch"]	= {
-      ["横屏"]	= false ;
-      ["启用启动图"]	= false ;
-      ["显示状态栏"]	= true ;
-      ["支持滑动页面"]	= true ;
+  ["sidebar"]	= {
+      ["启用顶部图片"]	= false ;
+      ["启用"]	= true ;
+      ["items"]	= {
+          } ;
       } ;
   } ;

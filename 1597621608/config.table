@@ -1,4 +1,82 @@
 {
+  ["sidebar"]	= {
+      ["启用"]	= true ;
+      ["启用顶部图片"]	= false ;
+      ["items"]	= {
+          [1]	= {
+              ["name"]	= "About" ;
+              ["icon"]	= "drawable/aij.png" ;
+              ["onClick"]	= "进入子页面(\"about\")" ;
+              } ;
+          } ;
+      } ;
+  ["view_attribute"]	= {
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏标题"]	= "Title" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      } ;
+  ["web"]	= {
+      ["启用进度条"]	= false ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["启动网页"]	= "" ;
+      ["支持打开外部应用"]	= true ;
+      ["网页沉浸"]	= true ;
+      ["启用长按菜单"]	= false ;
+      } ;
+  ["colors"]	= {
+      ["顶栏"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["进度条"]	= "#00000000" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      } ;
+  ["toolbar"]	= {
+      ["icon_btns"]	= {
+          } ;
+      ["启用搜索功能"]	= false ;
+      ["搜索URL"]	= "" ;
+      ["输入栏模式"]	= false ;
+      ["menus"]	= {
+          } ;
+      ["搜索框提示"]	= "" ;
+      } ;
+  ["global_js"]	= "/*\
+ * @name: 强制缩放\
+ * @Author: 谷花泰\
+ * @version: 1.0\
+ * @description: 让所有网页都可以缩放\
+ * @include: *\
+ * @createTime: 2019-10-04 01:47:08\
+ * @updateTime: 2019-10-09 14:46:02\
+ */\
+(function () {\
+  /* 判断是否该执行 */\
+  const key = encodeURIComponent('谷花泰:强制缩放:执行判断');\
+\
+  if (window[key]) {\
+    return;\
+  };\
+\
+  window[key] = true;\
+\
+  /* 开始执行代码 */\
+  const meta = document.createElement('meta');\
+  meta.setAttribute('name', 'viewport');\
+  meta.setAttribute('content', 'width=device-width, initial-scale=1, user-scalable=yes');\
+  document.head.appendChild(meta);\
+})();" ;
   ["fltBtn"]	= {
       ["显示"]	= false ;
       ["图标"]	= "" ;
@@ -9,59 +87,15 @@
 \
 --接收参数\
 浏览器对象，新标题=..." ;
-      ["网页加载完毕"]	= "local wl=activity.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE).getActiveNetworkInfo(); \
-\
-if wl== nil then    \
-require \"import\"\
-import \"android.widget.*\"\
-import \"android.view.*\"\
-\
-lay=\
-\
-{\
-  LinearLayout;\
-  backgroundColor=\"#ffffffff\",\
-  orientation=\"vertical\";\
-  layout_width=\"fill\";\
-  layout_height=\"fill\";\
-    {\
-    TextView;\
-    text=\"网络异常！请检查你的网络！\";\
-    layout_marginTop=\"100\";\
-    id=\"db\";\
-    textSize=\"20\"; \
-    textColor=wlc; \
-    layout_gravity=\"center\";\
-    layout_marginBottom=\"50\";\
-  };\
-\
-{\
-  LinearLayout;\
-  backgroundColor=\"#fffffff\",\
-  orientation=\"vertical\";\
-  layout_width=\"fill\";\
-  layout_height=\"fill\";\
-    {\
-    TextView;\
-    text=\"\";\
-    layout_marginTop=\"50\";\
-    id=\"db\";\
-    textSize=\"13\"; \
-    textColor=wlc; \
-    layout_gravity=\"left\";\
-    layout_marginBottom=\"50\";\
-};\
-};\
-};\
-\
-webView.addView(loadlayout(lay))\
+      ["程序启动"]	= "\
+进入子页面(\"密码\")\
 \
 \
 \
-this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE )\
 \
-end" ;
-      ["程序启动"]	= "--程序启动时会执行的事件\
+\
+\
+\
 \
 --远程推送通知栏消息\
 require \"import\"\
@@ -1140,91 +1174,65 @@ end\
 \
 --接收参数\
 浏览器对象,网页链接=..." ;
-      } ;
-  ["global_js"]	= "/*\
- * @name: 强制缩放\
- * @Author: 谷花泰\
- * @version: 1.0\
- * @description: 让所有网页都可以缩放\
- * @include: *\
- * @createTime: 2019-10-04 01:47:08\
- * @updateTime: 2019-10-09 14:46:02\
- */\
-(function () {\
-  /* 判断是否该执行 */\
-  const key = encodeURIComponent('谷花泰:强制缩放:执行判断');\
+      ["网页加载完毕"]	= "local wl=activity.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE).getActiveNetworkInfo(); \
 \
-  if (window[key]) {\
-    return;\
+if wl== nil then    \
+require \"import\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+\
+lay=\
+\
+{\
+  LinearLayout;\
+  backgroundColor=\"#ffffffff\",\
+  orientation=\"vertical\";\
+  layout_width=\"fill\";\
+  layout_height=\"fill\";\
+    {\
+    TextView;\
+    text=\"网络异常！请检查你的网络！\";\
+    layout_marginTop=\"100\";\
+    id=\"db\";\
+    textSize=\"20\"; \
+    textColor=wlc; \
+    layout_gravity=\"center\";\
+    layout_marginBottom=\"50\";\
   };\
 \
-  window[key] = true;\
+{\
+  LinearLayout;\
+  backgroundColor=\"#fffffff\",\
+  orientation=\"vertical\";\
+  layout_width=\"fill\";\
+  layout_height=\"fill\";\
+    {\
+    TextView;\
+    text=\"\";\
+    layout_marginTop=\"50\";\
+    id=\"db\";\
+    textSize=\"13\"; \
+    textColor=wlc; \
+    layout_gravity=\"left\";\
+    layout_marginBottom=\"50\";\
+};\
+};\
+};\
 \
-  /* 开始执行代码 */\
-  const meta = document.createElement('meta');\
-  meta.setAttribute('name', 'viewport');\
-  meta.setAttribute('content', 'width=device-width, initial-scale=1, user-scalable=yes');\
-  document.head.appendChild(meta);\
-})();" ;
-  ["web"]	= {
-      ["启用长按菜单"]	= false ;
-      ["支持打开外部应用"]	= true ;
-      ["启用进度条"]	= false ;
-      ["浏览器用户标识"]	= "默认" ;
-      ["网页沉浸"]	= true ;
-      ["启动网页"]	= "" ;
-      } ;
-  ["web_control"]	= {
-      } ;
-  ["sidebar"]	= {
-      ["启用"]	= true ;
-      ["启用顶部图片"]	= false ;
-      ["items"]	= {
-          [1]	= {
-              ["icon"]	= "drawable/aij.png" ;
-              ["name"]	= "About" ;
-              ["onClick"]	= "进入子页面(\"about\")" ;
-              } ;
-          } ;
-      } ;
-  ["toolbar"]	= {
-      ["menus"]	= {
-          } ;
-      ["启用搜索功能"]	= false ;
-      ["输入栏模式"]	= false ;
-      ["icon_btns"]	= {
-          } ;
-      ["搜索URL"]	= "" ;
-      ["搜索框提示"]	= "" ;
-      } ;
-  ["colors"]	= {
-      ["导航栏"]	= "#ff2c2e43" ;
-      ["侧滑栏列表图标"]	= "#ff757575" ;
-      ["悬浮按钮图标"]	= "#ffffffff" ;
-      ["搜索栏提示文字"]	= "#80000000" ;
-      ["搜索栏部件触摸"]	= "#44000000" ;
-      ["进度条"]	= "#00000000" ;
-      ["搜索栏背景"]	= "#ffffffff" ;
-      ["悬浮按钮"]	= "#ff33a7aa" ;
-      ["侧滑栏背景"]	= "#ffffffff" ;
-      ["顶栏"]	= "#ffffffff" ;
-      ["顶栏部件触摸"]	= "#22ffffff" ;
-      ["侧滑栏列表文字"]	= "#ff333333" ;
-      ["顶栏部件"]	= "#ffffffff" ;
-      ["搜索栏部件"]	= "#ff888888" ;
-      } ;
-  ["view_attribute"]	= {
-      ["顶栏高度"]	= "56dp" ;
-      ["顶栏标题"]	= "Title" ;
-      ["搜索栏阴影强度"]	= "2dp" ;
-      ["侧滑栏宽度"]	= "240dp" ;
-      ["搜索栏圆角弧度"]	= "2dp" ;
-      ["顶栏阴影强度"]	= "2dp" ;
+webView.addView(loadlayout(lay))\
+\
+\
+\
+this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE )\
+\
+end" ;
       } ;
   ["switch"]	= {
+      ["启用启动图"]	= true ;
       ["横屏"]	= false ;
       ["显示状态栏"]	= true ;
-      ["启用启动图"]	= true ;
       ["支持滑动页面"]	= false ;
+      } ;
+  ["web_control"]	= {
       } ;
   } ;

@@ -1,10 +1,131 @@
 {
+  ["fltBtn"]	= {
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件\
+pop=PopupMenu(activity,fltBtn)\
+menu=pop.Menu\
+menu.add(\"返回顶部\").onMenuItemClick=function(a)\
+  返回网页顶部()\
+\
+end\
+menu.add(\"刷新\").onMenuItemClick=function(a)\
+  刷新网页()\
+\
+end\
+menu.add(\"阅读模式\").onMenuItemClick=function(a)\
+  阅读模式()\
+\
+end\
+menu.add(\"显示/隐藏顶栏\").onMenuItemClick=function(a)\
+\
+if barisshow == 0 then\
+  --状态栏\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+  else\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+  end\
+end\
+\
+menu.add(\"隐藏悬浮窗\").onMenuItemClick=function(a)\
+  fltBtn.setVisibility(View.GONE)\
+  end\
+menu.add(\"获取一文\").onMenuItemClick=function(a)\
+  \
+获取一文()\
+\
+end\
+menu.add(\"退出\").onMenuItemClick=function(a)\
+  退出页面()\
+\
+\
+end\
+pop.show()\
+--显示import \"android.view.WindowManager\"\
+--需程序启动赋予barisshow初始值0\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+" ;
+      ["图标"]	= "" ;
+      ["显示"]	= false ;
+      } ;
   ["switch"]	= {
-      ["启用启动图"]	= false ;
-      ["显示状态栏"]	= true ;
       ["支持滑动页面"]	= false ;
       ["横屏"]	= false ;
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= true ;
       } ;
+  ["view_attribute"]	= {
+      ["顶栏标题"]	= "半层烟雨披风沙，卷入心帘尘飞扬" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["搜索栏圆角弧度"]	= "100dp" ;
+      ["顶栏阴影强度"]	= "100dp" ;
+      ["顶栏高度"]	= "34dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      } ;
+  ["sidebar"]	= {
+      ["启用顶部图片"]	= false ;
+      ["items"]	= {
+          [1]	= {
+              ["name"]	= "Tags" ;
+              ["onClick"]	= "加载网页(\"https://lianyiming.com/tags/\")" ;
+              ["icon"]	= "drawable/school.png" ;
+              } ;
+          [2]	= {
+              ["name"]	= "About" ;
+              ["onClick"]	= "加载网页(\"https://lianyiming.com/about/\")" ;
+              ["icon"]	= "drawable/panda.png" ;
+              } ;
+          [3]	= {
+              ["name"]	= "Home" ;
+              ["onClick"]	= "加载网页(\"https://lianyiming.com/\")" ;
+              ["icon"]	= "drawable/home_variant.png" ;
+              } ;
+          } ;
+      ["启用"]	= true ;
+      } ;
+  ["colors"]	= {
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["顶栏"]	= "#ffdcdcdc" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["侧滑栏列表图标"]	= "#e1000000" ;
+      ["侧滑栏列表文字"]	= "#ff000000" ;
+      ["导航栏"]	= "#ffffffff" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#ffffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["进度条"]	= "#2a000000" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      } ;
+  ["global_js"]	= "加载Js([[\
+//08:16-50\
+document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"display:none\");\
+\
+//15:36-38\
+document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
+\
+]])" ;
   ["toolbar"]	= {
       ["icon_btns"]	= {
           [2]	= {
@@ -19,7 +140,7 @@ isToolbarHidden=true" ;
               } ;
           } ;
       ["搜索框提示"]	= "" ;
-      ["启用搜索功能"]	= false ;
+      ["输入栏模式"]	= false ;
       ["搜索URL"]	= "" ;
       ["menus"]	= {
           [1]	= {
@@ -448,85 +569,26 @@ c.edit().clear().commit()\
 background.setImageBitmap(loadbitmap(\"background.jpg\"))" ;
               } ;
           } ;
-      ["输入栏模式"]	= false ;
-      } ;
-  ["web"]	= {
-      ["网页沉浸"]	= true ;
-      ["启用进度条"]	= false ;
-      ["浏览器用户标识"]	= "默认" ;
-      ["启动网页"]	= "https://lianyiming.com" ;
-      ["启用长按菜单"]	= false ;
-      ["支持打开外部应用"]	= false ;
-      } ;
-  ["fltBtn"]	= {
-      ["图标"]	= "" ;
-      ["显示"]	= false ;
-      ["点击事件"]	= "--悬浮按钮点击时执行的事件\
-pop=PopupMenu(activity,fltBtn)\
-menu=pop.Menu\
-menu.add(\"返回顶部\").onMenuItemClick=function(a)\
-  返回网页顶部()\
-\
-end\
-menu.add(\"刷新\").onMenuItemClick=function(a)\
-  刷新网页()\
-\
-end\
-menu.add(\"阅读模式\").onMenuItemClick=function(a)\
-  阅读模式()\
-\
-end\
-menu.add(\"显示/隐藏顶栏\").onMenuItemClick=function(a)\
-\
-if barisshow == 0 then\
-  --状态栏\
-  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
-  --顶栏\
-  toolbar.parent.setVisibility(View.GONE);\
-  barisshow = 1;\
-  else\
-  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
-  toolbar.parent.setVisibility(View.VISIBLE);\
-  barisshow = 0;\
-  end\
-end\
-\
-menu.add(\"隐藏悬浮窗\").onMenuItemClick=function(a)\
-  fltBtn.setVisibility(View.GONE)\
-  end\
-menu.add(\"获取一文\").onMenuItemClick=function(a)\
-  \
-获取一文()\
-\
-end\
-menu.add(\"退出\").onMenuItemClick=function(a)\
-  退出页面()\
-\
-\
-end\
-pop.show()\
---显示import \"android.view.WindowManager\"\
---需程序启动赋予barisshow初始值0\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-" ;
+      ["启用搜索功能"]	= false ;
       } ;
   ["events"]	= {
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+\
+加载Js([[\
+//08:16-50\
+document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"display:none\");\
+\
+//15:36-38\
+document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
+\
+]])" ;
       ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
 \
 --接收参数\
@@ -975,100 +1037,37 @@ sidebar.addView(sidebar2)\
 \
 \
 " ;
-      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
-\
---接收参数\
-浏览器对象,网页链接=..." ;
-      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
-\
---接收参数\
-浏览器对象,网页链接=...\
-\
-加载Js([[\
-//08:16-50\
-document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"display:none\");\
-\
-//15:36-38\
-document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
-\
-]])" ;
       } ;
-  ["global_js"]	= "加载Js([[\
-//08:16-50\
-document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"display:none\");\
-\
-//15:36-38\
-document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
-\
-]])" ;
-  ["colors"]	= {
-      ["搜索栏提示文字"]	= "#80000000" ;
-      ["导航栏"]	= "#ffffffff" ;
-      ["悬浮按钮"]	= "#ff33a7aa" ;
-      ["顶栏部件触摸"]	= "#ffffffff" ;
-      ["搜索栏部件"]	= "#ff888888" ;
-      ["顶栏部件"]	= "#ffffffff" ;
-      ["搜索栏部件触摸"]	= "#44000000" ;
-      ["进度条"]	= "#2a000000" ;
-      ["侧滑栏列表图标"]	= "#e1000000" ;
-      ["侧滑栏背景"]	= "#ffffffff" ;
-      ["侧滑栏列表文字"]	= "#ff000000" ;
-      ["搜索栏背景"]	= "#ffffffff" ;
-      ["顶栏"]	= "#ffdcdcdc" ;
-      ["悬浮按钮图标"]	= "#ffffffff" ;
-      } ;
-  ["view_attribute"]	= {
-      ["顶栏高度"]	= "34dp" ;
-      ["顶栏阴影强度"]	= "100dp" ;
-      ["顶栏标题"]	= "半层烟雨披风沙，卷入心帘尘飞扬" ;
-      ["搜索栏阴影强度"]	= "2dp" ;
-      ["搜索栏圆角弧度"]	= "100dp" ;
-      ["侧滑栏宽度"]	= "240dp" ;
-      } ;
-  ["sidebar"]	= {
-      ["启用顶部图片"]	= false ;
-      ["启用"]	= true ;
-      ["items"]	= {
-          [1]	= {
-              ["onClick"]	= "加载网页(\"https://lianyiming.com/tags/\")" ;
-              ["name"]	= "Tags" ;
-              ["icon"]	= "drawable/school.png" ;
-              } ;
-          [2]	= {
-              ["onClick"]	= "加载网页(\"https://lianyiming.com/about/\")" ;
-              ["name"]	= "About" ;
-              ["icon"]	= "drawable/panda.png" ;
-              } ;
-          [3]	= {
-              ["onClick"]	= "加载网页(\"https://lianyiming.com/\")" ;
-              ["name"]	= "Home" ;
-              ["icon"]	= "drawable/home_variant.png" ;
-              } ;
-          } ;
+  ["web"]	= {
+      ["网页沉浸"]	= true ;
+      ["启用长按菜单"]	= false ;
+      ["支持打开外部应用"]	= false ;
+      ["启用进度条"]	= false ;
+      ["启动网页"]	= "https://lianyiming.com" ;
+      ["浏览器用户标识"]	= "默认" ;
       } ;
   ["web_control"]	= {
       [1]	= {
-          ["url"]	= "m.wufazhuce.com" ;
           ["remove_element"]	= "ui-link" ;
           ["js"]	= "" ;
+          ["url"]	= "m.wufazhuce.com" ;
           } ;
       [2]	= {
-          ["url"]	= "www.jiumodiary.com" ;
           ["remove_element"]	= "logo,label-div,icons icon-bestseller-tiny,icons icon-barcode-tiny,label_mid,label-a2" ;
           ["js"]	= "" ;
+          ["url"]	= "www.jiumodiary.com" ;
           } ;
       [3]	= {
-          ["url"]	= "meiriyiwen.com" ;
           ["remove_element"]	= "logo,header,footer,footer-bottom" ;
           ["js"]	= "" ;
+          ["url"]	= "meiriyiwen.com" ;
           } ;
       [4]	= {
-          ["url"]	= "voice.meiriyiwen.com" ;
           ["remove_element"]	= "header,footer,footer-bottom" ;
           ["js"]	= "" ;
+          ["url"]	= "voice.meiriyiwen.com" ;
           } ;
       [5]	= {
-          ["url"]	= "lianyiming.com" ;
           ["remove_element"]	= "col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12 col-xs-12 sidebar-container,copyright text-muted,list-inline text-center,navbar-brand,navbar-toggle,col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12 col-xs-12 sidebar-container" ;
           ["js"]	= "/*\
  * @name: 下拉刷新\
@@ -1107,6 +1106,7 @@ document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");
   }, {'passive':true, 'capture':true});\
  } catch(err){console.log('下拉刷新：', err);}\
 })();" ;
+          ["url"]	= "lianyiming.com" ;
           } ;
       } ;
   } ;

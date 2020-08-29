@@ -1,2 +1,2 @@
+name="音乐"
 template="bottom"
-name="应用"

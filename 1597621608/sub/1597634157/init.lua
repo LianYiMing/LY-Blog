@@ -1,2 +1,2 @@
-name="about"
 template="tool"
+name="about"

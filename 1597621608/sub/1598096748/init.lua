@@ -1,2 +1,2 @@
-name="通知"
 template="tool"
+name="通知"

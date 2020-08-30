@@ -1,7 +1,5 @@
-appname="LY｜Blog"
-appcode="15"
-appver="1.1"
 template="tool"
+appname="LY｜Blog"
 user_permission={
   [1]	= "ACCESS_COARSE_LOCATION" ;
   [2]	= "ACCESS_FINE_LOCATION" ;
@@ -11,3 +9,5 @@ user_permission={
   [6]	= "WRITE_EXTERNAL_STORAGE" ;
   } ;
 packagename="com.lianyiming.A"
+appcode="15"
+appver="1.1"

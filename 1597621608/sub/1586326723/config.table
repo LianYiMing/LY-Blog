@@ -1,131 +1,34 @@
 {
-  ["fltBtn"]	= {
-      ["点击事件"]	= "--悬浮按钮点击时执行的事件\
-pop=PopupMenu(activity,fltBtn)\
-menu=pop.Menu\
-menu.add(\"返回顶部\").onMenuItemClick=function(a)\
-  返回网页顶部()\
-\
-end\
-menu.add(\"刷新\").onMenuItemClick=function(a)\
-  刷新网页()\
-\
-end\
-menu.add(\"阅读模式\").onMenuItemClick=function(a)\
-  阅读模式()\
-\
-end\
-menu.add(\"显示/隐藏顶栏\").onMenuItemClick=function(a)\
-\
-if barisshow == 0 then\
-  --状态栏\
-  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
-  --顶栏\
-  toolbar.parent.setVisibility(View.GONE);\
-  barisshow = 1;\
-  else\
-  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
-  toolbar.parent.setVisibility(View.VISIBLE);\
-  barisshow = 0;\
-  end\
-end\
-\
-menu.add(\"隐藏悬浮窗\").onMenuItemClick=function(a)\
-  fltBtn.setVisibility(View.GONE)\
-  end\
-menu.add(\"获取一文\").onMenuItemClick=function(a)\
-  \
-获取一文()\
-\
-end\
-menu.add(\"退出\").onMenuItemClick=function(a)\
-  退出页面()\
-\
-\
-end\
-pop.show()\
---显示import \"android.view.WindowManager\"\
---需程序启动赋予barisshow初始值0\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-" ;
-      ["图标"]	= "" ;
-      ["显示"]	= false ;
-      } ;
-  ["switch"]	= {
-      ["支持滑动页面"]	= false ;
-      ["横屏"]	= false ;
-      ["启用启动图"]	= false ;
-      ["显示状态栏"]	= true ;
-      } ;
   ["view_attribute"]	= {
       ["顶栏标题"]	= "半层烟雨披风沙，卷入心帘尘飞扬" ;
       ["搜索栏阴影强度"]	= "2dp" ;
-      ["搜索栏圆角弧度"]	= "100dp" ;
-      ["顶栏阴影强度"]	= "100dp" ;
-      ["顶栏高度"]	= "34dp" ;
       ["侧滑栏宽度"]	= "240dp" ;
-      } ;
-  ["sidebar"]	= {
-      ["启用顶部图片"]	= false ;
-      ["items"]	= {
-          [1]	= {
-              ["name"]	= "Tags" ;
-              ["onClick"]	= "加载网页(\"https://lianyiming.com/tags/\")" ;
-              ["icon"]	= "drawable/school.png" ;
-              } ;
-          [2]	= {
-              ["name"]	= "About" ;
-              ["onClick"]	= "加载网页(\"https://lianyiming.com/about/\")" ;
-              ["icon"]	= "drawable/panda.png" ;
-              } ;
-          [3]	= {
-              ["name"]	= "Home" ;
-              ["onClick"]	= "加载网页(\"https://lianyiming.com/\")" ;
-              ["icon"]	= "drawable/home_variant.png" ;
-              } ;
-          } ;
-      ["启用"]	= true ;
+      ["顶栏阴影强度"]	= "100dp" ;
+      ["搜索栏圆角弧度"]	= "100dp" ;
+      ["顶栏高度"]	= "34dp" ;
       } ;
   ["colors"]	= {
-      ["侧滑栏背景"]	= "#ffffffff" ;
       ["顶栏"]	= "#ffdcdcdc" ;
-      ["搜索栏部件"]	= "#ff888888" ;
-      ["侧滑栏列表图标"]	= "#e1000000" ;
-      ["侧滑栏列表文字"]	= "#ff000000" ;
-      ["导航栏"]	= "#ffffffff" ;
-      ["搜索栏背景"]	= "#ffffffff" ;
-      ["顶栏部件触摸"]	= "#ffffffff" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
       ["搜索栏部件触摸"]	= "#44000000" ;
+      ["顶栏部件触摸"]	= "#ffffffff" ;
+      ["搜索栏部件"]	= "#ff888888" ;
       ["进度条"]	= "#2a000000" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
       ["悬浮按钮"]	= "#ff33a7aa" ;
       ["搜索栏提示文字"]	= "#80000000" ;
-      ["悬浮按钮图标"]	= "#ffffffff" ;
-      ["顶栏部件"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff000000" ;
+      ["侧滑栏列表图标"]	= "#e1000000" ;
+      ["导航栏"]	= "#ffffffff" ;
       } ;
-  ["global_js"]	= "加载Js([[\
-//08:16-50\
-document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"display:none\");\
-\
-//15:36-38\
-document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
-\
-]])" ;
+  ["switch"]	= {
+      ["横屏"]	= false ;
+      ["显示状态栏"]	= true ;
+      ["支持滑动页面"]	= false ;
+      ["启用启动图"]	= false ;
+      } ;
   ["toolbar"]	= {
       ["icon_btns"]	= {
           [2]	= {
@@ -139,9 +42,8 @@ isToolbarHidden=true" ;
               ["onClick"]	= "加载Js([[javascript:(function(){var styleElem=null,doc=document,ie=doc.all,fontColor=50,sel=\"body,body *\";styleElem=createCSS(sel,setStyle(fontColor),styleElem);function setStyle(fontColor){var colorArr=[fontColor,fontColor,fontColor];return\"background-color:#e8ffe8 !important;color:RGB(\"+colorArr.join(\"%,\")+\"%) !important;\"}function createCSS(sel,decl,styleElem){var doc=document,h=doc.getElementsByTagName(\"head\")[0],styleElem=styleElem;if(!styleElem){s=doc.createElement(\"style\");s.setAttribute(\"type\",\"text/css\");styleElem=ie?doc.styleSheets[doc.styleSheets.length-1]:h.appendChild(s)}if(ie){styleElem.addRule(sel,decl)}else{styleElem.innerHTML=\"\";styleElem.appendChild(doc.createTextNode(sel+\" {\"+decl+\"}\"))}return styleElem}})();]]);" ;
               } ;
           } ;
-      ["搜索框提示"]	= "" ;
+      ["启用搜索功能"]	= false ;
       ["输入栏模式"]	= false ;
-      ["搜索URL"]	= "" ;
       ["menus"]	= {
           [1]	= {
               ["name"]	= "阅读模式" ;
@@ -569,13 +471,157 @@ c.edit().clear().commit()\
 background.setImageBitmap(loadbitmap(\"background.jpg\"))" ;
               } ;
           } ;
-      ["启用搜索功能"]	= false ;
+      ["搜索URL"]	= "" ;
+      ["搜索框提示"]	= "" ;
+      } ;
+  ["web_control"]	= {
+      [1]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "ui-link" ;
+          ["url"]	= "m.wufazhuce.com" ;
+          } ;
+      [2]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "logo,label-div,icons icon-bestseller-tiny,icons icon-barcode-tiny,label_mid,label-a2" ;
+          ["url"]	= "www.jiumodiary.com" ;
+          } ;
+      [3]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "logo,header,footer,footer-bottom" ;
+          ["url"]	= "meiriyiwen.com" ;
+          } ;
+      [4]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "header,footer,footer-bottom" ;
+          ["url"]	= "voice.meiriyiwen.com" ;
+          } ;
+      [5]	= {
+          ["js"]	= "/*\
+ * @name: 下拉刷新\
+ * @Author: Sky\
+ * @version: 1.6\
+ * @description: 位于页面顶端时下拉刷新\
+ * @include: *\
+ * @createTime: 2020-3-6 01:00\
+ * @updateTime: 2020-6-4 20:30\
+ */\
+(function(){const\
+/*等号后的数表示最小触发下拉距离*/\
+ min_dY = 300,\
+/*－－－－以下勿改－－－－*/\
+ key = encodeURIComponent('下拉刷新:执行判断');\
+ if(window[key]){return;}\
+ try {\
+  window[key] = true;\
+  let strtX, strtY = 0, rchTp, onePt = false;\
+  document.addEventListener('touchstart', function(e){\
+   if(onePt){rchTp = false;} /*超过一点触碰时不刷新*/\
+   else {\
+    onePt = true;\
+    rchTp = (document.body.scrollTop || document.documentElement.scrollTop) < 50;\
+    strtX = e.touches[0].pageX;\
+    strtY = e.touches[0].pageY;\
+   }\
+  }, {'passive':true});\
+  document.addEventListener('touchend', function(e){\
+   if(rchTp){\
+    const dY = Math.floor(e.changedTouches[0].pageY - strtY);\
+    if(dY > min_dY && Math.abs(e.changedTouches[0].pageX - strtX) < (0.4*dY)){location.reload();}\
+\9rchTp = false;\
+   }\
+   onePt = false;\
+  }, {'passive':true, 'capture':true});\
+ } catch(err){console.log('下拉刷新：', err);}\
+})();" ;
+          ["remove_element"]	= "col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12 col-xs-12 sidebar-container,copyright text-muted,list-inline text-center,navbar-brand,navbar-toggle,col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12 col-xs-12 sidebar-container" ;
+          ["url"]	= "lianyiming.com" ;
+          } ;
+      } ;
+  ["web"]	= {
+      ["启动网页"]	= "https://lianyiming.com" ;
+      ["网页沉浸"]	= true ;
+      ["启用长按菜单"]	= false ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["支持打开外部应用"]	= false ;
+      ["启用进度条"]	= false ;
+      } ;
+  ["fltBtn"]	= {
+      ["图标"]	= "" ;
+      ["显示"]	= false ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件\
+pop=PopupMenu(activity,fltBtn)\
+menu=pop.Menu\
+menu.add(\"返回顶部\").onMenuItemClick=function(a)\
+  返回网页顶部()\
+\
+end\
+menu.add(\"刷新\").onMenuItemClick=function(a)\
+  刷新网页()\
+\
+end\
+menu.add(\"阅读模式\").onMenuItemClick=function(a)\
+  阅读模式()\
+\
+end\
+menu.add(\"显示/隐藏顶栏\").onMenuItemClick=function(a)\
+\
+if barisshow == 0 then\
+  --状态栏\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+  else\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+  end\
+end\
+\
+menu.add(\"隐藏悬浮窗\").onMenuItemClick=function(a)\
+  fltBtn.setVisibility(View.GONE)\
+  end\
+menu.add(\"获取一文\").onMenuItemClick=function(a)\
+  \
+获取一文()\
+\
+end\
+menu.add(\"退出\").onMenuItemClick=function(a)\
+  退出页面()\
+\
+\
+end\
+pop.show()\
+--显示import \"android.view.WindowManager\"\
+--需程序启动赋予barisshow初始值0\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+" ;
       } ;
   ["events"]	= {
       ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
 \
 --接收参数\
 浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
       ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
 \
 --接收参数\
@@ -589,10 +635,6 @@ document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"d
 document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
 \
 ]])" ;
-      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
-\
---接收参数\
-浏览器对象，新标题=..." ;
       ["程序启动"]	= "\
 import \"android.app.*\"\
 import \"android.os.*\"\
@@ -1038,75 +1080,33 @@ sidebar.addView(sidebar2)\
 \
 " ;
       } ;
-  ["web"]	= {
-      ["网页沉浸"]	= true ;
-      ["启用长按菜单"]	= false ;
-      ["支持打开外部应用"]	= false ;
-      ["启用进度条"]	= false ;
-      ["启动网页"]	= "https://lianyiming.com" ;
-      ["浏览器用户标识"]	= "默认" ;
-      } ;
-  ["web_control"]	= {
-      [1]	= {
-          ["remove_element"]	= "ui-link" ;
-          ["js"]	= "" ;
-          ["url"]	= "m.wufazhuce.com" ;
-          } ;
-      [2]	= {
-          ["remove_element"]	= "logo,label-div,icons icon-bestseller-tiny,icons icon-barcode-tiny,label_mid,label-a2" ;
-          ["js"]	= "" ;
-          ["url"]	= "www.jiumodiary.com" ;
-          } ;
-      [3]	= {
-          ["remove_element"]	= "logo,header,footer,footer-bottom" ;
-          ["js"]	= "" ;
-          ["url"]	= "meiriyiwen.com" ;
-          } ;
-      [4]	= {
-          ["remove_element"]	= "header,footer,footer-bottom" ;
-          ["js"]	= "" ;
-          ["url"]	= "voice.meiriyiwen.com" ;
-          } ;
-      [5]	= {
-          ["remove_element"]	= "col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12 col-xs-12 sidebar-container,copyright text-muted,list-inline text-center,navbar-brand,navbar-toggle,col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12 col-xs-12 sidebar-container" ;
-          ["js"]	= "/*\
- * @name: 下拉刷新\
- * @Author: Sky\
- * @version: 1.6\
- * @description: 位于页面顶端时下拉刷新\
- * @include: *\
- * @createTime: 2020-3-6 01:00\
- * @updateTime: 2020-6-4 20:30\
- */\
-(function(){const\
-/*等号后的数表示最小触发下拉距离*/\
- min_dY = 300,\
-/*－－－－以下勿改－－－－*/\
- key = encodeURIComponent('下拉刷新:执行判断');\
- if(window[key]){return;}\
- try {\
-  window[key] = true;\
-  let strtX, strtY = 0, rchTp, onePt = false;\
-  document.addEventListener('touchstart', function(e){\
-   if(onePt){rchTp = false;} /*超过一点触碰时不刷新*/\
-   else {\
-    onePt = true;\
-    rchTp = (document.body.scrollTop || document.documentElement.scrollTop) < 50;\
-    strtX = e.touches[0].pageX;\
-    strtY = e.touches[0].pageY;\
-   }\
-  }, {'passive':true});\
-  document.addEventListener('touchend', function(e){\
-   if(rchTp){\
-    const dY = Math.floor(e.changedTouches[0].pageY - strtY);\
-    if(dY > min_dY && Math.abs(e.changedTouches[0].pageX - strtX) < (0.4*dY)){location.reload();}\
-\9rchTp = false;\
-   }\
-   onePt = false;\
-  }, {'passive':true, 'capture':true});\
- } catch(err){console.log('下拉刷新：', err);}\
-})();" ;
-          ["url"]	= "lianyiming.com" ;
+  ["global_js"]	= "加载Js([[\
+//08:16-50\
+document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"display:none\");\
+\
+//15:36-38\
+document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
+\
+]])" ;
+  ["sidebar"]	= {
+      ["启用顶部图片"]	= false ;
+      ["启用"]	= true ;
+      ["items"]	= {
+          [1]	= {
+              ["icon"]	= "drawable/school.png" ;
+              ["name"]	= "Tags" ;
+              ["onClick"]	= "加载网页(\"https://lianyiming.com/tags/\")" ;
+              } ;
+          [2]	= {
+              ["icon"]	= "drawable/panda.png" ;
+              ["name"]	= "About" ;
+              ["onClick"]	= "加载网页(\"https://lianyiming.com/about/\")" ;
+              } ;
+          [3]	= {
+              ["icon"]	= "drawable/home_variant.png" ;
+              ["name"]	= "Home" ;
+              ["onClick"]	= "加载网页(\"https://lianyiming.com/\")" ;
+              } ;
           } ;
       } ;
   } ;

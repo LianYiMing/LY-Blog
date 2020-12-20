@@ -1,0 +1,266 @@
+{
+  ["events"]	= {
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["程序启动"]	= "指南针=\
+{\
+  LinearLayout;\
+  orientation=\"vertical\";\
+  layout_width=\"fill\";\
+  layout_height=\"fill\";\
+  id=\"coe\",\
+  gravity=\"center\";\
+  {\
+    TextView;\
+    id=\"dir\";\
+    layout_width=\"fill\";\
+    textColor=\"#0090FF\";\
+    layout_height=\"7%h\";\
+    textSize=\"25dp\";\
+    gravity=\"center\";\
+    text=\"南\";\
+  };\
+  {\
+\
+\
+    LinearLayout;\
+    id=\"cors\";\
+    orientation=\"vertical\";\
+    layout_width=\"70%w\";\
+    gravity=\"center\";\
+    layout_height=\"70%w\";\
+    {\
+      LinearLayout;\
+      layout_gravity=\"center\";\
+      orientation=\"vertical\";\
+      id=\"cor\";\
+      layout_width=\"50%w\";\
+      gravity=\"start\";\
+      layout_height=\"50%w\";\
+      {\
+        TextView;\
+        layout_gravity=\"center\";\
+        textColor=\"#0088ff\";\
+        id=\"n\";\
+        textSize=\"20dp\";\
+        gravity=\"center\";\
+        text=\"N\";\
+      };\
+      {\
+        LinearLayout;\
+        layout_width=\"fill\";\
+        layout_marginTop=\"6%h\";\
+        layout_height=\"8%h\";\
+        {\
+          TextView;\
+          id=\"w\";\
+          textColor=\"0xff0088ff\";\
+          paddingLeft=\"6dp\";\
+          textSize=\"20dp\";\
+          gravity=\"left\";\
+          text=\"W\";\
+        };\
+        {\
+          TextView;\
+          layout_width=\"16.5%w\";\
+          layout_marginLeft=\"9%w\";\
+          textColor=\"0xff0088ff\";\
+          layout_height=\"8%h\";\
+          textSize=\"27dp\";\
+          gravity=\"center\";\
+          text=\"\";\
+        };\
+        {\
+          TextView;\
+          layout_marginRight=\"6dp\";\
+          id=\"e\";\
+          layout_marginLeft=\"11%w\";\
+          textColor=\"0xff0088ff\";\
+          textSize=\"20dp\";\
+          layout_width=\"6%w\";\
+          gravity=\"right\";\
+          text=\"E\";\
+        };\
+      };\
+      {\
+        TextView;\
+        layout_gravity=\"center\";\
+        layout_marginTop=\"6%h\";\
+        textColor=\"#0088ff\";\
+        id=\"s\";\
+        textSize=\"20dp\";\
+        gravity=\"center\";\
+        text=\"S\";\
+\
+      };\
+    };\
+\
+  };\
+  {\
+    TextView;\
+    id=\"deg\";\
+    textColor=\"0xff0088ff\";\
+    layout_height=\"8%h\";\
+    textSize=\"27dp\";\
+    gravity=\"center\";\
+    text=\"0°\";\
+  };\
+};\
+\
+activity.setContentView(loadlayout(指南针))\
+\
+\
+import \"android.content.Context\"\
+import \"android.hardware.SensorManager\"\
+import \"android.hardware.SensorEventListener\"\
+import \"android.hardware.Sensor\"\
+dirs=\"\"\
+FPS=50\
+磁场=0\
+传感器 = activity.getSystemService(Context.SENSOR_SERVICE)\
+local 磁场传感器 = 传感器.getDefaultSensor(Sensor.TYPE_ORIENTATION)\
+传感器.registerListener(SensorEventListener({ \
+  onSensorChanged=function(event) \
+    磁场 = event.values[0]\
+  end,nil}), 磁场传感器, SensorManager.SENSOR_DELAY_NORMAL)\
+function CircleButton(view,InsideColor,radiu,da,db)\
+  import \"android.graphics.drawable.GradientDrawable\"\
+  drawable = GradientDrawable() \
+  drawable.setShape(GradientDrawable.RECTANGLE) \
+  drawable.setStroke(10, 0xff0088ff,da,db)\
+  drawable.setColor(InsideColor) \
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  drawable.setGradientType(1)\
+  view.setBackgroundDrawable(drawable)\
+end\
+角度=activity.getWidth()\
+控件id=cor\
+控件颜色=0xFFFFFFFF\
+CircleButton(控件id,控件颜色,角度,2,2)\
+CircleButton(cors,控件颜色,角度,(activity.getWidth()*0.8)/2,10)\
+tick=Ticker()\
+tick.Period=1000/FPS\
+tick.onTick=function()\
+  if 磁场>165 and 磁场<195 then\
+    dirs=\"南\"\
+  elseif 磁场>195 and 磁场<255 then\
+    dirs=\"西南\"\
+  elseif 磁场>255 and 磁场<285 then\
+    dirs=\"西\"\
+  elseif 磁场>285 and 磁场<345 then\
+    dirs=\"西北\"\
+  elseif 磁场>345 or 磁场<15 then\
+    dirs=\"北\"\
+  elseif 磁场>15 and 磁场<75 then\
+    dirs=\"东北\"\
+  elseif 磁场>75 and 磁场<105 then\
+    dirs=\"东\"\
+  elseif 磁场>105 and 磁场<165 then\
+    dirs=\"东南\"\
+  end\
+  dir.setText(dirs)\
+  cors.setRotation(360-磁场)\
+  w.setRotation(磁场)\
+  s.setRotation(磁场)\
+  n.setRotation(磁场)\
+  e.setRotation(磁场)\
+  deg.setText(tostring(tointeger(磁场)..\"°\"))\
+  --Toast.makeText(activity,tostring(磁场..\"°\"),Toast.LENGTH_SHORT).show()\
+end\
+tick.start()\
+\
+function onDestroy()\
+  tick.stop()\
+  传感器.unregisterListener(Listener);\
+end\
+\
+function onTouchEvent(event)\
+  ac=event.action\
+  if ac==2 or ac==0 then\
+    x=event.X\
+    y=event.Y\
+    coe.setRotationX((activity.getHeight()-y)/30)\
+    coe.setRotationY(x/30)\
+  elseif ac==1 then\
+    coe.setRotationX(0)\
+    coe.setRotationY(0)\
+  end\
+end\
+--coe.setRotationX(activity.getHeight()*0.33)" ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      } ;
+  ["web"]	= {
+      ["启动网页"]	= "" ;
+      ["启用长按菜单"]	= true ;
+      ["网页沉浸"]	= false ;
+      ["启用进度条"]	= true ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["支持打开外部应用"]	= true ;
+      } ;
+  ["view_attribute"]	= {
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏标题"]	= "Title" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      } ;
+  ["switch"]	= {
+      ["支持滑动页面"]	= true ;
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= true ;
+      ["横屏"]	= false ;
+      } ;
+  ["colors"]	= {
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["进度条"]	= "#00000000" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["顶栏"]	= "#ff2c2e43" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      } ;
+  ["fltBtn"]	= {
+      ["显示"]	= true ;
+      ["图标"]	= "" ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["sidebar"]	= {
+      ["启用顶部图片"]	= false ;
+      ["items"]	= {
+          } ;
+      ["启用"]	= true ;
+      } ;
+  ["toolbar"]	= {
+      ["搜索URL"]	= "" ;
+      ["icon_btns"]	= {
+          } ;
+      ["搜索框提示"]	= "" ;
+      ["menus"]	= {
+          [1]	= {
+              ["onClick"]	= "退出页面()" ;
+              ["name"]	= "退出" ;
+              } ;
+          } ;
+      ["输入栏模式"]	= true ;
+      ["启用搜索功能"]	= false ;
+      } ;
+  } ;

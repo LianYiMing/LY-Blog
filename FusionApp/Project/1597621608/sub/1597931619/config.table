@@ -1,0 +1,182 @@
+{
+  ["switch"]	= {
+      ["支持滑动页面"]	= false ;
+      ["横屏"]	= false ;
+      ["显示状态栏"]	= true ;
+      ["启用启动图"]	= false ;
+      } ;
+  ["sidebar"]	= {
+      ["items"]	= {
+          } ;
+      ["启用"]	= true ;
+      ["启用顶部图片"]	= false ;
+      } ;
+  ["colors"]	= {
+      ["顶栏"]	= "#ff2c2e43" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["进度条"]	= "#00000000" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      } ;
+  ["web"]	= {
+      ["支持打开外部应用"]	= true ;
+      ["网页沉浸"]	= false ;
+      ["启用长按菜单"]	= true ;
+      ["启用进度条"]	= true ;
+      ["启动网页"]	= "" ;
+      ["浏览器用户标识"]	= "默认" ;
+      } ;
+  ["toolbar"]	= {
+      ["启用搜索功能"]	= false ;
+      ["输入栏模式"]	= true ;
+      ["menus"]	= {
+          [1]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          } ;
+      ["搜索框提示"]	= "" ;
+      ["搜索URL"]	= "" ;
+      ["icon_btns"]	= {
+          } ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["view_attribute"]	= {
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["顶栏标题"]	= "Title" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      } ;
+  ["fltBtn"]	= {
+      ["显示"]	= false ;
+      ["图标"]	= "" ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      } ;
+  ["events"]	= {
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["程序启动"]	= "--程序启动时会执行的事件--程序启动时会执行的事件\
+弹出消息(\"Welcome to cool time\")\
+kksosoks={\
+  LinearLayout;\
+  Focusable=true,\
+  FocusableInTouchMode=true,\
+ {\
+  LinearLayout;\
+  gravity=\"center\";\
+  layout_width=\"fill\";\
+  layout_height=\"fill\";\
+  orientation=\"horizontal\";\
+  {\
+    TextView;\
+    textSize=\"80sp\";\
+    id=\"asp3\";\
+    text=\"加载中\";\
+    gravity=\"center\";\
+  };\
+  {\
+    TextView;\
+    textSize=\"100sp\";\
+    id=\"asp\";\
+    text=\"00:00\";\
+    gravity=\"center\";\
+  };\
+  {\
+    TextView;\
+    layout_marginTop=\"20dp\";\
+    id=\"asp2\";\
+    text=\"0\";\
+    textSize=\"40sp\";\
+  };\
+};\
+\
+};\
+\
+\
+\
+\
+\
+activity.setTheme(android.R.style.Theme_DeviceDefault_Light_NoActionBar)\
+activity.setContentView(loadlayout(kksosoks))\
+\
+\
+\
+activity.setRequestedOrientation(0)\
+\
+\
+\
+\
+\
+function mb()\
+if tonumber(os.date(\"%H\"))>=tonumber(\"24\") then\
+asp3.setText(\"半夜\")\
+elseif tonumber(os.date(\"%H\"))>=tonumber(\"19\") then\
+asp3.setText(\"晚上\")\
+elseif tonumber(os.date(\"%H\"))>=tonumber(\"17\") then\
+asp3.setText(\"傍晚\")\
+elseif tonumber(os.date(\"%H\"))>=tonumber(\"14\") then\
+asp3.setText(\"下午\")\
+elseif tonumber(os.date(\"%H\"))>=tonumber(\"12\") then\
+asp3.setText(\"中午\")\
+elseif tonumber(os.date(\"%H\"))>=tonumber(\"10\") then\
+asp3.setText(\"上午\")\
+elseif tonumber(os.date(\"%H\"))>=tonumber(\"7\") then\
+asp3.setText(\"早上\")\
+elseif tonumber(os.date(\"%H\"))<=tonumber(\"5\") then\
+asp3.setText(\"清晨\")\
+end\
+asp.setText(os.date(\"%H:%M\"))\
+asp2.setText(os.date(\"%S\"))\
+--本地时间总和\
+\
+end\
+\
+\
+--线程函数\
+function ap()\
+  --调用主线程函数\
+\
+require \"import\"\
+\
+--Thread.sleep(1000)--延迟1000毫秒\
+while( true ) do\
+  \
+Thread.sleep(1000)--延迟1000毫秒\
+\
+\
+  call(\"mb\")\
+\
+\
+end\
+\
+\
+\
+\
+\
+end\
+\
+thread(ap)" ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      } ;
+  } ;

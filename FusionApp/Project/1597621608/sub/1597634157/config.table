@@ -1,0 +1,762 @@
+{
+  ["web_control"]	= {
+      } ;
+  ["toolbar"]	= {
+      ["menus"]	= {
+          [1]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          } ;
+      ["输入栏模式"]	= true ;
+      ["搜索框提示"]	= "" ;
+      ["icon_btns"]	= {
+          } ;
+      ["启用搜索功能"]	= false ;
+      ["搜索URL"]	= "" ;
+      } ;
+  ["switch"]	= {
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= true ;
+      ["支持滑动页面"]	= false ;
+      ["横屏"]	= false ;
+      } ;
+  ["colors"]	= {
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["顶栏"]	= "#ff2c2e43" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["进度条"]	= "#00000000" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      } ;
+  ["events"]	= {
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["程序启动"]	= "--程序启动时会执行的事件\
+function onKeyDown(key,event)\
+  if(key==4)then\
+    if(webView.canGoBack())then \
+      webView.goBack()\
+    else\
+      退出页面()\
+    end\
+    return true\
+  end\
+end\
+\
+--顶栏\
+toolbar.parent.setVisibility(View.GONE);\
+\
+点击监听={\
+  onTouch=function (v,e)\
+    if e.action==0 then\
+      缩放动画(v,1,0.95,250)\
+    else--[[if e.action==1 or e.action==2 then]]\
+      缩放动画(v,0.95,1,250)\
+    end\
+  end}\
+\
+function 缩放动画(view,startscale,endscale,time)\
+  local animatorSetsuofang = AnimatorSet()\
+  local scaleX=ObjectAnimator.ofFloat(view,\"scaleX\",{startscale,endscale})\
+  local scaleY=ObjectAnimator.ofFloat(view,\"scaleY\",{startscale,endscale})\
+  animatorSetsuofang.setDuration(time)\
+  animatorSetsuofang.setInterpolator(DecelerateInterpolator())\
+  animatorSetsuofang.play(scaleX).with(scaleY);\
+  animatorSetsuofang.start()\
+end\
+\
+短toast=Toast.LENGTH_SHORT\
+长toast=Toast.LENGTH_LONG\
+顶部=Gravity.TOP\
+中部=Gravity.CENTER\
+底部=Gravity.BOTTOM\
+\
+\
+xfy=--浏览器布局\
+{\
+  LinearLayout,\
+  orientation='vertical';--横向或者纵向布局\
+  layout_width='fill';--布局宽度\
+  layout_height='fill';--布局高度\
+  background='zy/bg.png';--\
+  --创建布局在这里\
+  --第三个页面\
+  {\
+    LinearLayout;\
+    orientation='vertical';--重力属性\
+    layout_width='fill';--布局宽度\
+    layout_height='fill';--布局高度\
+    {\
+      ScrollView,--纵向滚动\
+      layout_width='fill';--宽\
+      layout_height='fill';--高\
+      verticalScrollBarEnabled=false;--隐藏纵向滚动条\
+      {\
+        LinearLayout;\
+        gravity='center';--重力属性\
+        orientation='vertical';--重力属性\
+        layout_width='fill';--布局宽度\
+        layout_height='20dp';--布局高度\
+        --第一个卡片\
+        {\
+          CardView;--卡片控件\
+          layout_margin='450dp';--卡片边距\
+\
+          elevation='2dp';--阴影属性\
+          layout_width='90%w';--卡片宽度          \
+          radius='12dp';--卡片圆角               \
+          layout_height='145dp';--卡片高度              \
+          {\
+            LinearLayout;\
+            gravity='center';--重力属性\
+            orientation='horizontal';--重力属性\
+            layout_width='fill';--布局宽度\
+            layout_height='fill';--布局高度\
+            background='#FFE3BBC3';--布局背景颜色    \
+            {\
+              LinearLayout;\
+              --gravity='center';--重力属性\
+              orientation='horizontal';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度 \
+              {\
+                CircleImageView; --圆型控件\
+                layout_width=\"110dp\";\
+                layout_margin=\"18dp\";\
+                layout_height=\"110dp\";\
+                src=\"zy/qq.png\"; \
+                id=\"qq\";\
+\
+\
+\
+              };\
+              {\
+                Button;\
+                style=\"?android:attr/borderlessButtonStyle\";\
+                layout_marginTop=\"0dp\",\
+                layout_width=\"1px\";\
+                layout_height=\"60%w\";\
+                layout_marginLeft=\"-5dp\",--文字边距\
+                layout_gravity=\"center\";\
+                BackgroundColor=\"#FFE3BBC3\";\
+              };\
+              {\
+                LinearLayout;\
+                layout_width=\"fill\";\
+                orientation=\"vertical\";\
+                layout_marginTop=\"20dp\",\
+                layout_marginLeft=\"8dp\",--文字边距\
+                {\
+                  TextView;--文本控件\
+                  textColor='#333333';--文字颜色\
+                  text='LYM';--显示的文字\
+                  textSize='15dp';--文字大小\
+                };\
+                {\
+                  Button;\
+                  style=\"?android:attr/borderlessButtonStyle\";\
+                  layout_marginTop=\"1dp\",\
+                  layout_width=\"75px\";\
+                  layout_height=\"5px\";\
+                  --layout_gravity=\"center\";\
+                  --id=\"jindu\";\
+                  BackgroundColor=\"#FF8D0602\";\
+                };\
+                {\
+                  TextView;--文本控件\
+                  layout_marginTop=\"4dp\",\
+                  singleLine=true;--单行显示\
+                  ellipsize=\"marquee\",--显示\
+                  --textColor='#333333';--文字颜色\
+                  text='                                                           Hey my friend， 感谢你来到廉一鸣的博客, 欢迎来我的网站:https://lianyiming.com看看吖~';--显示的文字\
+                  textSize='13dp';--文字大小\
+                  Selected=true;--显示\
+\
+                };\
+                {\
+                  Button;\
+                  style=\"?android:attr/borderlessButtonStyle\";\
+                  layout_marginTop=\"4dp\",\
+                  layout_width=\"46%w\";\
+                  layout_height=\"1px\";\
+                  --layout_gravity=\"center\";\
+                  --id=\"jindu\";\
+                  BackgroundColor=\"#FF282828\";\
+                };\
+                {\
+                  TextView;--文本控件\
+                  layout_marginTop=\"4dp\",\
+                  --textColor='#333333';--文字颜色\
+                  text='一只烤面筋的程书林';--显示的文字\
+                  textSize='14dp';--文字大小\
+                };\
+\
+                {\
+                  Button;\
+                  style=\"?android:attr/borderlessButtonStyle\";\
+                  layout_marginTop=\"10dp\",\
+                  layout_width=\"46%w\";\
+                  layout_height=\"3px\";\
+                  --layout_gravity=\"center\";\
+                  id=\"xt\";\
+                  --BackgroundColor=\"#FFCD9470\";\
+                };\
+                {\
+                  LinearLayout;\
+                  layout_height=\"100%h\";\
+                  orientation=\"vertical\";\
+                  layout_width=\"100%w\"; \
+                  id=\"Drawer\";\
+                  {\
+                    LinearLayout;\
+                    --layout_height=\"7%h\";\
+                    --layout_width=\"100%w\";\
+                    layout_marginTop=\"3dp\";\
+                    {\
+                      ImageView;--图片控件\
+                      layout_width=\"17dp\";\
+                      layout_height=\"17dp\";\
+                      src=\"zy/11.png\";\
+                      layout_marginLeft=\"1%w\";\
+                      id=\"\";\
+                    };\
+                    {\
+                      ImageView;--图片控件\
+                      layout_width=\"17dp\";\
+                      layout_height=\"17dp\";\
+                      src=\"zy/12.png\";\
+                      layout_marginLeft=\"2%w\";\
+                      id=\"\";\
+                    };\
+                    {\
+                      ImageView;--图片控件\
+                      layout_width=\"17dp\";\
+                      layout_height=\"17dp\";\
+                      src=\"zy/13.png\";\
+                      layout_marginLeft=\"2%w\";\
+                      id=\"\";\
+                    };\
+                    {\
+                      ImageView;--图片控件\
+                      layout_width=\"17dp\";\
+                      layout_height=\"17dp\";\
+                      src=\"zy/14.png\";\
+                      layout_marginLeft=\"2%w\";\
+                      id=\"\";\
+\
+                    };\
+                  };\
+                };\
+              };\
+            };\
+          };\
+        };\
+        --第四个卡片\
+        {\
+          LinearLayout;\
+          orientation='vertical';--重力属性\
+          layout_margin='10dp';--布局边距\
+          gravity='left';--重力属性\
+          layout_width='100%w';--布局宽度\
+          {\
+            TextView;--文本控件\
+            gravity='left';--重力属性\
+            textColor='#FF000000';--文字颜色\
+            text='Something More';--显示的文字\
+            textSize='20sp';--文字大小\
+            layout_marginLeft='20dp';--布局左距\
+          };\
+        };\
+        {\
+          LinearLayout;\
+          orientation='horizontal';--重力属性\
+          layout_margin='10dp';--布局边距\
+          {\
+            CardView;--卡片控件\
+            layout_margin='10dp';--卡片边距\
+            elevation='2dp';--阴影属性\
+            layout_width='25%w';--卡片宽度\
+            CardBackgroundColor='#FF234AC0';--卡片背景颜色\
+            layout_height='25%w';--卡片高度\
+            radius='10dp';--卡片圆角\
+            {\
+              LinearLayout;\
+              id=\"gy\",\
+              gravity='center';--重力属性\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+              onClick=function()\
+                加QQ群(1142827883)\
+              -- import \"android.content.Intent\"import \"android.net.Uri\"url=\"https://lianyiming.com\"viewIntent = Intent(\"android.intent.action.VIEW\",Uri.parse(url))activity.startActivity(viewIntent)\
+              end,\
+              {\
+                ImageView;--图片控件\
+                src='zy/1.png';--图片路径\
+                layout_width='50dp';--图片宽度\
+                layout_height='50dp';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                ColorFilter=\"#00FFAB91\";--图片着色\
+              };\
+              {\
+                TextView;--文本控件\
+                layout_marginTop='3dp';--布局顶距\
+                textColor='#FF6A6A6A';--文字颜色\
+                text='QQ入伙';--显示的文字\
+                textSize='15sp';--文字大小\
+              };\
+            };\
+          };\
+          {\
+            CardView;--卡片控件\
+            layout_margin='10dp';--卡片边距\
+            elevation='2dp';--阴影属性\
+            layout_width='25%w';--卡片宽度\
+            CardBackgroundColor='#FF31B563';--卡片背景颜色\
+            layout_height='25%w';--卡片高度\
+            radius='10dp';--卡片圆角\
+            {\
+              LinearLayout;\
+              id=\"zz\",\
+              gravity='center';--重力属性\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+              onClick=function()\
+           import \"android.content.Intent\"\
+import \"android.net.Uri\"\
+url=\"https://github.com/LianYiMing/LY-Blog\"\
+viewIntent = Intent(\"android.intent.action.VIEW\",Uri.parse(url))\
+activity.startActivity(viewIntent)\
+              end,\
+              {\
+                ImageView;--图片控件\
+                src='zy/2.png';--图片路径\
+                layout_width='50dp';--图片宽度\
+                layout_height='50dp';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                ColorFilter=\"#00FFAB91\";--图片着色\
+              };\
+              {\
+                TextView;--文本控件\
+                layout_marginTop='3dp';--布局顶距\
+                textColor='#FF6A6A6A';--文字颜色\
+                text='App源码';--显示的文字\
+                textSize='15sp';--文字大小\
+              };\
+            };\
+          };\
+          {\
+            CardView;--卡片控件\
+            layout_margin='10dp';--卡片边距\
+            elevation='2dp';--阴影属性\
+            layout_width='25%w';--卡片宽度\
+            CardBackgroundColor='#FFFFCB2E';--卡片背景颜色\
+            layout_height='25%w';--卡片高度\
+            radius='10dp';--卡片圆角\
+            {\
+              LinearLayout;\
+              id=\"lx\",\
+              gravity='center';--重力属性\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+              onClick=function()\
+              进入子页面(\"反馈\")\
+              end,\
+              {\
+                ImageView;--图片控件\
+                src='zy/3.png';--图片路径\
+                layout_width='50dp';--图片宽度\
+                layout_height='50dp';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                ColorFilter=\"#00FFAB91\";--图片着色\
+              };\
+              {\
+                TextView;--文本控件\
+                layout_marginTop='3dp';--布局顶距\
+                textColor='#FF6A6A6A';--文字颜色\
+                text='Bug反馈';--显示的文字\
+                textSize='15sp';--文字大小\
+                onClick=function()\
+                  \
+                  \
+                end,\
+              };\
+            };\
+          };\
+        };\
+\
+        {\
+          LinearLayout;\
+          orientation='horizontal';--重力属性\
+          layout_margin='10dp';--布局边距\
+          {\
+            CardView;--卡片控件\
+            layout_margin='10dp';--卡片边距\
+            elevation='2dp';--阴影属性\
+            layout_width='25%w';--卡片宽度\
+            CardBackgroundColor='#FF8CA6C0';--卡片背景颜色\
+            layout_height='25%w';--卡片高度\
+            radius='10dp';--卡片圆角\
+            {\
+              LinearLayout;\
+              id=\"ql\",\
+              gravity='center';--重力属性\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+              onClick=function()\
+                发送邮件(\"AGZX_lym@163.com\")\
+              end,\
+              {\
+                ImageView;--图片控件\
+                src='zy/4.png';--图片路径\
+                layout_width='50dp';--图片宽度\
+                layout_height='50dp';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                ColorFilter=\"#00FFAB91\";--图片着色\
+              };\
+              {\
+                TextView;--文本控件\
+                layout_marginTop='3dp';--布局顶距\
+                textColor='#FF6A6A6A';--文字颜色\
+                text='Email me';--显示的文字\
+                textSize='15sp';--文字大小\
+              };\
+            };\
+          };\
+          {\
+            CardView;--卡片控件\
+            layout_margin='10dp';--卡片边距\
+            elevation='2dp';--阴影属性\
+            layout_width='25%w';--卡片宽度\
+            CardBackgroundColor='#FFC05799';--卡片背景颜色\
+            layout_height='25%w';--卡片高度\
+            radius='10dp';--卡片圆角\
+            {\
+              LinearLayout;\
+              id=\"gx\",\
+              gravity='center';--重力属性\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+            \
+              {\
+                ImageView;--图片控件\
+                src='zy/5.png';--图片路径\
+                layout_width='50dp';--图片宽度\
+                layout_height='50dp';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                ColorFilter=\"#00FFAB91\";--图片着色\
+              };\
+              {\
+                TextView;--文本控件\
+                layout_marginTop='3dp';--布局顶距\
+                textColor='#FF6A6A6A';--文字颜色\
+                text='检查更新';--显示的文字\
+                textSize='15sp';--文字大小\
+              };\
+            };\
+          };\
+          {\
+            CardView;--卡片控件\
+            layout_margin='10dp';--卡片边距\
+            elevation='2dp';--阴影属性\
+            layout_width='25%w';--卡片宽度\
+            CardBackgroundColor='#FFC07123';--卡片背景颜色\
+            layout_height='25%w';--卡片高度\
+            radius='10dp';--卡片圆角\
+            {\
+              LinearLayout;\
+              id=\"bb\",\
+              gravity='center';--重力属性\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+              onClick=function()\
+                device_model = Build.MODEL\
+\
+\
+                version_xtbb = Build.VERSION.RELEASE\
+                version_cpxh = Build.PRODUCT\
+                version_bbxx = Build.DISPLAY\
+                version_cpmc = Build.PRODUCT\
+                version_xtdz = Build.BRAND\
+                version_sbcs = Build.DEVICE\
+                version_kfdh = Build.VERSION.CODENAME\
+                version_sdk = Build.VERSION.SDK\
+                version_cpu = Build.CPU_ABI\
+                version_yjlx = Build.HARDWARE\
+                version_zjdz = Build.HOST\
+                version_id = Build.ID\
+                version_rom = Build.MANUFACTURER\
+\
+                version_release = Build.VERSION.RELEASE \
+                import \"android.provider.Settings$Secure\"\
+                android_id = Secure.getString(activity.getContentResolver(), Secure.ANDROID_ID)\
+\
+                对话框()\
+                .设置标题(\"全部参数\")\
+                .设置消息(\"手机型号：\"..device_model..\"\\n\\n安卓版本：\"..version_xtbb..\"\\n\\n产品型号：\"..version_cpxh..\"\\n\\n版本显示：\" ..version_bbxx..\"\\n\\n系统定制商：\"..version_xtdz..\"\\n\\n设备参数：\" ..version_sbcs..\"\\n\\n开发代号：\"..version_kfdh..\"\\n\\nSDK版本号:\"..version_sdk..\"\\n\\nCPU类型：\"..version_cpu..\"\\n\\n硬件类型：\" ..version_yjlx..\"\\n\\n主机地址:\"..version_zjdz..\"\\n\\n生产ID：\"..version_id..\"\\n\\nROM制造商：\"..version_rom..\"\\n\\n安卓ID：\"..android_id)\
+                .设置消极按钮(\"关闭\").设置积极按钮(\"复制设备ID\",function()\
+                  复制文本(android_id)\
+                  弹出消息(\"已复制设备ID\")\
+                end)\
+                .设置消极按钮(\"取消\")\
+                .显示()\
+\
+              end,\
+              {\
+                ImageView;--图片控件\
+                src='zy/6.png';--图片路径\
+                layout_width='50dp';--图片宽度\
+                layout_height='50dp';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                ColorFilter=\"#00FFAB91\";--图片着色\
+              };\
+              {\
+                TextView;--文本控件\
+                layout_marginTop='3dp';--布局顶距\
+                textColor='#FF6A6A6A';--文字颜色\
+                text='设备信息';--显示的文字\
+                textSize='15sp';--文字大小\
+              };\
+            };\
+          };\
+        };\
+      };\
+    };\
+  };--第三个页面\
+};\
+webView.addView(loadlayout(xfy))\
+qq.onClick=function()\
+  弹出消息(\"我是按钮\")\
+end\
+--音乐封面旋转\
+import \"android.view.animation.LinearInterpolator\"\
+c = ObjectAnimator()\
+c.setTarget(qq);\
+c.setDuration(100000);\
+c.setRepeatCount(ValueAnimator.INFINITE)\
+c.setPropertyName(\"rotation\");\
+c.setFloatValues({720,0});\
+c.setRepeatMode(ValueAnimator.INFINITE)\
+c.setInterpolator(LinearInterpolator() )\
+c.start();\
+\
+--两次返回退出美化\
+参数=0\
+\
+\
+\
+\
+--检查联网状态\
+local wl=activity.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE).getActiveNetworkInfo(); \
+if wl== nil then\
+  lay=\
+  {\
+    LinearLayout;\
+    orientation='vertical';--重力属性\
+    layout_width='fill';--布局宽度\
+    layout_height='fill';--布局高度\
+    background='#FFFFFFFF';--布局背景颜色(或者图片路径)\
+    {\
+      LinearLayout;\
+      orientation='vertical';--重力属性\
+      layout_marginBottom='400dp';--布局底距\
+      layout_width='fill';--布局宽度\
+      layout_height='fill';--布局高度\
+      {\
+        TextView;--文本控件\
+        layout_width='fill';--文本宽度\
+        layout_height='fill';--文本高度\
+        gravity='center';--重力属性\
+        textColor='#FF000000';--文字颜色\
+        text='没有连接到网络网络 - 2秒后退出页面\\n请检查网络连接！';--显示的文字\
+        textSize='20';--文字大小\
+      };\
+    };\
+  };\
+  activity.setContentView(loadlayout(lay))\
+\
+  task(2000,function() --延迟任务\
+    退出页面()\
+  end)\
+\
+end\
+\
+\
+ gx.onClick=function()\
+\
+import \"android.content.Intent\"\
+import \"android.net.Uri\"\
+import \"android.provider.Settings\"\
+import \"android.app.ProgressDialog\"\
+import \"android.app.AlertDialog\"\
+local appid =12571\
+--将 10001 改成你在 https://aus.nowtime.cc 获取的 APPID\
+--获取方法[教程可能有点旧(其实我太懒)，就先将就下吧] https://nowtime.cc/lua/331.html\
+local packinfo = this.getPackageManager().getPackageInfo(this.getPackageName(),((32552732/2/2-8183)/10000-6-231)/9)\
+local appinfo = this.getPackageManager().getApplicationInfo(this.getPackageName(),0)\
+local versionName = tostring(packinfo.versionName)-- 版本名（cc.nowtime）\
+local versionCode = tonumber(packinfo.versionCode)-- 版本号（10010）\
+local check_update_url = \"https://aus.nowtime.cc/api/query/update?appid=\"..appid..\"&version_code=\"..versionCode\
+if(activity.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE).getActiveNetworkInfo() == nil) then\
+  AlertDialog.Builder(this)\
+  .setTitle(\"oh我的朋友\")\
+  .setMessage(\"你未连接至互联网 或 当前连接的网络不可用，请检查你的网络设置\")\
+  .setNeutralButton(\"确定\",nil)\
+  .setNegativeButton(\"打开 数据连接\",{onClick=function()\
+      intent = Intent(Settings.ACTION_DATA_ROAMING_SETTINGS)\
+      this.startActivity(intent)\
+    end})\
+  .setPositiveButton(\"连接 Wi-Fi\",{onClick=function()\
+      intent = Intent(Settings.ACTION_WIFI_SETTINGS)\
+      this.startActivity(intent)\
+    end})\
+  .show();\
+  return false\
+  -- 就此中断，不再继续执行下面代码\
+end\
+--圆形旋转样式\
+check_update_dialog = ProgressDialog(this)\
+check_update_dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER)\
+check_update_dialog.setTitle(\"Tips\")\
+--设置进度条的形式为圆形转动的进度条\
+check_update_dialog.setMessage(\"为大哥您检查更新ing，稍等就好了辣……\\n\\n Tips→按手机「返回键」可以取消检查更新呢\")\
+check_update_dialog.setCancelable(true)--设置是否可以通过点击Back键取消\
+check_update_dialog.setCanceledOnTouchOutside(false)--设置在点击Dialog外是否取消Dialog进度条\
+check_update_dialog.setOnCancelListener{\
+  onCancel=function(l)\
+    print(\"您取消了「检查更新」操作\")\
+    return false\
+  end}\
+--取消对话框监听事件\
+check_update_dialog.show()\
+Http.get(check_update_url,nil,\"UTF-8\",nil,function(http_code,content,cookie,header)\
+  check_update_dialog.hide()\
+  if (http_code == -1) then\
+    AlertDialog.Builder(this)\
+    .setTitle(\"正在努力search中\")\
+    .setMessage(\"检查更新时貌似出现了些小问题的说。可能的原因有：\\n1.API 服务器可能暂时出现故障，请稍后再试！\\n2.请检查你的网络设置？\")\
+    .setPositiveButton(\"确定\",nil)\
+    .setNeutralButton(\"检查 Wi-Fi\",{onClick=function()\
+        intent = Intent(Settings.ACTION_WIFI_SETTINGS)\
+        this.startActivity(intent)\
+      end})\
+    .setNegativeButton(\"检查 流量\",{onClick=function()\
+        intent = Intent(Settings.ACTION_DATA_ROAMING_SETTINGS)\
+        this.startActivity(intent)\
+      end})\
+    .show()\
+  else\
+    code = tonumber(string.match(content,'\"code\":(.-),'))-- 状态码\
+    msg = string.match(content,'\"msg\":\"(.-)\"')-- 消息\
+    if(code == 200) then\
+      new_versionCode = tonumber(string.match(content,'\"version_code\":(.-),'))--版本号\
+      new_versionName = string.match(content,'\"version_name\":\"(.-)\"')--版本名\
+      apk_url = string.gsub(string.match(content,'\"apk_url\":\"(.-)\"'),'\\\\','')--下载地址\
+      update_log = string.gsub(string.match(content,'\"update_log\":\"(.-)\"'),'\\\\n',\"\\n\")--更新日志\
+      update_date = string.match(content,'\"update_time\":\"(.-)\"')--发布更新时间\
+      if (new_versionCode > versionCode) then\
+        AlertDialog.Builder(this)\
+        .setTitle(\"发现liǎo新版本呢\")\
+        .setMessage(\"当前版本：V\"..versionName..\"(\"..versionCode..\")\\n最新版本：V\"..new_versionName..\"(\"..new_versionCode..\")\\n版本发布时间：\"..update_date..\"\\n\\n更新日志：\\n\"..update_log)\
+        .setPositiveButton(\"立即给窝更新！\",{onClick=function()\
+            print(\"请选择一个应用或浏览器打开\")\
+            intent = Intent(\"android.intent.action.VIEW\")\
+            intent .setData(Uri.parse(apk_url))\
+            this.startActivity(Intent.createChooser(intent, \"请选择一个应用或浏览器用以下载最新版 APP\"))\
+          end})\
+        .setNeutralButton(\"复制链接\",{onClick=function()\
+            activity.getSystemService(Context.CLIPBOARD_SERVICE).setText(apk_url)--将下载链接复制到剪切板\
+            print(\"新版 LY｜Blog 下载链接，复制成功！请粘贴到浏览器下载。\")\
+          end})\
+        .setNegativeButton(\"以后再说\",nill)\
+        .show()\
+      else\
+        AlertDialog.Builder(this)\
+        .setTitle(\"无可用更新\")\
+        .setMessage(\"您使用的是最新版本！\\n当前版本：\"..versionName..\"（\"..versionCode..\"）\\n最新版本：\"..new_versionName..\"（\"..new_versionCode..\"）\")\
+        .setPositiveButton(\"知道啦\",nil)\
+        .show()\
+      end\
+    else\
+      AlertDialog.Builder(this)\
+      .setTitle(\"木有更新\")\
+      .setMessage(\"窝还木有发布新版呢\")\
+      .setPositiveButton(\"退下吧\",nil)\
+      .show()\
+    end\
+  end\
+end)               \
+              end\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+" ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      } ;
+  ["web"]	= {
+      ["支持打开外部应用"]	= true ;
+      ["网页沉浸"]	= false ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["启动网页"]	= "" ;
+      ["启用长按菜单"]	= false ;
+      ["启用进度条"]	= false ;
+      } ;
+  ["sidebar"]	= {
+      ["启用"]	= true ;
+      ["启用顶部图片"]	= false ;
+      ["items"]	= {
+          } ;
+      } ;
+  ["fltBtn"]	= {
+      ["图标"]	= "" ;
+      ["显示"]	= false ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "Title" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      } ;
+  } ;

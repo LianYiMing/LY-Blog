@@ -1,0 +1,292 @@
+{
+  ["colors"]	= {
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["进度条"]	= "#00000000" ;
+      ["顶栏"]	= "#ff2c2e43" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      } ;
+  ["fltBtn"]	= {
+      ["显示"]	= true ;
+      ["图标"]	= "" ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      } ;
+  ["events"]	= {
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["程序启动"]	= "import \"android.content.Context\"\
+import \"java.io.*\"\
+import \"android.graphics.drawable.GradientDrawable\"\
+\
+--第一个版本。用于测试布局适配问题，请截图至群中，以便修改\
+import \"android.text.Html\"\
+chengmi={\
+  --底层布局\
+  --底层布局\
+  LinearLayout,\
+  orientation=\"vertical\";\
+  layout_width=\"fill\",\
+  layout_height=\"fill\",\
+  background=\"#ffffffff\",\
+  id=\"background\",\
+  {\
+    TextView,\
+    text=\"问题反馈\";\
+    gravity=\"center\";\
+    layout_width=\"match_parent\";\
+    layout_height=\"143\";\
+    layout_left=\"1\";\
+    layout_marginTop=\"20dp\";\
+    textSize=\"15\";\
+    backgroundColor=\"#FFFFFFFF\";\
+    textColor=\"#FF000000\";\
+    layout_marginBottom=\"5dp\";\
+    id=\"tittle\"\
+  };\
+\
+  {\
+    --卡片内容布局\
+    LinearLayout,\
+    orientation=\"vertical\",\
+    layout_width=\"fill\",\
+    layout_height=\"-1\",\
+    --输入框1\
+    {\
+      --卡片内容布局\
+      LinearLayout,\
+      orientation=\"vertical\",\
+      layout_width=\"fill\",\
+      layout_height=\"-1\",\
+      {\
+        TextView,\
+        text=\"1.问题内容\";\
+        layout_marginTop=\"2%w\";\
+        gravity=\"left|center\";\
+        layout_width=\"match_parent\";\
+        textSize=\"15\";\
+        layout_marginLeft=\"5%w\";\
+        backgroundColor=\"#FFFFFFFF\";\
+        textColor=\"#FF000000\";\
+      };\
+      {\
+        LinearLayout,\
+        orientation=\"vertical\",\
+        layout_width=\"fill\",\
+        layout_height=\"28%h\",\
+        {\
+          CardView;--卡片控件\
+          id='card';\
+          layout_margin='3%w';--卡片边距\
+          elevation='4dp';--阴影属性\
+          layout_width='fill';--卡片宽度\
+          CardBackgroundColor='#FFFFFFFF';--卡片背景颜色\
+          layout_height='fill';--卡片高度\
+          radius='15dp';--卡片圆角\
+          {\
+            EditText;\
+            layout_marginTop=\"0%w\"; \
+            layout_width=\"fill\";\
+            focusable=\"true\";\
+            focusableInTouchMode=\"true\";\
+            layout_height=\"wrap\",\
+            textSize=\"15sp\";\
+            id=\"edit\";\
+            layout_marginLeft=\"3%w\";\
+            textColor=\"#000000\";\
+            text=\"\";\
+            hint=\"您的宝贵意见\";\
+          };\
+        },\
+      };\
+      --输入框2\
+      {\
+        LinearLayout,\
+        orientation=\"vertical\",\
+        layout_width=\"fill\",\
+        layout_height=\"30%h\",\
+        {\
+          TextView,\
+          text=\"2.联系方式\";\
+          gravity=\"left|center\";\
+          layout_width=\"fill\";\
+          textSize=\"15\";\
+          layout_marginLeft=\"5%w\";\
+          backgroundColor=\"#FFFFFFFF\";\
+          textColor=\"#FF000000\";\
+        };\
+        {\
+          CardView;--卡片控件\
+          layout_margin='3%w';--卡片边距\
+          elevation='4dp';--阴影属性\
+          layout_marginLeft=\"3%w\";\
+          layout_marginRight=\"3%w\";\
+          layout_width='-1';--卡片宽度\
+          CardBackgroundColor='#FFFFFFFF';--卡片背景颜色\
+          radius='15dp';--卡片圆角\
+          {\
+            EditText; \
+            layout_width=\"-1\";\
+            textSize=\"15sp\";\
+            id=\"edit1\";\
+            background=\"#00000000\";\
+            hintTextColor=\"#FF9b9b9b\";\
+            textColor=\"#000000\";\
+            layout_marginLeft=\"3%w\";\
+            hint=\"您累QQ\";\
+            inputType=\"number\";\
+            singleLine=true;\
+          };\
+        };\
+      },\
+      {\
+        Button;\
+        layout_marginLeft=\"3%w\";\
+        layout_marginTop=\"-20%w\";\
+        layout_marginRight=\"3%w\";\
+        text=\"提　　　交\"; \
+        id=\"generate\"; \
+        textSize=\"16sp\";\
+        textColor=\"#FFFFFFFF\";\
+        layout_width=\"200dp\";\
+        layout_height=\"40dp\";\
+        layout_gravity=\"center\";\
+      };\
+    },\
+  },\
+}\
+activity.setContentView(loadlayout(chengmi))\
+\
+function CircleButton(view,InsideColor,radiu)\
+  drawable = GradientDrawable() \
+  drawable.setShape(GradientDrawable.RECTANGLE) \
+  drawable.setColor(InsideColor)\
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  view.setBackgroundDrawable(drawable)\
+end\
+角度=100\
+控件id=generate\
+控件颜色=0xFF2E82FF\
+CircleButton(控件id,控件颜色,角度)\
+\
+function CircleButton(view,InsideColor,radiu)\
+  drawable = GradientDrawable() \
+  drawable.setShape(GradientDrawable.RECTANGLE) \
+  drawable.setColor(InsideColor)\
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  view.setBackgroundDrawable(drawable)\
+end\
+角度=50\
+控件id=edit\
+控件颜色=0x00000000\
+CircleButton(控件id,控件颜色,角度)\
+\
+generate.onClick=function()\
+  local dal=ProgressDialog.show(activity,nil,'提交中')\
+  dal.show()\
+  local a=0\
+  local tt=Ticker()\
+  tt.start()\
+  tt.onTick=function() \
+    a=a+1\
+    if a==2 then\
+      dal.dismiss()\
+      tt.stop()\
+      local m=edit.Text\
+      local y=edit1.Text\
+      local time=os.date(\"%Y-%m-%d %H:%M:%S\") \
+      local api=\"https://sc.ftqq.com/SCU110393T64634316eaec1fbff336365fa50cacf05f4100bb8783d.send?text=LYM——问题反馈\"\
+      local g=\"反馈内容：\"\
+      local l=\"联系方式：\"\
+      local s=\"时间：\"\
+      local k=\"&desp=\"\
+      local wx=api..k..s..time..\" \"..g..m..\" \"..l..y\
+      local sj=math.random(1000,9999)\
+      local wxs =api..sj..m\
+      if edit.Text == \"\" or #edit.Text < 30 or #edit.Text > 150 then\
+        edit.Error=\"最少10个字辣\"\
+      else\
+        if edit1.Text == \"\" or #edit1.Text < 5 or #edit1.Text > 10 then\
+          edit1.Error=\"这样我联系不到大哥您呢\" \
+        else\
+          Http.get(wx,nil,\"utf8\",nil,function(code,content,cookie,header)\
+            if(code==200 and content)then\
+              print(\"谢谢老大您宝贵的反馈\\n我将在24年之内修复与完善！\")\
+            else\
+              print(\"与后台通信异常…尝试第二套方案\"..code)\
+              Http.get(wxs,nil,\"utf8\",nil,function(code,content,cookie,header)\
+                if(code==200 and content)then\
+                  print(\"谢谢老大您宝贵的反馈\\n我将在24年之内修复与完善！\")\
+                end\
+              end)\
+            end\
+          end)\
+        end\
+      end\
+    end\
+  end\
+end" ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["switch"]	= {
+      ["显示状态栏"]	= true ;
+      ["横屏"]	= false ;
+      ["启用启动图"]	= false ;
+      ["支持滑动页面"]	= true ;
+      } ;
+  ["sidebar"]	= {
+      ["启用"]	= true ;
+      ["items"]	= {
+          } ;
+      ["启用顶部图片"]	= false ;
+      } ;
+  ["web"]	= {
+      ["网页沉浸"]	= false ;
+      ["启用长按菜单"]	= true ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["支持打开外部应用"]	= true ;
+      ["启用进度条"]	= true ;
+      ["启动网页"]	= "" ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "Title" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      } ;
+  ["toolbar"]	= {
+      ["启用搜索功能"]	= false ;
+      ["menus"]	= {
+          [1]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          } ;
+      ["搜索框提示"]	= "" ;
+      ["输入栏模式"]	= true ;
+      ["icon_btns"]	= {
+          } ;
+      ["搜索URL"]	= "" ;
+      } ;
+  } ;

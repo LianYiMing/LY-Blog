@@ -1,0 +1,1618 @@
+{
+  ["colors"]	= {
+      ["进度条"]	= "#00000000" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["侧滑栏列表文字"]	= "#ffffffff" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["侧滑栏列表图标"]	= "#ffffffff" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["顶栏"]	= "#ffffffff" ;
+      ["侧滑栏背景"]	= "#00000000" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      } ;
+  ["toolbar"]	= {
+      ["搜索框提示"]	= "" ;
+      ["menus"]	= {
+          [1]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          } ;
+      ["搜索URL"]	= "" ;
+      ["启用搜索功能"]	= false ;
+      ["icon_btns"]	= {
+          } ;
+      ["输入栏模式"]	= true ;
+      } ;
+  ["sidebar"]	= {
+      ["items"]	= {
+          } ;
+      ["启用"]	= true ;
+      ["启用顶部图片"]	= false ;
+      } ;
+  ["web"]	= {
+      ["启动网页"]	= "" ;
+      ["启用进度条"]	= false ;
+      ["启用长按菜单"]	= false ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["网页沉浸"]	= false ;
+      ["支持打开外部应用"]	= false ;
+      } ;
+  ["fltBtn"]	= {
+      ["显示"]	= true ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["图标"]	= "" ;
+      } ;
+  ["switch"]	= {
+      ["支持滑动页面"]	= true ;
+      ["显示状态栏"]	= false ;
+      ["启用启动图"]	= false ;
+      ["横屏"]	= false ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏高度"]	= "0dp" ;
+      ["顶栏标题"]	= "❬ 试试侧栏" ;
+      ["侧滑栏宽度"]	= "200dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      } ;
+  ["events"]	= {
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["程序启动"]	= "\
+import \"java.io.FileOutputStream\"\
+import \"java.io.File\"\
+import \"android.graphics.Bitmap\"\
+import \"android.graphics.*\"\
+import \"java.io.File\"\
+\
+txtrouteur=\"/data/data/\"..activity.getPackageName()..\"/user.xml\"\
+if io.open(txtrouteur)==nil then\
+  File(txtrouteur).createNewFile()\
+  io.open(txtrouteur,\"w\"):write(\"User\"):close()\
+end\
+local textuser=io.open(txtrouteur):read(\"*a\")\
+\
+txtrouteqm=\"/data/data/\"..activity.getPackageName()..\"/qm.xml\"\
+if io.open(txtrouteqm)==nil then\
+  File(txtrouteqm).createNewFile()\
+  io.open(txtrouteqm,\"w\"):write(\"生而为人，我很抱歉。\"):close()\
+end\
+local textqm=io.open(txtrouteqm):read(\"*a\")\
+wang=\
+{\
+  DrawerLayout;\
+  layout_width=\"fill\";\
+  layout_height=\"fill\";\
+  id=\"dr\"; --页面一的布局开始↓\
+  {\
+    CardView;\
+    id=\"yj\";\
+    layout_width=\"fill\";\
+    CardBackgroundColor=\"#ffffffff\";\
+    layout_height=\"fill\";\
+    elevation=\"8dp\";\
+    {\
+      LinearLayout;\
+      orientation='vertical';--重力属性\
+      layout_width='fill';--布局宽度\
+      layout_height='fill';--布局高度\
+      background='#00ffffff';--布局背景颜色(或者图片路径)\
+      {\
+        LinearLayout;\
+        orientation='vertical';--重力属性\
+        layout_marginTop='0%h';--布局顶距\
+        elevation='8dp';--卡片阴影\
+        layout_width='fill';--布局宽度\
+        layout_height='15%h';--布局高度\
+        background='#ffffffff';--布局背景颜色(或者图片路径)\
+        {\
+          LinearLayout;\
+          layout_marginTop='7%h';--布局顶距\
+          orientation='horizontal';--重力属性\
+          layout_width='fill';--布局宽度\
+          layout_height='6%h';--布局高度\
+          background='#00000000';--布局背景颜色(或者图片路径)\
+          {\
+            ImageView;--图片控件\
+            id=\"ch\";\
+            src='theme.png';--图片路径\
+            layout_marginTop='0.9%h';--布局顶距\
+            layout_marginLeft='5%w';--布局左距\
+            background='#00000000';--布局背景颜色(或者图片路径)\
+            layout_width='4.2%h';--图片宽度\
+            layout_height='4.2%h';--图片高度\
+            scaleType='fitXY';--图片显示类型\
+          };\
+          {\
+            TextView;--文本控件\
+            id=\"zt\";\
+            layout_width='72%w';--文本宽度\
+            layout_height='fill';--文本高度\
+            gravity='center';--重力属性\
+            textColor='#ff000000';--文字颜色\
+            text='AM 00:00';--显示的文字\
+            textSize='20sp';--文字大小\
+          };\
+          {\
+            ImageView;--图片控件\
+            id=\"cd\";\
+            src='notice.png';--图片路径\
+            layout_marginTop='0.9%h';--布局顶距\
+            background='#00000000';--布局背景颜色(或者图片路径)\
+            layout_width='4.2%h';--图片宽度\
+            layout_height='4.2%h';--图片高度\
+            scaleType='fitXY';--图片显示类型\
+          };\
+        };\
+      };\
+      {\
+        LinearLayout;\
+        orientation='vertical';--重力属性\
+        layout_width='fill';--布局宽度\
+        layout_height='fill';--布局高度\
+        {\
+          ScrollView,--竖向滑动\
+          layout_width='fill';--宽\
+          layout_height='fill';--高\
+          verticalScrollBarEnabled=false;--隐藏竖向滑条\
+          {\
+            --这里开始编写布局\
+            LinearLayout;\
+            gravity='center';--重力属性\
+            orientation='vertical';--重力属性\
+            layout_width='fill';--布局宽度\
+            layout_height='fill';--布局高度\
+            background='#FFEEEEEE';\
+            {\
+              LinearLayout;\
+              --layout_marginTop='-120dp';--布局顶距\
+              layout_width='fill';--布局宽度\
+              layout_height='220dp';--布局高度\
+              id='tukuang',\
+              {\
+                PageView;\
+                layout_weight=\"1\";\
+                id=\"hd\";\
+                pages={\
+                  {\
+                    LinearLayout;\
+                    gravity='center';--重力属性\
+                    orientation='vertical';--重力属性\
+                    id=\"tp1\";\
+                    {\
+                      CardView;--卡片控件\
+                      layout_margin='10dp';--卡片边距\
+                      elevation='4dp';--阴影属性\
+                      layout_width='fill';--卡片宽度\
+                      CardBackgroundColor='#FFFFFF';--卡片背景颜色\
+                      layout_height='200dp';--卡片高度\
+                      radius='15dp';--卡片圆角\
+                      {\
+                        ImageView;--图片控件\
+                        layout_width='fill';--图片宽度\
+                        layout_height='200dp';--图片高度\
+                        scaleType='fitXY';--图片显示类型\
+                        background=\"https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/19680a5a4457453108b0bda7b067394b9e2ed92488ce4e7e375112950e9e6f5c2e2183d468a562572667996521482988?pictype=scale&from=30113&version=3.3.3.3&uin=3106489158&fname=%E8%AE%BE%E8%AE%A1%E5%9D%9E-20200112-3296539.png&size=750\";--布局背景颜色(或者图片路径)\
+                      };\
+                      {\
+                        TextView,\
+                        layout_height=\"30dp\";\
+                        layout_width=\"match_parent\";\
+                        layout_gravity=\"bottom\";\
+                        gravity=\"center\";\
+                        background=\"#44000000\";\
+                        textColor='#FFFFFFFF';\
+                        text=\"中华软件库\";\
+                        textSize=\"15sp\";\
+                      };\
+                    };\
+                  };\
+                  {\
+                    LinearLayout;\
+                    gravity='center';--重力属性\
+                    orientation='vertical';--重力属性\
+                    id=\"tp2\";\
+                    {\
+                      CardView;--卡片控件\
+                      layout_margin='10dp';--卡片边距\
+                      elevation='4dp';--阴影属性\
+                      layout_width='fill';--卡片宽度\
+                      CardBackgroundColor='#FFFFFF';--卡片背景颜色\
+                      layout_height='200dp';--卡片高度\
+                      radius='15dp';--卡片圆角\
+                      {\
+                        ImageView;--图片控件\
+                        layout_width='fill';--图片宽度\
+                        layout_height='200dp';--图片高度\
+                        scaleType='fitXY';--图片显示类型\
+                        background=\"https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/19680a5a4457453108b0bda7b067394b9e2ed92488ce4e7e375112950e9e6f5c2e2183d468a562572667996521482988?pictype=scale&from=30113&version=3.3.3.3&uin=3106489158&fname=%E8%AE%BE%E8%AE%A1%E5%9D%9E-20200112-3296539.png&size=750\";--布局背景颜色(或者图片路径)\
+                      };\
+                      {\
+                        TextView,\
+                        layout_height=\"30dp\";\
+                        layout_width=\"match_parent\";\
+                        layout_gravity=\"bottom\";\
+                        gravity=\"center\";\
+                        background=\"#44000000\";\
+                        textColor='#FFFFFFFF';\
+                        text=\"中华软件库\";\
+                        textSize=\"15sp\";\
+                      };\
+                    };\
+                  };\
+                  {\
+                    LinearLayout;\
+                    gravity='center';--重力属性\
+                    orientation='vertical';--重力属性\
+                    id=\"tp3\";\
+                    {\
+                      CardView;--卡片控件\
+                      layout_margin='10dp';--卡片边距\
+                      elevation='4dp';--阴影属性\
+                      layout_width='fill';--卡片宽度\
+                      CardBackgroundColor='#FFFFFF';--卡片背景颜色\
+                      layout_height='200dp';--卡片高度\
+                      radius='15dp';--卡片圆角\
+                      {\
+                        ImageView;--图片控件\
+                        layout_width='fill';--图片宽度\
+                        layout_height='200dp';--图片高度\
+                        scaleType='fitXY';--图片显示类型\
+                        background=\"https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/19680a5a4457453108b0bda7b067394b9e2ed92488ce4e7e375112950e9e6f5c2e2183d468a562572667996521482988?pictype=scale&from=30113&version=3.3.3.3&uin=3106489158&fname=%E8%AE%BE%E8%AE%A1%E5%9D%9E-20200112-3296539.png&size=750\";--布局背景颜色(或者图片路径)\
+                      };\
+                      {\
+                        TextView,\
+                        layout_height=\"30dp\";\
+                        layout_width=\"match_parent\";\
+                        layout_gravity=\"bottom\";\
+                        gravity=\"center\";\
+                        background=\"#44000000\";\
+                        textColor='#FFFFFFFF';\
+                        text=\"中华软件库\";\
+                        textSize=\"15sp\";\
+                      };\
+                    };\
+                  };\
+                  {\
+                    LinearLayout;\
+                    gravity='center';--重力属性\
+                    orientation='vertical';--重力属性\
+                    id=\"tp4\";\
+                    {\
+                      CardView;--卡片控件\
+                      layout_margin='10dp';--卡片边距\
+                      elevation='4dp';--阴影属性\
+                      layout_width='fill';--卡片宽度\
+                      CardBackgroundColor='#FFFFFF';--卡片背景颜色\
+                      layout_height='200dp';--卡片高度\
+                      radius='15dp';--卡片圆角\
+                      {\
+                        ImageView;--图片控件\
+                        layout_width='fill';--图片宽度\
+                        layout_height='200dp';--图片高度\
+                        scaleType='fitXY';--图片显示类型\
+                        background=\"https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/19680a5a4457453108b0bda7b067394b9e2ed92488ce4e7e375112950e9e6f5c2e2183d468a562572667996521482988?pictype=scale&from=30113&version=3.3.3.3&uin=3106489158&fname=%E8%AE%BE%E8%AE%A1%E5%9D%9E-20200112-3296539.png&size=750\";--布局背景颜色(或者图片路径)\
+                      };\
+                      {\
+                        TextView,\
+                        layout_height=\"30dp\";\
+                        layout_width=\"match_parent\";\
+                        layout_gravity=\"bottom\";\
+                        gravity=\"center\";\
+                        background=\"#44000000\";\
+                        textColor='#FFFFFFFF';\
+                        text=\"中华软件库\";\
+                        textSize=\"15sp\";\
+                      };\
+                    };\
+                  };\
+                  {\
+                    LinearLayout;\
+                    gravity='center';--重力属性\
+                    orientation='vertical';--重力属性\
+                    id=\"tp5\";\
+                    {\
+                      CardView;--卡片控件\
+                      layout_margin='10dp';--卡片边距\
+                      elevation='4dp';--阴影属性\
+                      layout_width='fill';--卡片宽度\
+                      CardBackgroundColor='#FFFFFF';--卡片背景颜色\
+                      layout_height='200dp';--卡片高度\
+                      radius='15dp';--卡片圆角\
+                      {\
+                        ImageView;--图片控件\
+                        layout_width='fill';--图片宽度\
+                        layout_height='200dp';--图片高度\
+                        scaleType='fitXY';--图片显示类型\
+                        background=\"https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/19680a5a4457453108b0bda7b067394b9e2ed92488ce4e7e375112950e9e6f5c2e2183d468a562572667996521482988?pictype=scale&from=30113&version=3.3.3.3&uin=3106489158&fname=%E8%AE%BE%E8%AE%A1%E5%9D%9E-20200112-3296539.png&size=750\";--布局背景颜色(或者图片路径)\
+                      };\
+                      {\
+                        TextView,\
+                        layout_height=\"30dp\";\
+                        layout_width=\"match_parent\";\
+                        layout_gravity=\"bottom\";\
+                        gravity=\"center\";\
+                        background=\"#44000000\";\
+                        textColor='#FFFFFFFF';\
+                        text=\"中华软件库\";\
+                        textSize=\"15sp\";\
+                      };\
+                    };\
+                  };\
+                  {\
+                    LinearLayout;\
+                    gravity='center';--重力属性\
+                    orientation='vertical';--重力属性\
+                    id=\"tp6\";\
+                    {\
+                      CardView;--卡片控件\
+                      layout_margin='10dp';--卡片边距\
+                      elevation='4dp';--阴影属性\
+                      layout_width='fill';--卡片宽度\
+                      CardBackgroundColor='#FFFFFF';--卡片背景颜色\
+                      layout_height='200dp';--卡片高度\
+                      radius='15dp';--卡片圆角\
+                      {\
+                        ImageView;--图片控件\
+                        layout_width='fill';--图片宽度\
+                        layout_height='200dp';--图片高度\
+                        scaleType='fitXY';--图片显示类型\
+                        background=\"https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/19680a5a4457453108b0bda7b067394b9e2ed92488ce4e7e375112950e9e6f5c2e2183d468a562572667996521482988?pictype=scale&from=30113&version=3.3.3.3&uin=3106489158&fname=%E8%AE%BE%E8%AE%A1%E5%9D%9E-20200112-3296539.png&size=750\";--布局背景颜色(或者图片路径)\
+                      };\
+                      {\
+                        TextView,\
+                        layout_height=\"30dp\";\
+                        layout_width=\"match_parent\";\
+                        layout_gravity=\"bottom\";\
+                        gravity=\"center\";\
+                        background=\"#44000000\";\
+                        textColor='#FFFFFFFF';\
+                        text=\"中华软件库\";\
+                        textSize=\"15sp\";\
+                      };\
+                    };\
+                  };\
+                };\
+              };\
+            };\
+            {\
+              LinearLayout,\
+              layout_height=\"fill\";\
+              layout_width=\"fill\";\
+              orientation=\"vertical\",\
+              {\
+                LinearLayout,\
+                orientation=\"vertical\",\
+                layout_width=\"fill\",\
+                layout_height=\"wrap\",\
+                { \
+                  LinearLayout,\
+                  layout_height=\"fill\";\
+                  layout_width=\"fill\";\
+                  orientation=\"vertical\", \
+                  {\
+                    LinearLayout,\
+                    orientation=\"horizontal\",\
+                    gravity=\"center|bottom\";\
+                    layout_width=\"fill\",\
+                    layout_height=\"match_parent\",\
+                    {\
+                      LinearLayout;\
+                      layout_margin=\"2.5%w\";\
+                      orientation='vertical';--重力属性\
+                      layout_width='wrap';--布局宽度\
+                      layout_height='wrap';--布局高度\
+                      {\
+                        LinearLayout; \
+                        layout_marginTop='3.4dp';--布局顶距  \
+                        gravity='center';--重力属性\
+                        orientation='vertical';--重力属性\
+                        layout_width='fill';--布局宽度\
+                        layout_height='fill';--布局高度\
+                        id=\"anniu1\",\
+                        {\
+                          CircleImageView;--圆形控件\
+                          src=\"https://ww2.sinaimg.cn/large/007dZnP6ly1g3kzwe884lj302o02oq2s.jpg\";--图片路径\
+                          layout_width='50dp';--图片宽度\
+                          layout_height='50dp';--图片高度\
+                        };\
+                        {\
+                          TextView;--文本控件\
+                          layout_marginTop='6dp';--布局顶距\
+                          text=\"依辰\";--显示的文字\
+                          textSize='12sp';--文字大小\
+                        },\
+                      };\
+                    };\
+                    {\
+                      LinearLayout;\
+                      layout_margin=\"2.5%w\";\
+                      orientation='vertical';--重力属性\
+                      layout_width='wrap';--布局宽度\
+                      layout_height='wrap';--布局高度\
+                      {\
+                        LinearLayout; \
+                        layout_marginTop='3.4dp';--布局顶距  \
+                        gravity='center';--重力属性\
+                        orientation='vertical';--重力属性\
+                        layout_width='fill';--布局宽度\
+                        layout_height='fill';--布局高度\
+\
+                        id=\"anniu1\",\
+                        {\
+                          CircleImageView;--圆形控件\
+                          src=\"https://ww2.sinaimg.cn/large/007dZnP6ly1g3kzyh4zcdj302o02omx0.jpg\";--图片路径\
+                          layout_width='50dp';--图片宽度\
+                          layout_height='50dp';--图片高度\
+                        };\
+                        {\
+                          TextView;--文本控件\
+                          layout_marginTop='6dp';--布局顶距\
+                          text=\"轻代码\";--显示的文字\
+                          textSize='12sp';--文字大小\
+                        },\
+                      };\
+                    };\
+                    {\
+                      LinearLayout;\
+                      layout_margin=\"2.5%w\";\
+                      orientation='vertical';--重力属性\
+                      layout_width='wrap';--布局宽度\
+                      layout_height='wrap';--布局高度\
+                      {\
+                        LinearLayout; \
+                        layout_marginTop='3.4dp';--布局顶距  \
+                        gravity='center';--重力属性\
+                        orientation='vertical';--重力属性\
+                        layout_width='fill';--布局宽度\
+                        layout_height='fill';--布局高度\
+                        id=\"anniu1\",\
+                        {\
+                          CircleImageView;--圆形控件\
+                          src=\"https://ww2.sinaimg.cn/large/007dZnP6ly1g3l03pafnzj302o02ojr9.jpg\";--图片路径\
+                          layout_width='50dp';--图片宽度\
+                          layout_height='50dp';--图片高度\
+                        };\
+                        {\
+                          TextView;--文本控件\
+                          layout_marginTop='6dp';--布局顶距\
+                          --textColor='#FFFFFFFF';--文字颜色\
+                          text=\"轻链接\";--显示的文字\
+                          textSize='12sp';--文字大小\
+                        },\
+                      };\
+                    };\
+                    {\
+                      LinearLayout;\
+                      layout_margin=\"2.5%w\";\
+                      orientation='vertical';--重力属性\
+                      layout_width='wrap';--布局宽度\
+                      layout_height='wrap';--布局高度\
+                      --background='#333333';--布局背景颜色(或者图片路径)\
+                      {\
+                        LinearLayout; \
+                        layout_marginTop='3.4dp';--布局顶距  \
+                        gravity='center';--重力属性\
+                        orientation='vertical';--重力属性\
+                        layout_width='fill';--布局宽度\
+                        layout_height='fill';--布局高度\
+                        --onTouchListener=点击监听,--动画效果\
+                        id=\"anniu1\",\
+                        {\
+                          CircleImageView;--圆形控件\
+                          src=\"https://ww2.sinaimg.cn/large/007dZnP6ly1g3l054yjxlj302o02oa9w.jpg\";--图片路径\
+                          layout_width='50dp';--图片宽度\
+                          layout_height='50dp';--图片高度\
+                        };\
+                        {\
+                          TextView;--文本控件\
+                          layout_marginTop='6dp';--布局顶距\
+                          --textColor='#FFFFFFFF';--文字颜色\
+                          text=\"轻浏览\";--显示的文字\
+                          textSize='12sp';--文字大小\
+                        },\
+                      };\
+                    };\
+\
+                    {\
+                      LinearLayout;\
+                      layout_margin=\"2.5%w\";\
+                      orientation='vertical';--重力属性\
+                      layout_width='wrap';--布局宽度\
+                      layout_height='wrap';--布局高度\
+                      -- background='#333333';--布局背景颜色(或者图片路径)\
+                      {\
+                        LinearLayout; \
+                        layout_marginTop='3.4dp';--布局顶距  \
+                        gravity='center';--重力属性\
+                        orientation='vertical';--重力属性\
+                        layout_width='fill';--布局宽度\
+                        layout_height='fill';--布局高度\
+                        id=\"anniu1\",\
+                        {\
+                          CircleImageView;--圆形控件\
+                          src=\"https://ww2.sinaimg.cn/large/007dZnP6ly1g3l062rsbdj302o02ot8j.jpg\";--图片路径\
+                          layout_width='50dp';--图片宽度\
+                          layout_height='50dp';--图片高度\
+                        };\
+                        {\
+                          TextView;--文本控件\
+                          layout_marginTop='6dp';--布局顶距\
+                          --textColor='#FFFFFFFF';--文字颜色\
+                          text=\"更多\";--显示的文字\
+                          textSize='12sp';--文字大小\
+                        },\
+                      },\
+                    };\
+                  };\
+                };\
+              };\
+            };\
+            {--下划线布局\
+              Button;\
+              style=\"?android:attr/borderlessButtonStyle\";\
+              layout_width=\"98%w\";\
+              layout_height=\"1px\";\
+              layout_gravity=\"center\";\
+              backgroundColor=\"#44000000\";\
+            };--下划线布局结束 \
+            {\
+              LinearLayout;\
+              orientation=\"vertical\";\
+              layout_height=\"fill\";\
+              layout_width=\"fill\";\
+              {\
+                TextView;--文本控件\
+                layout_marginTop='10dp';--布局顶距\
+                layout_marginLeft='4%w';--布局左距\
+                layout_width='fill';--文本宽度\
+                layout_height='22dp';--文本高度\
+                text='常用推荐';--显示的文字\
+                textSize='16sp';--文字大小\
+              }; \
+              {\
+                LinearLayout;\
+                layout_marginLeft='0.8%w';--布局左距\
+                layout_marginTop='-5dp';--布局顶距\
+                orientation=\"horizontal\";\
+                --gravity='center';\
+                layout_height=\"fill\";\
+                layout_width=\"fill\";\
+                {\
+                  LinearLayout;\
+                  orientation=\"vertical\";\
+                  gravity=\"center\";\
+                  layout_height=\"fill\";\
+                  layout_width=\"33%w\";\
+                  {\
+                    CardView;--卡片控件\
+                    layout_marginTop='20dp';--布局顶距\
+                    --layout_margin='';--卡片边距\
+                    layout_gravity='center';--重力属性\
+                    elevation='2dp';--阴影属性\
+                    layout_width='90dp';--卡片宽度\
+                    layout_height='100dp';--卡片高度\
+                    radius='10dp';--卡片圆角\
+                    {\
+                      ImageView;--图片控件\
+                      src='https://img2.woyaogexing.com/2019/05/31/f7b1e59087204e83b148cb1c8dc9f94d!400x400.jpeg';\
+                      layout_width='fill';--图片宽度\
+                      layout_height='fill';--图片高度\
+                      layout_gravity='center';--重力属性\
+                      scaleType='fitXY';--图片显示类型\
+                    };\
+                  };\
+                  {\
+                    TextView;--文本控件\
+                    layout_width='fill';--文本宽度\
+                    layout_height='22dp';--文本高度\
+                    gravity='center';--重力属性\
+                    textColor='#FF7D7D7D';--文字颜色\
+                    text='依辰';--显示的文字\
+                    textSize='13sp';--文字大小\
+                  };\
+                  {\
+                    CardView;--卡片控件\
+                    layout_marginTop='20dp';--布局顶距\
+                    --layout_margin='';--卡片边距\
+                    layout_gravity='center';--重力属性\
+                    elevation='2dp';--阴影属性\
+                    layout_width='90dp';--卡片宽度\
+                    --CardBackgroundColor='';--卡片背景颜色\
+                    layout_height='100dp';--卡片高度\
+                    radius='10dp';--卡片圆角\
+                    {\
+                      ImageView;--图片控件\
+                      src='https://mip-woyaogexing-com.mipcdn.com/i/s/img2.woyaogexing.com/2019/05/26/7c0e50127df8497a98f1a14fcb0da0ce!400x400.jpeg';\
+                      layout_width='fill';--图片宽度\
+                      layout_height='fill';--图片高度\
+                      layout_gravity='center';--重力属性\
+                      scaleType='fitXY';--图片显示类型\
+                    };\
+                  };\
+                  {\
+                    TextView;--文本控件\
+                    layout_width='fill';--文本宽度\
+                    layout_height='22dp';--文本高度\
+                    gravity='center';--重力属性\
+                    textColor='#FF7D7D7D';--文字颜色\
+                    text='依辰';--显示的文字\
+                    textSize='13sp';--文字大小\
+                  };\
+                };\
+                {\
+                  LinearLayout;\
+                  orientation=\"vertical\";\
+                  gravity=\"center\";\
+                  layout_height=\"fill\";\
+                  layout_width=\"33%w\";\
+                  {\
+                    CardView;--卡片控件\
+                    layout_marginTop='20dp';--布局顶距\
+                    layout_gravity='center';--重力属性\
+                    elevation='2dp';--阴影属性\
+                    layout_width='90dp';--卡片宽度\
+                    layout_height='100dp';--卡片高度\
+                    radius='10dp';--卡片圆角\
+                    {\
+                      ImageView;--图片控件\
+                      src='https://mip-woyaogexing-com.mipcdn.com/i/s/img2.woyaogexing.com/2019/05/26/e0f938f2dbdc4dd4a5a49688b1f0ecd7!400x400.jpeg';\
+                      layout_width='fill';--图片宽度\
+                      layout_height='fill';--图片高度\
+                      layout_gravity='center';--重力属性\
+                      scaleType='fitXY';--图片显示类型\
+                    };\
+                  };\
+                  {\
+                    TextView;--文本控件\
+                    layout_width='fill';--文本宽度\
+                    layout_height='22dp';--文本高度\
+                    gravity='center';--重力属性\
+                    textColor='#FF7D7D7D';--文字颜色\
+                    text='依辰';--显示的文字\
+                    textSize='13sp';--文字大小\
+                  };\
+                  {\
+                    CardView;--卡片控件\
+                    layout_marginTop='20dp';--布局顶距\
+                    layout_gravity='center';--重力属性\
+                    elevation='2dp';--阴影属性\
+                    layout_width='90dp';--卡片宽度\
+                    layout_height='100dp';--卡片高度\
+                    radius='10dp';--卡片圆角\
+                    {\
+                      ImageView;--图片控件\
+                      src='https://mip-woyaogexing-com.mipcdn.com/i/s/img2.woyaogexing.com/2019/05/26/536998fe27af4b7ca02b737a8684829c!400x400.jpeg';\
+                      layout_width='fill';--图片宽度\
+                      layout_height='fill';--图片高度\
+                      layout_gravity='center';--重力属性\
+                      scaleType='fitXY';--图片显示类型\
+                    };\
+                  };\
+                  {\
+                    TextView;--文本控件\
+                    layout_width='fill';--文本宽度\
+                    layout_height='22dp';--文本高度\
+                    gravity='center';--重力属性\
+                    textColor='#FF7D7D7D';--文字颜色\
+                    text='依辰';--显示的文字\
+                    textSize='13sp';--文字大小\
+                  };\
+                };\
+                {\
+                  LinearLayout;\
+                  orientation=\"vertical\";\
+                  gravity=\"center\";\
+                  layout_height=\"fill\";\
+                  layout_width=\"33%w\";\
+                  {\
+                    CardView;--卡片控件\
+                    layout_marginTop='20dp';--布局顶距\
+                    --layout_margin='';--卡片边距\
+                    layout_gravity='center';--重力属性\
+                    elevation='2dp';--阴影属性\
+                    layout_width='90dp';--卡片宽度\
+                    layout_height='100dp';--卡片高度\
+                    radius='10dp';--卡片圆角\
+                    {\
+                      ImageView;--图片控件\
+                      src='https://img2.woyaogexing.com/2019/05/31/e884a92faa8840e2ab440cdbb2285234!400x400.jpeg';\
+                      layout_width='fill';--图片宽度\
+                      layout_height='fill';--图片高度\
+                      layout_gravity='center';--重力属性\
+                      scaleType='fitXY';--图片显示类型\
+                    };\
+                  };\
+                  {\
+                    TextView;--文本控件\
+                    layout_width='fill';--文本宽度\
+                    layout_height='22dp';--文本高度\
+                    gravity='center';--重力属性\
+                    textColor='#FF7D7D7D';--文字颜色\
+                    text='依辰';--显示的文字\
+                    textSize='13sp';--文字大小\
+                  };\
+                  {\
+                    CardView;--卡片控件\
+                    layout_marginTop='20dp';--布局顶距\
+                    --layout_margin='';--卡片边距\
+                    layout_gravity='center';--重力属性\
+                    elevation='2dp';--阴影属性\
+                    layout_width='90dp';--卡片宽度\
+                    --CardBackgroundColor='';--卡片背景颜色\
+                    layout_height='100dp';--卡片高度\
+                    radius='10dp';--卡片圆角\
+                    {\
+                      ImageView;--图片控件\
+                      src='https://img2.woyaogexing.com/2019/05/31/3e5c4b8499184cc38a59d1d38985a1e8!400x400.jpeg';\
+                      layout_width='fill';--图片宽度\
+                      layout_height='fill';--图片高度\
+                      layout_gravity='center';--重力属性\
+                      scaleType='fitXY';--图片显示类型\
+                    };\
+                  };\
+                  {\
+                    TextView;--文本控件\
+                    layout_width='fill';--文本宽度\
+                    layout_height='22dp';--文本高度\
+                    gravity='center';--重力属性\
+                    textColor='#FF7D7D7D';--文字颜色\
+                    text='依辰';--显示的文字\
+                    textSize='13sp';--文字大小\
+                  };\
+                };\
+              };\
+            };\
+            {\
+              LinearLayout;\
+              layout_marginTop='4%h';--布局顶距\
+              orientation=\"vertical\";\
+              layout_width=\"fill\";\
+              layout_height=\"fill\";\
+              {\
+                LinearLayout;\
+                orientation='vertical';--重力属性\
+                gravity='left';--重力属性\
+                layout_width='100%w';--布局宽度\
+              };\
+              {\
+                LinearLayout;\
+                layout_margin=\"0dp\";\
+                layout_width=\"fill\";\
+                layout_height=\"fill\";\
+                layout_gravity=\"center\";\
+                onTouchListener=点击监听; \
+                id=\"biaoti33\";\
+                {\
+                  ImageView;\
+                  src=\"http://p.qpic.cn/pic_wework/1948211503/050325159de5de8a7d31cb1b0ba3e89496a1d37418cc296e/0\";--ColorFilter=0xFF757575,--图标颜色\
+                  layout_height=\"25dp\";--高\
+                  layout_width=\"25dp\";--宽\
+                  layout_marginLeft=\"3%w\";--图标边距\
+                };\
+                {\
+                  LinearLayout;\
+                  layout_marginTop='3dp';--布局顶距\
+                  orientation=\"vertical\";\
+                  layout_height=\"wrap\";--高\
+                  layout_width=\"wrap\";--宽\
+                  layout_marginLeft=\"1%w\";--文字边距\
+                  gravity=\"center\";\
+                  {\
+                    TextView;\
+                    text=\"精选热门\";\
+                    textSize=\"16sp\";\
+                    --textColor='#333333';--文字颜色\
+                    id='mhanmc7';\
+                  };\
+                };\
+              };\
+              {\
+                HorizontalScrollView,--横向滚动\
+                layout_width='fill';--宽\
+                layout_height='fill';--高\
+                horizontalScrollBarEnabled=false;--隐藏横向滑条\
+                {\
+                  LinearLayout;\
+                  gravity='center';--重力属性\
+                  orientation='horizontal';--重力属性\
+                  layout_height='fill';--高\
+                  layout_width='fill';--布局宽度\
+                  {\
+                    CardView;--卡片控件\
+                    layout_margin='10dp';--卡片边距\
+                    elevation='5dp';--阴影属性\
+                    layout_width='100dp';--卡片宽度\
+                    CardBackgroundColor='#fff6f6f6';--卡片背景颜色\
+                    layout_height='110dp';--卡片高度\
+                    radius='6dp';--卡片圆角\
+                    onTouchListener=点击监听,--动画效果\
+                    id='bizhitu1',\
+                    {\
+                      LinearLayout;\
+                      gravity='center';--重力属性\
+                      orientation='horizontal';--重力属性\
+                      layout_width='fill';--布局宽度\
+                      layout_height='fill';--布局高度\
+                      background=\"https://img2.woyaogexing.com/2019/05/18/10a5a2b2b16e41068ea84363c7e8d7c1!400x400.webp\";--布局背景颜色(或者图片路径)\
+                      {\
+                        TextView,\
+                        layout_height=\"19dp\";\
+                        layout_width=\"match_parent\";\
+                        layout_gravity=\"bottom\";\
+                        gravity=\"center\";\
+                        background=\"#44000000\";\
+                        textColor='#FFFFFFFF';\
+                        text=\"萌贝贝\";\
+                        textSize=\"13sp\";\
+                      };\
+                    };\
+                  };\
+                  {\
+                    CardView;--卡片控件\
+                    layout_margin='0dp';--卡片边距\
+                    elevation='5dp';--阴影属性\
+                    layout_width='80dp';--卡片宽度\
+                    CardBackgroundColor='#fff6f6f6';--卡片背景颜色\
+                    layout_height='90dp';--卡片高度\
+                    radius='8dp';--卡片圆角\
+                    onTouchListener=点击监听,--动画效果\
+                    id='bizhitu2',\
+                    {\
+                      LinearLayout;\
+                      gravity='center';--重力属性\
+                      orientation='horizontal';--重力属性\
+                      layout_width='fill';--布局宽度\
+                      layout_height='fill';--布局高度\
+                      background=\"https://img2.woyaogexing.com/2019/05/18/4448de5c28144d65b9ede80c6495a7a2!400x400.webp\";--布局背景颜色(或者图片路径)\
+                      {\
+                        TextView,\
+                        layout_height=\"18dp\";\
+                        layout_width=\"match_parent\";\
+                        layout_gravity=\"bottom\";\
+                        gravity=\"center\";\
+                        background=\"#44000000\";\
+                        textColor='#FFFFFFFF';\
+                        text=\"依辰\";\
+                        textSize=\"12sp\";\
+                      };\
+                    };\
+                  };\
+                  {\
+                    CardView;--卡片控件\
+                    layout_margin='10dp';--卡片边距\
+                    elevation='5dp';--阴影属性\
+                    layout_width='80dp';--卡片宽度\
+                    CardBackgroundColor='#fff6f6f6';--卡片背景颜色\
+                    layout_height='90dp';--卡片高度\
+                    radius='8dp';--卡片圆角\
+                    onTouchListener=点击监听,--动画效果\
+                    id='bizhitu3',\
+                    {\
+                      LinearLayout;\
+                      gravity='center';--重力属性\
+                      orientation='horizontal';--重力属性\
+                      layout_width='fill';--布局宽度\
+                      layout_height='fill';--布局高度\
+                      background='https://img2.woyaogexing.com/2019/05/18/40fb03c3d30d4bd18b62ae589f799f19!400x400.webp';--布局背景颜色(或者图片路径)\
+                      {\
+                        TextView,\
+                        layout_height=\"18dp\";\
+                        layout_width=\"match_parent\";\
+                        layout_gravity=\"bottom\";\
+                        gravity=\"center\";\
+                        background=\"#44000000\";\
+                        textColor='#FFFFFFFF';\
+                        text=\"日常的\";\
+                        textSize=\"12sp\";\
+                      };\
+                    };\
+                  };\
+                  {\
+                    CardView;--卡片控件\
+                    layout_margin='0dp';--卡片边距\
+                    elevation='5dp';--阴影属性\
+                    layout_width='80dp';--卡片宽度\
+                    CardBackgroundColor='#fff6f6f6';--卡片背景颜色\
+                    layout_height='90dp';--卡片高度\
+                    radius='8dp';--卡片圆角\
+                    onTouchListener=点击监听,--动画效果\
+                    id='bizhitu4',\
+                    {\
+                      LinearLayout;\
+                      gravity='center';--重力属性\
+                      orientation='horizontal';--重力属性\
+                      layout_width='fill';--布局宽度\
+                      layout_height='fill';--布局高度\
+                      background='https://img2.woyaogexing.com/2019/05/18/6dbf06bc64cf40d49219bdf66497b1f0!400x400.webp';--布局背景颜色(或者图片路径)\
+                      {\
+                        TextView,\
+                        layout_height=\"18dp\";\
+                        layout_width=\"match_parent\";\
+                        layout_gravity=\"bottom\";\
+                        gravity=\"center\";\
+                        background=\"#44000000\";\
+                        textColor='#FFFFFFFF';\
+                        text=\"精仿篇\";\
+                        textSize=\"12sp\";\
+                      };\
+                    };\
+                  };\
+                  {\
+                    CardView;--卡片控件\
+                    layout_margin='10dp';--卡片边距\
+                    elevation='5dp';--阴影属性\
+                    layout_width='80dp';--卡片宽度\
+                    CardBackgroundColor='#fff6f6f6';--卡片背景颜色\
+                    layout_height='90dp';--卡片高度\
+                    radius='8dp';--卡片圆角\
+                    onTouchListener=点击监听,--动画效果\
+                    id='bizhitu5',\
+                    {\
+                      LinearLayout;\
+                      gravity='center';--重力属性\
+                      orientation='horizontal';--重力属性\
+                      layout_width='fill';--布局宽度\
+                      layout_height='fill';--布局高度\
+                      background='https://img2.woyaogexing.com/2019/05/18/f5564997659e467eb91a1407cfde868a!400x400.webp';--布局背景颜色(或者图片路径)\
+                      {\
+                        TextView,\
+                        layout_height=\"18dp\";\
+                        layout_width=\"match_parent\";\
+                        layout_gravity=\"bottom\";\
+                        gravity=\"center\";\
+                        background=\"#44000000\";\
+                        textColor='#FFFFFFFF';\
+                        text=\"源代码\";\
+                        textSize=\"12sp\";\
+                      };\
+                    };\
+                  };\
+                  {\
+                    CardView;--卡片控件\
+                    layout_margin='0dp';--卡片边距\
+                    elevation='5dp';--阴影属性\
+                    layout_width='80dp';--卡片宽度\
+                    CardBackgroundColor='#fff6f6f6';--卡片背景颜色\
+                    layout_height='90dp';--卡片高度\
+                    radius='8dp';--卡片圆角\
+                    onTouchListener=点击监听,--动画效果\
+                    id='bizhitu6',\
+                    {\
+                      LinearLayout;\
+                      gravity='center';--重力属性\
+                      orientation='horizontal';--重力属性\
+                      layout_width='fill';--布局宽度\
+                      layout_height='fill';--布局高度\
+                      background=六壁图;--布局背景颜色(或者图片路径)\
+                      {\
+                        TextView,\
+                        layout_height=\"18dp\";\
+                        layout_width=\"match_parent\";\
+                        layout_gravity=\"bottom\";\
+                        gravity=\"center\";\
+                        background=\"#44000000\";\
+                        textColor='#FFFFFFFF';\
+                        text='六壁名';\
+                        textSize=\"12sp\";\
+                      };\
+                    };\
+                  };\
+                  {\
+                    CardView;--卡片控件\
+                    layout_margin='10dp';--卡片边距\
+                    elevation='5dp';--阴影属性\
+                    layout_width='80dp';--卡片宽度\
+                    CardBackgroundColor='#fff6f6f6';--卡片背景颜色\
+                    layout_height='90dp';--卡片高度\
+                    radius='8dp';--卡片圆角\
+                    onTouchListener=点击监听,--动画效果\
+                    id='bizhitu7',\
+                    {\
+                      LinearLayout;\
+                      gravity='center';--重力属性\
+                      orientation='horizontal';--重力属性\
+                      layout_width='fill';--布局宽度\
+                      layout_height='fill';--布局高度\
+                      background=七壁图;--布局背景颜色(或者图片路径)\
+                      {\
+                        TextView,\
+                        layout_height=\"18dp\";\
+                        layout_width=\"match_parent\";\
+                        layout_gravity=\"bottom\";\
+                        gravity=\"center\";\
+                        background=\"#44000000\";\
+                        textColor='#FFFFFFFF';\
+                        text='七壁名';\
+                        textSize=\"12sp\";\
+                      };\
+                    };\
+                  };\
+                  {\
+                    CardView;--卡片控件\
+                    layout_margin='0dp';--卡片边距\
+                    elevation='5dp';--阴影属性\
+                    layout_width='80dp';--卡片宽度\
+                    CardBackgroundColor='#fff6f6f6';--卡片背景颜色\
+                    layout_height='90dp';--卡片高度\
+                    radius='8dp';--卡片圆角\
+                    onTouchListener=点击监听,--动画效果\
+                    id='bizhitu8',\
+                    {\
+                      LinearLayout;\
+                      gravity='center';--重力属性\
+                      orientation='horizontal';--重力属性\
+                      layout_width='fill';--布局宽度\
+                      layout_height='fill';--布局高度\
+                      background=八壁图;--布局背景颜色(或者图片路径)\
+                      {\
+                        TextView,\
+                        layout_height=\"18dp\";\
+                        layout_width=\"match_parent\";\
+                        layout_gravity=\"bottom\";\
+                        gravity=\"center\";\
+                        background=\"#44000000\";\
+                        textColor='#FFFFFFFF';\
+                        text='八壁名';\
+                        textSize=\"12sp\";\
+                      };\
+                    };\
+                  };\
+                  {\
+                    CardView;--卡片控件\
+                    layout_margin='10dp';--卡片边距\
+                    elevation='5dp';--阴影属性\
+                    layout_width='80dp';--卡片宽度\
+                    CardBackgroundColor='#fff6f6f6';--卡片背景颜色\
+                    layout_height='90dp';--卡片高度\
+                    radius='8dp';--卡片圆角\
+                    onTouchListener=点击监听,--动画效果\
+                    id='bizhitu9',\
+                    {\
+                      LinearLayout;\
+                      gravity='center';--重力属性\
+                      orientation='horizontal';--重力属性\
+                      layout_width='fill';--布局宽度\
+                      layout_height='fill';--布局高度\
+                      background=九壁图;--布局背景颜色(或者图片路径)\
+                      {\
+                        TextView;--文本控件\
+                        gravity='center';--重力属性\
+                        --textColor='#333333';--文字颜色\
+                        text='更多';--显示的文字\
+                        textSize='16sp';--文字大小\
+                      };\
+                    };\
+                  };\
+                };\
+              };\
+            };\
+            {\
+              TextView;--文本控件\
+              layout_width='fill';--文本宽度\
+              layout_height='80dp';--文本高度\
+              gravity='center';--重力属性\
+              textColor='#FF7D7D7D';--文字颜色\
+              text='中华软件库官方交流群:469035837\\n';--显示的文字\
+              textSize='12sp';--文字大小\
+            };\
+          };\
+        };\
+      };\
+    };\
+  };\
+  {\
+    LinearLayout;\
+    id=\"mplg\",\
+    layout_width=\"60%w\";\
+    orientation='vertical';--重力属性\
+    background=\"#00ffffff\";\
+    layout_height=\"fill\";\
+    layout_gravity=\"left\";\
+    {\
+      LinearLayout;\
+      layout_marginTop='12%h';--布局顶距\
+      orientation='vertical';--重力属性\
+      layout_width='fill';--布局宽度\
+      layout_height='18%h';--布局高度\
+      background='#00ffffff';--布局背景颜色(或者图片路径)\
+      {\
+        CardView;--卡片控件\
+        layout_margin='0dp';--卡片边距\
+        layout_gravity='center';--重力属性\
+        elevation='5dp';--阴影属性\
+        layout_marginTop='1.5%h';--布局顶距\
+        layout_width='15%h';--卡片宽度\
+        CardBackgroundColor='#00FFFFFF';--卡片背景颜色\
+        layout_height='15%h';--卡片高度\
+        radius='13%w';--卡片圆角\
+        {\
+          ImageView;\
+          id=\"tp\";\
+          src='tp.png';--图片路径\
+          layout_gravity='center';--重力属性\
+          layout_width='15%h';--布局宽度\
+          layout_height='15%h';--布局高度\
+          scaleType='fitXY';--图片显示类型\
+        };\
+      };\
+    };\
+    {\
+      LinearLayout;\
+      layout_marginTop='0%h';--布局顶距\
+      orientation='vertical';--重力属性\
+      layout_width='fill';--布局宽度\
+      layout_height='10%h';--布局高度\
+      background='#00000000';--布局背景颜色(或者图片路径)\
+      {\
+        TextView;--文本控件\
+        id=\"user\";\
+        layout_marginTop='-1%h';--布局顶距\
+        layout_width='fill';--文本宽度\
+        layout_height='fill';--文本高度\
+        gravity='center';--重力属性\
+        textColor='#ff000000';--文字颜色\
+        text=textuser;--显示的文字\
+        textSize='25sp';--文字大小\
+      };\
+    };\
+    {\
+      LinearLayout;\
+      layout_marginTop='-2%h';--布局顶距\
+      orientation='vertical';--重力属性\
+      layout_width='fill';--布局宽度\
+      layout_height='3%h';--布局高度\
+      background='#00000000';--布局背景颜色(或者图片路径)\
+      {\
+        TextView;--文本控件\
+        id=\"qm\";\
+        layout_marginTop='-1%h';--布局顶距\
+        layout_width='fill';--文本宽度\
+        layout_height='fill';--文本高度\
+        gravity='center';--重力属性\
+        textColor='#FF7F7F7F';--文字颜色\
+        text=textqm;--显示的文字\
+        textSize='15sp';--文字大小\
+      };\
+    };\
+    {\
+      LinearLayout;\
+      layout_marginTop='1%h';--布局顶距\
+      orientation='horizontal';--重力属性\
+      layout_width='fill';--布局宽度\
+      layout_height='6%h';--布局高度\
+      background='#00000000';--布局背景颜色(或者图片路径)\
+      {\
+        ImageView;--图片控件\
+        src='cehua/dialer.png';--图片路径\
+        layout_marginLeft='11%w';--布局左距\
+        layout_gravity='center';--重力属性\
+        layout_width='8%w';--图片宽度\
+        layout_height='8%w';--图片高度\
+        scaleType='fitXY';--图片显示类型\
+      };\
+      {\
+        ImageView;--图片控件\
+        src='cehua/sms.png';--图片路径\
+        layout_marginLeft='2%w';--布局左距\
+        layout_gravity='center';--重力属性\
+        layout_width='8%w';--图片宽度\
+        layout_height='8%w';--图片高度\
+        scaleType='fitXY';--图片显示类型\
+      };\
+      {\
+        ImageView;--图片控件\
+        src='cehua/qq.png';--图片路径\
+        layout_marginLeft='2%w';--布局左距\
+        layout_gravity='center';--重力属性\
+        layout_width='8%w';--图片宽度\
+        layout_height='8%w';--图片高度\
+        scaleType='fitXY';--图片显示类型\
+      };\
+      {\
+        ImageView;--图片控件\
+        src='cehua/wechat.png';--图片路径\
+        layout_marginLeft='2%w';--布局左距\
+        layout_gravity='center';--重力属性\
+        layout_width='8%w';--图片宽度\
+        layout_height='8%w';--图片高度\
+        scaleType='fitXY';--图片显示类型\
+      };\
+    };\
+    {\
+      LinearLayout;\
+      orientation='vertical';--重力属性\
+      layout_width='fill';--布局宽度\
+      layout_height='50%h';--布局高度\
+      background='#00000000';--布局背景颜色(或者图片路径)\
+      {\
+        ImageView;--图片控件\
+        src='cehua/home.png';--图片路径\
+        layout_marginTop='5%h';--布局顶距\
+        layout_gravity='center';--重力属性\
+        scaleType='fitXY';--图片显示类型\
+      };\
+      {\
+        ImageView;--图片控件\
+        src='cehua/clock.png';--图片路径\
+        layout_marginTop='3%h';--布局顶距\
+        layout_gravity='center';--重力属性\
+        scaleType='fitXY';--图片显示类型\
+      };\
+      {\
+        ImageView;--图片控件\
+        src='cehua/wallet.png';--图片路径\
+        layout_marginTop='3%h';--布局顶距\
+        layout_gravity='center';--重力属性\
+        scaleType='fitXY';--图片显示类型\
+      };\
+      {\
+        ImageView;--图片控件\
+        src='cehua/settings.png';--图片路径\
+        layout_marginTop='3%h';--布局顶距\
+        layout_gravity='center';--重力属性\
+        scaleType='fitXY';--图片显示类型\
+      };\
+    };\
+  };\
+};\
+activity.setContentView((wang))\
+\
+if Build.VERSION.SDK_INT>=21 then\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS).setStatusBarColor(0xFF0080FF);\
+end\
+\
+--自动滑动轮番图\
+tp1.onClick=function()\
+  hd.showPage(0)\
+end\
+tp2.onClick=function()\
+  hd.showPage(1)\
+end\
+tp3.onClick=function()\
+  hd.showPage(2)\
+end\
+tp4.onClick=function()\
+  hd.showPage(3)\
+end\
+tp5.onClick=function()\
+  hd.showPage(4)\
+end\
+tp6.onClick=function()\
+  hd.showPage(5)\
+end\
+--设置图片停留时间\
+local n=0 \
+function images() \
+  task(3000,function() \
+    n=n+1 hd.showPage(n%6)\
+    images() \
+  end)\
+end \
+images()\
+aer=true\
+bt=0\
+hd.addOnPageChangeListener{\
+  onPageSelected=function(page)\
+    bt=page\
+  end;\
+  onPageScrollStateChanged=function(state)\
+  end;\
+}\
+\
+\
+ch.onClick=function()\
+  dr.openDrawer(3)\
+end\
+cd.onClick=function()\
+  --这个是弹窗点击事件\
+  Dialog_yuxuan1=\
+  {\
+    LinearLayout,\
+    background=\"#00000000\",\
+    layout_width=\"fill\",\
+    layout_height=\"fill\",\
+    Gravity=\"center\",\
+    id=\"DialogExternal\",\
+    {\
+      CardView,\
+      layout_width=\"90%w\",\
+      layout_marginRight=\"0dp\";\
+      layout_height=\"150dp\",\
+      elevation=\"30\",\
+      radius=\"26\",\
+      id=\"DialogInternal\",\
+      {\
+        LinearLayout,\
+        layout_width=\"90%w\",\
+        layout_height=\"150dp\",\
+        orientation=\"vertical\",\
+        {\
+          LinearLayout,\
+          layout_width=\"90%w\",\
+          layout_height=\"150dp\",\
+          background=\"#ffffffff\",\
+          orientation=\"vertical\",\
+          {\
+            TextView,\
+            layout_width=\"250dp\",\
+            layout_height=\"50dp\",\
+            layout_gravity=\"center\",\
+            layout_marginTop=\"0dp\",\
+            textColor=\"#ff000000\",\
+            textSize=\"15sp\",\
+            Gravity=\"center\",\
+            text=\"说明\",\
+          },\
+          {\
+            LinearLayout,\
+            layout_width=\"fill\",\
+            gravity=\"center\",\
+            layout_height=\"100dp\",\
+            background=\"#ffffffff\",\
+            orientation=\"vertical\",\
+            {\
+              TextView,\
+              layout_width=\"80%w\",\
+              layout_height=\"100dp\",\
+              textColor=\"#ffa8a8a8\",\
+              textSize=\"15sp\",\
+              text=\"中华软件库:www.520sjj.cn\",\
+            },\
+          },\
+        },\
+      },\
+    },\
+  }\
+  pop=PopupWindow(activity)\
+  pop.setContentView(loadlayout(Dialog_yuxuan1))\
+  pop.setWidth(-1) --设置显示宽度\
+  pop.setHeight(-1) --设置显示高度\
+\
+  --点击PopupWindow外面区域  true为消失\
+  pop.setOutsideTouchable(false)\
+\
+  import \"android.graphics.drawable.BitmapDrawable\"\
+  pop.setBackgroundDrawable(BitmapDrawable(loadbitmap(\"1.jpg\")))\
+\
+  pop.showAtLocation(view,Gravity.CENTER,0,500)\
+\
+\
+  --点击外部，取消对话框\
+  function DialogExternal.onClick()\
+    退出动画()\
+  end\
+\
+\
+\
+  --穿透\
+  function DialogInternal.onClick()\
+    --pop.dismiss()\
+  end\
+\
+  --导入类\
+  import \"android.view.animation.LayoutAnimationController\"\
+  import \"android.view.animation.Animation\"\
+  import \"android.view.animation.AlphaAnimation\"\
+  import \"android.view.animation.TranslateAnimation\"\
+  import \"android.view.animation.AnimationSet\"\
+  --定义动画变量,使用AnimationSet类，使该动画可加载多种动画\
+  animationSet = AnimationSet(true)\
+  --设置布局动画，布局动画的意思是布局里面的控件执行动画，而非单个控件动画，参数:动画名，延迟\
+  layoutAnimationController=LayoutAnimationController(animationSet,0.2);\
+  --设置动画类型，顺序   反序   随机\
+  layoutAnimationController.setOrder(LayoutAnimationController.ORDER_NORMAL); --   ORDER_     NORMAL     REVERSE     RANDOM\
+\
+  --渐变动画\
+  yuxuan_dh1= AlphaAnimation(0,1);\
+  --渐变动画时长\
+  yuxuan_dh1.setDuration(600);\
+  --添加动画\
+  animationSet.addAnimation(yuxuan_dh1);\
+\
+  --平移动画\
+  yuxuan_dh2=TranslateAnimation(0,0,activity.height,0)\
+  --动画时长\
+  yuxuan_dh2.setDuration(300);\
+  --添加动画\
+  animationSet.addAnimation(yuxuan_dh2);\
+\
+  --id控件加载动画\
+  DialogExternal.setLayoutAnimation(layoutAnimationController);\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+end\
+\
+function 退出动画()\
+  import \"android.view.animation.LayoutAnimationController\"\
+  import \"android.view.animation.Animation\"\
+  import \"android.view.animation.AlphaAnimation\"\
+  import \"android.view.animation.TranslateAnimation\"\
+  import \"android.view.animation.AnimationSet\"\
+\
+  import \"android.view.animation.TranslateAnimation\"\
+  --[[\
+平移动画\
+参数类型:\
+1.动画开始的点离当前View X坐标上的差值 \
+2.动画结束的点离当前View X坐标上的差值\
+3.动画开始的点离当前View Y坐标上的差值 \
+4.动画结束的点离当前View Y坐标上的差值\
+]]\
+  Translate_up_down=TranslateAnimation(0, activity.width, 0, 0)\
+  Translate_up_down.setDuration(300)\
+  --Translate_up_down.setFillAfter(true)\
+  DialogInternal.startAnimation(Translate_up_down)\
+\
+  import \"android.view.animation.Animation$AnimationListener\"\
+  Translate_up_down.setAnimationListener(AnimationListener{\
+    onAnimationEnd=function()\
+      pop.dismiss()\
+    end\
+\
+  })\
+end\
+dr.setScrimColor(0)\
+--添加背景\
+dr.addView(loadlayout({\
+  ImageView,\
+  id=\"background\",\
+  scaleType=\"fitXY\",\
+  backgroundColor=\"#ffffffff\";--背景色\
+}),0)\
+--获取页面根布局\
+local lay=dr.getChildAt(1)\
+--监听侧滑滑动事件\
+local pio=this.getWidth()*0.062\
+dr.setDrawerListener(DrawerLayout.DrawerListener{\
+  onDrawerSlide=function(v,i)\
+    lay.setScaleX(1-i/8).setScaleY(1-i/8)--页面缩放\
+    lay.setTranslationX((({0,0,1,0,-1})[v.LayoutParams.gravity])*(i*9*pio))--页面位移(其中那段奇怪的表是用于判断位移方向，不过依然仅支持左右侧滑)\
+    yj.setRadius(50*i)\
+    --sidebar.setScaleX(i).setScaleY(i)--侧滑栏缩放\
+  end})\
+zt.getPaint().setFakeBoldText(true)\
+--时间开始\
+function mb()\
+  if tonumber(os.date(\"%H\"))>=tonumber(\"13\") then\
+    asp3=\"PM \"\
+  elseif tonumber(os.date(\"%H\"))<=tonumber(\"12\") then\
+    asp3=\"AM \"\
+  end\
+  zt.setText(asp3..os.date(\"%H:%M\"))\
+end\
+function ap()\
+  --调用主线程函数\
+  require \"import\"\
+  --Thread.sleep(1000)--延迟1000毫秒\
+  while( true ) do\
+    Thread.sleep(1000)--延迟1000毫秒\
+    call(\"mb\")\
+  end\
+end\
+thread(ap)\
+\
+user.onClick=function()\
+  InputLayout={\
+    LinearLayout;\
+    orientation=\"vertical\";\
+    Focusable=true,\
+    FocusableInTouchMode=true,\
+    {\
+      EditText;\
+      hint=\"输入\";\
+      text=textsb;\
+      layout_marginTop=\"5dp\";\
+      layout_width=\"80%w\";\
+      layout_gravity=\"center\",\
+      id=\"User\";\
+    };\
+  };\
+  local dl=AlertDialog.Builder(activity)\
+  .setTitle(\"输入昵称\")\
+  .setView(loadlayout(InputLayout))\
+  .setPositiveButton(\"保存\",DialogInterface.OnClickListener{\
+    onClick=function() \
+      if (#User.Text~=0)then\
+        local textuser=User.Text\
+        user.text=textuser\
+        io.open(txtrouteur,\"w+\"):write(textuser):close()\
+      else\
+        textuser=\"\"\
+        io.open(txtrouteur,\"w+\"):write(textuser):close()\
+      end\
+    end})\
+  .setNegativeButton(\"取消\",nil)\
+  .create()\
+  dl.show()\
+end\
+qm.onClick=function()\
+  InputLayout={\
+    LinearLayout;\
+    orientation=\"vertical\";\
+    Focusable=true,\
+    FocusableInTouchMode=true,\
+    {\
+      EditText;\
+      hint=\"输入\";\
+      text=textsb;\
+      layout_marginTop=\"5dp\";\
+      layout_width=\"80%w\";\
+      layout_gravity=\"center\",\
+      id=\"Qm\";\
+    };\
+  };\
+  local dl=AlertDialog.Builder(activity)\
+  .setTitle(\"输入签名\")\
+  .setView(loadlayout(InputLayout))\
+  .setPositiveButton(\"保存\",DialogInterface.OnClickListener{\
+    onClick=function() \
+      if (#Qm.Text~=0)then\
+        local textqm=Qm.Text\
+        qm.text=textqm\
+        io.open(txtrouteqm,\"w+\"):write(textqm):close()\
+      else\
+        textqm=\"\"\
+        io.open(txtrouteqm,\"w+\"):write(textqm):close()\
+      end\
+    end})\
+  .setNegativeButton(\"取消\",nil)\
+  .create()\
+  dl.show()\
+end\
+tp.onClick=function()\
+  import \"android.content.Intent\"\
+  local intent= Intent(Intent.ACTION_PICK)\
+  intent.setType(\"image/*\")\
+  this.startActivityForResult(intent, 1)\
+  --回调\
+  function onActivityResult(requestCode,resultCode,intent)\
+    if intent then\
+      local cursor =this.getContentResolver ().query(intent.getData(), nil, nil, nil, nil)\
+      cursor.moveToFirst()\
+      import \"android.provider.MediaStore\"\
+      local idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)\
+      fileSrc = cursor.getString(idx)\
+      bit=nil\
+      --fileSrc回调路径路径\
+      import \"android.graphics.BitmapFactory\"\
+      bit =BitmapFactory.decodeFile(fileSrc)\
+      tp.setImageBitmap(bit)\
+      local bd=bit\
+      local f=File(\"/data/data/\"..activity.getPackageName()..\"/files/tp.png\")\
+      f.createNewFile();\
+      local fd=FileOutputStream(f);\
+      if bd.compress(Bitmap.CompressFormat.PNG,90,fd)~=nil then\
+        fd.close();\
+      end\
+    end\
+  end--nirenr\
+end" ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  } ;

@@ -1,0 +1,769 @@
+{
+  ["switch"]	= {
+      ["支持滑动页面"]	= true ;
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= false ;
+      ["横屏"]	= false ;
+      } ;
+  ["view_attribute"]	= {
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏高度"]	= "42dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      } ;
+  ["events"]	= {
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["程序启动"]	= "\
+\
+page=true\
+fltBtn.getChildAt(0).onLongClick=function()\
+ \
+import \"android.graphics.*\"  \
+  import \"android.graphics.drawable.*\"  \
+  import \"android.graphics.Color\"  \
+  import \"android.view.animation.LayoutAnimationController\"  \
+  import \"android.view.animation.Animation\"  \
+  import \"android.view.animation.AlphaAnimation\"  \
+  import \"android.widget.RatingBar\"  \
+  import \"android.widget.NumberPicker\"  \
+  import \"android.view.animation.TranslateAnimation\"  \
+  import \"android.view.animation.AnimationSet\"  \
+    \
+  if not dialogshown then  \
+    \
+    yuxuan={  \
+      LinearLayout,  \
+      layout_width=\"fill\",  \
+      layout_height=\"fill\",  \
+      gravity=\"bottom\",  \
+      {  \
+        LinearLayout,  \
+        layout_width=\"fill\",  \
+        layout_height=\"wrap_content\",  \
+        gravity=\"bottom\",  \
+        layout_gravity=\"bottom\",  \
+        id=\"yuxuanpop\",  \
+        Background=GradientDrawable()  \
+        .setShape(GradientDrawable.RECTANGLE)  \
+        .setColor(0xFF71A0F8)  \
+        .setCornerRadii({25,25,25,25,0,0,0,0}),  \
+        {  \
+          LinearLayout;  \
+          layout_height=\"fill\";  \
+          layout_width=\"fill\";  \
+          orientation=\"vertical\";  \
+          Gravity=\"center\",  \
+          \
+          {  \
+            LinearLayout;  \
+            \
+            layout_height=\"35dp\";  \
+            layout_width=\"fill\";  \
+            orientation=\"horizontal\";  \
+            {  \
+              TextView;  \
+              layout_width=\"60%w\";  \
+              layout_height=\"35dp\";  \
+              \
+              Gravity=\"left|center\",  \
+              textColor=\"#ffffff\";  \
+              text=\"Air智能助手\";  \
+              paddingLeft='16dp';\
+              id=\"bdyx\";  \
+              onClick=function()\
+end,\
+            };  \
+            {  \
+              TextView;  \
+              layout_width=\"40%w\";  \
+              layout_height=\"35dp\";  \
+              \
+              Gravity=\"center\",  \
+              textColor=\"#ffffff\";  \
+              text=\"关闭窗口  X\";  \
+              id=\"shut\";  \
+            };  \
+          };  \
+          {  \
+            \
+            LuaWebView;  \
+            id=\"searchweb\",  \
+            layout_width=\"fill\";  \
+            layout_height=\"150%w\";  \
+          },  \
+    \
+        },  \
+      },  \
+    }  \
+    \
+  \
+    pop=PopupWindow(activity)  \
+    \
+    pop.setContentView(loadlayout(yuxuan))  \
+    \
+    pop.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)  \
+    \
+    pop.setWidth(activity.width)  \
+    \
+    pop.setHeight(activity.height/1.5)  \
+    \
+    pop.setOutsideTouchable(false)  \
+    \
+    pop.setBackgroundDrawable(ColorDrawable(0))  \
+    \
+    pop.setFocusable(true)  \
+    \
+    pop.setTouchable(true)  \
+    \
+    \
+    \
+    pop=AlertDialog.Builder(this)  \
+    .setCancelable(false)  \
+    .setView(loadlayout(yuxuan))  \
+    pop=pop.show()  \
+    pop.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM)  \
+  pop.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)  \
+    pwin=pop.getWindow()  \
+    pwin.setBackgroundDrawable(ColorDrawable(0))  \
+    pa=pwin.getAttributes()  \
+    pa.width=activity.width  \
+    pa.gravity=Gravity.BOTTOM  \
+    pwin.setAttributes(pa)  \
+    pwin.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)  \
+    pop.setOnKeyListener{  \
+      onKey=function(d,k)  \
+        if k==KeyEvent.KEYCODE_BACK then  \
+          if searchweb.canGoBack() then  \
+            searchweb.goBack()  \
+           else  \
+            yuxuandh4=TranslateAnimation(0,0,0,activity.height)  \
+            yuxuandh4.setDuration(750)  \
+            if not slidingdown then  \
+              yuxuanpop.startAnimation(yuxuandh4);  \
+              import \"android.view.animation.Animation$AnimationListener\"  \
+              yuxuandh4.setAnimationListener(AnimationListener{  \
+                onAnimationEnd=function()  \
+                  pop.dismiss()  \
+                  dialogshown=false  \
+                  slidingdown=false  \
+                end})  \
+            end  \
+            slidingdown=true  \
+          end  \
+        end  \
+        return true  \
+      end  \
+    }  \
+    \
+    \
+    \
+    yuxuandh3=TranslateAnimation(0,0,activity.height,0)  \
+    \
+    yuxuandh3.setDuration(750)  \
+    \
+    yuxuanpop.startAnimation(yuxuandh3);  \
+    \
+    \
+    import \"android.view.animation.Animation$AnimationListener\"  \
+    yuxuandh3.setAnimationListener(AnimationListener{  \
+      onAnimationEnd=function()  \
+    \
+      end})  \
+    \
+    function 波纹(id,颜色)  \
+      import \"android.content.res.ColorStateList\"  \
+      local attrsArray = {android.R.attr.selectableItemBackgroundBorderless}  \
+      local typedArray =activity.obtainStyledAttributes(attrsArray)  \
+      ripple=typedArray.getResourceId(0,0)  \
+      Pretend=activity.Resources.getDrawable(ripple)  \
+      Pretend.setColor(ColorStateList(int[0].class{int{}},int{颜色}))  \
+      id.setBackground(Pretend.setColor(ColorStateList(int[0].class{int{}},int{颜色})))  \
+    end  \
+    波纹(bdyx,0xFF55BCAB)  \
+    波纹(shut,0xFF55BCAB)  \
+    \
+  \
+      searchweb.loadUrl('http://ai.sm.cn/')\
+  \
+    shut.onClick=function()  \
+      yuxuandh4=TranslateAnimation(0,0,0,activity.height)  \
+      yuxuandh4.setDuration(750)  \
+      if not slidingdown then  \
+        yuxuanpop.startAnimation(yuxuandh4);  \
+        import \"android.view.animation.Animation$AnimationListener\"  \
+        yuxuandh4.setAnimationListener(AnimationListener{  \
+          onAnimationEnd=function()  \
+            pop.dismiss()  \
+            dialogshown=false  \
+            slidingdown=false  \
+          end})  \
+      end  \
+    end  \
+  end  \
+    \
+    searchweb.setWebViewClient{  \
+      shouldOverrideUrlLoading=function(view,url)  \
+   \
+        \
+        bdyx.setText(searchweb.getTitle())  \
+      end}  \
+  dialogshown=true\
+\
+\
+end\
+\
+\
+\
+\
+require \"import\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+import \"android.os.Build\"\
+import \"android.app.*\"\
+import\"json\"\
+  --程序启动时会执行的事件\
+json=require (\"json\") --解析json字符\
+  local url=\"https://api.gushi.ci/shuqing/aiqing.json\"\
+  --sj(m,\"txt\":\"\",\"state\",m)\
+  Http.get(url,nil,\"utf8\",nil,function(code,content,cookie,header)\
+    if(code==200 and content)then\
+      local json=json.decode(content)\
+      -- print(dump(json))--输出json字符\
+      --print(json.txt)\
+      local sj=json.content\
+      local ly=json.origin\
+      local zz=json.author\
+ \
+  设置顶栏标题(sj)\
+    else\
+      print(\"获取语录异常\"..code)\
+    end\
+  end)\
+\
+--程序启动时会执行的事件\
+import \"tool\"\
+barisshow = 0;\
+\
+\
+\
+\
+--获得屏幕宽高\
+local w=this.getWidth()\
+local h=this.getHeight()\
+\
+--获取状态栏高度\
+local function getStatusBarHeight(JDPUK)\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  local resid=activity.getResources().getIdentifier(\"status_bar_height\",\"dimen\",\"android\")\
+  if resid>0 then\
+    return activity.getResources().getDimensionPixelSize(resid)\
+  end\
+end\
+jdpuk=32552732\
+\
+--设置悬浮按钮位置\
+local function setFloatButtonPosition(X,Y,J,D,P,U,K)\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  fltBtn.LayoutParams=fltBtn.LayoutParams.setMargins(0,0,w-X-fltBtn.getMeasuredWidth()/2,h-Y-fltBtn.getMeasuredHeight()/2)-- 3 2 5 5 2 7 3 2\
+  --保存悬浮按钮位置\
+  this.setSharedData(\"悬浮按钮横坐标\",X)\
+  this.setSharedData(\"悬浮按钮纵坐标\",Y)\
+end\
+\
+task(200,function(JDPUK)\
+  --恢复悬浮按钮位置\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..tostring(3)..\"2\" then error()end\
+  local x=this.getSharedData(\"悬浮按钮横坐标\")\
+  local y=this.getSharedData(\"悬浮按钮纵坐标\")\
+  if x and y then setFloatButtonPosition(x,y) end\
+end)\
+\
+--初始化按下起始位置\
+local sx\
+local sy\
+\
+--设置移动条件(最小移动范围)\
+local mr=50\
+--初始化是否移动\
+local cm=false\
+\
+--设置自动校准范围\
+local tr=50\
+--设置自动校准坐标\
+local tp={\
+  {0,nil},--左贴边\
+  {nil,0},--上贴边\
+  {w,nil},--右贴边\
+  {nil,h},--下贴边\
+}\
+task(200,function(JDPUK)--一些需要用到悬浮按钮参数的坐标，得延时等悬浮按钮准备好\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  table.insert(tp,{w/2+1,h-fltBtn.getMeasuredHeight()})--约中下位置\
+  --table.insert(tp,{w-fltBtn.getMeasuredWidth()/2,h-fltBtn.getMeasuredHeight()/2})\
+end)\
+\
+--监听悬浮按钮被按下事件\
+task(200,function(JDPUK)--延时等待悬浮按钮准备好\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  fltBtn.getChildAt(0).onTouch=function(view,event,JDPUK)--悬浮按钮本身无法监听点击事件，找子控件监听\
+    if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+\
+    --得到手指当前位置\
+    local x=event.getRawX()\
+    local y=event.getRawY()\
+\
+    if event.getAction()==MotionEvent.ACTION_DOWN then--如果是按下事件，则保存按下的位置\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+      --保存按下位置\
+      sx=x\
+      sy=y\
+      return false\
+    elseif event.getAction()==MotionEvent.ACTION_MOVE then--如果是移动事件，则移动悬浮按钮\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+\
+      if cm then\
+\
+        --fltBtn.LayoutParams=fltBtn.LayoutParams.setMargins(0,0,this.getWidth()-event.getRawX()-fltBtn.getMeasuredWidth()/2,this.getHeight()-event.getRawY()-fltBtn.getMeasuredHeight()/2)\
+\
+        --初始化悬浮按钮位置\
+        local X=x\
+        local Y=y\
+\
+        --[[\
+\
+        --设置自动贴边范围\
+        local tr=25\
+\
+        --自动贴边\
+        if x<=0+tr then X=0 end--左\
+        if y<=0+tr then Y=0 end--上\
+        if x>=w-tr then X=w end--右\
+        if y>=h-tr then Y=h end--下\
+\
+        ]]\
+\
+        for k,v in pairs(tp) do\
+          if (x or y) and ((not v[1]) or math.abs(x-v[1])<=tr) and ((not v[2]) or math.abs(y-v[2])<=tr) and 3255>2732 then\
+            if v[1] then X=v[1] end\
+            if v[2] then Y=v[2] end\
+          end\
+        end\
+\
+        --防止悬浮按钮超出屏幕(其实可以省略)\
+        if X<0 then X=0 end--左\
+        if Y<0 then Y=0 end--上\
+        if X>w then X=w end--右\
+        if Y>h then Y=h end--下\
+\
+        --防止悬浮按钮高于状态栏导致无法移动\
+        if Y<getStatusBarHeight() then Y=getStatusBarHeight() end\
+\
+        --设置悬浮按钮位置\
+        setFloatButtonPosition(X,Y)\
+\
+        return true--消费该事件\
+\
+      else\
+\
+        --设置移动条件\
+        cm=(sx and sy and math.abs((x+y)-(sx+sy))>=mr and jdpuk==tonumber(\"3255\"..\"2732\"))--32552732\
+\
+        return false\
+      end\
+    elseif event.getAction()==MotionEvent.ACTION_UP then--如果是松开事件，则...嗯处理一些东西，自己看吧\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..tostring(32) then error()end\
+\
+      --重置变量前先把需要的变量保存为局部变量\
+      local tmp=cm\
+\
+      --重置变量\
+      sx=nil\
+      sy=nil\
+      cm=false\
+\
+      --如果本次按下符合移动条件，则消费事件\
+      if tmp then\
+        return true\
+      else\
+        return false\
+      end\
+\
+    end\
+    return false\
+  end\
+end)\
+if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+\
+\
+" ;
+      ["收到新标题"]	= "" ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      } ;
+  ["fltBtn"]	= {
+      ["显示"]	= true ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件\
+--悬浮按钮点击时执行的事件\
+pop=PopupMenu(activity,fltBtn)\
+menu=pop.Menu\
+menu.add(\"刷新\").onMenuItemClick=function(a)\
+  刷新网页()\
+\
+end\
+menu.add(\"强制横屏/竖屏\").onMenuItemClick=function(a)\
+if SetHSP==nil then \
+--横屏 \
+activity.setRequestedOrientation(0); \
+SetHSP=\"H\" \
+\
+  --状态栏\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+else \
+\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+--竖屏 \
+activity.setRequestedOrientation(1); \
+SetHSP=nil \
+end\
+end\
+\
+menu.add(\"隐藏悬浮窗\").onMenuItemClick=function(a)\
+  fltBtn.setVisibility(View.GONE)\
+  end\
+\
+\
+menu.add(\"播放器\").onMenuItemClick=function(a)\
+     --调用系统播放器播放视屏\
+      import \"android.net.Uri\";\
+      import \"android.content.Intent\";\
+      function loadTheJs()\
+        --获取当前播放视频地址\
+        加载Js(\"function returnVideoUrl(){var theVideoUrl=document.getElementsByTagName('video')[0].currentSrc;location.href=theVideoUrl;};returnVideoUrl();\");\
+        return true;\
+      end\
+      if(loadTheJs()) then\
+        task(800,function()\
+          intent = Intent(Intent.ACTION_VIEW);\
+          uri = Uri.parse(webView.getUrl()); \
+          intent.setDataAndType(uri,\"video/mp4\");\
+          activity.startActivity(intent);\
+        end);\
+      end\
+      弹出消息(\"调用播放器播放\")\
+\
+end\
+menu.add(\"退出\").onMenuItemClick=function(a)\
+  退出页面()\
+\
+end\
+\
+pop.show()\
+--显示import \"android.view.WindowManager\"\
+--需程序启动赋予barisshow初始值0\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+" ;
+      ["图标"]	= "" ;
+      } ;
+  ["toolbar"]	= {
+      ["搜索框提示"]	= "" ;
+      ["搜索URL"]	= "" ;
+      ["输入栏模式"]	= true ;
+      ["menus"]	= {
+          [1]	= {
+              ["name"]	= "强制横屏/竖屏" ;
+              ["onClick"]	= "if SetHSP==nil then \
+--横屏 \
+activity.setRequestedOrientation(0); \
+SetHSP=\"H\" \
+\
+  --状态栏\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+else \
+\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+--竖屏 \
+activity.setRequestedOrientation(1); \
+SetHSP=nil \
+end" ;
+              } ;
+          [2]	= {
+              ["name"]	= "调用播放器" ;
+              ["onClick"]	= "   --调用系统播放器播放视屏\
+      import \"android.net.Uri\";\
+      import \"android.content.Intent\";\
+      function loadTheJs()\
+        --获取当前播放视频地址\
+        加载Js(\"function returnVideoUrl(){var theVideoUrl=document.getElementsByTagName('video')[0].currentSrc;location.href=theVideoUrl;};returnVideoUrl();\");\
+        return true;\
+      end\
+      if(loadTheJs()) then\
+        task(800,function()\
+          intent = Intent(Intent.ACTION_VIEW);\
+          uri = Uri.parse(webView.getUrl()); \
+          intent.setDataAndType(uri,\"video/mp4\");\
+          activity.startActivity(intent);\
+        end);\
+      end\
+      弹出消息(\"调用播放器播放\")" ;
+              } ;
+          [3]	= {
+              ["name"]	= "全屏" ;
+              ["onClick"]	= "fltBtn.setVisibility(View.VISIBLE)\
+import \"android.view.WindowManager\"\
+\
+\
+if barisshow == 0 then\
+  --状态栏\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+  else\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+  end\
+" ;
+              } ;
+          [4]	= {
+              ["name"]	= "投屏" ;
+              ["onClick"]	= "items={\"酷投屏\",\"快点投屏\",\"投屏使用须知\"}\13\
+\13\
+AlertDialog.Builder(this)\13\
+\13\
+.setTitle(\"投屏方式\")\13\
+\13\
+.setItems(items,{onClick=function(l,v)\13\
+\13\
+  if v==0 then\13\
+\13\
+复制文本(webView.getUrl())\13\
+\13\
+弹出消息(\"当前网页已复制完毕正在打开（酷投屏），请手动粘贴网址到播放位置进行投屏播放\")\13\
+\13\
+packageName=\"com.dlna.coolcast\"\13\
+\13\
+import \"android.content.Intent\"\13\
+\13\
+import \"android.content.pm.PackageManager\"\13\
+\13\
+manager = activity.getPackageManager()\13\
+\13\
+open = manager.getLaunchIntentForPackage(packageName)\13\
+\13\
+this.startActivity(open)\13\
+\13\
+  end\13\
+\13\
+  if v==1 then\13\
+\13\
+复制文本(webView.getUrl())\13\
+\13\
+弹出消息(\"当前网页已复制完毕正在打开（快点投屏） ，请手动粘贴网址到播放位置进行投屏播放！\")\13\
+\13\
+packageName=\"com.wukongtv.wkcast\"\13\
+\13\
+import \"android.content.Intent\"\13\
+\13\
+import \"android.content.pm.PackageManager\"\13\
+\13\
+manager = activity.getPackageManager()\13\
+\13\
+open = manager.getLaunchIntentForPackage(packageName)\13\
+\13\
+this.startActivity(open)\13\
+\13\
+  end\13\
+\13\
+  if v==2 then\13\
+\13\
+对话框()\13\
+\13\
+.设置标题(\"投屏使用须知\")\13\
+\13\
+.设置消息(\"进行第三方投屏之前，请先提前下载好你所需要的投屏软件（酷投屏或快点投屏），否则会出现错误导致无法进行投屏！下方是我自己整理的去广告版本。\")\13\
+\13\
+.设置积极按钮(\"前往下载\",function()\13\
+  进入子页面(\"调用界面\",{链接=\"https://lanzous.com/b00nm154b\"})\
+  \
+\13\
+end)\13\
+\13\
+.显示()\13\
+\13\
+  end\13\
+\13\
+ end})\13\
+\13\
+.show()\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+" ;
+              } ;
+          [5]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          [6]	= {
+              ["name"]	= "VIP" ;
+              ["onClick"]	= "  --输入对话框 \
+  InputLayout={\
+    LinearLayout;\
+    orientation=\"vertical\";\
+    Focusable=true,\
+    FocusableInTouchMode=true,\
+    {\
+      TextView;\
+      id=\"Prompt\",\
+      textSize=\"15sp\",\
+      layout_marginTop=\"10dp\";\
+      layout_marginLeft=\"3dp\",\
+      layout_width=\"80%w\";\
+      layout_gravity=\"center\",\
+      text=\"请输入要观看的影片...\";\
+    };\
+    {\
+\
+      EditText;\
+      hint=\"看VIP电影,其实很简单\";\
+      layout_marginTop=\"5dp\";\
+      layout_width=\"80%w\";\
+      layout_gravity=\"center\",\
+      id=\"edit\";\
+      text=\"\";\
+    };\
+  };\
+\
+  AlertDialog.Builder(this)\
+  .setTitle(\"搜索一下\")\
+  .setView(loadlayout(InputLayout))\
+  .setPositiveButton(\"GO\",{onClick=function(v) \
+      \
+      if o==\"美剧汇\" then\
+        加载网页(\"http://www.2mjh.com/index.php?s=vod-search-wd-\"..edit.text)\
+      elseif o==\"奇爱影视\" then\
+      加载网页(\"http://www.q2100.com/index.php?m=vod-search-\"..edit.text)    \
+        end\
+      end})\
+  .setNeutralButton(\"取消\",nil)\
+  .show()" ;
+              } ;
+          } ;
+      ["启用搜索功能"]	= false ;
+      ["icon_btns"]	= {
+          [1]	= {
+              ["icon"]	= "screen_rotation" ;
+              ["onClick"]	= "if SetHSP==nil then\13\
+  --横屏\13\
+  activity.setRequestedOrientation(0); \13\
+  SetHSP=\"H\"\13\
+else\13\
+  --竖屏\13\
+  activity.setRequestedOrientation(1); \13\
+  SetHSP=nil\13\
+end\13" ;
+              } ;
+          } ;
+      } ;
+  ["colors"]	= {
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["顶栏"]	= "#ffa2c5ff" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#ff74d2ff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["进度条"]	= "#00000000" ;
+      } ;
+  ["web_control"]	= {
+      [2]	= {
+          ["url"]	= "m.bilibili.com" ;
+          ["js"]	= "" ;
+          ["remove_element"]	= "openapp,text,m-video-openapp,open-app" ;
+          } ;
+      [1]	= {
+          ["url"]	= "m.iqiyi.com" ;
+          ["js"]	= "" ;
+          ["remove_element"]	= "link-app-img,c-guide-img" ;
+          } ;
+      } ;
+  ["sidebar"]	= {
+      ["启用顶部图片"]	= false ;
+      ["启用"]	= false ;
+      ["items"]	= {
+          } ;
+      } ;
+  ["web"]	= {
+      ["启动网页"]	= "" ;
+      ["启用进度条"]	= false ;
+      ["网页沉浸"]	= true ;
+      ["浏览器用户标识"]	= "自定义" ;
+      ["支持打开外部应用"]	= false ;
+      ["customUa"]	= "Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Quark/3.8.4.128 UCBrowser/12.0.4.985 baiduboxapp/3.2.5.10 MQQBrowser/7.2.1.2965 XiaoMi/MiuiBrowser/11.9.2 SearchCraft/2.0.0 ALiSearchApp/2.4 AliApp(TB/9.5.6) BingWeb/6.9.6 3gpp-gba" ;
+      ["启用长按菜单"]	= false ;
+      } ;
+  } ;

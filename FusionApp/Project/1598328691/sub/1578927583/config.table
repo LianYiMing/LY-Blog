@@ -1,0 +1,353 @@
+{
+  ["switch"]	= {
+      ["显示状态栏"]	= true ;
+      ["横屏"]	= false ;
+      ["支持滑动页面"]	= true ;
+      ["启用启动图"]	= false ;
+      } ;
+  ["sidebar"]	= {
+      ["启用"]	= false ;
+      ["items"]	= {
+          } ;
+      ["启用顶部图片"]	= false ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["events"]	= {
+      ["程序启动"]	= "泡沫对话框(294)\
+.设置标题(\"提示\")\
+.设置消息([[进入你想看的影视页面，点击右下角悬浮窗，选择“无广告播放”即可。可自由移动悬浮窗可]])\
+.设置积极按钮(\"了解\",function()\
+  显示消息(\"真聪明😎\")\
+end)\
+.设置消极按钮(\"\")\
+.显示()\
+local w=this.getWidth()\
+local h=this.getHeight()\
+--获取状态栏高度\
+local function getStatusBarHeight(JDPUK)\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  local resid=activity.getResources().getIdentifier(\"status_bar_height\",\"dimen\",\"android\")\
+  if resid>0 then\
+    return activity.getResources().getDimensionPixelSize(resid)\
+  end\
+end\
+jdpuk=32552732\
+\
+--设置悬浮按钮位置\
+local function setFloatButtonPosition(X,Y,J,D,P,U,K)\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  fltBtn.LayoutParams=fltBtn.LayoutParams.setMargins(0,0,w-X-fltBtn.getMeasuredWidth()/2,h-Y-fltBtn.getMeasuredHeight()/2)-- 3 2 5 5 2 7 3 2\
+  --保存悬浮按钮位置\
+  this.setSharedData(\"悬浮按钮横坐标\",X)\
+  this.setSharedData(\"悬浮按钮纵坐标\",Y)\
+end\
+\
+task(200,function(JDPUK)\
+  --恢复悬浮按钮位置\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..tostring(3)..\"2\" then error()end\
+  local x=this.getSharedData(\"悬浮按钮横坐标\")\
+  local y=this.getSharedData(\"悬浮按钮纵坐标\")\
+  if x and y then setFloatButtonPosition(x,y) end\
+end)\
+\
+--初始化按下起始位置\
+local sx\
+local sy\
+\
+--设置移动条件(最小移动范围)\
+local mr=50\
+--初始化是否移动\
+local cm=false\
+\
+--设置自动校准范围\
+local tr=50\
+--设置自动校准坐标\
+local tp={\
+  {0,nil},--左贴边\
+  {nil,0},--上贴边\
+  {w,nil},--右贴边\
+  {nil,h},--下贴边\
+}\
+task(200,function(JDPUK)--一些需要用到悬浮按钮参数的坐标，得延时等悬浮按钮准备好\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  table.insert(tp,{w/2+1,h-fltBtn.getMeasuredHeight()})--约中下位置\
+  --table.insert(tp,{w-fltBtn.getMeasuredWidth()/2,h-fltBtn.getMeasuredHeight()/2})\
+end)\
+\
+--监听悬浮按钮被按下事件\
+task(200,function(JDPUK)--延时等待悬浮按钮准备好\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  fltBtn.getChildAt(0).onTouch=function(view,event,JDPUK)--悬浮按钮本身无法监听点击事件，找子控件监听\
+    if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+\
+    --得到手指当前位置\
+    local x=event.getRawX()\
+    local y=event.getRawY()\
+\
+    if event.getAction()==MotionEvent.ACTION_DOWN then--如果是按下事件，则保存按下的位置\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+      --保存按下位置\
+      sx=x\
+      sy=y\
+      return false\
+    elseif event.getAction()==MotionEvent.ACTION_MOVE then--如果是移动事件，则移动悬浮按钮\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+\
+      if cm then\
+\
+        --fltBtn.LayoutParams=fltBtn.LayoutParams.setMargins(0,0,this.getWidth()-event.getRawX()-fltBtn.getMeasuredWidth()/2,this.getHeight()-event.getRawY()-fltBtn.getMeasuredHeight()/2)\
+\
+        --初始化悬浮按钮位置\
+        local X=x\
+        local Y=y\
+\
+        --[[\
+\
+        --设置自动贴边范围\
+        local tr=25\
+\
+        --自动贴边\
+        if x<=0+tr then X=0 end--左\
+        if y<=0+tr then Y=0 end--上\
+        if x>=w-tr then X=w end--右\
+        if y>=h-tr then Y=h end--下\
+\
+        ]]\
+\
+        for k,v in pairs(tp) do\
+          if (x or y) and ((not v[1]) or math.abs(x-v[1])<=tr) and ((not v[2]) or math.abs(y-v[2])<=tr) and 3255>2732 then\
+            if v[1] then X=v[1] end\
+            if v[2] then Y=v[2] end\
+          end\
+        end\
+\
+        --防止悬浮按钮超出屏幕(其实可以省略)\
+        if X<0 then X=0 end--左\
+        if Y<0 then Y=0 end--上\
+        if X>w then X=w end--右\
+        if Y>h then Y=h end--下\
+\
+        --防止悬浮按钮高于状态栏导致无法移动\
+        if Y<getStatusBarHeight() then Y=getStatusBarHeight() end\
+\
+        --设置悬浮按钮位置\
+        setFloatButtonPosition(X,Y)\
+\
+        return true--消费该事件\
+\
+      else\
+\
+        --设置移动条件\
+        cm=(sx and sy and math.abs((x+y)-(sx+sy))>=mr and jdpuk==tonumber(\"3255\"..\"2732\"))--32552732\
+\
+        return false\
+      end\
+    elseif event.getAction()==MotionEvent.ACTION_UP then--如果是松开事件，则...嗯处理一些东西，自己看吧\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..tostring(32) then error()end\
+\
+      --重置变量前先把需要的变量保存为局部变量\
+      local tmp=cm\
+\
+      --重置变量\
+      sx=nil\
+      sy=nil\
+      cm=false\
+      --如果本次按下符合移动条件，则消费事件\
+      if tmp then\
+        return true\
+      else\
+        return false\
+      end\
+\
+    end\
+    return false\
+  end\
+end)\
+if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()\
+  end" ;
+      ["收到新标题"]	= "" ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      } ;
+  ["toolbar"]	= {
+      ["icon_btns"]	= {
+          } ;
+      ["启用搜索功能"]	= false ;
+      ["menus"]	= {
+          } ;
+      ["搜索URL"]	= "" ;
+      ["搜索框提示"]	= "" ;
+      ["输入栏模式"]	= true ;
+      } ;
+  ["colors"]	= {
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["顶栏"]	= "#ffffdca2" ;
+      ["悬浮按钮"]	= "#ffffa15d" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ffffffff" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["进度条"]	= "#ffffffff" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      } ;
+  ["web"]	= {
+      ["浏览器用户标识"]	= "默认" ;
+      ["启用进度条"]	= false ;
+      ["启用长按菜单"]	= true ;
+      ["网页沉浸"]	= true ;
+      ["启动网页"]	= "https://m.v.qq.com/" ;
+      ["支持打开外部应用"]	= false ;
+      } ;
+  ["fltBtn"]	= {
+      ["图标"]	= "" ;
+      ["显示"]	= true ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件\
+--列表对话框\
+items={}\
+  table.insert(items,\"L   无广告播放\")\
+table.insert(items,\"Y   浏览器打开\")\
+table.insert(items,\"M   视频下载\")\
+table.insert(items,\"最   视频播放\")\
+table.insert(items,\"帅   复制视频链接\")\
+AlertDialog.Builder(this)\
+.setTitle(\"\")\
+.setItems(items,{onClick=function(l,v) \
+if  items[v+1]==\"Y   浏览器打开\" then\
+import \"android.content.*\"\13\
+import \"android.net.*\"\13\
+\
+intent = Intent()\
+intent.setAction(\"android.intent.action.VIEW\")\13\
+content_url = Uri.parse(webView.url)\
+intent.setData(content_url)\
+choose= Intent.createChooser(intent, \"选择浏览器打开\")\
+activity.startActivity(choose)\
+\13elseif items[v+1]==\"M   视频下载\" then\
+local dl=ProgressDialog.show(activity,nil,'正在获取视频链接…')\
+                  dl.show()\
+                  加载Js([[window.location.assign($(\"iframe\").attr(\"src\"))\13]])\
+                  task(1500,function()\
+                    dl.dismiss()\
+                    function loadTheJs()\
+                      加载Js(\"function returnVideoUrl(){var theVideoUrl=document.getElementsByTagName('video')[0].currentSrc;location.href=theVideoUrl;};returnVideoUrl();\");\
+                      return true;\
+                    end\
+                    if(loadTheJs()) then\
+                      task(800,function()\
+                        下载文件(webView.getUrl())\
+                        \
+                      end);\
+                    end\
+                  end)\
+\
+elseif items[v+1]==\"L   无广告播放\" then\
+     加载网页(\"https://z1.m1907.cn/?jx=\"..webView.getUrl())\
+\
+elseif items[v+1]==\"最   视频播放\" then\
+local dl=ProgressDialog.show(activity,nil,'正在获取视频链接…')\
+                  dl.show()\
+                  加载Js([[window.location.assign($(\"iframe\").attr(\"src\"))\13]])\
+                  task(1500,function()\
+                    dl.dismiss()\
+                    function loadTheJs()\
+                      加载Js(\"function returnVideoUrl(){var theVideoUrl=document.getElementsByTagName('video')[0].currentSrc;location.href=theVideoUrl;};returnVideoUrl();\");\
+                      return true;\
+                    end\
+                    if(loadTheJs()) then\
+                      task(800,function()\
+\
+                        import \"android.media.MediaPlayer\"\
+                        mediaPlayer = MediaPlayer()\
+                        --初始化参数\
+                        mediaPlayer.reset()\
+\
+                        --设置播放资源\
+                        mediaPlayer.setDataSource(uri)\
+\
+                        --拿到显示的SurfaceView\
+                        sh = surfaceView.getHolder()\
+                        sh.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS)\
+\
+                        --设置显示SurfaceView\
+                        mediaPlayer.setDisplay(sh)\
+\
+                        --设置音频流格式\
+                        mediaPlayer.setAudioStreamType(AudioManager.Stream_Music)\
+\
+                        --开始缓冲资源\
+                        mediaPlayer.prepare()\
+\
+                        --缓冲完成的监听\
+                        mediaPlayer.setOnPreparedListener(MediaPlayer.OnPreparedListener{\
+                          onPrepared=function(mediaPlayer)\
+                            --开始播放\
+                            mediaPlayer.start()\
+                          end\
+                        });\
+\
+\
+\
+\
+\
+                        网页后退()\
+                        网页后退()\
+                        \
+                      end);\
+                    else\
+                    刷新网页()\
+                    end\
+                  end)\
+\
+\
+                \
+  import \"android.view.View$OnFocusChangeListener\"\
+  edit.setOnFocusChangeListener(OnFocusChangeListener{ \
+    onFocusChange=function(v,hasFocus)\
+      if hasFocus then\
+        Prompt.setTextColor(0xFD009688)\
+      end\
+    end})\
+\
+elseif  items[v+1]==\"🔸   复制视频链接\" then\
+local dl=ProgressDialog.show(activity,nil,'正在获取视频链接…')\
+                  dl.show()\
+                  加载Js([[window.location.assign($(\"iframe\").attr(\"src\"))\13]])\
+                  task(1500,function()\
+                    dl.dismiss()\
+                    function loadTheJs()\
+                      加载Js(\"function returnVideoUrl(){var theVideoUrl=document.getElementsByTagName('video')[0].currentSrc;location.href=theVideoUrl;};returnVideoUrl();\");\
+                      return true;\
+                    end\
+                    if(loadTheJs()) then\
+                      task(800,function()\
+                      复制文本(webView.getUrl())\
+                      弹出消息(\"已复制\")\
+                        \
+                      end);\
+                    end\
+                  end)\
+  end\
+end})\
+.show()" ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏高度"]	= "56dp" ;
+      ["顶栏标题"]	= "免费影视VIP呢:-)" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      } ;
+  } ;

@@ -1,0 +1,690 @@
+{
+  ["colors"]	= {
+      ["侧滑栏列表文字"]	= "#ff000000" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["悬浮按钮"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#6c000000" ;
+      ["悬浮按钮图标"]	= "#ff000000" ;
+      ["顶栏"]	= "#ff12b8f6" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["侧滑栏列表图标"]	= "#ff000000" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["进度条"]	= "#ffffffff" ;
+      } ;
+  ["fltBtn"]	= {
+      ["显示"]	= false ;
+      ["图标"]	= "" ;
+      ["点击事件"]	= "" ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      } ;
+  ["switch"]	= {
+      ["启用启动图"]	= false ;
+      ["支持滑动页面"]	= false ;
+      ["显示状态栏"]	= false ;
+      ["横屏"]	= false ;
+      } ;
+  ["sidebar"]	= {
+      ["启用顶部图片"]	= false ;
+      ["items"]	= {
+          } ;
+      ["启用"]	= false ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["web"]	= {
+      ["customUa"]	= "Mozilla/5.0 (Symbian/3; Series60/5.2 NokiaN8-00/012.002; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/533.4 (KHTML,like Gecko) NokiaBrowser/7.3.0 Mobile Safari/533.4 3gpp-gba" ;
+      ["支持打开外部应用"]	= true ;
+      ["启用进度条"]	= true ;
+      ["启动网页"]	= "" ;
+      ["启用长按菜单"]	= true ;
+      ["网页沉浸"]	= true ;
+      ["浏览器用户标识"]	= "默认" ;
+      } ;
+  ["events"]	= {
+      ["网页即将加载"]	= "" ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+--程序启动时会执行的事件\
+ti=Ticker()\
+ti.Period=500\
+ti.onTick=function() \
+ j=activity.getSystemService(Context.CLIPBOARD_SERVICE).getText()--获取剪贴板内容\
+ if j==\"\" then\
+   else\
+activity.getSystemService(Context.CLIPBOARD_SERVICE).setText(\"\")\
+   end\
+ end\
+ti.start()\
+--请勿删除版权©音六网络科技\
+--QQ1785333334" ;
+      ["收到新标题"]	= "浏览器对象，新标题=...\
+--接收参数" ;
+      ["程序启动"]	= "webView.onLongClick=function()\
+  hitTestResult = webView.getHitTestResult()\
+  if (hitTestResult.getType() == WebView.HitTestResult.IMAGE_TYPE or hitTestResult.getType() == WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE)then\
+    import \"com.tencent.qq.widget.*\"\
+    import \"android.view.WindowManager\"\
+\
+    MyMenuDialog=MenuDialog(this);--设置弹窗进出动画\
+    MyMenuDialog.setButton(\"取消\",MenuDialog.setTextColor.BLUE);--设置取消按钮文字及颜色\
+\
+    MyMenuDialog.addItem(\"保存图片\",MenuDialog.setTextColor.BLUE,--设置选项文字及颜色\
+    {onClick = function()\
+        picUrl = hitTestResult.getExtra() \
+        Http.download(picUrl,\"/sdcard/轻工具箱/pictures/\"..os.date(\"%Y-%m-%d-%H-%M-%S\")..\".png\",function(a)\
+        end)\
+        弹出消息(\"图片已保存于/sdcard/轻工具箱/pictures/\")\
+\
+      end});\
+    MyMenuDialog.addItem(\"保存动态图片\",MenuDialog.setTextColor.BLUE,--设置选项文字及颜色\
+\
+    {onClick = function()\
+        picUrl = hitTestResult.getExtra() \
+        Http.download(picUrl,\"/sdcard/轻工具箱/pictures/\"..os.date(\"%Y-%m-%d-%H-%M-%S\")..\".gif\",function(a)\
+        end)\
+        弹出消息(\"图片已保存于/sdcard/轻工具箱/pictures/\")\
+\
+      end});\
+\
+\
+    MyMenuDialog.addItem(\"复制图片链接\",MenuDialog.setTextColor.BLUE,--设置选项文字及颜色\
+    {onClick = function()\
+        picUrl = hitTestResult.getExtra()\
+        复制文本(picUrl)\
+        弹出消息(\"已复制:\" .. picUrl)\
+      end});\
+    MyMenuDialog.addItem(\"分享给朋友\",MenuDialog.setTextColor.BLUE,--设置选项文字及颜色\
+    {onClick = function()\
+        picUrl = hitTestResult.getExtra()\
+        分享文本(\"我看到一个好看的图片，分享给你:\" ..picUrl) \
+      end});\
+    MyMenuDialog.show();--显示弹窗\
+\
+  end\
+end\
+\
+ti=Ticker()\
+ti.Period=500\
+ti.onTick=function() \
+ j=activity.getSystemService(Context.CLIPBOARD_SERVICE).getText()--获取剪贴板内容\
+ if j==\"\" then\
+   else\
+activity.getSystemService(Context.CLIPBOARD_SERVICE).setText(\"\")\
+   end\
+ end\
+ti.start()\
+webView.addJavascriptInterface({},\"JsInterface\")\
+\
+\
+\
+local a=io.open(\"/sdcard/轻工具箱/data/a1\"):read(\"*a\")\
+if a==\"开\" then\
+webView.addView(loadlayout{\
+    LinearLayout,\
+    id=\"overla\",\
+    layout_width=\"fill\",\
+    layout_height=32552732*6,\
+    orientation=\"vertical\",\
+    backgroundColor=\"#86000000\",\
+  })\
+toolbarParent.addView(loadlayout{\
+    LinearLayout,\
+    id=\"overlay\",\
+    layout_width=\"fill\",\
+    layout_height=32552732*6,\
+    orientation=\"vertical\",\
+    backgroundColor=\"#86000000\",\
+  })\
+else\
+webView.removeView(overla)\
+toolbarParent.removeView(overlay)\
+end\
+\
+function 提示(内容)\
+  shamrock={\
+    LinearLayout;\
+    id=\"toastb\";\
+    {\
+      TextView;\
+      padding=\"8dp\";\
+      background=\"#12B8F6\";\
+      textSize=\"15sp\";\
+      TextColor=\"#ffffffff\";\
+      layout_width=\"100%w\";\
+      layout_height=\"40dp\";\
+      gravity=\"center\";\
+      text=\"提示出错\";\
+      id=\"text_ts\";\
+    };\
+  };\
+  local toast=Toast.makeText(activity,\"内容\",Toast.LENGTH_SHORT).setView(loadlayout(shamrock))\
+  --LENGTH_SHORT     2s\
+  --LENGTH_LONG      3.5s\
+  toast.setGravity(Gravity.BOTTOM,0, 0)\
+  --Gravity.BOTTOM   底部\
+  --Gravity.CENTER   中部\
+  --Gravity.TOP      顶部\
+  text_ts.Text=tostring(内容)\
+  toast.show()\
+end\
+\
+import \"java.io.File\"\
+\
+local VIP=io.open(\"/sdcard/.轻工具箱/.data/.VIP\"):read(\"*a\")\
+\
+if VIP==\"会员\" then\
+\
+\
+  import \"android.text.format.Formatter\"\
+  function Too_young()\
+    webView.setDownloadListener{onDownloadStart=function(url,userAgent,contentDisposition,mimetype,contentLength)\
+        文件名=URLUtil.guessFileName(url, contentDisposition, mimeType);\
+        下载链接=url\
+        文件类型=mimetype\
+        文件大小=Formatter.formatFileSize(this, contentLength)       \
+        if 文件名==\"\" or nil then\
+          文件名=os.date(\"%Y%m%d%H%M%S\")\
+        end\
+        if 文件类型==\"\" or nil then\
+          文件类型=\"空\"\
+        end\
+        if 文件大小==\"-1b\" or \"-1B\" or \"-1字节\" or \"\" or \"nil\" then\
+          文件大小=\"就不告诉你\"\
+        end      \
+       下载()\
+         function adm(url)\
+          if isPackageInstalled(\"com.dv.adm.pay\") then\
+            this.startActivity(Intent().setAction(\"android.intent.action.SEND\").setType(\"text/*\").putExtra(\"android.intent.extra.TEXT\", url).setClassName(\"com.dv.adm.pay\", \"com.dv.adm.pay.AEditor\"))\
+          else\
+            提示(\"没有安装ADM\")\
+          end\
+        end \
+      end}\
+  end\
+Too_young()\
+ function 下载()--以下代码可自由编辑，每当监听到下载任务时会运行以下代码。可用的值：url,userAgent,contentDisposition,mimetype,contentLength,文件名,文件类型,文件大小,下载链接\
+    对话框()\
+    .设置标题(\"新建下载任务\")\
+    .设置消息(\"文件名：\"..文件名..\"\\n文件类型：\"..文件类型..\"\\n文件大小：\"..文件大小..\"\\n下载链接：\"..下载链接..\"\")\
+    .设置积极按钮(\"下载\",function()\
+      downloadManager=activity.getSystemService(Context.DOWNLOAD_SERVICE);--调用系统下载器下载\
+      url=Uri.parse(下载链接);\
+      request=DownloadManager.Request(url);\
+      request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE|DownloadManager.Request.NETWORK_WIFI);\
+      request.setDestinationInExternalPublicDir(\"sdcard/轻工具箱/download\",文件名);\
+      request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);\
+      downloadManager.enqueue(request);\
+    end)\
+    .设置消极按钮(\"取消\")\
+    .设置中立按钮(\"ADM下载\",function()\
+      adm(下载链接)\
+    end)\
+    .显示()\
+  end\
+\
+\
+end" ;
+      } ;
+  ["toolbar"]	= {
+      ["icon_btns"]	= {
+          [1]	= {
+              ["icon"]	= "screen_rotation" ;
+              ["onClick"]	= "if SetHSP==nil then\13\
+  --横屏\13\
+  activity.setRequestedOrientation(0); \13\
+  SetHSP=\"H\"\13\
+else\13\
+  --竖屏\13\
+  activity.setRequestedOrientation(1); \13\
+  SetHSP=nil\13\
+end\13" ;
+              } ;
+          [2]	= {
+              ["icon"]	= "backup_restore" ;
+              ["onClick"]	= "刷新网页()" ;
+              } ;
+          [3]	= {
+              ["icon"]	= "play_circle_outline" ;
+              ["onClick"]	= "--整理收集的人：点亮（dianliang)\
+items={}\
+for i=1,100 do\
+ table.insert(items,\"解析接口\"..tostring(i))\
+end\
+AlertDialog.Builder(this)\
+.setTitle(\"解析接口\")\
+.setItems(items,{onClick=function(l,v) \
+    if v==0 then\
+加载网页(\"http://cdn.yangju.vip/k/?url=\"..webView.getUrl());\
+    end\
+    if v==1 then\
+加载网页(\"http://api.greatchina56.com/?url=\"..webView.getUrl());\
+    end\
+    if v==2 then\
+加载网页(\"http://www.sfsft.com/video.php?url=\"..webView.getUrl());\
+    end\
+    if v==3 then\
+加载网页(\"http://vip.jlsprh.com/index.php?url=\"..webView.getUrl());\
+    end\
+    if v==4 then\
+加载网页(\"http://vip.xianmuyu.com/index.php?url=\"..webView.getUrl());\
+    end\
+    if v==5 then\
+加载网页(\"http://api.ataoju.com/play/?url=\"..webView.getUrl());\
+    end\
+    if v==6 then\
+加载网页(\"http://jx.20520.vip/api/?url=\"..webView.getUrl());\
+    end\
+    if v==7 then\
+加载网页(\"http://mlxztz.com/player.php?url=\"..webView.getUrl());\
+    end\
+    if v==8 then\
+加载网页(\"http://jx.vipjiexi360.com/youku/apiget.php?url=\"..webView.getUrl());\
+    end\
+    if v==9 then\
+加载网页(\"http://www.aktv.men/?url=\"..webView.getUrl());\
+    end\
+    if v==10 then\
+加载网页(\"http://pan8.cn/?url=\"..webView.getUrl());\
+    end\
+    if v==11 then\
+加载网页(\"http://j.88gc.net/jx/?url=\"..webView.getUrl());\
+    end\
+    if v==12 then\
+加载网页(\"http://api.91exp.com/svip/?url=\"..webView.getUrl());\
+    end\
+    if v==13 then\
+加载网页(\"https://vip.97kys.com/vip/?url=\"..webView.getUrl());\
+    end\
+    if v==14 then\
+加载网页(\"http://vip.xinyanys.cn/p.php?url=\"..webView.getUrl());\
+    end\
+    if v==15 then\
+加载网页(\"http://www.lexinys.com/api/?url=\"..webView.getUrl());\
+    end\
+    if v==16 then\
+加载网页(\"http://apitvs.sskweb.cn/index.php?url=\"..webView.getUrl());\
+    end\
+    if v==17 then\
+加载网页(\"http://yun.odflv.com/?url=\"..webView.getUrl());\
+    end\
+    if v==18 then\
+加载网页(\"http://lhh666.cn/jx/vip.php?url=\"..webView.getUrl());\
+    end\
+    if v==19 then\
+加载网页(\"http://api.fastflv.cc/jiexi/?url=\"..webView.getUrl());\
+    end\
+    if v==20 then\
+加载网页(\"http://www.qqmsr.com/vip/?url=\"..webView.getUrl());\
+    end\
+       if v==21 then\
+加载网页(\"http://7cyd.com/vip/?url=\"..webView.getUrl());\
+    end\
+    if v==22 then\
+加载网页(\"http://y.mt2t.com/lines?url=\"..webView.getUrl());\
+    end\
+    if v==23 then\
+加载网页(\"http://www.82190555.com/index/qqvod.php?url=\"..webView.getUrl());\
+    end\
+    if v==24 then\
+加载网页(\"http://qtzr.net/s/?qt=\"..webView.getUrl());\
+    end\
+    if v==25 then\
+加载网页(\"http://api.nepian.com/ckparse/?url=\"..webView.getUrl());\
+    end\
+    if v==26 then\
+加载网页(\"http://www.662820.com/xnflv/index.php?url=\"..webView.getUrl());\
+    end\
+    if v==27 then\
+加载网页(\"http://jiexi.071811.cc/jx2.php?url=\"..webView.getUrl());\
+    end\
+    if v==28 then\
+加载网页(\"http://qxkkk.bid/jx/jx.php?url=\"..webView.getUrl());\
+    end\
+    if v==29 then\
+加载网页(\"http://o8ve.cn/1/?url=\"..webView.getUrl());\
+    end\
+    if v==30 then\
+加载网页(\"https://api.pangujiexi.com/player.php?url=\"..webView.getUrl());\
+    end\
+    if v==31 then\
+加载网页(\"http://kkk.2016ve.cn/kkjx/index.php?url=\"..webView.getUrl());\
+    end\
+       if v==31 then\
+加载网页(\"http://kkk.2016ve.cn/kkjx/index.php?url=\"..webView.getUrl());\
+    end\
+    if v==32 then\
+加载网页(\"http://jx.jfysz.cn/jx.php/?url=\"..webView.getUrl());\
+    end\
+    if v==33 then\
+加载网页(\"http://jx.eayn.org.cn/jx.php/?url=\"..webView.getUrl());\
+    end\
+    if v==34 then\
+加载网页(\"http://api.xyingyu.com/?url=\"..webView.getUrl());\
+    end\
+    if v==35 then\
+加载网页(\"http://jx.cmbzzs.cn/jx.php/?url=\"..webView.getUrl());\
+    end\
+    if v==36 then\
+加载网页(\"http://jx.sdjnd09.cn/jx.php/?url=\"..webView.getUrl());\
+    end\
+    if v==37 then\
+加载网页(\"http://jx.ab78a.cn/jx.php/?url=\"..webView.getUrl());\
+    end\
+    if v==38 then\
+加载网页(\"http://jx.908astbb.cn/jx.php/?url=\"..webView.getUrl());\
+    end\
+    if v==39 then\
+加载网页(\"http://jx.boctx.cn/jx.php/?url=\"..webView.getUrl());\
+    end\
+    if v==40 then\
+加载网页(\"http://api.xfsub.com/index.php?url=\"..webView.getUrl());\
+    end\
+    if v==41 then\
+加载网页(\"https://api.flvsp.com/?url=\"..webView.getUrl());\
+    end\
+     if v==42 then\
+加载网页(\"http://jx.618g.com/?url=\"..webView.getUrl());\
+    end\
+    if v==43 then\
+加载网页(\"http://wwwhe1.177kdy.cn/4.php?pass=2&url=\"..webView.getUrl());\
+    end\
+    if v==44 then\
+加载网页(\"http://jx.ejiafarm.com/dy.php?url= \"..webView.getUrl());\
+    end\
+    if v==45 then\
+加载网页(\"http://api.1008net.com/v.php?url= \"..webView.getUrl());\
+    end\
+    if v==46 then\
+加载网页(\"http://www.0335haibo.com/yun.php?url=\"..webView.getUrl());\
+    end\
+    if v==47 then\
+加载网页(\"http://jiexi.92fz.cn/player/vip.php?url=\"..webView.getUrl());\
+    end\
+    if v==48 then\
+加载网页(\"http://vip.jlsprh.com/index.php?url=\"..webView.getUrl());\
+    end\
+    if v==49 then\
+加载网页(\"http://nfjx.vip9.xyz/?url=\"..webView.getUrl());\
+    end\
+    if v==50 then\
+加载网页(\"http://jiexi.jisuhb.com/?url=\"..webView.getUrl());\
+    end\
+    if v==51 then\
+加载网页(\"http://api.baiyug.vip/index.php?url=\"..webView.getUrl());\
+    end\
+    if v==52 then\
+加载网页(\"http://6199la.com/\"..webView.getUrl());\
+    end\
+    if v==53 then\
+加载网页(\"http://api.33yuan.cn/api/?url=\"..webView.getUrl());\
+    end\
+    if v==54 then\
+加载网页(\"http://jx.kt111.top/jx/mf/?url=\"..webView.getUrl());\
+    end\
+    if v==55 then\
+加载网页(\"http://m.lyjml.cn/svip/?url=\"..webView.getUrl());\
+    end\
+    if v==56 then\
+加载网页(\"http://www.jy777.cn/api/?url=\"..webView.getUrl());\
+    end\
+    if v==57 then\
+加载网页(\"http://jx.ejiafarm.com/dy.php?url=\"..webView.getUrl());\
+    end\
+    if v==58 then\
+加载网页(\"http://mov.52kk.ga/iqiyi/?url=\"..webView.getUrl());\
+    end\
+    if v==59 then\
+加载网页(\"http://lookxw.com/yingzi/?url=\"..webView.getUrl());\
+    end\
+    if v==60 then\
+加载网页(\"http://jx.myxit.cn/vip/?url=\"..webView.getUrl());\
+    end\
+    if v==61 then\
+加载网页(\"http://aikan-tv.com/?url=\"..webView.getUrl());\
+    end\
+    if v==62 then\
+加载网页(\"http://api.baiyug.cn/vip/index.php?url=\"..webView.getUrl());\
+    end\
+    if v==63 then\
+加载网页(\"http://www.cqhwdnwx.com/jx/?url=\"..webView.getUrl());\
+    end\
+    if v==52 then\
+加载网页(\"http://6199la.com/\"..webView.getUrl());\
+    end\
+    if v==53 then\
+加载网页(\"http://api.33yuan.cn/api/?url=\"..webView.getUrl());\
+    end\
+    if v==54 then\
+加载网页(\"http://jx.kt111.top/jx/mf/?url=\"..webView.getUrl());\
+    end\
+    if v==55 then\
+加载网页(\"http://m.lyjml.cn/svip/?url=\"..webView.getUrl());\
+    end\
+    if v==56 then\
+加载网页(\"http://www.jy777.cn/api/?url=\"..webView.getUrl());\
+    end\
+    if v==57 then\
+加载网页(\"http://jx.ejiafarm.com/dy.php?url=\"..webView.getUrl());\
+    end\
+    if v==58 then\
+加载网页(\"http://mov.52kk.ga/iqiyi/?url=\"..webView.getUrl());\
+    end\
+    if v==59 then\
+加载网页(\"http://lookxw.com/yingzi/?url=\"..webView.getUrl());\
+    end\
+    if v==60 then\
+加载网页(\"http://jx.myxit.cn/vip/?url=\"..webView.getUrl());\
+    end\
+    if v==61 then\
+加载网页(\"http://aikan-tv.com/?url=\"..webView.getUrl());\
+    end\
+    if v==62 then\
+加载网页(\"http://api.baiyug.cn/vip/index.php?url=\"..webView.getUrl());\
+    end\
+    if v==63 then\
+加载网页(\"http://www.cqhwdnwx.com/jx/?url=\"..webView.getUrl());\
+    end\
+    if v==64 then\
+加载网页(\"http://jx.598110.com/index.php?url=\"..webView.getUrl());\
+    end\
+    if v==65 then\
+加载网页(\"http://206dy.com/vip.php?url=\"..webView.getUrl());\
+    end\
+    if v==66 then\
+加载网页(\"http://jx.aeidu.cn/index.php?url=\"..webView.getUrl());\
+    end\
+    if v==67 then\
+加载网页(\"http://beaacc.com/api.php?url=\"..webView.getUrl());\
+    end\
+    if v==68 then\
+加载网页(\"http://v.xunmzy.com/jx/?url=\"..webView.getUrl());\
+    end\
+    if v==69 then\
+加载网页(\"http://biuba.cn/?url=\"..webView.getUrl());\
+    end\
+    if v==70 then\
+加载网页(\"http://2gty.com/apiurl/yun.php?url=\"..webView.getUrl());\
+    end\
+    if v==71 then\
+加载网页(\"http://jx.39book.com/Client/apiget.php?url=\"..webView.getUrl());\
+    end\
+    if v==72 then\
+加载网页(\"http://000o.cc/jx/ty.php?url=\"..webView.getUrl());\
+    end\
+        if v==73 then\
+加载网页(\"http://yun.mt2t.com/yun?url=\"..webView.getUrl());\
+    end\
+    if v==74 then\
+加载网页(\"http://api.baiyug.cn/vip/?url=\"..webView.getUrl());\
+    end\
+    if v==75 then\
+加载网页(\"http://api.lldyy.net/svip/?url=\"..webView.getUrl());\
+    end\
+    if v==76 then\
+加载网页(\"http://api.wlzhan.com/sudu/?url=\"..webView.getUrl());\
+    end\
+    if v==77 then\
+加载网页(\"http://www.27v9.cn/index.php?url=\"..webView.getUrl());\
+    end\
+    if v==78 then\
+加载网页(\"https://jx.kt111.top/jx/mf/?url=\"..webView.getUrl());\
+    end\
+    if v==79 then\
+加载网页(\"http://api.lvcha2017.cn/?url=\"..webView.getUrl());\
+    end\
+    if v==80 then\
+加载网页(\"http://jy777.cn/XSD/XSD/?url=\"..webView.getUrl());\
+    end\
+     if v==81 then\
+加载网页(\"http://jx.reclose.cn/jx.php/?url=\"..webView.getUrl());\
+    end\
+    if v==82 then\
+加载网页(\"http://jx.iaeec.cn/jx.php/?url=\"..webView.getUrl());\
+    end\
+    if v==83 then\
+加载网页(\"http://jx.83y4n7a.cn/jx.php/?url=\"..webView.getUrl());\
+    end\
+    if v==84 then\
+加载网页(\"http://jx.as19811.cn/jx.php/?url=\"..webView.getUrl());\
+    end\
+    if v==85 then\
+加载网页(\"http://jx.09876as.cn/jx.php/?url=\"..webView.getUrl());\
+    end\
+    if v==86 then\
+加载网页(\"http://jx.yipolo111.cn/jx.php/?url=\"..webView.getUrl());\
+    end\
+    if v==87 then\
+加载网页(\"http://jx.dlzyrk001.cn/jx.php/?url=\"..webView.getUrl());\
+    end\
+    if v==88 then\
+加载网页(\"http://jx.hxbte.cn/jx.php/?url=\"..webView.getUrl());\
+    end\
+     if v==89 then\
+加载网页(\"http://api.pucms.com/?url=\"..webView.getUrl());\
+    end\
+    if v==90 then\
+加载网页(\"http://jx.xuanpianwang.com/parse?url=\"..webView.getUrl());\
+    end\
+    if v==91 then\
+加载网页(\"http://api.taoge.la/jiexi/index.php?url=\"..webView.getUrl());\
+    end\
+    if v==92 then\
+加载网页(\"http://qtzr.net/s/?qt=\"..webView.getUrl());\
+    end\
+    if v==93 then\
+加载网页(\"http://player.gakui.top/?url=\"..webView.getUrl());\
+    end\
+    if v==94 then\
+加载网页(\"http://vip.sdyhy.cn/ckflv/?url=\"..webView.getUrl());\
+    end\
+    if v==95 then\
+加载网页(\"http://www.wmxz.wang/video.php?url=\"..webView.getUrl());\
+    end\
+    if v==96 then\
+加载网页(\"http://yyygwz.com/index.php?url=\"..webView.getUrl());\
+    end\
+    if v==97 then\
+加载网页(\"http://api.mp4la.net/?url=\"..webView.getUrl());\
+    end\
+    if v==98 then\
+加载网页(\"http://api.mp4la.net/?url=\"..webView.getUrl());\
+    end\
+    if v==99 then\
+加载网页(\"http://jx.71ki.com/index.php?url=\"..webView.getUrl());\
+    end\
+ end})\
+.show()" ;
+              } ;
+          } ;
+      ["menus"]	= {
+          [1]	= {
+              ["onClick"]	= "对话框()\
+.设置标题(\"提示\")\
+.设置消息(\"王卡用户请安装QQ浏览器后在分享页面中选择QQ浏览器即可。\")\
+.设置积极按钮(\"确定\",function()\
+  import \"android.os.*\"\
+  import \"android.widget.*\"\
+  import \"android.view.*\"\
+  import \"android.text.*\"\
+  import \"android.content.*\"\
+  if pcall(function() activity.getPackageManager().getPackageInfo(\"com.tencent.mtt\",0) end) then\
+ 分享文本(webView.getUrl())\
+ else\
+ 提示(\"你还没有安装QQ浏览器!请自己下载安装\")\
+加载网页(\"http://mdc.html5.qq.com/\")\
+end\
+end)\
+.设置中立按钮(\"取消\")\
+.显示()" ;
+              ["name"]	= "王卡免流" ;
+              } ;
+          [2]	= {
+              ["onClick"]	= "复制文本(webView.getUrl())" ;
+              ["name"]	= "复制链接" ;
+              } ;
+          [3]	= {
+              ["onClick"]	= "分享文本(webView.getUrl())" ;
+              ["name"]	= "分享链接" ;
+              } ;
+          [4]	= {
+              ["onClick"]	= "items={\"悟空遥控器\",\"快点投屏\",\"投屏使用须知\"}\
+AlertDialog.Builder(this)\
+.setTitle(\"投屏方式\")\
+.setItems(items,{onClick=function(l,v)\
+    if v==0 then\
+      复制文本(webView.getUrl())\
+      提示(\"当前网页已复制完毕正在打开（悟空遥控器），请手动粘贴网址到播放位置进行投屏播放\")\
+        packageName=\"com.wukongtv.wkremote.client\"\
+        import \"android.content.Intent\"\
+        import \"android.content.pm.PackageManager\"\
+        manager = activity.getPackageManager()\
+        open = manager.getLaunchIntentForPackage(packageName)\
+        this.startActivity(open)\
+   \
+    end\
+    if v==1 then\
+      复制文本(webView.getUrl())\
+      提示(\"当前网页已复制完毕正在打开（快点投屏） ，请手动粘贴网址到播放位置进行投屏播放！\")\
+      packageName=\"com.wukongtv.wkcast\"\
+      import \"android.content.Intent\"\
+      import \"android.content.pm.PackageManager\"\
+      manager = activity.getPackageManager()\
+      open = manager.getLaunchIntentForPackage(packageName)\
+      this.startActivity(open)\
+    end\
+    if v==2 then\
+      对话框()\
+      .设置标题(\"投屏使用须知\")\
+      .设置消息(\"进行第三方投屏之前，请先提前下载好你所需要的投屏软件（悟空遥控器或快点投屏），否则会出现错误导致无法进行投屏！\")\
+      .设置积极按钮(\"已知晓\",function()\
+      end)\
+      .显示()\
+    end\
+  end})\
+.show()" ;
+              ["name"]	= "网页投屏" ;
+              } ;
+          [5]	= {
+              ["onClick"]	= "退出页面()" ;
+              ["name"]	= "退出" ;
+              } ;
+          } ;
+      ["启用搜索功能"]	= false ;
+      ["搜索URL"]	= "" ;
+      ["输入栏模式"]	= false ;
+      ["搜索框提示"]	= "" ;
+      } ;
+  } ;

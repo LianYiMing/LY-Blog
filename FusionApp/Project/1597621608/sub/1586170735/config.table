@@ -1,0 +1,77 @@
+{
+  ["switch"]	= {
+      ["显示状态栏"]	= false ;
+      ["横屏"]	= false ;
+      ["启用启动图"]	= false ;
+      } ;
+  ["events"]	= {
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["程序启动"]	= "import \"main\" \
+--退出\
+参数=0\
+function onKeyDown(code,event)\
+  if string.find(tostring(event),\"KEYCODE_BACK\") ~= nil then\
+    if 参数+2 > tonumber(os.time()) then\
+      退出程序()\
+     else\
+      to={\
+        CardView;\
+        CardBackgroundColor=\"#FFffffff\";\
+        elevation=\"8dp\";\
+        layout_width=\"95%w\";\
+        layout_height=\"42dp\";\
+        radius=\"15\";\
+        id=\"to\";\
+        {\
+          TextView;\
+          textSize=\"15sp\";\
+          TextColor=\"#FFa0a0a0\";\
+          layout_width=\"95%w\";\
+          layout_height=\"42dp\";\
+          gravity=\"center\";\
+          text=\"出错\";\
+          id=\"texttc\";\
+        };\
+      }\
+      local to=Toast.makeText(activity,\"内容\",Toast.LENGTH_SHORT).setView(loadlayout(to))\
+      --LENGTH_SHORT     2s\
+      --LENGTH_LONG      3.5s\
+      to.setGravity(Gravity.BOTTOM,0,60)\
+      --Gravity.BOTTOM   底部\
+      --Gravity.CENTER   中部\
+      --Gravity.TOP      顶部\
+      texttc.Text=tostring(\"再按一次退出程序！\")\
+      to.show()\
+      参数=tonumber(os.time())\
+    end\
+    return true\
+  end\
+end" ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象,新标题=..." ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["colors"]	= {
+      ["进度条"]	= "#00000000" ;
+      ["状态栏"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ff33a7aa" ;
+      } ;
+  ["web"]	= {
+      ["浏览器用户标识"]	= "默认" ;
+      ["启用长按菜单"]	= true ;
+      ["启用进度条"]	= true ;
+      ["支持打开外部应用"]	= true ;
+      ["网页沉浸"]	= false ;
+      ["启动网页"]	= "" ;
+      } ;
+  } ;

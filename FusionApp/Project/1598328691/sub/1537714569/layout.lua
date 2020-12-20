@@ -1,0 +1,2527 @@
+--代码来着applua里的模板
+--移植人是我 @小乙天 非常简单
+--这玩意给不会的人
+--底栏仿比较好看的，
+--修改人@少衡东
+--二次修改@dingyi
+ import "java.lang.Runtime"
+
+
+function 提示(内容)
+  shamrock={
+    LinearLayout;
+    id="toastb";
+    {
+      TextView;
+      padding="8dp";
+      background="#12B8F6";
+      textSize="15sp";
+      TextColor="#ffffffff";
+      layout_width="100%w";
+      layout_height="40dp";
+      gravity="center";
+      text="提示出错";
+      id="text_ts";
+    };
+  };
+  local toast=Toast.makeText(activity,"内容",Toast.LENGTH_SHORT).setView(loadlayout(shamrock))
+  --LENGTH_SHORT     2s
+  --LENGTH_LONG      3.5s
+  toast.setGravity(Gravity.BOTTOM,0, 0)
+  --Gravity.BOTTOM   底部
+  --Gravity.CENTER   中部
+  --Gravity.TOP      顶部
+  text_ts.Text=tostring(内容)
+  toast.show()
+end
+
+function 判断代码执行(代码)
+ if pcall(Runtime.getRuntime().exec,代码) then
+  提示("执行成功")
+  return true
+else
+ 提示("执行失败")
+  return false
+ end
+end
+
+
+shd=
+{
+  LinearLayout;
+  orientation="vertical";
+  layout_width="fill";
+  layout_height="fill";
+
+  {
+    PageView;
+    layout_height="-2";
+    layout_width="-1";
+    layout_weight="1.0";
+    id="pagev";
+    pages={
+      --页面一的布局开始↓
+     --程序启动时会执行的事件
+{
+  LinearLayout;
+  orientation="vertical";
+  layout_height="fill";
+  layout_width="fill";
+  BackgroundColor="#FFFFFF";
+  {
+    ScrollView,--纵向滚动
+    layout_width='fill';--宽
+    layout_height='fill';--高
+    {
+      LinearLayout;
+      orientation="horizontal";
+      Elevation="300dp";
+      layout_width="fill";
+      layout_height="100%h";
+      {
+        LinearLayout;
+        orientation="vertical";
+        layout_width="48%w";
+        layout_height="fill";
+        layout_marginLeft="2%w";
+        --第一列
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="QQ头像获取",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="qq1";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="QQ空间开通",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="qq2";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="QQ空间关闭",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="qq3";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="QQ音乐加速",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="qq6";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="QQ拉圈圈",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+               id="qq7";
+            };
+          };
+        },
+          {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="QQ靓号注册",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+               id="qqcnm";
+            };
+          };
+        },
+                {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="带壳截图",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+               id="daike";
+            };
+          };
+        },
+     
+        --第二列
+      };
+      {
+        LinearLayout;
+        orientation="vertical";
+        layout_width="48%w";
+        layout_height="fill";
+        layout_marginRight="2%w";
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="QQ强制聊天",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+               id="qq4";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="QQ空间各种代码",
+              textColor="#FFFF0000";
+              style="?android:attr/buttonBarButtonStyle";
+              id="qq5";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="综合解析",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="douyin";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="快手解析",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="kuaishou";              
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="防沉迷游戏解封",
+              textColor="#FFFF0000";
+              style="?android:attr/buttonBarButtonStyle";
+              id="jiefeng";
+            };
+          };
+        },
+           {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="bilibili视频解析下载",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="bilibili";              
+            };
+          };
+        },
+            {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="尺子",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="ruler";              
+            };
+          };
+        },
+      }; 
+    };
+  };
+};
+    --页面二的布局结束↑
+--页面二的布局开始↓
+   {
+  LinearLayout;
+  orientation="vertical";
+  layout_height="fill";
+  layout_width="fill";
+  BackgroundColor="#FFFFFF";
+  {
+    ScrollView,--纵向滚动
+    layout_width='fill';--宽
+    layout_height='fill';--高
+    {
+      LinearLayout;
+      orientation="horizontal";
+      Elevation="300dp";
+      layout_width="fill";
+      layout_height="100%h";
+      {
+        LinearLayout;
+        orientation="vertical";
+        layout_width="48%w";
+        layout_height="fill";
+        layout_marginLeft="2%w";
+        --第一列
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="图片隐藏信息",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="tupian1";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="查快递",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+               id="kuaidi";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="字数统计",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="zishu";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="以图搜图",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="tupian2";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="在线地图",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="zaixian";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="翻译",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="fanyi";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="网易云音乐去广告",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="quad";
+            };
+          };
+        },
+          {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="摩斯密码",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="mosi";
+            };
+          };
+        },
+          {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="文件分享",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="share";
+            };
+          };
+        },
+        --第二列
+      };
+      {
+        LinearLayout;
+        orientation="vertical";
+        layout_width="48%w";
+        layout_height="fill";
+        layout_marginRight="2%w";
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="二维码生成与扫描",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="zaixian1";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="计算器",
+              textColor="#FFFF0000";
+              style="?android:attr/buttonBarButtonStyle";
+              id="jishuang";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="贴吧id信息查询",
+              textColor="#FFFF0000";
+              style="?android:attr/buttonBarButtonStyle";
+              id="tieba";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="磁力搜索",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+               id="cili";        
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="随机密码生成",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="mimafuck";
+            };
+          };
+        }, 
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="地铁查询",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="ditie";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="拼音转换",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="pinyin";
+            };
+          };
+        },
+            {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="微博视频解析",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="weibo";
+            };
+          };
+        },
+         {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="防红链接",
+              textColor="#333333";
+              style="?android:attr/buttonBarButtonStyle";
+              id="hong";
+            };
+          };
+        },
+      }; 
+    };
+  };
+};               
+   -- 页面二的布局结束↑
+   --页面三的布局开始下
+    {
+  LinearLayout;
+  orientation="vertical";
+  layout_height="fill";
+  layout_width="fill";
+  BackgroundColor="#FFFFFF";
+  {
+    ScrollView,--纵向滚动
+    layout_width='fill';--宽
+    layout_height='fill';--高
+    {
+      LinearLayout;
+      orientation="horizontal";
+      Elevation="300dp";
+      layout_width="fill";
+      layout_height="100%h";
+      {
+        LinearLayout;
+        orientation="vertical";
+        layout_width="48%w";
+        layout_height="fill";
+        layout_marginLeft="2%w";
+        --第一列
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="music",
+              textColor="#333333";
+               id="music";
+               style="?android:attr/buttonBarButtonStyle";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center";
+            {
+              TextView;
+              textSize="14sp";
+              text="gif图制作",
+              textColor="#333333";
+              id="gif";
+              style="?android:attr/buttonBarButtonStyle";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="一个ai",
+              textColor="#333333";
+              id="ai";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="画板",
+              textColor="#333333";
+              id="huaban";
+              style="?android:attr/buttonBarButtonStyle";
+            };
+          };
+        },
+         {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+           {
+              TextView;
+              textSize="14sp";
+              text="生成整人网页",
+              textColor="#333333";
+              id="zhengren";
+              style="?android:attr/buttonBarButtonStyle";
+            };
+          };
+        },
+            {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+           {
+              TextView;
+              textSize="14sp";
+              text="一言",
+              textColor="#333333";
+              id="oneyan";
+              style="?android:attr/buttonBarButtonStyle";
+            };
+          };
+        },
+        --第二列
+      };
+      {
+        LinearLayout;
+        orientation="vertical";
+        layout_width="48%w";
+        layout_height="fill";
+        layout_marginRight="2%w";
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="3d元素周期表",
+              textColor="#333333";
+              id="yuanshu";
+              style="?android:attr/buttonBarButtonStyle";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="举牌照制作",
+              textColor="#333333";
+              id="baidu";
+              style="?android:attr/buttonBarButtonStyle";
+            };
+         };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="电影字幕速成",
+              textColor="#333333";
+              id="dianyin";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="迷你电子表",
+              textColor="#333333";
+              id="mini";
+              style="?android:attr/buttonBarButtonStyle";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+           {
+              TextView;
+              textSize="14sp";
+              text="全屏滑稽",
+              textColor="#333333";
+              id="huaji";
+              style="?android:attr/buttonBarButtonStyle";
+            };
+          };
+        },
+         {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+           {
+              TextView;
+              textSize="14sp";
+              text="尖叫字体生成",
+              textColor="#333333";
+              id="jianjiao";
+              style="?android:attr/buttonBarButtonStyle";
+            };
+          };
+        },
+      }; 
+    };
+  };
+};               
+ --页面三布局结束↑
+ --页面四布局开始   
+      {
+  LinearLayout;
+  orientation="vertical";
+  layout_height="fill";
+  layout_width="fill";
+  BackgroundColor="#FFFFFF";
+  {
+    ScrollView,--纵向滚动
+    layout_width='fill';--宽
+    layout_height='fill';--高
+    {
+      LinearLayout;
+      orientation="horizontal";
+      Elevation="300dp";
+      layout_width="fill";
+      layout_height="100%h";
+      {
+        LinearLayout;
+        orientation="vertical";
+        layout_width="48%w";
+        layout_height="fill";
+        layout_marginLeft="2%w";
+        --第一列
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="图片转base64",
+              textColor="#333333";
+              id="base64";
+              style="?android:attr/buttonBarButtonStyle";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="文件差异比较",
+              textColor="#333333";
+              id="wenjian";
+              style="?android:attr/buttonBarButtonStyle";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="高级关机",
+              textColor="#333333";
+              id="gaoji";
+              style="?android:attr/buttonBarButtonStyle";
+            };
+          };
+        },
+          {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="在线代码高亮转换",
+              textColor="#333333";
+              id="highlight";
+              style="?android:attr/buttonBarButtonStyle";
+            };
+          };
+        },
+          {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="在线代码运行工具",
+              textColor="#333333";
+              id="funjava";
+              style="?android:attr/buttonBarButtonStyle";
+            };
+          };
+        },
+        --第二列
+      };
+      {
+        LinearLayout;
+        orientation="vertical";
+        layout_width="48%w";
+        layout_height="fill";
+        layout_marginRight="2%w";
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center";
+            {
+              TextView;
+              textSize="14sp";
+              text="ocr文字识别",
+              textColor="#333333";
+              id="ocr";
+              style="?android:attr/buttonBarButtonStyle";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="网页制作",
+              textColor="#333333";
+              id="wanye";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="进制转换",
+              textColor="#333333";
+              id="jingzhi";
+              style="?android:attr/buttonBarButtonStyle";
+            };
+          };
+        },
+        {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="shell",
+              textColor="#333333";
+              id="shell";
+              style="?android:attr/buttonBarButtonStyle";
+             };
+          };
+        },
+          {
+          CardView;
+          layout_gravity="center";
+          layout_marginTop="2%h"; 
+          elevation="0dp";
+          layout_width="45%w";
+          layout_height="45dp";
+          cardBackgroundColor="#FFF7F7F7";
+          radius="5dp";
+          {
+            LinearLayout;
+            layout_margin="0dp";
+            layout_width="fill";
+            layout_height="fill";
+            gravity="center"; 
+            {
+              TextView;
+              textSize="14sp";
+              text="引流神器",
+              textColor="#333333";
+              id="yinliuqq";
+              style="?android:attr/buttonBarButtonStyle";
+             };
+          };
+        },
+      }; 
+    };
+  };
+};
+};
+  };             
+--页面四布局结束↑
+--下面是低栏的布局
+--滑条颜色
+  {
+    LinearLayout;
+    layout_width="fill";
+    layout_height="0dp";
+    elevation="2dp";
+    layout_marginTop="-3dp";
+    {
+      LinearLayout;
+      layout_width="25%w";
+      id="huat";
+      background="#FFFFFFFF";
+      layout_height="fill";
+    };
+  };
+--低栏选项设置
+  {
+    LinearLayout;
+    layout_width="-1";
+    Elevation="3dp";
+    layout_height="8%h";
+    orientation="horizontal";
+    backgroundColor="";--背景色
+
+    id="ding";
+  {
+    LinearLayout;
+    id="c1";
+    gravity="center";
+    layout_width="25%w";
+    layout_marginLeft="0dp";
+    orientation="vertical";
+  {
+  ImageView;--影像视图
+  layout_height="20dp";--高度
+  layout_margin="20dp";
+  layout_marginLeft="15dp";
+  layout_marginTop="5dp";--边顶
+   layout_width="30dp";--宽度
+   layout_gravity="center";
+   backgroundColor="#00000000";--背景色
+        };
+    {
+      TextView;
+      id="a1";
+      layout_marginLeft="-15";
+      layout_marginTop="-50";
+      gravity="center";
+      layout_height="-1";
+      layout_width="-1";
+      textColor="#000000";
+      layout_weight="1";      
+      textSize="13sp",
+      text="常用";
+      layout_gravity="center";
+    };
+
+};
+
+  {
+    LinearLayout;
+    id="c2";
+    gravity="center";
+    layout_width="25%w";
+    layout_marginLeft="0dp";
+    orientation="vertical";
+  {
+  ImageView;--影像视图
+  layout_height="20dp";--高度
+  layout_margin="20dp";
+  layout_marginLeft="15dp";
+  layout_marginTop="5dp";--边顶
+   layout_width="30dp";--宽度
+   layout_gravity="center";
+   backgroundColor="#00000000";--背景色
+        };
+    {
+      TextView;
+      id="a2";
+      layout_marginLeft="-15";
+      layout_marginTop="-50";
+      gravity="center";
+      layout_height="-1";
+      layout_width="-1";
+      textColor="#000000";
+      layout_weight="1";      
+      textSize="13sp",
+      text="实用";
+      layout_gravity="center";
+    };
+
+
+};
+  {
+    LinearLayout;
+    id="c3";
+    gravity="center";
+    layout_width="25%w";
+    layout_marginLeft="0dp";
+    orientation="vertical";
+  {
+  ImageView;--影像视图
+  layout_height="20dp";--高度
+  layout_margin="20dp";
+  layout_marginLeft="15dp";
+  layout_marginTop="5dp";--边顶
+   layout_width="30dp";--宽度
+   layout_gravity="center";
+   backgroundColor="#00000000";--背景色
+        };
+    {
+      TextView;
+      id="a3";
+      layout_marginLeft="-15";
+      layout_marginTop="-50";
+      gravity="center";
+      layout_height="-1";
+      layout_width="-1";
+      textColor="#000000";
+      layout_weight="1";      
+      textSize="13sp",
+      text="有趣";
+      layout_gravity="center";
+    };
+
+
+};
+  {
+    LinearLayout;
+    id="c4";
+    gravity="center";
+    layout_width="25%w";
+    layout_marginLeft="0dp";
+    orientation="vertical";
+  {
+  ImageView;--影像视图
+  layout_height="20dp";--高度
+  layout_margin="20dp";
+  layout_marginLeft="15dp";
+  layout_marginTop="5dp";--边顶
+   layout_width="30dp";--宽度
+   layout_gravity="center";
+   backgroundColor="#00000000";--背景色
+        };
+    {
+      TextView;
+      id="a4";
+      layout_marginLeft="-15";
+      layout_marginTop="-50";
+      gravity="center";
+      layout_height="-1";
+      layout_width="-1";
+      textColor="#000000";
+      layout_weight="1";      
+      textSize="13sp",
+      text="玩机";
+      layout_gravity="center";
+    };
+
+};
+  };
+}
+
+
+webView.addView(loadlayout(shd))
+
+
+function CircleButton(view,InsideColor,radiu)
+  import "android.graphics.drawable.GradientDrawable"
+  drawable = GradientDrawable() 
+  drawable.setShape(GradientDrawable.RECTANGLE) 
+  drawable.setColor(InsideColor)
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});
+  view.setBackgroundDrawable(drawable)
+end
+--滑条圆角
+CircleButton(huat,0xFFffffFF,0)
+--设置滑动条&字体颜色
+appp=activity.getWidth()
+local kuan=appp/4
+pagev.setOnPageChangeListener(PageView.OnPageChangeListener{
+  onPageScrolled=function(a,b,c)
+    huat.setX(kuan*(b+a))
+    if c==0 then
+      if a==0 then
+        a1.setTextColor(0xffff4500)
+        a2.setTextColor(0x9f000000)
+        a3.setTextColor(0x9f000000)
+        a4.setTextColor(0x9f000000)
+      elseif a==1 then
+        a1.setTextColor(0x9f000000)
+        a2.setTextColor(0xffff4500)
+        a3.setTextColor(0x9f000000)
+        a4.setTextColor(0x9f000000)
+      elseif a==2 then
+        a1.setTextColor(0x9f000000)
+        a2.setTextColor(0x9f000000)
+        a3.setTextColor(0xffff4500)
+        a4.setTextColor(0x9f000000)
+      elseif a==3 then
+        a1.setTextColor(0x9f000000)
+        a2.setTextColor(0x9f000000)
+        a3.setTextColor(0x9f000000)
+        a4.setTextColor(0xffff4500)
+      end
+    end
+  end})
+
+--设置波纹颜色
+颜色=0x5FFFFFFF
+id=a1
+import "android.content.res.ColorStateList"
+local attrsArray = {android.R.attr.selectableItemBackgroundBorderless} 
+local typedArray =activity.obtainStyledAttributes(attrsArray) 
+ripple=typedArray.getResourceId(0,0) 
+aoos=activity.Resources.getDrawable(ripple) 
+aoos.setColor(ColorStateList(int[0].class{int{}},int{颜色}))
+id.setBackground(aoos.setColor(ColorStateList(int[0].class{int{}},int{颜色})))
+--设置Sideslip点击事件
+c1.onClick=function()
+  pagev.showPage(0)
+end
+颜色=0x5FFFFFFF
+id=a2
+import "android.content.res.ColorStateList"
+local attrsArray = {android.R.attr.selectableItemBackgroundBorderless} 
+local typedArray =activity.obtainStyledAttributes(attrsArray) 
+ripple=typedArray.getResourceId(0,0) 
+aoos=activity.Resources.getDrawable(ripple) 
+aoos.setColor(ColorStateList(int[0].class{int{}},int{颜色}))
+id.setBackground(aoos.setColor(ColorStateList(int[0].class{int{}},int{颜色})))
+--设置Sideslip点击事件
+c2.onClick=function()
+  pagev.showPage(1)
+end
+
+颜色=0x5FFFFFFF
+id=a3
+import "android.content.res.ColorStateList"
+local attrsArray = {android.R.attr.selectableItemBackgroundBorderless} 
+local typedArray =activity.obtainStyledAttributes(attrsArray) 
+ripple=typedArray.getResourceId(0,0) 
+aoos=activity.Resources.getDrawable(ripple) 
+aoos.setColor(ColorStateList(int[0].class{int{}},int{颜色}))
+id.setBackground(aoos.setColor(ColorStateList(int[0].class{int{}},int{颜色})))
+--设置Sideslip点击事件
+c3.onClick=function()
+  pagev.showPage(2)
+end
+颜色=0x5FFFFFFF
+id=a4
+import "android.content.res.ColorStateList"
+local attrsArray = {android.R.attr.selectableItemBackgroundBorderless} 
+local typedArray =activity.obtainStyledAttributes(attrsArray) 
+ripple=typedArray.getResourceId(0,0) 
+aoos=activity.Resources.getDrawable(ripple) 
+aoos.setColor(ColorStateList(int[0].class{int{}},int{颜色}))
+id.setBackground(aoos.setColor(ColorStateList(int[0].class{int{}},int{颜色})))
+--设置Sideslip点击事件
+c4.onClick=function()
+  pagev.showPage(3)
+end
+qq1.onClick=function()
+进入子页面("qq头像获取")
+end
+qq2.onClick=function()
+  进入子页面("魔盒浏览",{链接="http://ctc.qzs.qq.com/qzone/web/load2.htm",标题="QQ空间开通"})
+end
+qq3.onClick=function()
+   进入子页面("魔盒浏览",{链接="http://imgcache.qq.com/qzone/web/qzone_submit_close.html",标题="QQ空间关闭"})
+end
+qq4.onClick=function()
+InputLayout={
+  LinearLayout;
+  orientation="vertical";
+  Focusable=true,
+  FocusableInTouchMode=true,
+  {
+    EditText;
+    layout_marginTop="0dp";
+    layout_width="80%w";
+    layout_gravity="center",
+    id="edit";
+  };
+};
+
+AlertDialog.Builder(this)
+.setTitle("请输入你想强制聊天的QQ号")
+.setView(loadlayout(InputLayout))
+.setPositiveButton("确定",{onClick=function(v) 
+    if(edit.Text=="")then
+      提示("未输入任何东西")
+      else      
+      联系QQ(edit.Text)      
+      end
+    end})
+.setNeutralButton("帮助",{onClick=function()
+print("问:QQ强制聊天为什么没用? 答:去对方名片给他点个赞，然后进入自己的名片，进入我赞过的人，给他发消息，不过前提是对方必须开启允许附近的人临时会话。")
+end})
+.show()
+end
+qq5.onClick=function()
+  InputLayout={
+  LinearLayout;
+  orientation="vertical";
+  Focusable=true,
+  FocusableInTouchMode=true,
+   {
+    EditText;
+    layout_width="fill";
+    layout_height="600dp";
+    text=[[
+锁：[em]e10001[/em]
+竖屏手机：[em]e10002[/em]
+横屏手机：[em]e10003[/em]
+电脑：[em]e10004[/em]
+手机：[em]e10005[/em]
+相册图标：[em]e10006[/em]
+连接图标：[em]e10007[/em]
+平板：[em]e10008[/em]
+红大锁：[em]e10009[/em]
+蜡烛：[em]e10010[/enm]
+红小锁：[em]e10011[/em]
+玫瑰：[em]e10012[/em]
+手表：[em]e10013[/em]
+飞机：[em]e10014[/em]
+奶嘴瓶：[em]e10015[/em]
+QQ音乐图标：[em]e10016/em]
+赞图标：[em]e10017[/em]
+井号：[em]e10018[/em]
+大奶嘴瓶：[em]e10019[/em]
+小飞机：[em]e10020[/em]
+定位图标：[em]e10021[/em]
+相机图标：[em]e10022[/em]
+相册图标：[em]e10023[/em]
+宽手机：[em]e10024[/em]
+手机：[em]e10025[/em]
+手表：[em]e10026[/em]
+电脑：[em]e10027[/em]
+手机山寨：[em]e10028[/em]
+返回图标：[em]e10029[/em]
+点亮赞图标：[em]e10030[/em]
+连接图标小：[em]e10031[/em]
+地图标记：[em]e10032[/em]
+红包小图标：[em]e10033[/em]
+@图标：[em]e10035[/em]
+联系人图标：[em]e10036[/em]
+赞加圆缺图标：[em]e10037[/em]
+返回加圆缺图标：[em]e10038[/em]
+橙色赞：[em]e10039[/em]
+红包图标2：[em]e10040[/em]
+礼包图标：[em]e1004[/em]
+红锁加圆缺：[em]e10042[/em]
+]];
+    gravity="center";
+   };
+}
+AlertDialog.Builder(this)
+.setTitle("")
+.setView(loadlayout(InputLayout))
+.setPositiveButton("确定",nil)
+.setNegativeButton("",nil)
+.show()    
+end
+qq6.onClick=function()
+对话框()
+.设置标题("提醒")
+.设置消息("请领取QQ音乐加速后在打开QQ音乐才能领取成功。")
+.设置积极按钮("确定",function()
+ 进入子页面("魔盒浏览",{链接="https://jlwz.cn/wapindex-1000-338.html",标题="QQ音乐加速"})
+end)
+.设置中立按钮("取消")
+.显示()
+end
+qq7.onClick=function()
+  进入子页面("魔盒浏览",{链接="https://jlwz.cn/wapindex-1000-297.html",标题="QQ拉圈圈"})
+end
+douyin.onClick=function()
+  进入子页面("魔盒浏览",{链接="http://www.tutujiexi.com/",标题="综合解析"})
+end
+kuaishou.onClick=function()
+ 进入子页面("魔盒浏览",{链接="http://tool.uixsj.cn/kuaishou",标题="快手解析"})
+end
+jiefeng.onClick=function()
+进入子页面("魔盒浏览",{链接="http://gamesafe.qq.com/comm_auth.shtml",标题="防沉迷游戏解封"})
+end
+tupian1.onClick=function()
+this.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse("http://tool.cccyun.cc/tool/hide/")))
+提示("由于特殊原因该功能使用浏览器打开....")
+end
+zaixian1.onClick=function()
+进入子页面("条码工具")
+end
+kuaidi.onClick=function()
+InputLayout={
+  LinearLayout;
+  orientation="vertical";
+  Focusable=true,
+  FocusableInTouchMode=true,
+  {
+    TextView;
+    id="Prompt",
+    textSize="15sp",
+    layout_marginTop="10dp";
+    layout_marginLeft="3dp",
+    layout_width="80%w";
+    layout_gravity="center",
+    text="输入订单号:";
+  };
+  {
+    EditText;
+    hint="输入";
+    layout_marginTop="5dp";
+    layout_width="80%w";
+    layout_gravity="center",
+    id="edit";
+  };
+};
+
+AlertDialog.Builder(this)
+.setTitle("查快递")
+.setView(loadlayout(InputLayout))
+.setPositiveButton("确定",{onClick=function(v)
+   if(edit.Text=="")then
+      提示("未输入任何东西")
+      else
+ 进入子页面("魔盒浏览",{链接=("https://m.kuaidihelp.com/express/queryResult?word="..edit.text.."+"),标题="查快递"})
+end
+  end})
+ .setNeutralButton("取消",nil)
+ .show()
+import "android.view.View$OnFocusChangeListener"
+edit.setOnFocusChangeListener(OnFocusChangeListener{ 
+  onFocusChange=function(v,hasFocus)
+    if hasFocus then
+      Prompt.setTextColor(0xFD009688)
+      end
+ end})
+ end
+ 
+jishuang.onClick=function()
+进入子页面("魔盒浏览",{链接="https://www.zybang.com/static/question/m-calculator/m-calculator.html?token=1_XPXQH3c5HRPtFHkSwi3sCCURmT25QfxM&vc=398&channel=yingyongbao&_dc=0.9332630658204307&city=%E8%82%87%E5%BA%86%E5%B8%82&province=%E5%B9%BF%E4%B8%9C%E7%9C%81&vcname=9.2.0&cuid=2FC2A8F5F4992ECF6C9F12590FC56AD0|731223170523553&dayivc=37&zbkvc=24&os=android",标题="计算器"})
+end
+zishu.onClick=function()
+进入子页面("魔盒浏览",{链接="http://tool.uixsj.cn/s/count/",标题="字数统计"})
+end
+tieba.onClick=function()
+进入子页面("魔盒浏览",{链接="http://mk.mkblog.cn/home/info/",标题="贴吧id信息查询"})
+end
+tupian2.onClick=function()
+进入子页面("魔盒浏览",{链接="http://shitu.baidu.com",标题="以图搜图"})
+end
+cili.onClick=function()
+进入子页面("魔盒浏览",{链接="https://www.bturl.cc",标题="磁力搜索"})
+end
+zaixian.onClick=function()
+进入子页面("魔盒浏览",{链接="https://map.baidu.com/mobile/webapp/index/index/",标题="在线地图"})
+end
+mimafuck.onClick=function()
+进入子页面("魔盒浏览",{链接="http://tool.uixsj.cn/password/",标题="随机密码生成"})
+end
+fanyi.onClick=function()
+ 进入子页面("翻译")
+end
+ditie.onClick=function()
+进入子页面("魔盒浏览",{链接="http://webmetro.itouchchina.com/",标题="地铁查询"})
+end
+quad.onClick=function()
+ 执行Shell("rm -r /storage/emulated/0/netease/cloudmusic/Ad")
+提示("已去除广告")
+end
+pinyin.onClick=function()
+进入子页面("魔盒浏览",{链接="http://hy.httpcn.com/hzzpy/",标题="拼音转换"})
+end
+mosi.onClick=function()
+进入子页面("魔盒浏览",{链接="http://tool.uixsj.cn/morse/",标题="摩斯密码"})
+end
+music.onClick=function()
+进入子页面("魔盒浏览",{链接="https://www.zhangzhousheng.top/miku/",标题="music"})
+end
+yuanshu.onClick=function()
+进入子页面("魔盒浏览",{链接="http://tool.uixsj.cn/3dzqb/",标题="3d元素周期表"})
+end
+gif.onClick=function()
+进入子页面("game",{链接="https://www.52doutu.cn/maker/"})
+end
+baidu.onClick=function()
+进入子页面("魔盒浏览",{链接="http://3g.gljlw.com/diy/jupai/",标题="举牌照制作"})
+end
+weibo.onClick=function()
+进入子页面("魔盒浏览",{链接="http://tool.uixsj.cn/weibovideo/",标题="微博视频解析"})
+end
+ai.onClick=function()
+进入子页面("魔盒浏览",{链接="http://ai.sm.cn",标题="一个ai"})
+end
+dianyin.onClick=function()
+进入子页面("魔盒浏览",{链接="http://tool.uixsj.cn/film-subtitle/",标题="电影字幕速成"})
+end
+huaban.onClick=function()
+进入子页面("魔盒浏览",{链接="https://witeboard.com",标题="画板"})
+end
+base64.onClick=function()
+进入子页面("魔盒浏览",{链接="http://tool.uixsj.cn/imgbase64/l",标题="图片转base64"})
+end
+ocr.onClick=function()
+进入子页面("魔盒浏览",{链接="http://tool.mkblog.cn/ocr/",标题="ocr文字识别"})
+end
+wenjian.onClick=function()
+进入子页面("魔盒浏览",{链接="http://tool.mkblog.cn/contrast/",标题="文件差异比较"})
+end
+wanye.onClick=function()
+ 进入子页面("网页制作")
+ end
+jingzhi.onClick=function()
+进入子页面("魔盒浏览",{链接="http://tool.uixsj.cn/hexconvert/",标题="进制转换"})
+end
+share.onClick=function()
+进入子页面("魔盒浏览",{链接="http://send.firefox.com",标题="文件分享"})
+end
+mini.onClick=function()
+进入子页面("迷你电子表")
+end
+shell.onClick=function()
+--输入对话框
+InputLayout={
+  LinearLayout;
+  orientation="vertical";
+  Focusable=true,
+  FocusableInTouchMode=true,
+  {
+    EditText;
+    layout_marginTop="0dp";
+    layout_width="80%w";
+    layout_gravity="center",
+    id="edit";
+  };
+};
+
+AlertDialog.Builder(this)
+.setTitle("请输入Shell命令")
+.setView(loadlayout(InputLayout))
+.setPositiveButton("确定",{onClick=function(v) 
+    if(edit.Text=="")then
+      提示("未输入任何东西")
+      else
+      
+      执行Shell(edit.Text)
+     判断代码执行(edit.Text)
+      end
+    end})
+.setNegativeButton("取消",nil)
+.show()
+end
+gaoji.onClick=function()
+items={"重启","recovery","erecovery"} 
+AlertDialog.Builder(this) 
+.setTitle("电源菜单") 
+.setItems(items,{onClick=function(l,v) 
+    if v==0 then
+      对话框()
+      .设置标题("重启")
+      .设置消息("确定重启？")
+      .设置积极按钮("确定",function()
+        执行Shell("svc power reboot")
+ 判断代码执行("svc power reboot")
+      end)
+      .设置消极按钮("取消")
+      .显示()
+    end
+    if v==1 then
+      对话框()
+      .设置标题("recovery")
+      .设置消息("确定重启到recovery？")
+      .设置积极按钮("确定",function()
+        执行Shell("svc power reboot recovery")
+         判断代码执行("svc power reboot recovery")
+      end)
+      .设置消极按钮("取消")
+      .显示()
+    end 
+    if v==2 then
+      对话框()
+      .设置标题("华为系统恢复")
+      .设置消息("确定重启到华为erecovery？")
+      .设置积极按钮("确定",function()
+        执行Shell("svc power reboot erecovery")
+         判断代码执行("svc power reboot erecovery")
+      end)
+      .设置消极按钮("取消")
+      .显示()
+    end
+  end}) 
+.show()
+end
+highlight.onClick=function()
+进入子页面("魔盒浏览",{链接="http://tool.uixsj.cn/highlight/",标题="在线代码高亮转换"})
+end
+zhengren.onClick=function()
+进入子页面("魔盒浏览",{链接="http://zr.uixsj.cn/",标题="生成整人网页"})
+end
+huaji.onClick=function()
+进入子页面("横屏",{链接="http://tool.uixsj.cn/doge/"})
+end
+jianjiao.onClick=function()
+进入子页面("魔盒浏览",{链接="http://tool.uixsj.cn/jjzt/",标题="尖叫字体生成"})
+end
+hong.onClick=function()
+进入子页面("魔盒浏览",{链接="http://url.gljlw.com/fh/",标题="防红链接"})
+end
+qqcnm.onClick=function()
+进入子页面("魔盒浏览",{链接="https://ssl.zc.qq.com/v3/index-chs.html?type=3",标题="qq靓号注册"})
+end
+funjava.onClick=function()
+进入子页面("魔盒浏览",{链接="https://c.runoob.com/compile/15",标题="在线代码运行工具"})
+end
+bilibili.onClick=function()
+InputLayout={
+  LinearLayout;
+  orientation="vertical";
+  Focusable=true,
+  FocusableInTouchMode=true,
+  {
+    TextView;
+    id="Prompt",
+    textSize="15sp",
+    layout_marginTop="10dp";
+    layout_marginLeft="3dp",
+    layout_width="80%w";
+    layout_gravity="center",
+    text="输入av号，可不输入av两个字母:";
+  };
+  {
+    EditText;
+    hint="输入";
+    layout_marginTop="5dp";
+    layout_width="80%w";
+    layout_gravity="center",
+    id="edit";
+  };
+};
+
+AlertDialog.Builder(this)
+.setTitle("bilibili视频解析下载工具")
+.setView(loadlayout(InputLayout))
+.setPositiveButton("确定",{onClick=function(v)
+ if String(edit.text).startsWith("av") then --如果用户输入了av号
+ bilibilijx=("https://www.bilibilijj.com/video/"..edit.text)
+ else
+ bilibilijx=("https://www.bilibilijj.com/video/av"..edit.text)
+ end
+ 进入子页面("魔盒浏览",{链接=bilibilijx,标题="bilibili视频解析"})
+ end})
+.setNegativeButton("取消",nil)
+ .setNeutralButton("声明",{onClick=function(v)
+  对话框()
+.设置标题("声明")
+.设置消息("本功能的技术部分由 JIJI Down 提供，点击下方按钮访问JIJI Down 官网")
+.设置积极按钮("GO",function()
+  this.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse("https://www.bilibilijj.com")))  
+end)
+.设置消极按钮("取消")
+.显示()
+  end})
+.show()
+import "android.view.View$OnFocusChangeListener"
+edit.setOnFocusChangeListener(OnFocusChangeListener{ 
+  onFocusChange=function(v,hasFocus)
+    if hasFocus then
+      Prompt.setTextColor(0xFD009688)
+    end
+  end})
+end
+daike.onClick=function()
+进入子页面("带壳截图")
+end
+ruler.onClick=function()
+进入子页面("尺子")
+end
+oneyan.onClick=function()
+进入子页面("魔盒浏览",{链接="http://tool.uixsj.cn/hitokoto-color/",标题="一言"})
+end
+yinliuqq.onClick=function()
+--列表对话框（列表项目名称自定义）
+items={}--定义一个布局为l列表单个项目布局，名字为itemc
+--给空的items添加所有的数据
+--格式为  table.insert(空列表名称,"列表名称")
+table.insert(items,"王者荣耀引流")
+table.insert(items,"领QB引流")
+table.insert(items,"QQ红包引流")
+table.insert(items,"自定义")
+
+
+AlertDialog.Builder(this)
+.setTitle("引流神器 V1.0.0")--设置标题
+--给列表对话框设置点击事件
+.setItems(items,{onClick=function(l,v) 
+    --注：与创建有数据的列表项目名称必须一样    
+    if items[v+1]=="王者荣耀引流" then
+    InputLayout={
+  LinearLayout;
+  orientation="vertical";
+  Focusable=true,
+  FocusableInTouchMode=true,
+  {
+    TextView;
+    id="Prompt",
+    textSize="15sp",
+    layout_marginTop="10dp";
+    layout_marginLeft="3dp",
+    layout_width="80%w";
+    layout_gravity="center",
+    text="输入要跳转的链接地址:";
+  };
+  {
+    EditText;
+    hint="输入";
+    layout_marginTop="5dp";
+    layout_width="80%w";
+    layout_gravity="center",
+    id="edit";
+  };
+};
+AlertDialog.Builder(this)
+.setTitle("请输入跳转链接")
+.setView(loadlayout(InputLayout))
+.setPositiveButton("确定", function()
+ import "android.util.Base64"
+import "android.net.Uri"
+import "android.content.Intent"
+  function base64(text) 
+    local         base64Text=Base64.encodeToString(String(text).getBytes(),Base64.DEFAULT)
+    return base64Text
+    end
+  function qqShare(分享ID,跳转链接,预览图链接,图片链接,标题,描述)
+    local shareId=分享ID
+    local jumpUrl=base64(跳转链接)
+    local previewImgUrl=base64(预览图链接) 
+    local imgUrl=base64(图片链接) 
+    local title=base64(标题)
+    local description=base64(描述)
+    local mqqapi="mqqapi://share/to_fri?file_type=news&src_type=web&version=1&share_id="..shareId.."&url="..jumpUrl.."&previewimageUrl="..previewImgUrl.."&image_url="..imgUrl.."&title="..title.."&description="..description.."&callback_type=scheme&thirdAppDsplayName=UVE&app_name=UVE&cflag=0&shareType=0" 
+    activity.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(mqqapi)))
+    end
+        
+      local 分享ID=1104466820
+      local 跳转链接=edit.text
+      local 预览图链接="https://ws1.sinaimg.cn/large/006N1muNly1g1izhzc4cqj3068068abf.jpg"
+      local 图片链接="https://ws1.sinaimg.cn/large/006N1muNly1g1izhzc4cqj3068068abf.jpg "   
+      local 标题="王者荣耀"
+      local 描述="点击抽取皮肤钻石百分百中奖"
+      qqShare(分享ID,跳转链接,预览图链接,图片链接,标题,描述) 
+end) 
+ .setNeutralButton("取消", nil)
+.show()
+    elseif items[v+1]=="领QB引流" then
+         InputLayout={
+  LinearLayout;
+  orientation="vertical";
+  Focusable=true,
+  FocusableInTouchMode=true,
+  {
+    TextView;
+    id="Prompt",
+    textSize="15sp",
+    layout_marginTop="10dp";
+    layout_marginLeft="3dp",
+    layout_width="80%w";
+    layout_gravity="center",
+    text="输入要跳转的链接地址:";
+  };
+  {
+    EditText;
+    hint="输入";
+    layout_marginTop="5dp";
+    layout_width="80%w";
+    layout_gravity="center",
+    id="edit";
+  };
+};
+AlertDialog.Builder(this)
+.setTitle("请输入跳转链接")
+.setView(loadlayout(InputLayout))
+.setPositiveButton("确定", function()
+ import "android.util.Base64"
+import "android.net.Uri"
+import "android.content.Intent"
+  function base64(text) 
+    local         base64Text=Base64.encodeToString(String(text).getBytes(),Base64.DEFAULT)
+    return base64Text
+    end
+  function qqShare(分享ID,跳转链接,预览图链接,图片链接,标题,描述)
+    local shareId=分享ID
+    local jumpUrl=base64(跳转链接)
+    local previewImgUrl=base64(预览图链接) 
+    local imgUrl=base64(图片链接) 
+    local title=base64(标题)
+    local description=base64(描述)
+    local mqqapi="mqqapi://share/to_fri?file_type=news&src_type=web&version=1&share_id="..shareId.."&url="..jumpUrl.."&previewimageUrl="..previewImgUrl.."&image_url="..imgUrl.."&title="..title.."&description="..description.."&callback_type=scheme&thirdAppDsplayName=UVE&app_name=UVE&cflag=0&shareType=0" 
+    activity.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(mqqapi)))
+    end
+        
+      local 分享ID=1101685683
+      local 跳转链接=edit.text
+      local 预览图链接="https://img.alicdn.com/bao/uploaded/i1/T1aiVpXoBHXXb1upjX.jpg"
+      local 图片链接="https://img.alicdn.com/bao/uploaded/i1/T1aiVpXoBHXXb1upjX.jpg "   
+      local 标题="最新活动"
+      local 描述="百分百中奖免费抽QB"
+      qqShare(分享ID,跳转链接,预览图链接,图片链接,标题,描述) 
+end) 
+ .setNeutralButton("取消", nil)
+.show()
+    
+    elseif items[v+1]=="QQ红包引流" then
+      InputLayout={
+  LinearLayout;
+  orientation="vertical";
+  Focusable=true,
+  FocusableInTouchMode=true,
+  {
+    TextView;
+    id="Prompt",
+    textSize="15sp",
+    layout_marginTop="10dp";
+    layout_marginLeft="3dp",
+    layout_width="80%w";
+    layout_gravity="center",
+    text="输入要跳转的链接地址:";
+  };
+  {
+    EditText;
+    hint="输入";
+    layout_marginTop="5dp";
+    layout_width="80%w";
+    layout_gravity="center",
+    id="edit";
+  };
+};
+AlertDialog.Builder(this)
+.setTitle("请输入:")
+.setView(loadlayout(InputLayout))
+.setPositiveButton("确定", function()
+ import "android.util.Base64"
+import "android.net.Uri"
+import "android.content.Intent"
+  function base64(text) 
+    local         base64Text=Base64.encodeToString(String(text).getBytes(),Base64.DEFAULT)
+    return base64Text
+    end
+  function qqShare(分享ID,跳转链接,预览图链接,图片链接,标题,描述)
+    local shareId=分享ID
+    local jumpUrl=base64(跳转链接)
+    local previewImgUrl=base64(预览图链接) 
+    local imgUrl=base64(图片链接) 
+    local title=base64(标题)
+    local description=base64(描述)
+    local mqqapi="mqqapi://share/to_fri?file_type=news&src_type=web&version=1&share_id="..shareId.."&url="..jumpUrl.."&previewimageUrl="..previewImgUrl.."&image_url="..imgUrl.."&title="..title.."&description="..description.."&callback_type=scheme&thirdAppDsplayName=UVE&app_name=UVE&cflag=0&shareType=0" 
+    activity.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(mqqapi)))
+    end
+        
+      local 分享ID=1101685683
+      local 跳转链接=edit.text
+      local 预览图链接="https://ww1.sinaimg.cn/large/007iUjdily1g1rswi80vgj30bb0dfwep.jpg"
+      local 图片链接="https://ww1.sinaimg.cn/large/007iUjdily1g1rswi80vgj30bb0dfwep.jpg "   
+      local 标题="[QQ红包]发红包啦！"
+      local 描述="赶紧点击拆开吧"
+      qqShare(分享ID,跳转链接,预览图链接,图片链接,标题,描述) 
+end) 
+ .setNeutralButton("取消", nil)
+.show()
+    elseif items[v+1]=="自定义" then
+     InputLayout={
+  LinearLayout;
+  orientation="vertical";
+  Focusable=true,
+  FocusableInTouchMode=true,
+  {
+    EditText;
+    hint="输入分享ID,不填则默认手机腾讯网";
+    layout_marginTop="5dp";
+    layout_width="80%w";
+    layout_gravity="center",
+    id="edit";
+  };
+  {
+    EditText;
+    hint="输入要跳转的链接地址:";
+    layout_marginTop="5dp";
+    layout_width="80%w";
+    layout_gravity="center",
+    id="edit1";
+  };
+  {
+    EditText;
+    hint="输入预览图的链接地址:";
+    layout_marginTop="5dp";
+    layout_width="80%w";
+    layout_gravity="center",
+    id="edit2";
+  };
+    {
+    EditText;
+    hint="输入图片的链接地址:";
+    layout_marginTop="5dp";
+    layout_width="80%w";
+    layout_gravity="center",
+    id="edit3";
+  };
+    {
+    EditText;
+    hint="输入标题:";
+    layout_marginTop="5dp";
+    layout_width="80%w";
+    layout_gravity="center",
+    id="edit4";
+  };
+    {
+    EditText;
+    hint="输入描述:";
+    layout_marginTop="5dp";
+    layout_width="80%w";
+    layout_gravity="center",
+    id="edit5";
+  };
+};
+
+AlertDialog.Builder(this)
+.setTitle("请输入:")
+.setView(loadlayout(InputLayout))
+.setPositiveButton("GO", function()
+ import "android.util.Base64"
+import "android.net.Uri"
+import "android.content.Intent"
+  function base64(text) 
+    local         base64Text=Base64.encodeToString(String(text).getBytes(),Base64.DEFAULT)
+    return base64Text
+    end
+  function qqShare(分享ID,跳转链接,预览图链接,图片链接,标题,描述)
+    local shareId=分享ID
+    local jumpUrl=base64(跳转链接)
+    local previewImgUrl=base64(预览图链接) 
+    local imgUrl=base64(图片链接) 
+    local title=base64(标题)
+    local description=base64(描述)
+    local mqqapi="mqqapi://share/to_fri?file_type=news&src_type=web&version=1&share_id="..shareId.."&url="..jumpUrl.."&previewimageUrl="..previewImgUrl.."&image_url="..imgUrl.."&title="..title.."&description="..description.."&callback_type=scheme&thirdAppDsplayName=UVE&app_name=UVE&cflag=0&shareType=0" 
+    activity.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(mqqapi)))
+    end
+
+if edit.text=="" or nil then
+edit.text=""
+end                        
+      local 分享ID=edit.text
+      local 跳转链接=edit1.text
+      local 预览图链接=edit2.text
+       local 图片链接=edit3.text
+       local 标题=edit4.text
+      local 描述=edit5.text
+      qqShare(分享ID,跳转链接,预览图链接,图片链接,标题,描述) 
+end) 
+ .setNeutralButton("取消", nil)
+.show()
+    end
+  end})
+.show()--显示弹窗
+activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE|WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
+end

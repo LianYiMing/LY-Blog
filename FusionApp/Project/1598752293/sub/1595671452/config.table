@@ -1,0 +1,251 @@
+{
+  ["web"]	= {
+      ["浏览器用户标识"]	= "默认" ;
+      ["启用长按菜单"]	= true ;
+      ["启用进度条"]	= true ;
+      ["网页沉浸"]	= false ;
+      ["启动网页"]	= "" ;
+      ["支持打开外部应用"]	= true ;
+      } ;
+  ["sidebar"]	= {
+      ["启用"]	= true ;
+      ["启用顶部图片"]	= false ;
+      ["items"]	= {
+          } ;
+      } ;
+  ["toolbar"]	= {
+      ["menus"]	= {
+          [1]	= {
+              ["onClick"]	= "退出页面()" ;
+              ["name"]	= "退出" ;
+              } ;
+          } ;
+      ["启用搜索功能"]	= false ;
+      ["搜索URL"]	= "" ;
+      ["搜索框提示"]	= "" ;
+      ["输入栏模式"]	= true ;
+      ["icon_btns"]	= {
+          } ;
+      } ;
+  ["events"]	= {
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象,新标题=..." ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["程序启动"]	= "--程序启动时会执行的事件\
+toolbar.parent.setVisibility(View.GONE)\
+local ajun={\
+  LinearLayout,\
+  orientation=\"vertical\",\
+  layout_width=\"fill\",\
+  layout_height=\"fill\",\
+  {\
+    ListView;\
+    layout_width=\"fill\";\
+    layout_height=\"-1\";\
+    VerticalScrollBarEnabled=false;\
+    dividerHeight=1;\
+    id=\"ajun_list\";\
+  };\
+}\
+wevViewParent =webView.getParent()\
+wevViewParent.removeView(webView)\
+wevViewParent.addView(loadlayout(ajun))\
+\
+local itemc={\
+  LinearLayout,--线性布局\
+  orientation=\"vertical\",--布局方向\
+  layout_width=\"fill\",--布局宽度\
+  layout_height=\"fill\",--布局高度\
+\
+  {\
+    ScrollView,--纵向滑动控件\
+    layout_width=\"fill\",--布局宽度\
+    layout_height=\"fill\",--布局高度\
+    overScrollMode=View.OVER_SCROLL_NEVER,--隐藏圆弧阴影\
+    verticalScrollBarEnabled=false,--隐藏纵向滑条\
+    {\
+      LinearLayout,--线性布局\
+      orientation=\"vertical\",--布局方向\
+      layout_width=\"fill\",--布局宽度\
+      layout_height=\"fill\",--布局高度\
+      --开始\
+      {\
+        CardView,--卡片框控件\
+        layout_width=\"fill\",--布局宽度\
+        layout_height=\"200dp\",--布局高度\
+        layout_margin=\"8dp\",--布局边距\
+        cardElevation=\"2dp\",--卡片提升\
+        cardBackgroundColor=\"#ffffff\",--卡片背景色\
+        radius=\"10dp\",--圆角半径\
+        {\
+          CardView,--卡片框控件\
+          layout_width=\"102dp\",--布局宽度\
+          layout_height=\"180dp\",--布局高度\
+          layout_margin=\"9dp\",--布局边距\
+          -- cardElevation=\"2dp\",--卡片提升\
+          cardBackgroundColor=\"#ffffff\",--卡片背景色\
+          radius=\"10dp\",--圆角半径\
+          {\
+            CircleImageView,--圆形图片控件\
+            layout_width=\"fill\",--布局宽度\
+            layout_height=\"fill\",--布局高度\
+            src=\"http://p.qpic.cn/pic_wework/1948211503/3e38eb2dc48c84ca6fe13d97b092271c7c738e321002259f/0\",--视图路径\
+            id=\"img\",--控件ID\
+            --colorFilter=\"#333333\",--图片颜色\
+          }, \
+        },--卡片框控件 结束\
+        {\
+          CardView,--卡片框控件\
+          layout_width=\"0.25%w\",--布局宽度\
+          layout_height=\"180dp\",--布局高度\
+          layout_margin=\"9dp\",--布局边距\
+          cardElevation=\"2dp\",--卡片提升\
+          layout_marginLeft=\"38%w\",--布局左距\
+          cardBackgroundColor=\"#D611131B\",--卡片背景色\
+        },--卡片框控件 结束\
+        {\
+          TextView,--文本框控件\
+          text=\"皮卡丘\",--文本内容\
+          id=\"bt1\",--控件ID\
+          layout_marginLeft=\"60%w\",--布局左距\
+          textSize=\"15sp\",--文本大小\
+          textColor=\"#FF000000\",--文本颜色\
+        },\
+        {\
+          TextView,--文本框控件\
+          id=\"bt2\",--控件ID\
+          text=\"@Dear-迪丽热巴 的明艳贵气与MIKIMOTO的尊贵典雅完美结合，全新开启至美时代，一起捕捉美丽最真实的瞬间，继续携手千面MIKIMOTO散发女性风尚万般魅力。\",--文本内容\
+          layout_marginLeft=\"42%w\",--布局左距\
+          layout_marginTop=\"30dp\",--布局顶距\
+          --textSize=\"15sp\",--文本大小\
+          --textColor=\"#ffffff\",--文本颜色\
+        },\
+        {\
+          CardView,--卡片框控件\
+          layout_width=\"20%w\",--布局宽度\
+          layout_height=\"30dp\",--布局高度\
+          layout_margin=\"8dp\",--布局边距\
+          cardElevation=\"2dp\",--卡片提升\
+          layout_marginLeft=\"75%w\",--布局左距\
+          layout_marginTop=\"160dp\",--布局顶距\
+          cardBackgroundColor=\"#ffffff\",--卡片背景色\
+          radius=\"10dp\",--圆角半径\
+          id=\"dj\";\
+          {\
+            TextView,--文本框控件\
+            text=\"点击播放\",--文本内容           \
+            textSize=\"17sp\",--文本大小\
+            --layout_marginLeft=\"50%w\",--布局左距\
+            textColor=\"#FF000000\",--文本颜色\
+          },\
+        },--卡片框控件 结束\
+      },--卡片框控件 结\
+    },--线性布局 结束\
+  },--纵向滑动控件 结束\
+\
+}--线性布局 结束\
+data={}\
+\
+adp=LuaAdapter(activity,data,itemc)\
+ajun_list.Adapter=adp\
+\
+function 获取()\
+\
+  Http.get(\"http://www.iyuji.cn/iyuji/s/MEs4S2gwZkxibHE3ODY4a1FEbjJiUT09/1558943168215983\",function(code,ym)\
+    if code==200 and ym then\
+      ym=ym:gsub(\"amp;\",\"\")\
+      ym=ym:gsub(\"</p>\",\"\")\
+      ym=ym:gsub(\"<p>\",\"\")\
+      local 信息=ym:match(\"main_content(.+)\")\
+      local 信息=信息:gmatch(\"【软件】(.-)【/软件】\")\
+\
+      for v in 信息 do\
+        local 软件名=v:match(\"【软件名】(.-)【软件名】\")\
+        local 软件图=v:match(\"【软件图】(.-)【软件图】\")\
+        local 软件版本=v:match(\"【软件版本】(.-)【软件版本】\")\
+        local 软件介绍=v:match(\"【软件介绍】(.-)【软件介绍】\")\
+        local 软件链接=v:match(\"【软件链接】(.-)【软件链接】\")\
+\
+        adp.add({\
+          bt1=软件名,\
+          bt3=\"v\"..软件版本,\
+          bt2=软件介绍,\
+          img=软件图,\
+          downurl=软件链接\
+        })\
+      end\
+\
+    else\
+      print(\"请检查网络\")\
+    end\
+  end)\
+end\
+\
+获取()\
+\
+\
+\
+--单击\
+ajun_list.onItemClick=function(parent,v,pos,id)\
+  local 链接=v.Tag.downurl.text\
+  蓝奏云直链(链接)\
+  print(\"下载失败请长按复制下载链接\")\
+end\
+--长按\
+ajun_list.onItemLongClick=function(parent,v,pos,id)\
+  local 链接=v.Tag.downurl.text\
+  复制文本(链接)\
+  print(\"已复制下载链接\")\
+end\
+\
+\
+\
+" ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏高度"]	= "56dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "Title" ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["fltBtn"]	= {
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["图标"]	= "" ;
+      ["显示"]	= false ;
+      } ;
+  ["switch"]	= {
+      ["启用启动图"]	= false ;
+      ["横屏"]	= false ;
+      ["显示状态栏"]	= true ;
+      ["支持滑动页面"]	= false ;
+      } ;
+  ["colors"]	= {
+      ["导航栏"]	= "#ff7abd9a" ;
+      ["进度条"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["悬浮按钮"]	= "#ff7abd9a" ;
+      ["顶栏"]	= "#ff7abd9a" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      } ;
+  } ;

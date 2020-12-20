@@ -1,0 +1,97 @@
+--启动
+require"import"
+import "android.app.*"
+import "android.os.*"
+import "android.widget.*"
+import "android.view.*"
+
+yl=
+{
+  LinearLayout;
+  layout_width='fill';
+  layout_height='fill';
+  orientation='vertical';
+  background="#00000000";
+  {
+    ImageView;
+    layout_marginTop="fill";
+    src="drawable/1.jpg";
+    layout_width='fill';
+    layout_height='fill';
+    id="tp";
+  };
+  {
+    TextView;
+    layout_width="fill";
+    textSize="30sp";
+    gravity="center";
+    text="幸运树";
+    layout_height="40dp";
+    layout_marginTop="-90%h";
+    textColor="#FFFFFFFF";
+    id="by1";
+  };
+  {
+    TextView;
+    layout_width='fill';
+    layout_height='35dp';
+    layout_marginTop="0%h";
+    gravity='center';
+    textColor="#FFFFFFFF";
+    text="Fortunately, we met here.";
+    textSize='20sp';
+    id="by2";
+  };
+  {
+    TextView;
+    layout_width="fill";
+    textSize="15sp";
+    gravity="left";
+    text="安软大叔制作";
+    layout_height="20dp";
+    layout_marginLeft="15dp";
+    layout_marginTop="70%h";
+    textColor="#FFFFFFFF";
+    id="by3";
+  };
+  {
+    TextView;
+    layout_width="75dp";
+    layout_height="5%h";
+    gravity="center",
+    layout_marginTop="-95%h";
+    layout_gravity="right|center";
+    layout_marginRight="3%h";
+    textColor="#FFFFFFFF";
+    background="#33000000";
+    text="5丨跳过";
+    textSize="15sp",
+    elevation="6";
+    id="tg";
+    onClick=function()
+      进入子页面("主页")
+      退出页面()
+    end
+  };
+};
+activity.setContentView(loadlayout(yl))
+task(1000,function()
+  tg.setText("5丨跳过")
+  task(1000,function()
+    tg.setText("4丨跳过")
+    task(1000,function()
+      tg.setText("3丨跳过")
+      task(1000,function()
+        tg.setText("2丨跳过")
+        task(1000,function()
+          tg.setText("1丨跳过")
+          task(1000,function()
+            tg.setText("0丨跳过")
+            进入子页面("主页")
+            退出页面()
+          end)
+        end)
+      end)
+    end)
+  end)
+end)

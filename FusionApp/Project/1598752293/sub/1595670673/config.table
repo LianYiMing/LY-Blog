@@ -1,0 +1,466 @@
+{
+  ["switch"]	= {
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= true ;
+      ["横屏"]	= false ;
+      ["支持滑动页面"]	= true ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["fltBtn"]	= {
+      ["图标"]	= "" ;
+      ["显示"]	= true ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      } ;
+  ["colors"]	= {
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["悬浮按钮"]	= "#ff7abd9a" ;
+      ["导航栏"]	= "#ff7abd9a" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["进度条"]	= "#ffffffff" ;
+      ["顶栏"]	= "#ff7abd9a" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏标题"]	= "Title" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      } ;
+  ["events"]	= {
+      ["程序启动"]	= "--程序启动时会执行的事件\
+--by dingyi qq 2960586094\
+--某些人爱用不用，懂？\
+xx=--布局命名\
+{\
+  LinearLayout,--线性布局\
+  orientation=\"vertical\",--布局方向\
+  layout_width=\"fill\",--布局宽度\
+  layout_height=\"fill\",--布局高度\
+  background=\"#ffeeeeee\",--布局背景\
+  --开始\
+  {\
+    ScrollView,--纵向滑动控件\
+    layout_width=\"fill\",--布局宽度\
+    layout_height=\"fill\",--布局高度\
+    verticalScrollBarEnabled=false,--隐藏纵向滑条\
+    {\
+      LinearLayout,--线性布局\
+      orientation=\"vertical\",--布局方向\
+      layout_width=\"fill\",--布局宽度\
+      layout_height=\"fill\",--布局高度\
+      id=\"_root\",\
+      {\
+        CardView,--卡片框控件\
+        layout_width=\"fill\",--布局宽度\
+        layout_height=\"200dp\",--布局高度\
+        layout_margin=\"10dp\",--布局边距\
+        cardBackgroundColor=\"#ffffff\",--卡片背景色\
+        radius=\"10dp\",--圆角半径\
+        {\
+          TextView,--文本框控件\
+          text=\"这里放播放器，我没有，就算了\",--文本内容\
+          textSize=\"16sp\",--文本大小\
+          layout_gravity='center';--重力居中\
+          --textColor=\"#ffffff\",--文本颜色\
+        },\
+      },--卡片框控件 结束\
+      {\
+        LinearLayout,--线性布局\
+        orientation=\"horizontal\",\
+        layout_width=\"fill\",--布局宽度\
+        layout_height=\"80dp\",--布局高度\
+        {\
+          CircleImageView,--圆形图片控件\
+          layout_width=\"50dp\",--布局宽度\
+          layout_height=\"50dp\",--布局高度\
+          ImageResource=R.drawable.icon,--视图路径\
+          layout_weight='1';--重力分配\
+        },\
+        {\
+          CircleImageView,--圆形图片控件\
+          layout_width=\"50dp\",--布局宽度\
+          layout_height=\"50dp\",--布局高度\
+          ImageResource=R.drawable.icon,--视图路径\
+          layout_weight='1';--重力分配\
+        },\
+        {\
+          CircleImageView,--圆形图片控件\
+          layout_width=\"50dp\",--布局宽度\
+          layout_height=\"50dp\",--布局高度\
+          ImageResource=R.drawable.icon,--视图路径\
+          layout_weight='1';--重力分配\
+        },\
+        {\
+          CircleImageView,--圆形图片控件\
+          layout_width=\"50dp\",--布局宽度\
+          layout_height=\"50dp\",--布局高度\
+          ImageResource=R.drawable.icon,--视图路径\
+          layout_weight='1';--重力分配\
+        },\
+        {\
+          CircleImageView,--圆形图片控件\
+          layout_width=\"50dp\",--布局宽度\
+          layout_height=\"50dp\",--布局高度\
+          ImageResource=R.drawable.icon,--视图路径\
+          layout_weight='1';--重力分配\
+        },\
+      },--线性布局 结束\
+      {\
+        LinearLayout,--线性布局 \
+        orientation='horizontal';--水平布局       \
+        layout_width=\"fill\",--布局宽度\
+        layout_height=\"60dp\",--布局高度\
+        layout_marginTop='-15dp';--布局顶距\
+        {\
+          CardView,--卡片框控件\
+          layout_width=\"50%w\",--布局宽度\
+          layout_height=\"35dp\",--布局高度\
+          layout_marginTop='10dp';--布局顶距\
+          layout_marginLeft='3%w';--布局左距\
+          cardBackgroundColor=\"#ffffff\",--卡片背景色\
+          radius=\"5%w\",--圆角半径\
+          elevation=\"3%w\";--阴影层次\
+          {\
+            LinearLayout,--线性布局\
+            orientation='horizontal';--水平布局\
+            layout_width=\"fill\",--布局宽度\
+            layout_height=\"fill\",--布局高度\
+            {\
+              ImageView,--图片框控件\
+              layout_width=\"50dp\",--布局宽度\
+              layout_height=\"30dp\",--布局高度\
+              ImageResource=R.drawable.icon,--视图路径\
+              --gravity='center|left';--重力居中｜置左\
+              layout_gravity='center';--重力居中｜置左\
+            },\
+            {\
+              TextView,--文本框控件\
+              text=\"文本内容\",--文本内容\
+              textSize=\"14sp\",--文本大小\
+              layout_gravity='center';--重力居中\
+              text=\"jddjdjkeekdndndnsjsjsjejsnnddjdkdkkwlwwojdjdkejkcjeixnwkjdkeje\",\
+              Selected=true;--文本可选\
+              ellipsize='marquee';\
+              singleLine=true;--单行显示\
+              --textColor=\"#ffffff\",--文本颜色\
+            },\
+          },--线性布局 结束\
+        },--卡片框控件 结束\
+        {\
+          CardView,--卡片框控件\
+          layout_width=\"20%w\",--布局宽度\
+          layout_height=\"35dp\",--布局高度\
+          layout_marginTop='10dp';--布局顶距\
+          layout_marginLeft='3%w';--布局左距\
+          cardBackgroundColor=\"#ffffff\",--卡片背景色\
+          radius=\"5%w\",--圆角半径\
+          elevation=\"3%w\";--阴影层次\
+          {\
+            TextView,--文本框控件\
+            text=\"清理\",--文本内容\
+            layout_gravity='center';--重力居中\
+            textSize=\"14sp\",--文本大小\
+            --textColor=\"#ffffff\",--文本颜色\
+          },\
+        },--卡片框控件 结束\
+        {\
+          CardView,--卡片框控件\
+          layout_width=\"20%w\",--布局宽度\
+          layout_height=\"35dp\",--布局高度\
+          layout_marginTop='10dp';--布局顶距\
+          layout_marginLeft='3%w';--布局左距\
+          cardBackgroundColor=\"#ffffff\",--卡片背景色\
+          radius=\"5%w\",--圆角半径\
+          elevation=\"3%w\";--阴影层次\
+          {\
+            TextView,--文本框控件\
+            text=\"搜索\",--文本内容\
+            layout_gravity='center';--重力居中\
+            textSize=\"14sp\",--文本大小\
+            --textColor=\"#ffffff\",--文本颜色\
+          },\
+        },--卡片框控件 结束\
+      },--线性布局 结束\
+    },--线性布局 结束\
+\
+  },--纵向滑动控件 结束\
+}--线性布局 结束\
+activity.setContentView(loadlayout(xx))--全屏框架\
+\
+\
+function addCardView(v,f)\
+  _root.addView(loadlayout(\
+  {\
+    LinearLayout,--线性布局\
+    orientation=\"vertical\",--布局方向\
+    layout_width=\"fill\",--布局宽度\
+    layout_height=\"wrap\",--布局高度   \
+    {\
+      CardView,--卡片框控件\
+      layout_width=\"fill\",--布局宽度\
+      layout_height=f or \"180dp\" ,--布局高度\
+      layout_marginTop='-2dp';--布局顶距\
+      layout_margin=\"10dp\",--布局边距\
+      cardBackgroundColor=\"#ffffff\",--卡片背景色\
+      radius=\"10dp\",--圆角半径\
+      elevation=\"8dp\";--阴影层次\
+      v,\
+    }--卡片框控件 结束\
+  }\
+  ))\
+end\
+addCardView(\
+{\
+  RelativeLayout,--相对布局\
+  layout_width=\"fill\",--布局宽度\
+  layout_height=\"fill\",--布局高度\
+  {\
+    CircleImageView,--圆形图片控件\
+    layout_width=\"40dp\",--布局宽度\
+    layout_height=\"40dp\",--布局高度\
+    layout_margin='10dp';--布局边距\
+    id=\"img\",\
+    ImageResource=R.drawable.icon,--视图路径\
+  },\
+  {\
+    TextView,--文本框控件\
+    text=\"直播大全\",--文本内容\
+    textSize=\"16sp\",--文本大小\
+    layout_toRightOf=\"img\",\
+    id=\"text1\",\
+    layout_marginTop='10dp';--布局顶距\
+    layout_margin='5dp';--布局边距\
+    --textColor=\"#ffffff\",--文本颜色\
+  },\
+  {\
+    View,\
+    layout_width=\"70%w\",\
+    layout_marginTop='5dp';--布局顶距\
+    layout_marginLeft='17%w';--布局左距\
+    layout_height=\"1dp\",\
+    layout_below=\"text1\",\
+    background=\"#90909090\",\
+  },\
+  {\
+    LinearLayout,--线性布局\
+    orientation=\"vertical\",--布局方向\
+    layout_width=\"fill\",--布局宽度\
+    layout_height=\"fill\",--布局高度\
+    layout_below=\"img\",    \
+    {\
+      HorizontalScrollView,--横向滑动控件\
+      layout_width=\"fill\",--布局宽度\
+      layout_height=\"52dp\",--布局高度      \
+      horizontalScrollBarEnabled=false,--隐藏横向滑条\
+      {\
+        LinearLayout,--线性布局\
+        id=\"list1\", \
+        layout_width=\"wrap\",--布局宽度\
+        layout_height=\"wrap\",--布局高度\
+      },--线性布局 结束\
+    },--横向滑动控件 结束\
+    {\
+      HorizontalScrollView,--横向滑动控件\
+      layout_width=\"fill\",--布局宽度      \
+      layout_height=\"52dp\",--布局高度\
+      horizontalScrollBarEnabled=false,--隐藏横向滑条\
+      {\
+        LinearLayout,--线性布局\
+        id=\"list2\",\
+        layout_width=\"wrap\",--布局宽度\
+        layout_height=\"wrap\",--布局高度\
+      },--线性布局 结束\
+    },--横向滑动控件 结束\
+  },--线性布局 结束\
+}\
+)\
+function getCardlist(t)\
+  return loadlayout({\
+    LinearLayout,--线性布局\
+    orientation=\"vertical\",--布局方向\
+    layout_width=\"120dp\",--布局宽度\
+    layout_height=\"45dp\",--布局高度\
+    onClick=function(v)\
+      print(v.getChildAt(0).getChildAt(0).Text)\
+    end,\
+    {\
+      CardView,--卡片框控件\
+      layout_width=\"107dp\",--布局宽度\
+      layout_height=\"37dp\",--布局高度\
+      elevation=\"5dp\";--阴影层次\
+      layout_margin=\"2dp\",\
+      layout_marginLeft='3%w';--布局左距\
+      --cardBackgroundColor=\"#FF\",--卡片背景色\
+      radius=\"19dp\",--圆角半径\
+\
+      {\
+        TextView,--文本框控件\
+        text=t,--文本内容\
+        textSize=\"14sp\",--文本大小\
+        textColor=\"#ff000000\",--文本颜色\
+        layout_gravity='center';--重力居中\
+      }, \
+    }--卡片框控件 结束\
+  })\
+end\
+local function add(id,tab,f)\
+  for k,v in pairs(tab) do\
+    id.addView(f(v))\
+  end\
+end\
+--设置点击事件的话就table存进去吧...我不演示了\
+local tab1={\"CCAV-1\",\"CCAV-2\",\"CCAV-N\",\"XJDJ\",\"NBB\"}\
+local tab2={\"CCAV-1\",\"CCAV-2\",\"CCAV-N\",\"XJDJ\",\"NBB\"}\
+add(list1,tab1,getCardlist)\
+add(list2,tab2,getCardlist)\
+\
+addCardView(\
+{\
+  RelativeLayout,--相对布局\
+  layout_width=\"fill\",--布局宽度\
+  layout_height=\"fill\",--布局高度\
+  {\
+    CircleImageView,--圆形图片控件\
+    layout_width=\"40dp\",--布局宽度\
+    layout_height=\"40dp\",--布局高度\
+    layout_margin='10dp';--布局边距\
+    id=\"img\",\
+    ImageResource=R.drawable.icon,--视图路径\
+  },\
+  {\
+    TextView,--文本框控件\
+    text=\"影视明星\",--文本内容\
+    textSize=\"16sp\",--文本大小\
+    layout_toRightOf=\"img\",\
+    id=\"text1\",\
+    layout_marginTop='10dp';--布局顶距\
+    layout_margin='5dp';--布局边距\
+    --textColor=\"#ffffff\",--文本颜色\
+  },\
+  {\
+    View,\
+    layout_width=\"70%w\",\
+    layout_marginTop='5dp';--布局顶距\
+    layout_marginLeft='17%w';--布局左距\
+    layout_height=\"1dp\",\
+    layout_below=\"text1\",\
+    background=\"#90909090\",\
+  },\
+  {\
+    LinearLayout,--线性布局\
+    orientation=\"vertical\",--布局方向\
+    layout_width=\"fill\",--布局宽度\
+    layout_height=\"fill\",--布局高度\
+    layout_below=\"img\",\
+    layout_marginTop='-10dp';--布局底距\
+    {\
+      HorizontalScrollView,--横向滑动控件\
+      layout_width=\"fill\",--布局宽度\
+      layout_height=\"fill\",--布局高度\
+      horizontalScrollBarEnabled=false,--隐藏横向滑条\
+      {\
+        LinearLayout,--线性布局\
+        layout_width=\"fill\",--布局宽度\
+        layout_height=\"fill\",--布局高度\
+        id=\"list3\",\
+      },--线性布局 结束    \
+    },--横向滑动控件 结束\
+  },--线性布局 结束\
+}\
+,\"200dp\")\
+function getImageview(tab)\
+  return loadlayout( {\
+    LinearLayout,--线性布局\
+    orientation=\"vertical\",--布局方向\
+    layout_width=\"wrap\",--布局宽度\
+    layout_height=\"wrap\",--布局高度\
+    {\
+      CardView,--卡片框控件\
+      layout_width=\"100dp\",--布局宽度\
+      layout_height=\"130dp\",--布局高度\
+      layout_margin=\"10dp\",--布局边距\
+      \
+      radius=\"10dp\",--圆角半径\
+      {\
+        ImageView,--图片框控件\
+        layout_width=\"fill\",--布局宽度\
+        layout_height=\"fill\",--布局高度\
+        src=tab[1],\
+        scaleType=\"fitXY\",--图片显示类型\
+      },\
+      {\
+        TextView,--文本框控件\
+        text=tab[2],--文本内容\
+        layout_width=\"fill\",\
+        layout_height=\"20dp\",\
+        textSize=\"15sp\",--文本大小\
+        layout_gravity='bottom';--重力居中｜置底\
+        gravity='center';--重力居中｜置底\
+        textColor=\"#ffffff\",--文本颜色\
+        background='#00000000';--布局背景\
+      },\
+    },--卡片框控件 结束\
+  }--线性布局 结束\
+  )\
+end\
+\
+local tab3={\
+  {\"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584225780998&di=aa5c5de8c478e109aa6b3d31a49c3c23&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fpic%2Fa%2F60%2F824b1548415_250_350.jpg\",\"吴京\"},\
+  {\"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584225780998&di=aa5c5de8c478e109aa6b3d31a49c3c23&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fpic%2Fa%2F60%2F824b1548415_250_350.jpg\",\"吴京\"},\
+  {\"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584225780998&di=aa5c5de8c478e109aa6b3d31a49c3c23&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fpic%2Fa%2F60%2F824b1548415_250_350.jpg\",\"吴京\"},\
+  {\"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584225780998&di=aa5c5de8c478e109aa6b3d31a49c3c23&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fpic%2Fa%2F60%2F824b1548415_250_350.jpg\",\"吴京\"},\
+}\
+add(list3,tab3,getImageview)\
+" ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象,新标题=..." ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      } ;
+  ["toolbar"]	= {
+      ["搜索URL"]	= "" ;
+      ["启用搜索功能"]	= false ;
+      ["搜索框提示"]	= "" ;
+      ["icon_btns"]	= {
+          } ;
+      ["输入栏模式"]	= true ;
+      ["menus"]	= {
+          [1]	= {
+              ["onClick"]	= "退出页面()" ;
+              ["name"]	= "退出" ;
+              } ;
+          } ;
+      } ;
+  ["sidebar"]	= {
+      ["启用顶部图片"]	= false ;
+      ["启用"]	= true ;
+      ["items"]	= {
+          } ;
+      } ;
+  ["web"]	= {
+      ["网页沉浸"]	= false ;
+      ["启动网页"]	= "" ;
+      ["启用长按菜单"]	= true ;
+      ["启用进度条"]	= true ;
+      ["支持打开外部应用"]	= true ;
+      ["浏览器用户标识"]	= "默认" ;
+      } ;
+  } ;

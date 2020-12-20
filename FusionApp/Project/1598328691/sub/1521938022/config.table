@@ -1,0 +1,316 @@
+{
+  ["colors"]	= {
+      ["搜索栏背景"]	= "#14ffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["搜索栏提示文字"]	= "#80ffffff" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["进度条"]	= "#ffff5959" ;
+      ["顶栏"]	= "#ffff5959" ;
+      ["标签栏文本"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#33ffffff" ;
+      ["状态栏"]	= "#ffffffff" ;
+      ["标签栏项目触摸"]	= "#33000000" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["搜索栏部件"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#ff4db6ac" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["导航栏"]	= "#ffff5959" ;
+      ["标签栏滑动条"]	= "#ffffffff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["标签栏滑动条高度"]	= "3dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["标签栏高度"]	= "48dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏标题"]	= "标题" ;
+      ["搜索栏阴影强度"]	= "0dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      } ;
+  ["global_js"]	= "function clearAds(elm, array_url) {\
+    var isUrl = false;\
+    for (var x = 0; x < array_url.length; x++) {\
+        if (location.href.match(array_url[x])) {\
+            isUrl = true;\
+        };\
+    };\
+    if (isUrl) {\
+        var head = document.getElementsByTagName('head')[0];\
+        var myStyle = document.createElement('style');\
+        myStyle.type = \"text/css\";\
+        myStyle.innerHTML = elm + \"{display:none !important;visibility:hidden !important;width:0 !important;height:0 !important;}\";\
+        head.appendChild(myStyle);\
+    };\
+};\
+clearAds(\".h5_cs_header,.h5_footer,.gift_block,.message_container,.zone-nav,.game-btn,.h5_search_nav_block\",[\"chushou.tv\"]);\
+document.getElementsByClassName('mobile_search_block')[0].style.paddingTop=\"0\";document.getElementsByClassName('h5_cs_fix')[0].style.paddingTop=\"0\";" ;
+  ["events"]	= {
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+" ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象,新标题=..." ;
+      ["程序启动"]	= "--程序启动时会执行的事件\
+--直接放在程序启动事件\
+\
+\
+sidebar2=(loadlayout(\
+{\
+  LinearLayout;\
+  orientation=\"vertical\";\
+  layout_height=\"fill\";\
+  layout_width=\"fill\";\
+  gravity=\"center\";\
+  {\
+    CardView;\
+    layout_height=\"56dp\";\
+    layout_width=\"56dp\";\
+    radius=\"\";\
+    layout_gravity=\"center\";\
+    {\
+      CardView;\
+      layout_height=\"fill\";\
+      layout_width=\"fill\";\
+      radius=\"\";\
+      id=\"zhacai\";\
+      {\
+        ImageView;\
+        src=\"icon.png\";--选择图标\
+        layout_height=\"0dp\";\
+        layout_gravity=\"center\";\
+        layout_width=\"0dp\";\
+        id=\"img\";\
+      };\
+    };\
+  };\
+}\
+))--by偶尔想吃榨菜\
+fltBtn.addView(sidebar2)\
+\
+\
+local a=io.open(\"/sdcard/AGZX/data/a1\"):read(\"*a\")\
+if a==\"开\" then\
+webView.addView(loadlayout{\
+    LinearLayout,\
+    id=\"overla\",\
+    layout_width=\"fill\",\
+    layout_height=32552732*6,\
+    orientation=\"vertical\",\
+    backgroundColor=\"#86000000\",\
+  })\
+toolbarParent.addView(loadlayout{\
+    LinearLayout,\
+    id=\"overlay\",\
+    layout_width=\"fill\",\
+    layout_height=32552732*6,\
+    orientation=\"vertical\",\
+    backgroundColor=\"#86000000\",\
+  })\
+else\
+webView.removeView(overla)\
+toolbarParent.removeView(overlay)\
+end\
+\
+\
+function 提示(内容)\
+  shamrock={\
+    LinearLayout;\
+    id=\"toastb\";\
+    {\
+      TextView;\
+      padding=\"8dp\";\
+      background=\"#12B8F6\";\
+      textSize=\"15sp\";\
+      TextColor=\"#ffffffff\";\
+      layout_width=\"100%w\";\
+      layout_height=\"40dp\";\
+      gravity=\"center\";\
+      text=\"提示出错\";\
+      id=\"text_ts\";\
+    };\
+  };\
+  local toast=Toast.makeText(activity,\"内容\",Toast.LENGTH_SHORT).setView(loadlayout(shamrock))\
+  --LENGTH_SHORT     2s\
+  --LENGTH_LONG      3.5s\
+  toast.setGravity(Gravity.BOTTOM,0, 0)\
+  --Gravity.BOTTOM   底部\
+  --Gravity.CENTER   中部\
+  --Gravity.TOP      顶部\
+  text_ts.Text=tostring(内容)\
+  toast.show()\
+end" ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+\
+\
+" ;
+      } ;
+  ["fltBtn"]	= {
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["显示"]	= false ;
+      ["图标"]	= "" ;
+      } ;
+  ["tab_bar"]	= {
+      ["items"]	= {
+          [4]	= {
+              ["url"]	= "https://chushou.tv/m-nav-list.htm?targetKey=11" ;
+              ["name"]	= "更多分类" ;
+              } ;
+          [1]	= {
+              ["url"]	= "https://chushou.tv/m/gamezone.htm?gameId=1159" ;
+              ["name"]	= "王者荣耀" ;
+              } ;
+          [2]	= {
+              ["url"]	= "https://chushou.tv/m/gamezone.htm?gameId=1576" ;
+              ["name"]	= "刺激战场" ;
+              } ;
+          [3]	= {
+              ["url"]	= "https://chushou.tv/m/gamezone.htm?gameId=1541" ;
+              ["name"]	= "荒野行动" ;
+              } ;
+          } ;
+      } ;
+  ["switch"]	= {
+      ["横屏"]	= false ;
+      ["启用启动图"]	= false ;
+      ["支持滑动页面"]	= false ;
+      ["显示状态栏"]	= true ;
+      } ;
+  ["sidebar"]	= {
+      ["items"]	= {
+          } ;
+      ["启用"]	= false ;
+      ["启用顶部图片"]	= false ;
+      } ;
+  ["web_control"]	= {
+      [1]	= {
+          ["remove_element"]	= "h5_cs_header,h5_footer,gift_block,message_container,zone-nav,game-btn,h5_search_nav_block" ;
+          ["js"]	= "document.getElementsByClassName('h5_cs_fix')[0].style.paddingTop=\"0\";document.getElementsByClassName('mobile_search_block')[0].style.paddingTop=\"0\";" ;
+          ["url"]	= "chushou.tv" ;
+          } ;
+      } ;
+  ["web"]	= {
+      ["浏览器用户标识"]	= "默认" ;
+      ["支持打开外部应用"]	= false ;
+      ["启用长按菜单"]	= false ;
+      ["启用进度条"]	= true ;
+      ["惰性加载"]	= true ;
+      ["网页沉浸"]	= false ;
+      } ;
+  ["toolbar"]	= {
+      ["搜索URL"]	= "https://chushou.tv/m/so.htm?keyword=%s" ;
+      ["搜索框提示"]	= "搜索房间ID、主播、游戏" ;
+      ["输入栏模式"]	= true ;
+      ["menus"]	= {
+          [4]	= {
+              ["name"]	= "关闭" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          [1]	= {
+              ["name"]	= "调用系统播放" ;
+              ["onClick"]	= "require \"import\";\
+import \"android.content.Intent\";\
+import \"android.net.Uri\";\
+function loadTheJs()\
+  加载Js(\"function returnVideoUrl(){var theVideoUrl=document.getElementsByTagName('video')[0].currentSrc;location.href=theVideoUrl;};returnVideoUrl();\");\
+  return true;\
+end\
+if(loadTheJs()) then\
+  task(300,function()\
+    intent = Intent(Intent.ACTION_VIEW);\
+    uri = Uri.parse(webView.getUrl()); \
+    intent.setDataAndType(uri, \"video/mp4\");\
+    activity.startActivity(intent);\
+  end);\
+end" ;
+              } ;
+          [2]	= {
+              ["name"]	= "王卡免流" ;
+              ["onClick"]	= "对话框()\
+.设置标题(\"提示\")\
+.设置消息(\"王卡用户请安装QQ浏览器后点击确定在弹出的界面选择播霸播放器即可\")\
+.设置积极按钮(\"确定\",function()\
+  if pcall(activity.getPackageManager().getPackageInfo(\"com.tencent.mtt\",0)) then\
+  require \"import\";\
+import \"android.content.Intent\";\
+import \"android.net.Uri\";\
+function loadTheJs()\
+  加载Js(\"function returnVideoUrl(){var theVideoUrl=document.getElementsByTagName('video')[0].currentSrc;location.href=theVideoUrl;};returnVideoUrl();\");\
+  return true;\
+end\
+if(loadTheJs()) then\
+  task(300,function()\
+    intent = Intent(Intent.ACTION_VIEW);\
+    uri = Uri.parse(webView.getUrl()); \
+    intent.setDataAndType(uri, \"video/mp4\");\
+    activity.startActivity(intent);\
+  end);\
+else\
+提示(\"你还没有安装QQ浏览器!请自己下载安装\")\
+加载网页(\"http://mdc.html5.qq.com/\")\
+end\
+end\
+end)\
+.设置消极按钮(\"取消\")\
+.显示()" ;
+              } ;
+          [3]	= {
+              ["name"]	= "网页投屏" ;
+              ["onClick"]	= "items={\"悟空遥控器\",\"快点投屏\",\"投屏使用须知\"}\
+AlertDialog.Builder(this)\
+.setTitle(\"投屏方式\")\
+.setItems(items,{onClick=function(l,v)\
+    if v==0 then\
+      复制文本(webView.getUrl())\
+      提示(\"当前网页已复制完毕正在打开（悟空遥控器），请手动粘贴网址到播放位置进行投屏播放\")\
+        packageName=\"com.wukongtv.wkremote.client\"\
+        import \"android.content.Intent\"\
+        import \"android.content.pm.PackageManager\"\
+        manager = activity.getPackageManager()\
+        open = manager.getLaunchIntentForPackage(packageName)\
+        this.startActivity(open)\
+   \
+    end\
+    if v==1 then\
+      复制文本(webView.getUrl())\
+      提示(\"当前网页已复制完毕正在打开（快点投屏） ，请手动粘贴网址到播放位置进行投屏播放！\")\
+      packageName=\"com.wukongtv.wkcast\"\
+      import \"android.content.Intent\"\
+      import \"android.content.pm.PackageManager\"\
+      manager = activity.getPackageManager()\
+      open = manager.getLaunchIntentForPackage(packageName)\
+      this.startActivity(open)\
+    end\
+    if v==2 then\
+      对话框()\
+      .设置标题(\"投屏使用须知\")\
+      .设置消息(\"进行第三方投屏之前，请先提前下载好你所需要的投屏软件（悟空遥控器或快点投屏），否则会出现错误导致无法进行投屏！\")\
+      .设置积极按钮(\"已知晓\",function()\
+      end)\
+      .显示()\
+    end\
+  end})\
+.show()" ;
+              } ;
+          } ;
+      ["icon_btns"]	= {
+          [2]	= {
+              ["icon"]	= "power" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          [1]	= {
+              ["icon"]	= "refresh" ;
+              ["onClick"]	= "刷新网页()" ;
+              } ;
+          } ;
+      ["启用搜索功能"]	= true ;
+      } ;
+  } ;

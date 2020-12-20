@@ -1,0 +1,184 @@
+{
+  ["events"]	= {
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["程序启动"]	= "--程序启动时会执行的事件\
+YL=\
+{\
+  LinearLayout;\
+  orientation=\"vertical\";\
+  layout_height=\"fill\";\
+  layout_width=\"fill\";\
+  {\
+    ImageView;--图片控件\
+    src=\"png/gg.jpg\";--图片路径，替换此图片\
+    layout_width='fill';--图片宽度\
+    layout_height='fill';--图片高度\
+    scaleType='fitXY';--图片显示类型\
+    id=\"slt\";\
+  };\
+  {\
+    LinearLayout;\
+    orientation=\"vertical\";\
+    layout_height=\"20%h\";\
+    layout_width=\"fill\";\
+    layout_marginTop='-20%h';--布局顶距\
+    background='#FFFFFFFF';--布局背景颜色(或者图片路径)\
+    gravity='center';\
+    {\
+      ImageView;--图片控件\
+      src=\"png/logo.png\";--图片路径\
+      layout_width='50dp';--图片宽度\
+      layout_height='50dp';--图片高度\
+      scaleType='fitXY';--图片显示类型\
+      id=\"tp\";\
+    };\
+    {\
+      TextView;--文本控件\
+      layout_width='fill';--文本宽度\
+      layout_height='wrap';--文本高度\
+      gravity='center';--重力属性\
+      textColor='#FF000000';--文字颜色\
+      text=\"麻木博客欢迎您\";--显示的文字\
+      textSize='15sp';--文字大小\
+      layout_marginTop='10dp';\
+      id=\"wb\";\
+    };\
+    {\
+      TextView;--文本控件\
+      layout_width='90dp';--文本宽度\
+      layout_height='35dp';--文本高度\
+      gravity='center';--\
+      textColor='#FFFFFFFF';--文字颜色\
+      text=\"跳过广告\";--显示的文字\
+      textSize='15sp';--文字大小\
+      layout_marginTop='-12%h';--布局顶距\
+      layout_marginLeft='35%w';--布局左距\
+      id=\"gg\";\
+    };\
+  };\
+};\
+activity.setContentView(loadlayout(YL))\
+esc=0\
+function onKeyDown(key,event)\
+  if(key==4)then\
+    esc=esc+1\
+    if esc==5000 then\
+     else\
+      task(500,function()\
+        esc=0\
+      end)\
+    end\
+    return true\
+  end\
+end\
+\
+function CircleButton(view,InsideColor,radiu)\
+  import \"android.graphics.drawable.GradientDrawable\"\
+  drawable = GradientDrawable()\
+  drawable.setShape(GradientDrawable.RECTANGLE)\
+  drawable.setColor(InsideColor)\
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  view.setBackgroundDrawable(drawable)\
+end\
+角度=25\
+控件id=gg\
+控件颜色=0xA8000000\
+CircleButton(控件id,控件颜色,角度)\
+gg.onClick=function()\
+  退出页面()\
+end\
+x=4\
+ti=Ticker()\
+ti.Period=1000\
+ti.onTick=function()\
+  x=x-1\
+  if x==-1 then\
+    ti.stop()\
+    退出页面()\
+   else\
+    gg.setText(x..\"丨跳过\")\
+  end\
+end\
+--启动Ticker定时器\
+ti.start()\
+\
+--程序启动时会执行的事件\
+" ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      } ;
+  ["colors"]	= {
+      ["进度条"]	= "#00000000" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["顶栏"]	= "#ff2c2e43" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      } ;
+  ["switch"]	= {
+      ["横屏"]	= false ;
+      ["支持滑动页面"]	= false ;
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= true ;
+      } ;
+  ["toolbar"]	= {
+      ["icon_btns"]	= {
+          } ;
+      ["输入栏模式"]	= true ;
+      ["搜索URL"]	= "" ;
+      ["搜索框提示"]	= "" ;
+      ["menus"]	= {
+          [1]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          } ;
+      ["启用搜索功能"]	= false ;
+      } ;
+  ["fltBtn"]	= {
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["图标"]	= "" ;
+      ["显示"]	= false ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "Title" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      } ;
+  ["web"]	= {
+      ["启用长按菜单"]	= true ;
+      ["启用进度条"]	= true ;
+      ["启动网页"]	= "" ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["支持打开外部应用"]	= true ;
+      ["网页沉浸"]	= false ;
+      } ;
+  ["sidebar"]	= {
+      ["items"]	= {
+          } ;
+      ["启用顶部图片"]	= false ;
+      ["启用"]	= true ;
+      } ;
+  } ;

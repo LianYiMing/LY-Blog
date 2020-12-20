@@ -1,0 +1,452 @@
+{
+  ["switch"]	= {
+      ["支持滑动页面"]	= false ;
+      ["启用启动图"]	= false ;
+      ["横屏"]	= false ;
+      ["显示状态栏"]	= true ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["web"]	= {
+      ["启动网页"]	= "" ;
+      ["启用长按菜单"]	= true ;
+      ["启用进度条"]	= true ;
+      ["支持打开外部应用"]	= true ;
+      ["网页沉浸"]	= false ;
+      ["浏览器用户标识"]	= "默认" ;
+      } ;
+  ["toolbar"]	= {
+      ["搜索框提示"]	= "" ;
+      ["启用搜索功能"]	= false ;
+      ["menus"]	= {
+          [1]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          } ;
+      ["搜索URL"]	= "" ;
+      ["输入栏模式"]	= false ;
+      ["icon_btns"]	= {
+          } ;
+      } ;
+  ["fltBtn"]	= {
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["显示"]	= false ;
+      ["图标"]	= "" ;
+      } ;
+  ["sidebar"]	= {
+      ["启用顶部图片"]	= false ;
+      ["启用"]	= false ;
+      ["items"]	= {
+          } ;
+      } ;
+  ["view_attribute"]	= {
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "取色器" ;
+      } ;
+  ["events"]	= {
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["程序启动"]	= "\
+--全局变量\
+w=activity.width\
+h=activity.height\
+bmp=nil\
+\
+function 提示(内容)\
+  shamrock={\
+    LinearLayout;\
+    id=\"toastb\";\
+    {\
+      TextView;\
+      padding=\"8dp\";\
+      background=\"#12B8F6\";\
+      textSize=\"15sp\";\
+      TextColor=\"#ffffffff\";\
+      layout_width=\"100%w\";\
+      layout_height=\"40dp\";\
+      gravity=\"center\";\
+      text=\"提示出错\";\
+      id=\"text_ts\";\
+    };\
+  };\
+  local toast=Toast.makeText(activity,\"内容\",Toast.LENGTH_SHORT).setView(loadlayout(shamrock))\
+  --LENGTH_SHORT     2s\
+  --LENGTH_LONG      3.5s\
+  toast.setGravity(Gravity.BOTTOM,0, 0)\
+  --Gravity.BOTTOM   底部\
+  --Gravity.CENTER   中部\
+  --Gravity.TOP      顶部\
+  text_ts.Text=tostring(内容)\
+  toast.show()\
+end\
+\
+dingyi={\
+  LinearLayout;\
+  layout_width=\"fill\";\
+  layout_height=\"fill\";\
+  orientation=\"vertical\";\
+      background=背景色,\
+  {\
+    LinearLayout;\
+    layout_width=\"fill\";\
+    layout_height=\"25%w\";\
+    orientation=\"horizontal\";\
+        background=背景色,\
+    {\
+      CardView;\
+      layout_width=\"120dp\";\
+      layout_height=\"45dp\";\
+      layout_marginTop=\"20dp\";\
+      layout_marginLeft=\"5dp\";\
+      background=\"#FF3F51B5\";\
+      radius=\"15\";\
+      id=\"a1\";\
+      {\
+        Button;--按钮控件\
+        text='颜色预览区';--显示的文本\
+        textSize='15sp';--文字大小\
+        textColor='#FFFFFFFF';--文本颜色\
+        backgroundColor='#FF2EC4B6';--按钮背景颜色\
+        layout_width='fill';--按钮宽度\
+        layout_height='fill';--按钮高度\
+        style='?android:attr/buttonBarButtonStyle';--安卓5\
+        id='a2';\
+      };\
+    };\
+    {\
+      CardView;\
+      layout_width=\"100dp\";\
+      layout_height=\"45dp\";\
+      radius=\"15\";\
+      layout_marginLeft=\"12dp\";\
+      layout_marginTop=\"20dp\";\
+      background=\"#FF3F51B5\";\
+      id=\"a3\";\
+      {\
+        Button;--按钮控件\
+        text='复制颜色';--显示的文本\
+        textSize='15sp';--文字大小\
+        textColor='#FFFFFFFF';--文本颜色\
+        backgroundColor='#FF2EC4B6';--按钮背景颜色\
+        layout_width='fill';--按钮宽度\
+        layout_height='fill';--按钮高度\
+        style='?android:attr/buttonBarButtonStyle';--安卓5\
+        id=\"a4\";\
+      };\
+    };\
+    {\
+      CardView;\
+      layout_width=\"100dp\";\
+      layout_height=\"45dp\";\
+      layout_marginLeft=\"10dp\";\
+      layout_marginTop=\"20dp\";\
+      layout_marginRight=\"25dp\";\
+      background=\"#FFEE7785\";\
+      radius=\"15\";\
+      id=\"a5\";\
+      {\
+        Button;--按钮控件\
+        text='选择图片';--显示的文本\
+        textSize='15sp';--文字大小\
+        textColor='#FFFFFFFF';--文本颜色\
+        backgroundColor='#FFEE7785';--按钮背景颜色\
+        layout_width='fill';--按钮宽度\
+        layout_height='fill';--按钮高度\
+        style='?android:attr/buttonBarButtonStyle';--安卓5\
+        id=\"a6\";\
+      };\
+    };\
+  };\
+\
+  {\
+    LinearLayout,\
+    layout_height=\"fill\",\
+    layout_width=\"fill\",\
+    orientation=\"vertical\",\
+    id=\"tv2\",\
+    background=背景色,\
+    {\
+      FrameLayout,\
+      layout_height=h/2,\
+      layout_width=\"fill\",\
+      id=\"aa\",\
+      {\
+        LinearLayout,\
+        layout_height=h/2,\
+        layout_width=\"fill\",\
+        -- background=\"#ffeeaa\",\
+        {\
+          ImageView;\
+          layout_height=h/2,\
+          layout_width=\"fill\",\
+          id=\"iv\",\
+        },\
+      },\
+      {\
+        LinearLayout,\
+        layout_height=h/2,\
+        layout_width=\"fill\",\
+        Gravity=\"center\",\
+        id=\"ll\",\
+        {\
+          TextView,\
+          layout_height=\"200\",\
+          layout_width=\"200\",\
+          id=\"tv\",\
+        },\
+      },\
+\
+    },\
+\
+  \
+      {\
+        LinearLayout,\
+        layout_height=\"fill\",\
+        layout_width=\"fill\",\
+        orientation=\"vertical\",\
+        id=\"tv3\",\
+        {\
+          SeekBar,\
+          layout_width=\"fill\",\
+          layout_marginTop='75dp';--布局顶距\
+          id=\"sbx\",\
+        },\
+        {\
+          SeekBar,\
+          layout_marginTop=\"15dp\",\
+          layout_width=\"fill\",\
+          id=\"sby\",\
+        },\
+\
+      }\
+    }\
+  }\
+\
+\
+\
+webView.addView(loadlayout(dingyi))\
+\
+\
+require \"import\"\
+import \"android.app.*\"\
+import \"android.os.*\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+import \"android.provider.MediaStore\"\
+import \"android.content.Intent\"\
+import \"android.graphics.BitmapFactory\"\
+import \"android.provider.MediaStore\"\
+import \"android.graphics.BitmapFactory\"\
+import \"android.provider.MediaStore\"\
+import \"java.lang.Integer\"\
+import \"android.graphics.BitmapFactory\"\
+import \"android.graphics.Paint\"\
+import \"com.androlua.LuaDrawable\"\
+import \"android.content.Intent\"\
+import \"android.graphics.drawable.ColorDrawable\"\
+import \"android.graphics.Bitmap\"\
+import \"android.graphics.Canvas\"\
+import \"android.graphics.Rect\"\
+import \"android.content.Intent\"\
+\
+--初始化坐标\
+zbx=w/2\
+zby=h/4\
+\
+--bmp\
+bmp=Bitmap.createBitmap(w,h/2,Bitmap.Config.ARGB_4444)\
+\
+--视图\
+\
+--点击按钮选择图片\
+a6.onClick=function()\
+  intent= Intent(Intent.ACTION_PICK)\
+  intent.setType(\"image/*\")\
+  this.startActivityForResult(intent,1)\
+end\
+\
+\
+a4.onClick=function()\
+  pop=PopupMenu(activity,a3)\
+  menu=pop.Menu\
+  menu.add(\"#\"..argb0x).onMenuItemClick=function(a)\
+    --先导入包\
+    import \"android.content.*\"\
+    activity.getSystemService(Context.CLIPBOARD_SERVICE).setText(\"#\"..argb0x)\
+    提示(\"复制成功\")\
+  end\
+  menu.add(argb).onMenuItemClick=function(a)\
+    import \"android.content.*\"\
+    activity.getSystemService(Context.CLIPBOARD_SERVICE).setText(argb)\
+    提示(\"复制成功\")\
+  end\
+  pop.show()--显示\
+end\
+\
+--图片选择回调\
+function onActivityResult(requestCode,resultCode,intent)\
+\
+  if intent then\
+    cursor =activity.getContentResolver ().query(intent.getData(), nil, nil, nil, nil)\
+    cursor.moveToFirst()\
+    idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)\
+    fileSrc = cursor.getString(idx)\
+\
+    --图片选择后的bitmap格式\
+    bitmap =BitmapFactory.decodeFile(fileSrc)\
+\
+    --获取选择后的bitmap宽高\
+    bitw=bitmap.getWidth()\
+    bith=bitmap.getHeight()\
+\
+    --图片如果过大,等比缩小到刚好适配\
+    function 等比无限缩小()\
+      while (true) do\
+        if bitw > w or bith > h/2 then\
+          bitw=bitw/1.1\
+          bith=bith/1.1\
+         else\
+          break\
+        end\
+      end\
+    end\
+\
+    --等比修改后,bitmap宽高适配\
+    等比无限缩小()\
+\
+    --将图片绘制到bmp中心\
+    rect=Rect(w/2-bitw/2,h/4-bith/2,bitw + w/2-bitw/2,bith+h/4-bith/2)\
+\
+    --创建画布\
+    bmp=Bitmap.createBitmap(w,h/2,Bitmap.Config.ARGB_4444)\
+\
+    mCanvas=Canvas(bmp)\
+    mPaint=Paint()\
+    mCanvas.drawBitmap(bitmap,nil, rect, mPaint);\
+\
+    --显示\
+    iv.ImageBitmap=bmp\
+\
+   else\
+    提示(\"未选择图片\")\
+  end\
+end\
+\
+myLuaDrawable=LuaDrawable(function(mCanvas,mPaint,mDrawable)\
+\
+  --画笔属性\
+  mPaint.setAntiAlias(true)\
+  mPaint.setStyle(Paint.Style.STROKE)\
+\
+  --外圆\
+  mPaint.setStrokeWidth(15)\
+  mPaint.setColor(0xFFADADAD)\
+  mCanvas.drawCircle(100, 100, 90, mPaint);\
+\
+  --内圆\
+  mPaint.setStrokeWidth(20)\
+  mPaint.setColor(0xFF888888)\
+  mCanvas.drawCircle(100, 100, 75, mPaint);\
+\
+  --十字架\
+  mPaint.setStrokeWidth(3)\
+  mPaint.setColor(0xFFA5A5A5)\
+  mCanvas.drawLine(100, 0+35, 100, 200-35,mPaint);\
+  mCanvas.drawLine(0+35, 100, 200-35, 100,mPaint);\
+\
+end)\
+\
+tv.background=myLuaDrawable\
+\
+--初始化x轴seekbar属性\
+sbx.setMax(w-1);\
+sbx.setProgress(w/2);\
+\
+--x轴seekbar监听\
+sbx.setOnSeekBarChangeListener{\
+\
+  onProgressChanged=function(SeekBar,progress)\
+\
+    zbx=progress\
+\
+    tv.setTranslationX(progress-w/2)\
+\
+    mColor = bmp.getPixel(zbx, zby)\
+\
+    argb0x=Integer.toHexString(mColor)\
+    argb=(\"0x\"..(argb0x))\
+    a1.setBackgroundDrawable(ColorDrawable(int(argb)))\
+    a2.setBackgroundDrawable(ColorDrawable(int(argb)))\
+    a2.setText=(tostring(argb))\
+\
+    if argb==0x0  then\
+      提示(\"不要移动超出此区域\")\
+    end\
+\
+  end\
+}\
+\
+--初始化y轴seekbar属性\
+sby.setMax((h/2)-1);\
+sby.setProgress(h/4);\
+\
+--y轴seekbar监听\
+sby.setOnSeekBarChangeListener{\
+\
+  onProgressChanged=function(SeekBar,progress)\
+\
+    tv.setTranslationY(progress-h/4)\
+\
+    zby=progress\
+\
+    mColor = bmp.getPixel(zbx,zby)\
+\
+    argb0x=Integer.toHexString(mColor)\
+    argb=(\"0x\"..(argb0x))\
+\
+    a1.setBackgroundDrawable(ColorDrawable(int(argb)))\
+    a2.setBackgroundDrawable(ColorDrawable(int(argb)))\
+    a2.setText=(tostring(argb))\
+\
+    if argb==0x0  then\
+      提示(\"不要移动超出此区域\")\
+    end\
+\
+  end\
+}\
+\
+\
+" ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      } ;
+  ["colors"]	= {
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["顶栏"]	= "#ff2ec4b6" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["进度条"]	= "#00000000" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      } ;
+  } ;

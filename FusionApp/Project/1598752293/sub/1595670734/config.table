@@ -1,0 +1,719 @@
+{
+  ["toolbar"]	= {
+      ["搜索框提示"]	= "" ;
+      ["icon_btns"]	= {
+          } ;
+      ["menus"]	= {
+          [1]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          } ;
+      ["输入栏模式"]	= true ;
+      ["搜索URL"]	= "" ;
+      ["启用搜索功能"]	= false ;
+      } ;
+  ["web"]	= {
+      ["启动网页"]	= "" ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["支持打开外部应用"]	= true ;
+      ["启用进度条"]	= true ;
+      ["启用长按菜单"]	= true ;
+      ["网页沉浸"]	= false ;
+      } ;
+  ["switch"]	= {
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= false ;
+      ["横屏"]	= false ;
+      ["支持滑动页面"]	= false ;
+      } ;
+  ["colors"]	= {
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["进度条"]	= "#ffffffff" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["悬浮按钮"]	= "#ff7abd9a" ;
+      ["导航栏"]	= "#ff7abd9a" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["顶栏"]	= "#ff7abd9a" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["view_attribute"]	= {
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "Title" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      } ;
+  ["fltBtn"]	= {
+      ["显示"]	= false ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["图标"]	= "" ;
+      } ;
+  ["sidebar"]	= {
+      ["启用"]	= true ;
+      ["启用顶部图片"]	= false ;
+      ["items"]	= {
+          } ;
+      } ;
+  ["events"]	= {
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象,新标题=..." ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["程序启动"]	= "--程序启动时会执行的事件\
+--QQ群294862696\
+--QQ1162930708\
+--顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+金玉满堂=\
+{\
+  LinearLayout;\
+  orientation='vertical';--重力属性\
+  layout_width='fill';--布局宽度\
+  layout_height='fill';--布局高度\
+  {\
+    LinearLayout;\
+    {\
+      ScrollView,\
+      layout_width=\"match_parent\";\
+      layout_height=\"match_parent\";\
+      VerticalScrollBarEnabled=false;\
+      {\
+        LinearLayout,\
+        layout_height=\"match_parent\",\
+        layout_width=\"match_parent\",\
+        orientation=\"vertical\",\
+        gravity='center';\
+\
+        {\
+          LinearLayout,\
+          layout_height=\"200dp\",\
+          layout_width=\"match_parent\",\
+          orientation=\"vertical\",\
+          --金玉满堂\
+          {\
+            CardView;\
+            layout_margin=\"0.5dp\",\
+            elevation=\"1.5dp\";\
+            id=\"kk\";\
+            layout_width=\"match_parent\";\
+            layout_height=\"match_parent\";\
+            radius=\"15dp\";\
+            layout_margin='10dp';\
+            elevation='3dp';\
+            {\
+              PageView,\
+              id=\"pg3\";\
+              layout_width=\"fill\",\
+              layout_height=\"fill\",\
+              pages={\
+\
+                {\
+                  LinearLayout;\
+                  id=\"f1\";\
+                  layout_height=\"match_parent\",\
+                  layout_width=\"match_parent\",\
+                  orientation=\"vertical\";\
+                  {\
+                    CardView;\
+                    elevation=\"9.5dp\";\
+                    id=\"k001\";\
+                    layout_width=\"match_parent\";\
+\
+                    layout_height=\"match_parent\";\
+                    radius=\"15dp\";\
+\
+                    {\
+                      ImageView;\
+                      layout_width=\"match_parent\",\
+                      layout_height=\"match_parent\",\
+                      background=\"http://p.qpic.cn/pic_wework/1948211503/84821c97457096ab0b0101ecc6795f4eae078e84061dd97e/0\";\
+                      layout_width='fill';\
+                      scaleType='fitXY';\
+                    },\
+                  },\
+                },\
+\
+                {\
+                  LinearLayout;\
+                  id=\"f2\";\
+                  layout_height=\"match_parent\",\
+                  layout_width=\"match_parent\",\
+                  orientation=\"vertical\";\
+                  {\
+                    CardView;\
+                    elevation=\"1.5dp\";\
+                    id=\"k002\";\
+                    layout_width=\"match_parent\";\
+                    CardBackgroundColor=\"#ffffff\";\
+                    layout_height=\"match_parent\";\
+                    radius=\"15dp\";\
+                    {\
+                      ImageView;\
+                      layout_width=\"match_parent\",\
+                      layout_height=\"match_parent\",\
+                      background=\"http://p.qpic.cn/pic_wework/1948211503/2b2db3380ec28cc1601b8d9d2082f5d3512f9564acf2a1cb/0\";\
+                    },\
+                  },\
+                },\
+\
+                {\
+                  LinearLayout;\
+                  id=\"f3\";\
+                  layout_height=\"match_parent\",\
+                  layout_width=\"match_parent\",\
+                  orientation=\"vertical\";\
+                  {\
+                    CardView;\
+                    elevation=\"1.5dp\";\
+                    id=\"k003\";\
+                    layout_width=\"match_parent\";\
+                    CardBackgroundColor=\"#ffffff\";\
+                    layout_height=\"match_parent\";\
+                    radius=\"15dp\";\
+                    {\
+                      ImageView;\
+                      layout_width=\"match_parent\",\
+                      layout_height=\"match_parent\",\
+                      background=\"http://p.qpic.cn/pic_wework/1948211503/5c5ac44f1c13e7ae176f044d55a6769b06ea9f5bc1074c34/0\";\
+                    },\
+                  },\
+                },\
+\
+              },\
+            },\
+          },\
+        },\
+      },\
+    },\
+  };\
+  {\
+    LinearLayout;\
+    orientation='vertical';\
+    layout_width='fill';\
+    layout_height='fill';\
+    {\
+      ScrollView,\
+      layout_width='fill';\
+      layout_height='fill';\
+      verticalScrollBarEnabled=false;\
+      {\
+        LinearLayout;\
+        gravity='center';\
+        orientation='vertical';\
+        layout_width='fill';\
+        layout_height=\"20dp\";\
+        {\
+          LinearLayout;\
+          orientation='vertical';--重力属性\
+          layout_margin='10dp';--布局边距\
+          gravity='left';--重力属性\
+          layout_width='100%w';--布局宽度\
+          {--QQ1162930708\
+            TextView;--文本控件\
+            gravity='left';--重力属性\
+            textColor='#FF000000';--文字颜色\
+            text='休闲专区☘️☘️';--显示的文字\
+            textSize='20sp';--文字大小\
+            layout_marginLeft='20dp';--布局左距\
+          };\
+        };\
+        {\
+          HorizontalScrollView,--横向滚动\
+          layout_width='fill';--宽\
+          layout_height='fill';--高\
+          {\
+            LinearLayout;\
+            orientation='vertical';--重力属性\
+            layout_width='fill';--布局宽度\
+            layout_height='fill';--布局高度\
+            {\
+              LinearLayout;\
+              gravity='center';--重力属性\
+              orientation='horizontal';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_marginTop='-2%w';--布局顶距\
+              {\
+                CardView;--卡片控件\
+                layout_margin='10dp';--卡片边距\
+                elevation='5dp';--阴影属性\
+                layout_width='160dp';--卡片宽度\
+                CardBackgroundColor='#fff6f6f6';--卡片背景颜色\
+                layout_height='45dp';--卡片高度\
+                radius='15dp';--卡片圆角\
+                {\
+                  LinearLayout;\
+                  gravity='center';--重力属性\
+                  orientation='horizontal';--重力属性\
+                  layout_width='fill';--布局宽度\
+                  layout_height='fill';--布局高度\
+                  background='shouye1.png';--布局背景颜色(或者图片路径)\
+                  {\
+                    TextView;--文本控件\
+                    gravity='center';--重力属性\
+                    textColor='#FFFFFFFF';--文字颜色\
+                    text='看视频';--显示的文字\
+                    textSize='15sp';--文字大小\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_margin='10dp';--卡片边距\
+                elevation='5dp';--阴影属性\
+                layout_width='160dp';--卡片宽度\
+                CardBackgroundColor='#fff6f6f6';--卡片背景颜色\
+                layout_height='45dp';--卡片高度\
+                radius='15dp';--卡片圆角\
+                {\
+                  LinearLayout;\
+                  gravity='center';--重力属性\
+                  orientation='horizontal';--重力属性\
+                  layout_width='fill';--布局宽度\
+                  layout_height='fill';--布局高度\
+                  background='shouye4.png';--布局背景颜色(或者图片路径)\
+                  {\
+                    TextView;--文本控件\
+                    gravity='center';--重力属性\
+                    textColor='#FFFFFFFF';--文字颜色\
+                    text='听音乐';--显示的文字\
+                    textSize='15sp';--文字大小\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_margin='10dp';--卡片边距\
+                elevation='5dp';--阴影属性\
+                layout_width='160dp';--卡片宽度\
+                CardBackgroundColor='#fff6f6f6';--卡片背景颜色\
+                layout_height='45dp';--卡片高度\
+                radius='15dp';--卡片圆角\
+                {\
+                  LinearLayout;\
+                  gravity='center';--重力属性\
+                  orientation='horizontal';--重力属性\
+                  layout_width='fill';--布局宽度\
+                  layout_height='fill';--布局高度\
+                  background='shouye2.png';--布局背景颜色(或者图片路径)\
+                  {\
+                    TextView;--文本控件\
+                    gravity='center';--重力属性\
+                    textColor='#FFFFFFFF';--文字颜色\
+                    text='看小说';--显示的文字\
+                    textSize='15sp';--文字大小\
+                  };\
+                };\
+              };\
+            };\
+          };\
+        };\
+\
+        {\
+          LinearLayout;\
+          orientation='vertical';--重力属性\
+          layout_margin='10dp';--布局边距\
+          gravity='left';--重力属性\
+          layout_width='100%w';--布局宽度\
+          {\
+            TextView;--文本控件\
+            gravity='left';--重力属性\
+            textColor='#FF000000';--文字颜色\
+            text='视频区  🌱';--显示的文字\
+            textSize='20sp';--文字大小\
+            layout_marginLeft='20dp';--布局左距\
+          };\
+        };\
+        {\
+          LinearLayout;\
+          orientation='horizontal';--重力属性\
+          layout_margin='10dp';--布局边距\
+          {\
+            CardView;--卡片控件\
+            layout_margin='10dp';--卡片边距\
+            elevation='2dp';--阴影属性\
+            layout_width='24%w';--卡片宽度\
+            CardBackgroundColor='#FFFFFFFF';--卡片背景颜色\
+            layout_height='20%w';--卡片高度\
+            radius='10dp';--卡片圆角\
+            {\
+              LinearLayout;\
+              gravity='center';--重力属性\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+              id=\"dy\",\
+              onClick=function()\
+\
+              end,\
+              {\
+                ImageView;--图片控件\
+                src='tx.png';--图片路径\
+                layout_width='50dp';--图片宽度\
+                layout_height='50dp';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                --  ColorFilter=\"#FF6A6A6A\";--图片着色\
+              };\
+              {\
+                TextView;--文本控件\
+                layout_marginTop='3dp';--布局顶距\
+                textColor='#FF6A6A6A';--文字颜色\
+                text='腾讯视频';--显示的文字\
+                textSize='15sp';--文字大小\
+              };\
+            };\
+          };\
+          {\
+            CardView;--卡片控件\
+            layout_margin='10dp';--卡片边距\
+            elevation='2dp';--阴影属性\
+            layout_width='25%w';--卡片宽度\
+            CardBackgroundColor='#FFFFFFFF';--卡片背景颜色\
+            layout_height='20%w';--卡片高度\
+            radius='10dp';--卡片圆角\
+            {\
+              LinearLayout;\
+              id=\"zc\",\
+              gravity='center';--重力属性\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+              onClick=function()\
+                加QQ群(294862696)\
+\
+              end,\
+              {\
+                ImageView;--图片控件\
+                src='fx.png';--图片路径\
+                layout_width='50dp';--图片宽度\
+                layout_height='50dp';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                --  ColorFilter=\"#FF6A6A6A\";--图片着色\
+              };\
+              {\
+                TextView;--文本控件\
+                layout_marginTop='3dp';--布局顶距\
+                textColor='#FF6A6A6A';--文字颜色\
+                text='风行视频';--显示的文字\
+                textSize='15sp';--文字大小\
+              };\
+            };\
+          };\
+          {\
+            CardView;--卡片控件\
+            layout_margin='10dp';--卡片边距\
+            elevation='2dp';--阴影属性\
+            layout_width='24%w';--卡片宽度\
+            CardBackgroundColor='#FFFFFFFF';--卡片背景颜色\
+            layout_height='20%w';--卡片高度\
+            radius='10dp';--卡片圆角\
+            {\
+              LinearLayout;\
+              gravity='center';--重力属性\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+              id=\"ds\",\
+              onClick=function()\
+                进入子页面(\"\")\
+              end,\
+              {\
+                ImageView;--图片控件\
+                src='aqy.png';--图片路径\
+                layout_width='50dp';--图片宽度\
+                layout_height='50dp';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                --  ColorFilter=\"#FF6A6A6A\";--图片着色\
+              };\
+              {\
+                TextView;--文本控件\
+                layout_marginTop='3dp';--布局顶距\
+                textColor='#FF6A6A6A';--文字颜色\
+                text='爱奇艺';--显示的文字\
+                textSize='15sp';--文字大小\
+              };\
+            };\
+          };\
+        };\
+\
+        {\
+          LinearLayout;\
+          orientation='horizontal';--重力属性\
+          layout_margin='10dp';--布局边距\
+          {\
+            CardView;--卡片控件\
+            layout_margin='10dp';--卡片边距\
+            elevation='2dp';--阴影属性\
+            layout_width='25%w';--卡片宽度\
+            CardBackgroundColor='#FFFFFFFF';--卡片背景颜色\
+            layout_height='20%w';--卡片高度\
+            radius='10dp';--卡片圆角\
+            {\
+              LinearLayout;\
+              gravity='center';--重力属性\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+              id=\"dy\",\
+              onClick=function()\
+              进入子页面(\"\")\
+              end,\
+              {\
+                ImageView;--图片控件\
+                src='mg.png';--图片路径\
+                layout_width='50dp';--图片宽度\
+                layout_height='50dp';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                -- ColorFilter=\"#FF6A6A6A\";--图片着色\
+              };\
+              {\
+                TextView;--文本控件\
+                layout_marginTop='3dp';--布局顶距\
+                textColor='#FF6A6A6A';--文字颜色\
+                text='芒果视频';--显示的文字\
+                textSize='15sp';--文字大小\
+              };\
+            };\
+          };\
+          {\
+            CardView;--卡片控件\
+            layout_margin='10dp';--卡片边距\
+            elevation='2dp';--阴影属性\
+            layout_width='25%w';--卡片宽度\
+            CardBackgroundColor='#FFFFFFFF';--卡片背景颜色\
+            layout_height='20%w';--卡片高度\
+            radius='10dp';--卡片圆角\
+            {\
+              LinearLayout;\
+              id=\"zc\",\
+              gravity='center';--重力属性\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+              onClick=function()\
+               进入子页面(\"\")\
+              end,\
+              {\
+                ImageView;--图片控件\
+                src='ls.png';--图片路径\
+                layout_width='50dp';--图片宽度\
+                layout_height='50dp';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                -- ColorFilter=\"#FF6A6A6A\";--图片着色\
+              };\
+              {\
+                TextView;--文本控件\
+                layout_marginTop='3dp';--布局顶距\
+                textColor='#FF6A6A6A';--文字颜色\
+                text='乐视视频';--显示的文字\
+                textSize='15sp';--文字大小\
+              };\
+            };\
+          };\
+          {\
+            CardView;--卡片控件\
+            layout_margin='10dp';--卡片边距\
+            elevation='2dp';--阴影属性\
+            layout_width='25%w';--卡片宽度\
+            CardBackgroundColor='#FFFFFFFF';--卡片背景颜色\
+            layout_height='20%w';--卡片高度\
+            radius='10dp';--卡片圆角\
+            {\
+              LinearLayout;\
+              gravity='center';--重力属性\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+              id=\"ds\",\
+              onClick=function()\
+              进入子页面(\"播放\")\
+              end,\
+              {\
+                ImageView;--图片控件\
+                src='pptv.png';--图片路径\
+                layout_width='50dp';--图片宽度\
+                layout_height='50dp';--图片高度\
+                scaleType='fitXY';--图片显示类型\
+                -- ColorFilter=\"#FF6A6A6A\";--图片着色\
+              };\
+              {\
+                TextView;--文本控件\
+                layout_marginTop='3dp';--布局顶距\
+                textColor='#FF6A6A6A';--文字颜色\
+                text='pptv';--显示的文字\
+                textSize='15sp';--文字大小\
+              };\
+            };\
+          };\
+        };\
+        --第3个卡片\
+        {\
+          LinearLayout;\
+          orientation='vertical';--重力属性\
+          layout_marginTop='10dp';--布局顶距\
+          layout_marginLeft='10dp';--布局左距\
+          gravity='left';--重力属性\
+          layout_width='100%w';--布局宽度\
+          {\
+            TextView;--文本控件\
+            gravity='left';--重力属性\
+            textColor='#FF000000';--文字颜色\
+            text='视频福利区🌱🌱';--显示的文字\
+            textSize='20sp';--文字大小\
+            layout_marginLeft='10dp';--布局左距\
+          };\
+        };\
+        {\
+          CardView;--卡片控件\
+          layout_margin='10dp';--卡片边距\
+          elevation='2dp';--阴影属性\
+          layout_width='fill';--卡片宽度\
+          CardBackgroundColor='#FfF7FBF7';--卡片背景颜色\
+          layout_height='100dp';--卡片高度\
+          radius='15dp';--卡片圆角\
+          --[[ {\
+   ScrollView,--横向滚动\
+                layout_width='fill';--宽\
+                layout_height='fill';--高]]\
+          {\
+            LinearLayout;\
+            orientation='vertical';--重力属性\
+            layout_width='fill';--布局宽度\
+            layout_height='fill';--布局高度\
+            {\
+              LinearLayout;\
+              orientation='vertical';--重力属性\
+              layout_width='fill';--布局宽度\
+              layout_height='fill';--布局高度\
+\
+              {\
+                LinearLayout;\
+                gravity='center';--重力属性\
+                orientation='horizontal';--重力属性\
+                layout_width='fill';--布局宽度\
+                layout_height='140dp';\
+                {\
+                  LinearLayout;\
+                  orientation='vertical';--重力属性\
+                  layout_width='33.33%w';--布局宽度\
+                  layout_height='150dp';--布局高度\
+                  layout_marginTop='15dp';--布局顶距\
+                  --layout_margin='15dp';--布局边距\
+                  {\
+                    ImageView;--图片控件\
+                    src='icon.png';--图片路径\
+                    id=\"aa\";\
+                    onClick=function()\
+                      进入子页面(\"视频\")\
+                    end,\
+                    layout_width='50dp';--图片宽度\
+                    layout_height='50dp';--图片高度\
+                    scaleType='fitXY';--图片显示类型\
+                    layout_marginTop='3dp';--布局顶距\
+                    layout_gravity='center';--重力属性\
+                   -- ColorFilter='#00FFAB91',--图片着色\
+                  };\
+                  {\
+                    TextView;--文本控件\
+                    layout_marginTop='5dp';--布局顶距\
+                    layout_gravity='center';--重力属性\
+                    textColor='#FF6A6A6A';--文字颜色\
+                    text='视频一区';--显示的文字\
+                    textSize='10sp';--文字大小\
+                  };\
+                };\
+                {\
+                  LinearLayout;\
+                  orientation='vertical';--重力属性\
+                  layout_width='33.33%w';--布局宽度\
+                  layout_height='150dp';--布局高度\
+                  layout_marginTop='15dp';--布局顶距\
+                  --layout_margin='15dp';--布局边距\
+                  {\
+                    ImageView;--图片控件\
+                    src='icon.png';--图片路径\
+                    layout_width='50dp';--图片宽度\
+                    layout_height='50dp';--图片高度\
+                    scaleType='fitXY';--图片显示类型\
+                    layout_marginTop='3dp';--布局顶距\
+                    layout_gravity='center';--重力属性\
+                  --  ColorFilter='#00FFAB91',--图片着色\
+                  };\
+                  {\
+                    TextView;--文本控件\
+                    layout_marginTop='5dp';--布局顶距\
+                    layout_gravity='center';--重力属性\
+                    textColor='#FF6A6A6A';--文字颜色\
+                    text='视频二区';--显示的文字\
+                    textSize='10sp';--文字大小\
+                  };\
+                };\
+\
+\
+                {\
+                  LinearLayout;\
+                  orientation='vertical';--重力属性\
+                  layout_width='33.33%w';--布局宽度\
+                  layout_height='150dp';--布局高度\
+                  layout_marginTop='15dp';--布局顶距\
+                  -- layout_margin='15dp';--布局边距\
+                  {\
+                    ImageView;--图片控件\
+                    src='icon.png';--图片路径\
+                    layout_width='50dp';--图片宽度\
+                    layout_height='50dp';--图片高度\
+                    scaleType='fitXY';--图片显示类型\
+                    layout_marginTop='3dp';--布局顶距\
+                    layout_gravity='center';--重力属性\
+                  --  ColorFilter='#00FFAB91',--图片着色\
+                  };\
+                  {\
+                    TextView;--文本控件\
+                    layout_marginTop='5dp';--布局顶距\
+                    layout_gravity='center';--重力属性\
+                    textColor='#FF6A6A6A';--文字颜色\
+                    text='视频三区';--显示的文字\
+                    textSize='10sp';--文字大小\
+                  };\
+                };\
+              }\
+            };\
+          };\
+        };\
+      };\
+    };\
+  };\
+};\
+webView.addView(loadlayout(金玉满堂))\
+--轮播点击事件\
+f1.onClick=function()\
+  pg3.showPage(0)\
+end\
+f2.onClick=function()\
+  pg3.showPage(1)\
+end\
+f3.onClick=function()\
+  pg3.showPage(2)\
+end\
+--设置字体颜色\
+import\"cl\"\
+import\"fl\"" ;
+      } ;
+  } ;

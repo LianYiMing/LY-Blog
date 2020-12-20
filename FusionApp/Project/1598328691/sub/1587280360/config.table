@@ -1,0 +1,369 @@
+{
+  ["sidebar"]	= {
+      ["items"]	= {
+          } ;
+      ["启用"]	= false ;
+      ["启用顶部图片"]	= false ;
+      } ;
+  ["switch"]	= {
+      ["横屏"]	= false ;
+      ["支持滑动页面"]	= true ;
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= false ;
+      } ;
+  ["web"]	= {
+      ["浏览器用户标识"]	= "自定义" ;
+      ["启动网页"]	= "" ;
+      ["启用进度条"]	= false ;
+      ["支持打开外部应用"]	= true ;
+      ["网页沉浸"]	= false ;
+      ["customUa"]	= "Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.132 Mobile Safari/537.36 Quark/3.8.4.128 UCBrowser/12.0.4.985 baiduboxapp/3.2.5.10 MQQBrowser/7.2.1.2965 XiaoMi/MiuiBrowser/11.9.2 SearchCraft/2.0.0 ALiSearchApp/2.4 AliApp(TB/9.5.6) BingWeb/6.9.6 3gpp-gba" ;
+      ["启用长按菜单"]	= false ;
+      } ;
+  ["fltBtn"]	= {
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件\
+退出页面()" ;
+      ["显示"]	= true ;
+      ["图标"]	= "" ;
+      } ;
+  ["colors"]	= {
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["悬浮按钮"]	= "#ff72cefa" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["进度条"]	= "#ff000000" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["顶栏"]	= "#00000000" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏标题"]	= "Title" ;
+      ["顶栏高度"]	= "0dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      } ;
+  ["web_control"]	= {
+      [1]	= {
+          ["remove_element"]	= "navbar-header,sr-only,icon-bar,navbar-brand,text-center text-muted credit" ;
+          ["url"]	= "tool.uixsj.cn" ;
+          ["js"]	= "" ;
+          } ;
+      [2]	= {
+          ["remove_element"]	= "navbar,el-tooltip btn item focusing,eva eva-menu-outline,navbar,el-tooltip btn item focusing,eva eva-menu-outline,el-tooltip type-icon vipDate focusing,theme-btn,nya-title,main" ;
+          ["url"]	= "tools.miku.ac" ;
+          ["js"]	= "" ;
+          } ;
+      [3]	= {
+          ["remove_element"]	= "v-toolbar__content" ;
+          ["url"]	= "web.woobx.cn" ;
+          ["js"]	= "" ;
+          } ;
+      } ;
+  ["toolbar"]	= {
+      ["启用搜索功能"]	= false ;
+      ["icon_btns"]	= {
+          } ;
+      ["输入栏模式"]	= true ;
+      ["menus"]	= {
+          } ;
+      ["搜索框提示"]	= "" ;
+      ["搜索URL"]	= "" ;
+      } ;
+  ["events"]	= {
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["网页即将加载"]	= "" ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+加载Js([[\
+//05:53-52\
+  var elscript = document.createElement(\"script\");\
+  elscript.setAttribute(\"src\",\"https://yyyp.oss-cn-beijing.aliyuncs.com/CDN/L2Dwidget/ycdy/Wanko.min.js\");\
+  document.body.appendChild(elscript);\
+\
+]])\
+" ;
+      ["程序启动"]	= "--程序启动时会执行的事件\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  \
+require \"import\"\
+import \"android.app.*\"\
+import \"android.os.*\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+fltBtn.addView(loadlayout({\
+  RelativeLayout;--相对布局\
+  layout_height=\"fill\";\
+  layout_width=\"fill\";\
+  background=\"#00FFFFFF\";\
+  {\
+    CardView;\
+    layout_marginRight=\"4dp\"; \
+    -- background=\"#eeeeee\";--这里设置颜色没用，因为我一会会用到圆角函数设置颜色\
+    layout_alignParentRight=\"true\";\
+    Visibility=\"visible\";--创建布局后可见\
+    layout_width=\"50dp\";\
+    id=\"cardview\";--主按钮\
+    layout_alignParentBottom=\"true\";\
+    layout_marginBottom=\"4dp\";\
+    cardElevation=\"4dp\";--阴影厚度\
+    layout_height=\"50dp\";\
+    {\
+      ImageView;\
+      layout_gravity=\"center\";\
+      layout_marginRight=\"3dp\";\
+      layout_marginLeft=\"3dp\";\
+      src=\"drawable/lym.png\";\
+      id=\"text\";\
+    };\
+  };\
+  {\
+    CardView;\
+    layout_height=\"50dp\";\
+    Visibility=\"invisible\";--创建布局后不可见\
+    --  background=\"#eeeeee\";\
+    layout_alignLeft=\"cardview\";\
+    layout_width=\"50dp\";\
+    id=\"cardview1\";--主按钮上面第一个按钮\
+    layout_marginBottom=\"14dp\";\
+    cardElevation=\"4dp\";\
+    layout_above=\"cardview\";--位置在在主按钮上面\
+    --radius=\"28dp\";\
+    {\
+      TextView;\
+      textColor=\"#888888\";\
+      layout_gravity=\"center\";\
+      textSize=\"14dp\";\
+      text=\"退出\";\
+      id=\"text1\";\
+    };\
+  };\
+  {\
+    CardView;\
+    layout_height=\"50dp\";\
+    Visibility=\"invisible\";\
+    --   background=\"#eeeeee\";\
+    layout_alignLeft=\"cardview1\";\
+    layout_width=\"50dp\";\
+    id=\"cardview2\";\
+    layout_marginBottom=\"14dp\";\
+    cardElevation=\"4dp\";\
+    layout_above=\"cardview1\";\
+    --  radius=\"28dp\";\
+    {\
+      TextView;\
+      textColor=\"#888888\";\
+      layout_gravity=\"center\";\
+      textSize=\"14dp\";\
+      text=\"顶部\";\
+      id=\"text2\";\
+    };\
+  };\
+  {\
+    CardView;\
+    layout_height=\"50dp\";\
+    Visibility=\"invisible\";\
+    -- background=\"#eeeeee\";\
+    layout_alignLeft=\"cardview2\";\
+    layout_width=\"50dp\";\
+    id=\"cardview3\";\
+    layout_marginBottom=\"14dp\";\
+    cardElevation=\"4dp\";\
+    layout_above=\"cardview2\";\
+    --radius=\"28dp\";\
+    {\
+      TextView;\
+      textColor=\"#888888\";\
+      layout_gravity=\"center\";\
+      textSize=\"14dp\";\
+      text=\"刷新\";\
+      id=\"text3\";\
+    };\
+  };\
+  {\
+    CardView;\
+    layout_height=\"50dp\";\
+    Visibility=\"invisible\";\
+    -- background=\"#eeeeee\";\
+    layout_alignLeft=\"cardview3\";\
+    layout_width=\"50dp\";\
+    id=\"cardview4\";\
+    layout_marginBottom=\"14dp\";\
+    cardElevation=\"4dp\";\
+    layout_above=\"cardview3\";\
+    --layout_toLeftOf=\"cardview1\";\
+    --radius=\"28dp\";\
+    {\
+      TextView;\
+      textColor=\"#888888\";\
+      layout_gravity=\"center\";\
+      textSize=\"14dp\";\
+      text=\"更多\";\
+      id=\"text3\";\
+    };\
+  };\
+}))\
+id=fltBtn;--这里把悬浮按钮名称简化为id\
+wi=activity.getWidth()*31/180--定义布局宽度\
+he=activity.getHeight()--定义屏幕高度\
+function dianji()--设置点击任意按钮事件\
+  if cardview1.getVisibility()==0 then--如果主按钮上放第一个按钮可见（实质为分是悬浮球展开了）\
+    --导入动画\
+    import \"android.view.animation.Animation$AnimationListener\"\
+    import \"android.view.animation.ScaleAnimation\"\
+    cardview1.startAnimation(ScaleAnimation(1.0, 0.0, 1.0, 0.0,1, 0.5, 1, 0.5).setDuration(100))--其它代码不要改，100意思为100毫秒后消失\
+    cardview1.setVisibility(View.INVISIBLE)--设置分式球1消失\
+    cardview2.startAnimation(ScaleAnimation(1.0, 0.0, 1.0, 0.0,1, 0.5, 1, 0.5).setDuration(200))\
+    cardview2.setVisibility(View.INVISIBLE)\
+    cardview3.startAnimation(ScaleAnimation(1.0, 0.0, 1.0, 0.0,1, 0.5, 1, 0.5).setDuration(300))\
+    cardview3.setVisibility(View.INVISIBLE)\
+    cardview4.startAnimation(ScaleAnimation(1.0, 0.0, 1.0, 0.0,1, 0.5, 1, 0.5).setDuration(400))\
+    cardview4.setVisibility(View.INVISIBLE)\
+    text.setImageBitmap(loadbitmap(\"drawable/__ic_menu.png\"))\
+    task(300,function()--300毫秒后，修改悬浮球布局大小为120*120\
+      --因为我是把整个分式悬浮球寄宿在fusionapp自带的悬浮球上的，因此点击打开关闭分式悬浮球时，由于占位空间变化，我会改一下主体的布局大小\
+      linearParams = id.getLayoutParams()\
+      linearParams.width=wi\
+      id.setLayoutParams(linearParams)\
+      linearParams = id.getLayoutParams()\
+      linearParams.height=wi\
+      id.setLayoutParams(linearParams)\
+    end)\
+  else--如果主按钮上放第一个按钮不可见（实质为分是悬浮球收拢了）\
+    --导入类\
+    import \"android.view.animation.ScaleAnimation\"\
+    cardview1.setVisibility(View.VISIBLE)--设置可见\
+    cardview1.startAnimation(ScaleAnimation(0.0, 1.0, 0.0, 1.0,1, 0.5, 1, 0.5).setDuration(100))\
+    cardview2.setVisibility(View.VISIBLE)\
+    cardview2.startAnimation(ScaleAnimation(0.0, 1.0, 0.0, 1.0,1, 0.5, 1, 0.5).setDuration(200))\
+    cardview3.setVisibility(View.VISIBLE)\
+    cardview3.startAnimation(ScaleAnimation(0.0, 1.0, 0.0, 1.0,1, 0.5, 1, 0.5).setDuration(300))\
+    cardview4.setVisibility(View.VISIBLE)\
+    cardview4.startAnimation(ScaleAnimation(0.0, 1.0, 0.0, 1.0,1, 0.5, 1, 0.5).setDuration(400))\
+    text.setImageBitmap(loadbitmap(\"drawable/__ic_close.png\"))\
+    linearParams = id.getLayoutParams()\
+    linearParams.width=wi\
+    id.setLayoutParams(linearParams)\
+    linearParams = id.getLayoutParams()\
+    linearParams.height=he*0.7\
+    id.setLayoutParams(linearParams)\
+    id.setBackgroundColor(0x00ffffff)\
+  end\
+end\
+\
+function CircleButton(view,InsideColor)--定义圆角\
+  import \"android.graphics.drawable.GradientDrawable\"\
+  drawable = GradientDrawable() \
+  drawable.setShape(GradientDrawable.OVAL) \
+  drawable.setColor(InsideColor)\
+  view.setBackgroundDrawable(drawable)\
+  view.setElevation(4.0)\
+end\
+\
+控件颜色=0xFF87D9FF\
+CircleButton(cardview,控件颜色)\
+CircleButton(cardview1,控件颜色)\
+CircleButton(cardview2,控件颜色)\
+CircleButton(cardview3,控件颜色)\
+CircleButton(cardview4,控件颜色)\
+\
+cardview.onLongClick=function()--设置主悬浮球长按事件\
+  import \"android.view.animation.ScaleAnimation\"\
+  id.startAnimation(ScaleAnimation(1.0, 0.0, 1.0, 0.0,1, 0.5, 1, 0.5).setDuration(300))\
+  id.setVisibility(View.GONE)\
+  dianji()\
+end\
+\
+cardview.onClick=function()--设置主悬浮球点击事件\
+  \
+  dianji()\
+end\
+cardview.onClick=function()\
+  \
+  dianji()\
+end\
+cardview1.onClick=function()\
+  退出页面()\
+  dianji()\
+end\
+cardview2.onClick=function()\
+  返回网页顶部()\
+  dianji()\
+end\
+cardview3.onClick=function()\
+  刷新网页()\
+  dianji()\
+end\
+id.setVisibility(View.VISIBLE)--初始化设置fusionapp的悬浮球可见\
+linearParams = id.getLayoutParams()\
+linearParams.width=wi--修改fusionapp悬浮球宽\
+id.setLayoutParams(linearParams)\
+linearParams = id.getLayoutParams()\
+linearParams.height=wi\
+id.setLayoutParams(linearParams)\
+id.setBackgroundColor(0x00ffffff)\
+--引用代码请保留版权\
+--©钰棋 QQ1469755146\
+--欢迎大家搜索下载 喵娱\
+\
+import\"tool.downpop\"\
+import \"android.text.format.Formatter\"\
+\
+webView.setDownloadListener{\
+  onDownloadStart=function(url,userAgent,contentDisposition,mimetype,contentLength)\
+    文件名=URLUtil.guessFileName(url, contentDisposition, mimeType);\
+    下载链接=url\
+    文件类型=mimetype\
+    文件大小=Formatter.formatFileSize(this, contentLength)\
+    存放地址=\"喵娱/文件\"\
+    downPop(url,文件名,存放地址)\
+  end\
+}\
+\
+function onKeyDown(key,event)\
+  if(key==4)then\
+    if pop~= nil then\
+      downPop()\
+    elseif(webView.canGoBack()) then\
+      webView.goBack()\
+    else\
+      退出页面()\
+    end\
+    return true\
+  end\
+end\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+" ;
+      } ;
+  } ;

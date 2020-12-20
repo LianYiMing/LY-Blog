@@ -1,0 +1,693 @@
+{
+  ["web"]	= {
+      ["启用长按菜单"]	= true ;
+      ["启用进度条"]	= true ;
+      ["网页沉浸"]	= true ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["支持打开外部应用"]	= true ;
+      ["启动网页"]	= "" ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏标题"]	= "Title" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      } ;
+  ["fltBtn"]	= {
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["图标"]	= "" ;
+      ["显示"]	= true ;
+      } ;
+  ["sidebar"]	= {
+      ["items"]	= {
+          } ;
+      ["启用顶部图片"]	= false ;
+      ["启用"]	= true ;
+      } ;
+  ["colors"]	= {
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["进度条"]	= "#ff0b0b0b" ;
+      ["顶栏"]	= "#00000000" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      } ;
+  ["events"]	= {
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["程序启动"]	= "--\
+function onKeyDown(key,event)\
+  if(key==4)then\
+    if(webView.canGoBack())then \
+      webView.goBack()\
+    else\
+      退出页面()\
+    end\
+    return true\
+  end\
+end\
+--程序启动时会执行的事件\
+--隐藏顶栏标题\
+titleTvw.setVisibility(View.GONE)\
+--隐藏菜单按钮\
+toolbar.setVisibility(View.GONE)\
+\
+--顶栏布局\
+xx=loadlayout--布局命名\
+{\
+  LinearLayout;--线性布局\
+  orientation='vertical';--布局方向\
+  layout_width='fill';--布局宽度\
+  layout_height='fill';--布局高度\
+  background='';--布局背景\
+  Focusable=false;--禁用编辑框\
+  FocusableInTouchMode=true;--禁止弹出输入法\
+  --开始\
+  {\
+    LinearLayout;--线性布局\
+    layout_marginTop='50dp';--布局顶距\
+    orientation='horizontal';--布局方向\
+    layout_width='fill';--布局宽度\
+    layout_height='fill';--布局高度\
+    gravity='center';--重力居中\
+    {\
+      CardView;--卡片控件\
+      layout_margin='5dp';--布局边距\
+      layout_width='95%w';--布局宽度\
+      layout_height='wrap';--布局高度\
+      elevation=0;--阴影层次\
+      radius='14dp';--圆角半径\
+      {\
+        LinearLayout;--线性布局\
+        orientation='horizontal';--布局方向\
+        layout_width='fill';--布局宽度\
+        layout_height='fill';--布局高度\
+        gravity='center|left';--重力居中｜置左\
+        {\
+          ImageView;--图片框控件\
+          layout_width='40dp';--布局宽度\
+          layout_height='22dp';--布局高度\
+          src='s.png';--视图路径\
+          ColorFilter='#00000000';--图片滤色\
+          id='yinq';--控件ID\
+        };\
+        {\
+          EditText;--编辑框控件\
+          layout_marginLeft='-1.8%w';--布局左距\
+          layout_width='76%w';--布局宽度\
+          layout_height='170dp';--布局高度\
+          Hint='输词儿搜歌~';--编辑框内容为空时提示\
+          textSize='16sp';--文本大小\
+          singleLine=true;--设置单行输入\
+          imeOptions='actionSearch';--输入法确定\
+          id='edit';--控件ID\
+        };\
+      };--线性布局 结束\
+      {\
+        ImageView;--图片框控件\
+        layout_width='38dp';--布局宽度\
+        layout_height='20dp';--布局高度\
+        src='m.png';--视图路径\
+        layout_gravity='center|right';--重力居中｜置右\
+        ColorFilter='#00000000';--图片滤色\
+        id='sou';--控件ID\
+      };\
+    };\
+  };--线性布局 结束\
+};--线性布局 结束\
+toolbar.parent.addView(xx,1)\
+xx.layoutParams.gravity=Gravity.CENTER--顶栏布局\
+\
+--顶栏透明\
+local function getStatusBarHeight()\
+  local resid=activity.getResources().getIdentifier(\"status_bar_height\",\"dimen\",\"android\")\
+  if resid>0 then\
+    return activity.getResources().getDimensionPixelSize(resid)\
+  end\
+end\
+\
+--使WebView置于顶栏下方以支持顶栏透明\
+local rv=webView.getParent().getParent()\
+webView.getParent().removeView(webView)\
+rv.addView(webView,0)\
+webView.LayoutParams=webView.LayoutParams.setMargins(0,getStatusBarHeight(),0,0)\
+\
+--添加一个用于显示顶栏的按钮，暂且叫作隐藏按钮\
+drawerLayout.getChildAt(0).addView(loadlayout{\
+  CardView,\
+  layout_width=\"30dp\",\
+  layout_height=\"120dp\",\
+  CardBackgroundColor=\"#9D2B2E43\",\
+  elevation=\"0dp\",\
+  radius=\"15dp\",\
+  clickable=true,\
+  focusable=true,\
+  id=\"hideBtn\",\
+  {\
+    ImageView,\
+    layout_width=\"40dp\",\
+    layout_height=\"40dp\",\
+    layout_gravity=\"center|bottom\",\
+    layout_marginBottom=\"-8dp\",\
+    src=\"http://p.qpic.cn/pic_wework/1948211503/e4e24df448771b103a53ce5838d055173a24fb09f4b45ee3/0\",\
+    ColorFilter='#ffffff';--图片颜色\
+  },\
+},-1)\
+hideBtn.LayoutParams.gravity=Gravity.RIGHT\
+hideBtn.LayoutParams=hideBtn.LayoutParams.setMargins(0,getStatusBarHeight()-hideBtn.LayoutParams.height/2*1.6,hideBtn.LayoutParams.width,0)\
+hideBtn.onClick=function()\
+  ObjectAnimator.ofFloat(toolbarParent,\"translationY\",{toolbarParent.getTranslationY(),0}).setDuration(500).start()\
+  ObjectAnimator.ofFloat(hideBtn,\"translationY\",{hideBtn.getTranslationY(),-hideBtn.getHeight()}).setDuration(500).start()\
+  isToolbarHidden=nil\
+end\
+\
+import\"android.view.animation.*\"\
+--动画展示顶栏，暗示可隐藏（并没有什么用）\
+toolbarParent.setAnimation(TranslateAnimation(0,0,-toolbarParent.LayoutParams.height,0).setDuration(500).setFillAfter(true))\
+--隐藏按钮\
+task(100,function()\
+  ObjectAnimator.ofFloat(hideBtn,\"translationY\",{hideBtn.getTranslationY(),-hideBtn.getHeight()}).setDuration(500).start()\
+end)\
+--隐藏按钮可移动（不建议作为参考，因为这里仅仅是实现，加上让变量少一点，造成代码极乱极差，修改自我的可移动悬浮按钮，不过删除了贴边和纵坐标移动，然后乱改尽量减少变量）\
+local hcm=false\
+local hsx\
+jdpuk=782268899\
+if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+hideBtn.onTouch=function(view,event,JDPUK)\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  local x=event.getRawX()\
+  if event.getAction()==MotionEvent.ACTION_DOWN then\
+    if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+    hsx=x\
+    return false\
+  elseif event.getAction()==MotionEvent.ACTION_MOVE then\
+    if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+    if hcm then\
+      hideBtn.LayoutParams=hideBtn.LayoutParams.setMargins(0,getStatusBarHeight()-hideBtn.LayoutParams.height/2*1.6,this.width-((x<hideBtn.LayoutParams.width and hideBtn.LayoutParams.width)or x),0)\
+      return true\
+    else\
+      hcm=(hsx and math.abs(x-hsx)>=50 and jdpuk==tonumber(\"78226\"..\"8899\"))\
+      return false\
+    end\
+  elseif event.getAction()==MotionEvent.ACTION_UP then\
+    if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..tostring(32) then error()end\
+    local tmp=hcm\
+    hsx=nil\
+    hcm=false\
+    if tmp then\
+      return true\
+    else\
+      return false\
+    end\
+  end\
+  return false\
+end\
+\
+\
+\
+--标签布局\
+mini=\
+{\
+  LinearLayout;--线性布局\
+  orientation='vertical';--布局方向\
+  layout_width='fill';--布局宽度\
+  layout_height='wrap';--布局高度\
+  --开始\
+  {\
+    LinearLayout;--线性布局\
+    layout_marginTop='60dp';--布局顶距\
+    orientation='horizontal';--布局方向\
+    layout_width='fill';--布局宽度\
+    layout_height='wrap';--布局高度\
+    gravity='center';--重力居中\
+    id='biaoq';--控件ID\
+    {\
+      Button;--纽扣控件\
+      layout_weight='1';--重力分配\
+      padding='8dp';--布局填充\
+      layout_margin='8dp';--布局边距\
+      layout_width='28%w';--布局宽度\
+      layout_height='38dp';--布局高度\
+      text='烤面筋';--文本内容\
+      textSize='13sp';--文本大小\
+      textColor='#ffffff';--文本颜色\
+      id='bqn1';--控件ID\
+    };\
+    {\
+      Button;--纽扣控件\
+      layout_weight='1';--重力分配\
+      padding='8dp';--布局填充\
+      layout_margin='8dp';--布局边距\
+      layout_width='28%w';--布局宽度\
+      layout_height='38dp';--布局高度\
+      text='大氿歌';--文本内容\
+      textSize='14sp';--文本大小\
+      textColor='#ffffff';--文本颜色\
+      id='bqn2';--控件ID\
+    };\
+    {\
+      Button;--纽扣控件\
+      layout_weight='1';--重力分配\
+      padding='8dp';--布局填充\
+      layout_margin='8dp';--布局边距\
+      layout_width='28%w';--布局宽度\
+      layout_height='38dp';--布局高度\
+      text='画者';--文本内容\
+      textSize='14sp';--文本大小\
+      textColor='#ffffff';--文本颜色\
+      id='bqn3';--控件ID\
+    };\
+  };--线性布局 结束\
+\
+  {\
+    LinearLayout;--线性布局\
+    layout_margin='5dp';--布局边距\
+    orientation='horizontal';--布局方向\
+    layout_width='fill';--布局宽度\
+    layout_height='wrap';--布局高度\
+    gravity='center';--重力居中\
+    {\
+      Button;--纽扣控件\
+      layout_weight='1';--重力分配\
+      padding='8dp';--布局填充\
+      layout_margin='5dp';--布局边距\
+      layout_width='22%w';--布局宽度\
+      layout_height='34dp';--布局高度\
+      text='侧脸';--文本内容\
+      textSize='14sp';--文本大小\
+      textColor='#ffffff';--文本颜色\
+      id='bqn4';--控件ID\
+    };\
+    {\
+      Button;--纽扣控件\
+      layout_weight='1';--重力分配\
+      padding='8dp';--布局填充\
+      layout_margin='5dp';--布局边距\
+      layout_width='22%w';--布局宽度\
+      layout_height='34dp';--布局高度\
+      text='零几年的情歌';--文本内容\
+      textSize='14sp';--文本大小\
+      textColor='#ffffff';--文本颜色\
+      id='bqn5';--控件ID\
+    };\
+    {\
+      Button;--纽扣控件\
+      layout_weight='1';--重力分配\
+      padding='8dp';--布局填充\
+      layout_margin='5dp';--布局边距\
+      layout_width='22%w';--布局宽度\
+      layout_height='34dp';--布局高度\
+      text='骗自己PT.2';--文本内容\
+      textSize='14sp';--文本大小\
+      textColor='#ffffff';--文本颜色\
+      id='bqn6';--控件ID\
+    };\
+    {\
+      Button;--纽扣控件\
+      layout_weight='1';--重力分配\
+      padding='8dp';--布局填充\
+      layout_margin='5dp';--布局边距\
+      layout_width='22%w';--布局宽度\
+      layout_height='34dp';--布局高度\
+      text='Phoenix(涅槃)';--文本内容\
+      textSize='14sp';--文本大小\
+      textColor='#ffffff';--文本颜色\
+      id='bqn7';--控件ID\
+    };\
+  };--线性布局 结束\
+\
+  {\
+    LinearLayout;--线性布局\
+    orientation='horizontal';--布局方向\
+    layout_width='fill';--布局宽度\
+    layout_height='wrap';--布局高度\
+    gravity='center';--重力居中\
+    {\
+      Button;--纽扣控件\
+      padding='8dp';--布局填充\
+      layout_margin='8dp';--布局边距\
+      layout_width='26%w';--布局宽度\
+      layout_height='36dp';--布局高度\
+      text='关山酒';--文本内容\
+      textSize='14sp';--文本大小\
+      textColor='#ffffff';--文本颜色\
+      id='bqn8';--控件ID\
+    };\
+    {\
+      Button;--纽扣控件\
+      padding='8dp';--布局填充\
+      layout_margin='8dp';--布局边距\
+      layout_width='26%w';--布局宽度\
+      layout_height='36dp';--布局高度\
+      text='MORIYA';--文本内容\
+      textSize='13sp';--文本大小\
+      textColor='#ffffff';--文本颜色\
+      id='bqn9';--控件ID\
+    };\
+    {\
+      Button;--纽扣控件\
+      padding='8dp';--布局填充\
+      layout_margin='8dp';--布局边距\
+      layout_width='26%w';--布局宽度\
+      layout_height='36dp';--布局高度\
+      text='处处吻';--文本内容\
+      textSize='16sp';--文本大小\
+      textColor='#ffffff';--文本颜色\
+      id='bqn10';--控件ID\
+    };\
+  };--线性布局 结束\
+\
+}--线性布局 结束\
+webView.addView(loadlayout(mini))\
+--设置边框圆角函数\
+function 卡片细节(边框厚度,边框颜色,背景颜色,圆角度)\
+  import \"android.graphics.drawable.GradientDrawable\"\
+  drawable=GradientDrawable()\
+  drawable.setShape(GradientDrawable.RECTANGLE)\
+  drawable.setStroke(边框厚度,tonumber(边框颜色))--边框厚度和背景颜色\
+  drawable.setColor(tonumber(背景颜色))--背景颜色\
+  drawable.setCornerRadius(圆角度)--圆角\
+  return drawable\
+end\
+--分别为:ID,边框厚度,边框颜色,背景颜色,圆角度\
+bqn1.BackgroundDrawable=卡片细节(1,0xFF515861,0xFF515861,360);\
+bqn2.BackgroundDrawable=卡片细节(1,0xFFFF67A8,0xFFFF67A8,360);\
+bqn3.BackgroundDrawable=卡片细节(1,0xFF6DA2FF,0xFF6DA2FF,360);\
+bqn4.BackgroundDrawable=卡片细节(1,0xFF3DA2DF,0xFF3DA2DF,360);\
+bqn5.BackgroundDrawable=卡片细节(1,0xC3FE73C2,0xC3FE73C2,360);\
+bqn6.BackgroundDrawable=卡片细节(1,0xFFE48E7F,0xFFE48E7F,360);\
+bqn7.BackgroundDrawable=卡片细节(1,0xFFFF4D21,0xFFFF4D21,360);\
+bqn8.BackgroundDrawable=卡片细节(1,0xFFBB65FE,0xFFBB65FE,360);\
+bqn9.BackgroundDrawable=卡片细节(1,0xFFFFA93D,0xFFFFA93D,360);\
+bqn10.BackgroundDrawable=卡片细节(1,0xFF33D268,0xFF33D268,360);\
+fltBtn.BackgroundDrawable=卡片细节(2,0xFF33D268,0xFF3DA2DF,360);\
+\
+--设置波纹函数\
+function 波纹(bwn,ys)\
+  import 'android.content.res.ColorStateList'\
+  bwn.setBackground(activity.Resources.getDrawable(activity.obtainStyledAttributes({android.R.attr.selectableItemBackgroundBorderless})\
+  .getResourceId(0,0)).setColor(ColorStateList(int[0].class{int{}},int{ys}))\
+  .setColor(ColorStateList(int[0].class{int{}},int{ys})))\
+end\
+--分别为:ID,颜色\
+波纹(yinq,0x44000000)\
+波纹(sou,0x44000000)\
+\
+task(150,function()--1000毫秒=1秒\
+  --隐藏输入法\
+  import \"android.view.inputmethod.InputMethodManager\"\
+  activity.getSystemService(Context.INPUT_METHOD_SERVICE).hideSoftInputFromWindow(edit.getWindowToken(),0)\
+end)\
+\
+syq=\" 网易\"--默认引擎\
+\
+--选择搜索引擎按钮\
+yinq.onClick=function()--单击事件\
+  --隐藏输入法\
+  import \"android.view.inputmethod.InputMethodManager\"\
+  activity.getSystemService(Context.INPUT_METHOD_SERVICE).hideSoftInputFromWindow(edit.getWindowToken(),0)\
+  --菜单功能\
+  pop=PopupMenu(activity,yinq)--弹出ID坐标\
+  menu=pop.Menu\
+  menu.add(\" 酷狗\").onMenuItemClick=function(a)\
+    syq=\" 酷狗\"\
+    yinq.setImageBitmap(loadbitmap(\"kg\"))--更换图片\
+    \
+    --显示输入法\
+    import \"android.view.inputmethod.InputMethodManager\"\
+    activity.getSystemService(Context.INPUT_METHOD_SERVICE).showSoftInput(edit,0)\
+  end\
+  menu.add(\" QQ\").onMenuItemClick=function(a)\
+    syq=\" QQ\"\
+    yinq.setImageBitmap(loadbitmap(\"QQ\"))--更换图片\
+   \
+    --显示输入法\
+    import \"android.view.inputmethod.InputMethodManager\"\
+    activity.getSystemService(Context.INPUT_METHOD_SERVICE).showSoftInput(edit,0)\
+  end\
+  menu.add(\" 网易\").onMenuItemClick=function(a)\
+    syq=\" 网易\"\
+    yinq.setImageBitmap(loadbitmap(\"a\"))--更换图片\
+    \
+    --显示输入法\
+    import \"android.view.inputmethod.InputMethodManager\"\
+    activity.getSystemService(Context.INPUT_METHOD_SERVICE).showSoftInput(edit,0)\
+  end\
+  menu.add(\" 酷我\").onMenuItemClick=function(a)\
+    syq=\" 酷我\"\
+    yinq.setImageBitmap(loadbitmap(\"k\"))--更换图片\
+   \
+    --显示输入法\
+    import \"android.view.inputmethod.InputMethodManager\"\
+    activity.getSystemService(Context.INPUT_METHOD_SERVICE).showSoftInput(edit,0)\
+  end\
+  menu.add(\" 百度\").onMenuItemClick=function(a)\
+    syq=\" 百度\"\
+    yinq.setImageBitmap(loadbitmap(\"b\"))--更换图片\
+    \
+    --显示输入法\
+    import \"android.view.inputmethod.InputMethodManager\"\
+    activity.getSystemService(Context.INPUT_METHOD_SERVICE).showSoftInput(edit,0)\
+  end\
+\
+  menu.add(\" b站\").onMenuItemClick=function(a)\
+    syq=\" b站\"\
+    yinq.setImageBitmap(loadbitmap(\"Bi\"))--更换图片\
+    \
+    --显示输入法\
+    import \"android.view.inputmethod.InputMethodManager\"\
+    activity.getSystemService(Context.INPUT_METHOD_SERVICE).showSoftInput(edit,0)\
+  end\
+\
+  menu.add(\" 小米\").onMenuItemClick=function(a)\
+    syq=\" 小米\"\
+    yinq.setImageBitmap(loadbitmap(\"mi\"))--更换图片\
+   \
+    --显示输入法\
+    import \"android.view.inputmethod.InputMethodManager\"\
+    activity.getSystemService(Context.INPUT_METHOD_SERVICE).showSoftInput(edit,0)\
+  end\
+\
+  menu.add(\" 小麦\").onMenuItemClick=function(a)\
+    syq=\" 小麦\"\
+    yinq.setImageBitmap(loadbitmap(\"mai\"))--更换图片\
+   \
+    --显示输入法\
+    import \"android.view.inputmethod.InputMethodManager\"\
+    activity.getSystemService(Context.INPUT_METHOD_SERVICE).showSoftInput(edit,0)\
+  end\
+\
+  menu.add(\" 小叶\").onMenuItemClick=function(a)\
+    syq=\" 小叶\"\
+    yinq.setImageBitmap(loadbitmap(\"leave\"))--更换图片\
+    \
+    --显示输入法\
+    import \"android.view.inputmethod.InputMethodManager\"\
+    activity.getSystemService(Context.INPUT_METHOD_SERVICE).showSoftInput(edit,0)\
+  end\
+\
+  menu.add(\" 小鸡\").onMenuItemClick=function(a)\
+    syq=\" 小鸡\"\
+    yinq.setImageBitmap(loadbitmap(\"lym\"))--更换图片\
+   \
+    --显示输入法\
+    import \"android.view.inputmethod.InputMethodManager\"\
+    activity.getSystemService(Context.INPUT_METHOD_SERVICE).showSoftInput(edit,0)\
+  end\
+\
+  pop.show()--显示\
+end\
+\
+--搜索功能\
+function 启用搜索()\
+  --隐藏输入法\
+  import \"android.view.inputmethod.InputMethodManager\"\
+  activity.getSystemService(Context.INPUT_METHOD_SERVICE).hideSoftInputFromWindow(edit.getWindowToken(),0)\
+  --隐藏标签布局\
+  biaoq.parent.setVisibility(View.GONE)\
+  --搜索功能\
+  if String(edit.text).startsWith(\"http://\") then\
+    加载网页(\"\"..edit.text)\
+  else if String(edit.text).startsWith(\"https://\") then\
+      加载网页(\"\"..edit.text)\
+    else if String(edit.text).startsWith(\"www\") then\
+        加载网页(\"http://\"..edit.text)\
+      else if String(edit.text).startsWith(\"m\") then\
+          加载网页(\"http://\"..edit.text)\
+        else\
+          if syq==\" 酷狗\" then\
+ 加载网页(\"http://kkbds.top/index.php/vod/search/wd/\"..edit.Text..\".html\")\
+          else if syq==\" QQ\" then\
+              加载网页(\"https://cloud.ccswust.org/?name=\"..edit.Text..\"&type=qq\")\
+            else if syq==\" 网易\" then\
+                加载网页(\"https://cloud.ccswust.org/?name=\"..edit.Text..\"&type=netease\")\
+              else if syq==\" 酷我\" then\
+                  加载网页(\"https://cloud.ccswust.org/?name=\"..edit.Text..\"&type=kuwo\")\
+                else if syq==\" 百度\" then\
+                    加载网页(\"https://cloud.ccswust.org/?name=\"..edit.Text..\"&type=baidu\")\
+                  \
+                      else if syq==\" b站\" then\
+                     加载网页(\"http://tool.liumingye.cn/music/?page=audioPage&type=bili&name=\"..edit.Text)\
+                  else if syq==\" 小米\" then\
+                      加载网页(\"http://tool.liumingye.cn/music/?page=audioPage&type=migu&name=\"..edit.Text)\
+        \
+                      else if syq==\" 小麦\" then\
+                     加载网页(\"http://tool.liumingye.cn/music/?page=audioPage&type=YQD&name=\"..edit.Text)\
+        \
+                      else if syq==\" 小叶\" then\
+                     加载网页(\"http://tool.liumingye.cn/music/?page=audioPage&type=YQB&name=\"..edit.Text)\
+                    \
+                 else if syq==\" 小鸡\" then\
+  加载网页(\"\"..edit.Text)\
+                    end\
+                  end\
+                    end\
+                  end\
+                    end\
+                  end\
+                end\
+              end\
+            end\
+          end\
+        end\
+      end\
+    end\
+  end\
+end\
+\
+--编辑框全选\
+dianji=0--默认为0\
+edit.onClick=function()--单击事件\
+  if(dianji==1)then--如果点击次数为2\
+    edit.selectAll()\
+    dianji=0--点击次数 归零\
+  else\
+    dianji=dianji+1--记录点击\
+  end\
+end\
+\
+--刷新按钮\
+sou.onClick=function()--单击事件\
+刷新网页()\
+end\
+\
+--输入法回车键搜索\
+import \"android.graphics.Paint\"\
+edit.setOnKeyListener({\
+  onKey=function(v,keyCode,event)\
+    if (KeyEvent.KEYCODE_ENTER == keyCode and KeyEvent.ACTION_DOWN == event.getAction()) then\
+      if edit.text==\"\" then\
+        弹出消息(\"哥您还没输东东呢！\")\
+      else\
+        启用搜索()\
+      end\
+      return true;\
+    else\
+      return false;\
+    end\
+  end\
+})\
+\
+\
+--标签点击事件\
+bqn1.onClick=function()\
+  edit.setText(bqn1.text)--搜索按钮名称\
+  启用搜索()\
+end\
+\
+bqn2.onClick=function()\
+  edit.setText(bqn2.text)--搜索按钮名称\
+  启用搜索()\
+end\
+\
+bqn3.onClick=function()\
+  edit.setText(bqn3.text)--搜索按钮名称\
+  启用搜索()\
+end\
+\
+bqn4.onClick=function()\
+  edit.setText(bqn4.text)--搜索按钮名称\
+  启用搜索()\
+end\
+\
+bqn5.onClick=function()\
+  edit.setText(bqn5.text)--搜索按钮名称\
+  启用搜索()\
+end\
+\
+bqn6.onClick=function()\
+  edit.setText(bqn6.text)--搜索按钮名称\
+  启用搜索()\
+end\
+\
+bqn7.onClick=function()\
+  edit.setText(bqn7.text)--搜索按钮名称\
+  启用搜索()\
+end\
+\
+bqn8.onClick=function()\
+  edit.setText(bqn8.text)--搜索按钮名称\
+  启用搜索()\
+end\
+\
+bqn9.onClick=function()\
+  edit.setText(bqn9.text)--搜索按钮名称\
+  启用搜索()\
+end\
+\
+bqn10.onClick=function()\
+  edit.setText(bqn10.text)--搜索按钮名称\
+  启用搜索()\
+end\
+\
+--退出\
+参数=0" ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      } ;
+  ["switch"]	= {
+      ["支持滑动页面"]	= true ;
+      ["横屏"]	= false ;
+      ["显示状态栏"]	= true ;
+      ["启用启动图"]	= false ;
+      } ;
+  ["web_control"]	= {
+      [1]	= {
+          ["url"]	= "cloud.ccswust.org" ;
+          ["js"]	= "" ;
+          ["remove_element"]	= "am-u-md-12 am-u-sm-centered am-margin-vertical music-tips,am-text-sm," ;
+          } ;
+      } ;
+  ["toolbar"]	= {
+      ["输入栏模式"]	= true ;
+      ["启用搜索功能"]	= false ;
+      ["icon_btns"]	= {
+          } ;
+      ["menus"]	= {
+          [1]	= {
+              ["onClick"]	= "退出页面()" ;
+              ["name"]	= "退出" ;
+              } ;
+          } ;
+      ["搜索框提示"]	= "" ;
+      ["搜索URL"]	= "" ;
+      } ;
+  } ;

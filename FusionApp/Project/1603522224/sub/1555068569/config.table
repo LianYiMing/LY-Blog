@@ -1,0 +1,198 @@
+{
+  ["toolbar"]	= {
+      ["menus"]	= {
+          } ;
+      ["搜索URL"]	= "" ;
+      ["输入栏模式"]	= false ;
+      ["icon_btns"]	= {
+          } ;
+      ["搜索框提示"]	= "输入关键词搜索.." ;
+      ["启用搜索功能"]	= false ;
+      } ;
+  ["fltBtn"]	= {
+      ["显示"]	= true ;
+      ["图标"]	= "" ;
+      ["点击事件"]	= "" ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏高度"]	= "65dp" ;
+      ["顶栏阴影强度"]	= "10dp" ;
+      ["标签栏高度"]	= "40dp" ;
+      ["标签栏滑动条高度"]	= "2dp" ;
+      ["搜索栏阴影强度"]	= "0dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["搜索栏圆角弧度"]	= "0dp" ;
+      ["顶栏标题"]	= "" ;
+      } ;
+  ["web_control"]	= {
+      [4]	= {
+          ["js"]	= "" ;
+          ["url"]	= "http://bbq.fvvip.top/help.html" ;
+          ["remove_element"]	= "ui-block-a,ui-block-b,ui-block-c,ui-block-d,Header-title" ;
+          } ;
+      [1]	= {
+          ["js"]	= "" ;
+          ["url"]	= "http://bbq.fvvip.top/index.php" ;
+          ["remove_element"]	= "ui-icon-article,ui-icon-heart,ui-icon-search,ui-icon-help,Header-logo" ;
+          } ;
+      [2]	= {
+          ["js"]	= "" ;
+          ["url"]	= "http://bbq.fvvip.top/saylove.html" ;
+          ["remove_element"]	= "ui-block-a,ui-block-b,ui-block-c,ui-block-d,Header-title" ;
+          } ;
+      [3]	= {
+          ["js"]	= "" ;
+          ["url"]	= "http://bbq.fvvip.top/search.html" ;
+          ["remove_element"]	= "ui-block-a,ui-block-b,ui-block-c,ui-block-d,Header-title" ;
+          } ;
+      } ;
+  ["web"]	= {
+      ["支持打开外部应用"]	= true ;
+      ["惰性加载"]	= true ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["网页沉浸"]	= false ;
+      ["启用进度条"]	= true ;
+      ["启用长按菜单"]	= true ;
+      } ;
+  ["events"]	= {
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["程序启动"]	= "import 'android.webkit.WebView'webView.addJavascriptInterface({},'JsInterface')\
+--工具栏\
+import \"gjl\"\
+--公告侧滑栏\
+import\"ggchl\"\
+--诗句\
+import\"sj\"\
+--背景音乐\
+import\"bjyy\"\
+--悬浮\
+import\"xf\"" ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象,新标题=..." ;
+      } ;
+  ["colors"]	= {
+      ["标签栏滑动条"]	= "#ffffffff" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["进度条"]	= "#ff458fff" ;
+      ["搜索栏提示文字"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#33ffffff" ;
+      ["标签栏项目触摸"]	= "#ffffffff" ;
+      ["搜索栏部件触摸"]	= "#ffffffff" ;
+      ["状态栏"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ffee7785" ;
+      ["标签栏文本"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff000000" ;
+      ["侧滑栏列表图标"]	= "#ff000000" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["搜索栏部件"]	= "#ffffffff" ;
+      ["顶栏"]	= "#ffee7785" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      } ;
+  ["switch"]	= {
+      ["横屏"]	= false ;
+      ["启用启动图"]	= true ;
+      ["显示状态栏"]	= true ;
+      ["支持滑动页面"]	= true ;
+      } ;
+  ["tab_bar"]	= {
+      ["items"]	= {
+          [4]	= {
+              ["name"]	= "帮助" ;
+              ["url"]	= "http://bbq.fvvip.top/help.html" ;
+              } ;
+          [1]	= {
+              ["name"]	= "首页" ;
+              ["url"]	= "http://bbq.fvvip.top/index.php" ;
+              } ;
+          [2]	= {
+              ["name"]	= "表白" ;
+              ["url"]	= "http://bbq.fvvip.top/saylove.html" ;
+              } ;
+          [3]	= {
+              ["name"]	= "搜索" ;
+              ["url"]	= "http://bbq.fvvip.top/search.html" ;
+              } ;
+          } ;
+      } ;
+  ["sidebar"]	= {
+      ["启用"]	= true ;
+      ["items"]	= {
+          [1]	= {
+              ["onClick"]	= "进入子页面(\"相遇聊天吧\")\
+print(\"正在拼命接近爱情\")" ;
+              ["name"]	= "相遇聊天吧" ;
+              ["icon"]	= "drawable/forum.png" ;
+              } ;
+          [2]	= {
+              ["onClick"]	= "进入子页面(\"悦听音乐台\")" ;
+              ["name"]	= "悦听音乐台" ;
+              ["icon"]	= "drawable/music_note.png" ;
+              } ;
+          [3]	= {
+              ["onClick"]	= "进入子页面(\"爱情加工厂\")" ;
+              ["name"]	= "爱情加工厂" ;
+              ["icon"]	= "drawable/paper_cut_vertical.png" ;
+              } ;
+          [4]	= {
+              ["onClick"]	= "items={\"自由设置背景\",\"网络同步背景\"}\
+AlertDialog.Builder(this)\
+.setTitle(\"请选择\")\
+.setItems(items,{onClick=function(l,v)\
+    if v==0 then\
+      import \"android.content.Intent\"\
+      local intent= Intent(Intent.ACTION_PICK)\
+      intent.setType(\"image/*\")\
+      this.startActivityForResult(intent, 1)\
+      function onActivityResult(requestCode,resultCode,intent)\
+        if intent then\
+          local cursor =this.getContentResolver ().query(intent.getData(), nil, nil, nil, nil)\
+          cursor.moveToFirst()\
+          import \"android.provider.MediaStore\"\
+          local idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)\
+          fileSrc = cursor.getString(idx)\
+          bit=nil\
+          background.setImageBitmap(loadbitmap(fileSrc))\
+          setdata(\"fileSrc\",fileSrc)\
+        end\
+      end\
+    end\
+    if v==1 then\
+      Http.get(\"http://www.iyuji.cn/iyuji/s/dHl6VEFNd1paZklJdHBpZ3M4MzFvdz09/1554266157679169\",nil,nil,nil,function(code,content)\
+        local 背景=content:match(\"【背景】(.-)【背景】\")\
+        c = this.getSharedPreferences(\"PicCustom\", Activity.MODE_PRIVATE)\
+        c.edit().clear().commit()\
+        background.setImageBitmap(loadbitmap(背景))\
+      end)\
+    end\
+  end})\
+.show()" ;
+              ["name"]	= "背景设置" ;
+              ["icon"]	= "drawable/palette.png" ;
+              } ;
+          [5]	= {
+              ["onClick"]	= "对话框()\
+.设置标题(\"\")\
+.设置消息(\"功能介绍\\n\\n校园表白墙：\\n  在以前书信是重要的交流方式，随着时代的发展即时通讯的兴起替代了书信这一经典交流方式。现如今即时通讯少了拆开信封时的激动与神秘感。故此表白墙推出邮件通知方式带领大家重新回味经典，这是表白墙的一大亮点。\\n相遇聊天吧：\\n  聊天吧保护个人隐私您大可以放心大胆的畅聊！遇见喜欢的何必遮遮掩掩，大胆的说出来万一成功了呢！\\n\\n命名由来\\n\\n  匿名表白、随机聊天室都离不开幸运两字，树的寓意是祝福每位情侣常常久久。同时幸运树也是大叔第一个作为长期更新的软件，祝愿软件能够茁壮成长。\\n\\n鸣谢公示\\n\\nFusion App开发平台大佬：\\n  对本软件进行多项技术指导\\nPing.X：\\n  提供表白墙、聊天室核心技术\\n我要表白网：\\n  提供多项实用功能\\nBlueAirHost：\\n  提供快捷云服务\\n安软：\\n  技术汇总、软件开发、推广\")\
+.设置积极按钮(\"确定\",function()\
+  显示消息(\"点击了确定\")\
+end)\
+.设置消极按钮(\"取消\")\
+.显示()" ;
+              ["name"]	= "关于软件" ;
+              ["icon"]	= "drawable/information_outline.png" ;
+              } ;
+          } ;
+      ["启用顶部图片"]	= true ;
+      } ;
+  } ;

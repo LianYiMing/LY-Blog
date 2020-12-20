@@ -1,0 +1,489 @@
+{
+  ["sidebar"]	= {
+      ["启用"]	= true ;
+      ["启用顶部图片"]	= true ;
+      ["items"]	= {
+          [1]	= {
+              ["onClick"]	= "加载网页(\"https://www.jiumodiary.com/\")" ;
+              ["name"]	= "搜书" ;
+              ["icon"]	= "drawable/magnify.png" ;
+              } ;
+          [2]	= {
+              ["onClick"]	= "加载网页(\"http://m.wufazhuce.com/article\")" ;
+              ["name"]	= "阅读" ;
+              ["icon"]	= "drawable/school.png" ;
+              } ;
+          [3]	= {
+              ["onClick"]	= "加载网页(\"http://voice.meiriyiwen.com/\")" ;
+              ["name"]	= "听文" ;
+              ["icon"]	= "drawable/school.png" ;
+              } ;
+          [4]	= {
+              ["onClick"]	= "加载网页(\"http://www.dodobook.com/\")" ;
+              ["name"]	= "读读书" ;
+              ["icon"]	= "drawable/school.png" ;
+              } ;
+          [5]	= {
+              ["onClick"]	= "加载网页(\"http://diumx.com/#/\")" ;
+              ["name"]	= "芒果读书" ;
+              ["icon"]	= "drawable/school.png" ;
+              } ;
+          [6]	= {
+              ["onClick"]	= "加载网页(\"http://m.ndlib.cn/03/html/index.html\")" ;
+              ["name"]	= "移动阅读" ;
+              ["icon"]	= "drawable/school.png" ;
+              } ;
+          [7]	= {
+              ["onClick"]	= "加载网页(\"https://weread.qq.com/\")" ;
+              ["name"]	= "微信读书" ;
+              ["icon"]	= "drawable/school.png" ;
+              } ;
+          [8]	= {
+              ["onClick"]	= "加载网页(\"https://meiriyiwen.com/random/iphone\")" ;
+              ["name"]	= "每日一文" ;
+              ["icon"]	= "drawable/school.png" ;
+              } ;
+          [9]	= {
+              ["onClick"]	= "--由于高三学习紧张，就没简单弄了个布局！\
+--主要是解析示例，修改来源于“快乐程序”开源，可去酷安搜索下载“快乐程序”\
+--沐宇影视: http://ys.myg.pub\
+--沐宇影视App: https://mygpub.gitee.io/myys/app\
+\
+--一文展示布局\
+dingyi=\
+{\
+  LinearLayout;\
+  layout_height=\"fill\";\
+  layout_width=\"fill\";\
+  orientation=\"vertical\";\
+  background=\"#FFFFFFFF\";\
+  {\
+    ScrollView;\
+    layout_height=\"fill\";\
+    layout_width=\"fill\";\
+    {\
+      LinearLayout;\
+      layout_height=\"fill\";\
+      layout_width=\"fill\";\
+      orientation=\"vertical\";\
+      --文章标题\
+      {\
+        CardView;--卡片控件\
+        layout_margin='10dp';--卡片边距\
+        layout_gravity='center';--重力属性\
+        Elevation='2dp';--阴影属性\
+        layout_width='fill';--卡片宽度\
+        layout_height='fill';--卡片高度\
+        radius='6dp';--卡片圆角\
+        CardBackgroundColor='#FFFFFFFF';--卡片背景颜色\
+        {\
+          LinearLayout;\
+          layout_margin=\"15dp\";\
+          layout_height=\"-1\";\
+          orientation=\"vertical\";\
+          layout_width=\"fill\";\
+          {\
+            LinearLayout;\
+            {\
+              TextView;\
+              textColor=\"#FF000000\";\
+              text=\"文章标题\";\
+              textSize=\"16dp\";\
+              layout_marginBottom=\"10dp\";\
+            };\
+          };\
+          {\
+            TextView;\
+            textColor=\"#FF444444\";\
+            textSize=\"12dp\";\
+            text=\"获取中...\",\
+            id=\"标题text\",\
+          };\
+        };\
+      };\
+      --文章作者\
+      {\
+        CardView;--卡片控件\
+        layout_margin='10dp';--卡片边距\
+        layout_gravity='center';--重力属性\
+        Elevation='2dp';--阴影属性\
+        layout_width='fill';--卡片宽度\
+        layout_height='fill';--卡片高度\
+        radius='6dp';--卡片圆角\
+        CardBackgroundColor='#FFFFFFFF';--卡片背景颜色\
+        {\
+          LinearLayout;\
+          layout_margin=\"15dp\";\
+          layout_height=\"-1\";\
+          orientation=\"vertical\";\
+          layout_width=\"fill\";\
+          {\
+            LinearLayout;\
+            {\
+              TextView;\
+              textColor=\"#FF000000\";\
+              text=\"文章作者\";\
+              textSize=\"16dp\";\
+              layout_marginBottom=\"10dp\";\
+            };\
+          };\
+          {\
+            TextView;\
+            textColor=\"#FF444444\";\
+            textSize=\"12dp\";\
+            text=\"获取中...\",\
+            id=\"作者text\",\
+          };\
+        };\
+      };\
+      --文章内容\
+      {\
+        CardView;--卡片控件\
+        layout_margin='10dp';--卡片边距\
+        layout_gravity='center';--重力属性\
+        Elevation='2dp';--阴影属性\
+        layout_width='fill';--卡片宽度\
+        layout_height='fill';--卡片高度\
+        radius='6dp';--卡片圆角\
+        CardBackgroundColor='#FFFFFFFF';--卡片背景颜色\
+        {\
+          LinearLayout;\
+          layout_margin=\"15dp\";\
+          layout_height=\"-1\";\
+          orientation=\"vertical\";\
+          layout_width=\"fill\";\
+          {\
+            LinearLayout;\
+            {\
+              TextView;\
+              textColor=\"#FF000000\";\
+              text=\"文章内容\";\
+              textSize=\"16dp\";\
+              layout_marginBottom=\"10dp\";\
+            };\
+          };\
+          {\
+            TextView;\
+            textColor=\"#FF444444\";\
+            textSize=\"12dp\";\
+            text=\"获取中...\",\
+            id=\"内容text\",\
+          };\
+        };\
+      };\
+\
+    };\
+  };\
+};\
+webView.addView(loadlayout(dingyi))\
+--随机一文解析\
+function 获取一文()\
+  Http.get(\"https://meiriyiwen.com/random/iphone\",nil,nil,nil,function(code,content)\
+    if code==200 then\
+      title=content:match([[<head>\
+        <title>(.-) @每日一文官网 </title>]])\
+      标题=title:match(\"(.-)%-\")\
+      作者=title:match(\"-(.+)\")\
+      内容=content:match([[<div%sclass=\"articleContent\">(.-)</div>]]):gsub(\"<p>\",\"\"):gsub(\"</p>\",\"\\n\")\
+\
+      标题text.text=标题\
+      作者text.text=作者\
+      内容text.text=内容\
+\
+    else\
+      标题text.text=\"获取失败\"\
+      作者text.text=\"获取失败\"\
+      内容text.text=code\
+    end\
+  end)\
+end\
+获取一文()" ;
+              ["name"]	= "文章" ;
+              ["icon"]	= "drawable/school.png" ;
+              } ;
+          } ;
+      } ;
+  ["events"]	= {
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+\
+加载Js([[\
+//08:16-50\
+document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"display:none\");\
+\
+//15:36-38\
+document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
+\
+]])" ;
+      ["程序启动"]	= "--程序启动时会执行的事件\
+sidebar.onLongClick=function()\
+  弹出消息(\"谁让你点我的！\")\
+  加载网页(\"http://tool.mkblog.cn/durms/\")\
+end\
+\
+\
+--程序启动时会执行的事件\
+import \"tool\"\
+\
+sidebar2=(loadlayout(\
+{\
+  LinearLayout;\
+  orientation=\"vertical\";\
+  layout_height=\"fill\";\
+  layout_width=\"fill\";\
+  gravity=\"center\";\
+  {\
+    CardView;\
+    layout_height=\"70dp\";\
+    layout_width=\"56dp\";\
+    radius=\"\";\
+    layout_gravity=\"center\";\
+    {\
+      CardView;\
+      layout_height=\"fill\";\
+      layout_width=\"fill\";\
+      radius=\"\";\
+      id=\"zhacai\";\
+      {\
+        ImageView;\
+        src=\"icon.png\";--选择图标\
+        layout_height=\"0dp\";\
+        layout_gravity=\"center\";\
+        layout_width=\"0dp\";\
+        id=\"img\";\
+      };\
+    };\
+  };\
+}\
+))--\
+fltBtn.addView(sidebar2)\
+\
+img.onClick=function()\
+  弹出消息(\"悬浮球\")\
+end\
+--渐变\
+import \"android.graphics.drawable.GradientDrawable\"\
+function 渐变(left_jb,right_jb,id)\
+  drawable = GradientDrawable(GradientDrawable.Orientation.TR_BL,{\
+    right_jb,--右色\
+    left_jb,--左色\
+  });\
+  id.setBackgroundDrawable(drawable)\
+end\
+--调用渐变函数\
+渐变(0xFF50ACFF,0xFF74E8FF,toolbarParent)\
+--程序启动时会执行的事件\
+\
+--程序启动时会执行的事件\
+function CircleButton(view,InsideColor,radiu)\
+  import \"android.graphics.drawable.GradientDrawable\"\
+  drawable = GradientDrawable() \
+  drawable.setShape(GradientDrawable.RECTANGLE) \
+  drawable.setColor(InsideColor)\
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  view.setBackgroundDrawable(drawable)\
+end\
+角度=70--圆角弧度\
+控件id=sidebar\
+控件颜色=0xFFFFFFFF\
+CircleButton(控件id,控件颜色,角度)\
+\
+linearParams = sidebar.getLayoutParams()\
+linearParams.width =630--侧滑栏宽度\
+linearParams.height =2000--侧滑栏高度\
+sidebar.setLayoutParams(linearParams)\
+" ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      } ;
+  ["colors"]	= {
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["顶栏"]	= "#ff2c2e43" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["侧滑栏列表图标"]	= "#ff87d6f7" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff4ea7d7" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["进度条"]	= "#ffa1c4fd" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      } ;
+  ["fltBtn"]	= {
+      ["图标"]	= "" ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件\
+pop=PopupMenu(activity,fltBtn)\
+menu=pop.Menu\
+menu.add(\"返回顶部\").onMenuItemClick=function(a)\
+  返回网页顶部()\
+\
+end\
+menu.add(\"刷新\").onMenuItemClick=function(a)\
+  刷新网页()\
+\
+end\
+menu.add(\"阅读模式\").onMenuItemClick=function(a)\
+  阅读模式()\
+\
+end\
+menu.add(\"显示/隐藏顶栏\").onMenuItemClick=function(a)\
+\
+if barisshow == 0 then\
+  --状态栏\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+  else\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+  end\
+end\
+\
+menu.add(\"隐藏悬浮窗\").onMenuItemClick=function(a)\
+  fltBtn.setVisibility(View.GONE)\
+  end\
+menu.add(\"获取一文\").onMenuItemClick=function(a)\
+  \
+获取一文()\
+\
+end\
+menu.add(\"退出\").onMenuItemClick=function(a)\
+  退出页面()\
+\
+\
+end\
+pop.show()\
+--显示import \"android.view.WindowManager\"\
+--需程序启动赋予barisshow初始值0\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+" ;
+      ["显示"]	= false ;
+      } ;
+  ["toolbar"]	= {
+      ["icon_btns"]	= {
+          } ;
+      ["输入栏模式"]	= true ;
+      ["搜索框提示"]	= "" ;
+      ["启用搜索功能"]	= false ;
+      ["menus"]	= {
+          [1]	= {
+              ["name"]	= "阅读模式" ;
+              ["onClick"]	= "阅读模式()" ;
+              } ;
+          [2]	= {
+              ["name"]	= "护眼模式" ;
+              ["onClick"]	= "加载Js([[javascript:(function(){var styleElem=null,doc=document,ie=doc.all,fontColor=50,sel=\"body,body *\";styleElem=createCSS(sel,setStyle(fontColor),styleElem);function setStyle(fontColor){var colorArr=[fontColor,fontColor,fontColor];return\"background-color:#e8ffe8 !important;color:RGB(\"+colorArr.join(\"%,\")+\"%) !important;\"}function createCSS(sel,decl,styleElem){var doc=document,h=doc.getElementsByTagName(\"head\")[0],styleElem=styleElem;if(!styleElem){s=doc.createElement(\"style\");s.setAttribute(\"type\",\"text/css\");styleElem=ie?doc.styleSheets[doc.styleSheets.length-1]:h.appendChild(s)}if(ie){styleElem.addRule(sel,decl)}else{styleElem.innerHTML=\"\";styleElem.appendChild(doc.createTextNode(sel+\" {\"+decl+\"}\"))}return styleElem}})();]]);  \
+" ;
+              } ;
+          [3]	= {
+              ["name"]	= "夜间模式" ;
+              ["onClick"]	= "加载Js([[{css=document.createElement(\"link\");var t='html,body,form,nav,header{background-image:none !important;background-color: #363c47 !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}div,html *{background-color: #000000 !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}p,span{background-color: transparent !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}div:empty,div[id=\"x-video-button\"],div[class=\"x-advert\"]{background-color:transparent !important;}input,select,button,textarea{box-shadow:0 0 0!important;color:#c3bdbc!important;background-color: #293037 !important;border-color:#212533!important;}a,a *{background-color: transparent !important;color:#b5a598!important;text-decoration:none!important;border-color:#212533!important;text-shadow: 0 0 0!important;}a:visited,a:visited *{color:#757170!important;}';css.href=t;var o=document.getElementsByTagName(\"head\");if(o[0].appendChild(css)){var a=document.createElement(\"style\");a.appendChild(document.createTextNode(t)),document.documentElement.appendChild(a)}}]])" ;
+              } ;
+          [4]	= {
+              ["name"]	= "全屏" ;
+              ["onClick"]	= "fltBtn.setVisibility(View.VISIBLE)\
+import \"android.view.WindowManager\"\
+\
+\
+if barisshow == 0 then\
+  --状态栏\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+  else\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+  end\
+" ;
+              } ;
+          [5]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          } ;
+      ["搜索URL"]	= "" ;
+      } ;
+  ["web"]	= {
+      ["浏览器用户标识"]	= "默认" ;
+      ["启动网页"]	= "http://m.wufazhuce.com/one" ;
+      ["启用进度条"]	= false ;
+      ["启用长按菜单"]	= false ;
+      ["支持打开外部应用"]	= false ;
+      ["网页沉浸"]	= false ;
+      } ;
+  ["switch"]	= {
+      ["支持滑动页面"]	= false ;
+      ["启用启动图"]	= false ;
+      ["横屏"]	= false ;
+      ["显示状态栏"]	= false ;
+      } ;
+  ["global_js"]	= "加载Js([[\
+//08:16-50\
+document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"display:none\");\
+\
+//15:36-38\
+document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
+\
+]])" ;
+  ["view_attribute"]	= {
+      ["顶栏标题"]	= "半层烟雨披风沙，卷入心帘尘飞扬" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏高度"]	= "40dp" ;
+      } ;
+  ["web_control"]	= {
+      [4]	= {
+          ["url"]	= "voice.meiriyiwen.com" ;
+          ["js"]	= "" ;
+          ["remove_element"]	= "header,footer,footer-bottom" ;
+          } ;
+      [1]	= {
+          ["url"]	= "m.wufazhuce.com" ;
+          ["js"]	= "" ;
+          ["remove_element"]	= "ui-link" ;
+          } ;
+      [2]	= {
+          ["url"]	= "www.jiumodiary.com" ;
+          ["js"]	= "" ;
+          ["remove_element"]	= "logo,label-div,icons icon-bestseller-tiny,icons icon-barcode-tiny,label_mid,label-a2" ;
+          } ;
+      [3]	= {
+          ["url"]	= "meiriyiwen.com" ;
+          ["js"]	= "" ;
+          ["remove_element"]	= "logo,header,footer,footer-bottom" ;
+          } ;
+      } ;
+  } ;

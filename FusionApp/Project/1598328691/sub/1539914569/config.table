@@ -1,0 +1,514 @@
+{
+  ["switch"]	= {
+      ["横屏"]	= false ;
+      ["支持滑动页面"]	= false ;
+      ["显示状态栏"]	= true ;
+      ["启用启动图"]	= false ;
+      } ;
+  ["toolbar"]	= {
+      ["icon_btns"]	= {
+          [4]	= {
+              ["icon"]	= "backburger" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          [1]	= {
+              ["icon"]	= "backup_restore" ;
+              ["onClick"]	= "刷新网页()" ;
+              } ;
+          [2]	= {
+              ["icon"]	= "screen_rotation" ;
+              ["onClick"]	= "if SetHSP==nil then\13\
+  --横屏\13\
+  activity.setRequestedOrientation(0); \13\
+  SetHSP=\"H\"\13\
+else\13\
+  --竖屏\13\
+  activity.setRequestedOrientation(1); \13\
+  SetHSP=nil\13\
+end\13" ;
+              } ;
+          [3]	= {
+              ["icon"]	= "arrow_expand" ;
+              ["onClick"]	= "ObjectAnimator.ofFloat(toolbarParent,\"translationY\",{toolbarParent.getTranslationY(),-toolbarParent.getHeight()}).setDuration(500).start()\
+ObjectAnimator.ofFloat(hideBtn,\"translationY\",{hideBtn.getTranslationY(),0}).setDuration(500).start()\
+isToolbarHidden=true" ;
+              } ;
+          } ;
+      ["启用搜索功能"]	= false ;
+      ["输入栏模式"]	= false ;
+      ["搜索框提示"]	= "" ;
+      ["搜索URL"]	= "" ;
+      ["menus"]	= {
+          } ;
+      } ;
+  ["sidebar"]	= {
+      ["启用顶部图片"]	= false ;
+      ["items"]	= {
+          } ;
+      ["启用"]	= false ;
+      } ;
+  ["view_attribute"]	= {
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "实用功能" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["侧滑栏宽度"]	= "200dp" ;
+      } ;
+  ["global_js"]	= "" ;
+  ["web_control"]	= {
+      [1]	= {
+          ["url"]	= "webmetro.itouchchina.com" ;
+          ["remove_element"]	= "adbar" ;
+          ["js"]	= "" ;
+          } ;
+      [2]	= {
+          ["url"]	= "shimo.im" ;
+          ["remove_element"]	= "notlogin-mobile-footer,mobile-header,ql-title-box" ;
+          ["js"]	= "" ;
+          } ;
+      [3]	= {
+          ["url"]	= "fanyi.baidu.com" ;
+          ["remove_element"]	= "go-to-download,article-title,article-thumb,intro-title,go-to-attention,app-bar,bottom-intro,article hairlines android-style,intro-link intro-conversation,intro-link intro-camera,intro-link intro-offline,bottom-intro,article-thumb,app-bar,header,title-zh,title-en,pas-tag,title-tag,article-container,extra,gotop hide,article-thumb-img,st-net-tips,app-bar,app-bar-text" ;
+          ["js"]	= "" ;
+          } ;
+      [4]	= {
+          ["url"]	= "http://tool.uixsj.cn/guichu/" ;
+          ["remove_element"]	= "" ;
+          ["js"]	= "document.body.style.marginTop='-52px'" ;
+          } ;
+      [5]	= {
+          ["url"]	= "http://tool.uixsj.cn/imgbase64/" ;
+          ["remove_element"]	= "" ;
+          ["js"]	= "document.body.style.marginTop='-52px'" ;
+          } ;
+      [6]	= {
+          ["url"]	= "https://m.kuaidihelp.com/" ;
+          ["remove_element"]	= "" ;
+          ["js"]	= "document.body.style.marginTop='-70px'" ;
+          } ;
+      [7]	= {
+          ["url"]	= "www.husinime.com" ;
+          ["remove_element"]	= "" ;
+          ["js"]	= "document.body.style.marginTop='-300px'" ;
+          } ;
+      [8]	= {
+          ["url"]	= "http://shitu.baidu.com/" ;
+          ["remove_element"]	= "goodCaseCon,friend,shitutips, bannerDot,goodCaseLeft" ;
+          ["js"]	= "document.body.style.marginTop='-250px'\
+document.body.style.marginBottom='-250px'" ;
+          } ;
+      [9]	= {
+          ["url"]	= "http://hy.httpcn.com/hzzpy/" ;
+          ["remove_element"]	= "menu,top-wrapper bs0 bs1 hidden,hanyu-content,hanyu-xg" ;
+          ["js"]	= "" ;
+          } ;
+      [10]	= {
+          ["url"]	= "http://tool.mkblog.cn/ocr/" ;
+          ["remove_element"]	= "main-footer" ;
+          ["js"]	= "document.body.style.marginTop='-55px'" ;
+          } ;
+      [11]	= {
+          ["url"]	= "http://tool.mkblog.cn/contrast/" ;
+          ["remove_element"]	= "main-footer" ;
+          ["js"]	= "document.body.style.marginTop='-55px'" ;
+          } ;
+      [12]	= {
+          ["url"]	= "http://tool.uixsj.cn/film-subtitle/" ;
+          ["remove_element"]	= "" ;
+          ["js"]	= "document.body.style.marginTop='-55px'" ;
+          } ;
+      [13]	= {
+          ["url"]	= "http://tool.uixsj.cn/hexconvert/" ;
+          ["remove_element"]	= "navbar-header,main-footer,row" ;
+          ["js"]	= "document.body.style.marginTop='-55px'" ;
+          } ;
+      [14]	= {
+          ["url"]	= "http://tool.uixsj.cn/morse/" ;
+          ["remove_element"]	= "" ;
+          ["js"]	= "document.body.style.marginTop='-55px'" ;
+          } ;
+      [15]	= {
+          ["url"]	= "www.tutujiexi.com" ;
+          ["remove_element"]	= "navbar-brand,footer,navbar tuNavbar has-shadow is-fixed-top is-info,content has-text-centered" ;
+          ["js"]	= "document.body.style.marginTop=340px'" ;
+          } ;
+      [16]	= {
+          ["url"]	= "send.firefox.com" ;
+          ["remove_element"]	= "header,foote,header,part,banner,bottom,footer" ;
+          ["js"]	= "" ;
+          } ;
+      [17]	= {
+          ["url"]	= "http://tool.uixsj.cn/highlight/" ;
+          ["remove_element"]	= "navbar-header,main-footer,row" ;
+          ["js"]	= "document.body.style.marginTop='-55px'" ;
+          } ;
+      [18]	= {
+          ["url"]	= "http://tool.uixsj.cn/password/" ;
+          ["remove_element"]	= "" ;
+          ["js"]	= "document.body.style.marginTop='-55px'" ;
+          } ;
+      [19]	= {
+          ["url"]	= "http://zr.uixsj.cn/" ;
+          ["remove_element"]	= "container-fluid" ;
+          ["js"]	= "" ;
+          } ;
+      [20]	= {
+          ["url"]	= "ctfile.com" ;
+          ["remove_element"]	= "alert alert-info alert-block,navbar navbar- inverse" ;
+          ["js"]	= "var d=document;var s=d.createElement('script');s.setAttribute('src', 'https://greasyfork.org/scripts/368754-%E9%80%9A%E7%94%A8%E5%8E%BB%E5%B9%BF%E5%91%8A-%E6%AF%94%E8%BE%83%E6%9A%B4%E5%8A%9B-%E6%85%8E%E7%94%A8-v0-1/code/%E9%80%9A%E7%94%A8%E5%8E%BB%E5%B9%BF%E5%91%8A(%E6%AF%94%E8%BE%83%E6%9A%B4%E5%8A%9B%EF%BC%8C%E6%85%8E%E7%94%A8)V01.user.js');d.head.appendChild(s);" ;
+          } ;
+      [21]	= {
+          ["url"]	= "jlwz.cn" ;
+          ["remove_element"]	= "aside-left header,@ID(appDown),quick_nav,xk_box,dh_bg,jlwz_quandibg,bbstitle,mx2" ;
+          ["js"]	= "" ;
+          } ;
+      } ;
+  ["web"]	= {
+      ["启用进度条"]	= true ;
+      ["启动网页"]	= "" ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["支持打开外部应用"]	= false ;
+      ["网页沉浸"]	= false ;
+      ["启用长按菜单"]	= false ;
+      } ;
+  ["fltBtn"]	= {
+      ["图标"]	= "" ;
+      ["点击事件"]	= "" ;
+      ["显示"]	= false ;
+      } ;
+  ["colors"]	= {
+      ["悬浮按钮"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#60000000" ;
+      ["悬浮按钮图标"]	= "#ff000000" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["顶栏"]	= "#ff12b8f6" ;
+      ["侧滑栏列表文字"]	= "#ff000000" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["侧滑栏列表图标"]	= "#ff000000" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["进度条"]	= "#ffffffff" ;
+      ["搜索栏背景"]	= "#ff30a9de" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      } ;
+  ["events"]	= {
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["程序启动"]	= "--程序启动时会执行的事件\
+function 提示(内容)\
+  shamrock={\
+    LinearLayout;\
+    id=\"toastb\";\
+    {\
+      TextView;\
+      padding=\"8dp\";\
+      background=\"#12B8F6\";\
+      textSize=\"15sp\";\
+      TextColor=\"#ffffffff\";\
+      layout_width=\"100%w\";\
+      layout_height=\"40dp\";\
+      gravity=\"center\";\
+      text=\"提示出错\";\
+      id=\"text_ts\";\
+    };\
+  };\
+  local toast=Toast.makeText(activity,\"内容\",Toast.LENGTH_SHORT).setView(loadlayout(shamrock))\
+  --LENGTH_SHORT     2s\
+  --LENGTH_LONG      3.5s\
+  toast.setGravity(Gravity.BOTTOM,0, 0)\
+  --Gravity.BOTTOM   底部\
+  --Gravity.CENTER   中部\
+  --Gravity.TOP      顶部\
+  text_ts.Text=tostring(内容)\
+  toast.show()\
+end\
+--直接放在程序启动事件\
+webView.onLongClick=function()\
+  hitTestResult = webView.getHitTestResult()\
+  if (hitTestResult.getType() == WebView.HitTestResult.IMAGE_TYPE or hitTestResult.getType() == WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE)then\
+    import \"com.tencent.qq.widget.*\"\
+    import \"android.view.WindowManager\"\
+\
+    MyMenuDialog=MenuDialog(this);--设置弹窗进出动画\
+    MyMenuDialog.setButton(\"取消\",MenuDialog.setTextColor.BLUE);--设置取消按钮文字及颜色\
+\
+    MyMenuDialog.addItem(\"保存图片\",MenuDialog.setTextColor.BLUE,--设置选项文字及颜色\
+    {onClick = function()\
+        picUrl = hitTestResult.getExtra() \
+        Http.download(picUrl,\"sdcard/轻工具箱/pictures/\"..os.date(\"%Y-%m-%d-%H-%M-%S\")..\".png\",function(a)\
+        end)\
+        提示(\"图片已保存于sdcard/轻工具箱/pictures/\")\
+\
+      end});\
+    MyMenuDialog.addItem(\"保存动态图片\",MenuDialog.setTextColor.BLUE,--设置选项文字及颜色\
+    {onClick = function()\
+        picUrl = hitTestResult.getExtra() \
+        Http.download(picUrl,\"sdcard/轻工具箱/pictures/\"..os.date(\"%Y-%m-%d-%H-%M-%S\")..\".gif\",function(a)\
+        end)\
+        提示(\"图片已保存于sdcard/轻工具箱/pictures/\")\
+\
+      end});\
+    MyMenuDialog.addItem(\"复制图片链接\",MenuDialog.setTextColor.BLUE,--设置选项文字及颜色\
+    {onClick = function()\
+        picUrl = hitTestResult.getExtra()\
+        复制文本(picUrl)\
+        提示(\"已复制:\" .. picUrl)\
+      end});\
+    MyMenuDialog.addItem(\"分享给朋友\",MenuDialog.setTextColor.BLUE,--设置选项文字及颜色\
+    {onClick = function()\
+        picUrl = hitTestResult.getExtra()\
+        分享文本(\"我看到一个好看的图片，分享给你:\" ..picUrl) \
+      end});\
+    MyMenuDialog.show();--显示弹窗\
+  end\
+\
+end\
+\
+\
+\
+webView.addJavascriptInterface({},\"JsInterface\")\
+\
+local function getStatusBarHeight()\
+  local resid=activity.getResources().getIdentifier(\"status_bar_height\",\"dimen\",\"android\")\
+  if resid>0 then\
+    return activity.getResources().getDimensionPixelSize(resid)\
+  end\
+end\
+\
+--使WebView置于顶栏下方以支持顶栏透明\
+\
+--添加一个用于显示顶栏的按钮，暂且叫作隐藏按钮\
+drawerLayout.getChildAt(0).addView(loadlayout{\
+  CardView,\
+  id=\"hideBtn\",\
+  CardBackgroundColor=\"#D0009688\",\
+  layout_width=\"30dp\",\
+  layout_height=\"100dp\",\
+  radius=\"10dp\",\
+  elevation=\"2dp\",\
+  --style=\"?android:attr/buttonBarButtonStyle\",\
+  --foreground=\"?android:attr/selectableItemBackground\",\
+  clickable=true,\
+  focusable=true,\
+  {\
+    ImageView,\
+    layout_width=\"30dp\",\
+    layout_height=\"30dp\",\
+    layout_gravity=\"center|bottom\",\
+    layout_marginBottom=\"-3dp\",\
+    src=\"drawable/ic_chevron_down.png\",\
+  },\
+},-1)\
+hideBtn.LayoutParams.gravity=Gravity.RIGHT\
+hideBtn.LayoutParams=hideBtn.LayoutParams.setMargins(0,getStatusBarHeight()-hideBtn.LayoutParams.height/2*1.6,hideBtn.LayoutParams.width,0)\
+hideBtn.onClick=function()\
+  import\"android.view.animation.*\"\
+  if not isToolbarHidden then\
+    ObjectAnimator.ofFloat(toolbarParent,\"translationY\",{toolbarParent.getTranslationY(),toolbarParent.getTranslationY()-toolbarParent.getHeight()}).setDuration(500).start()\
+    ObjectAnimator.ofFloat(toolbarParent,\"translationY\",{toolbarParent.getTranslationY(),-toolbarParent.getHeight()}).setDuration(500).start()\
+    ObjectAnimator.ofFloat(hideBtn,\"translationY\",{hideBtn.getTranslationY(),0}).setDuration(500).start()\
+    isToolbarHidden=true\
+  else\
+  ObjectAnimator.ofFloat(toolbarParent,\"translationY\",{toolbarParent.getTranslationY(),toolbarParent.getTranslationY()+toolbarParent.getHeight()}).setDuration(500).start()\
+  ObjectAnimator.ofFloat(toolbarParent,\"translationY\",{toolbarParent.getTranslationY(),0}).setDuration(500).start()\
+  ObjectAnimator.ofFloat(hideBtn,\"translationY\",{hideBtn.getTranslationY(),-hideBtn.getHeight()}).setDuration(500).start()\
+  isToolbarHidden=nil\
+  end\
+end\
+import\"android.view.animation.*\"\
+--动画展示顶栏，暗示可隐藏（并没有什么用）\
+toolbarParent.setAnimation(TranslateAnimation(0,0,-toolbarParent.LayoutParams.height,0).setDuration(500).setFillAfter(true))\
+\
+--隐藏“隐藏按钮”\
+task(100,function()ObjectAnimator.ofFloat(hideBtn,\"translationY\",{hideBtn.getTranslationY(),-hideBtn.getHeight()}).setDuration(500).start()end)\
+\
+\
+ObjectAnimator.ofFloat(toolbarParent,\"translationY\",{toolbarParent.getTranslationY(),-toolbarParent.getHeight()}).setDuration(500).start()\
+ObjectAnimator.ofFloat(hideBtn,\"translationY\",{hideBtn.getTranslationY(),0}).setDuration(500).start()\
+isToolbarHidden=true\
+  \
+\
+--隐藏按钮可移动（不建议作为参考，因为这里仅仅是实现，加上让变量少一点，造成代码极乱极差，修改自我的可移动悬浮按钮，不过删除了贴边和纵坐标移动，然后乱改尽量减少变量）\
+local hcm=false\
+local hsx\
+jdpuk=32552732\
+if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+hideBtn.onTouch=function(view,event,JDPUK)\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  local x=event.getRawX()\
+  if event.getAction()==MotionEvent.ACTION_DOWN then\
+    if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+    hsx=x\
+    return false\
+  elseif event.getAction()==MotionEvent.ACTION_MOVE then\
+    if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+    if hcm then\
+      hideBtn.LayoutParams=hideBtn.LayoutParams.setMargins(0,getStatusBarHeight()-hideBtn.LayoutParams.height/2*1.6,this.width-((x<hideBtn.LayoutParams.width and hideBtn.LayoutParams.width)or x),0)\
+      return true\
+    else\
+      hcm=(hsx and math.abs(x-hsx)>=50 and jdpuk==tonumber(\"3255\"..\"2732\"))--32552732\
+      return false\
+    end\
+  elseif event.getAction()==MotionEvent.ACTION_UP then\
+    if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..tostring(32) then error()end\
+    local tmp=hcm\
+    hsx=nil\
+    hcm=false\
+    if tmp then\
+      return true\
+    else\
+      return false\
+    end\
+  end\
+  return false\
+end\
+\
+\
+local a=io.open(\"/sdcard/轻工具箱/data/a1\"):read(\"*a\")\
+if a==\"开\" then\
+webView.addView(loadlayout{\
+    LinearLayout,\
+    id=\"overla\",\
+    layout_width=\"fill\",\
+    layout_height=32552732*6,\
+    orientation=\"vertical\",\
+    backgroundColor=\"#86000000\",\
+  })\
+toolbarParent.addView(loadlayout{\
+    LinearLayout,\
+    id=\"overlay\",\
+    layout_width=\"fill\",\
+    layout_height=32552732*6,\
+    orientation=\"vertical\",\
+    backgroundColor=\"#86000000\",\
+  })\
+else\
+webView.removeView(overla)\
+toolbarParent.removeView(overlay)\
+end\
+\
+\
+\
+\
+\
+import \"java.io.File\"\
+\
+local VIP=io.open(\"/sdcard/.轻工具箱/.data/.VIP\"):read(\"*a\")\
+\
+if VIP==\"会员\" then\
+\
+\
+  import \"android.text.format.Formatter\"\
+  function Too_young()\
+    webView.setDownloadListener{onDownloadStart=function(url,userAgent,contentDisposition,mimetype,contentLength)\
+        文件名=URLUtil.guessFileName(url, contentDisposition, mimeType);\
+        下载链接=url\
+        文件类型=mimetype\
+        文件大小=Formatter.formatFileSize(this, contentLength)       \
+        if 文件名==\"\" or nil then\
+          文件名=os.date(\"%Y%m%d%H%M%S\")\
+        end\
+        if 文件类型==\"\" or nil then\
+          文件类型=\"空\"\
+        end\
+        if 文件大小==\"-1b\" or \"-1B\" or \"-1字节\" or \"\" or \"nil\" then\
+          文件大小=\"就不告诉你\"\
+        end      \
+       下载()\
+         function adm(url)\
+          if isPackageInstalled(\"com.dv.adm.pay\") then\
+            this.startActivity(Intent().setAction(\"android.intent.action.SEND\").setType(\"text/*\").putExtra(\"android.intent.extra.TEXT\", url).setClassName(\"com.dv.adm.pay\", \"com.dv.adm.pay.AEditor\"))\
+          else\
+            提示(\"没有安装ADM\")\
+          end\
+        end \
+      end}\
+  end\
+Too_young()\
+ function 下载()--以下代码可自由编辑，每当监听到下载任务时会运行以下代码。可用的值：url,userAgent,contentDisposition,mimetype,contentLength,文件名,文件类型,文件大小,下载链接\
+    对话框()\
+    .设置标题(\"新建下载任务\")\
+    .设置消息(\"文件名：\"..文件名..\"\\n文件类型：\"..文件类型..\"\\n文件大小：\"..文件大小..\"\\n下载链接：\"..下载链接..\"\")\
+    .设置积极按钮(\"下载\",function()\
+      downloadManager=activity.getSystemService(Context.DOWNLOAD_SERVICE);--调用系统下载器下载\
+      url=Uri.parse(下载链接);\
+      request=DownloadManager.Request(url);\
+      request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE|DownloadManager.Request.NETWORK_WIFI);\
+      request.setDestinationInExternalPublicDir(\"sdcard/轻工具箱/download\",文件名);\
+      request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);\
+      downloadManager.enqueue(request);\
+    end)\
+    .设置消极按钮(\"取消\")\
+    .设置中立按钮(\"ADM下载\",function()\
+      adm(下载链接)\
+    end)\
+    .显示()\
+  end\
+\
+\
+end\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+" ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+--程序启动时会执行的事件\
+ti=Ticker()\
+ti.Period=500\
+ti.onTick=function() \
+ j=activity.getSystemService(Context.CLIPBOARD_SERVICE).getText()--获取剪贴板内容\
+ if j==\"\" then\
+   else\
+activity.getSystemService(Context.CLIPBOARD_SERVICE).setText(\"\")\
+   end\
+ end\
+ti.start()\
+\
+\
+\
+\
+\
+--请勿删除版权©音六网络科技\
+--QQ1785333334" ;
+      ["网页即将加载"]	= "webView.settings.setUserAgentString(\"Mozilla/5.0 (Symbian/3; Series60/5.2 NokiaN8-00/012.002; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/533.4 (KHTML,like Gecko) NokiaBrowser/7.3.0 Mobile Safari/533.4 3gpp-gba\")\
+\
+\
+\
+" ;
+      } ;
+  } ;

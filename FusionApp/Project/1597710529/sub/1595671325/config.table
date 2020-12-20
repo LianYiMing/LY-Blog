@@ -1,0 +1,851 @@
+{
+  ["view_attribute"]	= {
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏标题"]	= "Title" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      } ;
+  ["sidebar"]	= {
+      ["items"]	= {
+          } ;
+      ["启用"]	= true ;
+      ["启用顶部图片"]	= false ;
+      } ;
+  ["fltBtn"]	= {
+      ["图标"]	= "" ;
+      ["显示"]	= false ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      } ;
+  ["events"]	= {
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象,新标题=..." ;
+      ["程序启动"]	= "--程序启动时会执行的事件\
+\
+chengmi={\
+  LinearLayout;\
+  layout_width=\"fill\";\
+  layout_height=\"fill\";\
+  orientation=\"vertical\";\
+  backgroundColor=\"#fffffff\";\
+  {\
+    LinearLayout;\
+    orientation=\"vertical\";\
+    {\
+      LinearLayout;\
+      {\
+        ImageView;\
+        src=\"img/bj.jpg\";\
+        scaleType=\"fitXY\";\
+        layout_width=\"400dp\";\
+      };\
+    };\
+  };\
+  {\
+    LinearLayout;\
+    orientation=\"vertical\";\
+    layout_width=\"fill\";\
+    layout_height=\"15%h\";\
+    background='img/tp.png';\
+    gravity=\"center\";\
+    layout_gravity=\"center\";\
+    id=\"天气部分\"; \
+    {\
+      LinearLayout;\
+      orientation=\"horizontal\";\
+      layout_width=\"wrap\";\
+      layout_height=\"wrap\";\
+      gravity=\"center\";\
+      layout_gravity=\"center\";\
+      {\
+        LinearLayout;\
+        gravity=\"center\";\
+        layout_width=\"20%w\";\
+        layout_height=\"fill\";\
+        orientation=\"vertical\";\
+        layout_gravity=\"center\";\
+        layout_marginRight=\"13.5%w\";\
+        id=\"时间部分\";\
+        {\
+          TextView;\
+          textSize=\"17sp\";\
+          id=\"asp\";\
+          layout_height=\"wrap\";\
+          layout_width=\"wrap\";\
+          text=\"--:--\";\
+          gravity=\"center\";\
+          layout_gravity=\"center\";\
+          textColor=\"#ff000000\";\
+        };\
+        {\
+          LinearLayout;\
+          gravity=\"center\";\
+          layout_width=\"wrap\";\
+          layout_height=\"wrap\";\
+          orientation=\"horizontal\";\
+          layout_gravity=\"center\";\
+          {\
+            TextView;\
+            textSize=\"12sp\";\
+            id=\"asp3\";\
+            layout_height=\"wrap\";\
+            layout_width=\"wrap\";\
+            text=\"时段\";\
+            gravity=\"center\";\
+            layout_gravity=\"center\";\
+            --layout_marginBottom=\"0.7%h\";\
+          };\
+          {\
+            TextView;\
+            layout_marginTop=\"0dp\";\
+            --layout_marginLeft=\"2%w\";\
+            id=\"asp2\";\
+            layout_height=\"wrap\";\
+            layout_width=\"6%w\";\
+            text=\"00\";\
+            gravity=\"center\";\
+            layout_gravity=\"center\";\
+            textSize=\"12sp\";\
+            visibility=8,\
+            --layout_marginBottom=\"0.7%h\";\
+          };\
+        };\
+      };\
+\
+      {\
+        LinearLayout;\
+        layout_gravity=\"center|right\";\
+        gravity=\"center|right\";\
+        {\
+          ImageView;\
+          scaleType=\"fitXY\";\
+          id=\"天气icon\";\
+          --src=(\"https://m.tianqi.com/\"..wtic);\
+          layout_height=\"45dp\"; \
+          layout_width=\"45dp\";\
+          layout_gravity=\"center\";\
+\
+        };\
+      };\
+      {\
+        LinearLayout;\
+        layout_height=\"wrap\";\
+        orientation=\"vertical\";\
+        layout_width=\"wrap\";\
+        layout_gravity=\"center|right\";\
+        gravity=\"center|right\";\
+        layout_marginLeft=\"3%w\";\
+        {\
+          LinearLayout;\
+          orientation=\"vertical\";\
+          layout_marginLeft=\"0dp\";\
+          layout_gravity=\"center\";\
+          layout_gravity=\"center\";\
+          gravity=\"center\";\
+          {\
+            LinearLayout;\
+            orientation=\"horizontal\";\
+            layout_gravity=\"center\";\
+            gravity=\"center\";\
+            {\
+              TextView;\
+              textSize=\"23sp\";\
+              text=\"-- ℃\";\
+              layout_gravity=\"center\";\
+              gravity=\"center\";\
+              textColor=\"#ff000000\";\
+              id=\"温度text\";\
+              singleLine=true,\
+            };\
+\
+          };\
+          {\
+            TextView;\
+            textSize=\"12sp\";\
+            text=\"未知数据\";\
+            layout_marginTop=\"0dp\";\
+            layout_gravity=\"center\";\
+            gravity=\"center\";\
+            id=\"温度数据text\";\
+            singleLine=true,\
+          };\
+        };\
+      }; \
+    };\
+    {\
+      LinearLayout;\
+      layout_height=\"wrap\";\
+      orientation=\"horizontal\";\
+      layout_width=\"fill\";\
+      layout_gravity=\"center\";\
+      gravity=\"center\";\
+      layout_marginTop=\"2%h\";\
+      id=\"其他天气数据\";\
+      {\
+        TextView;\
+        text=cs;\
+        -- textColor=0xffffffff;\
+        --visibility=8;\
+        layout_marginLeft=\"5dp\";\
+        id=\"当前城市text\";\
+        singleLine=true,\
+      }; \
+      {\
+        TextView;\
+        text=\"湿度 未知\";\
+        singleLine=true,\
+        layout_marginLeft=\"5dp\";\
+        id=\"湿度text\";\
+      };\
+      {\
+        TextView;\
+        text=\"风力 未知\";\
+        layout_marginLeft=\"5dp\";\
+        singleLine=true,\
+        id=\"风力风向text\";\
+      };\
+    };\
+    {\
+      LinearLayout;\
+      layout_gravity='center';--重力属性\
+      orientation='vertical';--重力属性\
+      layout_width='20%w';--布局宽度\
+      layout_height='0%h';--布局高度\
+      layout_marginTop='0dp';--布局顶距\
+      layout_marginTop=\"0%h\";\
+      {\
+        ImageView;--图片控件\
+        src='img/google.png';--图片路径\
+        layout_width='20%w';--图片宽度\
+        layout_height='10%h';--图片高度\
+        scaleType='fitXY';\
+        id=\"yq\";\
+      };\
+    };\
+  };\
+  {\
+    LinearLayout;\
+    layout_gravity=\"center\";\
+    {\
+      CardView;\
+      layout_gravity=\"center\";\
+      layout_width=\"310dp\";\
+      radius=\"20dp\";\
+      layout_height=\"40dp\";\
+      {\
+        EditText;\
+        id=\"sousou\";\
+        layout_width=\"210dp\";\
+        background=\"#ffeeefef\";\
+      };\
+      {\
+        ImageButton;\
+        id=\"delete\";\
+        src=\"img/close.png\";\
+        scaleType=\"fitCenter\";\
+        layout_gravity=\"right\";\
+        background=\"#ffeeefef\";\
+        layout_width=\"40dp\";\
+        layout_marginRight=\"80dp\";\
+      };\
+      {\
+        CardView;\
+        layout_height=\"30dp\";\
+        layout_gravity=\"right|center\";\
+        background=\"#ff000000\";\
+        layout_width=\"2dp\";\
+        layout_marginRight=\"80dp\";\
+      };\
+      {\
+        Button;\
+        id=\"sousuo\";\
+        layout_gravity=\"right\";\
+        text=\"搜索\";\
+        background=\"#ffeeefef\";\
+      };\
+    };\
+  };\
+\
+  {\
+    CardView;\
+    layout_width=\"fill\";\
+    background=\"#fffffff\";\
+    layout_height=\"fill\";\
+    {\
+      GridLayout;\
+      columnCount=\"5\";\
+      rowCount=\"3\";\
+      {\
+        CardView;\
+        id=\"bilibili\";\
+        background=\"#fffffff\";\
+        layout_height=\"100dp\";\
+        layout_width=\"20%w\";\
+                {\
+          ImageView;\
+          src=\"img/bilibili.png\";\
+          layout_width=\"45dp\";\
+          layout_height=\"45dp\";\
+          layout_gravity=\"center\";\
+        };\
+        {\
+          TextView;\
+          gravity=\"center\";\
+          layout_width=\"20%w\";\
+          layout_gravity=\"bottom|center\";\
+          text=\"哔哩哔哩\";\
+        };\
+      };\
+      {\
+        CardView;\
+        id=\"weibo\";\
+        background=\"#fffffff\";\
+        layout_height=\"100dp\";\
+        layout_width=\"20%w\";\
+        {\
+          ImageView;\
+          src=\"img/weibo.png\";\
+          layout_width=\"45dp\";\
+          layout_height=\"45dp\";\
+          layout_gravity=\"center\";\
+        };\
+        {\
+          TextView;\
+          gravity=\"center\";\
+          layout_width=\"20%w\";\
+          layout_gravity=\"bottom|center\";\
+          text=\"新浪微博\";\
+        };\
+      };\
+      {\
+        CardView;\
+        id=\"move\";\
+        background=\"#fffffff\";\
+        layout_height=\"100dp\";\
+        layout_width=\"20%w\";\
+        {\
+          ImageView;\
+          src=\"img/zhihu.png\";\
+          layout_width=\"45dp\";\
+          layout_height=\"45dp\";\
+          layout_gravity=\"center\";\
+        };\
+        {\
+          TextView;\
+          gravity=\"center\";\
+          layout_width=\"20%w\";\
+          layout_gravity=\"bottom|center\";\
+          text=\"电影演出\";\
+        };\
+      };\
+      {\
+        CardView;\
+        id=\"fanyi\";\
+        background=\"#fffffff\";\
+        layout_height=\"100dp\";\
+        layout_width=\"20%w\";\
+        {\
+          ImageView;\
+          src=\"img/fanyi.png\";\
+          layout_width=\"45dp\";\
+          layout_height=\"45dp\";\
+          layout_gravity=\"center\";\
+        };\
+        {\
+          TextView;\
+          gravity=\"center\";\
+          layout_width=\"20%w\";\
+          layout_gravity=\"bottom|center\";\
+          text=\"柠静翻译\";\
+        };\
+      };\
+      {\
+        CardView;\
+        id=\"music\";\
+        background=\"#fffffff\";\
+        layout_height=\"100dp\";\
+        layout_width=\"20%w\";\
+        {\
+          ImageView;\
+          src=\"img/music.png\";\
+          layout_width=\"45dp\";\
+          layout_height=\"45dp\";\
+          layout_gravity=\"center\";\
+        };\
+        {\
+          TextView;\
+          gravity=\"center\";\
+          layout_width=\"20%w\";\
+          layout_gravity=\"bottom|center\";\
+          text=\"柠静音乐\";\
+        };\
+      };\
+      {\
+        CardView;\
+        id=\"shortlist\";\
+        background=\"#fffffff\";\
+        layout_height=\"100dp\";\
+        layout_width=\"20%w\";\
+        {\
+          ImageView;\
+          src=\"img/taobao.png\";\
+          layout_width=\"45dp\";\
+          layout_height=\"45dp\";\
+          layout_gravity=\"center\";\
+        };\
+        {\
+          TextView;\
+          gravity=\"center\";\
+          layout_width=\"20%w\";\
+          layout_gravity=\"bottom|center\";\
+          text=\"短の链接\";\
+        };\
+      };\
+      {\
+        CardView;\
+        id=\"zhinanzhen\";\
+        background=\"#fffffff\";\
+        layout_height=\"100dp\";\
+        layout_width=\"20%w\";\
+        {\
+          ImageView;\
+          src=\"img/zhinanzhen.png\";\
+          layout_width=\"45dp\";\
+          layout_height=\"45dp\";\
+          layout_gravity=\"center\";\
+        };\
+        {\
+          TextView;\
+          gravity=\"center\";\
+          layout_width=\"20%w\";\
+          layout_gravity=\"bottom|center\";\
+          text=\"指南の针\";\
+        };\
+      };\
+      {\
+        CardView;\
+        id=\"tencentmove\";\
+        background=\"#fffffff\";\
+        layout_height=\"100dp\";\
+        layout_width=\"20%w\";\
+        {\
+          ImageView;\
+          src=\"img/email.png\";\
+          layout_width=\"45dp\";\
+          layout_height=\"45dp\";\
+          layout_gravity=\"center\";\
+        };\
+        {\
+          TextView;\
+          gravity=\"center\";\
+          layout_width=\"20%w\";\
+          layout_gravity=\"bottom|center\";\
+          text=\"腾讯视频\";\
+        };\
+      };\
+      {\
+        CardView;\
+        id=\"meituan\";\
+        background=\"#fffffff\";\
+        layout_height=\"100dp\";\
+        layout_width=\"20%w\";\
+        {\
+          ImageView;\
+          src=\"img/meituan.png\";\
+          layout_width=\"45dp\";\
+          layout_height=\"45dp\";\
+          layout_gravity=\"center\";\
+        };\
+        {\
+          TextView;\
+          gravity=\"center\";\
+          layout_width=\"20%w\";\
+          layout_gravity=\"bottom|center\";\
+          text=\"美团外卖\";\
+        };\
+      };\
+      {\
+        CardView;\
+        id=\"tiaoma\";\
+        background=\"#fffffff\";\
+        layout_height=\"100dp\";\
+        layout_width=\"20%w\";\
+        {\
+          ImageView;\
+          src=\"img/novel.png\";\
+          layout_width=\"45dp\";\
+          layout_height=\"45dp\";\
+          layout_gravity=\"center\";\
+        };\
+        {\
+          TextView;\
+          gravity=\"center\";\
+          layout_width=\"20%w\";\
+          layout_gravity=\"bottom|center\";\
+          text=\"条码工具\";\
+        };\
+      };\
+      {\
+        CardView;\
+        id=\"huafei\";\
+        background=\"#fffffff\";\
+        layout_height=\"100dp\";\
+        layout_width=\"20%w\";\
+        {\
+          ImageView;\
+          src=\"img/huafei.png\";\
+          layout_width=\"45dp\";\
+          layout_height=\"45dp\";\
+          layout_gravity=\"center\";\
+        };\
+        {\
+          TextView;\
+          gravity=\"center\";\
+          layout_width=\"20%w\";\
+          layout_gravity=\"bottom|center\";\
+          text=\"话费充值\";\
+        };\
+      };\
+      {\
+        CardView;\
+        id=\"app store\";\
+        background=\"#fffffff\";\
+        layout_height=\"100dp\";\
+        layout_width=\"20%w\";\
+        {\
+          ImageView;\
+          src=\"img/app store.png\";\
+          layout_width=\"45dp\";\
+          layout_height=\"45dp\";\
+          layout_gravity=\"center\";\
+        };\
+        {\
+          TextView;\
+          gravity=\"center\";\
+          layout_width=\"20%w\";\
+          layout_gravity=\"bottom|center\";\
+          text=\"应用商店\";\
+        };\
+      };\
+      {\
+        CardView;\
+        id=\"caipao\";\
+        background=\"#fffffff\";\
+        layout_height=\"100dp\";\
+        layout_width=\"20%w\";\
+        {\
+          ImageView;\
+          src=\"img/caipiao.png\";\
+          layout_width=\"45dp\";\
+          layout_height=\"45dp\";\
+          layout_gravity=\"center\";\
+        };\
+        {\
+          TextView;\
+          gravity=\"center\";\
+          layout_width=\"20%w\";\
+          layout_gravity=\"bottom|center\";\
+          text=\"彩票查询\";\
+        };\
+      };\
+      {\
+        CardView;\
+        id=\"vip\";\
+        background=\"#fffffff\";\
+        layout_height=\"100dp\";\
+        layout_width=\"20%w\";\
+        {\
+          ImageView;\
+          src=\"img/gay.png\";\
+          layout_width=\"45dp\";\
+          layout_height=\"45dp\";\
+          layout_gravity=\"center\";\
+        };\
+        {\
+          TextView;\
+          gravity=\"center\";\
+          layout_width=\"20%w\";\
+          layout_gravity=\"bottom|center\";\
+          text=\"vip福利\";\
+        };\
+      };\
+      {\
+        CardView;\
+        id=\"more\";\
+        background=\"#fffffff\";\
+        layout_height=\"100dp\";\
+        layout_width=\"20%w\";\
+        {\
+          ImageView;\
+          src=\"img/more.png\";\
+          layout_width=\"45dp\";\
+          layout_height=\"45dp\";\
+          layout_gravity=\"center\";\
+        };\
+        {\
+          TextView;\
+          gravity=\"center\";\
+          layout_width=\"20%w\";\
+          layout_gravity=\"bottom|center\";\
+          text=\"更多功能\";\
+        };\
+      };\
+    };\
+  };\
+};\
+\
+webView.addView(loadlayout(chengmi))\
+\
+天气网链接=\"https://m.tianqi.com/\"\
+中国天气网链接=\"https://m.weather.com.cn/\"\
+天气源=1 --1天气网，2中国天气网\
+\
+--天气网的天气获取\
+Http.get(天气网链接,nil,\"utf8\",nil,function(code,content,cookie,header)\
+  if(code==200 and content)then\
+    定位城市=content:match(\"<text>(.-)</text>\")\
+    湿度=content:match('<span class=\"b2\"><i></i>湿度(.-)</span')\
+    空气质量=content:match('<div class=\"info\"><span class=\"b1\"><i></i>(.-)</span')\
+    风力风向=content:match('<span class=\"b3\"><i></i>(.-)</span>')\
+    度数=content:match('<dd class=\"now\">(.-)<i>')\
+    详细=content:match('<dd class=\"txt\">(.-)</dd>')\
+    天气图标=content:match('<dt><img src=\"(.-)\"></dt>')\
+    天气icon.setImageBitmap(loadbitmap(\"https://m.tianqi.com/\"..天气图标))\
+    温度text.text=度数..\"℃\"\
+    温度数据text.text=详细\
+    当前城市text.text=定位城市\
+    湿度text.text=\"湿度\"..湿度\
+    风力风向text.text=风力风向\
+    天气icon.setColorFilter(0x00000000)\
+  else\
+    天气icon.setColorFilter(0xff000000)\
+    天气icon.setImageBitmap(loadbitmap(\"drawable/unknown.png\"))\
+    温度text.text=\"-- ℃\"\
+    温度数据text.text=\"未知温度\"\
+    当前城市text.text=\" \"\
+    空气质量text.text=\" \"\
+    湿度text.text=\"无法获取天气信息, 刷新或检查网络\"\
+    风力风向text.text=\" \"\
+  end\
+end)\
+\
+\
+十二小时制=1\
+asp.setText(os.date(\"%H:%M:%S\"))\
+--if 十二小时制==0 or 十二==0 then\
+if tonumber(os.date(\"%H\"))==tonumber(\"24\") then\
+  asp.setText(os.date(\"00:%M\"))\
+elseif tonumber(os.date(\"%H\"))==tonumber(\"23\") then\
+  asp.setText(os.date(\"11:%M\"))\
+elseif tonumber(os.date(\"%H\"))==tonumber(\"22\") then\
+  asp.setText(os.date(\"10:%M\"))\
+elseif tonumber(os.date(\"%H\"))==tonumber(\"21\") then\
+  asp.setText(os.date(\"9:%M\"))\
+elseif tonumber(os.date(\"%H\"))==tonumber(\"20\") then\
+  asp.setText(os.date(\"8:%M\"))\
+elseif tonumber(os.date(\"%H\"))==tonumber(\"19\") then\
+  asp.setText(os.date(\"7:%M\"))\
+elseif tonumber(os.date(\"%H\"))==tonumber(\"18\") then\
+  asp.setText(os.date(\"6:%M\"))\
+elseif tonumber(os.date(\"%H\"))==tonumber(\"17\") then\
+  asp.setText(os.date(\"5:%M\"))\
+elseif tonumber(os.date(\"%H\"))==tonumber(\"16\") then\
+  asp.setText(os.date(\"4:%M\"))\
+elseif tonumber(os.date(\"%H\"))==tonumber(\"15\") then\
+  asp.setText(os.date(\"3:%M\"))\
+elseif tonumber(os.date(\"%H\"))==tonumber(\"14\") then\
+  asp.setText(os.date(\"2:%M\"))\
+elseif tonumber(os.date(\"%H\"))==tonumber(\"13\") then\
+  asp.setText(os.date(\"1:%M\"))\
+end\
+function hb(十二)\
+  asp2.setText(os.date(\"%S\"))\
+  -- asp.setText(os.date(\"%H:%M\"))\
+  --检测时间并设置时间段\
+  if tonumber(os.date(\"%H\"))>=tonumber(\"24\") then\
+    asp3.setText(\"半夜\")\
+  elseif tonumber(os.date(\"%H\"))>=tonumber(\"19\") then\
+    asp3.setText(\"晚上\")\
+  elseif tonumber(os.date(\"%H\"))>=tonumber(\"17\") then\
+    asp3.setText(\"傍晚\")\
+  elseif tonumber(os.date(\"%H\"))>=tonumber(\"14\") then\
+    asp3.setText(\"下午\")\
+  elseif tonumber(os.date(\"%H\"))>=tonumber(\"12\") then\
+    asp3.setText(\"中午\")\
+  elseif tonumber(os.date(\"%H\"))>=tonumber(\"10\") then\
+    asp3.setText(\"上午\")\
+  elseif tonumber(os.date(\"%H\"))>=tonumber(\"7\") then\
+    asp3.setText(\"早上\")\
+  elseif tonumber(os.date(\"%H\"))<=tonumber(\"5\") then\
+    asp3.setText(\"清晨\")\
+  end\
+  if asp2.text:find\"00\" then\
+    asp.setText(os.date(\"%H:%M\"))\
+    --if 十二小时制==0 or 十二==0 then\
+    if tonumber(os.date(\"%H\"))==tonumber(\"24\") then\
+      asp.setText(os.date(\"00:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"23\") then\
+      asp.setText(os.date(\"11:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"22\") then\
+      asp.setText(os.date(\"10:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"21\") then\
+      asp.setText(os.date(\"9:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"20\") then\
+      asp.setText(os.date(\"8:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"19\") then\
+      asp.setText(os.date(\"7:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"18\") then\
+      asp.setText(os.date(\"6:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"17\") then\
+      asp.setText(os.date(\"5:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"16\") then\
+      asp.setText(os.date(\"4:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"15\") then\
+      asp.setText(os.date(\"3:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"14\") then\
+      asp.setText(os.date(\"2:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"13\") then\
+      asp.setText(os.date(\"1:%M\"))\
+    end\
+  end\
+  if tonumber(os.date(\"%S\"))<03 then\
+    --print(\"less than 02\")\
+    --if 十二小时制==0 or 十二==0 then\
+    if tonumber(os.date(\"%H\"))==tonumber(\"24\") then\
+      asp.setText(os.date(\"00:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"23\") then\
+      asp.setText(os.date(\"11:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"22\") then\
+      asp.setText(os.date(\"10:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"21\") then\
+      asp.setText(os.date(\"9:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"20\") then\
+      asp.setText(os.date(\"8:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"19\") then\
+      asp.setText(os.date(\"7:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"18\") then\
+      asp.setText(os.date(\"6:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"17\") then\
+      asp.setText(os.date(\"5:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"16\") then\
+      asp.setText(os.date(\"4:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"15\") then\
+      asp.setText(os.date(\"3:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"14\") then\
+      asp.setText(os.date(\"2:%M\"))\
+    elseif tonumber(os.date(\"%H\"))==tonumber(\"13\") then\
+      asp.setText(os.date(\"1:%M\"))\
+    end\
+  end\
+end\
+--Ticker定时器\
+\
+ti=Ticker()\
+ti.Period=1000\
+ti.onTick=function() \
+  --事件\
+  tt=os.date(\"%H:%M:%S\")\
+  asp.setText(tt)\
+end\
+--启动Ticker定时器\
+ti.start()\
+\
+\
+function ap()\
+  require \"import\"\
+  while true do\
+    call(\"hb\")\
+    Thread.sleep(1000)--停止线程1秒\
+  end\
+end\
+thread(ap)\
+today=tostring(os.date(\"%Y%m%d\"))\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+" ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      } ;
+  ["colors"]	= {
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["悬浮按钮"]	= "#ff7abd9a" ;
+      ["进度条"]	= "#ffffffff" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["顶栏"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["导航栏"]	= "#ff7abd9a" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      } ;
+  ["toolbar"]	= {
+      ["启用搜索功能"]	= false ;
+      ["搜索URL"]	= "" ;
+      ["输入栏模式"]	= true ;
+      ["icon_btns"]	= {
+          } ;
+      ["menus"]	= {
+          [1]	= {
+              ["onClick"]	= "退出页面()" ;
+              ["name"]	= "退出" ;
+              } ;
+          } ;
+      ["搜索框提示"]	= "" ;
+      } ;
+  ["switch"]	= {
+      ["支持滑动页面"]	= false ;
+      ["横屏"]	= false ;
+      ["显示状态栏"]	= true ;
+      ["启用启动图"]	= false ;
+      } ;
+  ["web"]	= {
+      ["支持打开外部应用"]	= true ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["启动网页"]	= "" ;
+      ["启用长按菜单"]	= true ;
+      ["网页沉浸"]	= false ;
+      ["启用进度条"]	= true ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  } ;

@@ -1,0 +1,63 @@
+{
+  ["web"]	= {
+      ["网页沉浸"]	= false ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["启用进度条"]	= false ;
+      ["支持打开外部应用"]	= false ;
+      ["启动网页"]	= "https://m.duitang.com/blog/list/category/?id=5017d172705cbe10c0000008&title=%E5%A3%81%E7%BA%B8" ;
+      ["启用长按菜单"]	= true ;
+      } ;
+  ["colors"]	= {
+      ["状态栏"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ff000000" ;
+      ["进度条"]	= "#00000000" ;
+      } ;
+  ["events"]	= {
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+if 网页链接:find(\"www\")\
+\
+ then\
+\
+print(\"长按可保存\")\
+停止加载()\
+\
+\
+end\
+\
+local wl=activity.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE).getActiveNetworkInfo(); \13\
+if wl== nil then\13\
+进入子页面(\"错误页\")\
+end" ;
+      ["程序启动"]	= "import 'android.webkit.WebView'webView.addJavascriptInterface({},'JsInterface')\
+--保存图片\
+import\"bctp\"" ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象,新标题=..." ;
+      } ;
+  ["web_control"]	= {
+      [2]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "@ID(header),@ID(hooker),@ID(adwrapper),foot,@ID(foot)" ;
+          ["url"]	= "www.duitang.com" ;
+          } ;
+      [1]	= {
+          ["js"]	= "" ;
+          ["remove_element"]	= "@ID(header),@ID(hooker),@ID(adwrapper),foot,@ID(foot),album" ;
+          ["url"]	= "m.duitang.com" ;
+          } ;
+      } ;
+  ["switch"]	= {
+      ["横屏"]	= false ;
+      ["显示状态栏"]	= false ;
+      ["启用启动图"]	= false ;
+      } ;
+  } ;

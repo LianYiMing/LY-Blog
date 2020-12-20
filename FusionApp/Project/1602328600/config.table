@@ -1,0 +1,818 @@
+{
+  ["colors"]	= {
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["侧滑栏列表图标"]	= "#e1000000" ;
+      ["进度条"]	= "#2a000000" ;
+      ["顶栏"]	= "#ffdcdcdc" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["侧滑栏列表文字"]	= "#ff000000" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#ffffffff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#ffaaaaaa" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["导航栏"]	= "#ffffffff" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      } ;
+  ["switch"]	= {
+      ["启用启动图"]	= false ;
+      ["横屏"]	= false ;
+      ["支持滑动页面"]	= false ;
+      ["显示状态栏"]	= true ;
+      } ;
+  ["fltBtn"]	= {
+      ["图标"]	= "" ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件\
+pop=PopupMenu(activity,fltBtn)\
+menu=pop.Menu\
+menu.add(\"返回顶部\").onMenuItemClick=function(a)\
+  返回网页顶部()\
+\
+end\
+menu.add(\"刷新\").onMenuItemClick=function(a)\
+  刷新网页()\
+\
+end\
+menu.add(\"阅读模式\").onMenuItemClick=function(a)\
+  阅读模式()\
+\
+end\
+menu.add(\"显示/隐藏顶栏\").onMenuItemClick=function(a)\
+\
+if barisshow == 0 then\
+  --状态栏\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+  else\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+  end\
+end\
+\
+menu.add(\"隐藏悬浮窗\").onMenuItemClick=function(a)\
+  fltBtn.setVisibility(View.GONE)\
+  end\
+menu.add(\"退出\").onMenuItemClick=function(a)\
+  退出页面()\
+\
+\
+end\
+pop.show()\
+--显示import \"android.view.WindowManager\"\
+--需程序启动赋予barisshow初始值0\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+" ;
+      ["显示"]	= false ;
+      } ;
+  ["web_control"]	= {
+      [1]	= {
+          ["remove_element"]	= "w-1000 copyright,qrcode," ;
+          ["url"]	= "www.runoob.com" ;
+          ["js"]	= "" ;
+          } ;
+      } ;
+  ["view_attribute"]	= {
+      ["搜索栏圆角弧度"]	= "100dp" ;
+      ["顶栏阴影强度"]	= "100dp" ;
+      ["顶栏高度"]	= "34dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏标题"]	= "半层烟雨披风沙，卷入心帘尘飞扬" ;
+      } ;
+  ["events"]	= {
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+\
+加载Js([[\
+//08:16-50\
+document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"display:none\");\
+\
+//15:36-38\
+document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
+\
+]])" ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["程序启动"]	= "\
+import \"android.app.*\"\
+import \"android.os.*\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+import \"android.graphics.Typeface\"\
+import \"android.view.animation.AccelerateInterpolator\"\
+import \"android.transition.ArcMotion\"\
+import \"android.animation.AnimatorSet\"\
+import \"android.animation.Animator$AnimatorListener\"\
+import \"android.graphics.drawable.GradientDrawable\"\
+\
+began={\
+  RelativeLayout;\
+  layout_height=\"fill\";\
+  layout_width=\"fill\";\
+  id=\"began_b\";\
+  {\
+    LinearLayout;\
+    orientation=\"vertical\";\
+    layout_height=\"fill\";\
+    layout_width=\"fill\";\
+    {\
+      RelativeLayout;\
+      layout_weight=\"1\";\
+      layout_height=\"-1\";\
+      background=\"#e94e77\";\
+      id=\"top\";\
+      layout_width=\"-1\";\
+    };\
+    {\
+      RelativeLayout;\
+      layout_weight=\"1\";\
+      layout_height=\"-1\";\
+      background=\"#2EC4B6\";\
+      id=\"bottom\";\
+      layout_width=\"-1\";\
+      {\
+        TextView;\
+        layout_centerHorizontal=\"true\";\
+        textColor=\"#ffffff\";\
+        id=\"t1\";\
+        textSize=\"28sp\";\
+        layout_marginTop=\"50dp\";\
+      };\
+      {\
+        TextView;\
+        layout_centerHorizontal=\"true\";\
+        textColor=\"#ffffff\";\
+        id=\"t2\";\
+        textSize=\"14sp\";\
+        layout_marginTop=\"100dp\";\
+      };\
+    };\
+  };\
+  {\
+    ImageView;\
+    scaleType=\"fitCenter\";\
+    layout_height=\"55dp\";\
+    id=\"center\";\
+    layout_width=\"55dp\";\
+    layout_centerInParent=\"true\";\
+    src=\"extreme.png\";\
+  };\
+};\
+\
+drawerLayout.getParent().addView(loadlayout(began))\
+\
+function CircleButton(view,InsideColor,radiu)\
+  drawable = GradientDrawable() \
+  drawable.setShape(GradientDrawable.RECTANGLE) \
+  drawable.setColor(InsideColor)\
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  view.setBackgroundDrawable(drawable)\
+end\
+--控件圆角 (控件id,颜色,角度)\
+CircleButton(center,0xFF218380,360)\
+--第一行文字\
+t1.setText(\"M-HTML\")\
+ats = AnimatorSet()\
+--文字动画(参考lua手册)\
+scx=ObjectAnimator().ofFloat(t1,\"scaleX\",{0,1})\
+scy=ObjectAnimator().ofFloat(t1,\"scaleY\",{0,1})\
+tr=ObjectAnimator().ofFloat(t1, \"Y\",{1200,t1.getY()+120})\
+alpha = ObjectAnimator().ofFloat(t1, \"alpha\", {0,1})\
+--800是动画时间，毫秒\
+ats.setDuration(500)\
+ats.setInterpolator(AccelerateInterpolator())\
+ats.play(scx).with(scy).with(tr).with(alpha)\
+ats.start()\
+\
+ats.addListener(AnimatorListener{\
+  onAnimationEnd=function(animation)\
+    --第二行文字\
+    t2.setText(\"Powered by 廉一鸣\")\
+    ats2 = AnimatorSet()\
+    scx2=ObjectAnimator().ofFloat(t2,\"scaleX\",{0,1})\
+    scy2=ObjectAnimator().ofFloat(t2,\"scaleY\",{0,1})\
+    tr2=ObjectAnimator().ofFloat(t2, \"Y\",{1200,t1.getY()+140})\
+    alpha2 = ObjectAnimator().ofFloat(t2, \"alpha\", {0,1})\
+    --动画时间\
+    ats2.setDuration(200)\
+    ats2.setInterpolator(AccelerateInterpolator())\
+    ats2.play(scx2).with(scy2).with(tr2).with(alpha2)\
+    ats2.start()\
+\
+    ats2.addListener(AnimatorListener{\
+      onAnimationEnd=function(animation)\
+        phone=center\
+        set = AnimatorSet()\
+        anim = ObjectAnimator .ofFloat(phone, \"rotation\",{720,0})\
+        anim3 = ObjectAnimator .ofFloat(phone, \"rotationX\",{720,0})\
+        anim.setDuration(500)\
+        anim3.setDuration(500)\
+        set.play(anim).before(anim3)\
+        set.start()\
+\
+\
+        set.addListener(AnimatorListener{\
+          onAnimationEnd=function(animation)\
+            set2 = AnimatorSet()\
+            --结束动画 中间图标渐隐 上下拉开\
+            tr3=ObjectAnimator().ofFloat(top, \"Y\",{top.getY(),-2000})\
+            tr4=ObjectAnimator().ofFloat(bottom, \"Y\",{bottom.getY(),5000})\
+            al=ObjectAnimator().ofFloat(center, \"alpha\", {1,0})\
+            set2.setDuration(125)\
+            set2.setInterpolator(AccelerateInterpolator())\
+            set2.play(tr3).with(tr4).with(al)\
+            set2.start()\
+\
+            set2.addListener(AnimatorListener{\
+              onAnimationEnd=function(animation)\
+                --动画结束执行代码\
+              end,\
+            });\
+\
+          end,\
+        });\
+\
+      end,\
+    });\
+\
+\
+\
+  end,\
+});\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+local wl=activity.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE).getActiveNetworkInfo(); \
+\
+if wl== nil then    \
+require \"import\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+\
+lay=\
+\
+{\
+  LinearLayout;\
+  backgroundColor=\"#ffffffff\",\
+  orientation=\"vertical\";\
+  layout_width=\"fill\";\
+  layout_height=\"fill\";\
+    {\
+    TextView;\
+    text=\"网络异常！请检查你的网络！\";\
+    layout_marginTop=\"100\";\
+    id=\"db\";\
+    textSize=\"20\"; \
+    textColor=wlc; \
+    layout_gravity=\"center\";\
+    layout_marginBottom=\"50\";\
+  };\
+\
+{\
+  LinearLayout;\
+  backgroundColor=\"#fffffff\",\
+  orientation=\"vertical\";\
+  layout_width=\"fill\";\
+  layout_height=\"fill\";\
+    {\
+    TextView;\
+    text=\"\";\
+    layout_marginTop=\"50\";\
+    id=\"db\";\
+    textSize=\"13\"; \
+    textColor=wlc; \
+    layout_gravity=\"left\";\
+    layout_marginBottom=\"50\";\
+};\
+};\
+};\
+\
+webView.addView(loadlayout(lay))\
+\
+\
+\
+this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE )\
+\
+end\
+\
+\
+import \"android.widget.*\"\
+import \"android.support.v4.widget.*\"\
+viewParent = webView.getParent()\
+viewParent.removeView(webView)\
+refresh = SwipeRefreshLayout(this)\
+refresh.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener({\
+  onRefresh=function()\
+    刷新网页()\
+  end\
+}));\
+refresh.addView(webView)\
+viewParent.addView(refresh)\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+" ;
+      } ;
+  ["toolbar"]	= {
+      ["icon_btns"]	= {
+          } ;
+      ["输入栏模式"]	= false ;
+      ["启用搜索功能"]	= false ;
+      ["menus"]	= {
+          [1]	= {
+              ["onClick"]	= "阅读模式()" ;
+              ["name"]	= "阅读模式" ;
+              } ;
+          [2]	= {
+              ["onClick"]	= "加载Js([[javascript:(function(){var styleElem=null,doc=document,ie=doc.all,fontColor=50,sel=\"body,body *\";styleElem=createCSS(sel,setStyle(fontColor),styleElem);function setStyle(fontColor){var colorArr=[fontColor,fontColor,fontColor];return\"background-color:#e8ffe8 !important;color:RGB(\"+colorArr.join(\"%,\")+\"%) !important;\"}function createCSS(sel,decl,styleElem){var doc=document,h=doc.getElementsByTagName(\"head\")[0],styleElem=styleElem;if(!styleElem){s=doc.createElement(\"style\");s.setAttribute(\"type\",\"text/css\");styleElem=ie?doc.styleSheets[doc.styleSheets.length-1]:h.appendChild(s)}if(ie){styleElem.addRule(sel,decl)}else{styleElem.innerHTML=\"\";styleElem.appendChild(doc.createTextNode(sel+\" {\"+decl+\"}\"))}return styleElem}})();]]);  \
+" ;
+              ["name"]	= "护眼模式" ;
+              } ;
+          [3]	= {
+              ["onClick"]	= "加载Js([[{css=document.createElement(\"link\");var t='html,body,form,nav,header{background-image:none !important;background-color: #363c47 !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}div,html *{background-color: #000000 !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}p,span{background-color: transparent !important;color:#c3bdbc!important;border-color:#212533!important;box-shadow:0 0 0!important;text-shadow: 0 0 0!important;}div:empty,div[id=\"x-video-button\"],div[class=\"x-advert\"]{background-color:transparent !important;}input,select,button,textarea{box-shadow:0 0 0!important;color:#c3bdbc!important;background-color: #293037 !important;border-color:#212533!important;}a,a *{background-color: transparent !important;color:#b5a598!important;text-decoration:none!important;border-color:#212533!important;text-shadow: 0 0 0!important;}a:visited,a:visited *{color:#757170!important;}';css.href=t;var o=document.getElementsByTagName(\"head\");if(o[0].appendChild(css)){var a=document.createElement(\"style\");a.appendChild(document.createTextNode(t)),document.documentElement.appendChild(a)}}]])" ;
+              ["name"]	= "夜间模式" ;
+              } ;
+          [4]	= {
+              ["onClick"]	= "加载Js([[/*\
+ * @name: 全网灰色，致敬英雄\
+ * @Author: 谷花泰\
+ * @version: 1.0\
+ * @description: 使全网页变灰色\
+ * @include: *\
+ * @createTime: 2020-04-04 00:22:22\
+ * @updateTime: 2020-04-04 00:33:12\
+ */\
+(function () {\
+  /* 判断是否该执行 */\
+  /* 网址黑名单制，遇到这些域名不执行 */\
+  const blackList = ['example.com'];\
+\
+  const hostname = window.location.hostname;\
+  const key = encodeURIComponent('谷花泰:全网灰色，致敬英雄:执行判断');\
+  const isBlack = blackList.some(keyword => {\
+    if (hostname.match(keyword)) {\
+      return true;\
+    };\
+    return false;\
+  });\
+\
+  if (isBlack || window[key]) {\
+    return;\
+  };\
+  window[key] = true;\
+\
+  /* 开始执行代码 */\
+  class GrayBackground {\
+    constructor() {\
+      this.init();\
+    };\
+    init() {\
+      this.addStyle();\
+      this.selectAllNodes(node => {\
+        if (!document.querySelector('style#via-gray')) {\
+          this.addStyle();\
+        };\
+      });\
+    };\
+    addStyle() {\
+      const styleElm = document.createElement('style');\
+      styleElm.id = 'via-gray';\
+      styleElm.innerHTML = `\
+        html {\
+          -webkit-filter: grayscale(100%);\
+          filter:progid:DXImageTransform.Microsoft.BasicImage(graysale=1);\
+        }\
+        body {\
+          filter: gray;\
+        }\
+      `;\
+      document.head.appendChild(styleElm);\
+    };\
+    selectAllNodes(callback = () => { }) {\
+      const allNodes = document.querySelectorAll('*');\
+      Array.from(allNodes, node => {\
+        callback(node);\
+      });\
+      this.observe({\
+        targetNode: document.documentElement,\
+        config: {\
+          attributes: false\
+        },\
+        callback(mutations, observer) {\
+          const allNodes = document.querySelectorAll('*');\
+          Array.from(allNodes, node => {\
+            callback(node);\
+          });\
+        }\
+      });\
+    };\
+    observe({ targetNode, config = {}, callback = () => { } }) {\
+      if (!targetNode) {\
+        return;\
+      };\
+\
+      config = Object.assign({\
+        attributes: true,\
+        childList: true,\
+        subtree: true\
+      }, config);\
+\
+      const observer = new MutationObserver(callback);\
+      observer.observe(targetNode, config);\
+    };\
+  };\
+  try {\
+    new GrayBackground();\
+  } catch (err) {\
+    console.log('via插件：全网灰色运行出错');\
+  };\
+})();]])" ;
+              ["name"]	= "灰色模式" ;
+              } ;
+          [5]	= {
+              ["onClick"]	= "fltBtn.setVisibility(View.VISIBLE)\
+import \"android.view.WindowManager\"\
+\
+\
+if barisshow == 0 then\
+  --状态栏\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+  else\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+  end\
+" ;
+              ["name"]	= "全屏" ;
+              } ;
+          [6]	= {
+              ["onClick"]	= "加载Js([[/*\
+ * @name: 审查元素\
+ * @Author: Nekko\
+ * @version: 0.0.1\
+ * @description: 修改网页内容\
+ * @include: *\
+ */\
+{javascript:document.body.contentEditable='true'; document.designMode='on'; void 0};\
+document.getElementsByTagName(\"html\").item(0).appendChild(an);]])" ;
+              ["name"]	= "自由编辑" ;
+              } ;
+          [7]	= {
+              ["onClick"]	= "加载Js([[/*\
+ * @name: 更换字体\
+ * @Author: Sky\
+ * @version: 0.2\
+ * @description: 更换网页内容字体\
+ * @include: *\
+ * @createTime: 2020-6-7 18:00\
+ * @updateTime: 2020-6-16 11:10\
+ */\
+(function(){const\
+/*等号后的数表示选择的字体*/\
+ id = 5,\
+/* 0:阿里巴巴普惠体(Medium)\
+   1:濑户字体简体\
+   2:OPPO Sans(Medium)\
+   3:方正楷体\
+   4:方正书宋\
+   5:资源圆体(Medium) */\
+/*－－－－以下勿改－－－－*/\
+ key = encodeURIComponent('更换字体:执行判断');\
+ if(window[key] || navigator.connection.type != 'wifi'){return;}\
+ try {\
+  window[key] = true;\
+  let fn;\
+  switch(id){\
+   case 0:fn = \"AliPuHui\";break;\
+   case 1:fn = \"NaihuSC\";break;\
+   case 2:fn = \"OPPOSans\";break;\
+   case 3:fn = \"fzKaiTi\";break;\
+   case 4:fn = \"fzShuSong\";break;\
+   case 5:fn = \"zyYuanTi\";break;\
+   default:fn = \"error\";\
+  }\
+  const css = document.createElement('link');\
+  css.href = \"data:text/css,@font-face{font-family:via-font;src:url('https://cdn.jsdelivr.net/gh/IlysvlVEizbr/via-font@0.2/\"+fn+\".woff2')}html,*{font-family:via-font!important}\";\
+  css.rel = 'stylesheet';\
+  document.head.append(css);\
+ } catch(err){console.log('更换字体：', err);}\
+})();]])" ;
+              ["name"]	= "资源圆体(Medium)" ;
+              } ;
+          [8]	= {
+              ["onClick"]	= "加载Js([[/*\
+ * @name: 更换字体\
+ * @Author: Sky\
+ * @version: 0.2\
+ * @description: 更换网页内容字体\
+ * @include: *\
+ * @createTime: 2020-6-7 18:00\
+ * @updateTime: 2020-6-16 11:10\
+ */\
+(function(){const\
+/*等号后的数表示选择的字体*/\
+ id = 0,\
+/* 0:阿里巴巴普惠体(Medium)\
+   1:濑户字体简体\
+   2:OPPO Sans(Medium)\
+   3:方正楷体\
+   4:方正书宋\
+   5:资源圆体(Medium) */\
+/*－－－－以下勿改－－－－*/\
+ key = encodeURIComponent('更换字体:执行判断');\
+ if(window[key] || navigator.connection.type != 'wifi'){return;}\
+ try {\
+  window[key] = true;\
+  let fn;\
+  switch(id){\
+   case 0:fn = \"AliPuHui\";break;\
+   case 1:fn = \"NaihuSC\";break;\
+   case 2:fn = \"OPPOSans\";break;\
+   case 3:fn = \"fzKaiTi\";break;\
+   case 4:fn = \"fzShuSong\";break;\
+   case 5:fn = \"zyYuanTi\";break;\
+   default:fn = \"error\";\
+  }\
+  const css = document.createElement('link');\
+  css.href = \"data:text/css,@font-face{font-family:via-font;src:url('https://cdn.jsdelivr.net/gh/IlysvlVEizbr/via-font@0.2/\"+fn+\".woff2')}html,*{font-family:via-font!important}\";\
+  css.rel = 'stylesheet';\
+  document.head.append(css);\
+ } catch(err){console.log('更换字体：', err);}\
+})();]])" ;
+              ["name"]	= "阿里巴巴普惠体(Medium)" ;
+              } ;
+          [9]	= {
+              ["onClick"]	= "加载Js([[/*\
+ * @name: 更换字体\
+ * @Author: Sky\
+ * @version: 0.2\
+ * @description: 更换网页内容字体\
+ * @include: *\
+ * @createTime: 2020-6-7 18:00\
+ * @updateTime: 2020-6-16 11:10\
+ */\
+(function(){const\
+/*等号后的数表示选择的字体*/\
+ id = 2,\
+/* 0:阿里巴巴普惠体(Medium)\
+   1:濑户字体简体\
+   2:OPPO Sans(Medium)\
+   3:方正楷体\
+   4:方正书宋\
+   5:资源圆体(Medium) */\
+/*－－－－以下勿改－－－－*/\
+ key = encodeURIComponent('更换字体:执行判断');\
+ if(window[key] || navigator.connection.type != 'wifi'){return;}\
+ try {\
+  window[key] = true;\
+  let fn;\
+  switch(id){\
+   case 0:fn = \"AliPuHui\";break;\
+   case 1:fn = \"NaihuSC\";break;\
+   case 2:fn = \"OPPOSans\";break;\
+   case 3:fn = \"fzKaiTi\";break;\
+   case 4:fn = \"fzShuSong\";break;\
+   case 5:fn = \"zyYuanTi\";break;\
+   default:fn = \"error\";\
+  }\
+  const css = document.createElement('link');\
+  css.href = \"data:text/css,@font-face{font-family:via-font;src:url('https://cdn.jsdelivr.net/gh/IlysvlVEizbr/via-font@0.2/\"+fn+\".woff2')}html,*{font-family:via-font!important}\";\
+  css.rel = 'stylesheet';\
+  document.head.append(css);\
+ } catch(err){console.log('更换字体：', err);}\
+})();]])" ;
+              ["name"]	= "OPPO Sans(Medium)" ;
+              } ;
+          [10]	= {
+              ["onClick"]	= "加载Js([[/*\
+ * @name: 更换字体\
+ * @Author: Sky\
+ * @version: 0.2\
+ * @description: 更换网页内容字体\
+ * @include: *\
+ * @createTime: 2020-6-7 18:00\
+ * @updateTime: 2020-6-16 11:10\
+ */\
+(function(){const\
+/*等号后的数表示选择的字体*/\
+ id = 4,\
+/* 0:阿里巴巴普惠体(Medium)\
+   1:濑户字体简体\
+   2:OPPO Sans(Medium)\
+   3:方正楷体\
+   4:方正书宋\
+   5:资源圆体(Medium) */\
+/*－－－－以下勿改－－－－*/\
+ key = encodeURIComponent('更换字体:执行判断');\
+ if(window[key] || navigator.connection.type != 'wifi'){return;}\
+ try {\
+  window[key] = true;\
+  let fn;\
+  switch(id){\
+   case 0:fn = \"AliPuHui\";break;\
+   case 1:fn = \"NaihuSC\";break;\
+   case 2:fn = \"OPPOSans\";break;\
+   case 3:fn = \"fzKaiTi\";break;\
+   case 4:fn = \"fzShuSong\";break;\
+   case 5:fn = \"zyYuanTi\";break;\
+   default:fn = \"error\";\
+  }\
+  const css = document.createElement('link');\
+  css.href = \"data:text/css,@font-face{font-family:via-font;src:url('https://cdn.jsdelivr.net/gh/IlysvlVEizbr/via-font@0.2/\"+fn+\".woff2')}html,*{font-family:via-font!important}\";\
+  css.rel = 'stylesheet';\
+  document.head.append(css);\
+ } catch(err){console.log('更换字体：', err);}\
+})();]])" ;
+              ["name"]	= "方正书宋" ;
+              } ;
+          [11]	= {
+              ["onClick"]	= "加载Js([[/*\
+ * @name: 更换字体\
+ * @Author: Sky\
+ * @version: 0.2\
+ * @description: 更换网页内容字体\
+ * @include: *\
+ * @createTime: 2020-6-7 18:00\
+ * @updateTime: 2020-6-16 11:10\
+ */\
+(function(){const\
+/*等号后的数表示选择的字体*/\
+ id = 3,\
+/* 0:阿里巴巴普惠体(Medium)\
+   1:濑户字体简体\
+   2:OPPO Sans(Medium)\
+   3:方正楷体\
+   4:方正书宋\
+   5:资源圆体(Medium) */\
+/*－－－－以下勿改－－－－*/\
+ key = encodeURIComponent('更换字体:执行判断');\
+ if(window[key] || navigator.connection.type != 'wifi'){return;}\
+ try {\
+  window[key] = true;\
+  let fn;\
+  switch(id){\
+   case 0:fn = \"AliPuHui\";break;\
+   case 1:fn = \"NaihuSC\";break;\
+   case 2:fn = \"OPPOSans\";break;\
+   case 3:fn = \"fzKaiTi\";break;\
+   case 4:fn = \"fzShuSong\";break;\
+   case 5:fn = \"zyYuanTi\";break;\
+   default:fn = \"error\";\
+  }\
+  const css = document.createElement('link');\
+  css.href = \"data:text/css,@font-face{font-family:via-font;src:url('https://cdn.jsdelivr.net/gh/IlysvlVEizbr/via-font@0.2/\"+fn+\".woff2')}html,*{font-family:via-font!important}\";\
+  css.rel = 'stylesheet';\
+  document.head.append(css);\
+ } catch(err){console.log('更换字体：', err);}\
+})();]])" ;
+              ["name"]	= "方正楷体" ;
+              } ;
+          [12]	= {
+              ["onClick"]	= "加载Js([[/*\
+ * @name: 更换字体\
+ * @Author: Sky\
+ * @version: 0.2\
+ * @description: 更换网页内容字体\
+ * @include: *\
+ * @createTime: 2020-6-7 18:00\
+ * @updateTime: 2020-6-16 11:10\
+ */\
+(function(){const\
+/*等号后的数表示选择的字体*/\
+ id = 1,\
+/* 0:阿里巴巴普惠体(Medium)\
+   1:濑户字体简体\
+   2:OPPO Sans(Medium)\
+   3:方正楷体\
+   4:方正书宋\
+   5:资源圆体(Medium) */\
+/*－－－－以下勿改－－－－*/\
+ key = encodeURIComponent('更换字体:执行判断');\
+ if(window[key] || navigator.connection.type != 'wifi'){return;}\
+ try {\
+  window[key] = true;\
+  let fn;\
+  switch(id){\
+   case 0:fn = \"AliPuHui\";break;\
+   case 1:fn = \"NaihuSC\";break;\
+   case 2:fn = \"OPPOSans\";break;\
+   case 3:fn = \"fzKaiTi\";break;\
+   case 4:fn = \"fzShuSong\";break;\
+   case 5:fn = \"zyYuanTi\";break;\
+   default:fn = \"error\";\
+  }\
+  const css = document.createElement('link');\
+  css.href = \"data:text/css,@font-face{font-family:via-font;src:url('https://cdn.jsdelivr.net/gh/IlysvlVEizbr/via-font@0.2/\"+fn+\".woff2')}html,*{font-family:via-font!important}\";\
+  css.rel = 'stylesheet';\
+  document.head.append(css);\
+ } catch(err){console.log('更换字体：', err);}\
+})();]])" ;
+              ["name"]	= "濑户字体简体" ;
+              } ;
+          [13]	= {
+              ["onClick"]	= "import \"android.content.Intent\"\
+local intent= Intent(Intent.ACTION_PICK)\
+intent.setType(\"image/*\")\
+this.startActivityForResult(intent, 1)\
+------\
+\
+--回调\
+function onActivityResult(requestCode,resultCode,intent)\
+  if intent then\
+    local cursor =this.getContentResolver ().query(intent.getData(), nil, nil, nil, nil)\
+    cursor.moveToFirst()\
+    import \"android.provider.MediaStore\"\
+    local idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)\
+    fileSrc = cursor.getString(idx)\
+    bit=nil\
+    --fileSrc回调路径路径\
+    --import \"android.graphics.BitmapFactory\"\
+    --bit =BitmapFactory.decodeFile(fileSrc)\
+    --  iv.setImageBitmap(bit)\
+    background.setImageBitmap(loadbitmap(fileSrc))\
+    setdata(\"fileSrc\",fileSrc)\
+  end\
+end--nirenr" ;
+              ["name"]	= "自定义背景" ;
+              } ;
+          [14]	= {
+              ["onClick"]	= "c = this.getSharedPreferences(\"PicCustom\", Activity.MODE_PRIVATE) \
+c.edit().clear().commit()\
+background.setImageBitmap(loadbitmap(\"background.jpg\"))" ;
+              ["name"]	= "默认背景" ;
+              } ;
+          } ;
+      ["搜索框提示"]	= "" ;
+      ["搜索URL"]	= "" ;
+      } ;
+  ["sidebar"]	= {
+      ["启用顶部图片"]	= false ;
+      ["items"]	= {
+          } ;
+      ["启用"]	= false ;
+      } ;
+  ["global_js"]	= "加载Js([[\
+//08:16-50\
+document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"display:none\");\
+\
+//15:36-38\
+document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
+\
+]])" ;
+  ["web"]	= {
+      ["支持打开外部应用"]	= false ;
+      ["启用进度条"]	= true ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["启动网页"]	= "https://m.html.cn/" ;
+      ["网页沉浸"]	= true ;
+      ["启用长按菜单"]	= false ;
+      } ;
+  } ;

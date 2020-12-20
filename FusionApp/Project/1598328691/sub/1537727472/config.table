@@ -1,0 +1,950 @@
+{
+  ["fltBtn"]	= {
+      ["图标"]	= "" ;
+      ["点击事件"]	= "import \"android.view.WindowManager\"\
+--需程序启动赋予barisshow初始值0\
+\
+if barisshow == 0 then\
+  --状态栏\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  --顶栏\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+  else\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+  end\
+--悬浮按钮点击时执行的事件\
+" ;
+      ["显示"]	= true ;
+      } ;
+  ["events"]	= {
+      ["程序启动"]	= "require \"import\"\
+import \"android.content.*\"\
+import \"android.graphics.drawable.GradientDrawable\"\
+import \"android.app.*\"\
+import \"android.os.*\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+import \"android.graphics.Color\"\
+\
+function 提示(内容)\
+  shamrock={\
+    LinearLayout;\
+    id=\"toastb\";\
+    {\
+      TextView;\
+      padding=\"8dp\";\
+      background=\"#12B8F6\";\
+      textSize=\"15sp\";\
+      TextColor=\"#ffffffff\";\
+      layout_width=\"100%w\";\
+      layout_height=\"40dp\";\
+      gravity=\"center\";\
+      text=\"提示出错\";\
+      id=\"text_ts\";\
+    };\
+  };\
+  local toast=Toast.makeText(activity,\"内容\",Toast.LENGTH_SHORT).setView(loadlayout(shamrock))\
+  --LENGTH_SHORT     2s\
+  --LENGTH_LONG      3.5s\
+  toast.setGravity(Gravity.BOTTOM,0, 0)\
+  --Gravity.BOTTOM   底部\
+  --Gravity.CENTER   中部\
+  --Gravity.TOP      顶部\
+  text_ts.Text=tostring(内容)\
+  toast.show()\
+end\
+\
+--直接放在程序启动事件\
+\
+\
+local aaa=\"#FF12B8F6\"   --默认顶栏颜色aaa\
+local txtroute=\"/data/data/\"..activity.getPackageName()..\"/yejian.xml\"\
+import \"java.io.File\"\
+File(txtroute).createNewFile()\
+yejian=io.open(txtroute):read(\"*a\")\
+if yejian==\"开启\"then\
+webView.setBackgroundColor(Color.parseColor(\"#ff212121\"));\
+toolbarParent.setBackgroundColor(Color.parseColor(\"#ff212121\"));\
+fltBtn.setBackgroundColor(Color.parseColor(\"#ff212121\"));\
+else\
+toolbarParent.setBackgroundColor(Color.parseColor(aaa));\
+fltBtn.setBackgroundColor(Color.parseColor(\"#ffffffff\"));\
+end\
+\
+\
+--_(:з」∠)_请仔细查看启动事件和接收新标题事件和刷新事件内内容\
+\
+\
+\
+webView.addJavascriptInterface({},\"JsInterface\")\
+abc=1\
+\
+--加入收藏\
+function getAllData(name)\
+  local data={}\
+  for d in each(this.getApplicationContext().getSharedPreferences(name,0).getAll().entrySet()) do\
+    data[d.getKey()]=d.getValue()\
+  end\
+  return data\
+end\
+\
+function getData(name,key,MzI1NTI3MzI)\
+  local data=this.getApplicationContext().getSharedPreferences(name,0).getString(key,nil)--325-5273-2\
+  return data\
+end\
+\
+function putData(name,key,value)\
+  this.getApplicationContext().getSharedPreferences(name,0).edit().putString(key,value).apply()--3255-2732\
+  return true\
+end\
+\
+function removeData(name,key)\
+  this.getApplicationContext().getSharedPreferences(name,32552732*0).edit().remove(key).apply()--[[3(2)6?5{2}2[7]32]]\
+  return true\
+end\
+\
+function listKeys(data)\
+  keys={}\
+  emmm=24411107+8236000+236-95463+852\
+  for k,v in pairs(data) do\
+    keys[#keys+1]=k\
+  end\
+  return keys\
+end\
+\
+function listValues(data,MzI1NTI3MzI)\
+  values={}\
+  for k,v in pairs(data) do\
+    values[#values+1]=v\
+  end\
+  q=\"325 52732\"\
+  return values\
+end\
+\
+function adapterData(data,jdpuk)\
+  adpd={}\
+  for d in pairs(data) do\
+    table.insert(adpd,{\
+      text={\
+        Text=tostring(data[d]), \
+      }, \
+    })\
+  end\
+  return adpd\
+end\
+\
+local listlayout={\
+  LinearLayout,\
+  orientation=\"1\",\
+  layout_width=\"fill\",\
+  layout_height=\"wrap_content\",\
+  {\
+    ListView,\
+    id=\"list\",\
+    layout_marginTop=\"10dp\",\
+    --items={\"3\",\"2\",\"5\",\"5\",\"2\",\"7\",\"3\",\"2\"},\
+    layout_width=\"fill\",\
+    layout_height=\"wrap_content\",\
+  }\
+}\
+\
+local inputlayout={\
+  LinearLayout,\
+  orientation=\"vertical\",\
+  Focusable=true,\
+  FocusableInTouchMode=true,\
+  {\
+    EditText,\
+    id=\"edit\",\
+    hint=\"Input here\",\
+    layout_marginTop=\"5dp\",\
+    layout_width=\"80%w\",\
+    --uh=\"32552732\",\
+    layout_gravity=\"center\",\
+  },\
+}\
+\
+local input2layout={\
+  LinearLayout,\
+  orientation=\"vertical\",\
+  Focusable=true,\
+  FocusableInTouchMode=true,\
+  {\
+    EditText,\
+    id=\"edit1\",\
+    hint=\"Input here\",\
+    --numa=\"32552\",\
+    --aaa=\"bbb\"\
+    layout_marginTop=\"5dp\",\
+    layout_width=\"80%w\",\
+    layout_gravity=\"center\",\
+  },\
+  {\
+    EditText,\
+    id=\"edit2\",\
+    --ccc=\"ddd\",\
+    --numb=\"732\",\
+    --eee=\"fff\",\
+    hint=\"Input here\",\
+    layout_margiTop=\"5dp\",\
+    layout_width=\"80%w\",\
+    layout_gravity=\"center\",\
+  },\
+}\
+\
+function showDataDialog(name,title,jdpuk)\
+\
+  local data=getAllData(name)\
+  local keys=listKeys(data)\
+  local values=listValues(data)\
+\
+  item={\
+    LinearLayout,\
+    orientation=\"vertical\",\
+    layout_width=\"fill\",\
+    {\
+      TextView,\
+      id=\"text\",\
+      textSize=\"16sp\",\
+      layout_margin=\"10dp\",\
+      layout_width=\"fill\",\
+      layout_width=\"70%w\",\
+      layout_gravity=\"center\",\
+    },\
+  }\
+\
+  local adpd=adapterData(values)\
+  local items=LuaAdapter(this,adpd,item)\
+\
+  local dlb=对话框()\
+  dlb.设置标题(title)\
+  local dl\
+  if #keys>0 then\
+    dlb.setView(loadlayout(listlayout))\
+    list.setDividerHeight(0)\
+    list.Adapter=items\
+    list.onItemClick=function(adp,view,position,id)--3255273 2\
+      webView.loadUrl(keys[id])\
+      if dl then\
+        dl.dismiss()\
+      end\
+    end\
+    list.onItemLongClick=function(adp,view,pos,id)--325 52732\
+      对话框()\
+      .设置标题(title)\
+      .setView(loadlayout(input2layout))\
+      .设置积极按钮(\"保存\",function()--32552732\
+        if not(edit1.text==\"\") and not(edit2.text==\"\") or 3255==2732 then\
+          removeData(name,keys[id])\
+          putData(name,edit2.text,edit1.text)--32552732\
+          if dl then\
+            dl.dismiss()\
+            showDataDialog(name,title)\
+          end\
+        else\
+          弹出消息(\"请填写所有字段\")\
+        end\
+      end)\
+      .设置消极按钮(\"取消\")\
+      .设置中立按钮(\"删除\",function()\
+        removeData(name,keys[id])\
+        items.remove(pos)\
+        table.remove(keys,id)\
+        table.remove(values,id)\
+        if #adpd<=0 then\
+          if dl then\
+            dl.dismiss()\
+            showDataDialog(name,title);\
+          end\
+        end\
+      end)\
+      .显示()\
+      edit1.setHint(\"标题\")\
+      edit2.setHint(\"链接\")\
+      edit1.setText(values[id])\
+      edit2.setText(keys[id])\
+      return true\
+    end\
+  else\
+    dlb.设置消息(\"没有收藏\")\
+  end\
+  dlb.设置积极按钮(\"新建收藏\",function()addDataDialog(name,\"新建收藏\")end)\
+  dl=dlb.show()\
+end\
+\
+function addDataDialog(name,title,value,key)--32552732\
+  对话框()\
+  .设置标题(title)\
+  .setView(loadlayout(input2layout))\
+  .设置积极按钮(\"保存\",function()\
+    if not(edit1.text==\"\") and not(edit2.text==\"\") or 325==52732 then\
+      if not getData(name,edit2.text) then\
+        putData(name,edit2.text,edit1.text)\
+      else\
+        弹出消息(\"该链接已存在\")\
+        addDataDialog(name,title,edit1.text,edit2.text)\
+      end\
+    else\
+      弹出消息(\"请填写所有字段\")\
+      addDataDialog(name,title,edit1.text,edit2.text)\
+    end\
+  end)\
+  .设置消极按钮(\"取消\")\
+  .显示()\
+  edit1.setHint(\"标题\")\
+  edit2.setHint(\"链接\")\
+  if(value)then\
+    edit1.setText(value)\
+  end\
+  if(key)then\
+    edit2.setText(key)\
+  end\
+end\
+\
+\
+\
+\
+ti=Ticker()\
+ti.Period=500\
+ti.onTick=function() \
+ j=activity.getSystemService(Context.CLIPBOARD_SERVICE).getText()--获取剪贴板内容\
+ if j==\"\" then\
+   else\
+activity.getSystemService(Context.CLIPBOARD_SERVICE).setText(\"\")\
+   end\
+ end\
+ti.start()\
+--请勿删除版权©音六网络科技\
+--QQ1785333334\
+\
+\
+--历史记录\
+lstads=\"/data/data/\"..activity.getPackageName()..\"/lst1.lua\"\
+lstwebads=\"/data/data/\"..activity.getPackageName()..\"/lstweb1.lua\"\
+--2.序列化\
+function slz(obj) \
+  local lua = \"\" \
+  local t = type(obj) \
+  if t == \"number\" then \
+    lua = lua .. obj \
+  elseif t == \"boolean\" then \
+    lua = lua .. tostring(obj) \
+  elseif t == \"string\" then \
+    lua = lua .. string.format(\"%q\", obj) \
+  elseif t == \"table\" then \
+    lua = lua .. \"{\\n\" \
+    for k, v in pairs(obj) do \
+      lua = lua .. \"[\" .. slz(k) .. \"]=\" .. slz(v) .. \",\\n\" \
+    end \
+    local metatable = getmetatable(obj) \
+    if metatable ~= nil and type(metatable.__index) == \"table\" then \
+      for k, v in pairs(metatable.__index) do \
+        lua = lua .. \"[\" .. slz(k) .. \"]=\" .. slz(v) .. \",\\n\" \
+      end \
+    end \
+    lua = lua .. \"}\" \
+  elseif t == \"nil\" then \
+    return nil \
+  else \
+    error(\"can not serialize a \" .. t .. \" type.\") \
+  end \
+  return lua \
+end \
+function rslz(lua) \
+  local t = type(lua) \
+  if t == \"nil\" or lua == \"\" then \
+    return {}\
+  elseif t == \"number\" or t == \"string\" or t == \"boolean\" then \
+    lua = tostring(lua) \
+  else \
+    error(\"can not unserialize a \" .. t .. \" type.\") \
+  end \
+  lua = \"return \" .. lua \
+  local func = loadstring(lua) \
+  if func == nil then \
+    return nil \
+  end \
+  return func() \
+end\
+\
+--3.历史记录框布局\
+function hstshow()\
+  hstlayout={\
+    LinearLayout,\
+    orientation=\"1\",\
+    gravity=\"center\",\
+    layout_width=\"wrap_content\",\
+    layout_height=\"wrap_content\",\
+    {\
+      TextView,\
+      text=\"\",\
+      gravity=\"center\",\
+      layout_width=\"wrap_content\",\
+      textSize=\"0sp\",\
+      background=\"#000000\",\
+      layout_height=\"15dp\",},\
+    {\
+      TextView,\
+      text=\"历史记录\",\
+      gravity=\"center\",\
+      layout_width=\"wrap_content\",\
+      textSize=\"30sp\",\
+      textStyle=\"bold\",\
+      layout_height=\"50dp\",},\
+    {\
+      ListView,\
+      id=\"hlst\",\
+      items=lst,\
+      layout_width=\"fill\",\
+      layout_height=\"wrap_content\",\
+    },\
+  }\
+end\
+\
+\
+--##功能函数##\
+\
+--1.读取历史文件\
+function read_hst()\
+  import \"java.io.File\"\
+  File(lstads).createNewFile()\
+  slst=io.open(lstads):read(\"*a\")\
+  File(lstwebads).createNewFile()\
+  slstweb=io.open(lstwebads):read(\"*a\")\
+  --转换成table\
+  lst=rslz(slst)\
+  lstweb=rslz(slstweb)\
+end\
+\
+--2.新网页加入历史记录\
+function add_hst()\
+  if string.len(webView.getTitle())<=300 then--粗略过掉无效标题\
+    newtitle=webView.getTitle()\
+    newurl=webView.getUrl()\
+    table.insert(lst,1,newtitle) --标题表添加新标题\
+    table.insert(lstweb,1,newurl) --网址表添加新网址\
+  end\
+end\
+\
+--3.存储历史文件\
+function save_hst()\
+  --转换成string\
+  slst=slz(lst)\
+  slstweb=slz(lstweb)\
+  --保存\
+  file=io.open(lstads,\"w+\")\
+  io.output(file)\
+  io.write(slst)\
+  io.flush()\
+  io.close(file)\
+  file=io.open(lstwebads,\"w+\")\
+  io.output(file)\
+  io.write(slstweb)\
+  io.flush()\
+  io.close(file)\
+end\
+\
+--4.显示历史记录框\
+function show_hst() \
+  hstshow()\
+  local hl=AlertDialog.Builder(activity)\
+  .setView(loadlayout(hstlayout))\
+  .setNegativeButton(\"取消\",DialogInterface.OnClickListener{\
+    onClick=function()\
+    end\
+  })\
+  .create()\
+  hl.show()\
+  hlst.onItemClick=function(l,v,c,b)\
+    加载网页(lstweb[b])\
+    hl.dismiss()\
+  end\
+  hlst.onItemLongClick=function(l,v,c,b)\
+    hl.dismiss()\
+    对话框()\
+    .设置消息(\"是否删除记录？\")\
+    .设置消极按钮(\"取消\",function()\
+      show_hst()\
+    end)\
+    .设置积极按钮(\"确定\",function()\
+      table.remove(lst,b)\
+      table.remove(lstweb,b)\
+      save_hst()\
+      show_hst()\
+    end )\
+    .显示()\
+    return true\
+  end\
+end\
+--5.清除缓存\
+function clr()\
+  --导入File类\
+  import \"java.io.File\"\
+  --显示多选框\
+  items={\"浏览记录\",\"缓存文件\"}\
+  多选对话框=AlertDialog.Builder(this)\
+  .setTitle(\"清除记录\")\
+  --勾选后执行\
+  .setPositiveButton(\"确定\",function()\
+    if clearhistory==1 and clearall==1 then\
+      File(lstads).delete()\
+      File(lstwebads).delete()\
+      lst={}\
+      lstweb={}\
+      os.execute(\"pm clear \"..activity.getPackageName())\
+    elseif clearhistory==0 and clearall==1 then\
+      os.execute(\"pm clear \"..activity.getPackageName())\
+    elseif clearhistory==1 and clearall==0 then\
+      File(lstads).delete()\
+      File(lstwebads).delete()\
+      lst={}\
+      lstweb={}\
+    else return nil\
+    end\
+  end)\
+  --选择事件\
+  .setMultiChoiceItems(items, nil,{ onClick=function(v,p)\
+      --清除历史\
+      if p==0 then clearhistory=1\
+      end\
+      --清除缓存\
+      if p==1 then clearall=1\
+      end\
+    end})\
+  多选对话框.show();\
+  clearhistory=0\
+  clearall=0\
+end\
+\
+\
+activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);\
+--11.长按弹窗\
+function popwin(od)\
+  local win1=\"向上移动\"\
+  local win2=\"编辑\"\
+  local win3=\"向下移动\"\
+  local wina={win1,win2,win3}\
+  local winb={win2,win3}\
+  local winc={win1,win2}\
+  if od==1 then\
+    win=winb\
+  elseif od==#fav then\
+    win=winc\
+  else\
+    win=wina\
+  end\
+  winlayout={\
+    LinearLayout,\
+    orientation=\"vertical\",\
+    {ListView,\
+      id=\"winlv\",\
+      items=win,\
+      layout_width=\"fill_parent\",\
+      layout_height=\"wrap_content\",},\
+  }\
+  winl=AlertDialog.Builder(activity)\
+  .setView(loadlayout(winlayout))\
+  .create()\
+  winl.show()\
+  winlv.onItemClick=function(l,v,c,b)\
+    if win[b]==win1 then\
+      fl.dismiss()\
+      upfav(od)\
+    elseif win[b]==win2 then\
+      fl.dismiss()\
+      show_efav(od)\
+    elseif win[b]==win3 then\
+      fl.dismiss()\
+      downfav(od)\
+    end\
+    winl.dismiss()\
+  end\
+end\
+function downfav(b)\
+  if b~=#fav then\
+    dfav=fav[b]\
+    dfavweb=favweb[b]\
+    table.remove(fav,b)\
+    table.remove(favweb,b)\
+    table.insert(fav,b+1,dfav)\
+    table.insert(favweb,b+1,dfavweb)\
+  end\
+  save_fav()\
+  show_fav()\
+end\
+\
+\
+-- Copyright © 2018 QQ32552732\
+-- QQ: 32552732\
+-- E-Mail: new-age@outlook.com\
+\
+-- 您在使用此文件或此文件部分内容时，请务必保留以上内容可见，否则即视为侵权，我将可能进行追究\
+-- 重申，请务必注意！您在使用此文件或此文件部分内容时，务必保留以上版权信息可见！！！\
+\
+-- 以下说明仅为提示，无任何法律意义及效力，不可作为任何您不履行以上义务的理由\
+-- 例如: 使用 Fusion App 1.1.3 进行打包时对 config.table 的加密，视为以上内容可见，注意仅限 1.1.3 版本\
+-- 例如: 使用 AndroLua+ 的编译（string.dump），视为以上内容不可见，您需要单独在安装包 assets 目录下，或者在您的应用内创建一个页面用于展示版权内容，且不可进行加密，需要保留入口用于查看\
+\
+\
+\
+\
+\
+--获得屏幕宽高\
+local w=this.getWidth()\
+local h=this.getHeight()\
+\
+--获取状态栏高度\
+local function getStatusBarHeight(JDPUK)\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  local resid=activity.getResources().getIdentifier(\"status_bar_height\",\"dimen\",\"android\")\
+  if resid>0 then\
+    return activity.getResources().getDimensionPixelSize(resid)\
+  end\
+end\
+jdpuk=32552732\
+\
+--设置悬浮按钮位置\
+local function setFloatButtonPosition(X,Y,J,D,P,U,K)\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  fltBtn.LayoutParams=fltBtn.LayoutParams.setMargins(0,0,w-X-fltBtn.getMeasuredWidth()/2,h-Y-fltBtn.getMeasuredHeight()/2)-- 3 2 5 5 2 7 3 2\
+  --保存悬浮按钮位置\
+  this.setSharedData(\"悬浮按钮横坐标\",X)\
+  this.setSharedData(\"悬浮按钮纵坐标\",Y)\
+end\
+\
+task(200,function(JDPUK)\
+  --恢复悬浮按钮位置\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..tostring(3)..\"2\" then error()end\
+  local x=this.getSharedData(\"悬浮按钮横坐标\")\
+  local y=this.getSharedData(\"悬浮按钮纵坐标\")\
+  if x and y then setFloatButtonPosition(x,y) end\
+end)\
+\
+--初始化按下起始位置\
+local sx\
+local sy\
+\
+--设置移动条件(最小移动范围)\
+local mr=50\
+--初始化是否移动\
+local cm=false\
+\
+--设置自动校准范围\
+local tr=50\
+--设置自动校准坐标\
+local tp={\
+  {0,nil},--左贴边\
+  {nil,0},--上贴边\
+  {w,nil},--右贴边\
+  {nil,h},--下贴边\
+}\
+task(200,function(JDPUK)--一些需要用到悬浮按钮参数的坐标，得延时等悬浮按钮准备好\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  table.insert(tp,{w/2+1,h-fltBtn.getMeasuredHeight()})--约中下位置\
+  --table.insert(tp,{w-fltBtn.getMeasuredWidth()/2,h-fltBtn.getMeasuredHeight()/2})\
+end)\
+\
+--监听悬浮按钮被按下事件\
+task(200,function(JDPUK)--延时等待悬浮按钮准备好\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  fltBtn.getChildAt(0).onTouch=function(view,event,JDPUK)--悬浮按钮本身无法监听点击事件，找子控件监听\
+    if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+\
+    --得到手指当前位置\
+    local x=event.getRawX()\
+    local y=event.getRawY()\
+\
+    if event.getAction()==MotionEvent.ACTION_DOWN then--如果是按下事件，则保存按下的位置\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+      --保存按下位置\
+      sx=x\
+      sy=y\
+      return false\
+    elseif event.getAction()==MotionEvent.ACTION_MOVE then--如果是移动事件，则移动悬浮按钮\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+\
+      if cm then\
+\
+        --fltBtn.LayoutParams=fltBtn.LayoutParams.setMargins(0,0,this.getWidth()-event.getRawX()-fltBtn.getMeasuredWidth()/2,this.getHeight()-event.getRawY()-fltBtn.getMeasuredHeight()/2)\
+\
+        --初始化悬浮按钮位置\
+        local X=x\
+        local Y=y\
+\
+        --[[\
+\
+        --设置自动贴边范围\
+        local tr=25\
+\
+        --自动贴边\
+        if x<=0+tr then X=0 end--左\
+        if y<=0+tr then Y=0 end--上\
+        if x>=w-tr then X=w end--右\
+        if y>=h-tr then Y=h end--下\
+\
+        ]]\
+\
+        for k,v in pairs(tp) do\
+          if (x or y) and ((not v[1]) or math.abs(x-v[1])<=tr) and ((not v[2]) or math.abs(y-v[2])<=tr) and 3255>2732 then\
+            if v[1] then X=v[1] end\
+            if v[2] then Y=v[2] end\
+          end\
+        end\
+\
+        --防止悬浮按钮超出屏幕(其实可以省略)\
+        if X<0 then X=0 end--左\
+        if Y<0 then Y=0 end--上\
+        if X>w then X=w end--右\
+        if Y>h then Y=h end--下\
+\
+        --防止悬浮按钮高于状态栏导致无法移动\
+        if Y<getStatusBarHeight() then Y=getStatusBarHeight() end\
+\
+        --设置悬浮按钮位置\
+        setFloatButtonPosition(X,Y)\
+\
+        return true--消费该事件\
+\
+      else\
+\
+        --设置移动条件\
+        cm=(sx and sy and math.abs((x+y)-(sx+sy))>=mr and jdpuk==tonumber(\"3255\"..\"2732\"))--32552732\
+\
+        return false\
+      end\
+    elseif event.getAction()==MotionEvent.ACTION_UP then--如果是松开事件，则...嗯处理一些东西，自己看吧\
+      if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..tostring(32) then error()end\
+\
+      --重置变量前先把需要的变量保存为局部变量\
+      local tmp=cm\
+\
+      --重置变量\
+      sx=nil\
+      sy=nil\
+      cm=false\
+\
+      --如果本次按下符合移动条件，则消费事件\
+      if tmp then\
+        return true\
+      else\
+        return false\
+      end\
+\
+    end\
+    return false\
+  end\
+end)\
+if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+\
+barisshow = 0;\
+\
+\
+\
+local a=io.open(\"/sdcard/轻工具箱/data/a1\"):read(\"*a\")\
+if a==\"1\" then\
+webView.addView(loadlayout{\
+    LinearLayout,\
+    id=\"overla\",\
+    layout_width=\"fill\",\
+    layout_height=32552732*6,\
+    orientation=\"vertical\",\
+    backgroundColor=\"#86000000\",\
+  })\
+toolbarParent.addView(loadlayout{\
+    LinearLayout,\
+    id=\"overlay\",\
+    layout_width=\"fill\",\
+    layout_height=32552732*6,\
+    orientation=\"vertical\",\
+    backgroundColor=\"#86000000\",\
+  })\
+else\
+webView.removeView(overla)\
+toolbarParent.removeView(overlay)\
+end" ;
+      ["网页即将加载"]	= "" ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+local txtroute=\"/data/data/\"..activity.getPackageName()..\"/yejian.xml\"\
+import \"java.io.File\"\
+File(txtroute).createNewFile()\
+yejian=io.open(txtroute):read(\"*a\")\
+if yejian==\"开启\" then\
+加载Js([[{\
+    css = document.createElement('link');  \
+    css.id = 'xxx_browser_2014';  \
+    css.rel = 'stylesheet';  \
+    css.href = 'data:text/css,html,body,header,div,a,span,table,tr,td,th,tbody,p,form,input,ul,ol,li,dl,dt,dd,section,footer,nav,h1,h2,h3,h4,h5,h6,em,pre{background: #333 !important;color:#616161!important;border-color:#454530!important;text-shadow:0!important;-webkit-text-fill-color : none!important;}html a,html a *{color:#5a8498!important;text-decoration:underline!important;}html a:visited,html a:visited *,html a:active,html a:active *{color:#505f64!important;}html a:hover,html a:hover *{color:#cef!important;}html input,html select,html button,html textarea{background:#4d4c40!important;border:1px solid #5c5a46!important;border-top-color:#494533!important;border-bottom-color:#494533!important;}html input[type=button],html input[type=submit],html input[type=reset],html input[type=image],html button{border-top-color:#494533!important;border-bottom-color:#494533!important;}html input:focus,html select:focus,html option:focus,html button:focus,html textarea:focus{background:#5c5b3e!important;color:#fff!important;border-color:#494100 #635d00 #474531!important;outline:1px solid #041d29!important;}html input[type=button]:focus,html input[type=submit]:focus,html input[type=reset]:focus,html input[type=image]:focus,html button:focus{border-color:#494533 #635d00 #474100!important;}html input[type=radio]{background:none!important;border-color:#333!important;border-width:0!important;}html img[src],html input[type=image]{opacity:.5;}html img[src]:hover,html input[type=image]:hover{opacity:1;}html,html body {scrollbar-base-color: #4d4c40 !important;scrollbar-face-color: #5a5b3c !important;scrollbar-shadow-color: #5a5b3c !important;scrollbar-highlight-color: #5c5b3c !important;scrollbar-dlight-color: #5c5b3c !important;scrollbar-darkshadow-color: #474531 !important;scrollbar-track-color: #4d4c40 !important;scrollbar-arrow-color: #000 !important;scrollbar-3dlight-color: #6a6957 !important;}dt a{background-color: #333 !important;}';   document.getElementsByTagName('head')[0].appendChild(css);  \
+};]])\
+end--作者eoow\
+--放置代码处\
+--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+新标题=...\
+read_hst()\
+--加入历史记录\
+add_hst()\
+--存储历史文件\
+save_hst()\
+-- io.open(lstads,\"w+\"):write(lsts):close()\
+-- io.open(lstwebads,\"w+\"):write(lstwebs):close()\
+" ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+--程序启动时会执行的事件\
+ti=Ticker()\
+ti.Period=500\
+ti.onTick=function() \
+ j=activity.getSystemService(Context.CLIPBOARD_SERVICE).getText()--获取剪贴板内容\
+ if j==\"\" then\
+   else\
+activity.getSystemService(Context.CLIPBOARD_SERVICE).setText(\"\")\
+   end\
+ end\
+ti.start()\
+\
+\
+--请勿删除版权©音六网络科技\
+--QQ1785333334\
+--将aaa与bbb修改成你自己的默认颜值\
+" ;
+      } ;
+  ["switch"]	= {
+      ["支持滑动页面"]	= false ;
+      ["显示状态栏"]	= true ;
+      ["启用启动图"]	= false ;
+      ["横屏"]	= false ;
+      } ;
+  ["web_control"]	= {
+      [1]	= {
+          ["url"]	= "m.ymoxuan.com" ;
+          ["remove_element"]	= "header,nav,module_user unlogin,footer" ;
+          ["js"]	= "" ;
+          } ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["标签栏滑动条高度"]	= "3dp" ;
+      ["顶栏标题"]	= "小说" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["标签栏高度"]	= "48dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      } ;
+  ["toolbar"]	= {
+      ["输入栏模式"]	= false ;
+      ["搜索框提示"]	= "输入关键词搜索你想看的小说.." ;
+      ["启用搜索功能"]	= true ;
+      ["icon_btns"]	= {
+          [2]	= {
+              ["onClick"]	= "--将aaa与bbb修改成你自己的默认颜值\
+local aaa=\"#FF12B8F6\"   --默认顶栏颜色aaa\
+  --默认侧栏颜色bbb,注意如果没有侧栏请删除此行\
+local txtroute=\"/data/data/\"..activity.getPackageName()..\"/yejian.xml\"\
+import \"java.io.File\"\
+File(txtroute).createNewFile()\
+local b=io.open(txtroute):read(\"*a\")\
+if b==\"开启\"then\
+io.open(txtroute,\"w+\"):write(\"1\"):close()\
+--默注意如果没有侧栏请删除此行\
+toolbarParent.setBackgroundColor(Color.parseColor(aaa));\
+fltBtn.setBackgroundColor(Color.parseColor(\"#FFFFFFFF\"));\
+提示(\"夜间模式:关闭\")\
+else\
+File(txtroute).createNewFile()\
+io.open(txtroute,\"w+\"):write(\"开启\"):close()\
+toolbarParent.setBackgroundColor(Color.parseColor(\"#ff212121\"));\
+fltBtn.setBackgroundColor(Color.parseColor(\"#ff212121\"));\
+--注意如果没有侧栏请删除此行\
+加载Js([[{\
+    css = document.createElement('link');  \
+    css.id = 'xxx_browser_2014';  \
+    css.rel = 'stylesheet';  \
+    css.href = 'data:text/css,html,body,header,div,a,span,table,tr,td,th,tbody,p,form,input,ul,ol,li,dl,dt,dd,section,footer,nav,h1,h2,h3,h4,h5,h6,em,pre{background: #333 !important;color:#616161!important;border-color:#454530!important;text-shadow:0!important;-webkit-text-fill-color : none!important;}html a,html a *{color:#5a8498!important;text-decoration:underline!important;}html a:visited,html a:visited *,html a:active,html a:active *{color:#505f64!important;}html a:hover,html a:hover *{color:#cef!important;}html input,html select,html button,html textarea{background:#4d4c40!important;border:1px solid #5c5a46!important;border-top-color:#494533!important;border-bottom-color:#494533!important;}html input[type=button],html input[type=submit],html input[type=reset],html input[type=image],html button{border-top-color:#494533!important;border-bottom-color:#494533!important;}html input:focus,html select:focus,html option:focus,html button:focus,html textarea:focus{background:#5c5b3e!important;color:#fff!important;border-color:#494100 #635d00 #474531!important;outline:1px solid #041d29!important;}html input[type=button]:focus,html input[type=submit]:focus,html input[type=reset]:focus,html input[type=image]:focus,html button:focus{border-color:#494533 #635d00 #474100!important;}html input[type=radio]{background:none!important;border-color:#333!important;border-width:0!important;}html img[src],html input[type=image]{opacity:.5;}html img[src]:hover,html input[type=image]:hover{opacity:1;}html,html body {scrollbar-base-color: #4d4c40 !important;scrollbar-face-color: #5a5b3c !important;scrollbar-shadow-color: #5a5b3c !important;scrollbar-highlight-color: #5c5b3c !important;scrollbar-dlight-color: #5c5b3c !important;scrollbar-darkshadow-color: #474531 !important;scrollbar-track-color: #4d4c40 !important;scrollbar-arrow-color: #000 !important;scrollbar-3dlight-color: #6a6957 !important;}dt a{background-color: #333 !important;}';   document.getElementsByTagName('head')[0].appendChild(css);  \
+};]])\
+提示(\"夜间模式:开启\")\
+end--作者:eoow" ;
+              ["icon"]	= "lightbulb" ;
+              } ;
+          [1]	= {
+              ["onClick"]	= "退出页面()" ;
+              ["icon"]	= "backburger" ;
+              } ;
+          } ;
+      ["menus"]	= {
+          [1]	= {
+              ["onClick"]	= "addDataDialog(\"Collection\",\"加入收藏\",webView.getTitle(),webView.getUrl())" ;
+              ["name"]	= "加入收藏" ;
+              } ;
+          [2]	= {
+              ["onClick"]	= "showDataDialog(\"Collection\",\"收藏\")" ;
+              ["name"]	= "查看收藏" ;
+              } ;
+          [3]	= {
+              ["onClick"]	= "--打开历史记录\
+show_hst()" ;
+              ["name"]	= "历史记录" ;
+              } ;
+          } ;
+      ["搜索URL"]	= "https://m.ymoxuan.com/search.htm?keyword=%s" ;
+      } ;
+  ["web"]	= {
+      ["启用进度条"]	= true ;
+      ["惰性加载"]	= true ;
+      ["启用长按菜单"]	= true ;
+      ["customUa"]	= "mbian/3; Series60/5.2 NokiaN8-00/012.002; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/533.4 (KHTML,like Gecko) NokiaBrowser/7.3.0 Mobile Safari/533.4 3gpp-gba" ;
+      ["浏览器用户标识"]	= "自定义" ;
+      ["支持打开外部应用"]	= false ;
+      ["网页沉浸"]	= false ;
+      } ;
+  ["sidebar"]	= {
+      ["items"]	= {
+          } ;
+      ["启用"]	= false ;
+      ["启用顶部图片"]	= false ;
+      } ;
+  ["colors"]	= {
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["状态栏"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#33ffffff" ;
+      ["悬浮按钮"]	= "#ffffffff" ;
+      ["标签栏滑动条"]	= "#ff000000" ;
+      ["悬浮按钮图标"]	= "#ff000000" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["搜索栏部件"]	= "#33000000" ;
+      ["标签栏文本"]	= "#ffffffff" ;
+      ["进度条"]	= "#ff777777" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["搜索栏部件触摸"]	= "#ff000000" ;
+      ["标签栏项目触摸"]	= "#ff000000" ;
+      ["顶栏"]	= "#ffffffff" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      } ;
+  ["tab_bar"]	= {
+      ["items"]	= {
+          [1]	= {
+              ["name"]	= "首页" ;
+              ["url"]	= "https://m.ymoxuan.com" ;
+              } ;
+          [2]	= {
+              ["name"]	= "分类" ;
+              ["url"]	= "https://m.ymoxuan.com/shuku.htm" ;
+              } ;
+          [3]	= {
+              ["name"]	= "足迹" ;
+              ["url"]	= "https://m.ymoxuan.com/read/" ;
+              } ;
+          } ;
+      } ;
+  } ;

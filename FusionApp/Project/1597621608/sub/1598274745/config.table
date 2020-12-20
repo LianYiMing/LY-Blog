@@ -1,0 +1,333 @@
+{
+  ["events"]	= {
+      ["程序启动"]	= "--程序启动时会执行的事件\
+\
+\
+function 提示(内容)\
+  shamrock={\
+    LinearLayout;\
+    id=\"toastb\";\
+    {\
+      TextView;\
+      padding=\"8dp\";\
+      background=\"#12B8F6\";\
+      textSize=\"15sp\";\
+      TextColor=\"#ffffffff\";\
+      layout_width=\"100%w\";\
+      layout_height=\"40dp\";\
+      gravity=\"center\";\
+      text=\"提示出错\";\
+      id=\"text_ts\";\
+    };\
+  };\
+  local toast=Toast.makeText(activity,\"内容\",Toast.LENGTH_SHORT).setView(loadlayout(shamrock))\
+  --LENGTH_SHORT     2s\
+  --LENGTH_LONG      3.5s\
+  toast.setGravity(Gravity.BOTTOM,0, 0)\
+  --Gravity.BOTTOM   底部\
+  --Gravity.CENTER   中部\
+  --Gravity.TOP      顶部\
+  text_ts.Text=tostring(内容)\
+  toast.show()\
+end\
+\
+\
+\
+\
+m=\
+{\
+  FrameLayout;\
+  {\
+    LinearLayout;\
+    orientation=\"center\";\
+    layout_height=\"fill\",\
+    layout_width=\"fill\";\
+    id=\"r\";\
+    layout_gravity='center';--重力属性\
+    {\
+      LinearLayout;\
+      layout_width=\"fill\";\
+      id=\"chenjin\";\
+    };\
+    {\
+      LinearLayout;\
+      background=\"z.png\",\
+      layout_gravity=\"center\";\
+      layout_height=\"101%h\";\
+      layout_width=\"95.5%w\";\
+      {\
+        LinearLayout;\
+        layout_width=\"95%w\";\
+        layout_height=\"100%h\";\
+        gravity=\"center\";\
+        background=\"t.png\";\
+        id=\"e\"; \
+        {\
+          ImageView;\
+          scaleType=\"fitXY\";\
+          layout_height=\"65.5%h\"; \
+          layout_width=\"63.5%w\";\
+          id=\"tp\";\
+        };\
+      };\
+    },\
+  },\
+};\
+webView.addView(loadlayout(m))\
+\
+import \"android.graphics.Bitmap\"\
+import \"android.view.WindowManager\"\
+import \"android.widget.PopupMenu\"\
+import \"android.widget.FrameLayout\"\
+import \"java.io.FileOutputStream\"\
+import \"java.io.File\"\
+import \"android.net.Uri\"\
+import \"android.content.Intent\"\
+import \"android.graphics.PorterDuff\"\
+import \"android.graphics.PorterDuffColorFilter\"\
+import \"android.content.res.ColorStateList\"\
+import \"android.graphics.BitmapFactory\"\
+import \"android.provider.MediaStore\"\
+\
+--activity.setContentView(loadlayout\"layout\")\
+local attrsArray = {android.R.attr.selectableItemBackgroundBorderless}\
+local typedArray =activity.obtainStyledAttributes(attrsArray)\
+ripple=typedArray.getResourceId(0,0)\
+function mmp(颜色)\
+  return ColorStateList(\
+  int[0].class{int{}},\
+  int{颜色})\
+end\
+function ly(颜色)\
+  local bck=Button(activity).background\
+  bck.setColor(mmp(颜色))\
+  return bck\
+end\
+\
+\
+--.background=ly(0xFF00C4FF)\
+local sdk = Build.VERSION.SDK_INT\
+if sdk >= 19 then\
+  local lp = chenjin.getLayoutParams()\
+  lp.height =activity.getResources().getDimensionPixelSize(luajava.bindClass(\"com.android.internal.R$dimen\")().status_bar_height )\
+  chenjin.setLayoutParams(lp)\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);\
+else\
+  chenjin.setVisibility(View.GONE)\
+end\
+\
+local fd=io.open(\"/sdcard/烤面筋/带壳截图/\")\
+if fd == nil then\
+  os.execute(\"mkdir /mnt/sdcard/烤面筋/带壳截图/\")\
+end\
+\
+\
+tp.onClick=function()\
+  import \"android.content.Intent\"\
+  local intent= Intent(Intent.ACTION_PICK)\
+  intent.setType(\"image/*\")\
+  this.startActivityForResult(intent,1) \
+end\
+\
+function onActivityResult(requestCode,resultCode,intent)\
+  if intent then\
+    bit=nil\
+    uri=tostring(intent.getData())--轉成字符串\
+    if uri:match(\"file://(.+)\") then--判斷是否有file://\
+      fileSrc=uri:gsub(\"file://\",\"\")\
+      bit =BitmapFactory.decodeFile(fileSrc) \
+      print(fileSrc,bit)\
+      tp.setImageBitmap(bit)\
+      -- image.setImageBitmap(loadbitmap(uri:gsub(\"file://\",\"\")))--有就直接替換file://為空並且設置為圖片\
+    else--沒有file://就讀取uri獲得bitmap直接設置\
+      local cursor =this.getContentResolver ().query(intent.getData(), nil, nil, nil, nil)\
+      cursor.moveToFirst()\
+      local idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)\
+      fileSrc = cursor.getString(idx)\
+      --fileSrc回调路径路径\
+      bit =BitmapFactory.decodeFile(fileSrc) \
+      tp.setImageBitmap(bit)     \
+    end\
+    zbg=bit.height\
+    zbk=bit.width\
+    y=bit.getPixel(zbk/2,zbg/2)\
+    r.backgroundColor=y    \
+  end\
+end\
+function shot()\
+  view =activity.getWindow().getDecorView(); \
+  display=activity.getWindowManager().getDefaultDisplay(); \
+  view.layout(0, 0, display.getWidth(), display.getHeight()); \
+  view.setDrawingCacheEnabled(true)\
+  --允许当前窗口保存缓存信息，这样getDrawingCache()方法才会返回一个Bitmap \
+  bmp = Bitmap.createBitmap(view.getDrawingCache()); \
+  return bmp\
+end\
+\
+function fx()\
+  intent = Intent();\
+  intent.setAction(Intent.ACTION_SEND);\
+  intent.putExtra(Intent.EXTRA_STREAM,\"/sdcard/轻工具箱/带壳截图/123.png\");\
+  intent.setType(\"image/png\");\
+  activity.startActivity(Intent.createChooser(intent,\"分享图片\"));\
+end\
+\
+\
+function hh(mz)\
+  local bd=shot()\
+  local f=File(\"/sdcard/烤面筋/带壳截图/\"..mz)\
+  f.createNewFile();\
+  local fd=FileOutputStream(f);\
+  if bd.compress(Bitmap.CompressFormat.PNG,90,fd)~=nil then\
+    fd.close();\
+  end\
+end\
+function bc()\
+  local mz=(os.date(\"%m-%d %H:%M:%S\")..\".png\")\
+  fltBtn.setVisibility(View.GONE)\
+  hh(mz)\
+  提示(\"已保存到 /sdcard/烤面筋/带壳截图/\"..mz)\
+  fltBtn.setVisibility(View.VISIBLE)\
+end\
+function ysjb()\
+  import \"android.graphics.drawable.GradientDrawable\"\
+\
+  for u=1,100 do\
+    jjb=bit.getPixel(zbk/2-u,zbg/2-u)\
+    jjbb=bit.getPixel(zbk-u,zbg-u)\
+    if y~=jjb and y~=jjbb and jjbb~=jjb then\
+      break\
+    end\
+  end\
+  g=GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP,\
+  {jb,jjb,jjbb})\
+  r.background=g\
+end\
+\
+function szbj()\
+  bj={\"渐变\",\"粉红\",\"白\",\"靛蓝色\",\"青绿色\",\"青色\",\"酸橙色\",\"亮蓝\",\"深紫\"}\
+  AlertDialog.Builder(this)\
+  .setTitle(\"颜色\")\
+  .setItems(bj,{onClick=function(l,v)\
+      dm={\
+        \"0xFFE91E63\",\
+        \"0xFFFFFFFF\",\
+        \"0xFF3F51B5\",\
+        \"0xFF009688\",\
+        \"0xFF0097A7\",\
+        \"0xFFCDDC39\",\
+        \"0xFF03A9F4\",\
+        \"0xFF673AB7\"\
+      }\
+      if bit ~= nil then\
+        for i=1,#dm do \
+          if v==i then \
+            r.backgroundColor=tonumber(dm[i])\
+            break\
+          end\
+\
+        end\
+        if v==0 then\
+          ysjb() \
+        end\
+      else\
+        提示(\"请选择图片，图片尺寸过大可能显示失败\")\
+      end\
+    end})\
+  .show()\
+end" ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      } ;
+  ["toolbar"]	= {
+      ["搜索框提示"]	= "" ;
+      ["icon_btns"]	= {
+          } ;
+      ["启用搜索功能"]	= false ;
+      ["menus"]	= {
+          [1]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          } ;
+      ["搜索URL"]	= "" ;
+      ["输入栏模式"]	= true ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["web"]	= {
+      ["启动网页"]	= "" ;
+      ["启用进度条"]	= true ;
+      ["启用长按菜单"]	= true ;
+      ["支持打开外部应用"]	= true ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["网页沉浸"]	= false ;
+      } ;
+  ["switch"]	= {
+      ["支持滑动页面"]	= true ;
+      ["显示状态栏"]	= true ;
+      ["横屏"]	= false ;
+      ["启用启动图"]	= false ;
+      } ;
+  ["fltBtn"]	= {
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件\
+--悬浮按钮点击时执行的事件\
+pop=PopupMenu(activity,fltBtn)\
+  import \"android.graphics.PixelFormat\"\
+  menu=pop.Menu\
+  menu.add(\"保存图片\").onMenuItemClick=function() \
+    bc() \
+  end\
+  menu.add(\"分享\").onMenuItemClick=function()\
+    hh(\"123.png\")\
+    fx()\
+  end\
+  menu.add(\"设置背景颜色\").onMenuItemClick=function()\
+    szbj()\
+  end\
+  \
+  pop.show()" ;
+      ["显示"]	= true ;
+      ["图标"]	= "" ;
+      } ;
+  ["sidebar"]	= {
+      ["items"]	= {
+          } ;
+      ["启用"]	= true ;
+      ["启用顶部图片"]	= false ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "Title" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      } ;
+  ["colors"]	= {
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["进度条"]	= "#00000000" ;
+      ["顶栏"]	= "#ff2c2e43" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      } ;
+  } ;

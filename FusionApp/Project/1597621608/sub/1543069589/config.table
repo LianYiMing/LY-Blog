@@ -1,0 +1,570 @@
+{
+  ["web"]	= {
+      ["启动网页"]	= "" ;
+      ["支持打开外部应用"]	= true ;
+      ["启用进度条"]	= true ;
+      ["启用长按菜单"]	= true ;
+      ["网页沉浸"]	= false ;
+      ["浏览器用户标识"]	= "默认" ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏高度"]	= "47dp" ;
+      ["顶栏标题"]	= "二维码工具" ;
+      ["侧滑栏宽度"]	= "0dp" ;
+      ["搜索栏阴影强度"]	= "0dp" ;
+      ["顶栏阴影强度"]	= "0dp" ;
+      ["搜索栏圆角弧度"]	= "0dp" ;
+      } ;
+  ["toolbar"]	= {
+      ["menus"]	= {
+          } ;
+      ["搜索框提示"]	= "" ;
+      ["搜索URL"]	= "" ;
+      ["启用搜索功能"]	= false ;
+      ["输入栏模式"]	= false ;
+      ["icon_btns"]	= {
+          } ;
+      } ;
+  ["colors"]	= {
+      ["悬浮按钮"]	= "#ff2ca8ef" ;
+      ["顶栏部件"]	= "#ff000000" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["进度条"]	= "#00000000" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["顶栏"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      } ;
+  ["events"]	= {
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["程序启动"]	= "--程序启动时会执行的事件\
+--左上角点击退出\
+\
+\
+\
+\
+require \"import\"\
+import \"android.app.*\"\
+import \"android.os.*\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+import \"layout\"\
+import \"mod\"\
+--导入识别类\
+import \"cn.hugo.android.scanner.decode.BitmapDecoder\"\
+\
+--方向判断\
+\
+function getStatusBarHeight()\
+  resources = activity.getResources();\
+  resourceId = resources.getIdentifier(\"status_bar_height\", \"dimen\",\"android\");\
+  height = resources.getDimensionPixelSize(resourceId);\
+  return height;\
+end\
+状态栏高度=getStatusBarHeight()+1\
+layt=\
+{\
+  DrawerLayout;\
+  id=\"Drawer\";\
+  layout_width=\"fill\";\
+  layout_height=\"fill\";\
+  background=\"#FFFFFFFF\";\
+  {\
+    LinearLayout;\
+    layout_width=\"fill\";\
+    layout_height=\"fill\";\
+    orientation=\"vertical\";\
+    {\
+      LinearLayout;\
+      layout_width=\"fill\";\
+      background=\"#FFFFFFFF\";\
+      {\
+        ImageView;\
+        id=\"back\";\
+        layout_width='20dp';\
+        layout_height='44dp';\
+        layout_marginLeft=\"3%w\";\
+        src='drawable/left.png';\
+        layout_marginTop=状态栏高度;\
+        backgroundColor=\"#FFFFFFFF\";\
+      }; \
+      {\
+        TextView,\
+        id=\"tittle\";\
+        text=\"条码工具\";\
+        textSize=\"15dp\";\
+        layout_width=\"fill\";\
+        layout_height=\"44dp\";\
+        gravity=\"left|center\";\
+        textColor=\"#FF000000\";\
+        layout_marginLeft=\"4%w\";\
+        layout_marginTop=状态栏高度;\
+        layout_marginBottom=\"5dp\";\
+        backgroundColor=\"#FFFFFFFF\";\
+      };\
+    };\
+    {\
+      LinearLayout;\
+      layout_width=\"20%h\";\
+      layout_height=\"35dp\";\
+      background=\"#FF000000\";\
+      layout_gravity=\"center\";\
+      orientation=\"horizontal\";\
+      {\
+        LinearLayout;\
+        layout_weight=\"1\";\
+        layout_height=\"fill\";\
+        background=\"#FFFFFFFF\";\
+        {\
+          LinearLayout;\
+          id=\"window1\";\
+          gravity=\"center\";\
+          layout_width=\"fill\";\
+          layout_height=\"fill\";\
+          {\
+            TextView;\
+            text=\"生成\";\
+            id=\"tittle1\";\
+            textSize=\"15sp\";\
+          };\
+        };\
+      };\
+      {\
+        LinearLayout;\
+        layout_weight=\"1\";\
+        layout_height=\"fill\";\
+        background=\"#FFFFFFFF\";\
+        {\
+          LinearLayout;\
+          id=\"window2\";\
+          gravity=\"center\";\
+          layout_width=\"fill\";\
+          layout_height=\"fill\";\
+          {\
+            TextView;\
+            text=\"读取\";\
+            id=\"tittle2\";\
+            textSize=\"15sp\";\
+          };\
+        };\
+      };\
+    };\
+    {\
+      LinearLayout;\
+      elevation=\"2dp\";\
+      layout_height=\"4dp\";\
+      layout_width=\"35%w\";\
+      layout_gravity=\"center\";\
+      layout_marginTop=\"-4dp\";\
+      {\
+        LinearLayout;\
+        id=\"huat\";\
+        layout_height=\"5%h\";\
+        layout_width=\"18%w\";\
+        background=\"#FF000000\";\
+      };\
+    };\
+    {\
+      Button;\
+      layout_width=\"fill\";\
+      layout_height=\"1dp\";\
+      backgroundColor=\"#ffeeefef\";\
+      layout_gravity=\"center_horizontal\";\
+      style=\"?android:attr/borderlessButtonStyle\";\
+    };\
+    {\
+      PageView;\
+      id=\"slide\";\
+      layout_width=\"fill\";\
+      layout_height=\"fill\";\
+      background=\"#FFFFFFFF\";\
+      pages={\
+        {\
+          ScrollView;\
+          layout_width=\"fill\";\
+          layout_height=\"fill\";\
+          verticalScrollBarEnabled=false;\
+          --窗口一开始布局！！！！！\
+          {\
+            LinearLayout;\
+            gravity=\"center\";\
+            layout_width=\"fill\";\
+            layout_height=\"fill\";\
+            orientation=\"vertical\";\
+            background=\"#FFFFFFFF\";\
+            {\
+              LinearLayout;\
+              layout_width=\"fill\";\
+              layout_height=\"30%h\";\
+              orientation=\"vertical\";\
+              {\
+                EditText;\
+                id=\"edit1\";\
+                textSize='15sp';\
+                gravity=\"left|top\";\
+                layout_width='fill';\
+                layout_height=\"30%h\";\
+                textColor='#FF000000';\
+                background=\"#00000000\";\
+                layout_marginLeft=\"3%w\";\
+                hintTextColor='#FF9b9b9b';\
+                Hint='请输入二维码内容，例如链接';\
+              };\
+            };\
+            {\
+              Button;\
+              text='生成';\
+              id='shengcheng';\
+              layout_width='30%w';\
+              layout_height='6%h';\
+              textColor='#FFFFFFFF';\
+            };\
+            {\
+              CardView;\
+              radius='10dp';\
+              elevation='8dp';\
+              layout_width='60%w';\
+              layout_height='60%w';\
+              layout_gravity='center';\
+              layout_marginTop=\"10%w\";\
+              layout_marginBottom=\"20dp\";\
+              CardBackgroundColor='#FFFFFFFF';\
+              {\
+                ImageView;\
+                id=\"Qrcode\";\
+                layout_width=\"fill\";\
+                layout_height=\"fill\";\
+              };\
+            };\
+          };\
+        };\
+        --窗口二开始布局\
+        {\
+          LinearLayout;\
+          layout_width='fill';\
+          layout_height='fill';\
+          orientation='vertical';\
+          background='#FFFFFFFF';\
+          {\
+            LinearLayout;\
+            gravity='center';\
+            layout_width='fill';\
+            layout_height='fill';\
+            orientation='vertical';\
+            layout_gravity='center_horizontal';\
+            {\
+              LinearLayout;\
+              id=\"background\";\
+              gravity='center';\
+              layout_width='70%w';\
+              layout_height='70%w';\
+              orientation='vertical';\
+              layout_gravity='center_horizontal';\
+              {\
+                CardView;\
+                radius='30%w';\
+                elevation='0dp';\
+                layout_width='60%w';\
+                layout_height='60%w';\
+                layout_gravity='center';\
+                CardBackgroundColor='#FF2CA8EF';\
+                {\
+                  LinearLayout;\
+                  id=\"up\";\
+                  gravity='center';\
+                  layout_width='fill';\
+                  layout_height='fill';\
+                  orientation='vertical';\
+                  layout_marginTop=\"-8dp\";\
+                  layout_marginLeft=\"-8dp\";\
+                  layout_marginRight=\"-8dp\";\
+                  layout_marginBottom=\"-8dp\";\
+                  layout_gravity='center_horizontal';\
+                  style=\"?android:attr/borderlessButtonStyle\";\
+                  {\
+                    ImageView;\
+                    id=\"tittle\";\
+                    layout_width='30%w';\
+                    layout_height='50%h';\
+                    scaleType=\"fitCenter\";\
+                    layout_gravity='center';\
+                    ColorFilter=\"#FFFFFFFF\";\
+                    src='drawable/box_upload.png';\
+                  };\
+                };\
+              };\
+            };\
+            {\
+              TextView;\
+              id=\"edit\";\
+              textSize=\"18sp\";\
+              layout_width=\"fill\";\
+              layout_height=\"70%h\";\
+              textColor=\"#FF000000\";\
+              textIsSelectable=true;\
+              layout_marginLeft=\"3%w\";\
+              gravity=\"center_vertical\";\
+            };\
+            {\
+              CardView;\
+              id=\"zhacai\";\
+              radius=\"28dp\";\
+              layout_width=\"56dp\";\
+              layout_height=\"56dp\";\
+              layout_marginRight=\"4%w\";\
+              layout_gravity=\"right|bottom\";\
+              {\
+                CardView;\
+                radius=\"28dp\";\
+                layout_width=\"fill\";\
+                layout_height=\"fill\";\
+                CardBackgroundColor='#FF2CA8EF';\
+                {\
+                  ImageView;\
+                  layout_width=\"30dp\";\
+                  layout_height=\"30dp\";\
+                  layout_gravity=\"center\";\
+                  ColorFilter=\"#FFFFFFFF\";\
+                  src=\"drawable/box_upload.png\";\
+                };\
+              };\
+            };\
+          };\
+        };\
+      };\
+    };\
+  };\
+};\
+activity.setContentView(loadlayout(layt))\
+--设置滑动条&字体颜色\
+appp=activity.getWidth()\
+local kuan=appp/5.5\
+slide.setOnPageChangeListener(PageView.OnPageChangeListener{\
+  onPageScrolled=function(a,b,c)\
+    huat.setX(kuan*(b+a))\
+    if c==0 then\
+      if a==0 then\
+        tittle1.setTextColor(0xFF000000)\
+        tittle2.setTextColor(0xFF7F7F7F)\
+      elseif a==1 then\
+        tittle1.setTextColor(0xFF7F7F7F)\
+        tittle2.setTextColor(0xFF000000)\
+      end\
+    end\
+  end})\
+\
+--按钮切换界面\
+tittle1.onClick=function()\
+  slide.showPage(0)\
+end\
+tittle2.onClick=function()\
+  slide.showPage(1)\
+end\
+\
+function CircleButton(view,InsideColor,radiu)\
+  import \"android.graphics.drawable.GradientDrawable\"\
+  drawable = GradientDrawable() \
+  drawable.setShape(GradientDrawable.RECTANGLE) \
+  drawable.setColor(InsideColor)\
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  view.setBackgroundDrawable(drawable)\
+end\
+角度=150\
+控件id=shengcheng\
+控件颜色=0xFF2CA8EF\
+CircleButton(控件id,控件颜色,角度)\
+\
+function CircleButton(view,InsideColor,radiu)\
+  import \"android.graphics.drawable.GradientDrawable\"\
+  drawable = GradientDrawable() \
+  drawable.setShape(GradientDrawable.RECTANGLE) \
+  drawable.setColor(InsideColor)\
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  view.setBackgroundDrawable(drawable)\
+end\
+角度=500\
+控件id=background\
+控件颜色=0x432BA4EF\
+CircleButton(控件id,控件颜色,角度)\
+\
+edit.setVisibility(View.GONE)\
+fltBtn.setVisibility(View.GONE)\
+zhacai.setVisibility(View.GONE)\
+Qrcode.setVisibility(View.GONE)\
+--窗口2点击事件\
+up.onClick=function()\
+  edit.Text=\"\"\
+  import \"android.content.Intent\"\
+  local intent= Intent(Intent.ACTION_PICK)\
+  intent.setType(\"image/*\")\
+  this.startActivityForResult(intent, 1)\
+  -------\
+  function onActivityResult(requestCode,resultCode,intent)\
+    if intent then\
+      local cursor =this.getContentResolver ().query(intent.getData(), nil, nil, nil, nil)\
+      cursor.moveToFirst()\
+      import \"android.provider.MediaStore\"\
+      local idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)\
+      fileSrc = cursor.getString(idx)\
+      bit = nil\
+      import \"android.graphics.BitmapFactory\"\
+    end\
+    --开始识别二维码\
+    if fileSrc == nil or fileSrc == \"\" then\
+      print(\"请选择要识别的图片\")\
+    else\
+      saom=BitmapDecoder(Result)\
+      nr=saom.getRawResult(loadbitmap(fileSrc))\
+      if nr~=nil then\
+        print(\"获取成功\")\
+        edit.Text=nr.toString();\
+        up.setVisibility(View.GONE)\
+        background.setVisibility(View.GONE)\
+        edit.setVisibility(View.VISIBLE)\
+        fltBtn.setVisibility(View.VISIBLE)\
+        zhacai.setVisibility(View.VISIBLE)\
+      else\
+        print(\"没有发现图中有二维码或条形码，获取失败\")\
+        up.setVisibility(View.VISIBLE)\
+        background.setVisibility(View.VISIBLE)\
+        edit.setVisibility(View.GONE)\
+        fltBtn.setVisibility(View.GONE)\
+      end\
+    end \
+  end\
+end\
+\
+zhacai.onClick=function()\
+  edit.Text=\"\"\
+  import \"android.content.Intent\"\
+  local intent= Intent(Intent.ACTION_PICK)\
+  intent.setType(\"image/*\")\
+  this.startActivityForResult(intent, 1)\
+  -------\
+  function onActivityResult(requestCode,resultCode,intent)\
+    if intent then\
+      local cursor =this.getContentResolver ().query(intent.getData(), nil, nil, nil, nil)\
+      cursor.moveToFirst()\
+      import \"android.provider.MediaStore\"\
+      local idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)\
+      fileSrc = cursor.getString(idx)\
+      bit = nil\
+      import \"android.graphics.BitmapFactory\"\
+    end\
+    --开始识别二维码\
+    saom=BitmapDecoder(Result)\
+    nr=saom.getRawResult(loadbitmap(fileSrc))\
+    if nr~=nil then\
+      print(\"获取成功\")\
+      edit.Text=nr.toString();\
+      up.setVisibility(View.GONE)\
+      background.setVisibility(View.GONE)\
+      edit.setVisibility(View.VISIBLE)\
+      fltBtn.setVisibility(View.VISIBLE)\
+      tittle.setVisibility(View.VISIBLE)\
+    else\
+      print(\"没有发现图中有二维码或条形码，获取失败\")\
+      up.setVisibility(View.GONE)\
+      background.setVisibility(View.GONE)\
+      edit.setVisibility(View.VISIBLE)\
+      fltBtn.setVisibility(View.VISIBLE)\
+      tittle.setVisibility(View.VISIBLE)\
+    end\
+  end\
+end\
+\
+--窗口1点击事件\
+shengcheng.onClick=function()\
+  颜色(0xff000000)\
+  b=生成二维码(edit1.text)\
+  Qrcode.setImageBitmap(b)\
+  Qrcode.setVisibility(View.VISIBLE)\
+end\
+\
+Qrcode.onLongClick=function()\
+  import \"com.tencent.qq.widget.*\"\
+  MyMenuDialog=MenuDialog(this);--设置弹窗进出动画\
+  MyMenuDialog.setButton(\"取消\",MenuDialog.setTextColor.BLACK);--设置取消按钮文字及颜色\
+  MyMenuDialog.addItem(\"保存到手机\",MenuDialog.setTextColor.BLACK,--设置选项文字及颜色\
+  {onClick = function()\
+      function saveBitmapAsPng(bitmap, filePath)\
+        import \"java.io.FileOutputStream\"\
+        local out = FileOutputStream(filePath)\
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);\
+        out.flush();\
+        out.close();\
+      end\
+      import \"java.io.*\"\
+      if File(\"/storage/emulated/0/轻工具箱/images/\").isDirectory() then\
+      else\
+        import \"java.io.File\"--导入File类\
+        File(\"/storage/emulated/0/轻工具箱/images/\").mkdir()\
+      end\
+      name=os.date(\"%Y-%m-%d-%H-%M-%S\")\
+      saveBitmapAsPng(b,\"/storage/emulated/0/轻工具箱/images/\"..name..\".png\")\
+      print(\"图片已成功保存至：/storage/emulated/0/轻工具箱/images/\")\
+\
+    end});\
+  MyMenuDialog.show();--显示弹窗\
+end\
+\
+back.onClick=function()\
+  退出页面()\
+end\
+activity.getWindow().setNavigationBarColor(Color.parseColor(\"#FFFFFFFF\"))\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+" ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      } ;
+  ["switch"]	= {
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= true ;
+      ["支持滑动页面"]	= false ;
+      ["横屏"]	= false ;
+      } ;
+  ["sidebar"]	= {
+      ["启用"]	= false ;
+      ["启用顶部图片"]	= false ;
+      ["items"]	= {
+          } ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["fltBtn"]	= {
+      ["显示"]	= false ;
+      ["点击事件"]	= "" ;
+      ["图标"]	= "" ;
+      } ;
+  } ;

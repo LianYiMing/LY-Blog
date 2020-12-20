@@ -1,0 +1,347 @@
+{
+  ["toolbar"]	= {
+      ["搜索框提示"]	= "" ;
+      ["menus"]	= {
+          [2]	= {
+              ["name"]	= "侵权联系" ;
+              ["onClick"]	= "联系QQ(2170816657)\
+\
+--侵权请联系我删除" ;
+              } ;
+          [1]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          } ;
+      ["启用搜索功能"]	= false ;
+      ["搜索URL"]	= "" ;
+      ["输入栏模式"]	= true ;
+      ["icon_btns"]	= {
+          } ;
+      } ;
+  ["colors"]	= {
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["进度条"]	= "#00000000" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["顶栏"]	= "#ff2c2e43" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      } ;
+  ["switch"]	= {
+      ["横屏"]	= false ;
+      ["显示状态栏"]	= true ;
+      ["启用启动图"]	= false ;
+      ["支持滑动页面"]	= true ;
+      } ;
+  ["sidebar"]	= {
+      ["items"]	= {
+          } ;
+      ["启用顶部图片"]	= false ;
+      ["启用"]	= false ;
+      } ;
+  ["events"]	= {
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["程序启动"]	= "require\"import\"\
+import \"android.app.*\"\
+import \"android.os.*\"\
+import \"android.widget.*\"\
+import \"android.view.*\"\
+import \"android.text.*\"\
+layout={\
+  LinearLayout,\
+  layout_width=\"fill\",\
+  layout_height=\"fill\",\
+  orientation=\"vertical\",\
+  backgroundColor=\"#FF464C6F\",\
+  {\
+    RelativeLayout,\
+    layout_width=\"fill\",\
+    layout_height=\"150dp\",\
+    layout_marginTop=\"35dp\",\
+    {\
+      ImageView,\
+      id=\"logo\",\
+      layout_width=\"130dp\",\
+      layout_height=\"130dp\",\
+      layout_marginLeft=\"30dp\",\
+      layout_centerVertical=true,\
+      src=\"drawable/icon.png\",\
+    },\
+    {\
+      TextView,\
+      layout_toRightOf=\"logo\",\
+      layout_marginLeft=\"20dp\",\
+      layout_centerVertical=true,\
+      text=Html.fromHtml(\"<b>欢迎使用<br/>@云仙魔盒<br/>@云上仙客</b>\"),\
+      textSize=\"20sp\",\
+      textColor=\"#009688\",\
+    }\
+  },\
+  {\
+    RelativeLayout,\
+    layout_width=\"fill\",\
+    layout_height=\"fill\",\
+    layout_marginTop=\"20dp\",\
+    {\
+      ListView,\
+      id=\"list\",\
+      layout_width=\"fill\",\
+      layout_marginTop=\"20dp\",\
+      layout_marginLeft=\"60dp\",\
+      layout_marginRight=\"60dp\",\
+      dividerHeight=\"0dp\",\
+    },\
+    {\
+      CardView,\
+      layout_width=\"200dp\",\
+      layout_height=\"200dp\",\
+      layout_alignParentRight=true,\
+      layout_alignParentBottom=true,\
+      layout_marginRight=\"-80dp\",\
+      layout_marginBottom=\"-80dp\",\
+      radius=\"100dp\",\
+      elevation=\"0dp\",\
+      CardBackgroundColor=\"#50009688\",\
+    },\
+    {\
+      CardView,\
+      layout_width=\"150dp\",\
+      layout_height=\"150dp\",\
+      layout_alignParentRight=true,\
+      layout_alignParentBottom=true,\
+      layout_marginRight=\"-60dp\",\
+      layout_marginBottom=\"-60dp\",\
+      radius=\"75dp\",\
+      elevation=\"0dp\",\
+      CardBackgroundColor=\"#80009688\",\
+    },\
+    {\
+      LinearLayout,\
+      layout_alignParentLeft=true,\
+      layout_alignParentBottom=true,\
+      layout_margin=\"20dp\",\
+      orientation=\"horizontal\",\
+      {\
+        TextView,\
+        text=\"隐藏功能\",\
+        textSize=\"15sp\",\
+        textColor=\"#009688\",\
+        onClick=function()\
+          弹出消息(\"正在开发\")\
+dl.show()\
+          end\
+      },\
+      {\
+        FrameLayout,\
+        layout_width=\"10dp\",\
+      },\
+      {\
+        TextView,\
+        text=\"设备信息\",\
+        textSize=\"15sp\",\
+        textColor=\"#009688\",\
+        onClick=function()\
+        device_model = Build.MODEL \
+\
+version_sdk = Build.VERSION.SDK \
+\
+version_release = Build.VERSION.RELEASE \
+import \"android.provider.Settings$Secure\"\
+android_id = Secure.getString(activity.getContentResolver(), Secure.ANDROID_ID)\
+\
+对话框()\
+.设置标题(\"设备信息\")\
+.设置消息(\"设备型号：\"..device_model..\"\\n设备SDK：\"..version_sdk..\"\\n设备系统版本：\"..version_release..\"\\n设备识别码：\"..android_id..\"\")\
+.设置积极按钮(\"复制识别码\",function()\
+  复制文本(android_id)\
+end)\
+.设置消极按钮(\"取消\")\
+.显示()\
+        end        \
+      },\
+    },\
+  },\
+}\
+\
+activity.setContentView(loadlayout(layout))\
+\
+adpd={\
+  {\
+    img={\
+      src=\"drawable/ic_cog_box.png\",\
+    },\
+    title={\
+      text=\"版本\",\
+    },\
+    content={\
+      text=\"8.0.4\",\
+    },\
+  },\
+    {\
+    img={\
+      src=\"drawable/ic_bug.png\",\
+    },\
+    title={\
+      text=\"作者\",\
+    },\
+    content={\
+      text=\"@云上仙客\",\
+    },\
+  },\
+  {\
+    img={\
+      src=\"drawable/ic_share.png\",\
+    },\
+    title={\
+      text=\"关注我们\",\
+    },\
+    content={\
+      text=\"感谢关注\",\
+    },\
+  },\
+  {\
+    img={\
+      src=\"drawable/ic_cash_usd.png\",\
+    },\
+    title={\
+      text=\"官方Q群\",\
+    },\
+    content={\
+      text=\"讨论，交流，聊天。\",\
+    },\
+  },\
+  {\
+    img={\
+      src=\"drawable/ic_account.png\",\
+    },\
+    title={\
+      text=\"捐赠或联系\",\
+    },\
+    content={\
+      text=\"点一下就能找到作者\",\
+    },\
+  },\
+  {\
+    img={\
+      src=\"drawable/ic_beaker_outline.png\",\
+    },\
+    title={\
+      text=\"分享本应用\",\
+    },\
+    content={\
+      text=\"分享给朋友\",\
+    },\
+  },\
+}\
+\
+items={\
+  LinearLayout,\
+  layout_width=\"fill\",\
+  orientation=\"horizontal\",\
+  gravity=\"center|left\",\
+  {\
+    ImageView,\
+    id=\"img\",\
+    layout_margin=\"10dp\",\
+    layout_width=\"30dp\",\
+    layout_height=\"30dp\",\
+  },\
+  {\
+    LinearLayout,\
+    layout_width=\"fill\",\
+    layout_marginLeft=\"10dp\",\
+    layout_marginRight=\"10dp\",\
+    orientation=\"vertical\",\
+    {\
+      TextView,\
+      id=\"title\",\
+      textColor=\"#FFFFFFFF\",\
+      textSize=\"15sp\",\
+    },\
+    {\
+      TextView,\
+      id=\"content\",\
+      textColor=\"#FFFFFFFF\",\
+      textSize=\"12sp\",\
+    },\
+  },\
+}\
+\
+onclick={\
+  nil,\
+  nil,\
+  function()\
+       import \"android.content.Intent\"\
+import \"android.net.Uri\"\
+url=\"https://kandian.qq.com/mqq/html/accountpage.html?_wv=16779009&_bid=2378&_nav_txtclr=000000&adfrom=article&x5PreFetch=1&puin=MzQ4NDQ3NzM0OA==\"\
+viewIntent = Intent(\"android.intent.action.VIEW\",Uri.parse(url))\
+activity.startActivity(viewIntent)\
+  end,\
+  function()\
+    加QQ群(724773402)\
+  end,\
+  function()\
+    this.startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(\"mqqapi://card/show_pslcard?uin=2170816657\")))\
+  end,\
+  function()\
+    分享文本(\"嗨，我发现了一个非常好玩的应用，应用里有好多好玩有趣的东西。（装x图制作，刷名片赞，制作外卖头像，听音乐，看小说，看电影。应用尽有。）快来下载吧！下载地址是：https://pan.lanzou.com/b207572\")\
+  end,\
+  function()\
+  进入子页面(\"捐赠\")\
+  end\
+}\
+\
+adapter=LuaAdapter(this,adpd,items)\
+list.Adapter=adapter\
+list.onItemClick=function(adp,view,pos,id)\
+  if onclick[id] then\
+    onclick[id]()\
+  end\
+end\
+\
+\
+" ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏标题"]	= "Title" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      } ;
+  ["web"]	= {
+      ["启用进度条"]	= true ;
+      ["支持打开外部应用"]	= true ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["启用长按菜单"]	= true ;
+      ["启动网页"]	= "" ;
+      ["网页沉浸"]	= false ;
+      } ;
+  ["fltBtn"]	= {
+      ["图标"]	= "" ;
+      ["显示"]	= true ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      } ;
+  } ;

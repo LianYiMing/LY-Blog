@@ -1,0 +1,3043 @@
+{
+  ["web_control"]	= {
+      } ;
+  ["sidebar"]	= {
+      ["启用"]	= true ;
+      ["items"]	= {
+          } ;
+      ["启用顶部图片"]	= false ;
+      } ;
+  ["switch"]	= {
+      ["显示状态栏"]	= true ;
+      ["启用启动图"]	= false ;
+      ["支持滑动页面"]	= true ;
+      ["横屏"]	= false ;
+      } ;
+  ["view_attribute"]	= {
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "Title" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      } ;
+  ["fltBtn"]	= {
+      ["图标"]	= "" ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["显示"]	= true ;
+      } ;
+  ["colors"]	= {
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#ff7abd9a" ;
+      ["顶栏"]	= "#ff7abd9a" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ff7abd9a" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["进度条"]	= "#ffffffff" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      } ;
+  ["events"]	= {
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["程序启动"]	= "--程序启动时会执行的事件\
+--程序启动时会执行的事件\
+电视直播=\
+{\
+  LinearLayout,--线性布局\
+  orientation='vertical',--方向\
+  layout_width='fill',--宽度\
+  layout_height='fill',--高度\
+  background='#00FFFFFF',--背景颜色或图片路径\
+  id=\"hanwuji\";\
+  {\
+    LinearLayout,--线性布局\
+    orientation='vertical',--方向\
+    layout_width='fill',--宽度\
+    layout_height='51%w',--高度\
+    background='https://ae01.alicdn.com/kf/Ubb46a905c2374a9686c5b3e94737d901k.png',--背景颜色或图片路径\
+\
+    {\
+      LinearLayout,--线性布局\
+      orientation='vertical',--方向\
+      layout_width='fill',--宽度\
+      --layout_height='wrap',--高度\
+      --background='#00FFFFFF',--背景颜色或图片路径\
+\
+      {\
+        CardView;--卡片控件      \
+        layout_marginTop='50dp';--顶距\
+        layout_gravity='center';--重力\
+        --左:left 右:right 中:center 顶:top 底:bottom\
+        elevation='2dp';--阴影\
+        layout_width='120dp';--宽度\
+        layout_height='40dp';--高度\
+        CardBackgroundColor='#FFFFFFFF';--颜色\
+        radius='8dp';--圆角\
+        onTouchListener=点击监听,--动画效果\
+        {\
+          TextView;--文本控件\
+          gravity='center';--重力\
+          --左:left 右:right 中:center 顶:top 底:bottom\
+          layout_width='fill';--宽度\
+          layout_height='fill';--高度\
+          textColor='#cf050000';--文字颜色\
+          text='电视直播';--显示文字\
+          textSize='20dp';--文字大小\
+          Typeface=Typeface.DEFAULT_BOLD;--粗体字\
+          onTouchListener=点击监听,--动画效果\
+        };\
+      };\
+    };\
+    {\
+      LinearLayout,--线性布局\
+      gravity='center';--重力  \
+      layout_marginTop='20dp';--顶距\
+      orientation='vertical',--方向\
+      layout_width='fill',--宽度\
+      --layout_height='wrap',--高度\
+      --background='#00FFFFFF',--背景颜色或图片路径\
+\
+      {\
+        LinearLayout,--线性布局\
+        layout_marginLeft='12dp';--左距              \
+        orientation='horizontal',--方向\
+        layout_width='fill',--宽度\
+        layout_height='fill',--高度\
+        background='#00FFFFFF',--背景颜色或图片路径\
+        id=\"z1\";\
+        {\
+          CardView;--卡片控件     \
+          layout_gravity='center';--重力\
+          --左:left 右:right 中:center 顶:top 底:bottom\
+          elevation='2dp';--阴影\
+          layout_width='100dp';--宽度\
+          layout_height='40dp';--高度\
+          CardBackgroundColor='#ffffffff';--颜色\
+          radius='4dp';--圆角\
+          onTouchListener=点击监听,--动画效果\
+          {\
+            TextView;--文本控件\
+            gravity='center';--重力\
+            --左:left 右:right 中:center 顶:top 底:bottom\
+            layout_width='fill';--宽度\
+            layout_height='fill';--高度\
+            textColor='#df000000';--文字颜色\
+            text='中央频道';--显示文字\
+            textSize='16dp';--文字大小\
+            onTouchListener=点击监听,--动画效果\
+            id=\"z2\"; \
+\
+          };\
+        };\
+        {\
+          LinearLayout,--线性布局     \
+          layout_marginLeft='12dp';--左距\
+          orientation='horizontal',--方向\
+          layout_width='fill',--宽度\
+          layout_height='fill',--高度\
+          background='#00FFFFFF',--背景颜色或图片路径\
+          id=\"w1\";\
+          {\
+            CardView;--卡片控件\
+            layout_gravity='center';--重力\
+            --左:left 右:right 中:center 顶:top 底:bottom\
+            elevation='2dp';--阴影\
+            layout_width='100dp';--宽度\
+            layout_height='40dp';--高度\
+            CardBackgroundColor='#ffffffff';--颜色\
+            radius='4dp';--圆角\
+            onTouchListener=点击监听,--动画效果\
+            {\
+              TextView;--文本控件\
+              gravity='center';--重力\
+              --左:left 右:right 中:center 顶:top 底:bottom\
+              layout_width='fill';--宽度\
+              layout_height='fill';--高度\
+              textColor='#df000000';--文字颜色\
+              text='卫视频道';--显示文字\
+              textSize='16dp';--文字大小\
+              onTouchListener=点击监听,--动画效果\
+              id=\"w2\"; \
+            };\
+          };\
+          {\
+            LinearLayout,--线性布局      \
+            layout_marginLeft='12dp';--左距\
+            orientation='horizontal',--方向\
+            layout_width='fill',--宽度\
+            layout_height='fill',--高度\
+            background='#00FFFFFF',--背景颜色或图片路径\
+            id=\"y1\";\
+            {\
+              CardView;--卡片控件                 \
+              layout_gravity='center';--重力\
+              --左:left 右:right 中:center 顶:top 底:bottom\
+              elevation='2dp';--阴影\
+              layout_width='100dp';--宽度\
+              layout_height='40dp';--高度\
+              CardBackgroundColor='#ffffffff';--颜色\
+              radius='4dp';--圆角\
+              onTouchListener=点击监听,--动画效果\
+              {\
+                TextView;--文本控件\
+                gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                layout_width='fill';--宽度\
+                layout_height='fill';--高度\
+                textColor='#df000000';--文字颜色\
+                text='影视明星';--显示文字\
+                textSize='16dp';--文字大小\
+                onTouchListener=点击监听,--动画效果\
+                id=\"y2\";\
+              };\
+            };\
+          };\
+        };\
+      };\
+    };\
+  };\
+  {\
+    LinearLayout,--线性布局\
+    orientation='vertical',--方向\
+    layout_width='fill',--宽度\
+    layout_height='wrap',--高度\
+    background='#00FFFFFF',--背景颜色或图片路径\
+    --布局写这\
+    {\
+      PageView;--滑动视图\
+      layout_weight=\"1\";--剩余属性\
+      id=\"hd3\";\
+      pages={\
+\
+        {\
+          ScrollView,--纵向滑动\
+          layout_width='fill';--宽度\
+          layout_height='wrap';--高度\
+          VerticalScrollBarEnabled=false;--隐藏纵向滑条\
+          --布局写这\
+          {\
+            LinearLayout,--线性布局       \
+            orientation='vertical',--方向\
+            layout_width='fill',--宽度   \
+            --第一页面\
+            --中央频道\
+            ------------------------------\
+            {\
+              LinearLayout,--线性布局\
+              gravity='center';--重力\
+              layout_marginTop='5%w';--顶距\
+              -- layout_marginLeft='6%w';--左距    \
+              orientation='horizontal',--方向\
+              layout_width='fill',--宽度\
+              layout_height='wrap',--高度\
+              background='#00FFFFFF',--背景颜色或图片路径\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFFFE7B9';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/cctv1.m3u8\"})--视频\
+                end,\
+\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='-20dp';--顶距\
+                  src='https://i.loli.net/2019/12/21/uXK24fhFM78N1iE.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#FF655D4A';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='CCTV1';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFFEE4C3';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/cctv2.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='-20dp';--顶距\
+                  src='https://i.loli.net/2019/12/21/ALITPkaSohnRqVf.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#FF675B4F';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='CCTV2';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFFED39C';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/cctv3.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='-20dp';--顶距\
+                  src='https://i.loli.net/2019/12/21/XtbI3zdlDpV8RnZ.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#FF66543E';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='CCTV3';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+            };\
+            --第二页面\
+            ------------------------------\
+\
+            {\
+              LinearLayout,--线性布局\
+              gravity='center';--重力\
+              --  layout_marginLeft='6%w';--左距\
+              layout_marginTop='2%w';--顶距\
+              orientation='horizontal',--方向\
+              layout_width='fill',--宽度\
+              layout_height='wrap',--高度\
+              -- background='#00FFFFFF',--背景颜色或图片路径\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFEA967A';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/cctv4.m3u8\"})--视频\
+                end,\
+\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='-20dp';--顶距\
+                  src='http://imgurl.xiaok1.cn/imgs/2019/12/e5f953c59c0acbd6.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#FF5D3D32';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='CCTV4';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFBCEE67';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/cctv5phd.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='-20dp';--顶距\
+                  src='http://imgurl.xiaok1.cn/imgs/2019/12/7250247c269bcc00.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#FF4B5F2A';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='CCTV5';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFBDD2EF';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/cctv6.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='-20dp';--顶距\
+                  src='http://imgurl.xiaok1.cn/imgs/2019/12/478652b68e6de5e1.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#FF4C545F';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='CCTV6';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+\
+                };\
+              };\
+            };\
+            --第三页面\
+            --------------------------------\
+\
+\
+            {\
+              LinearLayout,--线性布局\
+              gravity='center';--重力\
+              --   layout_marginLeft='6%w';--左距\
+              layout_marginTop='2%w';--顶距\
+              orientation='horizontal',--方向\
+              layout_width='fill',--宽度\
+              layout_height='wrap',--高度\
+              -- background='#00FFFFFF',--背景颜色或图片路径\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFB4EEB4';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/cctv7.m3u8\"})--视频\
+                end,\
+\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='-20dp';--顶距\
+                  src='http://imgurl.xiaok1.cn/imgs/2019/12/8a4584aed4676e5d.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#FF486048';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='CCTV7';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFFAEBD6';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/cctv8.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='-20dp';--顶距\
+                  src='http://imgurl.xiaok1.cn/imgs/2019/12/f743911f3e9ef828.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#FF655E56';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='CCTV8';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFBFEEFE';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/cctv9.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='-20dp';--顶距\
+                  src='http://imgurl.xiaok1.cn/imgs/2019/12/f61e065b5e47977e.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#FF4D6066';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='CCTV9';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+            };\
+            --第四页面\
+            ------------------------------\
+\
+            {\
+              LinearLayout,--线性布局\
+              gravity='center';--重力\
+              --  layout_marginLeft='6%w';--左距\
+              layout_marginTop='2%w';--顶距\
+              orientation='horizontal',--方向\
+              layout_width='fill',--宽度\
+              layout_height='wrap',--高度\
+              -- background='#00FFFFFF',--背景颜色或图片路径\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFEBECEE';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/cctv10.m3u8\"})--视频\
+                end,\
+\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='-20dp';--顶距\
+                  src='http://imgurl.xiaok1.cn/imgs/2019/12/e7c3ab9d44ea93bf.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#FF5C5C5C';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='CCTV10';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFE0FFFF';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/cctv11.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='-20dp';--顶距\
+                  src='http://imgurl.xiaok1.cn/imgs/2019/12/85df398f59080161.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#FF5A6666';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='CCTV11';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFEE6A51';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/cctv12.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='-20dp';--顶距\
+                  src='http://imgurl.xiaok1.cn/imgs/2019/12/370ee5313fabcf64.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#FF5F2B20';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='CCTV12';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+            };\
+            --第五页面\
+            --------------------------------\
+\
+            {\
+              LinearLayout,--线性布局\
+              gravity='center';--重力\
+              --  layout_marginLeft='6%w';--左距\
+              layout_marginTop='2%w';--顶距\
+              orientation='horizontal',--方向\
+              layout_width='fill',--宽度\
+              layout_height='wrap',--高度\
+              -- background='#00FFFFFF',--背景颜色或图片路径\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFFFC1C2';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/cctv13.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='-20dp';--顶距\
+                  src='http://imgurl.xiaok1.cn/imgs/2019/12/3fedda53474fed34.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#FF654D4D';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='CCTV13';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFFEFACD';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/cctv14.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='-20dp';--顶距\
+                  src='http://imgurl.xiaok1.cn/imgs/2019/12/827631b9cfb1ea41.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#FF666553';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='CCTV14';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFB4EEB4';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/cctv15.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='-20dp';--顶距\
+                  src='http://imgurl.xiaok1.cn/imgs/2019/12/014606c7e027f076.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#FF486048';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='CCTV15';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  }; \
+                };\
+              };\
+            };\
+          };\
+        };\
+\
+        --下一个，卫视频道\
+        --第一布局\
+        ------------------------------------\
+\
+\
+\
+        {\
+          ScrollView,--纵向滑动\
+          layout_width='fill';--宽度\
+          layout_height='wrap';--高度\
+          VerticalScrollBarEnabled=false;--隐藏纵向滑条\
+          --布局写这\
+\
+          {\
+            LinearLayout,--线性布局       \
+            orientation='vertical',--方向\
+            layout_width='fill',--宽度    \
+\
+            --布局写这\
+            --第一页面\
+            {\
+              LinearLayout,--线性布局\
+              gravity='center';--重力\
+              layout_marginTop='5%w';--顶距\
+              --  layout_marginLeft='6%w';--左距    \
+              orientation='horizontal',--方向\
+              layout_width='fill',--宽度\
+              layout_height='wrap',--高度\
+              background='#00FFFFFF',--背景颜色或图片路径\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFFFE7B9';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/hunanhd.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='http://imgurl.xiaok1.cn/imgs/2019/12/66f3703661d851f0.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='湖南卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFFEE4C3';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/zjhd.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='http://imgurl.xiaok1.cn/imgs/2019/12/1dd7140ba9e021ee.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='浙江卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFFED39C';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/jshd.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='http://imgurl.xiaok1.cn/imgs/2019/12/b5eccd2fa1956030.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='江苏卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+\
+                  };\
+                };\
+              };\
+            };\
+\
+            --第二页面\
+            ----------------------------------------\
+            {\
+              LinearLayout,--线性布局\
+              gravity='center';--重力\
+              layout_marginTop='2%w';--顶距\
+              --   layout_marginLeft='6%w';--左距    \
+              orientation='horizontal',--方向\
+              layout_width='fill',--宽度\
+              layout_height='wrap',--高度\
+              background='#00FFFFFF',--背景颜色或图片路径\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFEA967A';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/dfhd.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='http://imgurl.xiaok1.cn/imgs/2019/12/f839038c63e3a7af.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='东方卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFBCEE67';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/btv1.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='http://imgurl.xiaok1.cn/imgs/2019/12/c4a126f817b2b553.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='北京卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFBDD2EF';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/ahtv.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='https://i.loli.net/2019/12/22/S78FH5mvRCxprlX.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='安徽卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+            };\
+\
+            --第三页面\
+            ----------------------------------\
+            {\
+              LinearLayout,--线性布局\
+              gravity='center';--重力\
+              layout_marginTop='2%w';--顶距\
+              -- layout_marginLeft='6%w';--左距    \
+              orientation='horizontal',--方向\
+              layout_width='fill',--宽度\
+              layout_height='wrap',--高度\
+              background='#00FFFFFF',--背景颜色或图片路径\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFB4EEB4';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/sdhd.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='https://i.loli.net/2019/12/22/sENKcDIim5PrUBw.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='山东卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFFAEBD6';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/hntv.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='https://i.loli.net/2019/12/22/mTIbcY4MPX9swJG.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='河南卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFBFEEFE';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/jxtv.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='https://i.loli.net/2019/12/22/fcijWFOxdbeuoBr.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='江西卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+            };\
+\
+            --第四页面\
+            ----------------------------------\
+            {\
+              LinearLayout,--线性布局\
+              gravity='center';--重力\
+              layout_marginTop='2%w';--顶距\
+              --layout_marginLeft='6%w';--左距    \
+              orientation='horizontal',--方向\
+              layout_width='fill',--宽度\
+              layout_height='wrap',--高度\
+              background='#00FFFFFF',--背景颜色或图片路径\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFE5E5E5';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/hljtv.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='https://i.loli.net/2019/12/22/G3opBL6xntlhukX.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='黑龙江卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFE0FFFF';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/gdtv.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='https://i.loli.net/2019/12/22/L4ONPojR3YmvcpK.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='广东卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFEE6A51';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/tjtv.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='https://i.loli.net/2019/12/22/OnHJ5EhCMVqU2l9.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='天津卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+            };\
+\
+            --第五页面\
+            --------------------------------\
+            {\
+              LinearLayout,--线性布局\
+              gravity='center';--重力\
+              layout_marginTop='2%w';--顶距\
+              --   layout_marginLeft='6%w';--左距    \
+              orientation='horizontal',--方向\
+              layout_width='fill',--宽度\
+              layout_height='wrap',--高度\
+              background='#00FFFFFF',--背景颜色或图片路径\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFFFC1C2';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/hbtv.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='https://i.loli.net/2019/12/22/yaFqGOuYCHXSE5v.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='湖北卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFFEFACD';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/hebtv.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='https://i.loli.net/2019/12/22/Zk87DJf4GxWTlzu.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='河北卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFB4EEB4';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/cqhd.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='https://i.loli.net/2019/12/22/Vm84qyRwW3FdDvS.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='重庆卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+            };\
+\
+            --第六页面\
+            ----------------------------------\
+            {\
+              LinearLayout,--线性布局\
+              gravity='center';--重力\
+              layout_marginTop='2%w';--顶距\
+              --   layout_marginLeft='6%w';--左距    \
+              orientation='horizontal',--方向\
+              layout_width='fill',--宽度\
+              layout_height='wrap',--高度\
+              background='#00FFFFFF',--背景颜色或图片路径\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFFAEBD6';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/dntv.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/H11fd19bf28e748368ef4c3887023dd7dt.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='东南卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFBFEEFE';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/sxrtv.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/H179fbaf25fe845309c27f91418b5dac5l.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='山西卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFE5E5E5';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/gxtv.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/H53bd077cb785413c8cb89e6dad098d3fh.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='广西卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+\
+                  };\
+                };\
+              };\
+            };\
+\
+            --第七页面\
+            ------------------------------\
+            {\
+              LinearLayout,--线性布局\
+              gravity='center';--重力\
+              layout_marginTop='2%w';--顶距\
+              --   layout_marginLeft='6%w';--左距    \
+              orientation='horizontal',--方向\
+              layout_width='fill',--宽度\
+              layout_height='wrap',--高度\
+              background='#00FFFFFF',--背景颜色或图片路径\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFE0FFFF';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/gztv.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/Hc167f3f644bd470b83af0ffc498e5737w.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='贵州卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFEE6A51';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/szhd.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/H375b17c278fa4dce986ba4fbbf321ff0m.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='深圳卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFFFC1C2';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/jltv.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/H0e66b3691d5b49c489f4e87b9de4ff85L.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='吉林卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+            };\
+\
+            --第八页面\
+            ----------------------------------\
+            {\
+              LinearLayout,--线性布局\
+              gravity='center';--重力\
+              layout_marginTop='2%w';--顶距\
+              --  layout_marginLeft='6%w';--左距    \
+              orientation='horizontal',--方向\
+              layout_width='fill',--宽度\
+              layout_height='wrap',--高度\
+              background='#00FFFFFF',--背景颜色或图片路径\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFFEFACD';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/lntv.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/H43aa2ea06cc0474ca49b55054f3adda2b.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='辽宁卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#FFB4EEB4';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/sctv.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/H1cb1681372e54eb79a0265d9d7238096i.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='四川卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+\
+\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='100dp';--高度\
+                CardBackgroundColor='#ffffffff';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://118.123.60.12:8114/LIVES/Fsv_otype=1&FvSeid=&Fsv_chan_hls_se_idx=014&Provider_id=&Pcontent_id=index.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/Uc74ea040a1bf4d37875940a132438deey.jpg';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='海南卫视';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+\
+                  }; \
+                };\
+              };\
+            };\
+          };\
+        };\
+\
+        --下一个，影视频道\
+        --第一布局\
+        ----------------------------------------\
+\
+\
+        {\
+          ScrollView,--纵向滑动\
+          layout_width='fill';--宽度\
+          layout_height='wrap';--高度\
+          VerticalScrollBarEnabled=false;--隐藏纵向滑条\
+          --布局写这\
+          {\
+            LinearLayout,--线性布局       \
+            orientation='vertical',--方向\
+            layout_width='fill',--宽度    \
+\
+            --布局写这\
+            --第一页面\
+            {\
+              LinearLayout,--线性布局\
+              gravity='center';--重力\
+              layout_marginTop='5%w';--顶距\
+              --layout_marginLeft='6%w';--左距    \
+              orientation='horizontal',--方向\
+              layout_width='fill',--宽度\
+              layout_height='wrap',--高度\
+              background='#00FFFFFF',--背景颜色或图片路径\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='75dp';--高度\
+                CardBackgroundColor='#FFEA967A';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://tx.hls.huya.com/huyalive/30765679-2554414705-10971127618396487680-3048991636-10057-A-0-1.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  -- layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/H4dda4f5878834ce39eaece254c099455X.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='吴京';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='75dp';--高度\
+                CardBackgroundColor='#FFBCEE67';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://tx.hls.huya.com/huyalive/94525224-2460685313-10568562945082523648-2789274524-10057-A-0-1.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  --layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/Uf7a4a5a2bff44b7abc6c05f549b6143bn.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='周星驰';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='75dp';--高度\
+                CardBackgroundColor='#FFBCEE67';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://aldirect.hls.huya.com/huyalive/94525224-2467341872-10597152648291418112-2789274550-10057-A-0-1_1200.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  --layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/H886a7e669246498bb0ab1c58eb027933E.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='刘德华';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+            };\
+            {\
+              LinearLayout,--线性布局\
+              gravity='center';--重力\
+              layout_marginTop='2%w';--顶距\
+              --   layout_marginLeft='6%w';--左距    \
+              orientation='horizontal',--方向\
+              layout_width='fill',--宽度\
+              layout_height='wrap',--高度\
+              background='#00FFFFFF',--背景颜色或图片路径\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='75dp';--高度\
+                CardBackgroundColor='#FFFFA600';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://tx.hls.huya.com/huyalive/94525224-2460685774-10568564925062447104-2789253840-10057-A-0-1.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  -- layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/H0daf97bb00a644e2a44cd800d75d79bcm.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='周润发';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='75dp';--高度\
+                CardBackgroundColor='#FFFEE4C3';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://tx.hls.huya.com/huyalive/94525224-2460686093-10568566295157014528-2789253848-10057-A-0-1.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  --layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/U8a86d43e04dd4f8a8826488bafa7e634W.jpg';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='李连杰';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='75dp';--高度\
+                CardBackgroundColor='#FFFFD39C';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://tx.hls.huya.com/huyalive/94525224-2469517548-10606497105558110208-2847699176-10057-A-0-1.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  --layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/H219863ae6f1d45a48af5164bc35995cfq.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='李小龙';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+\
+                  };\
+                };\
+              };\
+            };\
+            {\
+              LinearLayout,--线性布局\
+              gravity='center';--重力\
+              layout_marginTop='2%w';--顶距\
+              --layout_marginLeft='6%w';--左距    \
+              orientation='horizontal',--方向\
+              layout_width='fill',--宽度\
+              layout_height='wrap',--高度\
+              background='#00FFFFFF',--背景颜色或图片路径\
+              {\
+                CardView;--卡片控件‘\
+                layout_marginLeft='';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='75dp';--高度\
+                CardBackgroundColor='#FFFFA600';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://tx.hls.huya.com/huyalive/29169025-2686219938-11537226783573147648-2847699096-10057-A-1524024759-1.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  -- layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/H1bcde6ad84e64b939e4a087cf22b3aabg.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='甄子丹';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='75dp';--高度\
+                CardBackgroundColor='#FFFEE4C3';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://tx.hls.huya.com/huyalive/30765679-2689675828-11552069718101721088-3048991626-10057-A-0-1.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  --layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/U7b82154d926e4a478358e8c175b3dd9be.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='徐峥';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='75dp';--高度\
+                CardBackgroundColor='#FFFFD39C';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://tx.hls.huya.com/huyalive/94525224-2460686034-10568566041753944064-2789274542-10057-A-0-1.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  --layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/Ue39d4c3f1f77494aa144626d981f4f52E.jpg';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='林正英';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+            };\
+            {\
+              LinearLayout,--线性布局\
+              gravity='center';--重力\
+              layout_marginTop='2%w';--顶距\
+              --  layout_marginLeft='6%w';--左距    \
+              orientation='horizontal',--方向\
+              layout_width='fill',--宽度\
+              layout_height='wrap',--高度\
+              background='#00FFFFFF',--背景颜色或图片路径\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='75dp';--高度\
+                CardBackgroundColor='#FFFFA600';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ivi.bupt.edu.cn/hls/chchd.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  -- layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/Ue380478606db43fba66a368d0fa6f724W.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='CHC';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='75dp';--高度\
+                CardBackgroundColor='#FFFEE4C3';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://tx.hls.huya.com/huyalive/29106097-2689286606-11550398022340837376-2789274544-10057-A-0-1.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  --layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/Ub616899e86784c42917c7c713d7e64d37.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='丧尸电影';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='75dp';--高度\
+                CardBackgroundColor='#FFFFD39C';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://ott.fj.chinamobile.com/PLTV/88888888/224/3221225879/index.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  --layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/U36114bc1bdf04abb997a878d4ba0a769E.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='动作大片';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+            };\
+\
+            {\
+              LinearLayout,--线性布局\
+              gravity='center';--重力\
+              layout_marginTop='2%w';--顶距\
+              -- layout_marginLeft='6%w';--左距    \
+              orientation='horizontal',--方向\
+              layout_width='fill',--宽度\
+              layout_height='wrap',--高度\
+              background='#00FFFFFF',--背景颜色或图片路径\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='75dp';--高度\
+                CardBackgroundColor='#FFEA967A';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://aldirect.hls.huya.com/huyalive/28466698-2689656864-11551988268341919744-2847699194-10057-A-0-1_1200.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  -- layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/U715a05d3fe9d43bd84396c3bd28067a1r.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='科幻电影';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='75dp';--高度\
+                CardBackgroundColor='#FFBCEE67';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://tx.hls.huya.com/huyalive/30765679-2523417522-10837995731143360512-2777068634-10057-A-0-1.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  --layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/U2815624bce78460b8e9776e46953ef8am.png';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='70dp';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='古惑仔';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+\
+                  };\
+                };\
+              };\
+              {\
+                CardView;--卡片控件\
+                layout_marginLeft='8dp';--左距\
+                layout_gravity='center';--重力\
+                --左:left 右:right 中:center 顶:top 底:bottom\
+                elevation='1dp';--阴影\
+                layout_width='100dp';--宽度\
+                layout_height='75dp';--高度\
+                CardBackgroundColor='#FFBCEE67';--颜色\
+                radius='8dp';--圆角\
+                onTouchListener=点击监听,--动画效果\
+                onClick=function()\
+                  进入子页面(\"电视直播\",{链接=\"http://tx.hls.huya.com/huyalive/28466698-2689662310-11552011658733813760-3048959582-10057-A-1525512946-1.m3u8\"})--视频\
+                end,\
+                {\
+                  ImageView;--图片控件\
+                  --layout_marginTop='2dp';--顶距\
+                  src='https://ae01.alicdn.com/kf/U285ae04545394d8b805778be4cf698eeJ.jpg';--图片路径\
+                  layout_width='fill';--宽度\
+                  layout_height='fill';--高度\
+                  scaleType='fitXY';--图片显示类型\
+                };\
+                {\
+                  CardView;--卡片控件\
+                  layout_gravity='center|bottom';--重力\
+                  --左:left 右:right 中:center 顶:top 底:bottom\
+                  elevation='';--阴影\
+                  layout_width='fill';--宽度\
+                  layout_height='30dp';--高度\
+                  CardBackgroundColor='#90000000';--颜色\
+                  radius='';--圆角\
+                  onTouchListener=点击监听,--动画效果\
+                  {\
+                    TextView;--文本控件\
+                    -- layout_marginLeft='20dp';--左距\
+                    gravity='center';--重力\
+                    --左:left 右:right 中:center 顶:top 底:bottom\
+                    layout_width='fill';--宽度\
+                    layout_height='fill';--高度\
+                    textColor='#ffffffff';--文字颜色\
+                    text='韩国电影';--显示文字\
+                    textSize='15dp';--文字大小\
+                    onTouchListener=点击监听,--动画效果\
+                  };\
+                };\
+              };\
+            };\
+          };\
+        };\
+      };\
+    };\
+  };\
+};\
+activity.setContentView(loadlayout(电视直播))\
+\
+--电视直播页面\
+--设置Sideslip点击事件\
+z1.onClick=function()\
+  hd3.showPage(0)\
+end\
+--设置Sideslip点击事件\
+w1.onClick=function()\
+  hd3.showPage(1)\
+end\
+--设置Sideslip点击事件\
+y1.onClick=function()\
+  hd3.showPage(2)\
+end\
+" ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象,新标题=..." ;
+      } ;
+  ["web"]	= {
+      ["浏览器用户标识"]	= "默认" ;
+      ["网页沉浸"]	= false ;
+      ["启用进度条"]	= true ;
+      ["支持打开外部应用"]	= true ;
+      ["启动网页"]	= "" ;
+      ["启用长按菜单"]	= true ;
+      } ;
+  ["toolbar"]	= {
+      ["启用搜索功能"]	= false ;
+      ["搜索URL"]	= "" ;
+      ["icon_btns"]	= {
+          } ;
+      ["搜索框提示"]	= "" ;
+      ["输入栏模式"]	= true ;
+      ["menus"]	= {
+          [1]	= {
+              ["onClick"]	= "退出页面()" ;
+              ["name"]	= "退出" ;
+              } ;
+          } ;
+      } ;
+  } ;

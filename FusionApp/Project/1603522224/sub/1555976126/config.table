@@ -1,0 +1,107 @@
+{
+  ["global_js"]	= "document.body.style.marginTop='-110px'" ;
+  ["sidebar"]	= {
+      ["启用顶部图片"]	= false ;
+      ["启用"]	= true ;
+      ["items"]	= {
+          } ;
+      } ;
+  ["events"]	= {
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["程序启动"]	= "import 'android.webkit.WebView'webView.addJavascriptInterface({},'JsInterface')\
+menuBtn.onClick=function()\
+  退出页面()\
+end" ;
+      } ;
+  ["web_control"]	= {
+      [1]	= {
+          ["remove_element"]	= "search-bar,wrapper,c-container module,suggest-div flat,float-model,juzi-tips-wrapper,c-flexbox juzi-panel" ;
+          ["url"]	= "hanyu.baidu.com" ;
+          ["js"]	= "" ;
+          } ;
+      } ;
+  ["colors"]	= {
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#ffffffff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ff000000" ;
+      ["搜索栏部件"]	= "#ffffffff" ;
+      ["顶栏"]	= "#ffee7785" ;
+      ["悬浮按钮"]	= "#ffee7785" ;
+      ["侧滑栏列表文字"]	= "#ffffffff" ;
+      ["进度条"]	= "#00000000" ;
+      ["侧滑栏列表图标"]	= "#ffffffff" ;
+      ["搜索栏部件触摸"]	= "#ffffffff" ;
+      } ;
+  ["toolbar"]	= {
+      ["输入栏模式"]	= false ;
+      ["搜索URL"]	= "" ;
+      ["启用搜索功能"]	= false ;
+      ["icon_btns"]	= {
+          } ;
+      ["搜索框提示"]	= "" ;
+      ["menus"]	= {
+          } ;
+      } ;
+  ["web"]	= {
+      ["启用进度条"]	= true ;
+      ["网页沉浸"]	= false ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["支持打开外部应用"]	= true ;
+      ["启动网页"]	= "https://hanyu.baidu.com/s?about=%E7%88%B1%E6%83%85&author=%E5%85%A8%E9%83%A8&wd=%E6%83%85%E6%84%9F%E7%9A%84%E5%8F%A5%E5%AD%90&ptype=sentence&text=%E7%88%B1%E6%83%85&act=a_click_change_filter" ;
+      ["启用长按菜单"]	= true ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏标题"]	= "情感语录" ;
+      ["侧滑栏宽度"]	= "0dp" ;
+      ["顶栏阴影强度"]	= "0dp" ;
+      ["顶栏高度"]	= "50dp" ;
+      ["搜索栏阴影强度"]	= "0dp" ;
+      ["搜索栏圆角弧度"]	= "0dp" ;
+      } ;
+  ["switch"]	= {
+      ["显示状态栏"]	= true ;
+      ["启用启动图"]	= false ;
+      ["横屏"]	= false ;
+      ["支持滑动页面"]	= true ;
+      } ;
+  ["fltBtn"]	= {
+      ["点击事件"]	= "items={\"爱情\",\"唯美\",\"伤感\",\"孤独\",\"表白\"} \
+AlertDialog.Builder(this) \
+.setTitle(\"选择分类\") \
+.setItems(items,{onClick=function(l,v) \
+if v==0 then \
+加载网页(\"https://hanyu.baidu.com/s?about=%E7%88%B1%E6%83%85&author=%E5%85%A8%E9%83%A8&wd=%E6%83%85%E6%84%9F%E7%9A%84%E5%8F%A5%E5%AD%90&ptype=sentence&text=%E7%88%B1%E6%83%85&act=a_click_change_filter\")\
+end \
+if v==1 then \
+加载网页(\"https://hanyu.baidu.com/s?about=%E5%94%AF%E7%BE%8E&author=%E5%85%A8%E9%83%A8&wd=%E6%83%85%E6%84%9F%E7%9A%84%E5%8F%A5%E5%AD%90&ptype=sentence&text=%E5%94%AF%E7%BE%8E&act=a_click_change_filter\")\
+end \
+if v==2 then \
+加载网页(\"https://hanyu.baidu.com/s?about=%E4%BC%A4%E6%84%9F&author=%E5%85%A8%E9%83%A8&wd=%E6%83%85%E6%84%9F%E7%9A%84%E5%8F%A5%E5%AD%90&ptype=sentence&text=%E4%BC%A4%E6%84%9F&act=a_click_change_filter\")\
+end \
+if v==3 then \
+加载网页(\"https://hanyu.baidu.com/s?about=%E5%AD%A4%E7%8B%AC&author=%E5%85%A8%E9%83%A8&wd=%E6%83%85%E6%84%9F%E7%9A%84%E5%8F%A5%E5%AD%90&ptype=sentence&text=%E5%AD%A4%E7%8B%AC&act=a_click_change_filter\")\
+end \
+if v==4 then \
+加载网页(\"https://hanyu.baidu.com/s?about=%E8%A1%A8%E7%99%BD&author=%E5%85%A8%E9%83%A8&wd=%E6%83%85%E6%84%9F%E7%9A%84%E5%8F%A5%E5%AD%90&ptype=sentence&text=%E8%A1%A8%E7%99%BD&act=a_click_change_filter\")\
+end \
+end}) \
+.show()" ;
+      ["显示"]	= true ;
+      ["图标"]	= "" ;
+      } ;
+  } ;

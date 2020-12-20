@@ -1,0 +1,407 @@
+{
+  ["colors"]	= {
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["悬浮按钮图标"]	= "#FFFFFF" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["底栏"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["进度条"]	= "#14aaaaaa" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["底栏图标触摸波纹"]	= "#24000000" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["底栏图标选中"]	= "#ff74d2ff" ;
+      ["底栏图标"]	= "#ffa6a6a6" ;
+      ["顶栏部件触摸"]	= "#22000000" ;
+      ["顶栏"]	= "#ff2c2e43" ;
+      ["侧滑栏列表文字"]	= "#ff74a5ff" ;
+      ["侧滑栏列表图标"]	= "#ff8bddff" ;
+      } ;
+  ["web_control"]	= {
+      [4]	= {
+          ["remove_element"]	= "banner shadow,textads shadow,header clearfix" ;
+          ["js"]	= "" ;
+          ["url"]	= "www.zzlzl.com" ;
+          } ;
+      [1]	= {
+          ["remove_element"]	= "under," ;
+          ["js"]	= "" ;
+          ["url"]	= "www.coolapk.com" ;
+          } ;
+      [2]	= {
+          ["remove_element"]	= "fixed-download-wrap show,detail-appsearch-button" ;
+          ["js"]	= "" ;
+          ["url"]	= "mobile.baidu.com" ;
+          } ;
+      [3]	= {
+          ["remove_element"]	= "app-icon,app-info,appbao-download-banner,tips app horizontal," ;
+          ["js"]	= "" ;
+          ["url"]	= "a.app.qq.com" ;
+          } ;
+      } ;
+  ["sidebar"]	= {
+      ["启用顶部图片"]	= false ;
+      ["启用"]	= true ;
+      ["items"]	= {
+          [1]	= {
+              ["name"]	= "吾爱破解论坛" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://www.52pojie.cn/forum.php?mod=forumdisplay&fid=16&filter=lastpost&orderby=lastpost\")" ;
+              } ;
+          [2]	= {
+              ["name"]	= "移动叔叔论坛" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://wap.sogou.com/ntcweb?bilog=vrcid%3Atitle.977259d&spver=1&clickTime=1579754534835&clickType=click&pno=2&id=06f408e7-d294-479a-9d6e-fa2477c6aee2&level=4&wml=0&rcer=Q9PEmkoIqlM_7Gbkf&is_per=0&g_ut=3&bid=sogou-mobb-248eb1f330c4c4bf&dp=1&key=%E9%AD%85%E8%93%9Dnote6miui10%E5%8C%85&url=http%3A%2F%2Fbbs.ydss.cn%2F&pst=6\")" ;
+              } ;
+          [3]	= {
+              ["name"]	= "智友论坛" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"http://bbs.zhiyoo.net/forum.php?mod=forumdisplay&fid=42&mobile=2\")" ;
+              } ;
+          [4]	= {
+              ["name"]	= "机锋论坛" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"http://bbs.gfan.com/forum.php?mod=forumdisplay&fid=62&filter=author&orderby=dateline\")" ;
+              } ;
+          [5]	= {
+              ["name"]	= "八神论坛" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"http://zntx.cc/download/book_list.aspx?siteid=956&classid=2336&action=new\")" ;
+              } ;
+          [6]	= {
+              ["name"]	= "一加论坛" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"http://www.oneplusbbs.com/forum-52-1.html\")" ;
+              } ;
+          [7]	= {
+              ["name"]	= "冰封论坛" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://www.zzlzl.com/\")" ;
+              } ;
+          [8]	= {
+              ["name"]	= "微点分享" ;
+              ["icon"]	= "drawable/compass.png" ;
+              ["onClick"]	= "加载网页(\"https://www.wefocu.com/\")" ;
+              } ;
+          [9]	= {
+              ["name"]	= "声明" ;
+              ["icon"]	= "drawable/bookmark.png" ;
+              ["onClick"]	= "圆角对话框()\
+.设置标题(\"LYM:\")\
+.设置消息(\"此侧滑栏中的应用不建议使用，窝是按照个人使用习惯来制作软件的。如果你擅自下载并使用了侧滑栏中的软件对你个人造成的损失，作者不负任何责任\\n另外，由于作者能力有限，应用过于粗糙，敬请见谅😄\\n\")\
+.设置圆角(\"11dp\")\
+.设置积极按钮(\"我明白了\",function()\
+  print(\"祝你使用愉快😀\")\
+end)\
+.设置中立按钮(\"好的，我不用\")\
+.设置消极按钮(\"辣鸡玩意\",function()\
+  退出页面()\
+  end)\
+.显示()\
+\
+\
+\
+--[[\
+对话框()\
+.设置标题(\"标题\")\
+.设置消息(\"消息\")\
+.设置积极按钮(\"确定\",function()\
+  显示消息(\"点击了确定\")\
+end)\
+.设置消极按钮(\"取消\")\
+.显示()]]" ;
+              } ;
+          } ;
+      } ;
+  ["toolbar"]	= {
+      ["输入栏模式"]	= false ;
+      ["menus"]	= {
+          [4]	= {
+              ["onClick"]	= "退出页面()" ;
+              ["name"]	= "退出" ;
+              } ;
+          [1]	= {
+              ["onClick"]	= "import \"android.content.Intent\"\
+local intent= Intent(Intent.ACTION_PICK)\
+intent.setType(\"image/*\")\
+this.startActivityForResult(intent, 1)\
+------\
+\
+--回调\
+function onActivityResult(requestCode,resultCode,intent)\
+  if intent then\
+    local cursor =this.getContentResolver ().query(intent.getData(), nil, nil, nil, nil)\
+    cursor.moveToFirst()\
+    import \"android.provider.MediaStore\"\
+    local idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)\
+    fileSrc = cursor.getString(idx)\
+    bit=nil\
+    --fileSrc回调路径路径\
+    --import \"android.graphics.BitmapFactory\"\
+    --bit =BitmapFactory.decodeFile(fileSrc)\
+    --  iv.setImageBitmap(bit)\
+    background.setImageBitmap(loadbitmap(fileSrc))\
+    setdata(\"fileSrc\",fileSrc)\
+  end\
+end--nirenr" ;
+              ["name"]	= "自定义侧滑背景" ;
+              } ;
+          [2]	= {
+              ["onClick"]	= "c = this.getSharedPreferences(\"PicCustom\", Activity.MODE_PRIVATE) \
+c.edit().clear().commit()\
+background.setImageBitmap(loadbitmap(\"background.jpg\"))" ;
+              ["name"]	= "恢复默认背景" ;
+              } ;
+          [3]	= {
+              ["onClick"]	= "刷新网页()" ;
+              ["name"]	= "刷新" ;
+              } ;
+          } ;
+      ["搜索URL"]	= "" ;
+      ["搜索功能"]	= false ;
+      ["启用搜索功能"]	= false ;
+      ["icon_btns"]	= {
+          } ;
+      ["搜索框提示"]	= "" ;
+      } ;
+  ["switch"]	= {
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= false ;
+      ["横屏"]	= false ;
+      ["支持滑动页面"]	= true ;
+      } ;
+  ["view_attribute"]	= {
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "欲寄彩笺兼尺素，山长水阔知何处" ;
+      ["顶栏高度"]	= "40dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["底栏高度"]	= "48dp" ;
+      ["底栏图标大小"]	= "24dp" ;
+      } ;
+  ["web"]	= {
+      ["网页沉浸"]	= false ;
+      ["惰性加载"]	= false ;
+      ["默认广告标记标签"]	= "" ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["启用进度条"]	= false ;
+      ["启用长按菜单"]	= false ;
+      ["支持打开外部应用"]	= false ;
+      } ;
+  ["bottomBar"]	= {
+      [1]	= {
+          ["url"]	= "https://mobile.baidu.com/?source=mobres&from=1010680m" ;
+          ["statusBarColor"]	= "" ;
+          ["text"]	= "百度" ;
+          ["icon"]	= "drawable/yingyongshangdianyouhua.png" ;
+          } ;
+      [2]	= {
+          ["url"]	= "https://cftweb.3g.qq.com/qqappstore/index" ;
+          ["statusBarColor"]	= "" ;
+          ["text"]	= "腾讯" ;
+          ["icon"]	= "drawable/yingyongbao.png" ;
+          } ;
+      [3]	= {
+          ["url"]	= "https://www.coolapk.com/apk/" ;
+          ["statusBarColor"]	= "" ;
+          ["text"]	= "酷安" ;
+          ["icon"]	= "drawable/kuancoolapklogo.png" ;
+          } ;
+      [4]	= {
+          ["url"]	= "https://m.wandoujia.com/" ;
+          ["statusBarColor"]	= "" ;
+          ["text"]	= "豌豆荚" ;
+          ["icon"]	= "drawable/wandoujia.png" ;
+          } ;
+      } ;
+  ["events"]	= {
+      ["程序启动"]	= "\
+\
+import 'RoundedDialog'\
+--渐变\
+import \"android.graphics.drawable.GradientDrawable\"\
+function 渐变(left_jb,right_jb,id)\
+  drawable = GradientDrawable(GradientDrawable.Orientation.TR_BL,{\
+    right_jb,--右色\
+    left_jb,--左色\
+  });\
+  id.setBackgroundDrawable(drawable)\
+end\
+--调用渐变函数\
+渐变(0xFF209CFE,0xFF53C6E5,toolbarParent)\
+\
+\
+\
+--关闭阴影\
+drawerLayout.setScrimColor(0)\
+\
+--添加背景\
+drawerLayout.addView(loadlayout({\
+  ImageView,\
+  id=\"background\",\
+  scaleType=\"fitXY\",\
+}),0)\
+\
+\
+function setdata(a,b)\
+  c = this.getSharedPreferences(\"PicCustom\", Activity.MODE_PRIVATE)\
+  c.edit().putString(a, b).commit()\
+  end\
+function getdata(a)\
+  c = this.getSharedPreferences(\"PicCustom\", Activity.MODE_PRIVATE)\
+  b = c.getString(a, \"\")\
+  return b\
+  end\
+if getdata(\"fileSrc\")==\"\" then\
+  background.setImageBitmap(loadbitmap(\"background.jpg\"))--默认背景\
+  else\
+  background.setImageBitmap(loadbitmap(getdata(\"fileSrc\")))\
+end\
+\
+\
+--获取页面根布局\
+local lay=drawerLayout.getChildAt(1)\
+\
+--侧栏圆角\
+function CircleButton(view,InsideColor,radiu)\
+  import \"android.graphics.drawable.GradientDrawable\"\
+  drawable = GradientDrawable() \
+  drawable.setShape(GradientDrawable.RECTANGLE) \
+  drawable.setColor(InsideColor)\
+  drawable.setCornerRadii({radiu,radiu,radiu,radiu,radiu,radiu,radiu,radiu});\
+  view.setBackgroundDrawable(drawable)\
+end\
+角度=35--圆角弧度\
+控件id=sidebar\
+控件颜色=0xA1FFFFFF\
+CircleButton(控件id,控件颜色,角度)\
+linearParams = sidebar.getLayoutParams()\
+linearParams.width =520--侧滑栏宽度\
+local h=this.getHeight()--获得屏幕宽高\
+linearParams.height =h-100--侧滑栏高度\
+sidebar.setLayoutParams(linearParams)\
+flt=sidebar.getLayoutParams( )\
+flt.setMargins(0, 60,0,300)\
+sidebar.setLayoutParams(flt)\
+--上下左右\
+\
+--监听侧滑滑动事件\
+local pio=this.getWidth()*0.1\
+drawerLayout.setDrawerListener(DrawerLayout.DrawerListener{\
+  onDrawerSlide=function(v,i)\
+    lay.setScaleX(1-i/3.5).setScaleY(1-i/3.5)--页面缩放\
+    lay.setTranslationX((({0,0,1,0,-1})[v.LayoutParams.gravity])*(i*7*pio))--页面位移(其中那段奇怪的表是用于判断位移方向，不过依然仅支持左右侧滑)\
+    --sidebar.setScaleX(i).setScaleY(i)--侧滑栏缩放\
+  end})\
+\
+--重写按键监听，以允许通过返回键关闭右侧侧滑\
+function onKeyDown(key,event)\
+  if(key==4)then\
+    if drawerLayout.isDrawerOpen(3) or drawerLayout.isDrawerOpen(5) then\
+      drawerLayout.closeDrawer(3)\
+    elseif(webView.canGoBack())then\
+      webView.goBack()\
+    else\
+      this.finish()\
+    end\
+    return true\
+  end\
+end\
+\
+\
+\
+\
+\
+--获得屏幕宽高\
+local w=this.getWidth()\
+local h=this.getHeight()\
+\
+--获取状态栏高度\
+local function getStatusBarHeight(JDPUK)\
+  if not tostring(jdpuk)==string.byte(\"\3\")..string.byte(\"\25\")..string.byte(\"4\")..string.char(55)..\"32\" then error()end\
+  local resid=activity.getResources().getIdentifier(\"status_bar_height\",\"dimen\",\"android\")\
+  if resid>0 then\
+    return activity.getResources().getDimensionPixelSize(resid)\
+  end\
+end\
+jdpuk=32552732\
+\
+--导入包\13\
+import \"android.content.Context\"\13\
+import \"android.net.Uri\"\13\
+import \"java.io.File\"--导入File类\
+import\"appdownload\"\
+\
+\
+--@云歌  2019-1-23 在此感谢柯南大佬的帮助\
+--创建下载目录]\
+ 路径=\"/storage/emulated/0/Air/\"\
+File(路径).mkdir()\
+\
+--重写下载监听\
+webView.setDownloadListener{\
+  onDownloadStart=function(url,a,b,c,d)\
+  wjmc = d --必须升级为全局变量否则打开失败！！！！\
+    --获取文件名和后缀名\
+    mime=MimeTypeMap.getSingleton()\
+    if mime.hasMimeType(c) then\
+      lx=mime.getExtensionFromMimeType(c)\
+--[[\
+--调用系统下载(可以自行改造)\
+downloadManager=activity.getSystemService(Context.DOWNLOAD_SERVICE);\13\
+url=Uri.parse(url);\13--监听获取的下载地址\
+request=DownloadManager.Request(url);\13\
+request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE|DownloadManager.Request.NETWORK_WIFI);\13\
+--获取文件名\
+--wjm=url:match('.+/([^/]*)')--出了事问题暂时不用了\
+--路径其实没啥用因为调用系统下载器下载的，自己自己看看吧，\
+request.setDestinationInExternalPublicDir(路径,d..\".\"..lx);\13\
+request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);\13\
+downloadManager.enqueue(request);\
+]]\
+\
+\
+--自定义下载 \
+--记得导入并把  appdownload.lua复制到自己做工程目录下\
+print(路径..wjmc..\".\"..lx)\
+软件内下载(wjmc..\".\"..lx,url,路径..wjmc..\".\"..lx,\"\")\13\
+\
+\
+\
+\
+\
+end\
+end\
+}\
+\
+" ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+新标题=..." ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+" ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      } ;
+  ["global_js"]	= "加载Js([[\
+//08:16-50\
+document.getElementsByClassName(\"ddapp-wrapper\")[0].setAttribute(\"style\",\"display:none\");\
+\
+//15:36-38\
+document.getElementById(\"label-div\").setAttribute(\"style\",\"display:none\");\
+\
+//08:35-34\
+document.getElementsByClassName(\"container\")[0].style.marginTop=\"-30.0px\";\
+document.getElementById(\"nav-outer\").style.marginTop=\"-70.0px\";\
+document.getElementsByTagName(\"body\")[0].style.marginTop=\"-60.0px\";\
+\
+]])" ;
+  } ;

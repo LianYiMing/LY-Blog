@@ -1,0 +1,89 @@
+{
+  ["sidebar"]	= {
+      ["启用"]	= true ;
+      ["items"]	= {
+          } ;
+      ["启用顶部图片"]	= false ;
+      } ;
+  ["colors"]	= {
+      ["搜索栏提示文字"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["悬浮按钮"]	= "#ffffffe8" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["搜索栏部件触摸"]	= "#ffffffff" ;
+      ["搜索栏部件"]	= "#ffffffff" ;
+      ["侧滑栏列表图标"]	= "#ffffffff" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["进度条"]	= "#00000000" ;
+      ["侧滑栏列表文字"]	= "#ffffffff" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ff000000" ;
+      ["顶栏"]	= "#ffee7785" ;
+      } ;
+  ["fltBtn"]	= {
+      ["显示"]	= false ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["图标"]	= "" ;
+      } ;
+  ["events"]	= {
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["程序启动"]	= "import 'android.webkit.WebView'webView.addJavascriptInterface({},'JsInterface')\
+menuBtn.onClick=function()\
+  退出页面()\
+end" ;
+      } ;
+  ["global_js"]	= "var d=document;var s=d.createElement('script');s.setAttribute('src', 'https://greasyfork.org/scripts/368754-%E9%80%9A%E7%94%A8%E5%8E%BB%E5%B9%BF%E5%91%8A-%E6%AF%94%E8%BE%83%E6%9A%B4%E5%8A%9B-%E6%85%8E%E7%94%A8-v0-1/code/%E9%80%9A%E7%94%A8%E5%8E%BB%E5%B9%BF%E5%91%8A(%E6%AF%94%E8%BE%83%E6%9A%B4%E5%8A%9B%EF%BC%8C%E6%85%8E%E7%94%A8)V01.user.js');d.head.appendChild(s);\
+\
+" ;
+  ["web_control"]	= {
+      [1]	= {
+          ["remove_element"]	= "container mt-4,nav__wrap collapse navbar-collapse,nav__header,nav__icon-toggle,nav,footer,col-lg-4,subtitle" ;
+          ["js"]	= "" ;
+          ["url"]	= "www.chayanzhi.com" ;
+          } ;
+      } ;
+  ["web"]	= {
+      ["启用长按菜单"]	= true ;
+      ["支持打开外部应用"]	= true ;
+      ["启用进度条"]	= true ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["启动网页"]	= "https://www.chayanzhi.com/" ;
+      ["网页沉浸"]	= false ;
+      } ;
+  ["toolbar"]	= {
+      ["搜索框提示"]	= "" ;
+      ["输入栏模式"]	= false ;
+      ["icon_btns"]	= {
+          } ;
+      ["menus"]	= {
+          } ;
+      ["搜索URL"]	= "" ;
+      ["启用搜索功能"]	= false ;
+      } ;
+  ["switch"]	= {
+      ["横屏"]	= false ;
+      ["启用启动图"]	= false ;
+      ["支持滑动页面"]	= false ;
+      ["显示状态栏"]	= true ;
+      } ;
+  ["view_attribute"]	= {
+      ["搜索栏阴影强度"]	= "0dp" ;
+      ["侧滑栏宽度"]	= "0dp" ;
+      ["搜索栏圆角弧度"]	= "0dp" ;
+      ["顶栏阴影强度"]	= "0dp" ;
+      ["顶栏标题"]	= "颜值评分" ;
+      ["顶栏高度"]	= "50dp" ;
+      } ;
+  } ;

@@ -1,0 +1,145 @@
+{
+  ["switch"]	= {
+      ["横屏"]	= false ;
+      ["支持滑动页面"]	= false ;
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= true ;
+      } ;
+  ["events"]	= {
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["程序启动"]	= "import 'android.webkit.WebView'webView.addJavascriptInterface({},'JsInterface')\
+menuBtn.onClick=function()\
+  退出页面()\
+end\
+\
+--保存图片\
+webView.onLongClick=function()\
+  hitTestResult = webView.getHitTestResult()\
+  if (hitTestResult.getType() == WebView.HitTestResult.IMAGE_TYPE or hitTestResult.getType() == WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE)then\
+    AboutLayout={--布局\
+      LinearLayout;\
+      orientation=\"vertical\";\
+      Focusable=true,\
+      FocusableInTouchMode=true,\
+      {\
+        Button;--钮扣\
+        text=\"功能菜单\";--文本\
+        textSize=\"25\";--文本大小\
+        textColor=\"#FFFFFFFF\";\
+        backgroundColor=\"#ffee7785\";--背景色\
+        id=\"dd\";\
+        layout_weight=\"1.0\"; \
+        layout_width=\"fill\";--宽度\
+        layout_height=\"5dp\";\
+        layout_marginTop=\"fill\";--边顶\
+      };\
+      {\
+        Button;\
+        text=\"保存图片\";\
+        textSize=\"15\";\
+        textColor=\"#FF000000\";\
+        backgroundColor=\"#FFC2C2C2\";\
+        layout_weight=\"1.0\"; \
+        layout_width=\"fill\";\
+        layout_height=\"1dp\";\
+        layout_marginTop=\"fill\";\
+      };\
+      {\
+        Button;\
+        text=\"保存到相册\";\
+        textSize=\"17\";\
+        textColor=\"#FFee7785\";\
+        backgroundColor=\"#FFFFFFFF\";\
+        layout_weight=\"1.0\";\
+        layout_width=\"fill\";\
+        layout_height=\"40dp\";\
+        layout_marginTop=\"fill\";\
+        onClick=function()\
+          print(\"图片已保存到手机相册\")\
+          picUrl = hitTestResult.getExtra()\
+          Http.download(picUrl,\"/storage/emulated/0/DCIM/\"..os.date(\"%Y-%m-%d-%H-%M-%S\")..\".png\",function(a)\
+          end)\
+          关闭对话框()\
+        end\
+      };\
+    };\
+    dlg=AlertDialog.Builder(this).setView(loadlayout(AboutLayout)).show()\
+    function 关闭对话框()\
+      return dlg and dlg.dismiss()\
+    end\
+    import \"android.graphics.Paint\"\
+  end\
+end" ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      } ;
+  ["web"]	= {
+      ["支持打开外部应用"]	= true ;
+      ["启动网页"]	= "http://www.51bbw.cn/avatar" ;
+      ["启用进度条"]	= true ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["启用长按菜单"]	= true ;
+      ["网页沉浸"]	= false ;
+      } ;
+  ["colors"]	= {
+      ["搜索栏提示文字"]	= "#ffffffff" ;
+      ["搜索栏部件"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#ffffffff" ;
+      ["侧滑栏列表文字"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ff000000" ;
+      ["进度条"]	= "#00000000" ;
+      ["顶栏"]	= "#ffee7785" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["侧滑栏列表图标"]	= "#ffffffff" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["搜索栏部件触摸"]	= "#ffffffff" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      } ;
+  ["fltBtn"]	= {
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["显示"]	= false ;
+      ["图标"]	= "" ;
+      } ;
+  ["toolbar"]	= {
+      ["启用搜索功能"]	= false ;
+      ["输入栏模式"]	= false ;
+      ["menus"]	= {
+          } ;
+      ["搜索框提示"]	= "" ;
+      ["搜索URL"]	= "" ;
+      ["icon_btns"]	= {
+          } ;
+      } ;
+  ["sidebar"]	= {
+      ["启用"]	= true ;
+      ["items"]	= {
+          } ;
+      ["启用顶部图片"]	= false ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏标题"]	= "专属情头" ;
+      ["搜索栏阴影强度"]	= "0dp" ;
+      ["侧滑栏宽度"]	= "0dp" ;
+      ["搜索栏圆角弧度"]	= "0dp" ;
+      ["顶栏高度"]	= "50dp" ;
+      ["顶栏阴影强度"]	= "0dp" ;
+      } ;
+  ["web_control"]	= {
+      [1]	= {
+          ["remove_element"]	= "am-icon-list smico,am-navbar-nav am-cf am-avg-sm-4 smnav,am-navbar-label,am-icon-list smico,pet_article_dowload pet_dowload_more_top_off,am-header-right am-header-nav,am-header am-header-default topnav,am-gotop am-gotop-fixed,am-alert am-alert-warning,xiangguan,am-cf,article-nav,htitle,single-copyright,addapp,article-wechats,@ID(SOHUCS)" ;
+          ["js"]	= "" ;
+          ["url"]	= "www.51bbw.cn" ;
+          } ;
+      } ;
+  } ;

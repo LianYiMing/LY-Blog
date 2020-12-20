@@ -1,0 +1,272 @@
+{
+  ["switch"]	= {
+      ["横屏"]	= false ;
+      ["支持滑动页面"]	= true ;
+      ["启用启动图"]	= true ;
+      ["显示状态栏"]	= true ;
+      } ;
+  ["sidebar"]	= {
+      ["启用顶部图片"]	= true ;
+      ["启用"]	= true ;
+      ["items"]	= {
+          [1]	= {
+              ["icon"]	= "drawable/label.png" ;
+              ["onClick"]	= "加载网页(\"http://m.mzitu.com/zhuanti/\")" ;
+              ["name"]	= "美女专题" ;
+              } ;
+          [2]	= {
+              ["icon"]	= "drawable/gender_female.png" ;
+              ["onClick"]	= "进入子页面(\"浏览\",{标题=\"性感美女\",链接=\"http://m.mzitu.com/xinggan/\"})" ;
+              ["name"]	= "性感妹子" ;
+              } ;
+          [3]	= {
+              ["icon"]	= "drawable/gender_female.png" ;
+              ["onClick"]	= "进入子页面(\"浏览\",{标题=\"日本美女\",链接=\"http://m.mzitu.com/japan/\"})" ;
+              ["name"]	= "日本妹子" ;
+              } ;
+          [4]	= {
+              ["icon"]	= "drawable/gender_female.png" ;
+              ["onClick"]	= "进入子页面(\"浏览\",{标题=\"台湾美女\",链接=\"http://m.mzitu.com/taiwan/\"})" ;
+              ["name"]	= "台湾妹子" ;
+              } ;
+          [5]	= {
+              ["icon"]	= "drawable/gender_female.png" ;
+              ["onClick"]	= "进入子页面(\"浏览\",{标题=\"清纯美女\",链接=\"http://m.mzitu.com/mm/\"})" ;
+              ["name"]	= "清纯妹子" ;
+              } ;
+          [6]	= {
+              ["icon"]	= "drawable/close.png" ;
+              ["onClick"]	= "退出程序()" ;
+              ["name"]	= "退出" ;
+              } ;
+          } ;
+      } ;
+  ["tab_bar"]	= {
+      ["items"]	= {
+          [4]	= {
+              ["name"]	= "推荐" ;
+              ["url"]	= "http://m.mzitu.com/best" ;
+              } ;
+          [1]	= {
+              ["name"]	= "首页" ;
+              ["url"]	= "http://m.mzitu.com" ;
+              } ;
+          [2]	= {
+              ["name"]	= "自拍" ;
+              ["url"]	= "http://m.mzitu.com/zipai" ;
+              } ;
+          [3]	= {
+              ["name"]	= "热门" ;
+              ["url"]	= "http://m.mzitu.com/hot" ;
+              } ;
+          } ;
+      } ;
+  ["web"]	= {
+      ["启用长按菜单"]	= true ;
+      ["支持打开外部应用"]	= true ;
+      ["浏览器用户标识"]	= "自定义" ;
+      ["customUa"]	= "Mozilla/5.0 (SymbianOS/9.3; Series60/3.2 NokiaE5-00.2/071.003; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/533.4 (KHTML, like Gecko) NokiaBrowser/7.3.1.26 Mobile Safari/533.4 3gpp-gba" ;
+      ["启用进度条"]	= true ;
+      ["惰性加载"]	= true ;
+      ["网页沉浸"]	= false ;
+      } ;
+  ["colors"]	= {
+      ["悬浮按钮"]	= "#ffff74ae" ;
+      ["标签栏文本"]	= "#ffffffff" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["进度条"]	= "#ffff8bfd" ;
+      ["顶栏"]	= "#ffff74ae" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#33000000" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["标签栏项目触摸"]	= "#33000000" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["状态栏"]	= "#ffffffff" ;
+      ["标签栏滑动条"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ffff74ae" ;
+      } ;
+  ["view_attribute"]	= {
+      ["侧滑栏宽度"]	= "250dp" ;
+      ["标签栏高度"]	= "45dp" ;
+      ["顶栏高度"]	= "55dp" ;
+      ["顶栏阴影强度"]	= "3dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["标签栏滑动条高度"]	= "3dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "妹子图" ;
+      } ;
+  ["fltBtn"]	= {
+      ["点击事件"]	= "加载Js(\"document.getElementsByClassName('button radius')[1].click()\")" ;
+      ["显示"]	= true ;
+      ["图标"]	= "" ;
+      ["背景色"]	= "#00E5FF" ;
+      } ;
+  ["events"]	= {
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+新标题=..." ;
+      ["程序启动"]	= "--程序启动时会执行的事件\
+\
+function 提示(内容)\
+  shamrock={\
+    LinearLayout;\
+    id=\"toastb\";\
+    {\
+      TextView;\
+      padding=\"8dp\";\
+      background=\"#12B8F6\";\
+      textSize=\"15sp\";\
+      TextColor=\"#ffffffff\";\
+      layout_width=\"100%w\";\
+      layout_height=\"40dp\";\
+      gravity=\"center\";\
+      text=\"提示出错\";\
+      id=\"text_ts\";\
+    };\
+  };\
+  local toast=Toast.makeText(activity,\"内容\",Toast.LENGTH_SHORT).setView(loadlayout(shamrock))\
+  --LENGTH_SHORT     2s\
+  --LENGTH_LONG      3.5s\
+  toast.setGravity(Gravity.BOTTOM,0, 0)\
+  --Gravity.BOTTOM   底部\
+  --Gravity.CENTER   中部\
+  --Gravity.TOP      顶部\
+  text_ts.Text=tostring(内容)\
+  toast.show()\
+end\
+\
+\
+webView.onLongClick=function()\
+  hitTestResult = webView.getHitTestResult()\
+  if (hitTestResult.getType() == WebView.HitTestResult.IMAGE_TYPE or hitTestResult.getType() == WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE)then\
+    import \"com.tencent.qq.widget.*\"\
+    import \"android.view.WindowManager\"\
+\
+    MyMenuDialog=MenuDialog(this);--设置弹窗进出动画\
+    MyMenuDialog.setButton(\"取消\",MenuDialog.setTextColor.BLUE);--设置取消按钮文字及颜色\
+\
+    MyMenuDialog.addItem(\"保存图片\",MenuDialog.setTextColor.BLUE,--设置选项文字及颜色\
+    {onClick = function()\
+        picUrl = hitTestResult.getExtra() \
+        Http.download(picUrl,\"sdcard/AGZX/pictures/\"..os.date(\"%Y-%m-%d-%H-%M-%S\")..\".png\",function(a)\
+        end)\
+        提示(\"图片已保存于sdcard/AGZX/pictures/\")\
+\
+      end});\
+    MyMenuDialog.addItem(\"保存动态图片\",MenuDialog.setTextColor.BLUE,--设置选项文字及颜色\
+    {onClick = function()\
+        picUrl = hitTestResult.getExtra() \
+        Http.download(picUrl,\"sdcard/AGZX/pictures/\"..os.date(\"%Y-%m-%d-%H-%M-%S\")..\".gif\",function(a)\
+        end)\
+        提示(\"图片已保存于sdcard/AGZX/pictures/\")\
+\
+      end});\
+    MyMenuDialog.addItem(\"复制图片链接\",MenuDialog.setTextColor.BLUE,--设置选项文字及颜色\
+    {onClick = function()\
+        picUrl = hitTestResult.getExtra()\
+        复制文本(picUrl)\
+        提示(\"已复制:\" .. picUrl)\
+      end});\
+    MyMenuDialog.addItem(\"分享给朋友\",MenuDialog.setTextColor.BLUE,--设置选项文字及颜色\
+    {onClick = function()\
+        picUrl = hitTestResult.getExtra()\
+        分享文本(\"我看到一个好看的图片，分享给你:\" ..picUrl) \
+      end});\
+    MyMenuDialog.show();--显示弹窗\
+  end\
+\
+end\
+\
+\
+import \"java.io.File\"\
+import \"android.text.format.Formatter\"\
+function Too_young()\
+  webView.setDownloadListener{onDownloadStart=function(url,userAgent,contentDisposition,mimetype,contentLength)\
+      文件名=URLUtil.guessFileName(url, contentDisposition, mimeType);\
+      下载链接=url\
+      文件类型=mimetype\
+      文件大小=Formatter.formatFileSize(this, contentLength) \
+      if 文件名==\"\" or nil then\
+        文件名=os.date(\"%Y%m%d%H%M%S\")\
+      end\
+      if 文件类型==\"\" or nil then\
+        文件类型=\"空\"\
+      end\
+      if 文件大小==\"-1b\" or \"-1B\" or \"-1字节\" or \"\" or \"nil\" then\
+        文件大小=\"就不告诉你\"\
+      end \
+      下载()\
+      function adm(url)\
+        if isPackageInstalled(\"com.dv.adm.pay\") then\
+          this.startActivity(Intent().setAction(\"android.intent.action.SEND\").setType(\"text/*\").putExtra(\"android.intent.extra.TEXT\", url).setClassName(\"com.dv.adm.pay\", \"com.dv.adm.pay.AEditor\"))\
+        else\
+          提示(\"没有安装ADM\")\
+        end\
+      end \
+    end}\
+end\
+Too_young()\
+function 下载()--以下代码可自由编辑，每当监听到下载任务时会运行以下代码。可用的值：url,userAgent,contentDisposition,mimetype,contentLength,文件名,文件类型,文件大小,下载链接\
+  对话框()\
+  .设置标题(\"新建下载任务\")\
+  .设置消息(\"文件名：\"..文件名..\"\\n文件类型：\"..文件类型..\"\\n文件大小：\"..文件大小..\"\\n下载链接：\"..下载链接..\"\")\
+  .设置积极按钮(\"下载\",function()\
+    downloadManager=activity.getSystemService(Context.DOWNLOAD_SERVICE);--调用系统下载器下载\
+    url=Uri.parse(下载链接);\
+    request=DownloadManager.Request(url);\
+    request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE|DownloadManager.Request.NETWORK_WIFI);\
+    request.setDestinationInExternalPublicDir(\"sdcard/AGZX /download\",文件名);\
+    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);\
+    downloadManager.enqueue(request);\
+  end)\
+  .设置消极按钮(\"取消\")\
+  .设置中立按钮(\"ADM下载\",function()\
+    adm(下载链接)\
+  end)\
+  .显示()\
+end\
+\
+\
+" ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      } ;
+  ["web_control"]	= {
+      [1]	= {
+          ["remove_element"]	= "listsg,wxl,post-info placeholder,content_wrap,wx,@ID(header),ad_main," ;
+          ["url"]	= "m.mzitu.com" ;
+          ["js"]	= "var src=document.getElementsByTagName(\"iframe\")[0].src\
+\
+var start=src.indexOf(\"z=\")+2\
+var id=src.substring(start,start+8)\
+\
+document.getElementById(id).parentNode.parentNode.removeChild(document.getElementById(id).parentNode)" ;
+          } ;
+      } ;
+  ["toolbar"]	= {
+      ["icon_btns"]	= {
+          [1]	= {
+              ["onClick"]	= "加载网页(\"http://m.mzitu.com/all\")" ;
+              ["icon"]	= "calendar_clock" ;
+              } ;
+          } ;
+      ["搜索框提示"]	= "请输入搜索内容" ;
+      ["启用搜索功能"]	= true ;
+      ["输入栏模式"]	= false ;
+      ["搜索URL"]	= "http://m.mzitu.com/search/%s" ;
+      ["menus"]	= {
+          } ;
+      } ;
+  } ;

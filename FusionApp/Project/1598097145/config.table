@@ -1,0 +1,1208 @@
+{
+  ["view_attribute"]	= {
+      ["顶栏标题"]	= "←软件工具" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      } ;
+  ["switch"]	= {
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= true ;
+      ["支持滑动页面"]	= false ;
+      ["横屏"]	= false ;
+      } ;
+  ["toolbar"]	= {
+      ["输入栏模式"]	= false ;
+      ["搜索框提示"]	= "" ;
+      ["搜索URL"]	= "" ;
+      ["启用搜索功能"]	= false ;
+      ["menus"]	= {
+          [1]	= {
+              ["name"]	= "联系麻木/反馈" ;
+              ["onClick"]	= "弹出消息(\"即将前往站长QQ\")联系QQ(2042801426)" ;
+              } ;
+          [2]	= {
+              ["name"]	= "软件更新" ;
+              ["onClick"]	= "--列表对话框（列表项目名称自定义）\
+items={\"检测更新\",\"在线下载\",}--创建有数据的列表，添加即在后面加上   ,\"项目名称\"\
+AlertDialog.Builder(this) \
+.setTitle(\"               检测更新\")--设置标题\
+--给列表对话框设置点击事件\
+.setItems(items,{onClick=function(l,v) \
+    --注：与创建有数据的列表项目名称必须一样\
+    if items[v+1]==\"检测更新\" then\
+     --1.首先把此工程里的down.lua文件复制到自己的工程目录，函数调用方法看下面的按钮点击事件。\
+--2.复制下方链接到浏览器打开，复制其中内容。或者复制下面15-24行的代码.。\
+--3.使用微云笔记链接，将复制的内容粘贴到新建的文档里。\
+--4.链接内容里的【下载地址】链接【下载地址】换成自己的蓝奏云分享链接\
+--5.把下面的urla链接换成你的讯飞笔记链接\
+--6.蓝奏云链接格式https://www.lanzous.com/i2ewmje,请注意是文件的分享链接，不是文件夹的。文件需要是未加密状态。\
+--7.把把drable文件夹复制到你的工程  也可以到文件夹里面复制小火箭图片\
+--\
+\
+--[[\
+\
+{更新:\
+【版本:1.0.7:END】\
+【大小:3.02:END】\
+【更新日志:【1.0.7更新日志】\
+修复bug。\
+:END】\
+【下载地址】https://www.lanzous.com/i3zdrle:END】\
+【版本号更新:TRUE:END】\
+:END}\
+\
+]]\
+--15到24行的内容粘贴到相应笔记，收藏内容。\
+\
+--讯飞语记链接\
+urla=\"http://www.iyuji.cn/iyuji/s/NVZGNlFxRkJrM0dacG9MR2hZT0tTZz09/1562659280409713\"\
+canoffline=false\
+\
+import \"java.io.File\"--导入File类\
+下载目录=\"/sdcard/Download\"\
+\
+packinfo=this.getPackageManager().getPackageInfo(this.getPackageName(),((32552732/2/2-8183)/10000-6-231)/9)\
+\
+appinfo=this.getPackageManager().getApplicationInfo(this.getPackageName(),0)\
+--名字\
+applabel=this.getPackageManager().getApplicationLabel(appinfo)\
+--签名\
+appsign=tostring(packinfo.signatures[0].toCharsString())\
+--警告\
+piracy=\"您使用的 \"..applabel..\" 非官方版本，可能已被篡改，为了您设备安全，杜绝木马病毒，请勿运行此版本，如需使用，请下载官方版本\"\
+\
+import \"android.content.Context\"\
+\
+\
+function 提示(内容)\
+  toasts={\
+    LinearLayout;\
+    id=\"toastb\";\
+    {\
+      TextView;\
+      background=\"#FF3C8BDA\";\
+      padding=\"8dp\";\
+      textSize=\"15sp\";\
+      TextColor=\"#ffffffff\";\
+      layout_width=\"100%w\";\
+      layout_height=\"40dp\";\
+      gravity=\"center\";\
+      text=\"提示出错\";\
+      id=\"text_ts\";\
+    };\
+  };\
+  local toast=Toast.makeText(activity,\"内容\",Toast.LENGTH_SHORT).setView(loadlayout(toasts))\
+  --LENGTH_SHORT     2s\
+  --LENGTH_LONG      3.5s\
+  toast.setGravity(Gravity.BOTTOM,0, 0)\
+  --Gravity.BOTTOM   底部\
+  --Gravity.CENTER   中部\
+  --Gravity.TOP      顶部\
+  text_ts.Text=tostring(内容)\
+  toast.show()\
+end\
+local header={[\"User-Agent\"]=\"Mozilla/5.0 (Linux; Android 9; STF-AL00 Build/HUAWEISTF-AL00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/71.0.3578.99 Mobile Safari/537.36\"}\
+Http.get(urla,nil,\"utf8\",header,function(code,content)\
+  if(code==200 and content)then\
+    content=content:gsub(\"amp;\",\"\") or content;\
+\
+    update=content:match(\"%{更新:(.-):END%}\")\
+\
+    if(update)then\
+      newest=update:match(\"%【版本:(.-):END%】\")\
+      qyysize=update:match(\"%【大小:(.-):END%】\")\
+\
+      if(update:match(\"%【版本号更新:(.-):END%】\")==\"TRUE\" )then\
+        usevername=true\
+       else\
+        usevername=false\
+      end\
+      if(usevername)then\
+        version=tostring(packinfo.versionName)\
+       else\
+        version=tostring(packinfo.versionCode)\
+      end\
+      chglog=update:match(\"%【更新日志:(.-):END%】\")\
+      蓝奏云下载链接=content:match(\"【下载地址】(.-):END%】\")\
+      if not((usevername and version==newest) or (not usevername and version>=newest))then\
+        --提示(\"发现新版本，请更新版本\")\
+\
+        layout=\
+        {\
+          LinearLayout,\
+\
+          layout_height=\"fill\";\
+          layout_width=\"fill\";\
+          orientation=\"vertical\",\
+          gravity=\"center\";\
+          {\
+            ImageView;\
+            src=\"drawable/update.png\";\
+            scaleType=\"fitCenter\";\
+            layout_height=\"136dp\";--原图尺寸/1.5\
+            layout_width=\"300dp\";\
+            layout_marginTop=\"50dp\";--在有关闭按钮的情况下让弹窗保持在中间\
+          };\
+          {\
+            ScrollView;--使用滚动布局可以防止更新日志过长导致显示不全\
+            background=\"#FFFFFFFF\";--弹窗背景色\
+            layout_width=\"300dp\";\
+            VerticalScrollBarEnabled=false;--禁用滚动条\
+            {\
+              LinearLayout;\
+              layout_height=\"fill\";\
+              layout_width=\"260dp\";\
+              orientation=\"vertical\";\
+              layout_gravity=\"top|center\";\
+              {\
+                TextView;\
+                layout_gravity=\"center\";\
+                text=\"发现新版本\"..newest;\
+                textSize=\"18dp\";\
+                textColor=\"#FF000000\";\
+                layout_marginTop=\"10dp\";\
+              };\
+              {\
+                LinearLayout;\
+                layout_width=\"fill\";\
+                layout_height=\"fill\";\
+                orientation=\"horizontal\";\
+                {\
+                  LinearLayout,\
+                  orientation=\"horizontal\",\
+                  gravity=\"center|left\";\
+                  layout_width=\"130dp\",\
+                  layout_height=\"5%h\",\
+                  {\
+                    TextView;\
+                    textSize=\"13sp\";\
+                    layout_marginLeft=\"10dp\";\
+                    textColor=\"#FF656565\";\
+                    text=\"当前版本: \",\
+                  };\
+                  {\
+                    TextView;\
+                    text=version,\
+                    textSize=\"13sp\";\
+                    textColor=\"#FF656565\";\
+                    id=\"text1\";\
+                  };\
+                },\
+                {\
+                  LinearLayout,\
+                  orientation=\"horizontal\",\
+                  gravity=\"center|right\";\
+                  layout_width=\"130dp\",\
+                  layout_height=\"5%h\",\
+                  {\
+                    TextView;\
+                    textSize=\"13sp\";\
+                    textColor=\"#FF656565\";\
+                    text=\"新版大小 : \",\
+                  };\
+                  {\
+                    TextView;\
+                    text=qyysize..\"M\",\
+                    layout_marginRight=\"10dp\";\
+                    textSize=\"13sp\";\
+                    lines=\"1\",\
+                    textColor=\"#FF656565\";\
+                    id=\"text2\";\
+                  };\
+                },\
+              };\
+              {\
+                TextView;\
+                text=chglog;\
+                textSize=\"15dp\";\
+                textColor=\"#FF656565\";\
+                layout_marginTop=\"15dp\";\
+              };\
+            };\
+          };\
+\
+          {\
+            LinearLayout;\
+            layout_width=\"300dp\";\
+            gravity=\"center\";\
+            orientation=\"horizontal\";\
+            layout_height=\"fill\";\
+            {\
+              LinearLayout;\
+              layout_width=\"150dp\";\
+              id=\"linecd\";\
+              gravity=\"center\";\
+              background=\"#FFFFFFFF\";\
+              {\
+                CardView;\
+                layout_marginBottom=\"10dp\";\
+                id=\"gxcd\";\
+                elevation=0;\
+                layout_marginTop=\"12dp\";\
+                layout_gravity=\"center\";\
+                radius=\"5dp\";\
+                cardBackgroundColor=\"#FFEC463A\";\
+                {\
+                  TextView;\
+                  layout_width=\"130dp\";\
+                  textColor=\"#FFFFFFFF\";\
+                  text=\"忽略更新\";\
+                  layout_height=\"40dp\";\
+                  id=\"gxnr\";\
+                  layout_gravity=\"center\";\
+                  gravity=\"center\";\
+                  textSize=\"18dp\";\
+                };\
+              };\
+            };\
+   \
+            {\
+              LinearLayout;\
+              layout_width=\"150dp\";\
+              id=\"linecd1\";\
+              gravity=\"center\";\
+              background=\"#FFFFFFFF\";\
+              {\
+                CardView;\
+                layout_marginBottom=\"10dp\";\
+                id=\"gxcd1\";\
+                elevation=0;\
+                layout_marginTop=\"12dp\";\
+                layout_gravity=\"center\";\
+                radius=\"5dp\";\
+                cardBackgroundColor=\"#FFEC463A\";\
+                {\
+                  TextView;\
+                  layout_width=\"130dp\";\
+                  textColor=\"#FFFFFFFF\";\
+                  text=\"浏览器更新\";\
+                  layout_height=\"40dp\";\
+                  id=\"gxnr1\";\
+                  layout_gravity=\"center\";\
+                  gravity=\"center\";\
+                  textSize=\"18dp\";\
+                };\
+              };\
+            };\
+          };\
+\
+        };\
+\
+        dialog=AlertDialog.Builder(this)\
+\
+        update_dialog=dialog.show()\
+\
+        update_dialog.setCanceledOnTouchOutside(false)--设置点击外部区域不关闭弹窗\
+\
+        update_dialog.getWindow().setContentView(loadlayout(layout))\
+        import \"android.graphics.drawable.ColorDrawable\"\
+\
+        update_dialog.getWindow().setBackgroundDrawable(ColorDrawable(0x00000000))\
+\
+        圆角=GradientDrawable()\
+        圆角.setShape(GradientDrawable.RECTANGLE)\
+        圆角.setColor(0xFFFFFFFF)--背景颜色\
+        圆角.setCornerRadii({0,0,0,0,15,15,0,0});\
+        linecd1.setBackgroundDrawable(圆角)\
+\
+        圆角1=GradientDrawable()\
+        圆角1.setShape(GradientDrawable.RECTANGLE)\
+        圆角1.setColor(0xFFFFFFFF)--背景颜色\
+        圆角1.setCornerRadii({0,0,0,0,00,00,15,15});\
+        linecd.setBackgroundDrawable(圆角1)\
+\
+\
+        linecd1.onClick=function(v)\
+         -- update_dialog.dismiss()\
+          退出页面()\
+          import \"android.content.Intent\"\
+          import \"android.net.Uri\"\
+          url=蓝奏云下载链接\
+          viewIntent = Intent(\"android.intent.action.VIEW\",Uri.parse(url))\
+          activity.startActivity(viewIntent)\
+          提示\"浏览器下载\"\
+        end\
+        linecd.onClick=function(v)\
+        \
+        \
+          update_dialog.dismiss() --关闭更新弹窗\
+          --import\"down\"\
+          提示(\"请尝试浏览器更新\")\
+         -- 蓝奏云直链(蓝奏云下载链接)\
+\
+        end\
+\
+       else\
+        return true\
+      end\
+     else\
+      return true\
+    end\
+   else\
+    if(code==-1)then\
+      弹出消息(\"无法连接网络，请检查您的网络设置\")\
+     else\
+      弹出消息(\"网络请求失败\"..\" \"..code)\
+    end\
+    return (canoffline or 退出程序())\
+  end\
+end) \
+    elseif items[v+1]==\"在线下载\" then\
+     加载网页(\"https://www.mamublog.cn/zb_users/gx/index.html\")\
+    elseif items[v+1]==\"找回密码\" then\
+      加载网页(\"https://www.mamublog.cn/zb_users/plugin/reg/Retrieve.php\")\
+    elseif items[v+1]==\"项目4\" then\
+      弹出消息(\"点击了4\")\
+    elseif items[v+1]==\"项目5\" then\
+      弹出消息(\"点击了5\")\
+    elseif items[v+1]==\"项目6\" then\
+      弹出消息(\"点击了6\")\
+    end\
+  end}) \
+.show()--显示弹窗" ;
+              } ;
+          [3]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          } ;
+      ["icon_btns"]	= {
+          [1]	= {
+              ["icon"]	= "backup_restore" ;
+              ["onClick"]	= "刷新网页()" ;
+              } ;
+          } ;
+      } ;
+  ["colors"]	= {
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["顶栏"]	= "#ff2c2e43" ;
+      ["进度条"]	= "#00000000" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["fltBtn"]	= {
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["显示"]	= false ;
+      ["图标"]	= "" ;
+      } ;
+  ["sidebar"]	= {
+      ["启用顶部图片"]	= true ;
+      ["启用"]	= true ;
+      ["items"]	= {
+          [16]	= {
+              ["name"]	= "退出" ;
+              ["onClick"]	= "退出页面()" ;
+              ["icon"]	= "drawable/logout.png" ;
+              } ;
+          [1]	= {
+              ["name"]	= "返回主页" ;
+              ["onClick"]	= "加载网页(\"http://www.mamublog.cn\")" ;
+              ["icon"]	= "drawable/home.png" ;
+              } ;
+          [2]	= {
+              ["name"]	= "账号管理" ;
+              ["onClick"]	= "--列表对话框（列表项目名称自定义）\
+items={\"注册\",\"登录\",\"找回密码\",\"点我返回主页\",}--创建有数据的列表，添加即在后面加上   ,\"项目名称\"\
+AlertDialog.Builder(this) \
+.setTitle(\" 账号管理(软件用不了QQ登录哦)\")--设置标题\
+--给列表对话框设置点击事件\
+.setItems(items,{onClick=function(l,v) \
+    --注：与创建有数据的列表项目名称必须一样\
+    if items[v+1]==\"注册\" then\
+    加载网页(\"https://www.mamublog.cn/?reg\")  \
+    elseif items[v+1]==\"登录\" then\
+     加载网页(\"https://www.mamublog.cn/zb_system/login.php\")\
+    elseif items[v+1]==\"找回密码\" then\
+      加载网页(\"https://www.mamublog.cn/zb_users/plugin/reg/Retrieve.php\")\
+    elseif items[v+1]==\"点我返回主页\" then\
+     加载网页(\"https://www.mamublog.cn\")\
+    elseif items[v+1]==\"项目5\" then\
+      弹出消息(\"点击了5\")\
+    elseif items[v+1]==\"项目6\" then\
+      弹出消息(\"点击了6\")\
+    end\
+  end}) \
+.show()--显示弹窗" ;
+              ["icon"]	= "drawable/account.png" ;
+              } ;
+          [3]	= {
+              ["name"]	= "文章分类汇总" ;
+              ["onClick"]	= "--列表对话框（列表项目名称自定义）\
+items={\"VIP付费音乐解析下载\",\"源码分享专区\",\"实用技术教程\",\"软件安装教程\",\"公众号小程序\",\"网站搭建专区\",\"太极教程专区\",\"编程代码专区\",\"Linux学习专区\",\"网络实验专区\",\"包罗万象文章\",\"网站文章归纳\",\"关于麻木博客\",\"返回麻木博客主页\",}--创建有数据的列表，添加即在后面加上   ,\"项目名称\"\
+AlertDialog.Builder(this) \
+.setTitle(\"          文章分类汇总\")--设置标题\
+--给列表对话框设置点击事件\
+.setItems(items,{onClick=function(l,v) \
+    --注：与创建有数据的列表项目名称必须一样\
+    if items[v+1]==\"VIP付费音乐解析下载\" then\
+      加载网页(\"https://music.mamublog.cn\")\
+      \
+    elseif items[v+1]==\"源码分享专区\" then\
+     加载网页(\"https://www.mamublog.cn/category-29.html\")\
+     \
+    elseif items[v+1]==\"实用技术教程\" then\
+      加载网页(\"https://www.mamublog.cn/category-10.html\")\
+      \
+    elseif items[v+1]==\"软件安装教程\" then\
+      加载网页(\"https://www.mamublog.cn/category-9.html\")\
+      \
+    elseif items[v+1]==\"公众号小程序\" then\
+      加载网页(\"https://www.mamublog.cn/category-20.html\")\
+      \
+      elseif items[v+1]==\"网站搭建专区\" then\
+      加载网页(\"https://www.mamublog.cn/category-16.html\")\
+      \
+      elseif items[v+1]==\"太极教程专区\" then\
+     加载网页(\"https://www.mamublog.cn/category-25.html\")\
+     \
+      elseif items[v+1]==\"编程代码专区\" then\
+      加载网页(\"https://www.mamublog.cn/category-27.html\")\
+        elseif items[v+1]==\"Linux学习专区\" then\
+      加载网页(\"https://www.mamublog.cn/category-30.html\")\
+        elseif items[v+1]==\"网络实验专区\" then\
+      加载网页(\"https://www.mamublog.cn/category-31.html\")\
+        elseif items[v+1]==\"包罗万象文章\" then\
+     加载网页(\"https://www.mamublog.cn/category-26.html\")\
+     \
+    elseif items[v+1]==\"网站文章归纳\" then\
+      加载网页(\"https://www.mamublog.cn/index.php?archive\")\
+      \
+    elseif items[v+1]==\"关于麻木博客\" then\
+      加载网页(\"https://www.mamublog.cn/category-4.html\")\
+      \
+     elseif items[v+1]==\"返回麻木博客主页\" then\
+    加载网页(\"https://www.mamublog.cn\")\
+\9\
+    end\
+  end}) \
+.show()--显示弹窗" ;
+              ["icon"]	= "drawable/basket_fill.png" ;
+              } ;
+          [4]	= {
+              ["name"]	= "分享当前网页给朋友" ;
+              ["onClick"]	= "分享文本(webView.getUrl())" ;
+              ["icon"]	= "drawable/link_variant.png" ;
+              } ;
+          [5]	= {
+              ["name"]	= "加入官方QQ群" ;
+              ["onClick"]	= "加QQ群(757316943)" ;
+              ["icon"]	= "drawable/account_multiple.png" ;
+              } ;
+          [6]	= {
+              ["name"]	= "联系站长" ;
+              ["onClick"]	= "联系QQ(2042801426)" ;
+              ["icon"]	= "drawable/account.png" ;
+              } ;
+          [7]	= {
+              ["name"]	= "新浪微博" ;
+              ["onClick"]	= "加载网页(\"https://weibo.com/u/6024151807\")" ;
+              ["icon"]	= "drawable/cat.png" ;
+              } ;
+          [8]	= {
+              ["name"]	= "酷安社区" ;
+              ["onClick"]	= "复制文本(\"麻木博客\")\
+对话框()\
+.设置标题(\"麻木博客酷安社区\")\
+.设置消息(\"本站酷安社区名称已自动复制，打开酷安搜索即可！\")\
+.设置积极按钮(\"确定\",function()\
+  显示消息(\"点击了确定\")\
+end)\
+.设置消极按钮(\"取消\")\
+.显示()" ;
+              ["icon"]	= "drawable/apps.png" ;
+              } ;
+          [9]	= {
+              ["name"]	= "微信公众号" ;
+              ["onClick"]	= "复制文本(\"麻木博客\")\
+对话框()\
+.设置标题(\"微信公众号\")\
+.设置消息(\"公众号名称已复制，请打开微信粘贴搜索，本站在微信开通微信公众号以及小程序，欢迎加入！\")\
+.设置积极按钮(\"确定\",function()\
+  显示消息(\"点击了确定\")\
+end)\
+.设置消极按钮(\"取消\")\
+.显示()" ;
+              ["icon"]	= "drawable/lastfm.png" ;
+              } ;
+          [10]	= {
+              ["name"]	= "CSDN社区" ;
+              ["onClick"]	= "加载网页(\"https://blog.csdn.net/qq_44708572\")" ;
+              ["icon"]	= "drawable/cast.png" ;
+              } ;
+          [11]	= {
+              ["name"]	= "百家号" ;
+              ["onClick"]	= "加载网页(\"https://author.baidu.com/home/1630498062703086\")" ;
+              ["icon"]	= "drawable/comment_account_outline.png" ;
+              } ;
+          [12]	= {
+              ["name"]	= "软件更新" ;
+              ["onClick"]	= "--列表对话框（列表项目名称自定义）\
+\
+items={\"检测更新\",\"在线下载\",}--创建有数据的列表，添加即在后面加上   ,\"项目名称\"\
+AlertDialog.Builder(this) \
+.setTitle(\"             检测更新\")--设置标题\
+--给列表对话框设置点击事件\
+.setItems(items,{onClick=function(l,v) \
+    --注：与创建有数据的列表项目名称必须一样\
+    if items[v+1]==\"检测更新\" then\
+      对话框()\
+.设置标题(\"更新温馨提示:\")\
+.设置消息(\"如果点击在线更新后没有动静即为最新版\")\
+.设置积极按钮(\"确定\",function()\
+  显示消息(\"点击了确定\")\
+end)\
+.设置消极按钮(\"取消\")\
+.显示()\
+     --1.首先把此工程里的down.lua文件复制到自己的工程目录，函数调用方法看下面的按钮点击事件。\
+--2.复制下方链接到浏览器打开，复制其中内容。或者复制下面15-24行的代码.。\
+--3.使用微云笔记链接，将复制的内容粘贴到新建的文档里。\
+--4.链接内容里的【下载地址】链接【下载地址】换成自己的蓝奏云分享链接\
+--5.把下面的urla链接换成你的讯飞笔记链接\
+--6.蓝奏云链接格式https://www.lanzous.com/i2ewmje,请注意是文件的分享链接，不是文件夹的。文件需要是未加密状态。\
+--7.把把drable文件夹复制到你的工程  也可以到文件夹里面复制小火箭图片\
+--\
+\
+--[[\
+\
+{更新:\
+【版本:1.0.7:END】\
+【大小:3.02:END】\
+【更新日志:【1.0.7更新日志】\
+修复bug。\
+:END】\
+【下载地址】https://www.lanzous.com/i3zdrle:END】\
+【版本号更新:TRUE:END】\
+:END}\
+\
+]]\
+--15到24行的内容粘贴到相应笔记，收藏内容。\
+\
+--讯飞语记链接\
+urla=\"http://www.iyuji.cn/iyuji/s/NVZGNlFxRkJrM0dacG9MR2hZT0tTZz09/1562659280409713\"\
+canoffline=false\
+\
+import \"java.io.File\"--导入File类\
+下载目录=\"/sdcard/Download\"\
+\
+packinfo=this.getPackageManager().getPackageInfo(this.getPackageName(),((32552732/2/2-8183)/10000-6-231)/9)\
+\
+appinfo=this.getPackageManager().getApplicationInfo(this.getPackageName(),0)\
+--名字\
+applabel=this.getPackageManager().getApplicationLabel(appinfo)\
+--签名\
+appsign=tostring(packinfo.signatures[0].toCharsString())\
+--警告\
+piracy=\"您使用的 \"..applabel..\" 非官方版本，可能已被篡改，为了您设备安全，杜绝木马病毒，请勿运行此版本，如需使用，请下载官方版本\"\
+\
+import \"android.content.Context\"\
+\
+\
+function 提示(内容)\
+  toasts={\
+    LinearLayout;\
+    id=\"toastb\";\
+    {\
+      TextView;\
+      background=\"#FF3C8BDA\";\
+      padding=\"8dp\";\
+      textSize=\"15sp\";\
+      TextColor=\"#ffffffff\";\
+      layout_width=\"100%w\";\
+      layout_height=\"40dp\";\
+      gravity=\"center\";\
+      text=\"提示出错\";\
+      id=\"text_ts\";\
+    };\
+  };\
+  local toast=Toast.makeText(activity,\"内容\",Toast.LENGTH_SHORT).setView(loadlayout(toasts))\
+  --LENGTH_SHORT     2s\
+  --LENGTH_LONG      3.5s\
+  toast.setGravity(Gravity.BOTTOM,0, 0)\
+  --Gravity.BOTTOM   底部\
+  --Gravity.CENTER   中部\
+  --Gravity.TOP      顶部\
+  text_ts.Text=tostring(内容)\
+  toast.show()\
+end\
+local header={[\"User-Agent\"]=\"Mozilla/5.0 (Linux; Android 9; STF-AL00 Build/HUAWEISTF-AL00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/71.0.3578.99 Mobile Safari/537.36\"}\
+Http.get(urla,nil,\"utf8\",header,function(code,content)\
+  if(code==200 and content)then\
+    content=content:gsub(\"amp;\",\"\") or content;\
+\
+    update=content:match(\"%{更新:(.-):END%}\")\
+\
+    if(update)then\
+      newest=update:match(\"%【版本:(.-):END%】\")\
+      qyysize=update:match(\"%【大小:(.-):END%】\")\
+\
+      if(update:match(\"%【版本号更新:(.-):END%】\")==\"TRUE\" )then\
+        usevername=true\
+       else\
+        usevername=false\
+      end\
+      if(usevername)then\
+        version=tostring(packinfo.versionName)\
+       else\
+        version=tostring(packinfo.versionCode)\
+      end\
+      chglog=update:match(\"%【更新日志:(.-):END%】\")\
+      蓝奏云下载链接=content:match(\"【下载地址】(.-):END%】\")\
+      if not((usevername and version==newest) or (not usevername and version>=newest))then\
+        --提示(\"发现新版本，请更新版本\")\
+\
+        layout=\
+        {\
+          LinearLayout,\
+\
+          layout_height=\"fill\";\
+          layout_width=\"fill\";\
+          orientation=\"vertical\",\
+          gravity=\"center\";\
+          {\
+            ImageView;\
+            src=\"drawable/update.png\";\
+            scaleType=\"fitCenter\";\
+            layout_height=\"136dp\";--原图尺寸/1.5\
+            layout_width=\"300dp\";\
+            layout_marginTop=\"50dp\";--在有关闭按钮的情况下让弹窗保持在中间\
+          };\
+          {\
+            ScrollView;--使用滚动布局可以防止更新日志过长导致显示不全\
+            background=\"#FFFFFFFF\";--弹窗背景色\
+            layout_width=\"300dp\";\
+            VerticalScrollBarEnabled=false;--禁用滚动条\
+            {\
+              LinearLayout;\
+              layout_height=\"fill\";\
+              layout_width=\"260dp\";\
+              orientation=\"vertical\";\
+              layout_gravity=\"top|center\";\
+              {\
+                TextView;\
+                layout_gravity=\"center\";\
+                text=\"发现新版本\"..newest;\
+                textSize=\"18dp\";\
+                textColor=\"#FF000000\";\
+                layout_marginTop=\"10dp\";\
+              };\
+              {\
+                LinearLayout;\
+                layout_width=\"fill\";\
+                layout_height=\"fill\";\
+                orientation=\"horizontal\";\
+                {\
+                  LinearLayout,\
+                  orientation=\"horizontal\",\
+                  gravity=\"center|left\";\
+                  layout_width=\"130dp\",\
+                  layout_height=\"5%h\",\
+                  {\
+                    TextView;\
+                    textSize=\"13sp\";\
+                    layout_marginLeft=\"10dp\";\
+                    textColor=\"#FF656565\";\
+                    text=\"当前版本: \",\
+                  };\
+                  {\
+                    TextView;\
+                    text=version,\
+                    textSize=\"13sp\";\
+                    textColor=\"#FF656565\";\
+                    id=\"text1\";\
+                  };\
+                },\
+                {\
+                  LinearLayout,\
+                  orientation=\"horizontal\",\
+                  gravity=\"center|right\";\
+                  layout_width=\"130dp\",\
+                  layout_height=\"5%h\",\
+                  {\
+                    TextView;\
+                    textSize=\"13sp\";\
+                    textColor=\"#FF656565\";\
+                    text=\"新版大小 : \",\
+                  };\
+                  {\
+                    TextView;\
+                    text=qyysize..\"M\",\
+                    layout_marginRight=\"10dp\";\
+                    textSize=\"13sp\";\
+                    lines=\"1\",\
+                    textColor=\"#FF656565\";\
+                    id=\"text2\";\
+                  };\
+                },\
+              };\
+              {\
+                TextView;\
+                text=chglog;\
+                textSize=\"15dp\";\
+                textColor=\"#FF656565\";\
+                layout_marginTop=\"15dp\";\
+              };\
+            };\
+          };\
+\
+          {\
+            LinearLayout;\
+            layout_width=\"300dp\";\
+            gravity=\"center\";\
+            orientation=\"horizontal\";\
+            layout_height=\"fill\";\
+            {\
+              LinearLayout;\
+              layout_width=\"150dp\";\
+              id=\"linecd\";\
+              gravity=\"center\";\
+              background=\"#FFFFFFFF\";\
+              {\
+                CardView;\
+                layout_marginBottom=\"10dp\";\
+                id=\"gxcd\";\
+                elevation=0;\
+                layout_marginTop=\"12dp\";\
+                layout_gravity=\"center\";\
+                radius=\"5dp\";\
+                cardBackgroundColor=\"#FFEC463A\";\
+                {\
+                  TextView;\
+                  layout_width=\"130dp\";\
+                  textColor=\"#FFFFFFFF\";\
+                  text=\"忽略更新\";\
+                  layout_height=\"40dp\";\
+                  id=\"gxnr\";\
+                  layout_gravity=\"center\";\
+                  gravity=\"center\";\
+                  textSize=\"18dp\";\
+                };\
+              };\
+            };\
+   \
+            {\
+              LinearLayout;\
+              layout_width=\"150dp\";\
+              id=\"linecd1\";\
+              gravity=\"center\";\
+              background=\"#FFFFFFFF\";\
+              {\
+                CardView;\
+                layout_marginBottom=\"10dp\";\
+                id=\"gxcd1\";\
+                elevation=0;\
+                layout_marginTop=\"12dp\";\
+                layout_gravity=\"center\";\
+                radius=\"5dp\";\
+                cardBackgroundColor=\"#FFEC463A\";\
+                {\
+                  TextView;\
+                  layout_width=\"130dp\";\
+                  textColor=\"#FFFFFFFF\";\
+                  text=\"浏览器更新\";\
+                  layout_height=\"40dp\";\
+                  id=\"gxnr1\";\
+                  layout_gravity=\"center\";\
+                  gravity=\"center\";\
+                  textSize=\"18dp\";\
+                };\
+              };\
+            };\
+          };\
+\
+        };\
+\
+        dialog=AlertDialog.Builder(this)\
+\
+        update_dialog=dialog.show()\
+\
+        update_dialog.setCanceledOnTouchOutside(false)--设置点击外部区域不关闭弹窗\
+\
+        update_dialog.getWindow().setContentView(loadlayout(layout))\
+        import \"android.graphics.drawable.ColorDrawable\"\
+\
+        update_dialog.getWindow().setBackgroundDrawable(ColorDrawable(0x00000000))\
+\
+        圆角=GradientDrawable()\
+        圆角.setShape(GradientDrawable.RECTANGLE)\
+        圆角.setColor(0xFFFFFFFF)--背景颜色\
+        圆角.setCornerRadii({0,0,0,0,15,15,0,0});\
+        linecd1.setBackgroundDrawable(圆角)\
+\
+        圆角1=GradientDrawable()\
+        圆角1.setShape(GradientDrawable.RECTANGLE)\
+        圆角1.setColor(0xFFFFFFFF)--背景颜色\
+        圆角1.setCornerRadii({0,0,0,0,00,00,15,15});\
+        linecd.setBackgroundDrawable(圆角1)\
+\
+\
+        linecd1.onClick=function(v)\
+         -- update_dialog.dismiss()\
+          退出页面()\
+          import \"android.content.Intent\"\
+          import \"android.net.Uri\"\
+          url=蓝奏云下载链接\
+          viewIntent = Intent(\"android.intent.action.VIEW\",Uri.parse(url))\
+          activity.startActivity(viewIntent)\
+          提示\"浏览器下载\"\
+        end\
+        linecd.onClick=function(v)\
+        \
+        \
+          update_dialog.dismiss() --关闭更新弹窗\
+          --import\"down\"\
+          提示(\"请尝试浏览器更新\")\
+         -- 蓝奏云直链(蓝奏云下载链接)\
+\
+        end\
+\
+       else\
+        return true\
+      end\
+     else\
+      return true\
+    end\
+   else\
+    if(code==-1)then\
+      弹出消息(\"无法连接网络，请检查您的网络设置\")\
+     else\
+      弹出消息(\"网络请求失败\"..\" \"..code)\
+    end\
+    return (canoffline or 退出程序())\
+  end\
+end) \
+    elseif items[v+1]==\"在线下载\" then\
+     加载网页(\"https://www.mamublog.cn/zb_users/gx/index.html\")\
+    elseif items[v+1]==\"找回密码\" then\
+      加载网页(\"https://www.mamublog.cn/zb_users/plugin/reg/Retrieve.php\")\
+    elseif items[v+1]==\"项目4\" then\
+      弹出消息(\"点击了4\")\
+    elseif items[v+1]==\"项目5\" then\
+      弹出消息(\"点击了5\")\
+    elseif items[v+1]==\"项目6\" then\
+      弹出消息(\"点击了6\")\
+    end\
+  end}) \
+.show()--显示弹窗" ;
+              ["icon"]	= "drawable/google_drive.png" ;
+              } ;
+          [13]	= {
+              ["name"]	= "留言/反馈" ;
+              ["onClick"]	= "弹出消息(\"在评论区留下您宝贵的意见！\")\
+加载网页(\"https://www.mamublog.cn/post/2.html\")" ;
+              ["icon"]	= "drawable/alert_octagon.png" ;
+              } ;
+          [14]	= {
+              ["name"]	= "关于博客" ;
+              ["onClick"]	= "加载网页(\"https://www.mamublog.cn/3.html\")" ;
+              ["icon"]	= "drawable/football_helmet.png" ;
+              } ;
+          [15]	= {
+              ["name"]	= "关于软件" ;
+              ["onClick"]	= "对话框()\
+.设置标题(\"麻木博客2.0.3\")\
+.设置消息(\"更新日志: 1:增加微信公众号，新浪微博，酷安社区，百家号等联系方式 2:增加分类:Linux学习专区，网络实验专区。3:添加实时公告，实时软件更新检测\")\
+.设置积极按钮(\"确定\",function()\
+  显示消息(\"点击了确定\")\
+end)\
+.设置消极按钮(\"取消\")\
+.显示()" ;
+              ["icon"]	= "drawable/escalator.png" ;
+              } ;
+          } ;
+      } ;
+  ["web"]	= {
+      ["启动网页"]	= "https://www.mamublog.cn" ;
+      ["网页沉浸"]	= false ;
+      ["支持打开外部应用"]	= true ;
+      ["启用长按菜单"]	= true ;
+      ["启用进度条"]	= true ;
+      ["浏览器用户标识"]	= "默认" ;
+      } ;
+  ["events"]	= {
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["网页加载完毕"]	= "" ;
+      ["程序启动"]	= "\
+--程序启动时会执行的事件\
+进入子页面(\"登录\")\
+import \"android.graphics.drawable.GradientDrawable\"\
+function 渐变(left_jb,right_jb,id)\
+  drawable = GradientDrawable(GradientDrawable.Orientation.TR_BL,{\
+    right_jb,--右色\
+    left_jb,--左色\
+  });\
+  id.setBackgroundDrawable(drawable)\
+end\
+渐变(0xFFFA9371,0xFFFA58B1,toolbarParent)\
+\
+--程序启动时会执行的事件\
+local hh={};webView.addJavascriptInterface(hh,'JsInterface');\
+webView.addJavascriptInterface({},'JsInterface')\
+appinfo=this.getPackageManager().getApplicationInfo(this.getPackageName(),0)\
+applabel=this.getPackageManager().getApplicationLabel(appinfo)\
+function onKeyDown(key,event)\
+if(key==4)then\
+webView.clearCache(true)\
+if(webView.canGoBack())then      \
+webView.goBack()\
+else\
+退出确认=对话框()\
+.设置标题(\"提示\")\
+.设置消息(\"您确定要退出 \"..applabel..\" 吗?\")\
+退出按钮={\
+[1]=function()\
+退出确认\
+.设置积极按钮(\"确定\",function()\
+webView.clearCache(true)\
+执行Shell(\"rm -rf /sdcard/\"..this.packageName)\
+执行Shell(\"rm -rf /storage/emulated/0/\"..this.packageName)\
+执行Shell(\"rm -rf /sdcard/Android/data/\"..this.packageName)\
+执行Shell(\"rm -rf /storage/emulated/0/Android/data/\"..this.packageName)\
+执行Shell(\"rm -rf /data/data/\"..this.packageName..\"/cache\")\
+执行Shell(\"rm -rf /data/data/\"..this.packageName..\"/code_cache\")\
+执行Shell(\"rm -rf /data/data/\"..this.packageName..\"/app_webview\")\
+执行Shell(\"rm -rf /data/data/\"..this.packageName..\"/app_textures\")\
+执行Shell(\"rm -rf /data/data/\"..this.packageName..\"/files/data\")\
+执行Shell(\"rm -rf /data/data/\"..this.packageName..\"/files/live_log\")\
+退出程序()\
+end)\
+.设置中立按钮(\"清空数据\",function() \
+对话框()\
+.设置标题(\"提示\")\
+.设置消息(\"清空应用数据后再次运行程序将变得缓慢\\n您确定要清空 \"..applabel..\" 的全部数据吗?\")\
+.设置积极按钮(\"确定\",function()\
+执行Shell(\"rm -rf /sdcard/\"..this.packageName)\
+执行Shell(\"rm -rf /storage/emulated/0/\"..this.packageName)\
+执行Shell(\"rm -rf /sdcard/Android/data/\"..this.packageName)\
+执行Shell(\"rm -rf /storage/emulated/0/Android/data/\"..this.packageName)\
+os.execute(\"pm clear \"..this.packageName)\
+end)\
+.设置消极按钮(\"取消\")\
+.显示()\
+end)\
+.设置消极按钮(\"取消\")\
+end}\
+math.randomseed(tonumber(tostring(os.time()):reverse():sub(1, 6)))\
+退出按钮[math.random(1,1)]()\
+退出确认.show()\
+end\
+return true\
+end\
+end\
+import \"android.content.Intent\"\
+import \"android.net.Uri\"\
+import \"android.provider.Settings\"\
+\
+import \"android.app.ProgressDialog\"\
+import \"android.app.AlertDialog\"\
+\
+local appid =12278\
+--将 10001 改成你在 https://aus.nowtime.cc/console/app_list 获取的 APPID\
+--获取方法[教程可能有点旧(其实我太懒)，就先将就下吧] https://nowtime.cc/lua/331.html\
+\
+local packinfo = this.getPackageManager().getPackageInfo(this.getPackageName(),((32552732/2/2-8183)/10000-6-231)/9)\
+local appinfo = this.getPackageManager().getApplicationInfo(this.getPackageName(),0)\
+local versionName = tostring(packinfo.versionName)-- 版本名（cc.nowtime）\
+local versionCode = tonumber(packinfo.versionCode)-- 版本号（10010）\
+\
+local check_update_url = \"https://aus.nowtime.cc/api/query/update?appid=\"..appid..\"&version_code=\"..versionCode\
+\
+if(activity.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE).getActiveNetworkInfo() == nil) then\
+  AlertDialog.Builder(this)\
+  .setTitle(\"提示\")\
+  .setMessage(\"你未连接至互联网 或 当前连接的网络不可用，请检查你的网络设置\")\
+  .setNeutralButton(\"确定\",nil)\
+  .setNegativeButton(\"打开 数据连接\",{onClick=function()\
+      intent = Intent(Settings.ACTION_DATA_ROAMING_SETTINGS)\
+      this.startActivity(intent)\
+    end})\
+  .setPositiveButton(\"连接 Wi-Fi\",{onClick=function()\
+      intent = Intent(Settings.ACTION_WIFI_SETTINGS)\
+      this.startActivity(intent)\
+    end})\
+  .show();\
+  return false\
+  -- 就此中断，不再继续执行下面代码\
+end\
+\
+--圆形旋转样式\
+check_update_dialog = ProgressDialog(this)\
+check_update_dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER)\
+check_update_dialog.setTitle(\"提示\")\
+--设置进度条的形式为圆形转动的进度条\
+check_update_dialog.setMessage(\"正在检查更新中，请稍等片刻……\\n\\n小提示，如果检查更新长时间无反应，按手机「返回键」可以取消检查更新\")\
+check_update_dialog.setCancelable(true)--设置是否可以通过点击Back键取消\
+check_update_dialog.setCanceledOnTouchOutside(false)--设置在点击Dialog外是否取消Dialog进度条\
+check_update_dialog.setOnCancelListener{\
+  onCancel=function(l)\
+    print(\"您取消了「检查更新」操作\")\
+    return false\
+  end}\
+--取消对话框监听事件\
+check_update_dialog.show()\
+\
+Http.get(check_update_url,nil,\"UTF-8\",nil,function(http_code,content,cookie,header)\
+  check_update_dialog.hide()\
+\
+  if (http_code == -1) then\
+    AlertDialog.Builder(this)\
+    .setTitle(\"提示\")\
+    .setMessage(\"检查更新时出现了些小问题。可能的原因有：\\n1.API 服务器可能暂时出现故障，请稍后再试！\\n2.请检查你的网络设置？\")\
+    .setPositiveButton(\"确定\",nil)\
+    .setNeutralButton(\"检查 Wi-Fi\",{onClick=function()\
+        intent = Intent(Settings.ACTION_WIFI_SETTINGS)\
+        this.startActivity(intent)\
+      end})\
+    .setNegativeButton(\"检查 移动数据连接\",{onClick=function()\
+        intent = Intent(Settings.ACTION_DATA_ROAMING_SETTINGS)\
+        this.startActivity(intent)\
+      end})\
+    .show()\
+  else\
+    code = tonumber(string.match(content,'\"code\":(.-),'))-- 状态码\
+    msg = string.match(content,'\"msg\":\"(.-)\"')-- 消息\
+\
+\
+    if(code == 200) then\
+      new_versionCode = tonumber(string.match(content,'\"version_code\":(.-),'))--版本号\
+      new_versionName = string.match(content,'\"version_name\":\"(.-)\"')--版本名\
+      apk_url = string.gsub(string.match(content,'\"apk_url\":\"(.-)\"'),'\\\\','')--下载地址\
+      update_log = string.gsub(string.match(content,'\"update_log\":\"(.-)\"'),'\\\\n',\"\\n\")--更新日志\
+      update_date = string.match(content,'\"update_time\":\"(.-)\"')--发布更新时间\
+\
+      if (new_versionCode > versionCode) then\
+        AlertDialog.Builder(this)\
+        .setTitle(\"发现新版本\")\
+        .setMessage(\"当前版本：V\"..versionName..\"(\"..versionCode..\")\\n最新版本：V\"..new_versionName..\"(\"..new_versionCode..\")\\n版本发布时间：\"..update_date..\"\\n\\n更新日志：\\n\"..update_log)\
+        .setPositiveButton(\"立即更新\",{onClick=function()\
+            print(\"请选择一个应用或浏览器打开\")\
+            intent = Intent(\"android.intent.action.VIEW\")\
+            intent .setData(Uri.parse(apk_url))\
+            this.startActivity(Intent.createChooser(intent, \"请选择一个应用或浏览器用以下载最新版 APP\"))\
+          end})\
+        .setNeutralButton(\"复制链接\",{onClick=function()\
+            activity.getSystemService(Context.CLIPBOARD_SERVICE).setText(apk_url)--将下载链接复制到剪切板\
+            print(\"新版 APP 下载链接，复制成功！请粘贴到浏览器下载。\")\
+          end})\
+        .setNegativeButton(\"以后再说\",nill)\
+        .show()\
+      else\
+        AlertDialog.Builder(this)\
+        .setTitle(\"无可用更新\")\
+        .setMessage(\"您使用的是最新版本！\\n当前版本：\"..versionName..\"（\"..versionCode..\"）\\n最新版本：\"..new_versionName..\"（\"..new_versionCode..\"）\")\
+        .setPositiveButton(\"知道啦\",nil)\
+        .show()\
+      end\
+\
+    else\
+      AlertDialog.Builder(this)\
+      .setTitle(\"更新为空\")\
+      .setMessage(\"本站未发布更新\")\
+      .setPositiveButton(\"退下吧\",nil)\
+      .show()\
+    end\
+\
+  end\
+\
+end)\
+\
+\
+--[[\
+此代码可以放入「按钮点击事件」或者「程序启动事件」等\
+不会的加QQ群反馈(往下看  QQ Group)\
+\
+尊重作者劳动成果，转载代码请勿删除此注释\
+2018年06月27日\
+Author：WenzhouChan <wenzhouchan@gmail.com>\
+Blog：https://NowTime.cc\
+QQ Group：773641216\
+--]]\
+\
+import \"android.content.Intent\"\
+import \"android.net.Uri\"\
+import \"android.provider.Settings\"\
+\
+import \"android.app.ProgressDialog\"\
+import \"android.app.AlertDialog\"\
+\
+local appid =12278\
+--将 10001 改成你在 https://aus.nowtime.cc/console/app_list 获取的 APPID\
+--获取方法[教程可能有点旧(其实我太懒)，就先将就下吧] https://nowtime.cc/lua/331.html\
+\
+local packinfo = this.getPackageManager().getPackageInfo(this.getPackageName(),((32552732/2/2-8183)/10000-6-231)/9)\
+local appinfo = this.getPackageManager().getApplicationInfo(this.getPackageName(),0)\
+local versionName = tostring(packinfo.versionName)-- 版本名，不要动这里（cc.nowtime）\
+local versionCode = tonumber(packinfo.versionCode)-- 版本号，不要动这里（10010）\
+\
+--不要动这个\
+local check_update_url = \"https://aus.nowtime.cc/api/query/post?appid=\"..appid..\"&version_code=\"..versionCode\
+--不要动这个\
+\
+if(activity.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE).getActiveNetworkInfo() == nil) then\
+  AlertDialog.Builder(this)\
+  .setTitle(\"提示\")\
+  .setMessage(\"你未连接至互联网 或 当前连接的网络不可用，请检查你的网络设置\")\
+  .setNeutralButton(\"确定\",nil)\
+  .setNegativeButton(\"打开 数据连接\",{onClick=function()\
+      intent = Intent(Settings.ACTION_DATA_ROAMING_SETTINGS)\
+      this.startActivity(intent)\
+    end})\
+  .setPositiveButton(\"连接 Wi-Fi\",{onClick=function()\
+      intent = Intent(Settings.ACTION_WIFI_SETTINGS)\
+      this.startActivity(intent)\
+    end})\
+  .show();\
+  return false\
+  -- 就此中断，不再继续执行下面代码\
+end\
+\
+Toast.makeText(activity, \"正在努力加载公告中……\",Toast.LENGTH_SHORT).show()\
+\
+Http.get(check_update_url,nil,\"UTF-8\",nil,function(http_code,content,cookie,header)\
+\
+  if (http_code == -1) then\
+    Toast.makeText(activity, \"很抱歉，加载公告失败，请重试或检查你的网络设置\",Toast.LENGTH_SHORT).show()\
+  else\
+    code = tonumber(string.match(content,'\"code\":(.-),'))-- 状态码\
+\
+    if(code == 200) then\
+      post = string.gsub(string.match(content,'\"post\":\"(.-)\"'),'\\\\n',\"\\n\")--公告内容\
+      post_time = string.match(content,'\"post_time\":\"(.-)\"')--发布公告时间\
+\
+      AlertDialog.Builder(this)\
+      .setTitle(\"公告\")\
+      .setMessage(\"公告发布时间：\"..post_time..\"\\n\"..post)\
+      .setPositiveButton(\"知道啦\",nil)\
+      .show()\
+    else\
+    --出现此错误，请软件作者加QQ群反馈：773641216\
+      Toast.makeText(activity, \"本站暂未发布公告！\",Toast.LENGTH_SHORT).show()\
+    end\
+\
+  end\
+\
+end)\
+\
+" ;
+      } ;
+  } ;

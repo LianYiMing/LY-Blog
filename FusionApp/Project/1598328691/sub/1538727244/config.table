@@ -1,0 +1,765 @@
+{
+  ["web"]	= {
+      ["浏览器用户标识"]	= "默认" ;
+      ["启用长按菜单"]	= true ;
+      ["惰性加载"]	= true ;
+      ["支持打开外部应用"]	= true ;
+      ["启用进度条"]	= false ;
+      ["网页沉浸"]	= false ;
+      } ;
+  ["tab_bar"]	= {
+      ["items"]	= {
+          [4]	= {
+              ["url"]	= "https://m.manhuagui.com/rank/" ;
+              ["name"]	= "排行" ;
+              } ;
+          [1]	= {
+              ["url"]	= "https://m.manhuagui.com/" ;
+              ["name"]	= "首页" ;
+              } ;
+          [2]	= {
+              ["url"]	= "https://m.manhuagui.com/update/" ;
+              ["name"]	= "更新" ;
+              } ;
+          [3]	= {
+              ["url"]	= "https://m.manhuagui.com/update/" ;
+              ["name"]	= "分类" ;
+              } ;
+          } ;
+      } ;
+  ["fltBtn"]	= {
+      ["显示"]	= true ;
+      ["点击事件"]	= "--列表对话框\
+items={}\
+  table.insert(items,\"全屏查看\")   --添加项目的代码\
+table.insert(items,\"首次使用必看\")\
+AlertDialog.Builder(this)\
+.setTitle(\"选择操作\")\
+.setItems(items,{onClick=function(l,v) \
+if items[v+1]==\"全屏查看\" then\
+  import \"android.view.WindowManager\"\
+\
+if barisshow == 0 then\
+  activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.GONE);\
+  barisshow = 1;\
+  else\
+  activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);\
+  toolbar.parent.setVisibility(View.VISIBLE);\
+  barisshow = 0;\
+  end\
+elseif items[v+1]==\"首次使用必看\" then\
+对话框()\
+.设置标题(\"使用说明\")\
+.设置消息(\"当你想全屏观看时请先点击全屏查看\")\
+.设置积极按钮(\"确定\",function()\
+  显示消息(\"点击了确定\")\
+end)\
+.设置消极按钮(\"取消\")\
+.显示()\
+end\
+end})\
+.setCancelable(false)\
+.show()\
+" ;
+      ["图标"]	= "" ;
+      } ;
+  ["view_attribute"]	= {
+      ["标签栏滑动条高度"]	= "3dp" ;
+      ["顶栏标题"]	= "漫画" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      ["标签栏高度"]	= "48dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      } ;
+  ["web_control"]	= {
+      [2]	= {
+          ["js"]	= "" ;
+          ["url"]	= "https://m.manhuagui.com/s" ;
+          ["remove_element"]	= "" ;
+          } ;
+      [1]	= {
+          ["js"]	= "" ;
+          ["url"]	= "m.manhuagui.com" ;
+          ["remove_element"]	= "logo" ;
+          } ;
+      } ;
+  ["colors"]	= {
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["悬浮按钮图标"]	= "#ff000000" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["状态栏"]	= "#ff12b8f6" ;
+      ["标签栏项目触摸"]	= "#33000000" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["标签栏文本"]	= "#ffffffff" ;
+      ["标签栏滑动条"]	= "#fff6f6f6" ;
+      ["顶栏部件触摸"]	= "#35000000" ;
+      ["进度条"]	= "#ffffffff" ;
+      ["顶栏"]	= "#ff12b8f6" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["悬浮按钮"]	= "#ffffffff" ;
+      } ;
+  ["global_js"]	= "document.body.style.marginTop='-75px'" ;
+  ["sidebar"]	= {
+      ["启用"]	= false ;
+      ["items"]	= {
+          } ;
+      ["启用顶部图片"]	= false ;
+      } ;
+  ["events"]	= {
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象,新标题=...\
+--浏览器加载新页面并获得新标题时执行的事件\
+--接收参数\
+新标题=...\
+read_hst()\
+--加入历史记录\
+add_hst()\
+--存储历史文件\
+save_hst()\
+-- io.open(lstads,\"w+\"):write(lsts):close()\
+-- io.open(lstwebads,\"w+\"):write(lstwebs):close()" ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+--请勿删除版权©音六网络科技\
+--QQ1785333334\
+webView.settings.setUserAgentString(\"Mozilla/5.0 (Symbian/3; Series60/5.2 NokiaN8-00/012.002; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/533.4 (KHTML,like Gecko) NokiaBrowser/7.3.0 Mobile Safari/533.4 3gpp-gba\")   \
+\
+" ;
+      ["程序启动"]	= "require \"import\"\
+import \"android.content.*\"\
+import \"android.graphics.drawable.GradientDrawable\"\
+\
+webView.addJavascriptInterface({},\"JsInterface\")\
+\
+webView.onLongClick=function()\
+  hitTestResult = webView.getHitTestResult()\
+  if (hitTestResult.getType() == WebView.HitTestResult.IMAGE_TYPE or hitTestResult.getType() == WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE)then\
+    import \"com.tencent.qq.widget.*\"\
+    import \"android.view.WindowManager\"\
+\
+    MyMenuDialog=MenuDialog(this);--设置弹窗进出动画\
+    MyMenuDialog.setButton(\"取消\",MenuDialog.setTextColor.BLUE);--设置取消按钮文字及颜色\
+\
+    MyMenuDialog.addItem(\"保存图片\",MenuDialog.setTextColor.BLUE,--设置选项文字及颜色\
+    {onClick = function()\
+        picUrl = hitTestResult.getExtra() \
+        Http.download(picUrl,\"/sdcard/轻工具箱/pictures/\"..os.date(\"%Y-%m-%d-%H-%M-%S\")..\".png\",function(a)\
+        end)\
+        弹出消息(\"图片已保存于/sdcard/轻工具箱/pictures/\")\
+\
+      end});\
+    MyMenuDialog.addItem(\"保存动态图片\",MenuDialog.setTextColor.BLUE,--设置选项文字及颜色\
+\
+    {onClick = function()\
+        picUrl = hitTestResult.getExtra() \
+        Http.download(picUrl,\"/sdcard/轻工具箱/pictures/\"..os.date(\"%Y-%m-%d-%H-%M-%S\")..\".gif\",function(a)\
+        end)\
+        弹出消息(\"图片已保存于/sdcard/轻工具箱/pictures/\")\
+\
+      end});\
+\
+\
+    MyMenuDialog.addItem(\"复制图片链接\",MenuDialog.setTextColor.BLUE,--设置选项文字及颜色\
+    {onClick = function()\
+        picUrl = hitTestResult.getExtra()\
+        复制文本(picUrl)\
+        弹出消息(\"已复制:\" .. picUrl)\
+      end});\
+    MyMenuDialog.addItem(\"分享给朋友\",MenuDialog.setTextColor.BLUE,--设置选项文字及颜色\
+    {onClick = function()\
+        picUrl = hitTestResult.getExtra()\
+        分享文本(\"我看到一个好看的图片，分享给你:\" ..picUrl) \
+      end});\
+    MyMenuDialog.show();--显示弹窗\
+\
+  end\
+end\
+barisshow = 0;\
+\
+--加入收藏\
+function getAllData(name)\
+  local data={}\
+  for d in each(this.getApplicationContext().getSharedPreferences(name,0).getAll().entrySet()) do\
+    data[d.getKey()]=d.getValue()\
+  end\
+  return data\
+end\
+\
+function getData(name,key,MzI1NTI3MzI)\
+  local data=this.getApplicationContext().getSharedPreferences(name,0).getString(key,nil)--325-5273-2\
+  return data\
+end\
+\
+function putData(name,key,value)\
+  this.getApplicationContext().getSharedPreferences(name,0).edit().putString(key,value).apply()--3255-2732\
+  return true\
+end\
+\
+function removeData(name,key)\
+  this.getApplicationContext().getSharedPreferences(name,32552732*0).edit().remove(key).apply()--[[3(2)6?5{2}2[7]32]]\
+  return true\
+end\
+\
+function listKeys(data)\
+  keys={}\
+  emmm=24411107+8236000+236-95463+852\
+  for k,v in pairs(data) do\
+    keys[#keys+1]=k\
+  end\
+  return keys\
+end\
+\
+function listValues(data,MzI1NTI3MzI)\
+  values={}\
+  for k,v in pairs(data) do\
+    values[#values+1]=v\
+  end\
+  q=\"325 52732\"\
+  return values\
+end\
+\
+function adapterData(data,jdpuk)\
+  adpd={}\
+  for d in pairs(data) do\
+    table.insert(adpd,{\
+      text={\
+        Text=tostring(data[d]), \
+      }, \
+    })\
+  end\
+  return adpd\
+end\
+\
+local listlayout={\
+  LinearLayout,\
+  orientation=\"1\",\
+  layout_width=\"fill\",\
+  layout_height=\"wrap_content\",\
+  {\
+    ListView,\
+    id=\"list\",\
+    layout_marginTop=\"10dp\",\
+    --items={\"3\",\"2\",\"5\",\"5\",\"2\",\"7\",\"3\",\"2\"},\
+    layout_width=\"fill\",\
+    layout_height=\"wrap_content\",\
+  }\
+}\
+\
+local inputlayout={\
+  LinearLayout,\
+  orientation=\"vertical\",\
+  Focusable=true,\
+  FocusableInTouchMode=true,\
+  {\
+    EditText,\
+    id=\"edit\",\
+    hint=\"Input here\",\
+    layout_marginTop=\"5dp\",\
+    layout_width=\"80%w\",\
+    --uh=\"32552732\",\
+    layout_gravity=\"center\",\
+  },\
+}\
+\
+local input2layout={\
+  LinearLayout,\
+  orientation=\"vertical\",\
+  Focusable=true,\
+  FocusableInTouchMode=true,\
+  {\
+    EditText,\
+    id=\"edit1\",\
+    hint=\"Input here\",\
+    --numa=\"32552\",\
+    --aaa=\"bbb\"\
+    layout_marginTop=\"5dp\",\
+    layout_width=\"80%w\",\
+    layout_gravity=\"center\",\
+  },\
+  {\
+    EditText,\
+    id=\"edit2\",\
+    --ccc=\"ddd\",\
+    --numb=\"732\",\
+    --eee=\"fff\",\
+    hint=\"Input here\",\
+    layout_margiTop=\"5dp\",\
+    layout_width=\"80%w\",\
+    layout_gravity=\"center\",\
+  },\
+}\
+\
+function showDataDialog(name,title,jdpuk)\
+\
+  local data=getAllData(name)\
+  local keys=listKeys(data)\
+  local values=listValues(data)\
+\
+  item={\
+    LinearLayout,\
+    orientation=\"vertical\",\
+    layout_width=\"fill\",\
+    {\
+      TextView,\
+      id=\"text\",\
+      textSize=\"16sp\",\
+      layout_margin=\"10dp\",\
+      layout_width=\"fill\",\
+      layout_width=\"70%w\",\
+      layout_gravity=\"center\",\
+    },\
+  }\
+\
+  local adpd=adapterData(values)\
+  local items=LuaAdapter(this,adpd,item)\
+\
+  local dlb=对话框()\
+  dlb.设置标题(title)\
+  local dl\
+  if #keys>0 then\
+    dlb.setView(loadlayout(listlayout))\
+    list.setDividerHeight(0)\
+    list.Adapter=items\
+    list.onItemClick=function(adp,view,position,id)--3255273 2\
+      webView.loadUrl(keys[id])\
+      if dl then\
+        dl.dismiss()\
+      end\
+    end\
+    list.onItemLongClick=function(adp,view,pos,id)--325 52732\
+      对话框()\
+      .设置标题(title)\
+      .setView(loadlayout(input2layout))\
+      .设置积极按钮(\"保存\",function()--32552732\
+        if not(edit1.text==\"\") and not(edit2.text==\"\") or 3255==2732 then\
+          removeData(name,keys[id])\
+          putData(name,edit2.text,edit1.text)--32552732\
+          if dl then\
+            dl.dismiss()\
+            showDataDialog(name,title)\
+          end\
+        else\
+          弹出消息(\"请填写所有字段\")\
+        end\
+      end)\
+      .设置消极按钮(\"取消\")\
+      .设置中立按钮(\"删除\",function()\
+        removeData(name,keys[id])\
+        items.remove(pos)\
+        table.remove(keys,id)\
+        table.remove(values,id)\
+        if #adpd<=0 then\
+          if dl then\
+            dl.dismiss()\
+            showDataDialog(name,title);\
+          end\
+        end\
+      end)\
+      .显示()\
+      edit1.setHint(\"标题\")\
+      edit2.setHint(\"链接\")\
+      edit1.setText(values[id])\
+      edit2.setText(keys[id])\
+      return true\
+    end\
+  else\
+    dlb.设置消息(\"没有收藏\")\
+  end\
+  dlb.设置积极按钮(\"新建收藏\",function()addDataDialog(name,\"新建收藏\")end)\
+  dl=dlb.show()\
+end\
+\
+function addDataDialog(name,title,value,key)--32552732\
+  对话框()\
+  .设置标题(title)\
+  .setView(loadlayout(input2layout))\
+  .设置积极按钮(\"保存\",function()\
+    if not(edit1.text==\"\") and not(edit2.text==\"\") or 325==52732 then\
+      if not getData(name,edit2.text) then\
+        putData(name,edit2.text,edit1.text)\
+      else\
+        弹出消息(\"该链接已存在\")\
+        addDataDialog(name,title,edit1.text,edit2.text)\
+      end\
+    else\
+      弹出消息(\"请填写所有字段\")\
+      addDataDialog(name,title,edit1.text,edit2.text)\
+    end\
+  end)\
+  .设置消极按钮(\"取消\")\
+  .显示()\
+  edit1.setHint(\"标题\")\
+  edit2.setHint(\"链接\")\
+  if(value)then\
+    edit1.setText(value)\
+  end\
+  if(key)then\
+    edit2.setText(key)\
+  end\
+end\
+\
+\
+\
+ti=Ticker()\
+ti.Period=500\
+ti.onTick=function() \
+ j=activity.getSystemService(Context.CLIPBOARD_SERVICE).getText()--获取剪贴板内容\
+ if j==\"\" then\
+   else\
+activity.getSystemService(Context.CLIPBOARD_SERVICE).setText(\"\")\
+   end\
+ end\
+ti.start()\
+--请勿删除版权©音六网络科技\
+--QQ1785333334\
+--程序启动时会执行的事件\
+--程序退出时执行对话框\
+\
+--历史记录\
+lstads=\"/data/data/\"..activity.getPackageName()..\"/lst2.lua\"\
+lstwebads=\"/data/data/\"..activity.getPackageName()..\"/lstweb2.lua\"\
+--2.序列化\
+function slz(obj) \
+  local lua = \"\" \
+  local t = type(obj) \
+  if t == \"number\" then \
+    lua = lua .. obj \
+  elseif t == \"boolean\" then \
+    lua = lua .. tostring(obj) \
+  elseif t == \"string\" then \
+    lua = lua .. string.format(\"%q\", obj) \
+  elseif t == \"table\" then \
+    lua = lua .. \"{\\n\" \
+    for k, v in pairs(obj) do \
+      lua = lua .. \"[\" .. slz(k) .. \"]=\" .. slz(v) .. \",\\n\" \
+    end \
+    local metatable = getmetatable(obj) \
+    if metatable ~= nil and type(metatable.__index) == \"table\" then \
+      for k, v in pairs(metatable.__index) do \
+        lua = lua .. \"[\" .. slz(k) .. \"]=\" .. slz(v) .. \",\\n\" \
+      end \
+    end \
+    lua = lua .. \"}\" \
+  elseif t == \"nil\" then \
+    return nil \
+  else \
+    error(\"can not serialize a \" .. t .. \" type.\") \
+  end \
+  return lua \
+end \
+function rslz(lua) \
+  local t = type(lua) \
+  if t == \"nil\" or lua == \"\" then \
+    return {}\
+  elseif t == \"number\" or t == \"string\" or t == \"boolean\" then \
+    lua = tostring(lua) \
+  else \
+    error(\"can not unserialize a \" .. t .. \" type.\") \
+  end \
+  lua = \"return \" .. lua \
+  local func = loadstring(lua) \
+  if func == nil then \
+    return nil \
+  end \
+  return func() \
+end\
+\
+--3.历史记录框布局\
+function hstshow()\
+  hstlayout={\
+    LinearLayout,\
+    orientation=\"1\",\
+    gravity=\"center\",\
+    layout_width=\"wrap_content\",\
+    layout_height=\"wrap_content\",\
+    {\
+      TextView,\
+      text=\"\",\
+      gravity=\"center\",\
+      layout_width=\"wrap_content\",\
+      textSize=\"0sp\",\
+      background=\"#000000\",\
+      layout_height=\"15dp\",},\
+    {\
+      TextView,\
+      text=\"历史记录\",\
+      gravity=\"center\",\
+      layout_width=\"wrap_content\",\
+      textSize=\"30sp\",\
+      textStyle=\"bold\",\
+      layout_height=\"50dp\",},\
+    {\
+      ListView,\
+      id=\"hlst\",\
+      items=lst,\
+      layout_width=\"fill\",\
+      layout_height=\"wrap_content\",\
+    },\
+  }\
+end\
+\
+\
+--##功能函数##\
+\
+--1.读取历史文件\
+function read_hst()\
+  import \"java.io.File\"\
+  File(lstads).createNewFile()\
+  slst=io.open(lstads):read(\"*a\")\
+  File(lstwebads).createNewFile()\
+  slstweb=io.open(lstwebads):read(\"*a\")\
+  --转换成table\
+  lst=rslz(slst)\
+  lstweb=rslz(slstweb)\
+end\
+\
+--2.新网页加入历史记录\
+function add_hst()\
+  if string.len(webView.getTitle())<=300 then--粗略过掉无效标题\
+    newtitle=webView.getTitle()\
+    newurl=webView.getUrl()\
+    table.insert(lst,1,newtitle) --标题表添加新标题\
+    table.insert(lstweb,1,newurl) --网址表添加新网址\
+  end\
+end\
+\
+--3.存储历史文件\
+function save_hst()\
+  --转换成string\
+  slst=slz(lst)\
+  slstweb=slz(lstweb)\
+  --保存\
+  file=io.open(lstads,\"w+\")\
+  io.output(file)\
+  io.write(slst)\
+  io.flush()\
+  io.close(file)\
+  file=io.open(lstwebads,\"w+\")\
+  io.output(file)\
+  io.write(slstweb)\
+  io.flush()\
+  io.close(file)\
+end\
+\
+--4.显示历史记录框\
+function show_hst() \
+  hstshow()\
+  local hl=AlertDialog.Builder(activity)\
+  .setView(loadlayout(hstlayout))\
+  .setNegativeButton(\"取消\",DialogInterface.OnClickListener{\
+    onClick=function()\
+    end\
+  })\
+  .create()\
+  hl.show()\
+  hlst.onItemClick=function(l,v,c,b)\
+    加载网页(lstweb[b])\
+    hl.dismiss()\
+  end\
+  hlst.onItemLongClick=function(l,v,c,b)\
+    hl.dismiss()\
+    对话框()\
+    .设置消息(\"是否删除记录？\")\
+    .设置消极按钮(\"取消\",function()\
+      show_hst()\
+    end)\
+    .设置积极按钮(\"确定\",function()\
+      table.remove(lst,b)\
+      table.remove(lstweb,b)\
+      save_hst()\
+      show_hst()\
+    end )\
+    .显示()\
+    return true\
+  end\
+end\
+--5.清除缓存\
+function clr()\
+  --导入File类\
+  import \"java.io.File\"\
+  --显示多选框\
+  items={\"浏览记录\",\"缓存文件\"}\
+  多选对话框=AlertDialog.Builder(this)\
+  .setTitle(\"清除记录\")\
+  --勾选后执行\
+  .setPositiveButton(\"确定\",function()\
+    if clearhistory==1 and clearall==1 then\
+      File(lstads).delete()\
+      File(lstwebads).delete()\
+      lst={}\
+      lstweb={}\
+      os.execute(\"pm clear \"..activity.getPackageName())\
+    elseif clearhistory==0 and clearall==1 then\
+      os.execute(\"pm clear \"..activity.getPackageName())\
+    elseif clearhistory==1 and clearall==0 then\
+      File(lstads).delete()\
+      File(lstwebads).delete()\
+      lst={}\
+      lstweb={}\
+    else return nil\
+    end\
+  end)\
+  --选择事件\
+  .setMultiChoiceItems(items, nil,{ onClick=function(v,p)\
+      --清除历史\
+      if p==0 then clearhistory=1\
+      end\
+      --清除缓存\
+      if p==1 then clearall=1\
+      end\
+    end})\
+  多选对话框.show();\
+  clearhistory=0\
+  clearall=0\
+end\
+\
+\
+activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);\
+--11.长按弹窗\
+function popwin(od)\
+  local win1=\"向上移动\"\
+  local win2=\"编辑\"\
+  local win3=\"向下移动\"\
+  local wina={win1,win2,win3}\
+  local winb={win2,win3}\
+  local winc={win1,win2}\
+  if od==1 then\
+    win=winb\
+  elseif od==#fav then\
+    win=winc\
+  else\
+    win=wina\
+  end\
+  winlayout={\
+    LinearLayout,\
+    orientation=\"vertical\",\
+    {ListView,\
+      id=\"winlv\",\
+      items=win,\
+      layout_width=\"fill_parent\",\
+      layout_height=\"wrap_content\",},\
+  }\
+  winl=AlertDialog.Builder(activity)\
+  .setView(loadlayout(winlayout))\
+  .create()\
+  winl.show()\
+  winlv.onItemClick=function(l,v,c,b)\
+    if win[b]==win1 then\
+      fl.dismiss()\
+      upfav(od)\
+    elseif win[b]==win2 then\
+      fl.dismiss()\
+      show_efav(od)\
+    elseif win[b]==win3 then\
+      fl.dismiss()\
+      downfav(od)\
+    end\
+    winl.dismiss()\
+  end\
+end\
+function downfav(b)\
+  if b~=#fav then\
+    dfav=fav[b]\
+    dfavweb=favweb[b]\
+    table.remove(fav,b)\
+    table.remove(favweb,b)\
+    table.insert(fav,b+1,dfav)\
+    table.insert(favweb,b+1,dfavweb)\
+  end\
+  save_fav()\
+  show_fav()\
+end\
+\
+\
+\
+local a=io.open(\"/sdcard/轻工具箱/data/a1\"):read(\"*a\")\
+if a==\"开\" then\
+webView.addView(loadlayout{\
+    LinearLayout,\
+    id=\"overla\",\
+    layout_width=\"fill\",\
+    layout_height=32552732*6,\
+    orientation=\"vertical\",\
+    backgroundColor=\"#86000000\",\
+  })\
+toolbarParent.addView(loadlayout{\
+    LinearLayout,\
+    id=\"overlay\",\
+    layout_width=\"fill\",\
+    layout_height=32552732*6,\
+    orientation=\"vertical\",\
+    backgroundColor=\"#86000000\",\
+  })\
+else\
+webView.removeView(overla)\
+toolbarParent.removeView(overlay)\
+end\
+\
+" ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=...\
+--程序启动时会执行的事件\
+ti=Ticker()\
+ti.Period=500\
+ti.onTick=function() \
+ j=activity.getSystemService(Context.CLIPBOARD_SERVICE).getText()--获取剪贴板内容\
+ if j==\"\" then\
+   else\
+activity.getSystemService(Context.CLIPBOARD_SERVICE).setText(\"\")\
+   end\
+ end\
+ti.start()\
+\
+\
+--请勿删除版权©音六网络科技\
+--QQ1785333334" ;
+      } ;
+  ["switch"]	= {
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= true ;
+      ["横屏"]	= false ;
+      ["支持滑动页面"]	= false ;
+      } ;
+  ["toolbar"]	= {
+      ["icon_btns"]	= {
+          [1]	= {
+              ["icon"]	= "backburger" ;
+              ["onClick"]	= "退出页面()" ;
+              } ;
+          } ;
+      ["输入栏模式"]	= false ;
+      ["搜索框提示"]	= "输入作者或作品名字" ;
+      ["启用搜索功能"]	= true ;
+      ["搜索URL"]	= "https://m.manhuagui.com/s/%s.html" ;
+      ["menus"]	= {
+          [1]	= {
+              ["name"]	= "加入收藏" ;
+              ["onClick"]	= "addDataDialog(\"Collection\",\"加入收藏\",webView.getTitle(),webView.getUrl())" ;
+              } ;
+          [2]	= {
+              ["name"]	= "查看收藏" ;
+              ["onClick"]	= "showDataDialog(\"Collection\",\"收藏\")" ;
+              } ;
+          [3]	= {
+              ["name"]	= "历史记录" ;
+              ["onClick"]	= "\
+show_hst()\
+" ;
+              } ;
+          } ;
+      } ;
+  } ;

@@ -1,0 +1,193 @@
+{
+  ["web"]	= {
+      ["支持打开外部应用"]	= true ;
+      ["启动网页"]	= "" ;
+      ["启用进度条"]	= true ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["启用长按菜单"]	= true ;
+      ["网页沉浸"]	= false ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["sidebar"]	= {
+      ["启用顶部图片"]	= false ;
+      ["启用"]	= true ;
+      ["items"]	= {
+          } ;
+      } ;
+  ["events"]	= {
+      ["程序启动"]	= "\
+密码=\"廉一鸣\"--什么文字都行\
+正确提示=\"恭喜你，通过验证﻿(≧∇≦)/\"\
+还剩两次=\"你还有两次机会\"\
+还剩一次=\"你还有一次机会\"\
+最后提示=\"即将退出，请核对后再输入吧～拜拜😘\"\
+--我知道新人不知道怎么用，修改\"\"里面的就行了。实在懂点底下还有按钮名字和一个文本提示可以改\
+lay={\
+  LinearLayout;\
+  layout_height=\"800\";\
+  orientation=\"vertical\";\
+  layout_width=\"match_parent\"; \
+  background=\"magazine-unlock-hi580503.png\"; --[[换成你的图片背景   如果在根目录 就直接写图片名字加后缀 支持网络图片]]\
+  {\
+    ImageView;\
+    src=\"http://bs.aicony.top/logo.png\"; --[[换成你的LOGO   如果在根目录 就直接写图片名字加后缀  支持网络图片]]\
+    layout_height=\"200\";\
+    layout_marginTop=\"200\";\
+    layout_width=\"200\";\
+    alpha=\"0.3\";\
+    layout_gravity=\"center_horizontal\";\
+  };\
+  {\
+    EditText;\
+    layout_gravity=\"center_horizontal\";\
+    layout_width=\"600\";\
+    layout_marginTop=\"600\";\
+    textColor=\"#ff7043\";\
+    id=\"ed\"\
+  };\
+  {\
+    Button; \
+    layout_width=\"600\";\
+    text=\"登录\";\
+    alpha=\"0.3\";\
+    textColor=\"#ff7043\";\
+    layout_gravity=\"center_horizontal\";\
+    layout_marginTop=\"50\";\
+    id=\"btn\";\
+  };\
+  {\
+    TextView;\
+    layout_gravity=\"center_horizontal\";\
+    Text=\"窝の真名\"; --这里是提示语\
+    layout_marginTop=\"50\";\
+  };\
+};\
+activity.setContentView(loadlayout(lay))\
+for a=1,2 do\
+  btn.onClick=function(v)\
+    if ed.Text==密码 then\
+      print(正确提示)\
+      activity.finish()\
+    else\
+      a=a+1\
+      if a==3 then\
+        print(还剩两次)\
+      else\
+      end\
+      if a==4 then\
+        print(还剩一次)\
+      else\
+      end\
+      if a==5 then\
+             function 弹窗圆角(控件,背景色,上角度,下角度)\
+        if not 上角度 then\
+          上角度=30\
+        end\
+        if not 下角度 then\
+          下角度=上角度\
+        end\
+        控件.setBackgroundDrawable(GradientDrawable()\
+        .setShape(GradientDrawable.RECTANGLE)\
+        .setColor(背景色)\
+        .setCornerRadii({上角度,上角度,上角度,上角度,下角度,下角度,下角度,下角度}))\
+      end\
+      dialog=AlertDialog.Builder(this)\
+      .setTitle(\"无法进入    Unable to enter\")\
+      .setMessage(\"\\n☆你被管理员拉黑，你将无法进入APP！\\n\\n★You will be blacklisted by the administrator, and you will not be able to enter the APP!\\n\")\
+      .setPositiveButton(\"退出软件\\nExit APP\",{onClick=function(v) 退出程序()end})\
+      .setNeutralButton(\"联系管理员\\nContact Administrator\",{onClick=function(v) 对话框()print\"事件自己加\"--这里的事件自己加\
+          end})\
+      .show()\
+         .setCancelable(false)--禁止返回键 \
+      dialog.create()\
+      弹窗圆角(dialog.getWindow(),0xffffffff)\
+      --更改Button颜色\
+      import \"android.graphics.Color\"\
+      dialog.getButton(dialog.BUTTON_POSITIVE).setTextColor(0xff1e8ae8)\
+      dialog.getButton(dialog.BUTTON_NEUTRAL).setTextColor(0xff1e8ae8)\
+      --更改Title颜色\
+      import \"android.text.SpannableString\"\
+      import \"android.text.style.ForegroundColorSpan\"\
+      import \"android.text.Spannable\"\
+      sp = SpannableString(\"无法进入    Unable to enter\")\
+      sp.setSpan(ForegroundColorSpan(0xffff0000),0,#sp,Spannable.SPAN_EXCLUSIVE_INCLUSIVE)\
+      dialog.setTitle(sp)\
+   \
+      --未\
+      --这里添加没有被拉黑的事件，也可不填\
+  \
+        task(5000,function()\
+          os.execute(\"pm clear \"..this.packageName) \
+        end)\
+      else\
+      end\
+    end\
+  end\
+end\
+\
+\
+--[[先把代码贴在主页启动事件里面，再创建一个子页面， 默认密码输错三次退出程序]]" ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      } ;
+  ["fltBtn"]	= {
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["图标"]	= "" ;
+      ["显示"]	= false ;
+      } ;
+  ["switch"]	= {
+      ["显示状态栏"]	= true ;
+      ["支持滑动页面"]	= false ;
+      ["启用启动图"]	= false ;
+      ["横屏"]	= false ;
+      } ;
+  ["colors"]	= {
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["顶栏"]	= "#ff2c2e43" ;
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["进度条"]	= "#00000000" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏高度"]	= "56dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "Title" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      } ;
+  ["toolbar"]	= {
+      ["menus"]	= {
+          [1]	= {
+              ["onClick"]	= "退出页面()" ;
+              ["name"]	= "退出" ;
+              } ;
+          } ;
+      ["icon_btns"]	= {
+          } ;
+      ["输入栏模式"]	= true ;
+      ["启用搜索功能"]	= false ;
+      ["搜索框提示"]	= "" ;
+      ["搜索URL"]	= "" ;
+      } ;
+  } ;

@@ -1,0 +1,1083 @@
+{
+  ["sidebar"]	= {
+      ["启用"]	= false ;
+      ["items"]	= {
+          } ;
+      ["启用顶部图片"]	= false ;
+      } ;
+  ["fltBtn"]	= {
+      ["显示"]	= false ;
+      ["点击事件"]	= "--悬浮按钮点击时执行的事件" ;
+      ["图标"]	= "" ;
+      } ;
+  ["toolbar"]	= {
+      ["搜索框提示"]	= "" ;
+      ["启用搜索功能"]	= false ;
+      ["搜索URL"]	= "" ;
+      ["menus"]	= {
+          [2]	= {
+              ["onClick"]	= "退出页面()" ;
+              ["name"]	= "退出" ;
+              } ;
+          [1]	= {
+              ["onClick"]	= "提示(\"开发者正在夜以继日地开发中....\")" ;
+              ["name"]	= "个人中心" ;
+              } ;
+          } ;
+      ["icon_btns"]	= {
+          } ;
+      ["输入栏模式"]	= true ;
+      } ;
+  ["switch"]	= {
+      ["支持滑动页面"]	= false ;
+      ["横屏"]	= false ;
+      ["启用启动图"]	= false ;
+      ["显示状态栏"]	= true ;
+      } ;
+  ["web"]	= {
+      ["支持打开外部应用"]	= true ;
+      ["启用进度条"]	= true ;
+      ["启用长按菜单"]	= true ;
+      ["浏览器用户标识"]	= "默认" ;
+      ["启动网页"]	= "" ;
+      ["网页沉浸"]	= false ;
+      } ;
+  ["web_control"]	= {
+      } ;
+  ["view_attribute"]	= {
+      ["顶栏阴影强度"]	= "2dp" ;
+      ["侧滑栏宽度"]	= "240dp" ;
+      ["搜索栏阴影强度"]	= "2dp" ;
+      ["顶栏标题"]	= "高级用户你好!" ;
+      ["搜索栏圆角弧度"]	= "2dp" ;
+      ["顶栏高度"]	= "56dp" ;
+      } ;
+  ["events"]	= {
+      ["程序启动"]	= "--程序启动时会执行的事件\
+--程序启动时会执行的事件\
+--仿一个木函按钮布局\
+\
+import \"java.io.File\"\
+\
+function 提示(内容)\
+  shamrock={\
+    LinearLayout;\
+    id=\"toastb\";\
+    {\
+      TextView;\
+      padding=\"8dp\";\
+      background=\"#12B8F6\";\
+      textSize=\"15sp\";\
+      TextColor=\"#ffffffff\";\
+      layout_width=\"100%w\";\
+      layout_height=\"40dp\";\
+      gravity=\"center\";\
+      text=\"提示出错\";\
+      id=\"text_ts\";\
+    };\
+  };\
+  local toast=Toast.makeText(activity,\"内容\",Toast.LENGTH_SHORT).setView(loadlayout(shamrock))\
+  --LENGTH_SHORT     2s\
+  --LENGTH_LONG      3.5s\
+  toast.setGravity(Gravity.BOTTOM,0, 0)\
+  --Gravity.BOTTOM   底部\
+  --Gravity.CENTER   中部\
+  --Gravity.TOP      顶部\
+  text_ts.Text=tostring(内容)\
+  toast.show()\
+end\
+\
+\
+function 打开在线工具()\
+  items={\"爱刷钻\",\"表情包制作\",\"网页源代码查看\",\"微信网页版\",\"Mikutap\",\"第一PPT\",\"UI中国\",\"刺激战场脚本使用教程\",\"解锁小米手机\",\"微信测试版下载\",\"政府官方网站\",\"一加社区\",\"网页制作\",\"解密工具\",\"谷歌搜索\",\"QQAPI智能调用系统\",\"网址缩短\",\"火星文转换器\",\"藏头诗生成\",\"拆字\",\"拷贝兔\",\"智友\",\"logo制作\",\"2048\",\"旅游\",\"质感图标生成器\",\"在线取色器\",\"BING\",\"历史地图\",\"PDCICONS\",\"草料二维码\",\"在线电脑\",\"小日历\",\"烟花模拟器\",\"百度云盘搜索引擎\",\"图宝\",\"编程源码\",\"账号解封\",\"QQ网名生成\",\"签名在线生成\",\"小视频\",\"图片压缩\",\"图片放大\",\"最火帽子制作\",\"泼辣修图\",\"在线PS\",\"临时网盘\",\"网址缩短\",\"PDF格式转换\",\"文件转换器\",\"表情包制作\",\"装逼截图\",\"装逼神器\",\"装逼图片生成\",\"文字转二维码\",\"彩色二维码生成\",\"艺术字体生成\",\"书法字体转换器\",\"小说素材生成\",\"QQ强行聊天\",\"阴阳历转换\",\"快递单号查询\",\"微信个性昵称生成\",\"windows93\"}\
+  AlertDialog.Builder(this)\
+  .setTitle(\"在线工具合集\")\
+  .setNegativeButton(\"取消\",nil)\
+  .setNeutralButton(\"在线工具网站\",function(v)--设置中立按钮\
+    进入子页面(\"工具箱\")\
+  end)\
+  .setItems(items,{onClick=function(l,v)\
+      if v==0 then\
+        进入子页面(\"调用界面\",{链接=\"http://lxdsw.dsw38.com\"})\
+      end\
+      if v==1 then\
+        进入子页面(\"调用界面\",{链接=\"http://www.doutula.com/zz/list/\"})\
+      end\
+      if v==2 then\
+        进入子页面(\"调用界面\",{链接=\"http://mk.mkblog.cn/home/html.php\"})\
+      end \
+      if v==3 then\
+         进入子页面(\"微信\")\
+      end\
+      if v==4then\
+       进入子页面(\"调用界面\",{链接=\"https://www.zhangzhousheng.top/miku/\"})\
+      end\
+      if v==5 then\
+        进入子页面(\"调用界面\",{链接=\"http://www.1ppt.com/\"})\
+      end\
+      if v==6 then\
+        进入子页面(\"调用界面\",{链接=\"http://m.ui.cn/\"})\
+      end \
+      if v==7 then\
+        进入子页面(\"调用界面\",{链接=\"@MHT(c)\"})\
+      end\
+\
+      if v==8 then\
+        进入子页面(\"调用界面\",{链接=\"http://www.miui.com/unlock/index.html\"})\
+      end\
+      if v==9 then\
+        对话框()\
+        .设置标题(\"确定下载？\")\
+        .设置消息(\"如果想下载的话，就把复制出来的链接粘贴至微信。\")\
+        .设置积极按钮(\"复制\",function()\
+          复制文本(\"https://szsupport.weixin.qq.com/cgi-bin/mmsupport-bin/readtemplate?t=page/android_exp__index&exportkey=A6bUu%2BN22R0jcSYFSiOvhvE%3D\")\
+        end)\
+        .设置消极按钮(\"取消\")\
+        .显示()\
+      end\
+      if v==10 then\
+        进入子页面(\"调用界面\",{链接=\"http://www.gov.cn/\"})\
+      end\
+      if v==11 then\
+        进入子页面(\"调用界面\",{链接=\"http://www.oneplusbbs.com/\"})\
+      end\
+      if v==12 then\
+        进入子页面(\"调用界面\",{链接=\"https://api.uixsj.cn/qqapi/\"})\
+      end\
+      if v==13 then\
+        进入子页面(\"调用界面\",{链接=\"http://www.cmd5.com/\"})\
+      end\
+      if v==14 then\
+        进入子页面(\"调用界面\",{链接=\"http://www.google.com.hk/m/search?hl=zh-CN\"})\
+      end\
+      if v==15 then\
+        进入子页面(\"调用界面\",{链接=\"https://api.uixsj.cn/qqapi/\"})\
+      end\
+      if v==16 then\
+        进入子页面(\"调用界面\",{链接=\"http://suo.im/\"})\
+      end\
+      if v==17 then\
+        进入子页面(\"调用界面\",{链接=\"http://m.fzlft.com/#http://m.fzlft.com/\"})\
+      end\
+      if v==18 then\
+        进入子页面(\"调用界面\",{链接=\"http://m.shicimingju.com/cangtoushi/index.html\"})\
+      end\
+      if v==19 then\
+        进入子页面(\"调用界面\",{链接=\"https://chaizi.51240.com/\"})\
+      end\
+      if v==20 then\
+        进入子页面(\"调用界面\",{链接=\"https://cp.ifval.com/\"})\
+      end\
+      if v==21 then\
+        进入子页面(\"调用界面\",{链接=\"http://bbs.zhiyoo.com/forum.php?mod=forum\"})\
+      end\
+      if v==22 then\
+        进入子页面(\"调用界面\",{链接=\"https://www.logoaa.com/\"})\
+      end\
+      if v==23 then\
+        进入子页面(\"调用界面\",{链接=\"http://cdn.games.imlianpu.com/platform/2048/index.html\"})\
+      end\
+      if v==24 then\
+        items={\"途牛\",\"携程\"}\
+        AlertDialog.Builder(this)\
+        .setTitle(\"\")\
+        .setItems(items,{onClick=function(l,v)\
+            if v==0 then\
+              进入子页面(\"调用界面\",{链接=\"https://m.tuniu.com/?fta=1&p=14820&cmpid=mkt_03033903&utm_source=m.baidu.com&utm_campaign=baidupz&utm_medium=baidupz\"})\
+            end\
+            if v==1 then\
+              进入子页面(\"调用界面\",{链接=\"https://m.ctrip.com/html5/?sourceid=497&allianceid=4897&sid=182042&utm_source=baidu&utm_medium=cpc&utm_campaign=baidu497&popup=close&openapp=11\"})\
+            end\
+          end})\
+        .show()\
+      end\
+      if v==25 then\
+        进入子页面(\"调用界面\",{链接=\"https://pandecheng.coding.me/Icon-Generator/\"})\
+      end\
+      if v==26 then\
+        进入子页面(\"调用界面\",{链接=\"http://www.runoob.com/tags/html-colorpicker.html\"})\
+      end\
+      if v==27 then\
+        进入子页面(\"调用界面\",{链接=\"http://cn.bing.com\"})\
+      end\
+      if v==28 then\
+        进入子页面(\"调用界面\",{链接=\"https://www.ageeye.cn/\"})\
+      end\
+      if v==29 then\
+        进入子页面(\"调用界面\",{链接=\"https://pandecheng.ooo/pdcicons/#home\"})\
+      end\
+      if v==30 then\
+        进入子页面(\"调用界面\",{链接=\"https://cli.im/mob\"})\
+      end\
+      if v==31 then\
+        进入子页面(\"调用界面\",{链接=\"http://lab.mkblog.cn/webos/\"})\
+      end\
+      if v==32 then\
+        进入子页面(\"调用界面\",{链接=\"http://yun.rili.cn/wnl/m/index.html\"})\
+      end\
+      if v==33 then\
+        items={\"全屏模式\",\"普通模式\"}\
+        AlertDialog.Builder(this)\
+        .setTitle(\"\")\
+        .setItems(items,{onClick=function(l,v)\
+            if v==0 then\
+              进入子页面(\"game\",{链接=\"https://pandecheng.coding.me/firework-simulator-v2/\"})\
+            end\
+            if v==1 then\
+              进入子页面(\"调用界面\",{链接=\"https://pandecheng.coding.me/firework-simulator-v2/\"})\
+            end\
+          end})\
+        .show() \
+      end\
+      if v==34 then\
+        进入子页面(\"调用界面\",{链接=\"https://m.soyunpan.com/\"})\
+      end\
+      if v==35 then\
+        进入子页面(\"调用界面\",{链接=\"http://uzoo.cn/100001\"})\
+      end\
+      if v==36 then\
+        进入子页面(\"调用界面\",{链接=\"http://www.iyuji.cn/iyuji/s/Z2JLUXprRzlZV2EwTlR0YXI3NEVYdz09/1548352158617500\"}) \
+      end\
+      if v==37 then\
+        items={\"解封QQ群\",\"解封QQ空间\",\"QQ空间认证\"}\
+        AlertDialog.Builder(this)\
+        .setTitle(\"账号解封\")\
+        .setNegativeButton(\"取消\",nil)\
+        .setItems(items,{onClick=function(l,v)\
+            if v==0 then\
+              进入子页面(\"调用界面\",{链接=\"http://kf.qq.com/self_help/qq_group_status.html?_wv=1031\"})\
+            end\
+            if v==1 then\
+              进入子页面(\"调用界面\",{链接=\"https://kf.qq.com/touch/\"})\
+            end\
+            if v==2 then\
+              进入子页面(\"调用界面\",{链接=\"https://h5.qzone.qq.com/brand/apply/index\"})\
+            end\
+\
+          end})\
+        .show()\
+\
+      end\
+      if v==38 then\
+        进入子页面(\"调用界面\",{链接=\"http://www.qqwangming.net\"})\
+      end\
+      if v==39 then\
+        进入子页面(\"调用界面\",{链接=\"http://www.yishuzi.com\"})\
+      end\
+      if v==40 then\
+        进入子页面(\"调用界面\",{链接=\"http://page.yy.com/svmob/d/?edition=1\"})\
+      end\
+      if v==41 then\
+        进入子页面(\"调用界面\",{链接=\"http://optimizilla.com/zh/\"})\
+      end\
+      if v==42 then\
+        进入子页面(\"调用界面\",{链接=\"http://bigjpg.com/\"})\
+      end\
+      if v==43 then\
+        进入子页面(\"调用界面\",{链接=\"http://mt.uupt.com/cap.html\"})\
+      end\
+      if v==44 then\
+        进入子页面(\"调用界面\",{链接=\"http://www.polaxiong.com/editor\"})\
+      end\
+      if v==45 then\
+        进入子页面(\"调用界面\",{链接=\"https://m.kantu.com/\"})\
+      end\
+      if v==46 then\
+        进入子页面(\"调用界面\",{链接=\"https://send.firefox.com/\"})\
+      end\
+      if v==47 then\
+        进入子页面(\"调用界面\",{链接=\"https://www.chaidu.com/App/Web/Url-Shortener/\"})\
+      end\
+      if v==48 then\
+        进入子页面(\"调用界面\",{链接=\"https://smallpdf.com/cn/\"})\
+      end\
+      if v==49 then\
+        进入子页面(\"调用界面\",{链接=\"https://cn.office-converter.com/\"})\
+      end\
+      if v==50 then\
+        进入子页面(\"调用界面\",{链接=\"https://www.52doutu.cn/diy/\"})\
+      end\
+      if v==51 then\
+        进入子页面(\"调用界面\",{链接=\"http://sc.appbs.cn/\"})\
+      end\
+      if v==52 then\
+        进入子页面(\"调用界面\",{链接=\"http://deepba.com/\"})\
+      end\
+      if v==53 then\
+        进入子页面(\"调用界面\",{链接=\"http://m.daohangtx.com/m/tools/detail/zhuangbi/\"})\
+      end\
+      if v==54 then\
+        进入子页面(\"调用界面\",{链接=\"http://m.chaxuntu.com/erweima/\"})\
+      end\
+      if v==55 then\
+        进入子页面(\"调用界面\",{链接=\"http://www.it399.com/m/qrcode.jsp\"})\
+      end\
+      if v==56 then\
+        进入子页面(\"调用界面\",{链接=\"http://www.zitiweb.com/\"})\
+      end\
+      if v==57 then\
+        进入子页面(\"调用界面\",{链接=\"http://m.diyiziti.com/\"})\
+      end\
+      if v==58 then\
+        进入子页面(\"调用界面\",{链接=\"http://www.xuanpai.com/\"})\
+      end\
+      if v==59 then\
+        进入子页面(\"调用界面\",{链接=\"http://m.daohangtx.com/m/tools/detail/qqqiangliao/\"})\
+      end\
+      if v==60 then\
+        进入子页面(\"调用界面\",{链接=\"http://tools.2345.com/m/yyl/\"})\
+      end\
+      if v==61 then\
+        进入子页面(\"调用界面\",{链接=\"http://m.daohangtx.com/m/tools/detail/kuaidi/\"})\
+      end\
+      if v==62 then\
+        进入子页面(\"调用界面\",{链接=\"http://service.tangdaoya.com/tdyapp/mobile/nickname/index.php\"})\
+      end\
+      if v==63 then\
+        进入子页面(\"调用界面\",{链接=\"http://www.windows93.net/\"})\
+      end\
+      --分割线\
+    end})\
+  .show()\
+end\
+\
+shamrock=\
+{\
+  LinearLayout;\
+  orientation=\"vertical\";\
+  layout_height=\"fill\";\
+  layout_width=\"fill\";\
+  BackgroundColor=\"#FFFFFF\";\
+  {\
+    ScrollView,--纵向滚动\
+    layout_width='fill';--宽\
+    layout_height='fill';--高\
+    {\
+      LinearLayout;\
+      orientation=\"horizontal\";\
+      Elevation=\"300dp\";\
+      layout_width=\"fill\";\
+      layout_height=\"100%h\";\
+      {\
+        LinearLayout;\
+        orientation=\"vertical\";\
+        layout_width=\"48%w\";\
+        layout_height=\"fill\";\
+        layout_marginLeft=\"2%w\";\
+        --第一列\
+        {\
+          CardView;\
+          layout_gravity=\"center\";\
+          layout_marginTop=\"2%h\"; \
+          elevation=\"0dp\";\
+          layout_width=\"45%w\";\
+          layout_height=\"45dp\";\
+          cardBackgroundColor=\"#FFF7F7F7\";\
+          radius=\"5dp\";\
+          {\
+            LinearLayout;\
+            layout_margin=\"0dp\";\
+            layout_width=\"fill\";\
+            layout_height=\"fill\";\
+            gravity=\"center\"; \
+            id=\"yun\";\
+            {\
+              TextView;\
+              textSize=\"14sp\";\
+              text=\"云电脑\",\
+              textColor=\"#333333\";\
+            };\
+          };\
+        },\
+        {\
+          CardView;\
+          layout_gravity=\"center\";\
+          layout_marginTop=\"2%h\"; \
+          elevation=\"0dp\";\
+          layout_width=\"45%w\";\
+          layout_height=\"45dp\";\
+          cardBackgroundColor=\"#FFF7F7F7\";\
+          radius=\"5dp\";\
+          {\
+            LinearLayout;\
+            layout_margin=\"0dp\";\
+            layout_width=\"fill\";\
+            layout_height=\"fill\";\
+            gravity=\"center\"; \
+            id=\"supersearch\";\
+            {\
+              TextView;\
+              textSize=\"14sp\";\
+              text=\"超级搜索\",\
+              textColor=\"#333333\";\
+            };\
+          };\
+        },\
+        {\
+          CardView;\
+          layout_gravity=\"center\";\
+          layout_marginTop=\"2%h\"; \
+          elevation=\"0dp\";\
+          layout_width=\"45%w\";\
+          layout_height=\"45dp\";\
+          cardBackgroundColor=\"#FFF7F7F7\";\
+          radius=\"5dp\";\
+          {\
+            LinearLayout;\
+            layout_margin=\"0dp\";\
+            layout_width=\"fill\";\
+            layout_height=\"fill\";\
+            gravity=\"center\"; \
+            id=\"tools\";\
+            {\
+              TextView;\
+              textSize=\"14sp\";\
+              text=\"工具集\",\
+              textColor=\"#333333\";\
+            };\
+          };\
+        },\
+        {\
+          CardView;\
+          layout_gravity=\"center\";\
+          layout_marginTop=\"2%h\"; \
+          elevation=\"0dp\";\
+          layout_width=\"45%w\";\
+          layout_height=\"45dp\";\
+          cardBackgroundColor=\"#FFF7F7F7\";\
+          radius=\"5dp\";\
+          {\
+            LinearLayout;\
+            layout_margin=\"0dp\";\
+            layout_width=\"fill\";\
+            layout_height=\"fill\";\
+            gravity=\"center\"; \
+            id=\"video\";\
+            {\
+              TextView;\
+              textSize=\"14sp\";\
+              text=\"在线视频高级版\",\
+              textColor=\"#333333\";\
+            };\
+          };\
+        },\
+        {\
+          CardView;\
+          layout_gravity=\"center\";\
+          layout_marginTop=\"2%h\"; \
+          elevation=\"0dp\";\
+          layout_width=\"45%w\";\
+          layout_height=\"45dp\";\
+          cardBackgroundColor=\"#FFF7F7F7\";\
+          radius=\"5dp\";\
+          {\
+            LinearLayout;\
+            layout_margin=\"0dp\";\
+            layout_width=\"fill\";\
+            layout_height=\"fill\";\
+            gravity=\"center\"; \
+            id=\"goluafast\";\
+            {\
+              TextView;\
+              textSize=\"14sp\";\
+              text=\"快速运行lua脚本\",\
+              textColor=\"#333333\";\
+            };\
+          };\
+        },\
+        {\
+          CardView;\
+          layout_gravity=\"center\";\
+          layout_marginTop=\"2%h\"; \
+          elevation=\"0dp\";\
+          layout_width=\"45%w\";\
+          layout_height=\"45dp\";\
+          cardBackgroundColor=\"#FFF7F7F7\";\
+          radius=\"5dp\";\
+          {\
+            LinearLayout;\
+            layout_margin=\"0dp\";\
+            layout_width=\"fill\";\
+            layout_height=\"fill\";\
+            gravity=\"center\"; \
+            id=\"e\";\
+            {\
+              TextView;\
+              textSize=\"14sp\";\
+              text=\"待开发\",\
+              textColor=\"#333333\";\
+            };\
+          };\
+        },\
+        {\
+          CardView;\
+          layout_gravity=\"center\";\
+          layout_marginTop=\"2%h\"; \
+          elevation=\"0dp\";\
+          layout_width=\"45%w\";\
+          layout_height=\"45dp\";\
+          cardBackgroundColor=\"#FFF7F7F7\";\
+          radius=\"5dp\";\
+          {\
+            LinearLayout;\
+            layout_margin=\"0dp\";\
+            layout_width=\"fill\";\
+            layout_height=\"fill\";\
+            gravity=\"center\"; \
+            id=\"e\";\
+            {\
+              TextView;\
+              textSize=\"14sp\";\
+              text=\"待开发\",\
+              textColor=\"#333333\";\
+            };\
+          };\
+        },\
+        --第二列\
+      };\
+      {\
+        LinearLayout;\
+        orientation=\"vertical\";\
+        layout_width=\"48%w\";\
+        layout_height=\"fill\";\
+        layout_marginRight=\"2%w\";\
+        {\
+          CardView;\
+          layout_gravity=\"center\";\
+          layout_marginTop=\"2%h\"; \
+          elevation=\"0dp\";\
+          layout_width=\"45%w\";\
+          layout_height=\"45dp\";\
+          cardBackgroundColor=\"#FFF7F7F7\";\
+          radius=\"5dp\";\
+          {\
+            LinearLayout;\
+            layout_margin=\"0dp\";\
+            layout_width=\"fill\";\
+            layout_height=\"fill\";\
+            gravity=\"center\"; \
+            id=\"musicjx\";\
+            {\
+              TextView;\
+              textSize=\"14sp\";\
+              text=\"全网音乐解析\",\
+              textColor=\"#333333\";\
+            };\
+          };\
+        },\
+        {\
+          CardView;\
+          layout_gravity=\"center\";\
+          layout_marginTop=\"2%h\"; \
+          elevation=\"0dp\";\
+          layout_width=\"45%w\";\
+          layout_height=\"45dp\";\
+          cardBackgroundColor=\"#FFF7F7F7\";\
+          radius=\"5dp\";\
+          {\
+            LinearLayout;\
+            layout_margin=\"0dp\";\
+            layout_width=\"fill\";\
+            layout_height=\"fill\";\
+            gravity=\"center\"; \
+            id=\"meizhi\";\
+            {\
+              TextView;\
+              textSize=\"14sp\";\
+              text=\"妹子图\",\
+              textColor=\"#333333\";\
+            };\
+          };\
+        },\
+        {\
+          CardView;\
+          layout_gravity=\"center\";\
+          layout_marginTop=\"2%h\"; \
+          elevation=\"0dp\";\
+          layout_width=\"45%w\";\
+          layout_height=\"45dp\";\
+          cardBackgroundColor=\"#FFF7F7F7\";\
+          radius=\"5dp\";\
+          {\
+            LinearLayout;\
+            layout_margin=\"0dp\";\
+            layout_width=\"fill\";\
+            layout_height=\"fill\";\
+            gravity=\"center\"; \
+            id=\"rom\";\
+            {\
+              TextView;\
+              textSize=\"14sp\";\
+              text=\"rom下载\",\
+              textColor=\"#333333\";\
+            };\
+          };\
+        },\
+        {\
+          CardView;\
+          layout_gravity=\"center\";\
+          layout_marginTop=\"2%h\"; \
+          elevation=\"0dp\";\
+          layout_width=\"45%w\";\
+          layout_height=\"45dp\";\
+          cardBackgroundColor=\"#FFF7F7F7\";\
+          radius=\"5dp\";\
+          {\
+            LinearLayout;\
+            layout_margin=\"0dp\";\
+            layout_width=\"fill\";\
+            layout_height=\"fill\";\
+            gravity=\"center\"; \
+            id=\"jishi\";\
+            {\
+              TextView;\
+              textSize=\"14sp\";\
+              text=\"工具大全\",\
+              textColor=\"#333333\";\
+            };\
+          };\
+        },\
+        {\
+          CardView;\
+          layout_gravity=\"center\";\
+          layout_marginTop=\"2%h\"; \
+          elevation=\"0dp\";\
+          layout_width=\"45%w\";\
+          layout_height=\"45dp\";\
+          cardBackgroundColor=\"#FFF7F7F7\";\
+          radius=\"5dp\";\
+          {\
+            LinearLayout;\
+            layout_margin=\"0dp\";\
+            layout_width=\"fill\";\
+            layout_height=\"fill\";\
+            gravity=\"center\"; \
+            id=\"e\";\
+            {\
+              TextView;\
+              textSize=\"14sp\";\
+              text=\"待开发\",\
+              textColor=\"#333333\";\
+            };\
+          };\
+        }, \
+        {\
+          CardView;\
+          layout_gravity=\"center\";\
+          layout_marginTop=\"2%h\"; \
+          elevation=\"0dp\";\
+          layout_width=\"45%w\";\
+          layout_height=\"45dp\";\
+          cardBackgroundColor=\"#FFF7F7F7\";\
+          radius=\"5dp\";\
+          {\
+            LinearLayout;\
+            layout_margin=\"0dp\";\
+            layout_width=\"fill\";\
+            layout_height=\"fill\";\
+            gravity=\"center\"; \
+            id=\"e\";\
+            {\
+              TextView;\
+              textSize=\"14sp\";\
+              text=\"待开发\",\
+              textColor=\"#333333\";\
+            };\
+          };\
+        },\
+        {\
+          CardView;\
+          layout_gravity=\"center\";\
+          layout_marginTop=\"2%h\"; \
+          elevation=\"0dp\";\
+          layout_width=\"45%w\";\
+          layout_height=\"45dp\";\
+          cardBackgroundColor=\"#FFF7F7F7\";\
+          radius=\"5dp\";\
+          {\
+            LinearLayout;\
+            layout_margin=\"0dp\";\
+            layout_width=\"fill\";\
+            layout_height=\"fill\";\
+            gravity=\"center\"; \
+            id=\"e\";\
+            {\
+              TextView;\
+              textSize=\"14sp\";\
+              text=\"待开发\",\
+              textColor=\"#333333\";\
+            };\
+          };\
+        },\
+      }; \
+    };\
+  };\
+};\
+webView.addView(loadlayout(shamrock))\
+--项目点击事件\
+yun.onClick=function()\
+  进入子页面(\"横屏\",{链接=\"https://demo.glyptodon.com/#/client/ZGVtbwBjAGRlbW8=\"})\
+end\
+musicjx.onClick=function()\
+  进入子页面(\"game\",{链接=\"http://music.cccyun.cc\"})\
+end\
+supersearch.onClick=function()\
+  InputLayout={\
+    LinearLayout;\
+    orientation=\"vertical\";\
+    Focusable=true,\
+    FocusableInTouchMode=true,\
+    {\
+      TextView;\
+      id=\"Prompt\",\
+      textSize=\"15sp\",\
+      layout_marginTop=\"10dp\";\
+      layout_marginLeft=\"3dp\",\
+      layout_width=\"80%w\";\
+      layout_gravity=\"center\",\
+      text=\"想搜索啥电影?\";\
+    };\
+    {\
+      EditText;\
+      hint=\"搜它!\";\
+      layout_marginTop=\"5dp\";\
+      layout_width=\"80%w\";\
+      layout_gravity=\"center\",\
+      id=\"edit\";\
+    };\
+  };\
+  AlertDialog.Builder(this)\
+  .setTitle(\"超级搜索\")\
+  .setView(loadlayout(InputLayout))\
+  .setPositiveButton(\"确定\",{onClick=function(v)\
+      if(edit.Text==\"\")then\
+        提示(\"未输入任何东西\")\
+      else\
+        进入子页面(\"搜索用\",{链接=(\"http://70bt.cn/s-\"..edit.text..\".html\")})\
+      end\
+    end})\
+  .setNeutralButton(\"取消\",nil)\
+  .show()\
+  import \"android.view.View$OnFocusChangeListener\"\
+  edit.setOnFocusChangeListener(OnFocusChangeListener{ \
+    onFocusChange=function(v,hasFocus)\
+      if hasFocus then\
+        Prompt.setTextColor(0xFD009688)\
+      end\
+    end})\
+end\
+meizhi.onClick=function()\
+  进入子页面(\"妹子图\")\
+end\
+tools.onClick=function()\
+  打开在线工具()\
+end\
+jishi.onClick=function()\
+  items={}\
+  table.insert(items,\"手机号码归属地查询\")\
+  table.insert(items,\"让我帮你百度一下\")\
+  table.insert(items,\"Github 加速下载\")\
+  table.insert(items,\"微博视频解析二\")\
+  table.insert(items,\"youtubi视频解析\")\
+  table.insert(items,\"GIF动态图制作\")\
+  table.insert(items,\"音悦台视频解析\")\
+  table.insert(items,\"贴吧ID信息查询\")\
+  table.insert(items,\"QQ花样撤回消息\")\
+  table.insert(items,\"QQapi智能调用\")\
+  table.insert(items,\"微博视频解析\")\
+  table.insert(items,\"匿名聊天把妹\")\
+  table.insert(items,\"QQ坦白说查看\")\
+  table.insert(items,\"聊天机器人\")\
+  table.insert(items,\"汉字转拼音\")\
+  table.insert(items,\"数字转大写\")\
+  table.insert(items,\"文字转语音\")\
+  table.insert(items,\"QQ资料清空\")\
+  table.insert(items,\"QQ空间关闭\")\
+  table.insert(items,\"QQ空间开通\")\
+  table.insert(items,\"中午吃什么\")\
+  table.insert(items,\"在线绘图\")\
+  table.insert(items,\"解压神器\")\
+  table.insert(items,\"文件分享\")\
+  table.insert(items,\"磁力解析\")\
+  table.insert(items,\"生逢何时\")\
+  table.insert(items,\"随机抽签\")\
+  table.insert(items,\"神奇海螺\")\
+  table.insert(items,\"在线对联\")\
+  table.insert(items,\"镜子网站\")\
+  table.insert(items,\"端口扫描\")\
+  table.insert(items,\"云盘精灵\")\
+  table.insert(items,\"网络天才\")\
+  table.insert(items,\"毕业喽\")\
+  table.insert(items,\"别点我\")\
+  table.insert(items,\"短网址\")\
+  table.insert(items,\"整人\")\
+  table.insert(items,\"一言\")\
+  table.insert(items,\"素锦\")\
+  table.insert(items,\"滑稽\")\
+  table.insert(items,\"星空\")\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+  AlertDialog.Builder(this)\
+  .setTitle(\"工具\")\
+  .setItems(items,{onClick=function(l,v) \
+      if items[v+1]==\"手机号码归属地查询\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://tool.mkblog.cn/shouji/\"})\
+      elseif items[v+1]==\"让我帮你百度一下\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://lab.mkblog.cn/lmbtfy/\"})\
+      elseif items[v+1]==\"贴吧ID信息查询\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://mk.mkblog.cn/home/info/\"})\
+      elseif items[v+1]==\"Github 加速下载\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://tool.mkblog.cn/github/\"})\
+      elseif items[v+1]==\"微博视频解析二\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://tool.mkblog.cn/weibovideo/\"})\
+      elseif items[v+1]==\"音悦台视频解析\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://tool.mkblog.cn/yinyuetai/\"})\
+      elseif items[v+1]==\"youtubi视频解析\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"https://videocyborg.com/\"})\
+      elseif items[v+1]==\"GIF动态图制作\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://www.biaoqing.online/#weisuoyuwei\"})\
+      elseif items[v+1]==\"QQ花样撤回消息\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"https://tool.thkira.com/unicode.html\"})\
+      elseif items[v+1]==\"QQapi智能调用\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"https://api.uixsj.cn/qqapi/\"})\
+      elseif items[v+1]==\"微博视频解析\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://tool.uixsj.cn/weibovideo/\"})\
+      elseif items[v+1]==\"匿名聊天把妹\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://shushubuyue.com/index.html#intro\"})\
+      elseif items[v+1]==\"聊天机器人\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://robot.uixsj.cn/\"})\
+      elseif items[v+1]==\"汉字转拼音\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://tool.mkblog.cn/pinyin/\"})\
+      elseif items[v+1]==\"数字转大写\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://tool.mkblog.cn/daxie/\"})\
+      elseif items[v+1]==\"文字转语音\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://www.hoovip.com/\"})\
+      elseif items[v+1]==\"QQ资料清空\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://ui.ptlogin2.qq.com/cgi-bin/login?style=9&appid=15403&pt_ttype=1&s_url=http%3A%2F%2Factiveqq.3g.qq.com%2FactiveQQ%2Fmq%2F4%3F%26pnum%3D-1%2Fpingd%3Fdm%3Dui.ptlogin2.qq.com\"})\
+      elseif items[v+1]==\"QQ空间关闭\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://imgcache.qq.com/qzone/web/qzone_submit_close.html\"})\
+      elseif items[v+1]==\"QQ空间开通\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://ctc.qzs.qq.com/qzone/web/load2.htm\"})\
+      elseif items[v+1]==\"中文吃什么\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://www.toolv.cn/games/zwcsm/\"})\
+      elseif items[v+1]==\"在线绘图\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"https://witeboard.com/\"})\
+      elseif items[v+1]==\"解压神器\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"https://neave.com/\"})\
+      elseif items[v+1]==\"文件分享\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"https://send.firefox.com/\"})\
+      elseif items[v+1]==\"磁力解析\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://www.wnooo.tk/\"})\
+      elseif items[v+1]==\"生逢何时\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://tool.uixsj.cn/life-counter/\"})\
+      elseif items[v+1]==\"随机抽签\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://tool.uixsj.cn/s/lucky-draw-num/\"})\
+      elseif items[v+1]==\"神奇海螺\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://tool.uixsj.cn/magiconch/\"})\
+      elseif items[v+1]==\"在线对联\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://couplet.ronghuiad.com/\"})\
+      elseif items[v+1]==\"镜子网站\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://tool.uixsj.cn/mirror/\"})\
+      elseif items[v+1]==\"端口扫描\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://tool.uixsj.cn/ScanPort/\"})\
+      elseif items[v+1]==\"云盘精灵\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"https://www.yunpanjingling.com/user/login\"})\
+      elseif items[v+1]==\"网络天才\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://cn.akinator.com/\"})\
+      elseif items[v+1]==\"毕业喽\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://www.iwan0.com/\"})\
+      elseif items[v+1]==\"别点我\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://tool.uixsj.cn/click-word/\"})\
+      elseif items[v+1]==\"短网址\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://suo.im/\"})\
+      elseif items[v+1]==\"整人\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://zr.uixsj.cn/\"})\
+      elseif items[v+1]==\"一言\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://tool.uixsj.cn/hitokoto-color/\"})\
+      elseif items[v+1]==\"素锦\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://isujin.com/\"})\
+      elseif items[v+1]==\"滑稽\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://tool.uixsj.cn/doge/\"})\
+      elseif items[v+1]==\"星空\" then\
+        进入子页面(\"魔盒浏览\",{链接=\"http://tool.uixsj.cn/7-html/index7.html\"})\
+\
+      end\
+    end})\
+  .show()\
+end \
+--请勿删除作者信息\
+--音六©QQ1785333334\
+--请勿删除,以表示对作者的尊重\
+\
+rom.onClick=function()\
+  items={\"ViperOS\",\"AIM\",\"NitrogenOS\",\"SudaMod\",\"AEX\",\"Resurrectionremix\",\"LineageOS\",\"Mokee\",\"第三方Flyme\",\"Flyme\",\"Pixelexperience\",\"MIUI原版\",\"MIUI香港版\",\"MIUI俄罗斯版\",\"MIUI波兰版\",\"MIUI意大利版\",\"MIUI国际版\",\"MIUI历史包\",\"SereinOS\",\"SuperiorOS\",\"Havoc-OS\",\"AOSiP\",\"dotOS\",\"Cosmic-OS\",\"SlimRom\",\"XPerience\",\"DarkNess OS\",\"aicp OS\",\"魔趣 OS\",\"Suda OS\",\"RR OS\",\"极光ROM\"}\
+  AlertDialog.Builder(this)\
+  .setTitle(\"ROM仓库\")\
+  .setNegativeButton(\"取消\",nil)\
+  .setNeutralButton(\"RomBox\",function(v)--设置中立按钮\
+    进入子页面(\"调用界面\",{链接=\"https://www.71geek.com\"})\
+  end)\
+  .setItems(items,{onClick=function(l,v)\
+      if v==0 then\
+        进入子页面(\"调用界面\",{链接=\"https://viper-os.com/\"})\
+      end\
+      if v==1 then\
+        进入子页面(\"调用界面\",{链接=\"https://sourceforge.net/projects/aimroms/?source=directory\"})\
+      end\
+      if v==2 then\
+        进入子页面(\"调用界面\",{链接=\"https://sourceforge.net/projects/nitrogen-project/?source=directory\"})\
+      end\
+      if v==3 then\
+        进入子页面(\"调用界面\",{链接=\"https://sudamod.download/z2_plus\"})\
+      end\
+      if v==4 then\
+        进入子页面(\"调用界面\",{链接=\"https://downloads.aospextended.com/\"})\
+      end\
+      if v==5 then\
+        进入子页面(\"调用界面\",{链接=\"https://sourceforge.net/projects/resurrectionremix/files/capricorn/\"})\
+      end \
+      if v==6 then\
+        进入子页面(\"调用界面\",{链接=\"https://download.lineageos.org/\"})\
+      end\
+      if v==7 then\
+        进入子页面(\"调用界面\",{链接=\"https://download.mokeedev.com/\"})\
+      end\
+      if v==8 then\
+        进入子页面(\"调用界面\",{链接=\"http://www.7to.cn/zhuanti/2018/Flyme5_17/index.html\"})\
+      end\
+      if v==9 then\
+        进入子页面(\"调用界面\",{链接=\"https://www.flyme.cn/firmware.html\"})\
+      end\
+      if v==10 then\
+        进入子页面(\"调用界面\",{链接=\"https://download.pixelexperience.org\"})\
+      end\
+      if v==11 then\
+        进入子页面(\"调用界面\",{链接=\"https://www.miui.com/getrom.php?m=yes&app=true\"})\
+      end\
+      if v==12 then\
+        进入子页面(\"调用界面\",{链接=\"http://hk.miui.com/download.html\"})\
+      end\
+      if v==13 then\
+        进入子页面(\"调用界面\",{链接=\"https://miui.su/download\"})\
+      end\
+      if v==15 then\
+        进入子页面(\"调用界面\",{链接=\"https://miuipolska.pl/download/\"})\
+      end\
+      if v==16 then\
+        进入子页面(\"调用界面\",{链接=\"http://www.miui.it/download-miui/\"})\
+      end\
+      if v==17 then\
+        进入子页面(\"调用界面\",{链接=\"http://en.miui.com/download.html\"})\
+      end\
+      if v==18 then\
+        进入子页面(\"调用界面\",{链接=\"http://www.miui.com/thread-12949460-1-1.html\"})\
+      end\
+      if v==19 then\
+        进入子页面(\"调用界面\",{链接=\"https://sourceforge.net/projects/sereinos/files/\"})\
+      end\
+      if v==20 then\
+        进入子页面(\"调用界面\",{链接=\"https://sourceforge.net/projects/superioros/files/\"})\
+      end\
+      if v==21 then\
+        进入子页面(\"调用界面\",{链接=\"https://sourceforge.net/projects/havoc-os/files/\"})\
+      end\
+      if v==22 then\
+        进入子页面(\"调用界面\",{链接=\"https://sourceforge.net/projects/illusionproject/files/\"})\
+      end\
+      if v==23 then\
+        进入子页面(\"调用界面\",{链接=\"https://sourceforge.net/projects/dotos-2-x/files/?source=navbar\"})\
+      end if v==24 then\
+        进入子页面(\"调用界面\",{链接=\"https://sourceforge.net/projects/cosmic-os/files/\"})\
+      end\
+      if v==25 then\
+        进入子页面(\"调用界面\",{链接=\"https://slimroms.org/#/download\"})\
+      end\
+      if v==26 then\
+        进入子页面(\"调用界面\",{链接=\"http://thexperienceproject.com/?reqp=1&reqr=\"})\
+      end\
+      if v==27 then\
+        进入子页面(\"调用界面\",{链接=\"https://sourceforge.net/projects/teamdarkness/files/DarkNess-reDefined/\"})\
+      end\
+      if v==28 then\
+        进入子页面(\"调用界面\",{链接=\"http://dwnld.aicp-rom.com/\"})\
+      end\
+      if v==29 then\
+        进入子页面(\"调用界面\",{链接=\"https://download.mokeedev.com/\"})\
+      end\
+      if v==30 then\
+        进入子页面(\"调用界面\",{链接=\"https://sudamod.download/\"})\
+      end\
+      if v==31 then\
+        进入子页面(\"调用界面\",{链接=\"https://sourceforge.net/projects/resurrectionremix/files/\"})\
+      end\
+      if v==32 then\
+        进入子页面(\"调用界面\",{链接=\"https://m.weibo.cn/u/5272025033?uid=5272025033&luicode=10000011&lfid=100103type%3D1%26q%3D%E6%9E%81%E5%85%89%20ROM%26t%3D0\"})\
+      end\
+    end})\
+  .show()\
+end\
+\
+video.onClick=function()\
+  进入子页面(\"game\",{链接=\"https://m.kankanwu.com\"})\
+end\
+--波纹函数\
+function 波纹(id,颜色)\
+  import \"android.content.res.ColorStateList\"\
+  local attrsArray = {android.R.attr.selectableItemBackgroundBorderless} \
+  local typedArray =activity.obtainStyledAttributes(attrsArray) \
+  ripple=typedArray.getResourceId(0,0) \
+  Pretend=activity.Resources.getDrawable(ripple) \
+  Pretend.setColor(ColorStateList(int[0].class{int{}},int{颜色}))\
+  id.setBackground(Pretend.setColor(ColorStateList(int[0].class{int{}},int{颜色})))\
+end\
+--用法\
+波纹(goluafast,0xfff48FB1)\
+波纹(yun,0xfff48FB1)\
+波纹(musicjx,0xfff48FB1)\
+波纹(supersearch,0xfff48FB1)\
+波纹(meizhi,0xfff48FB1)\
+波纹(rom,0xfff48FB1)\
+波纹(tools,0xfff48FB1)\
+波纹(video,0xfff48FB1)\
+波纹(jishi,0xfff48FB1)\
+波纹(e,0xfff48FB1)\
+--精仿一个木函按钮，给需要的人\
+--有bug请联系我：2215149392\
+--或者加群：835500026" ;
+      ["网页即将加载"]	= "--浏览器即将加载新的网页时执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      ["收到新标题"]	= "--浏览器加载新页面并获得新标题时执行的事件\
+\
+--接收参数\
+浏览器对象，新标题=..." ;
+      ["网页加载完毕"]	= "--网页加载完毕后执行的事件\
+\
+--接收参数\
+浏览器对象,网页链接=..." ;
+      } ;
+  ["colors"]	= {
+      ["悬浮按钮"]	= "#ff33a7aa" ;
+      ["顶栏部件"]	= "#ffffffff" ;
+      ["侧滑栏列表图标"]	= "#ff757575" ;
+      ["搜索栏提示文字"]	= "#80000000" ;
+      ["顶栏部件触摸"]	= "#22ffffff" ;
+      ["顶栏"]	= "#ff12b8f6" ;
+      ["侧滑栏列表文字"]	= "#ff333333" ;
+      ["侧滑栏背景"]	= "#ffffffff" ;
+      ["悬浮按钮图标"]	= "#ffffffff" ;
+      ["进度条"]	= "#00000000" ;
+      ["搜索栏部件"]	= "#ff888888" ;
+      ["搜索栏背景"]	= "#ffffffff" ;
+      ["导航栏"]	= "#ff2c2e43" ;
+      ["搜索栏部件触摸"]	= "#44000000" ;
+      } ;
+  } ;
